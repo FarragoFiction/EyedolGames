@@ -1,0 +1,124 @@
+body {
+  background-color: black;
+  background-image: url(four.jpg);
+  background-repeat: repeat-x;
+  background-size: cover;
+  margin: 0px;
+  background-position-y: -606px;
+  overflow: auto;
+
+}
+
+#infinite-scroll{
+  display: inline-block;
+}
+
+.infinite{
+  display: inline-block;
+}
+
+#fake-background{
+  width: 100%;
+  opacity: 0.5;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: -999;
+
+}
+
+.container{
+
+  background-color: rgba(0,0,0,0.7);
+  padding: 20px;
+  color: #f4f4f4;
+  font-weight: bolder;
+  border-radius: 8px;
+  margin-top: 10px;
+
+}
+
+#disclaimer{
+  text-transform: capitalize;
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+  position: fixed;
+  bottom: 0px;
+  explanation: count the black birds in the tree
+
+
+
+}
+
+#left{
+  max-width: 300px;
+}
+
+
+
+img{
+  filter: saturate(0%) brightness(70%) contrast(1000%);
+  explanation: the world isn't just black and white. what are you doing?
+}
+
+.illustration{
+
+  background-color: rgba(0,0,0,0.7);
+  padding: 20px;
+  color: #f4f4f4;
+  font-weight: bolder;
+  border-radius: 8px;
+  margin-top: 10px;
+  border-radius: 19px;
+  text-align: center;
+}
+
+#real-content{
+  display: inline-block;
+}
+
+#center{
+  height: 1000px;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#content{
+  display: flex;
+  width: 100vw;
+}
+
+.infinite{
+  width: 375px;
+  margin: 50px;
+  margin-top: 10px;
+}
+
+#infinite-scroll{
+  display: flex;
+  flex-direction: row;
+}
+
+#cast {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+#cast::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+
+
+button{
+  background: black;
+  color: white;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  display: block;
+  margin-top: 25%;
+}

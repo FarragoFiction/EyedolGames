@@ -1,0 +1,217 @@
+let ele;
+
+const createElementWithClass = (eleName, className) => {
+  const ele = document.createElement(eleName);
+
+  if (className) {
+    ele.className = className;
+  }
+  return ele;
+
+}
+
+const getRandomNumberBetween = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const pickFrom = (array) => {
+  return array[getRandomNumberBetween(0, array.length - 1)];
+}
+
+const createElementWithClassAndParent = (eleName, parent, className) => {
+  const ele = createElementWithClass(eleName, className);
+  parent.append(ele);
+  return ele;
+}
+
+class Item {
+  img_src;
+  text_content;
+  parent;
+  constructor(img_src, text_content, parent) {
+    this.img_src = img_src;
+    this.text_content = text_content;
+    this.parent = parent;
+  }
+
+  renderSelf = () => {
+    const ele = createElementWithClassAndParent("div", this.parent, "container infinite");
+    const img = createElementWithClassAndParent("img", ele);
+    img.src = "idols/" + this.img_src;
+    img.width = "250";
+    const text = createElementWithClassAndParent("p", ele);
+    text.innerHTML = this.text_content;
+  }
+
+}
+
+let panel_index = 0;
+
+const tenMore = () => {
+  for (let i = 0; i < 10; i++) {
+    randomPanel();
+  }
+}
+
+/*
+const PERSON = "person";
+ const ADJ = "adj";
+ const COMPLIMENT = "compliment";
+ const INSULT = "insult";
+ const SUPERMOVE = "supermove";
+ const OBJECT = "object";
+ const LOCATION = "location";
+ const MEMORIES = "memories";
+ const MENU = "menu";
+ const CLASS = "CLASS";
+ const ASPECT = "ASPECT";
+ const CITYNAME = "CITYNAME";
+ const CHILDBACKSTORY = "CHILDBACKSTORY";
+ const GENERALBACKSTORY = "GENERALBACKSTORY";
+ const MIRACLE = "MIRACLE";
+ const SONG = "SONG";
+ const PHILOSOPHY = "PHILOSOPHY";
+ const LOC_DESC = "LOCATION DESCRIPTION";
+ const MONSTER_DESC = "MONSTER DESCRIPTION";
+ const SMELL = "SMELL";
+ const TASTE = "TASTE";
+ const FEELING = "FEELING";
+ const SOUND = "SOUND";
+ const EFFECTS = "EFFECTS";
+ const WALL = "WALL";
+ const FLOOR = "FLOOR";
+ const FILTERS = "FILTERS";
+ const THEME_OPINIONS = "THEME_OPINIONS";
+ const WALLBACKGROUND = "WALLBACKGROUND";
+ const WALLFOREGROUND = "WALLFOREGROUND";
+ const FLOORBACKGROUND = "FLOORBACKGROUND";
+ const FLOORFOREGROUND = "FLOORFOREGROUND";
+ const SPRITES = "SPRITES";//birbs
+*/
+const randomPhrase = ()=>{
+  //console.log("JR NOTE: all_themes is", all_themes)
+  const chosenThemeKey = pickFrom(Object.keys(all_themes));
+  const chosenTheme = all_themes[chosenThemeKey];
+  const person = chosenTheme.pickPossibilityFor(PERSON);
+  const adj = chosenTheme.pickPossibilityFor(ADJ);
+  const compliment = chosenTheme.pickPossibilityFor(COMPLIMENT);
+  const insult = chosenTheme.pickPossibilityFor(INSULT);
+  const supermove = chosenTheme.pickPossibilityFor(SUPERMOVE);
+  const object = chosenTheme.pickPossibilityFor(OBJECT);
+  const location = chosenTheme.pickPossibilityFor(LOCATION);
+
+  const childbackstory = chosenTheme.pickPossibilityFor(CHILDBACKSTORY);
+  const generalbackstory = chosenTheme.pickPossibilityFor(GENERALBACKSTORY);
+  const miracle = chosenTheme.pickPossibilityFor(MIRACLE);
+  const philosophy =chosenTheme.pickPossibilityFor(PHILOSOPHY);
+  const loc_desc = chosenTheme.pickPossibilityFor(LOC_DESC);
+  const monster_desc =chosenTheme.pickPossibilityFor(MONSTER_DESC);
+  const smell = chosenTheme.pickPossibilityFor(SMELL);
+  const taste = chosenTheme.pickPossibilityFor(TASTE);
+  const feeling = chosenTheme.pickPossibilityFor(FEELING);
+  const sound = chosenTheme.pickPossibilityFor(SOUND);
+  const effects = chosenTheme.pickPossibilityFor(EFFECTS);
+  const visualization_exercises = ["Think about","You are fated to encounter","Close your eyes and imagine","In your dreams you will see"]
+
+ // console.log(`JR NOTE: chosenThemeKey ${chosenThemeKey},chosenTheme ${chosenTheme} smell ${smell}`, )
+  const themed_phrases  = [
+    `What do you think Zampanio would smell like. Like ${smell}, do you think?`
+  , `Did you hear that? Was that the sound of ${sound}?`
+    ,`Have you tried looking for Zampanio at the ${location}?`
+ , `Most people say that Zampanio tastes distinctly like ${taste}.`
+ , `Would you finally stop if you gained the power to ${miracle}?`
+  , `Would a ${person} be better at discovering Zampanio secrets than you? Even if they were ${insult}?`
+    , `A ${compliment} person like you would know better than to keep scrolling, you'd think.`
+    ,`It's okay. I understand the urge to dig and dig and dig and never stop even as ${effects}.`
+    ,`Are you expecting something supernatural to happen? No. All that is happening is that you are making the decision to scroll forever. You are trapping yourself in a hell of your own creation. It's not even a maze. It's just. Here.`
+    ,`Does the chair underneath you feel ${feeling}?`
+    ,`A wise man once said ${philosophy}`
+    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a  ${adj} ${object} nearby. Do not touch it.`
+    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a ${object} nearby. Eat it.`
+    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}.`
+    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. ${effects}.`
+    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. Lurking nearby will be a creature with your face. ${monster_desc}`
+
+
+
+
+];
+  return pickFrom(themed_phrases)
+}
+
+const zeroPad = (num, places) => String(num).padStart(places, '0');
+
+const indexToImage = ()=>{
+  if(panel_index === 0){
+    return `00000-img.png`
+  }
+  return `${zeroPad(panel_index%max_image,5)}-img.png`;
+}
+
+const randomPanel = () => {
+  let phrase = `<p>${pickFrom(text_fragment)}</p>`;
+  const amount = getRandomNumberBetween(0, 3);
+  for (let i = 0; i < amount; i++) {
+    phrase += `<p>${pickFrom(text_fragment)}</p>`
+  }
+  new Item(`${indexToImage()}`, phrase, ele).renderSelf();
+  //we won't use it NOW but the coherent JR written ones will be less and less frequent
+  text_fragment.push(randomPhrase());
+  panel_index ++;
+
+}
+
+window.onload = () => {
+  initThemes();
+  ele = document.querySelector("#infinite-scroll")
+  tenMore();
+}
+
+
+window.onscroll = () => {
+  window.requestAnimationFrame(() => {
+    randomPanel();
+  });
+};
+
+const min_image = 0;
+const max_image = 77;
+const text_fragment = [
+
+  `DO YOU REMEMBER THE MALL OF YOUR CHILDHOOD?
+THE SMELL OF ORANGE JULIUS THAT LINGERS IN YOUR NOSTRILS
+OR OF BUTTERED POPCORN WHEN YOU WENT TO THE MOVIES
+ALWAYS GONE BEFORE IT STARTED`
+  , `DO YOU REMEMBER THE CHATTER OF PASSERBY?
+SEEING ALL THOSE GROUPS OF FRIENDS JUST LOOKING FOR FUN
+OR PEOPLE THAT TIME AND DISTANCE HAD MADE
+NOTHING MORE THAN BORN-AGAIN STRANGERS`
+  , `IT IS ALL SO VIVID IN YOUR HEAD
+WHO COULD YOU BLAME? YOU WERE BUT A CHILD
+BUT ALAS WE ARE HERE AND THE PAST IS GONE
+WHAT'S LEFT IS YOUR MIND BUT THERE'S NO ONE THERE`
+  , `SO I'LL SEE YOU AGAIN WHEN I WEAR NEW SKIN
+A NEW SUIT AND TIE AND A COLOR OF PAINT
+BECAUSE EVEN THOUGH YOU'LL COME TO FORGET
+I DREAM IN MY THROES OF BEING LOVED AGAIN`
+,"Are you alone right now?"
+,"Zampanio is a very good game, you should play it."
+,"Zampanio is a really good game, you should play it."
+,"Zampanio is a absolutely good game, you should play it."
+,"Zampanio is a a great game, you should try it."
+, "Founded in 1972, in Naples, Italy, Eyedol Games took the computing world by storm."
+,"Who watches the watcher?"
+,"Do you see it?"
+,"Red is the color of blood of herrings of news of eyes of coals of fire of flowers of cars of blood of teeth of bone of brain."
+,"Is this your reward? Your prison? What point do you expect there to be here. Anywhere. What possible satisfaction could Zampanio give you?"
+,"This very obsession is the sign of Zampanio's mark on you. On the world. It can't live without your attention. Without your physical meaty brain agreeing ever so politely to house it. Why are you doing this? Why won't you just let it die?"
+,`Are you expecting something supernatural to happen? No. All that is happening is that you are making the decision to scroll forever. You are trapping yourself in a hell of your own creation. It's not even a maze. It's just...a straight line.`
+
+,"When was the last time you truly loved something the way you love Zampanio?"
+  , "The shape in my head is the shape of me is the shape of the world is the shape of a spiral that spirals and spirals and spirals but when you look up, when you're so dizzy you can no longer stare it in the eye you realize it was never a spiral at all."
+  , "When will you know you're finished? When will you know to stop? What could ever possibly satisfy you?"
+  , "You're alive. You can still win. Only the living can win. All the dead do is fail."
+  , "There is a kind of love to obsession. Not the obession towards a person. Though I suppose it may yet be called that. No, what I am speaking of is the obession towards a CONCEPT. Do you love Zampanio?  If you're reading this, the answer is self evident.  It loves you, too."
+  , "THE END IS NEVER THE END IS NEVER  THE END IS NEVER THE END IS NEVER  THE END IS NEVER THE END IS NEVER  THE END IS NEVER THE END IS NEVER  THE END IS NEVER THE END IS NEVER THE END IS NEVER THE END IS NEVER THE END IS NEVER THE END IS NEVER THE END IS NEVER THE END"
+  , "It will never be the same again. And that is okay. You can be okay again even if you can't recapture the magic of the past. It will be okay. It has to."
+  , "Zampanio awaits.", "Have you ever been in a situation that seemed just a litle bit off? Like you couldn't escape it?", "Where does the Minotaur lurk?"]
