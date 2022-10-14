@@ -10,6 +10,17 @@ const createElementWithClass = (eleName, className) => {
 
 }
 
+ function replaceStringAt(str, index, character) {
+  return str.substr(0, index) + character + str.substr(index + character.length);
+}
+
+const sentenceCase = (input) => {
+  if (!input.length) {
+      return input;
+  }
+  return replaceStringAt(input, 0, input[0].toUpperCase());
+};
+
 const getRandomNumberBetween = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -125,11 +136,11 @@ const randomPhrase = ()=>{
     ,`It's okay. I understand the urge to dig and dig and dig and never stop even as ${effects}.`
     ,`Are you expecting something supernatural to happen? No. All that is happening is that you are making the decision to scroll forever. You are trapping yourself in a hell of your own creation. It's not even a maze. It's just. Here.`
     ,`Does the chair underneath you feel ${feeling}?`
-    ,`A wise man once said ${philosophy}`
+    ,`A wise man once said "${philosophy}"`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a  ${adj} ${object} nearby. Do not touch it.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a ${object} nearby. Eat it.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}.`
-    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. ${effects}.`
+    ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. ${sentenceCase(effects)}.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. Lurking nearby will be a creature with your face. ${monster_desc}`
 
 
