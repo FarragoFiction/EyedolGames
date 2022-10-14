@@ -128,7 +128,14 @@ const randomPhrase = ()=>{
   const themed_phrases  = [
     `What do you think Zampanio would smell like. Like ${smell}, do you think?`
   , `Did you hear that? Was that the sound of ${sound}?`
+  ,`I don't understand why you won't leave. What do you hope to gain? There is no ${object} at the end of this tunnel. No catharsis or secret wisdom. There is no point other than the journey itself. Is that what you crave? The act of travel in and of itself? Do you wish, in your heart of hearts, for Zampanio to never end?`
     ,`Have you tried looking for Zampanio at the ${location}?`
+    ,`I bet you ${childbackstory}.`
+    ,`I wonder if you ${generalbackstory}.`
+    ,`I suspect you ${generalbackstory}.`
+
+    ,"You have not truly experienced Zampanio. Oh, sure, you have dug and dug and dug until daylight is a hated  memory.  But no matter how much you dig you will not find Zampanio. Not until you start burying your own secrets down here, to show to others. Leave your Mark."
+
  , `Most people say that Zampanio tastes distinctly like ${taste}.`
  , `Would you finally stop if you gained the power to ${miracle}?`
   , `Would a ${person} be better at discovering Zampanio secrets than you? Even if they were ${insult}?`
@@ -137,6 +144,7 @@ const randomPhrase = ()=>{
     ,`Are you expecting something supernatural to happen? No. All that is happening is that you are making the decision to scroll forever. You are trapping yourself in a hell of your own creation. It's not even a maze. It's just. Here.`
     ,`Does the chair underneath you feel ${feeling}?`
     ,`A wise man once said "${philosophy}"`
+    ,"It truly is endless you know. Not just this page. Everything. Forever. Life has no neat and tidiy ends complete with a moral and the characters all safely returning to the stasis from which they were spawned. Toys returned to their box. No. Life is messy. Life is chaotic. Life is ever spreading. Live your life."
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a  ${adj} ${object} nearby. Do not touch it.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a ${object} nearby. Eat it.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}.`
