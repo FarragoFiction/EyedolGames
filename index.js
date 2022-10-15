@@ -164,7 +164,7 @@ const indexToImage = ()=>{
   if(panel_index === 0){
     return `00000-img.png`
   }
-  return `${zeroPad(Math.round(panel_index/4)%max_image,5)}-img.png`;
+  return `${zeroPad(Math.round(panel_index/3)%max_image,5)}-img.png`;
 }
 
 const randomPanel = () => {
