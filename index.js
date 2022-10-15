@@ -45,10 +45,11 @@ class Item {
     this.parent = parent;
   }
 
-  renderSelf = () => {
+  renderSelf = (item_number) => {
     const ele = createElementWithClassAndParent("div", this.parent, "container infinite");
     const img = createElementWithClassAndParent("img", ele);
     img.src = "idols/" + this.img_src;
+    img.title = ""+item_number;
     img.width = "250";
     const text = createElementWithClassAndParent("p", ele);
     text.innerHTML = this.text_content;
@@ -169,7 +170,7 @@ const indexToImage = ()=>{
   if(panel_index === 0){
     return `00000-img.png`
   }
-  if(panel_index  /3 > max_image){
+  if((panel_index  /3)-2 > max_image){
     for(let i = 0; i<113; i++){
       text_fragment.push("It repeats and it repeats and it repeats and it repeats and it repeats and yet you can never truly be certain you've seen it all because in its repetition is Truth and do you dare risk missing it?");
 
@@ -184,7 +185,7 @@ const randomPanel = () => {
   for (let i = 0; i < amount; i++) {
     phrase += `<p>${pickFrom(text_fragment)}</p>`
   }
-  new Item(`${indexToImage()}`, phrase, ele).renderSelf();
+  new Item(`${indexToImage()}`, phrase, ele).renderSelf(panel_index);
   //we won't use it NOW but the coherent JR written ones will be less and less frequent
   text_fragment.push(randomPhrase());
   panel_index ++;
