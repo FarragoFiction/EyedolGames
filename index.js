@@ -122,7 +122,7 @@ const randomPhrase = ()=>{
   const feeling = chosenTheme.pickPossibilityFor(FEELING);
   const sound = chosenTheme.pickPossibilityFor(SOUND);
   const effects = chosenTheme.pickPossibilityFor(EFFECTS);
-  const visualization_exercises = ["Think about","You are fated to encounter","Close your eyes and imagine","In your dreams you will see"]
+  const visualization_exercises = ["Another version of you wanders","Your soul is near","Think about","You are fated to encounter","Close your eyes and imagine","In your dreams you will see"]
 
  // console.log(`JR NOTE: chosenThemeKey ${chosenThemeKey},chosenTheme ${chosenTheme} smell ${smell}`, )
   const themed_phrases  = [
@@ -223,6 +223,7 @@ I DREAM IN MY THROES OF BEING LOVED AGAIN`
 , "Founded in 1972, in Naples, Italy, Eyedol Games took the computing world by storm."
 ,"Who watches the watcher?"
 ,"Do you see it?"
+,"What is the point of digging? What do you hope to find? Is it enough, for you... Enough to just dig and dig and never create? Do you plan to strip mine this game for secrets without leaving any of your own?"
 ,"Red is the color of blood of herrings of news of eyes of coals of fire of flowers of cars of blood of teeth of bone of brain."
 ,"Is this your reward? Your prison? What point do you expect there to be here. Anywhere. What possible satisfaction could Zampanio give you?"
 ,"This very obsession is the sign of Zampanio's mark on you. On the world. It can't live without your attention. Without your physical meaty brain agreeing ever so politely to house it. Why are you doing this? Why won't you just let it die?"
