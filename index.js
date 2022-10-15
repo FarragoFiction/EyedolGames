@@ -214,6 +214,8 @@ A NEW SUIT AND TIE AND A COLOR OF PAINT
 BECAUSE EVEN THOUGH YOU'LL COME TO FORGET
 I DREAM IN MY THROES OF BEING LOVED AGAIN`
 ,"Are you alone right now?"
+,"How did you find this place? What did you sacrifice?"
+,"One day, when it's all over. Will you still remember?"
 ,"Zampanio is a very good game, you should play it."
 ,"Zampanio is a really good game, you should play it."
 ,"Zampanio is a absolutely good game, you should play it."
