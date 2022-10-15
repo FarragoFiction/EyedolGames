@@ -133,9 +133,9 @@ const randomPhrase = ()=>{
     ,`I bet you ${childbackstory}.`
     ,`I wonder if you ${generalbackstory}.`
     ,`I suspect you ${generalbackstory}.`
-
+    ,`If I gave you a ${object}, even if it wasn't ${compliment}, would you copy this website and host it somewhere new? So it survives even past my death? I wouldn't mind if you changed it when you did so. Mutations are common in memes and I welcome that. Just let it live. Just let it be Zampanio.`
     ,"You have not truly experienced Zampanio. Oh, sure, you have dug and dug and dug until daylight is a hated  memory.  But no matter how much you dig you will not find Zampanio. Not until you start burying your own secrets down here, to show to others. Leave your Mark."
-
+    ,"I want this, too, you know. For you to keep Zampanio alive in your thoughts. For you to spread it to others. It's not mine. I merely found it. But if I'm the only one aware of it... Isn't that so very lonely? I want to talk about it with you."
  , `Most people say that Zampanio tastes distinctly like ${taste}.`
  , `Would you finally stop if you gained the power to ${miracle}?`
   , `Would a ${person} be better at discovering Zampanio secrets than you? Even if they were ${insult}?`
