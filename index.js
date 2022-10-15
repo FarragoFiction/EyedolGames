@@ -101,7 +101,7 @@ const PERSON = "person";
 */
 const randomPhrase = ()=>{
   if(panel_index ===113){
-    "Fine. Alright. You win. Maybe it's not all dead ends. Maybe it's not all pointless. I mean. Well. It is. Ultimately. But you can at least go somewhere new to kill time. <a href ='http://knucklessux.com/HydrationSim/'>Here you go</a>."
+    return "Fine. Alright. You win. Maybe it's not all dead ends. Maybe it's not all pointless. I mean. Well. It is. Ultimately. But you can at least go somewhere new to kill time. <a href ='http://knucklessux.com/HydrationSim/'>Here you go</a>."
   }
   //console.log("JR NOTE: all_themes is", all_themes)
   const chosenThemeKey = pickFrom(Object.keys(all_themes));
