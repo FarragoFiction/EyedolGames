@@ -219,6 +219,8 @@ A NEW SUIT AND TIE AND A COLOR OF PAINT
 BECAUSE EVEN THOUGH YOU'LL COME TO FORGET
 I DREAM IN MY THROES OF BEING LOVED AGAIN`
 ,"Are you alone right now?"
+,"How much do you think waffles cost?"
+,"Do you transverse mazes clockwise or counterclockwise?"
 ,"How did you find this place? What did you sacrifice?"
 ,"One day, when it's all over. Will you still remember?"
 ,"Zampanio is a very good game, you should play it."
