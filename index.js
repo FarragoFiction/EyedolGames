@@ -169,7 +169,7 @@ const indexToImage = ()=>{
   if(panel_index === 0){
     return `00000-img.png`
   }
-  if(panel_index  /3 > max_image === 0){
+  if(panel_index  /3 > max_image){
     for(let i = 0; i<113; i++){
       text_fragment.push("It repeats and it repeats and it repeats and it repeats and it repeats and yet you can never truly be certain you've seen it all because in its repetition is Truth and do you dare risk missing it?");
 
