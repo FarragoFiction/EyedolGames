@@ -150,7 +150,7 @@ const randomPhrase = ()=>{
     ,`Are you expecting something supernatural to happen? No. All that is happening is that you are making the decision to scroll forever. You are trapping yourself in a hell of your own creation. It's not even a maze. It's just. Here.`
     ,`Does the chair underneath you feel ${feeling}?`
     ,`A wise man once said "${philosophy}"`
-    ,"It truly is endless you know. Not just this page. Everything. Forever. Life has no neat and tidiy ends complete with a moral and the characters all safely returning to the stasis from which they were spawned. Toys returned to their box. No. Life is messy. Life is chaotic. Life is ever spreading. Live your life."
+    ,"It truly is endless, you know. Not just this page. Everything. Forever. Life has no neat and tidiy ends complete with a moral and the characters all safely returning to the stasis from which they were spawned. Toys returned to their box. No. Life is messy. Life is chaotic. Life is ever spreading. Live your life."
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a  ${adj} ${object} nearby. Do not touch it.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}. It will be a ${location}. You will find a ${object} nearby. Eat it.`
     ,`${pickFrom(visualization_exercises)} a place with ${loc_desc}.`
@@ -170,7 +170,7 @@ const indexToImage = ()=>{
   if(panel_index === 0){
     return `00000-img.png`
   }
-  if((panel_index  /3)-2 > max_image){
+  if((panel_index  /3) > max_image-2){
     for(let i = 0; i<113; i++){
       text_fragment.push("It repeats and it repeats and it repeats and it repeats and it repeats and yet you can never truly be certain you've seen it all because in its repetition is Truth and do you dare risk missing it?");
 
