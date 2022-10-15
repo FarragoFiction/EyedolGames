@@ -100,6 +100,9 @@ const PERSON = "person";
  const SPRITES = "SPRITES";//birbs
 */
 const randomPhrase = ()=>{
+  if(panel_index ===113){
+    "Fine. Alright. You win. Maybe it's not all dead ends. Maybe it's not all pointless. I mean. Well. It is. Ultimately. But you can at least go somewhere new to kill time. <a href ='http://knucklessux.com/HydrationSim/'>Here you go</a>."
+  }
   //console.log("JR NOTE: all_themes is", all_themes)
   const chosenThemeKey = pickFrom(Object.keys(all_themes));
   const chosenTheme = all_themes[chosenThemeKey];
@@ -131,6 +134,7 @@ const randomPhrase = ()=>{
   ,`I don't understand why you won't leave. What do you hope to gain? There is no ${object} at the end of this tunnel. No catharsis or secret wisdom. There is no point other than the journey itself. Is that what you crave? The act of travel in and of itself? Do you wish, in your heart of hearts, for Zampanio to never end?`
     ,`Have you tried looking for Zampanio at the ${location}?`
     ,`I bet you ${childbackstory}.`
+    ,`Count the ${object} in a tree.`
     ,`I wonder if you ${generalbackstory}.`
     ,`I suspect you ${generalbackstory}.`
     ,`If I gave you a ${object}, even if it wasn't ${compliment}, would you copy this website and host it somewhere new? So it survives even past my death? I wouldn't mind if you changed it when you did so. Mutations are common in memes and I welcome that. Just let it live. Just let it be Zampanio.`
@@ -223,6 +227,7 @@ I DREAM IN MY THROES OF BEING LOVED AGAIN`
 , "Founded in 1972, in Naples, Italy, Eyedol Games took the computing world by storm."
 ,"Who watches the watcher?"
 ,"Do you see it?"
+,"Count the blackbirds in a tree, they will tell you what is to be. One for sadness, two for joy. Three for a tool. And four for a toy. Five for circuits, Six for gold, and seven for a secret that's never been told. There are no secrets here. No useful tools. Only amusement. I'm sorry."
 ,"What is the point of digging? What do you hope to find? Is it enough, for you... Enough to just dig and dig and never create? Do you plan to strip mine this game for secrets without leaving any of your own?"
 ,"Red is the color of blood of herrings of news of eyes of coals of fire of flowers of cars of blood of teeth of bone of brain."
 ,"Is this your reward? Your prison? What point do you expect there to be here. Anywhere. What possible satisfaction could Zampanio give you?"
