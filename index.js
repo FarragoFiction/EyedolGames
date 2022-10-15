@@ -135,6 +135,7 @@ const randomPhrase = ()=>{
     ,`Have you tried looking for Zampanio at the ${location}?`
     ,`I bet you ${childbackstory}.`
     ,`Count the ${object} in a tree.`
+    ,`${sentenceCase(object)} is a very good game, you should play it.`
     ,`I wonder if you ${generalbackstory}.`
     ,`I suspect you ${generalbackstory}.`
     ,`If I gave you a ${object}, even if it wasn't ${compliment}, would you copy this website and host it somewhere new? So it survives even past my death? I wouldn't mind if you changed it when you did so. Mutations are common in memes and I welcome that. Just let it live. Just let it be Zampanio.`
