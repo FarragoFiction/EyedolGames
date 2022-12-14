@@ -7,7 +7,7 @@ body {
 
 }
 
-label{
+label:not(.gender){
   font-weight: bolder;
   margin-bottom: 13px;
   display: block;
@@ -49,6 +49,15 @@ select{
   gap: 13px;
   margin-left: 13px;
   max-width: 500px;
+  align-items: center;
+
+}
+
+#instructions{
+  background: #f4f4f4;
+  padding: 33px;
+  width: 500px;
+  margin-bottom: 33px;
 
 }
 

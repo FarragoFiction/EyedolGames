@@ -165,7 +165,8 @@ const randomCheckbox = () => {
   `
 
   for (let i = 0; i < amount; i++) {
-    ill_advised_raw_html += `<div class='horizontal-radio'><input type="checkbox"></input><div class='gender'>${pickFrom(gender_source())}</div></div>`;
+    const id = `checkbox-${question_index}-${i}`
+    ill_advised_raw_html += `<div class='horizontal-radio'><input id="${id}" type="checkbox"></input><label for="${id}" class='gender'>${pickFrom(gender_source())}</label></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
@@ -184,7 +185,8 @@ const randomRadio = () => {
   `
 
   for (let i = 0; i < amount; i++) {
-    ill_advised_raw_html += `<div class='horizontal-radio'><input name="radio-${question_index}" type="radio"></input><div class='gender'>${pickFrom(gender_source())}</div></div>`;
+    const id = `radio-${question_index}-${i}`
+    ill_advised_raw_html += `<div class='horizontal-radio'><input id="${id}" name="radio-${question_index}" type="radio"></input><label for="${id}"  class='gender'>${pickFrom(gender_source())}</label></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
