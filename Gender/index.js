@@ -1,6 +1,6 @@
 
 let container;
-
+//look, wanda likes gender, okay?
 
 const tenMore = () => {
   for (let i = 0; i < 10; i++) {
@@ -184,7 +184,7 @@ const randomRadio = () => {
   `
 
   for (let i = 0; i < amount; i++) {
-    ill_advised_raw_html += `<div class='horizontal-radio'><input type="radio"></input><div class='gender'>${pickFrom(gender_source())}</div></div>`;
+    ill_advised_raw_html += `<div class='horizontal-radio'><input name="radio-${question_index}" type="radio"></input><div class='gender'>${pickFrom(gender_source())}</div></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
