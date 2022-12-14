@@ -193,6 +193,36 @@ const randomRadio = () => {
 
 }
 
+const deployGender = ()=>{
+  const specialCases = {
+    69: "nice"
+    ,13: "Dig dig dig dig dig dig dig dig dig dig dig dig"
+    ,413:"Homestuck (we're sorry)"
+    ,85:"Honestly? I don't know. You've done it. You are the one person who has never had gender."
+    ,216: "A cycle unfinished. A quest that never ends. The greek king pushing his rock up the mountain, only for it to roll him over. The ouroboros that snaps its tail in half."
+    ,113: "Dry and acid. The friction of a mouth devoid of water, fleshy taste buds upright and yearning. The essence of Hydration.  http://knucklessux.com/HydrationSim/ is for you."
+  }
+
+  for(let key in specialCases){
+    console.log("JR NOTE: key",key)
+    if(number_clicks === key){
+      alert(`After careful consideration: Your gender is: ${specialCases[key]}`);
+
+      return;
+    }
+  }
+
+  if(number_clicks < 13){
+    alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
+    return;
+  }
+  const genders = document.querySelectorAll(".gender")
+  //your answers don't matter BUT you get the cooler answers if you engage more
+  const gender = genders[(number_clicks + Math.round(question_index/2))%genders.length].innerText;
+  alert(`After careful consideration: Your gender is: ${gender}`);
+
+}
+
 window.onload = () => {
   const audio = document.querySelector("#audio");
   audio.volume = .2;
@@ -203,14 +233,7 @@ window.onload = () => {
   const gender_button = document.querySelector("#gender-button");
   console.log("JR NOTE: gender button", gender_button)
   gender_button.onclick = () => {
-    if(number_clicks < 13){
-      alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
-      return;
-    }
-    const genders = document.querySelectorAll(".gender")
-    //your answers don't matter BUT you get the cooler answers if you engage more
-    const gender = genders[(number_clicks + Math.round(question_index/2))%genders.length].innerText;
-    alert(`After careful consideration: Your gender is: ${gender}`);
+    deployGender();
   }
 }
 

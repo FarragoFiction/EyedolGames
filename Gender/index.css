@@ -27,6 +27,10 @@ select{
   margin-right: auto;
 }
 
+button{
+  height: 50px;
+}
+
 #footer{
     text-transform: capitalize;
     padding: 5px;
