@@ -194,6 +194,8 @@ const randomRadio = () => {
 }
 
 window.onload = () => {
+  const audio = document.querySelector("#audio");
+  audio.volume = .2;
   container = document.querySelector("#container");
   initThemes();
   ele = document.querySelector("#infinite-scroll")
@@ -213,6 +215,10 @@ window.onload = () => {
 }
 
 window.onclick = () => {
+  const audio = document.querySelector("#audio");
+  if(!audio.playing){
+    audio.play();
+  }
   number_clicks++;
 }
 
