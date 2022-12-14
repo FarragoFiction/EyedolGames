@@ -17,11 +17,26 @@ label{
   margin-bottom: 85px;
 }
 
+select{
+  margin-left: 13px;
+}
 
 #container{
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#footer{
+    text-transform: capitalize;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid black;
+    width: 100%;
+    background: white;
 }
 
 .horizontal-radio{
