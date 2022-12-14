@@ -39,6 +39,10 @@ select{
     background: white;
 }
 
+#recieve-gender{
+  margin-top: 13px;
+}
+
 .horizontal-radio{
   display: flex;
   flex-direction: row;

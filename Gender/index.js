@@ -43,43 +43,42 @@ const PERSON = "person";
  const FLOORFOREGROUND = "FLOORFOREGROUND";
  const SPRITES = "SPRITES";//birbs
 */
-const REALLYRandomGenders = ()=>{
+const REALLYRandomGenders = () => {
 
   const chosenThemeKey = pickFrom(Object.keys(all_themes));
   const chosenTheme = all_themes[chosenThemeKey];
-  const person =  titleCase(chosenTheme.pickPossibilityFor(PERSON));
-  const adj =  titleCase(chosenTheme.pickPossibilityFor(ADJ));
-  const compliment =  titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT));
-  const insult =  titleCase(chosenTheme.pickPossibilityFor(INSULT));
-  const supermove =  titleCase(chosenTheme.pickPossibilityFor(SUPERMOVE));
-  const object =  titleCase(chosenTheme.pickPossibilityFor(OBJECT));
-  const location =  titleCase(chosenTheme.pickPossibilityFor(LOCATION));
-  const philosophy =  titleCase(chosenTheme.pickPossibilityFor(PHILOSOPHY));
+  const person = titleCase(chosenTheme.pickPossibilityFor(PERSON));
+  const adj = titleCase(chosenTheme.pickPossibilityFor(ADJ));
+  const compliment = titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT));
+  const insult = titleCase(chosenTheme.pickPossibilityFor(INSULT));
+  const supermove = titleCase(chosenTheme.pickPossibilityFor(SUPERMOVE));
+  const object = titleCase(chosenTheme.pickPossibilityFor(OBJECT));
+  const location = titleCase(chosenTheme.pickPossibilityFor(LOCATION));
+  const philosophy = titleCase(chosenTheme.pickPossibilityFor(PHILOSOPHY));
 
-  const childbackstory =  titleCase(chosenTheme.pickPossibilityFor(CHILDBACKSTORY));
-  const generalbackstory =  titleCase(chosenTheme.pickPossibilityFor(GENERALBACKSTORY));
-  const miracle =  titleCase(chosenTheme.pickPossibilityFor(MIRACLE));
-  const loc_desc =  titleCase(chosenTheme.pickPossibilityFor(LOC_DESC));
+  const childbackstory = titleCase(chosenTheme.pickPossibilityFor(CHILDBACKSTORY));
+  const generalbackstory = titleCase(chosenTheme.pickPossibilityFor(GENERALBACKSTORY));
+  const miracle = titleCase(chosenTheme.pickPossibilityFor(MIRACLE));
+  const loc_desc = titleCase(chosenTheme.pickPossibilityFor(LOC_DESC));
   const monster_desc = titleCase(chosenTheme.pickPossibilityFor(MONSTER_DESC));
-  const smell =  titleCase(chosenTheme.pickPossibilityFor(SMELL));
-  const taste =  titleCase(chosenTheme.pickPossibilityFor(TASTE));
-  const feeling =  titleCase(chosenTheme.pickPossibilityFor(FEELING));
-  const sound =  titleCase(chosenTheme.pickPossibilityFor(SOUND));
-  const effects =  titleCase(chosenTheme.pickPossibilityFor(EFFECTS));
+  const smell = titleCase(chosenTheme.pickPossibilityFor(SMELL));
+  const taste = titleCase(chosenTheme.pickPossibilityFor(TASTE));
+  const feeling = titleCase(chosenTheme.pickPossibilityFor(FEELING));
+  const sound = titleCase(chosenTheme.pickPossibilityFor(SOUND));
+  const effects = titleCase(chosenTheme.pickPossibilityFor(EFFECTS));
 
-  const moreNormal = [supermove,sound,smell,taste,feeling,person,adj,compliment,insult,object,location];
-  const lessNormal = [philosophy,childbackstory,generalbackstory,effects,monster_desc,loc_desc,miracle];
+  const moreNormal = [supermove, sound, smell, taste, feeling, person, adj, compliment, insult, object, location];
+  const lessNormal = [philosophy, childbackstory, generalbackstory, effects, monster_desc, loc_desc, miracle];
   let ret = [];
   //varies up how likely it is to be WEIRD.
-  for(let i =0; i< question_index%13; i++){
-    if(i===3){
+  for (let i = 0; i < question_index % 13; i++) {
+    if (i === 3) {
       ret = ret.concat(lessNormal);
-    }else{
+    } else {
       ret = ret.concat(moreNormal);
 
     }
   }
-  console.log("JR NOTE: ret is",ret)
 
   return ret;
 }
@@ -87,32 +86,36 @@ const REALLYRandomGenders = ()=>{
 
 //global variables are a sin and i'm sinning on purpose tonight
 let question_index = 0;
+let number_clicks = 0;
 
-const gender_source = ()=>{
-  if(question_index <3){
+const gender_source = () => {
+  if (question_index < 3) {
     return lameGenders;
-  }else if (question_index< 35){
+  } else if (question_index < 35) {
     return lameGenders.concat(genders);
-  }else if (question_index< 1113){
-    return lameGenders.concat(genders).concat(REALLYRandomGenders());
-  }else{
-    return ["Zampanio","Zampanio","Zampanio","Zampanio","Zampano","Goncharov","Pamzino","Zampanio","Zampanini","Zampiano"]
+  } else if (question_index < 113) {
+    return (genders).concat(REALLYRandomGenders());
+  }
+  else if (question_index < 2113) {
+    return REALLYRandomGenders().concat(genders).concat(REALLYRandomGenders());
+  } else {
+    return ["Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
   }
 }
 
 
 const randomQuestion = () => {
   let html;
-  question_index ++;
-  let generators = [randomRadio, randomCheckbox,randomRadio, randomCheckbox,randomRadio, randomCheckbox]
-  if(question_index > 13){  
+  question_index++;
+  let generators = [randomRadio, randomCheckbox, randomRadio, randomCheckbox, randomRadio, randomCheckbox]
+  if (question_index > 13) {
     generators.push(randomRange);
   }
-  if(question_index > 33){  
+  if (question_index > 33) {
     generators.push(randomSelect);
   }
   html = pickFrom(generators)();
-  
+
   const ele = createElementWithClassAndParent("div", container, "question");
   ele.innerHTML = html;
 
@@ -122,15 +125,15 @@ const randomQuestion = () => {
 const randomSelect = () => {
   const max = 10;
   const min = 3;
-  const multiple = Math.random()>0.85? "multiple":"";
-  const amount = getRandomNumberBetween(min, max) +getRandomNumberBetween(0, 15) ;
+  const multiple = Math.random() > 0.85 ? "multiple" : "";
+  const amount = getRandomNumberBetween(min, max) + getRandomNumberBetween(0, 15);
   let ill_advised_raw_html = `
     <div><label>${question_index}:${pickFrom(questions)}</label>
     <select ${multiple}>
   `
 
-  for(let i =0; i< amount; i++){
-    ill_advised_raw_html += `<option>${pickFrom(gender_source())}</option>`;
+  for (let i = 0; i < amount; i++) {
+    ill_advised_raw_html += `<option class='gender'>${pickFrom(gender_source())}</option>`;
   }
   ill_advised_raw_html += '</select></div></div>'
   return ill_advised_raw_html;
@@ -143,7 +146,7 @@ const randomRange = () => {
     <div><label>${question_index}: ${pickFrom(questions)}</label>
 
   `
-  ill_advised_raw_html += `<div class='horizontal-radio'><div>${pickFrom(gender_source())}</div><input type="range"></input><div>${pickFrom(genders)}</div></div>`;
+  ill_advised_raw_html += `<div class='horizontal-radio'><div class='gender'>${pickFrom(gender_source())}</div><input type="range"></input><div class='gender'>${pickFrom(genders)}</div></div>`;
 
   ill_advised_raw_html += '</div>'
   return ill_advised_raw_html;
@@ -157,12 +160,12 @@ const randomCheckbox = () => {
 
   let ill_advised_raw_html = `
     <div><label>${question_index}: ${pickFrom(questions)}</label>
-    <div class="${pickFrom(['horizontal-radio','vertical-radio'])}">
+    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
 
   `
 
-  for(let i =0; i< amount; i++){
-    ill_advised_raw_html += `<div class='horizontal-radio'><input type="checkbox"></input><div>${pickFrom(gender_source())}</div></div>`;
+  for (let i = 0; i < amount; i++) {
+    ill_advised_raw_html += `<div class='horizontal-radio'><input type="checkbox"></input><div class='gender'>${pickFrom(gender_source())}</div></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
@@ -176,12 +179,12 @@ const randomRadio = () => {
 
   let ill_advised_raw_html = `
     <div><label>${question_index}: ${pickFrom(questions)}</label>
-    <div class="${pickFrom(['horizontal-radio','vertical-radio'])}">
+    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
 
   `
 
-  for(let i =0; i< amount; i++){
-    ill_advised_raw_html += `<div class='horizontal-radio'><input type="radio"></input><div>${pickFrom(gender_source())}</div></div>`;
+  for (let i = 0; i < amount; i++) {
+    ill_advised_raw_html += `<div class='horizontal-radio'><input type="radio"></input><div class='gender'>${pickFrom(gender_source())}</div></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
@@ -193,7 +196,25 @@ window.onload = () => {
   initThemes();
   ele = document.querySelector("#infinite-scroll")
   tenMore();
+  const gender_button = document.querySelector("#gender-button");
+  console.log("JR NOTE: gender button", gender_button)
+  gender_button.onclick = () => {
+    if(number_clicks < 13){
+      alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
+      return;
+    }
+    const genders = document.querySelectorAll(".gender")
+    //your answers don't matter BUT you get the cooler answers if you engage more
+    const gender = genders[(number_clicks + Math.round(question_index/2))%genders.length].innerText;
+    alert(`After careful consideration: Your gender is: ${gender}`);
+  }
 }
+
+window.onclick = () => {
+  number_clicks++;
+}
+
+
 
 
 window.onscroll = () => {

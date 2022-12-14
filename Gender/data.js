@@ -45,6 +45,7 @@ Female
 Other
 Unknown
 Ambiguous
+Hater
 Bad
 Female
 Male
