@@ -204,8 +204,9 @@ const deployGender = ()=>{
   }
 
   for(let key in specialCases){
-    console.log("JR NOTE: key",key)
-    if(number_clicks === key){
+    console.log("JR NOTE: key",key, number_clicks)
+    if(number_clicks == key){
+      console.log("JR NOTE: yes.")
       alert(`After careful consideration: Your gender is: ${specialCases[key]}`);
 
       return;
