@@ -10,6 +10,17 @@ const createElementWithClass = (eleName, className) => {
 
 }
 
+ const titleCase = (input) => {
+  const pieces = input.split(" ");
+  const ret = [];
+  for (let piece of pieces) {
+      if (piece[0]) {
+          ret.push(replaceStringAt(piece, 0, piece[0].toUpperCase()));
+      }
+  }
+  return ret.join(" ");
+}
+
  function replaceStringAt(str, index, character) {
   return str.substr(0, index) + character + str.substr(index + character.length);
 }

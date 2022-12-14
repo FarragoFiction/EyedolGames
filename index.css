@@ -38,6 +38,11 @@ body {
 
 }
 
+#recieve-gender{
+  margin-left: 13px;
+  margin-top: 13px;
+}
+
 #disclaimer{
   text-transform: capitalize;
   padding: 50px;

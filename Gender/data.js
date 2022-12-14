@@ -25,8 +25,7 @@ Genero
 Select Gender
 Please Select Gender
 You are...
-Gender
-`;
+Gender`;
 
 const questions = rawQuestions.split("\n");
 
@@ -34,8 +33,7 @@ const questions = rawQuestions.split("\n");
 const lameGenderRaw = `Male
 Female
 Other
-Prefer to not answer
-`
+Prefer to not answer`
 
 const lameGenders = lameGenderRaw.split("\n");
 
@@ -231,8 +229,7 @@ Male
 X (non-binary) (Canada Only)
 Female
 Male
-Unselect
-`;
+Unselect`;
 
 
 const genders = rawGender.split("\n");
