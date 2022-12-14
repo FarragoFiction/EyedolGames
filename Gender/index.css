@@ -1,0 +1,45 @@
+body {
+  background-color: white;
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-family:   ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+label{
+  font-weight: bolder;
+  margin-bottom: 13px;
+  display: block;
+}
+
+.question{
+  margin-bottom: 85px;
+}
+
+
+#container{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.horizontal-radio{
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+
+}
+
+
+
+.vertical-radio{
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+}
+
