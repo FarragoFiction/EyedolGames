@@ -1,0 +1,81 @@
+body {
+  background-color: white;
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-family:   ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+label:not(.gender){
+  font-weight: bolder;
+  margin-bottom: 13px;
+  display: block;
+}
+
+.hidden{
+  display: none !important; 
+}
+
+.question{
+  margin-bottom: 85px;
+}
+
+select{
+  margin-left: 13px;
+}
+
+#container{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button{
+  height: 50px;
+}
+
+#footer{
+    text-transform: capitalize;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid black;
+    width: 100%;
+    background: white;
+}
+
+#recieve-gender{
+  margin-top: 13px;
+}
+
+.horizontal-radio{
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+  align-items: center;
+
+}
+
+#instructions{
+  background: #f4f4f4;
+  padding: 33px;
+  width: 500px;
+  margin-bottom: 33px;
+
+}
+
+
+
+.vertical-radio{
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+}
+

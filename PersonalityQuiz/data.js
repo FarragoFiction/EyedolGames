@@ -1,33 +1,6 @@
 //https://genders.wtf/gauntlet/
 
-const rawQuestions = `Sex
-Genre
-Gender
-Gender
-What is your gender?
-Pick a Gender:
-Genre communautaire
-gender
-Title
-GENDER
-What is your gender?
-Gender
-Please indicate your gender
-May we ask whether you're a lady or a gentleman?
-2. Gender
-What is your gender?
-Gender
-Gender
-Gender
-Character gender for name...
-Gender
-Genero
-Select Gender
-Please Select Gender
-You are...
-Gender`;
 
-const questions = rawQuestions.split("\n");
 
 
 const lameGenderRaw = `Male
@@ -235,6 +208,64 @@ Come Back With a Warrant`;
 
 
 const genders = rawGender.split("\n");
+
+
+
+
+const REALLYRandomGenders = () => {
+
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    const person = titleCase(chosenTheme.pickPossibilityFor(PERSON));
+    const adj = titleCase(chosenTheme.pickPossibilityFor(ADJ));
+    const compliment = titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT));
+    const insult = titleCase(chosenTheme.pickPossibilityFor(INSULT));
+    const supermove = titleCase(chosenTheme.pickPossibilityFor(SUPERMOVE));
+    const object = titleCase(chosenTheme.pickPossibilityFor(OBJECT));
+    const location = titleCase(chosenTheme.pickPossibilityFor(LOCATION));
+    const philosophy = titleCase(chosenTheme.pickPossibilityFor(PHILOSOPHY));
+  
+    const childbackstory = titleCase(chosenTheme.pickPossibilityFor(CHILDBACKSTORY));
+    const generalbackstory = titleCase(chosenTheme.pickPossibilityFor(GENERALBACKSTORY));
+    const miracle = titleCase(chosenTheme.pickPossibilityFor(MIRACLE));
+    const loc_desc = titleCase(chosenTheme.pickPossibilityFor(LOC_DESC));
+    const monster_desc = titleCase(chosenTheme.pickPossibilityFor(MONSTER_DESC));
+    const smell = titleCase(chosenTheme.pickPossibilityFor(SMELL));
+    const taste = titleCase(chosenTheme.pickPossibilityFor(TASTE));
+    const feeling = titleCase(chosenTheme.pickPossibilityFor(FEELING));
+    const sound = titleCase(chosenTheme.pickPossibilityFor(SOUND));
+    const effects = titleCase(chosenTheme.pickPossibilityFor(EFFECTS));
+  
+    const moreNormal = [supermove, sound, smell, taste, feeling, person, adj, compliment, insult, object, location];
+    const lessNormal = [philosophy, childbackstory, generalbackstory, effects, monster_desc, loc_desc, miracle];
+    let ret = [];
+    //varies up how likely it is to be WEIRD.
+    for (let i = 0; i < question_index % 13; i++) {
+      if (i === 3) {
+        ret = ret.concat(lessNormal);
+      } else {
+        ret = ret.concat(moreNormal);
+  
+      }
+    }
+  
+    return ret;
+  }
+
+const gender_source = () => {
+    if (question_index < 3) {
+      return lameGenders;
+    } else if (question_index < 35) {
+      return lameGenders.concat(genders);
+    } else if (question_index < 113) {
+      return (genders).concat(REALLYRandomGenders());
+    }
+    else if (question_index < 2113) {
+      return REALLYRandomGenders().concat(genders).concat(REALLYRandomGenders());
+    } else {
+      return ["Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
+    }
+  }
 
 const PERSON = "person";
  const ADJ = "adj";
