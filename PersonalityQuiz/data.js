@@ -526,7 +526,7 @@ const initPeople = () => {
     person_posibilities[MATH] = ["mathematician", "algebraist ", "math teacher", "engineer"];
     person_posibilities[TWISTING] = ["therapist", "minotaur", "devil", "liar", "madman"];
     person_posibilities[DEATH] = ["reaper", "psychopomp", "shinigami", "grave-digger", "undertaker", "thanatologist", "embalmer"];
-    person_posibilities[APOCALYPSE] = ["horseman", "rider", "messiahs", "heisenberg"];
+    person_posibilities[APOCALYPSE] = ["horseman", "rider", "messiah", "heisenberg"];
     person_posibilities[SERVICE] = ["butler", "maid", "lackey", "minion", "attendant", "cleaner"];
     person_posibilities[ANGELS] = ["angel", "feather", "guardian", "cherub", "arch-angel", "messenger", "spirit", "blessing"];
     person_posibilities[LIGHT] = ["lamplighter"];
@@ -1877,14 +1877,14 @@ const initEffectPossibilities = () => {
     effect_possibilities[FREEDOM] = ["a refreshing breeze kicks up", "feathers begin swirling in a whirlwind", "you get a strong sense of vertigo, as if you're falling while standing still"];
     effect_possibilities[FIRE] = ["smoke pours out of nowhere", "flames dance around the edges of the room", "the smell of smoke lingers in the air", "wood burning"];
     effect_possibilities[LONELY] = ["fog drifts in the air", "a crowd of indistinct figures press around you", "the weight of how alone you are presses into you"];
-    effect_possibilities[OCEAN] = ["the smell of sea-salt is on the breeze", "water begins pooling around your feet", "the sound of seagulls fills the air"];
+    effect_possibilities[OCEAN] = ["the smell of sea-salt is on the breeze", "water begin pooling around your feet", "the sound of seagulls fills the air"];
     effect_possibilities[FLESH] = ["meat begins pulsing from every surface", "blood runs in rivers at your feet", "you are suddenly aware that your body is made of meat and thus is edible"];
     effect_possibilities[BURIED] = ["the walls begin slowly pressing in on you", "dust chokes out the air and cakes every surface", "a hole opens up in front of you that seems to go down forever"];
     effect_possibilities[SCIENCE] = ["beakers fall from the sky and shatter against the ground", "the smell of acetone wafts through the air", "formulas dance and swirl in the air"];
     effect_possibilities[MATH] = ["raw numbers float serenely in the breeze", "you are suddenly aware of the mathematics behind your entire surroundings", "you divide by zero and reality begins to implode"];
     effect_possibilities[TWISTING] = ["everything is nothing and the end is never the end but only a new begining", "you patiently wait for the game to respond to your text input", "the room you are in infinitely lengthens into an unending hallway"];
-    effect_possibilities[DEATH] = ["small animal bones fall from the sky", "a grave with your name on it erupts from the ground like a jagged tooth", "you see the date everything around you will die"];
-    effect_possibilities[APOCALYPSE] = ["you see the date everything around you will die and it is all the same date and it is not very far away", "a radiation siren blares in the distance", "a swirling vortex of all consuming nanobots scours the room clean"];
+    effect_possibilities[DEATH] = ["small animal bones fall from the sky", "a grave with your name on it erupts from the ground like a jagged tooth", "seeing the date everything around you will die"];
+    effect_possibilities[APOCALYPSE] = ["seeing the date everything around you will die and it is all the same date and it is not very far away", "a radiation siren blares in the distance", "a swirling vortex of all consuming nanobots scours the room clean"];
     effect_possibilities[ANGELS] = ["feathers and motes of light drift from the heavens", "gentle and serene harp music drifts on the breeze", 'a beam of light from above highlights you in particular'];
     effect_possibilities[LIGHT] = ["light radiates from all directions", "motes of light float in the breeze", "a blinding light seems to radiate from the heavens"];
     effect_possibilities[SERVICE] = ["feather dusters perform a musical number around you", "indistinct figues in maid uniforms bow towards you", "a robotic butler takes a lunch break nearby"];
@@ -1894,7 +1894,7 @@ const initEffectPossibilities = () => {
     effect_possibilities[PLANTS] = ["flowers bloom and carpet the ground", "vines twist themselves around every surface", "a forest suddenly grows in a hazy ring around you"];
     effect_possibilities[HUNTING] = ["the scene of blood and fear is on the wind", "your teeth sharpen and your eyes glint", "you can not help but stare at the most vital and vulnerable parts of everything around you"];
     effect_possibilities[DECAY] = ["the stench of rot settles itself against the back of your throat", "a long dead corpse bubbles up from the ground, rotten and wet", "a swarm of diseased rats blankets the ground"];
-    effect_possibilities[CHOICES] = ["you see the consequences of every action laid bare before you", "double headed coins fall in a cascading pile from the ceiling", "a thousand variations of you stare at you from a circle with you at the center"];
+    effect_possibilities[CHOICES] = ["seeing the consequences of every action laid bare before you", "double headed coins fall in a cascading pile from the ceiling", "a thousand variations of you stare at you from a circle with you at the center"];
     effect_possibilities[ZAP] = ["lightning strikes from the heavens", "electrical sparks radiate in every direction", "the very floor becomes energized"];
     effect_possibilities[LOVE] = ["rose petals drift gently from the sky", "the sound of soulful violins can be heard in the distance", "cartoon hearts swirl around you faster and faster"];
     effect_possibilities[SOUL] = ["every surface takes on a mirrored finish, endlessly reflecting your own face from every angle", "gemstones pile up around your feet", "a pair of mirrors fade into existence, endlessly reflecting each other"];
