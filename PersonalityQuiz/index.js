@@ -40,9 +40,9 @@ const deployGender = ()=>{
   let results = sortedResults.splice(0,5).map((item)=>item.key);
   //your nemesis
   let antiResults = antiSortedResults.splice(0,5).map((item)=>item.key);
-
+  let seed = Array.from(data.entries()).length + (Object.keys(themes).length * 100000);
   //(`After careful consideration: Your personality is: ${results.join(",")}. Your enemies personality is ${antiResults.join(",")}`);
-  updateURLParams(`your_themes=${results.join(",")}&your_rivals_themes=${antiResults}`)
+  updateURLParams(`seed=${seed}&your_themes=${results.join(",")}&your_rivals_themes=${antiResults}`)
   window.location.reload();
 }
 
@@ -102,10 +102,12 @@ window.onload = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let your_themes = urlParams.get('your_themes');
+  let seed = urlParams.get('your_themes');
+
   let your_rivals_themes = urlParams.get('your_rivals_themes');
   console.log("JR NOTE: your_themes", your_themes)
   if(your_themes != null && your_rivals_themes !=null){
-    answerMode(your_themes,your_rivals_themes );
+    answerMode(seed,your_themes,your_rivals_themes );
   }else{
     quizMode();
 
