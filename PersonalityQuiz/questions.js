@@ -5,7 +5,7 @@ const undecided = "UNDECIDED"
 const randomQuestion = () => {
   let html;
   question_index++;
-  let generators = [colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
+  let generators = [adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
   if (question_index > 3333) {
     generators.push(zampanioQuestion);
   }
@@ -75,6 +75,110 @@ const colorQuestion = () => {
   return pickFrom(generators)(pickFrom(questions), answers,false,true);
 }
 
+const adjQuestion = () => {
+  const rawQuestions = `Pick an adjective:
+  Your soul hates:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(ADJ))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+  if (question_index > 33) {
+    generators.push(randomSelect);
+  }
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const insultQuestion = () => {
+  const rawQuestions = `What is your worst quality?
+  How would your enemies  describe you?
+  What would your friends never say about you?
+  What would hurt the most to be called?
+  Your soul hates:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(INSULT))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+  if (question_index > 33) {
+    generators.push(randomSelect);
+  }
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const complimentQuestion = () => {
+  const rawQuestions = `Are you:
+  How would your friends describe you?
+  What would your enemies never say about you?
+  Your soul vibes with:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+  if (question_index > 33) {
+    generators.push(randomSelect);
+  }
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const personQuestion = () => {
+  const rawQuestions = `Who could you bring yourself to kill?
+  What would you want to be if you had a choice?
+  Who would you rather date?
+  Who would you trust?
+  Who would never let you down?
+  Who was in your last dream?
+  Your soul vibes with:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  const modifiers = Math.random()>0.5;
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    const modifier = modifiers?   chosenTheme.pickPossibilityFor(ADJ):""
+    answers.push({value:chosenThemeKey, label:  modifier + titleCase(chosenTheme.pickPossibilityFor(PERSON))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+  if (question_index > 33) {
+    generators.push(randomSelect);
+  }
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
 const locationQuestion = () => {
   const rawQuestions = `Where would you rather be?
   Where do you imagine ending up?
@@ -87,11 +191,15 @@ const locationQuestion = () => {
   const max = 5;
   const min = 2;
   const amount = getRandomNumberBetween(min, max);
+  const modifiers = Math.random()>0.5;
+
   for (let i = 0; i < amount; i++) {
     
     const chosenThemeKey = pickFrom(Object.keys(all_themes));
     const chosenTheme = all_themes[chosenThemeKey];
-    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(LOCATION))});
+    const modifier = modifiers?   chosenTheme.pickPossibilityFor(ADJ):""
+
+    answers.push({value:chosenThemeKey, label:  modifier + titleCase(chosenTheme.pickPossibilityFor(LOCATION))});
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
