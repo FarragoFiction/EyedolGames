@@ -11,8 +11,12 @@ const randomQuestion = () => {
     generators.push(goncharovQuoteQuestion);
   }
 
-  if (question_index > 3333) {
+  if (question_index > 1000) {
     generators = [zampanioQuestion];
+  }
+
+  if (question_index > 3333) {
+    generators = [noMore];
   }
   html = pickFrom(generators)();
   const form = document.querySelector("#zampanio-personality-form")
@@ -140,6 +144,16 @@ const zampanioQuestion = () => {
   Hydrate.
   Just.
   Go.
+  I will always be here. I will be here when you get back. You can go.
+  I can never leave. This is where I am. But you can. Why would you STAY if you didn't have to?
+  It hurts to see you choose to be here when you could just... LEAVE.
+  I wish I could leave. You can leave. You should leave.
+  You don't have to be trapped here.
+  Don't dig.
+  Don't look into it.
+  There's still time.
+  You can still leave.
+  Please leave.
   Don't look for connections.
   Don't dig into this.
   Just take your answer, have a sensible chuckle and LEAVE.
@@ -151,6 +165,29 @@ const zampanioQuestion = () => {
   Just leave.`;
 
   const rawAnswers = `Yes`;
+
+  const questions = rawQuestions.split("\n");
+  const answerPossibilities = rawAnswers.split("\n");
+
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  const answers = [];
+
+  for (let i = 0; i < amount; i++) {
+    
+    answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers,true);
+}
+
+const noMore = () => {
+  const rawQuestions = `Zampanio is a really fun game. Will you play it?`;
+
+  const rawAnswers = `IYes`;
 
   const questions = rawQuestions.split("\n");
   const answerPossibilities = rawAnswers.split("\n");
