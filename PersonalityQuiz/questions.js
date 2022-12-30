@@ -5,7 +5,7 @@ const undecided = "UNDECIDED"
 const randomQuestion = () => {
   let html;
   question_index++;
-  let generators = [colorQuestion, locationQuestion, genderQuestion]
+  let generators = [colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
   if (question_index > 3333) {
     generators.push(zampanioQuestion);
   }
@@ -26,7 +26,28 @@ const goncharovQuoteQuestion = () => {
 }
 
 const philosophyQuestion = () => {
+  const rawQuestions = `Pick a quote:
+  Which of these speaks to you?
+  Pick a song lyric:
+  Your soul vibes with:`;
 
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  (chosenTheme.pickPossibilityFor(PHILOSOPHY))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+  if (question_index > 33) {
+    generators.push(randomSelect);
+  }
+  return pickFrom(generators)(pickFrom(questions), answers,true);
 }
 
 const colorQuestion = () => {
@@ -34,7 +55,10 @@ const colorQuestion = () => {
   What color is your soul?
   What's your favorite color?
   If you had to wear just one color for the rest of your life it would be:
-  Your soul vibes with:`;
+  Your soul vibes with:
+  What color are your eyes?
+  What color do you wish your eyes were?
+  What color are you wearing?`;
 
   const questions = rawQuestions.split("\n");
   const answers = [];
@@ -147,12 +171,17 @@ const randomSelect = (question, answers) => {
 
 }
 
-const randomCheckbox = (question, answers) => {
+const randomCheckbox = (question, answers, forceVertical) => {
   let ill_advised_raw_html = `
     <div><label>${question_index}: ${question}</label>
-    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
 
   `
+  if(forceVertical){
+    ill_advised_raw_html +=  '<div class="vertical-radio">';
+
+  }else{
+    ill_advised_raw_html += `<div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">    `;
+  }
   ill_advised_raw_html += `<div class='hidden horizontal-radio'><input checked name="check-${question_index}" value="${undecided}"  id="default${question_index}" type="checkbox"></input></div>`;
 
   for (let i = 0; i < answers.length; i++) {
@@ -164,16 +193,21 @@ const randomCheckbox = (question, answers) => {
 
 }
 
-const randomRadio = (question, answers) => {
+const randomRadio = (question, answers,forceVertical) => {
   const max = 5;
   const min = 2;
   const amount = getRandomNumberBetween(min, max);
 
   let ill_advised_raw_html = `
     <div><label>${question_index}: ${question}</label>
-    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
 
   `
+  if(forceVertical){
+    ill_advised_raw_html +=  '<div class="vertical-radio">';
+
+  }else{
+    ill_advised_raw_html += `<div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">    `;
+  }
   ill_advised_raw_html += `<div class='hidden horizontal-radio'><input checked value="${undecided}"  id="default-${question_index}" name="radio-${question_index}" type="radio"></input></div>`;
 
   for (let i = 0; i < answers.length; i++) {
