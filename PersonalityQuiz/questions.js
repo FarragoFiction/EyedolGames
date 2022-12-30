@@ -67,14 +67,12 @@ const colorQuestion = () => {
   const amount = getRandomNumberBetween(min, max);
   
   for (let i = 0; i < amount; i++) {
-    answers.push({value:undecided, label:  pickFrom(CSS_COLOR_NAMES).replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase() })});
+    answers.push({value:undecided, label:  pickFrom(CSS_COLOR_NAMES)});
   }
   question_index++;
-  let generators = [randomRadio, randomCheckbox]
-  if (question_index > 33) {
-    generators.push(randomSelect);
-  }
-  return pickFrom(generators)(pickFrom(questions), answers);
+  let generators = [randomRadio, randomCheckbox, randomSelect]
+
+  return pickFrom(generators)(pickFrom(questions), answers,false,true);
 }
 
 const locationQuestion = () => {
@@ -153,25 +151,30 @@ const genderQuestion = () => {
 
 
 
-const randomSelect = (question, answers) => {
-  const multiple = Math.random() > 0.85 ? "multiple" : "";
+const randomSelect = (question, answers, forceVertical, showColor) => {
+  const multiple = showColor? "multiple": Math.random() > 0.85 ? "multiple" : "";
   const id = `select-${question_index}`
 
   let ill_advised_raw_html = `
     <div><label>${question_index}:${question}</label>
     <select  id="${id}" name="${id}" ${multiple}>
   `
-  ill_advised_raw_html += `<option value="${undecided}" selected class='gender'>Undecided</option>`;
+  ill_advised_raw_html += `<option value="${undecided}" selected class='gender hidden'>Undecided</option>`;
 
   for (let i = 0; i < answers.length; i++) {
-    ill_advised_raw_html += `<option value="${answers[i].value}" class='gender'>${answers[i].label}</option>`;
+    let style ="";
+    if(showColor){
+      style = `border: 3px solid ${answers[i].label}`;
+    }
+    const label = answers[i].label.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase() });
+    ill_advised_raw_html += `<option style="${style}"  value="${answers[i].value}" class='gender'>${label}</option>`;
   }
   ill_advised_raw_html += '</select></div></div>'
   return ill_advised_raw_html;
 
 }
 
-const randomCheckbox = (question, answers, forceVertical) => {
+const randomCheckbox = (question, answers, forceVertical,showColor) => {
   let ill_advised_raw_html = `
     <div><label>${question_index}: ${question}</label>
 
@@ -186,14 +189,20 @@ const randomCheckbox = (question, answers, forceVertical) => {
 
   for (let i = 0; i < answers.length; i++) {
     const id = `checkbox-${question_index}-${i}`
-    ill_advised_raw_html += `<div class='horizontal-radio'><input name="check-${question_index}" value="${answers[i].value}"  id="${id}" type="checkbox"></input><label for="${id}" class='gender'>${answers[i].label}</label></div>`;
+    let style ="";
+    const label = answers[i].label.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase() });
+
+    if(showColor){
+      style = `accent-color: ${answers[i].label}`;
+    }
+    ill_advised_raw_html += `<div class='horizontal-radio'><input style="${style}" name="check-${question_index}" value="${answers[i].value}"  id="${id}" type="checkbox"></input><label for="${id}" class='gender'>${label}</label></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
 
 }
 
-const randomRadio = (question, answers,forceVertical) => {
+const randomRadio = (question, answers,forceVertical,showColor) => {
   const max = 5;
   const min = 2;
   const amount = getRandomNumberBetween(min, max);
@@ -212,7 +221,13 @@ const randomRadio = (question, answers,forceVertical) => {
 
   for (let i = 0; i < answers.length; i++) {
     const id = `radio-${question_index}-${i}`
-    ill_advised_raw_html += `<div class='horizontal-radio'><input value="${answers[i].value}"  id="${id}" name="radio-${question_index}" type="radio"></input><label for="${id}"  class='gender'>${answers[i].label}</label></div>`;
+    let style ="";
+    if(showColor){
+      style = `accent-color: ${answers[i].label}`;
+    }
+    const label = answers[i].label.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase() });
+
+    ill_advised_raw_html += `<div class='horizontal-radio'><input style="${style}" value="${answers[i].value}"  id="${id}" name="radio-${question_index}" type="radio"></input><label for="${id}"  class='gender'>${label}</label></div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;

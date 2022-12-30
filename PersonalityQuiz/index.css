@@ -17,6 +17,11 @@ label:not(.gender){
   display: none !important; 
 }
 
+select{
+  width: 100%;
+  max-width: 300px;
+}
+
 .question{
   margin-bottom: 85px;
 }
