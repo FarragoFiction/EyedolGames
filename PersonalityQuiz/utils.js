@@ -47,3 +47,23 @@ const createElementWithClassAndParent = (eleName, parent, className) => {
 }
 
 
+//if you give it new values for existing params it layers them on
+const updateURLParams = (params) => {
+
+  //if we're not overwriting we want it to handle 
+  const queryString = window.location.search;
+  const currentParams = new URLSearchParams(queryString);
+  const newParams = new URLSearchParams(params);
+
+  //overwrites original, adds new
+  for (let [key, value] of newParams) {
+    currentParams.set(key, value);
+  }
+
+  //params += `&${urlParams.toString()}`;
+  var pageUrl = '?' + `${currentParams.toString()}`;
+  window.history.pushState('', '', pageUrl);
+}
+
+
+

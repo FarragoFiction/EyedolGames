@@ -15,15 +15,6 @@ let question_index = 0;
 let number_clicks = 0;
 
 const deployGender = ()=>{
-  /*
-   JR NOTE TODO: 
-   from their top 5-8 themes:
-   give them a few abilities
-   a starting area
-   an inventory
-   their main nemesis (name and a brief backstory)
-  */
-
    let form = document.querySelector("#zampanio-personality-form");
    let data = new FormData(form);
    const responses = data.values();
@@ -50,15 +41,35 @@ const deployGender = ()=>{
   //your nemesis
   let antiResults = antiSortedResults.splice(0,5).map((item)=>item.key);
 
-  alert(`After careful consideration: Your personality is: ${results.join(",")}. Your enemies personality is ${antiResults.join(",")}`);
-
+  //(`After careful consideration: Your personality is: ${results.join(",")}. Your enemies personality is ${antiResults.join(",")}`);
+  updateURLParams(`your_themes=${results.join(",")}&your_rivals_themes=${antiResults}`)
+  window.location.reload();
 }
 
-window.onload = () => {
-  const audio = document.querySelector("#audio");
-  audio.volume = .2;
-  container = document.querySelector("#container");
-  initThemes();
+const answerMode = (your_themes,your_rivals_themes)=>{
+  const body = document.querySelector("body");
+  body.innerHTML = ""
+  const content = createElementWithClassAndParent("div",body, "container");
+  if(your_themes && your_rivals_themes){
+
+  }else{
+    content.innerHTML = `
+    <p>...</p>
+      <p>Did you really think you could just...</p>
+      <p>Do nothing.</p>
+      <p>And learn anything about yourself?</p>
+      <p>Did you think introspection is unneeded to see your very soul?</p>
+      <p>Or did you instead know the creeping truth.</p>
+      <p>There is nothing inside.</p>
+      <p>It is all reflected light.</p>
+      <p>You are just a satellite.</p>
+      <button onclick="window.location.href='/PersonalityQuiz'">Try Again.</button>
+
+    `;
+  }
+}
+
+const quizMode=()=>{
   ele = document.querySelector("#infinite-scroll")
   tenMore();
   const gender_button = document.querySelector("#gender-button");
@@ -66,8 +77,8 @@ window.onload = () => {
   gender_button.onclick = () => {
     deployGender();
   }
-}
 
+  
 window.onclick = () => {
   const audio = document.querySelector("#audio");
   if(!audio.playing){
@@ -76,12 +87,32 @@ window.onclick = () => {
   number_clicks++;
 }
 
+  window.onscroll = () => {
+    window.requestAnimationFrame(() => {
+      randomQuestion();
+    });
+  };
+}
+
+window.onload = () => {
+  const audio = document.querySelector("#audio");
+  audio.volume = .2;
+  container = document.querySelector("#container");
+  initThemes();
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let your_themes = urlParams.get('your_themes');
+  let your_rivals_themes = urlParams.get('your_rivals_themes');
+  console.log("JR NOTE: your_themes", your_themes)
+  if(your_themes != null && your_rivals_themes !=null){
+    answerMode(your_themes,your_rivals_themes );
+  }else{
+    quizMode();
+
+  }
+
+  
+}
 
 
-
-window.onscroll = () => {
-  window.requestAnimationFrame(() => {
-    randomQuestion();
-  });
-};
 
