@@ -68,6 +68,21 @@ const answerMode = (seed,your_themes,your_rivals_themes)=>{
   }
 }
 
+var copy =()=> {
+  // Get the text field
+  var copyText = document.getElementById("share-link");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  alert("Copied!");
+}
+
 const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=>{
   console.log("JR NOTE:", {seedRaw})
 
@@ -82,7 +97,8 @@ const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=
      <div id="result-title">Your Result: </div>
      <div id="result-name"> ${titleCase(`${personal_adj} ${name}`)}</div>
       <div id ="ramble">${generateRamble(name, personal_adj, rand,your_themes,your_rivals_themes)}</div>
-      <div id="result-link"><label>Link To Your Result: <input value="${window.location.href}" type="text"></input></label></div>
+      <div id="result-link"><label>Link To Your Result: <input id="share-link" value="${window.location.href}" type="text"></input><button class="copy-button" onclick="copy()">Copy Link</button></label>
+      </div>
 
       <button onclick="window.location.href='/PersonalityQuiz'">Take Quiz?</button>
 
@@ -124,6 +140,7 @@ const generateRamble= (name, personal_adj, rand,your_themes,your_rivals_themes)=
       `You are destined to find yourself in a  ${quick(rand,your_themes,LOCATION)}, ${quick(rand,your_rivals_themes, LOC_DESC)}, with only a  ${quick(rand,your_themes,OBJECT)} to defend yourself with. You will be surrounded by creatures, lead by a monstrous ${quick(rand,your_rivals_themes, PERSON)}, ${quick(rand,your_rivals_themes, MONSTER_DESC)}
         Do not worry. Unexpected friends will present themselves in the form of a ${rival_personal_adj} ${rival_name}. At first you will think they are too ${quick(rand, your_rivals_themes, INSULT)}, but in time you will see that they can be ${quick(rand, your_rivals_themes, COMPLIMENT)}, too.
       `
+      ,`You're right not to trust the ${rival}. Their shadow is dangerous, ${rivalQ(MONSTER_DESC)} Don't be fooled. That is only the start of the problems. Find a ${youQ(OBJECT)} and do what it takes to make it ${youQ(ADJ)} and you might have a chance.`
       ,`As the ${you}, some might say you are less ${personal_adj} and more ${youQ(INSULT)}. You'll need to fix this. Find the ${rival}. Yes, they're annoying. Deal with it. They'll require a ${rivalQ(OBJECT)} to join your party. It's worth it. They're easy to find in the ${youQ(LOCATION)}, but only after you've defeated the ${rivalQ(PERSON)}, be careful ${rivalQ(MONSTER_DESC)} Once the ${rival}'s curse is broken, everything falls into place.`
       ,`When the old ${youQ(PERSON)} whispers to you that '${youQ(PHILOSOPHY)}', you'll know it's started. Don't resist it. Let yourself feel the fact that ${youQ(EFFECTS)}. It will be okay. You need to find the ${youQ(OBJECT)}. It will all make sense from there.`
       ,`You'll find it in a  ${quick(rand,your_rivals_themes,LOCATION)}. I know, I know, you've never even been to one. Don't worry about it. Focus on putting one foot in front of the other. Inside you will find the  ${quick(rand,your_themes,OBJECT)}. Make sure you don't lose it. The ${rival} will be searching for you at that point, and will stop at nothing to find it. You're going to need to learn  ${quick(rand,your_themes,SUPERMOVE,true)}, if only so you can cancel the ${rival}'s ${quick(rand,your_rivals_themes,SUPERMOVE,true)}. I know you can do this. Good luck.`

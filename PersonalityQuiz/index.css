@@ -13,6 +13,14 @@ label:not(.gender){
   display: block;
 }
 
+.copy-button{
+  padding: 5px;
+  height: 22px;
+  display: inline-block;
+  line-height: 10px;
+  margin-left: 10px;
+}
+
 hr{
   margin: 33px;
 }
