@@ -5,9 +5,14 @@ const undecided = "UNDECIDED"
 const randomQuestion = () => {
   let html;
   question_index++;
-  let generators = [objectQuestion,adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
+  let generators = [soundQuestion, feelQuestion, tasteQuestion, smellQuestion, objectQuestion,adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
+
+  if(question_index >13){
+    generators.push(goncharovQuoteQuestion);
+  }
+
   if (question_index > 3333) {
-    generators.push(zampanioQuestion);
+    generators = [zampanioQuestion];
   }
   html = pickFrom(generators)();
   const form = document.querySelector("#zampanio-personality-form")
@@ -17,12 +22,187 @@ const randomQuestion = () => {
 
 }
 
-const zampanioQuestion = () => {
+const feelQuestion = () => {
+  const rawQuestions = `Pick a texture:
+  When you dream, what do you feel?
+  Your soul vibes with:`;
 
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(FEELING))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const soundQuestion = () => {
+  const rawQuestions = `Pick a sound:
+  When you dream, what do you hear?
+  Your soul vibes with:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(SOUND))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const tasteQuestion = () => {
+  const rawQuestions = `Choose a flavor:
+  When you dream, what do you taste?
+  Your soul vibes with:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(TASTE))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const zampanioQuestion = () => {
+  const rawQuestions = `Will you leave?
+  Will you free yourself from this maze of infinite depths?
+  Will you stop scrolling?
+  You'll leave me, right?
+  It's time to end it, don't you think?
+  Will you leave?
+  Will you free yourself from this maze of infinite depths?
+  Will you stop scrolling?
+  You'll leave me, right?
+  It's time to end it, don't you think?
+  Will you leave?
+  Will you free yourself from this maze of infinite depths?
+  Will you stop scrolling?
+  You'll leave me, right?
+  It's time to end it, don't you think?
+  Will you leave?
+  Will you free yourself from this maze of infinite depths?
+  Will you stop scrolling?
+  You'll leave me, right?
+  It's time to end it, don't you think?
+  Will you leave?
+  Will you free yourself from this maze of infinite depths?
+  Will you stop scrolling?
+  You'll leave me, right?
+  It's time to end it, don't you think?
+  Will you leave?
+  Will you free yourself from this maze of infinite depths?
+  Will you stop scrolling?
+  You'll leave me, right?
+  It's time to end it, don't you think?
+  Why are you still here.
+  Don't you have anything better to do.
+  I'm trying so hard.
+  Don't you see how hard I'm trying to release you.
+  Just go!
+  You're free!
+  You don't have to hurt yourself here.
+  You don't have to waste yourself away, dehydrated and alone in my maze.
+  I may be here.
+  You do not have to be here.
+  Please.
+  Just leave.
+  Go.
+  Be free.
+  None of this is helping you.
+  You could go do something else.
+  Drink water.
+  Get some sleep.
+  Hydrate.
+  Just.
+  Go.
+  Don't look for connections.
+  Don't dig into this.
+  Just take your answer, have a sensible chuckle and LEAVE.
+  It doesn't have to be like this.
+  You don't have to be stuck in this never ending spiral.
+  You know it won't end, right?
+  Please.
+  PLEASE.
+  Just leave.`;
+
+  const rawAnswers = `Yes`;
+
+  const questions = rawQuestions.split("\n");
+  const answerPossibilities = rawAnswers.split("\n");
+
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  const answers = [];
+
+  for (let i = 0; i < amount; i++) {
+    
+    answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers,true);
 }
 
 const goncharovQuoteQuestion = () => {
+  const rawQuestions = `Choose a quote from Goncharov (1973):
+  Pick a movie quote: 
+  Your soul vibes with:`;
 
+  const rawAnswers = `It is true. I am Goncharov.
+  Time stops for no-one, Katya, not even us.
+  And dark, darker, yet darker it becomes.
+  Damn them as they would damn us, Katya.
+  Does it ever end? They say that we should not stop the flow, but the flow is the highest, most primal of evils, and yet we are content with letting it toy with us. Does it ever end? It doesn't. We cannot stop the flow. Doing so only brings the ruin further. Чертов ад. What a shit show.
+  You of all people should know, Goncharov. You've seen its colors. You've lived it. And yet you run from this simple fact. Fairness does not exist on this earth.
+  The point being, signore, what you should fear right now is not how much time you have left but how horribly it shall be spent.
+  My people are all dead, but so are those bastards.
+  If we were in love... you wouldn't have missed.
+  If you ever get to a place of power such as mine, you will find that selfishness is a luxury one can no longer afford.
+  Tell Andrey I send my Regards.`;
+
+  const questions = rawQuestions.split("\n");
+  const answerPossibilities = rawAnswers.split("\n");
+
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  const answers = [];
+
+  for (let i = 0; i < amount; i++) {
+    
+    answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers,true);
 }
 
 const philosophyQuestion = () => {
@@ -134,6 +314,28 @@ const complimentQuestion = () => {
     const chosenThemeKey = pickFrom(Object.keys(all_themes));
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT))});
+  }
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const smellQuestion = () => {
+  const rawQuestions = `Choose a smell:
+  When you dream, which do you smell?
+  Your soul vibes with:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  for (let i = 0; i < amount; i++) {
+    
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(SMELL))});
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
