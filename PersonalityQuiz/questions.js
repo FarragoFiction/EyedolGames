@@ -5,7 +5,7 @@ const undecided = "UNDECIDED"
 const randomQuestion = () => {
   let html;
   question_index++;
-  let generators = [adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
+  let generators = [objectQuestion,adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
   if (question_index > 3333) {
     generators.push(zampanioQuestion);
   }
@@ -44,9 +44,6 @@ const philosophyQuestion = () => {
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
-  if (question_index > 33) {
-    generators.push(randomSelect);
-  }
   return pickFrom(generators)(pickFrom(questions), answers,true);
 }
 
@@ -92,9 +89,6 @@ const adjQuestion = () => {
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
-  if (question_index > 33) {
-    generators.push(randomSelect);
-  }
   return pickFrom(generators)(pickFrom(questions), answers);
 }
 
@@ -143,9 +137,36 @@ const complimentQuestion = () => {
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
-  if (question_index > 33) {
-    generators.push(randomSelect);
+
+  return pickFrom(generators)(pickFrom(questions), answers);
+}
+
+const objectQuestion = () => {
+  const rawQuestions = `Which would you never sacrifice:
+  Which you choose to take with you always?
+  You're brewing a potion. Choose an item to add next:
+  Pick an object.
+  Which seems most useful to take with you?
+  Choose a weapon to bring with you.
+  Your soul vibes with:`;
+
+  const questions = rawQuestions.split("\n");
+  const answers = [];
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  const modifiers = Math.random()>0.5;
+
+  for (let i = 0; i < amount; i++) {
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    const modifier = modifiers?   chosenTheme.pickPossibilityFor(ADJ):""
+    answers.push({value:chosenThemeKey, label:  modifier + titleCase(chosenTheme.pickPossibilityFor(OBJECT))});
   }
+
+  question_index++;
+  let generators = [randomRadio, randomCheckbox]
+
   return pickFrom(generators)(pickFrom(questions), answers);
 }
 
@@ -173,9 +194,7 @@ const personQuestion = () => {
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
-  if (question_index > 33) {
-    generators.push(randomSelect);
-  }
+
   return pickFrom(generators)(pickFrom(questions), answers);
 }
 
@@ -203,9 +222,7 @@ const locationQuestion = () => {
   }
   question_index++;
   let generators = [randomRadio, randomCheckbox]
-  if (question_index > 33) {
-    generators.push(randomSelect);
-  }
+
   return pickFrom(generators)(pickFrom(questions), answers);
 }
 
