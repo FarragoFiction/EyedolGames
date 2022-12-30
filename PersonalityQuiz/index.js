@@ -68,20 +68,7 @@ const answerMode = (seed,your_themes,your_rivals_themes)=>{
   }
 }
 
-var copy =()=> {
-  // Get the text field
-  var copyText = document.getElementById("share-link");
 
-  // Select the text field
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-
-   // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-
-  // Alert the copied text
-  alert("Copied!");
-}
 
 const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=>{
   console.log("JR NOTE:", {seedRaw})
@@ -97,7 +84,7 @@ const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=
      <div id="result-title">Your Result: </div>
      <div id="result-name"> ${titleCase(`${personal_adj} ${name}`)}</div>
       <div id ="ramble">${generateRamble(name, personal_adj, rand,your_themes,your_rivals_themes)}</div>
-      <div id="result-link"><label>Link To Your Result: <input id="share-link" value="${window.location.href}" type="text"></input><button class="copy-button" onclick="copy()">Copy Link</button></label>
+      <div id="result-link"><label>Link To Your Result: <input id="share-link" value="${window.location.href}" type="text"></input></label>
       </div>
 
       <button onclick="window.location.href='/PersonalityQuiz'">Take Quiz?</button>
