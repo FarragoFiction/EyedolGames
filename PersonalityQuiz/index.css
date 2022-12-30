@@ -13,8 +13,35 @@ label:not(.gender){
   display: block;
 }
 
+hr{
+  margin: 33px;
+}
+
 .hidden{
   display: none !important; 
+}
+
+#result{
+  text-align: center;
+  margin-top: 100px;
+}
+
+#result-title{
+  font-weight: 600;
+}
+
+#ramble{
+  margin: 50px;
+}
+
+#result-link{
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#result-name{
+  font-weight: 800;
+  font-size: 42px;
 }
 
 select{

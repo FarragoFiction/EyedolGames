@@ -30,7 +30,6 @@ const deployGender = ()=>{
     }
   }
   
-  console.log("JR NOTE: themes",themes);
   let array_themes = Object.keys(themes).map((item)=>{
     return ({key:item, value: themes[item] })
   });
@@ -46,12 +45,12 @@ const deployGender = ()=>{
   window.location.reload();
 }
 
-const answerMode = (your_themes,your_rivals_themes)=>{
+const answerMode = (seed,your_themes,your_rivals_themes)=>{
   const body = document.querySelector("body");
   body.innerHTML = ""
   const content = createElementWithClassAndParent("div",body, "container");
   if(your_themes && your_rivals_themes){
-
+    generateResult(seed,your_themes,your_rivals_themes,content);
   }else{
     content.innerHTML = `
     <p>...</p>
@@ -67,6 +66,66 @@ const answerMode = (your_themes,your_rivals_themes)=>{
 
     `;
   }
+}
+
+const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=>{
+  console.log("JR NOTE:", {seedRaw})
+
+  const rand = new SeededRandom(parseInt(seedRaw));
+  const your_themes = your_themes_raw.split(",");
+  const your_rivals_themes = your_themes_raw.split(",");
+
+  const name = pickARandomThemeFromListAndGrabKey(rand,your_themes, PERSON,true);
+  const personal_adj = pickARandomThemeFromListAndGrabKey(rand,your_themes, ADJ,true);
+  content.innerHTML = `
+    <div id ="result">
+     <div id="result-title">Your Result: </div>
+     <div id="result-name"> ${titleCase(`${personal_adj} ${name}`)}</div>
+      <div id ="ramble">${generateRamble(name, personal_adj, rand,your_themes,your_rivals_themes)}</div>
+      <div id="result-link"><label>Link To Your Result: <input value="${window.location.href}" type="text"></input></label></div>
+
+      <button onclick="window.location.href='/PersonalityQuiz'">Take Quiz?</button>
+
+    </div>
+  `;
+
+}
+
+const generateRamble= (name, personal_adj, rand,your_themes,your_rivals_themes)=>{
+  
+  const quick = pickARandomThemeFromListAndGrabKey;
+  let ret = "";
+  const rival_name = pickARandomThemeFromListAndGrabKey(rand,your_rivals_themes, PERSON,true);
+  const rival_personal_adj = pickARandomThemeFromListAndGrabKey(rand,your_rivals_themes, ADJ,true);
+
+  
+  const intro_templates = [
+    `${pickARandomThemeFromListAndGrabKey(rand,your_themes, COMPLIMENT,true)} but never ${pickARandomThemeFromListAndGrabKey(rand,your_themes, INSULT,false)}, you always do what you think is right.`
+    ,`${pickARandomThemeFromListAndGrabKey(rand,your_themes, COMPLIMENT,true)} but never ${pickARandomThemeFromListAndGrabKey(rand,your_themes, INSULT,false)}, you strive to improve yourself constantly.`
+    ,`${pickARandomThemeFromListAndGrabKey(rand,your_themes, COMPLIMENT,true)} on the outside, you always fear that you might secretly be ${pickARandomThemeFromListAndGrabKey(rand,your_themes, INSULT,false)}.`
+
+    ,`${pickARandomThemeFromListAndGrabKey(rand,your_themes, COMPLIMENT,true)} and ${pickARandomThemeFromListAndGrabKey(rand,your_themes, COMPLIMENT,false)}, you never give up.`
+  ];
+
+  const nextPartTemplates  = [
+    `You yearn to live in a ${quick(rand,your_themes,LOCATION)} but worry it might be ${quick(rand,your_rivals_themes, INSULT)}.`,
+    `You'd be highly compatible with any ${quick(rand,your_themes,PERSON)}, so long as they aren't ${quick(rand,your_rivals_themes, INSULT)}.`,
+    `Make sure to avoid going to the ${quick(rand,your_rivals_themes, LOCATION)}.`,
+    `You would never be caught going to the ${quick(rand,your_rivals_themes, LOCATION)}.`,
+
+  ]
+
+  const shitGetsWeirdTemplates  = [
+      `You are destined to find yourself in a  ${quick(rand,your_themes,LOCATION)}, ${quick(rand,your_rivals_themes, LOC_DESC)}, with only a  ${quick(rand,your_themes,OBJECT)} to defend yourself with. You will be surrounded by creatures, lead by a monstrous ${quick(rand,your_rivals_themes, PERSON)}, ${quick(rand,your_rivals_themes, MONSTER_DESC)}
+        Do not worry. Unexpected friends will present themselves in the form of a ${rival_personal_adj} ${rival_name}. At first you will think they are too ${quick(rand, your_rivals_themes, INSULT)}, but in time you will see that they can be ${quick(rand, your_rivals_themes, COMPLIMENT)}, too.
+      `,
+      `When you find yourself in another world, you won't know what to do with the ${quick(rand,your_themes,OBJECT)} you find in your pocket. Hold onto it. Befriend the local ${quick(rand,your_themes,PERSON)}s and slowly solidify your power base. If you can manage to learn a spell that causes ${quick(rand,your_themes,EFFECTS)}, all the better. Eventually, you will be able to defeat the ${rival_personal_adj} ${rival_name}. Don't celebrate. You will still have a long way to go from being just the ${personal_adj} ${name}  and securing your fate as the Ultimate ${name}.`
+  ]
+
+  ret += `${rand.pickFrom(intro_templates)} ${rand.pickFrom(nextPartTemplates)}<hr> ${rand.pickFrom(shitGetsWeirdTemplates)}`;
+
+
+  return ret;
 }
 
 const quizMode=()=>{
@@ -102,7 +161,7 @@ window.onload = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let your_themes = urlParams.get('your_themes');
-  let seed = urlParams.get('your_themes');
+  let seed = urlParams.get('seed');
 
   let your_rivals_themes = urlParams.get('your_rivals_themes');
   console.log("JR NOTE: your_themes", your_themes)

@@ -210,6 +210,24 @@ Come Back With a Warrant`;
 const genders = rawGender.split("\n");
 
 
+const pickARandomThemeFromListAndGrabKey = (rand,themeKeys, attributeKey, capitalize)=>{
+    try{
+        const chosenThemeKey = rand.pickFrom(themeKeys);
+
+        const chosenTheme = all_themes[chosenThemeKey];
+        if(capitalize){
+            return titleCase(chosenTheme.pickPossibilityFor(attributeKey,rand))
+        }
+
+        return (chosenTheme.pickPossibilityFor(attributeKey,rand)).toLowerCase();
+    
+    }catch(e){
+        return "Zampanio";
+    }
+
+}
+
+
 
 
 const REALLYRandomGenders = () => {
@@ -2077,7 +2095,11 @@ const initChildBackstories = () => {
     }
 
 
-    pickPossibilityFor = (key) => {
+
+    pickPossibilityFor = (key,rand) => {
+        if(rand){
+            return rand.pickFrom(this.getPossibilitiesFor(key));
+        }
         return pickFrom(this.getPossibilitiesFor(key));
     }
 
