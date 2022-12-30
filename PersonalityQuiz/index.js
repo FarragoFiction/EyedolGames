@@ -73,7 +73,7 @@ const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=
 
   const rand = new SeededRandom(parseInt(seedRaw));
   const your_themes = your_themes_raw.split(",");
-  const your_rivals_themes = your_themes_raw.split(",");
+  const your_rivals_themes = your_rivals_themes_raw.split(",");
 
   const name = pickARandomThemeFromListAndGrabKey(rand,your_themes, PERSON,true);
   const personal_adj = pickARandomThemeFromListAndGrabKey(rand,your_themes, ADJ,true);
@@ -92,12 +92,13 @@ const generateResult = (seedRaw,your_themes_raw,your_rivals_themes_raw,content)=
 }
 
 const generateRamble= (name, personal_adj, rand,your_themes,your_rivals_themes)=>{
-  
+  console.log("JR NOTE: generateRamble",name, personal_adj,your_themes,your_rivals_themes)
   const quick = pickARandomThemeFromListAndGrabKey;
   let ret = "";
   const rival_name = pickARandomThemeFromListAndGrabKey(rand,your_rivals_themes, PERSON,true);
   const rival_personal_adj = pickARandomThemeFromListAndGrabKey(rand,your_rivals_themes, ADJ,true);
 
+  const rival = `${rival_name} ${rival_personal_adj}`;
   
   const intro_templates = [
     `${pickARandomThemeFromListAndGrabKey(rand,your_themes, COMPLIMENT,true)} but never ${pickARandomThemeFromListAndGrabKey(rand,your_themes, INSULT,false)}, you always do what you think is right.`
@@ -118,8 +119,10 @@ const generateRamble= (name, personal_adj, rand,your_themes,your_rivals_themes)=
   const shitGetsWeirdTemplates  = [
       `You are destined to find yourself in a  ${quick(rand,your_themes,LOCATION)}, ${quick(rand,your_rivals_themes, LOC_DESC)}, with only a  ${quick(rand,your_themes,OBJECT)} to defend yourself with. You will be surrounded by creatures, lead by a monstrous ${quick(rand,your_rivals_themes, PERSON)}, ${quick(rand,your_rivals_themes, MONSTER_DESC)}
         Do not worry. Unexpected friends will present themselves in the form of a ${rival_personal_adj} ${rival_name}. At first you will think they are too ${quick(rand, your_rivals_themes, INSULT)}, but in time you will see that they can be ${quick(rand, your_rivals_themes, COMPLIMENT)}, too.
-      `,
-      `When you find yourself in another world, you won't know what to do with the ${quick(rand,your_themes,OBJECT)} you find in your pocket. Hold onto it. Befriend the local ${quick(rand,your_themes,PERSON)}s and slowly solidify your power base. If you can manage to learn a spell that causes ${quick(rand,your_themes,EFFECTS)}, all the better. Eventually, you will be able to defeat the ${rival_personal_adj} ${rival_name}. Don't celebrate. You will still have a long way to go from being just the ${personal_adj} ${name}  and securing your fate as the Ultimate ${name}.`
+      `
+      ,`Be still. Listen carefully. You need to go North, untill you reach the ${quick(rand,your_themes,LOCATION)}. No, don't ask questions. Listen. There you will meet a ${quick(rand,your_themes,PERSON)}. Do NOT kill them. Instead listen to what they have to say and agree to whatever they want. This will lead you to the ${rival_personal_adj} ${name}. Do what you have to do become the Last ${name}.`
+      ,`You will find yourself able to ${quick(rand,your_rivals_themes,MIRACLE)}. Do not be fooled. This is a curse. You will need to find the ${quick(rand,your_themes,PERSON,true)} of the ${quick(rand,your_themes,LOCATION,true)} and win their favor in order to gain your true power:  ${quick(rand,your_themes,MIRACLE)}. You will need this to defeat the ${rival_personal_adj} ${rival_name}.`
+      ,`When you find yourself in another world, you won't know what to do with the ${quick(rand,your_themes,OBJECT)} you find in your pocket. Hold onto it. Befriend the local ${quick(rand,your_themes,PERSON)}s and slowly solidify your power base. If you can manage to learn a spell that causes ${quick(rand,your_themes,EFFECTS)}, all the better. Eventually, you will be able to defeat the ${rival_personal_adj} ${rival_name}. Don't celebrate. You will still have a long way to go from being just the ${personal_adj} ${name}  and securing your fate as the Ultimate ${name}.`
   ]
 
   ret += `${rand.pickFrom(intro_templates)} ${rand.pickFrom(nextPartTemplates)}<hr> ${rand.pickFrom(shitGetsWeirdTemplates)}`;
