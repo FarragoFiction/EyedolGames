@@ -1,6 +1,37 @@
 const undecided = "UNDECIDED"
 
+const randomActionVerbYouCouldDoToAnObject = ()=>{
+  const raw = `steal
+  hoard
+  never sacrifice
+  never destroy
+  buy
+  sell
+  gift
+  collect`;
+  return pickFrom(raw.split("\n"));
+}
 
+const randomActionVerbYouCouldDoToALocation = ()=>{
+  const raw = `visit
+  move to
+  buy
+  be
+  be trapped in`;
+  return pickFrom(raw.split("\n"));
+}
+
+const randomActionVerbYouCouldDoToAPerson = ()=>{
+  const raw = `kill
+  trust
+  kiss
+  marry
+  date
+  protect
+  befriend
+  travel with`;
+  return pickFrom(raw.split("\n"));
+}
 
 const randomQuestion = () => {
   let html;
@@ -381,8 +412,9 @@ const smellQuestion = () => {
 }
 
 const objectQuestion = () => {
-  const rawQuestions = `Which would you never sacrifice:
+  const rawQuestions = `Choose an object:
   Which you choose to take with you always?
+  Which would you ${randomActionVerbYouCouldDoToAnObject()}?
   You're brewing a potion. Choose an item to add next:
   Pick an object.
   Which seems most useful to take with you?
@@ -410,10 +442,9 @@ const objectQuestion = () => {
 }
 
 const personQuestion = () => {
-  const rawQuestions = `Who could you bring yourself to kill?
+  const rawQuestions = `Which death would be the best sacrifice?
   What would you want to be if you had a choice?
-  Who would you rather date?
-  Who would you trust?
+  Who would you ${randomActionVerbYouCouldDoToAPerson()}?
   Who would never let you down?
   Who was in your last dream?
   Your soul vibes with:`;
@@ -438,7 +469,7 @@ const personQuestion = () => {
 }
 
 const locationQuestion = () => {
-  const rawQuestions = `Where would you rather be?
+  const rawQuestions = `Where would you rather ${randomActionVerbYouCouldDoToALocation()}?
   Where do you imagine ending up?
   If you could live anywhere, would it be:
   Where was your last dream set?
