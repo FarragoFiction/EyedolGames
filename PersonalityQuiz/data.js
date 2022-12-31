@@ -599,7 +599,7 @@ const initAdjs = () => {
     adj_possibilities[ENDINGS] = ["ending", "final", "ultimate", "exhausted"];
     adj_possibilities[KNOWING] = ["knowing", "understanding", "learning"];
     adj_possibilities[GUIDING] = ["guiding", "showing", "explaining"];
-    adj_possibilities[CRAFTING] = ["crafting", "mining", "logging", "building", "constructing", "carving", "smitting"];
+    adj_possibilities[CRAFTING] = ["crafting", "mining", "logging", "building", "constructing", "carving", "smithing"];
     adj_possibilities[LANGUAGE] = ["reading", "writing", "speaking"];
     adj_possibilities[BUGS] = ["swarming", "buzzing", "squirming"];
     adj_possibilities[ADDICTION] = ["craving", "addicting", "compelling", "high"];
