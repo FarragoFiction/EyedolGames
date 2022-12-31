@@ -42,11 +42,11 @@ const randomQuestion = () => {
     generators.push(goncharovQuoteQuestion);
   }
 
-  if (question_index > 1000) {
+  if (question_index > 333) {
     generators = [zampanioQuestion];
   }
 
-  if (question_index > 3333) {
+  if (question_index > 1000) {
     generators = [noMore];
   }
   const generator = pickFrom(generators);
