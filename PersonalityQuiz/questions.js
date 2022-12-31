@@ -187,7 +187,7 @@ const zampanioQuestion = () => {
 const noMore = () => {
   const rawQuestions = `Zampanio is a really fun game. Will you play it?`;
 
-  const rawAnswers = `IYes`;
+  const rawAnswers = `Yes`;
 
   const questions = rawQuestions.split("\n");
   const answerPossibilities = rawAnswers.split("\n");
