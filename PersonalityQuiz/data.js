@@ -210,18 +210,18 @@ Come Back With a Warrant`;
 const genders = rawGender.split("\n");
 
 
-const pickARandomThemeFromListAndGrabKey = (rand,themeKeys, attributeKey, capitalize)=>{
-    try{
+const pickARandomThemeFromListAndGrabKey = (rand, themeKeys, attributeKey, capitalize) => {
+    try {
         const chosenThemeKey = rand.pickFrom(themeKeys);
 
         const chosenTheme = all_themes[chosenThemeKey];
-        if(capitalize){
-            return titleCase(chosenTheme.pickPossibilityFor(attributeKey,rand))
+        if (capitalize) {
+            return titleCase(chosenTheme.pickPossibilityFor(attributeKey, rand))
         }
 
-        return (chosenTheme.pickPossibilityFor(attributeKey,rand)).toLowerCase();
-    
-    }catch(e){
+        return (chosenTheme.pickPossibilityFor(attributeKey, rand)).toLowerCase();
+
+    } catch (e) {
         return `[ERROR: something went wrong]`;
     }
 
@@ -242,7 +242,7 @@ const REALLYRandomGenders = () => {
     const object = titleCase(chosenTheme.pickPossibilityFor(OBJECT));
     const location = titleCase(chosenTheme.pickPossibilityFor(LOCATION));
     const philosophy = titleCase(chosenTheme.pickPossibilityFor(PHILOSOPHY));
-  
+
     const childbackstory = titleCase(chosenTheme.pickPossibilityFor(CHILDBACKSTORY));
     const generalbackstory = titleCase(chosenTheme.pickPossibilityFor(GENERALBACKSTORY));
     const miracle = titleCase(chosenTheme.pickPossibilityFor(MIRACLE));
@@ -253,186 +253,186 @@ const REALLYRandomGenders = () => {
     const feeling = titleCase(chosenTheme.pickPossibilityFor(FEELING));
     const sound = titleCase(chosenTheme.pickPossibilityFor(SOUND));
     const effects = titleCase(chosenTheme.pickPossibilityFor(EFFECTS));
-  
+
     const moreNormal = [supermove, sound, smell, taste, feeling, person, adj, compliment, insult, object, location];
     const lessNormal = [philosophy, childbackstory, generalbackstory, effects, monster_desc, loc_desc, miracle];
     let ret = [];
     //varies up how likely it is to be WEIRD.
     for (let i = 0; i < question_index % 13; i++) {
-      if (i === 3) {
-        ret = ret.concat(lessNormal);
-      } else {
-        ret = ret.concat(moreNormal);
-  
-      }
+        if (i === 3) {
+            ret = ret.concat(lessNormal);
+        } else {
+            ret = ret.concat(moreNormal);
+
+        }
     }
-  
+
     return ret;
-  }
+}
 
 const gender_source = () => {
     if (question_index < 3) {
-      return lameGenders;
+        return lameGenders;
     } else if (question_index < 35) {
-      return lameGenders.concat(genders);
+        return lameGenders.concat(genders);
     } else if (question_index < 113) {
-      return (genders).concat(REALLYRandomGenders());
+        return (genders).concat(REALLYRandomGenders());
     }
     else if (question_index < 2113) {
-      return REALLYRandomGenders().concat(genders).concat(REALLYRandomGenders());
+        return REALLYRandomGenders().concat(genders).concat(REALLYRandomGenders());
     } else {
-      return ["Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
+        return ["Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
     }
-  }
+}
 
 const PERSON = "person";
- const ADJ = "adj";
- const COMPLIMENT = "compliment";
- const INSULT = "insult";
- const SUPERMOVE = "supermove";
- const OBJECT = "object";
- const LOCATION = "location";
- const MEMORIES = "memories";
- const MENU = "menu";
- const CLASS = "CLASS";
- const ASPECT = "ASPECT";
- const CITYNAME = "CITYNAME";
- const CHILDBACKSTORY = "CHILDBACKSTORY";
- const GENERALBACKSTORY = "GENERALBACKSTORY";
- const MIRACLE = "MIRACLE";
- const SONG = "SONG";
- const PHILOSOPHY = "PHILOSOPHY";
- const LOC_DESC = "LOCATION DESCRIPTION";
- const MONSTER_DESC = "MONSTER DESCRIPTION";
- const SMELL = "SMELL";
- const TASTE = "TASTE";
- const FEELING = "FEELING";
- const SOUND = "SOUND";
- const EFFECTS = "EFFECTS";
- const WALL = "WALL";
- const FLOOR = "FLOOR";
- const FILTERS = "FILTERS";
- const THEME_OPINIONS = "THEME_OPINIONS";
- const WALLBACKGROUND = "WALLBACKGROUND";
- const WALLFOREGROUND = "WALLFOREGROUND";
- const FLOORBACKGROUND = "FLOORBACKGROUND";
- const FLOORFOREGROUND = "FLOORFOREGROUND";
- const SPRITES = "SPRITES";//birbs
+const ADJ = "adj";
+const COMPLIMENT = "compliment";
+const INSULT = "insult";
+const SUPERMOVE = "supermove";
+const OBJECT = "object";
+const LOCATION = "location";
+const MEMORIES = "memories";
+const MENU = "menu";
+const CLASS = "CLASS";
+const ASPECT = "ASPECT";
+const CITYNAME = "CITYNAME";
+const CHILDBACKSTORY = "CHILDBACKSTORY";
+const GENERALBACKSTORY = "GENERALBACKSTORY";
+const MIRACLE = "MIRACLE";
+const SONG = "SONG";
+const PHILOSOPHY = "PHILOSOPHY";
+const LOC_DESC = "LOCATION DESCRIPTION";
+const MONSTER_DESC = "MONSTER DESCRIPTION";
+const SMELL = "SMELL";
+const TASTE = "TASTE";
+const FEELING = "FEELING";
+const SOUND = "SOUND";
+const EFFECTS = "EFFECTS";
+const WALL = "WALL";
+const FLOOR = "FLOOR";
+const FILTERS = "FILTERS";
+const THEME_OPINIONS = "THEME_OPINIONS";
+const WALLBACKGROUND = "WALLBACKGROUND";
+const WALLFOREGROUND = "WALLFOREGROUND";
+const FLOORBACKGROUND = "FLOORBACKGROUND";
+const FLOORFOREGROUND = "FLOORFOREGROUND";
+const SPRITES = "SPRITES";//birbs
 
 
 
 
 //themes
- const NULL = "null";
- const ADDICTION = "addiction";
- const SPYING = "spying";
- const HEALING = "healing";
- const DOLLS = "dolls";
- const OBFUSCATION = "obfuscation";
- const CENSORSHIP = "censorship";
+const NULL = "null";
+const ADDICTION = "addiction";
+const SPYING = "spying";
+const HEALING = "healing";
+const DOLLS = "dolls";
+const OBFUSCATION = "obfuscation";
+const CENSORSHIP = "censorship";
 
- const DARKNESS = "darkness";
- const KILLING = "killing";
- const MUSIC = "music";
- const DEFENSE = "defense";
- const QUESTING = "questing";
- const BUGS = "bugs";
- const LANGUAGE = "language";
- const CRAFTING = "crafting";
- const GUIDING = "guiding";
- const KNOWING = "knowing";
- const ENDINGS = "endings";
- const ROYALTY = "royalty";
- const WEB = "web";
- const ANGER = "anger";
- const SOUL = "soul";
- const LOVE = "love";
- const ZAP = "zap";
- const CHOICES = "choices";
- const DECAY = "decay";
- const PLANTS = "plants";
- const CLOWNS = "clowns";
- const HUNTING = "hunting";
- const ANGELS = "angels";
- const LIGHT = "light";
- const MAGIC = "magic";
- const FAMILY = "family";
- const SERVICE = "service";
- const WASTE = "waste";
- const APOCALYPSE = "apocalypse";
- const DEATH = "death";
- const TWISTING = "twisting";
- const MATH = "math";
- const SCIENCE = "science";
- const FLESH = "flesh";
- const BURIED = "buried";
- const STEALING = "stealing";
- const FREEDOM = "freedom";
- const FIRE = "fire";
- const LONELY = "lonely";
- const OCEAN = "ocean";
- const SPACE = "space";
- const TIME = "time";
- const ART = "art";  //JR NOTE TODO
- const TECHNOLOGY = "technology";  //JR NOTE TODO
+const DARKNESS = "darkness";
+const KILLING = "killing";
+const MUSIC = "music";
+const DEFENSE = "defense";
+const QUESTING = "questing";
+const BUGS = "bugs";
+const LANGUAGE = "language";
+const CRAFTING = "crafting";
+const GUIDING = "guiding";
+const KNOWING = "knowing";
+const ENDINGS = "endings";
+const ROYALTY = "royalty";
+const WEB = "web";
+const ANGER = "anger";
+const SOUL = "soul";
+const LOVE = "love";
+const ZAP = "zap";
+const CHOICES = "choices";
+const DECAY = "decay";
+const PLANTS = "plants";
+const CLOWNS = "clowns";
+const HUNTING = "hunting";
+const ANGELS = "angels";
+const LIGHT = "light";
+const MAGIC = "magic";
+const FAMILY = "family";
+const SERVICE = "service";
+const WASTE = "waste";
+const APOCALYPSE = "apocalypse";
+const DEATH = "death";
+const TWISTING = "twisting";
+const MATH = "math";
+const SCIENCE = "science";
+const FLESH = "flesh";
+const BURIED = "buried";
+const STEALING = "stealing";
+const FREEDOM = "freedom";
+const FIRE = "fire";
+const LONELY = "lonely";
+const OCEAN = "ocean";
+const SPACE = "space";
+const TIME = "time";
+const ART = "art";  //JR NOTE TODO
+const TECHNOLOGY = "technology";  //JR NOTE TODO
 
 
- const keys = [WASTE,TECHNOLOGY, ART, SPACE, TIME, FLESH, BURIED, STEALING, FREEDOM, FIRE, LONELY, OCEAN, SCIENCE, MATH, TWISTING, DEATH, APOCALYPSE, SERVICE, FAMILY, MAGIC, ANGELS, LIGHT, HUNTING, CLOWNS, PLANTS, DECAY, CHOICES, ZAP, LOVE, SOUL, ANGER, WEB, ROYALTY, ENDINGS, KNOWING, GUIDING, CRAFTING, ADDICTION, SPYING, HEALING, DOLLS, OBFUSCATION, CENSORSHIP,DARKNESS, KILLING, MUSIC, DEFENSE, QUESTING, BUGS, LANGUAGE];
+const keys = [WASTE, TECHNOLOGY, ART, SPACE, TIME, FLESH, BURIED, STEALING, FREEDOM, FIRE, LONELY, OCEAN, SCIENCE, MATH, TWISTING, DEATH, APOCALYPSE, SERVICE, FAMILY, MAGIC, ANGELS, LIGHT, HUNTING, CLOWNS, PLANTS, DECAY, CHOICES, ZAP, LOVE, SOUL, ANGER, WEB, ROYALTY, ENDINGS, KNOWING, GUIDING, CRAFTING, ADDICTION, SPYING, HEALING, DOLLS, OBFUSCATION, CENSORSHIP, DARKNESS, KILLING, MUSIC, DEFENSE, QUESTING, BUGS, LANGUAGE];
 
 
 
 
 
 //noun_possibility, adj_possibility (glowing, shimmering, walking, ceasing)
- let wall_foregrounds = {}
- let wall_backgrounds = {}
- let floor_backgrounds = {}
- let floor_foregrounds = {}
- let sprite_possibilities = {}
+let wall_foregrounds = {}
+let wall_backgrounds = {}
+let floor_backgrounds = {}
+let floor_foregrounds = {}
+let sprite_possibilities = {}
 
- let stats_map = {};
- let person_posibilities = {};
- let object_possibilities = {};
- let location_possibilities = {};
- let general_backstories = {};
- let child_backstories = {};
- let miracles = {};
- let philosophy = {};
- let loc_desc = {};
- let monster_desc = {};
- let sound_possibilities = {};
- let taste_possibilities = {};
- let feeling_possibilities = {};
- let smell_possibilities = {};
- let effect_possibilities = {};
+let stats_map = {};
+let person_posibilities = {};
+let object_possibilities = {};
+let location_possibilities = {};
+let general_backstories = {};
+let child_backstories = {};
+let miracles = {};
+let philosophy = {};
+let loc_desc = {};
+let monster_desc = {};
+let sound_possibilities = {};
+let taste_possibilities = {};
+let feeling_possibilities = {};
+let smell_possibilities = {};
+let effect_possibilities = {};
 
- let menu_options = {};
- let adj_possibilities = {};
- let insult_possibilities = {};
- let song_possibilities = {};
- let wall_possibilities = {};
- let floor_possibilities = {};
- let theme_opinions = {};
- let filter_possibilities = {};
+let menu_options = {};
+let adj_possibilities = {};
+let insult_possibilities = {};
+let song_possibilities = {};
+let wall_possibilities = {};
+let floor_possibilities = {};
+let theme_opinions = {};
+let filter_possibilities = {};
 
- let compliment_possibilities = {};
- let memories = {};
+let compliment_possibilities = {};
+let memories = {};
 
- let super_name_possibilities_map = {};
+let super_name_possibilities_map = {};
 
 
- const checkIfAllKeysPresent = () => {
+const checkIfAllKeysPresent = () => {
     for (let key of keys) {
         if (!(key in stats_map)) {
-           // console.error("JR NOTE: key", key, "not found in stats_map");
+            // console.error("JR NOTE: key", key, "not found in stats_map");
         }
 
         if (!(key in person_posibilities)) {
-        //    console.error("JR NOTE: key", key, "not found in noun_possibilities");
+            //    console.error("JR NOTE: key", key, "not found in noun_possibilities");
         }
 
         if (!(key in adj_possibilities)) {
-          //  console.error("JR NOTE: key", key, "not found in adj_possibilities");
+            //  console.error("JR NOTE: key", key, "not found in adj_possibilities");
         }
 
         if (!(key in super_name_possibilities_map)) {
@@ -440,7 +440,7 @@ const PERSON = "person";
         }
 
         if (!(key in insult_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in insult_possibilities");
+            // console.error("JR NOTE: key", key, "not found in insult_possibilities");
         }
 
         if (!(key in compliment_possibilities)) {
@@ -448,11 +448,11 @@ const PERSON = "person";
         }
 
         if (!(key in location_possibilities)) {
-        //    console.error("JR NOTE: key", key, "not found in location_possibilities");
+            //    console.error("JR NOTE: key", key, "not found in location_possibilities");
         }
 
         if (!(key in object_possibilities)) {
-          //  console.error("JR NOTE: key", key, "not found in object_possibilities");
+            //  console.error("JR NOTE: key", key, "not found in object_possibilities");
         }
 
         if (!(key in child_backstories)) {
@@ -460,7 +460,7 @@ const PERSON = "person";
         }
 
         if (!(key in general_backstories)) {
-           // console.error("JR NOTE: key", key, "not found in general_backstories");
+            // console.error("JR NOTE: key", key, "not found in general_backstories");
         }
 
         if (!(key in miracles)) {
@@ -476,35 +476,35 @@ const PERSON = "person";
         }
 
         if (!(key in monster_desc)) {
-           // console.error("JR NOTE: key", key, "not found in monster_desc");
+            // console.error("JR NOTE: key", key, "not found in monster_desc");
         }
 
         if (!(key in smell_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in smell_possibilities");
+            // console.error("JR NOTE: key", key, "not found in smell_possibilities");
         }
 
         if (!(key in taste_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in taste_possibilities");
+            // console.error("JR NOTE: key", key, "not found in taste_possibilities");
         }
 
         if (!(key in sound_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in sound_possibilities");
+            // console.error("JR NOTE: key", key, "not found in sound_possibilities");
         }
 
         if (!(key in feeling_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in feeling_possibilities");
+            // console.error("JR NOTE: key", key, "not found in feeling_possibilities");
         }
 
         if (!(key in effect_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in effect_possibilities");
+            // console.error("JR NOTE: key", key, "not found in effect_possibilities");
         }
 
         if (!(key in wall_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in wall_possibilities");
+            // console.error("JR NOTE: key", key, "not found in wall_possibilities");
         }
 
         if (!(key in floor_possibilities)) {
-           // console.error("JR NOTE: key", key, "not found in floor_possibilities");
+            // console.error("JR NOTE: key", key, "not found in floor_possibilities");
         }
     }
 }
@@ -534,22 +534,22 @@ const initPeople = () => {
     person_posibilities[MAGIC] = ["wizard", "mage", "sorcerer", "alchemist", "sage"];
     person_posibilities[HUNTING] = ["hunter", "stalker", "predator", "pursuer"];
     person_posibilities[HEALING] = ["doctor", "nurse", "healer"];
-    person_posibilities[PLANTS] = ["gardener","druid"];
+    person_posibilities[PLANTS] = ["gardener", "druid"];
     person_posibilities[DECAY] = ["gravedigger", "plague bearer"];
     person_posibilities[CHOICES] = ["selector"];
     person_posibilities[ZAP] = ["electrician", "robot"];
     person_posibilities[LOVE] = ["lover", "romantic"];
     person_posibilities[SOUL] = ["self"];
     person_posibilities[ANGER] = ["beserker", "rebel", "hater"];
-    person_posibilities[WEB] = ["spider", "weaver", "spider","puppet"];
+    person_posibilities[WEB] = ["spider", "weaver", "spider", "puppet"];
     person_posibilities[ROYALTY] = ["king", "queen", "lord"];
     person_posibilities[ENDINGS] = ["prince"];
     person_posibilities[KNOWING] = ["scholar", "sage", "proffessor"];
-    person_posibilities[GUIDING] = ["guru", "sage", "mentor","guide","sherpa"];
-    person_posibilities[CRAFTING] = ["logger","miner","craftsman","blacksmith","smith","seamstress"];
+    person_posibilities[GUIDING] = ["guru", "sage", "mentor", "guide", "sherpa"];
+    person_posibilities[CRAFTING] = ["logger", "miner", "craftsman", "blacksmith", "smith", "seamstress"];
     person_posibilities[LANGUAGE] = ["author", "writer"];
-    person_posibilities[BUGS] = ["bug", "worm", "fly", "maggot", "roach", "swarm", "hive", "locusts","entomologist"];
-    person_posibilities[ADDICTION] = ["gambler", "dealer","stoner"];
+    person_posibilities[BUGS] = ["bug", "worm", "fly", "maggot", "roach", "swarm", "hive", "locusts", "entomologist"];
+    person_posibilities[ADDICTION] = ["gambler", "dealer", "stoner"];
     person_posibilities[SPYING] = ["eye", "watcher", "observer", "listener", "spy"];
     person_posibilities[CLOWNS] = ["clown", "mime", "jester", "acrobat", "performer", "harlequin", "ringmaster"];
     person_posibilities[DOLLS] = ["doll", "mannequin", "dressform", "statue", "dummy", "puppet", "marionette", "figure", "figurine", "toy"];
@@ -627,19 +627,19 @@ const initSongs = () => {
 }
 
 const initFilters = () => {
-    filter_possibilities[TWISTING] = [`hue-rotate(10deg)`,`hue-rotate(5deg)`,`hue-rotate(5deg)`,`hue-rotate(5deg)`,`hue-rotate(5deg)`,`hue-rotate(5deg)`, `hue-rotate(5deg)`, `hue-rotate(-5deg)`]; //subtle
+    filter_possibilities[TWISTING] = [`hue-rotate(10deg)`, `hue-rotate(5deg)`, `hue-rotate(5deg)`, `hue-rotate(5deg)`, `hue-rotate(5deg)`, `hue-rotate(5deg)`, `hue-rotate(5deg)`, `hue-rotate(-5deg)`]; //subtle
     filter_possibilities[CLOWNS] = [`invert(100%)`, `hue-rotate(190deg)`, `hue-rotate(90deg)`]; //whimsy
-    filter_possibilities[LIGHT] = [`brightness(300%)`,`contrast(60%)`, `filter: brightness(300%)`, `brightness(200%)`]; //the futures so bright you need to wear shades
+    filter_possibilities[LIGHT] = [`brightness(300%)`, `contrast(60%)`, `filter: brightness(300%)`, `brightness(200%)`]; //the futures so bright you need to wear shades
     filter_possibilities[ANGER] = [`grayscale(100%) sepia(100%) contrast(454%) saturate(651%) brightness(44%) hue-rotate(681deg) blur(1px)`];// tint it red
-    filter_possibilities[TIME] =[`sepia(50%);`, `sepia(75%);`, `sepia(100%);`]; //we all know the past is brown
-    filter_possibilities[APOCALYPSE] = [`brightness(300%)`,`contrast(60%)`, `filter: brightness(300%)`, `brightness(200%)`]; //the futures so bright you need to wear shades
+    filter_possibilities[TIME] = [`sepia(50%);`, `sepia(75%);`, `sepia(100%);`]; //we all know the past is brown
+    filter_possibilities[APOCALYPSE] = [`brightness(300%)`, `contrast(60%)`, `filter: brightness(300%)`, `brightness(200%)`]; //the futures so bright you need to wear shades
     filter_possibilities[FLESH] = [`grayscale(70%) sepia(100%) contrast(100%) saturate(157%) hue-rotate(310deg)`];// tint it pink
     filter_possibilities[OCEAN] = [`grayscale(70%) sepia(100%) contrast(100%) saturate(157%) hue-rotate(178deg)`];// tint it blue
     filter_possibilities[OBFUSCATION] = [`blur(5)`];
     filter_possibilities[CENSORSHIP] = [`blur(5)`];
 
     filter_possibilities[SPYING] = [`contrast(200%)`];
-    filter_possibilities[LONELY] = [`contrast(70%)`,'saturate(30%)','grayscale(70%)','contrast(50%)','grayscale(90%)'];
+    filter_possibilities[LONELY] = [`contrast(70%)`, 'saturate(30%)', 'grayscale(70%)', 'contrast(50%)', 'grayscale(90%)'];
     filter_possibilities[DARKNESS] = [`brightness(60%)`];
 
 
@@ -707,9 +707,9 @@ const initFloorPossibilities = () => {
 const initWallForegrounds = () => {
     wall_foregrounds[DECAY] = [{ src: "deadvines.png", desc: "TODO" }, { src: "rotted_curtains1.png", desc: "TODO" }, { src: "rotted_curtains2.png", desc: "TODO" }, { src: "rotted_curtains3.png", desc: "TODO" }, { src: "decayingwindow.png", desc: "TODO" }];
     wall_foregrounds[BUGS] = [{ src: "waspnest2.png", desc: "TODO" }, { src: "bees4.png", desc: "TODO" }, { src: "bees.png", desc: "TODO" }, { src: "bees3.png", desc: "TODO" }, { src: "bees2.png", desc: "TODO" }, { src: "waspnest.png", desc: "TODO" }];
-    wall_foregrounds[WEB] = [{ src: "Web_Object.png", desc: "Ah... An uh... Friend..." },{ src: "webcurtains2.png", desc: "TODO" }, { src: "webcurtains.png", desc: "TODO" }, { src: "webbing5.png", desc: "TODO" }, { src: "webbing4.png", desc: "TODO" }, { src: "webbing3.png", desc: "TODO" }, { src: "webbing2.png", desc: "TODO" }, { src: "webbing.png", desc: "TODO" }];
+    wall_foregrounds[WEB] = [{ src: "Web_Object.png", desc: "Ah... An uh... Friend..." }, { src: "webcurtains2.png", desc: "TODO" }, { src: "webcurtains.png", desc: "TODO" }, { src: "webbing5.png", desc: "TODO" }, { src: "webbing4.png", desc: "TODO" }, { src: "webbing3.png", desc: "TODO" }, { src: "webbing2.png", desc: "TODO" }, { src: "webbing.png", desc: "TODO" }];
     wall_foregrounds[KILLING] = [{ src: "drippingblood.png", desc: "TODO" }];
-    wall_foregrounds[SPYING] = [{ src: "eye13.png", desc: "IT LOOKS."},{ src: "eye12.png", desc: "IT TREMBLES."},{ src: "eye11.png", desc: "IT GAZES."},{ src: "eye10.png", desc: "IT FOCUSES."},{ src: "eye9.png", desc: "IT WAITS."},{ src: "eye8.png", desc: "IT WATCHES."},{ src: "eye7.png", desc: "IT GLISTENS."},{ src: "eye6.png", desc: "IT SEES."},{ src: "eye5.png", desc: "IT CANNOT BLINK."},{ src: "eye4.png", desc: "IT CRIES."},{ src: "eye3.png", desc: "IT SEES."},{ src: "eye2.png", desc: "IT STARES."},{ src: "eye1.png", desc: "IT WEEPS."}];
+    wall_foregrounds[SPYING] = [{ src: "eye13.png", desc: "IT LOOKS." }, { src: "eye12.png", desc: "IT TREMBLES." }, { src: "eye11.png", desc: "IT GAZES." }, { src: "eye10.png", desc: "IT FOCUSES." }, { src: "eye9.png", desc: "IT WAITS." }, { src: "eye8.png", desc: "IT WATCHES." }, { src: "eye7.png", desc: "IT GLISTENS." }, { src: "eye6.png", desc: "IT SEES." }, { src: "eye5.png", desc: "IT CANNOT BLINK." }, { src: "eye4.png", desc: "IT CRIES." }, { src: "eye3.png", desc: "IT SEES." }, { src: "eye2.png", desc: "IT STARES." }, { src: "eye1.png", desc: "IT WEEPS." }];
     wall_foregrounds[LONELY] = [{ src: "lonely_figure.png", desc: "Alone..." }];
 
     /*wall_possibilities[LOVE] = ["stonewalls.png","roses.png"];
@@ -762,19 +762,19 @@ const initWallForegrounds = () => {
 }
 
 //no one said quotidians are locked into only mimicking HUMANS, just sapient things. 
-const initSpritePossibilities=()=>{
+const initSpritePossibilities = () => {
     //sprite_possibilities[TWISTING] =  [{left_src:"",right_src:"",up_src:"",down_src:""}];
-    sprite_possibilities[APOCALYPSE] =  [{left_src:"Apocalypse_Crow2.gif",right_src:"Apocalypse_Crow.gif",up_src:"Apocalypse_Crow2.gif",down_src:"Apocalypse_Crow.gif"}];
-    sprite_possibilities[DOLLS] =  [{left_src:"Art_Object_ghoul.gif",right_src:"Art_Object_ghoul.gif",up_src:"Art_Object_ghoul.gif",down_src:"Art_Object_ghoul.gif"}];
-    sprite_possibilities[ART] =  [{left_src:"Art_Object_ghoul.gif",right_src:"Art_Object_ghoul.gif",up_src:"Art_Object_ghoul.gif",down_src:"Art_Object_ghoul.gif"}];
-    sprite_possibilities[TIME] =  [{left_src:"clockface_walk_left.gif",right_src:"clockface_walk_right.gif",up_src:"clockface_walk_up.gif",down_src:"clockface_walk_down.gif"}];
-    sprite_possibilities[PLANTS] =  [{left_src:"flowerkid_walk_left.gif",right_src:"flowerkid_walk_right.gif",up_src:"flowerkid_walk_up.gif",down_src:"flowerkid_walk_down.gif"}];
+    sprite_possibilities[APOCALYPSE] = [{ left_src: "Apocalypse_Crow2.gif", right_src: "Apocalypse_Crow.gif", up_src: "Apocalypse_Crow2.gif", down_src: "Apocalypse_Crow.gif" }];
+    sprite_possibilities[DOLLS] = [{ left_src: "Art_Object_ghoul.gif", right_src: "Art_Object_ghoul.gif", up_src: "Art_Object_ghoul.gif", down_src: "Art_Object_ghoul.gif" }];
+    sprite_possibilities[ART] = [{ left_src: "Art_Object_ghoul.gif", right_src: "Art_Object_ghoul.gif", up_src: "Art_Object_ghoul.gif", down_src: "Art_Object_ghoul.gif" }];
+    sprite_possibilities[TIME] = [{ left_src: "clockface_walk_left.gif", right_src: "clockface_walk_right.gif", up_src: "clockface_walk_up.gif", down_src: "clockface_walk_down.gif" }];
+    sprite_possibilities[PLANTS] = [{ left_src: "flowerkid_walk_left.gif", right_src: "flowerkid_walk_right.gif", up_src: "flowerkid_walk_up.gif", down_src: "flowerkid_walk_down.gif" }];
     //probably too big but *shrug* hunteres are swol, this is now canon (thems the break eye killer)(tho i suppose this is just a single instance of a hunter, so maybe its not universal)
-    sprite_possibilities[HUNTING] =  [{left_src:"hunter_walk_left.gif",right_src:"hunter_walk_right.gif",up_src:"hunter_walk_up.gif",down_src:"hunter_walk_down.gif"}];
-    sprite_possibilities[SPACE] =  [{left_src:"Space_object_ghoul.gif",right_src:"Space_object_ghoul.gif",up_src:"Space_object_ghoul.gif",down_src:"Space_object_ghoul.gif"}];
-    sprite_possibilities[TECHNOLOGY] =  [{left_src:"technology_object_ghoul.gif",right_src:"technology_object_ghoul.gif",up_src:"technology_object_ghoul.gif",down_src:"technology_object_ghoul.gif"}];
-    sprite_possibilities[TWISTING] =  [{left_src:"unknown.png",right_src:"unknown.png",up_src:"unknown.png",down_src:"unknown.png"},{left_src:"zampanio_flowerkid_by_hex2.png",right_src:"zampanio_flowerkid_by_hex2.png",up_src:"zampanio_flowerkid_by_hex2.png",down_src:"zampanio_flowerkid_by_hex2.png"},{left_src:"unknown.png",right_src:"zampanio_flowerkid_by_hex2.png",up_src:"Twisting_Crow.gif",down_src:"humanoid_crow.gif"},{left_src:"Twisting_Crow.gif",right_src:"Twisting_Crow.gif",up_src:"Twisting_Crow.gif",down_src:"Twisting_Crow.gif"}];
-    sprite_possibilities[OCEAN] =  [{left_src:"plushie_shark_swimmin.gif",right_src:"plushie_shark_swimmin.gif",up_src:"plushie_shark_swimmin.gif",down_src:"plushie_shark_swimmin.gif"}];
+    sprite_possibilities[HUNTING] = [{ left_src: "hunter_walk_left.gif", right_src: "hunter_walk_right.gif", up_src: "hunter_walk_up.gif", down_src: "hunter_walk_down.gif" }];
+    sprite_possibilities[SPACE] = [{ left_src: "Space_object_ghoul.gif", right_src: "Space_object_ghoul.gif", up_src: "Space_object_ghoul.gif", down_src: "Space_object_ghoul.gif" }];
+    sprite_possibilities[TECHNOLOGY] = [{ left_src: "technology_object_ghoul.gif", right_src: "technology_object_ghoul.gif", up_src: "technology_object_ghoul.gif", down_src: "technology_object_ghoul.gif" }];
+    sprite_possibilities[TWISTING] = [{ left_src: "unknown.png", right_src: "unknown.png", up_src: "unknown.png", down_src: "unknown.png" }, { left_src: "zampanio_flowerkid_by_hex2.png", right_src: "zampanio_flowerkid_by_hex2.png", up_src: "zampanio_flowerkid_by_hex2.png", down_src: "zampanio_flowerkid_by_hex2.png" }, { left_src: "unknown.png", right_src: "zampanio_flowerkid_by_hex2.png", up_src: "Twisting_Crow.gif", down_src: "humanoid_crow.gif" }, { left_src: "Twisting_Crow.gif", right_src: "Twisting_Crow.gif", up_src: "Twisting_Crow.gif", down_src: "Twisting_Crow.gif" }];
+    sprite_possibilities[OCEAN] = [{ left_src: "plushie_shark_swimmin.gif", right_src: "plushie_shark_swimmin.gif", up_src: "plushie_shark_swimmin.gif", down_src: "plushie_shark_swimmin.gif" }];
 
 }
 
@@ -838,48 +838,48 @@ const initWallBackgrounds = () => {
 
 
 const initFloorForegrounds = () => {
-    floor_foregrounds[DECAY] = [{name:"Hydration Station", src: "hydration_station.png", desc: "You go to take a sip of the water before realizing it's filled with maggots."},{ src: "Decay_Object.png", desc: "I wonder if they're poisonous?"},{name:"Corpse Blossom", src: "corpse_blossom.png", desc: "It stinks of death and decay." }, {name:"Rotten Shelves", src: "webshelves.png", desc: "These shelves haven't been able to hold anything for a long time." }, {name:"Rotten Table", src: "webtable.png", desc: "What could be trapped in here, you wonder?" }, { name:"Rotten Table",src: "webtable2.png", desc: "You peer into its cracks but see nothing inside." }, { name:"Dead Bush",src: "deadbush.png", desc: "The bush is rotting." }, { name:"Dead Tree",src: "deadtree.png", desc: "What did this look like when it was alive, you wonder." }, { name:"Mushrooms",src: "decay_is_an_extant_form_of_life.png", desc: "In your heart you know decay is an extant form of life." }, {  name:"Rotten Box",src: "decayedwebbox.png", desc: "This rotten box can't be used to hold anything anymore." }, { name:"Rotten Barrel", src: "decayingbarrel.png", desc: "The barrel stinks of fermentation and rot." }, { name:"Grave", src: "grave.png", desc: "You wonder who is buried and rotting here." }, { name:"Stinking Cot", src: "shittycot.png", desc: "The cot stinks of rot." }];
-    floor_foregrounds[BUGS] = [{name: "Wasp Nest", src: "waspnest2.png", desc: "There is a wasp nest here." }, { name: "Bees",src: "bees4.png", desc: "The bees are buzzing and crawling and flying everwhere." }, {name: "Swarm", src: "bees.png", desc: "The Swarm is judging you." }, {name: "Swarm", src: "bees3.png", desc: "Incessent buzzing." }, {name: "Swarm", src: "bees2.png", desc: "You skin crawls just looking at these buzzing insects." }, { name: "Wasp Nest",src: "waspnest1.png", desc: "There is a wasp nest here. It is filled with holes." }, {name: "Wasp Nest", src: "waspnest3.png", desc: "If you let the inhabitants of this waspnest love you, you could be a nest, too." }, { name: "Honey",src: "ruined_honey.png", desc: "Someone has already raided this bee hive." }, { name: "Nest",src: "ruined_wasp_nest.png", desc: "Who destroyed this wasp nest?" }, {name: "Wasp Statue", src: "wasp.png", desc: "It seems to be a large statue of a wasp." }];
-    floor_foregrounds[LOVE] = [{ src: "Love_Object.png", desc: "Fragile Concept." },{name: "Wine", src: "wine2.png", desc: "If only there was someone to share this with." }, {name: "Wine", src: "wine.png", desc: "Oh to be on a picnic with someone you love." }, {name: "Necklace", src: "necklace.png", desc: "Someone beautiful could wear this." }, {name: "Gift Box", src: "jwelerybox.png", desc: "A cherished gift." }, { name: "Flowers",src: "flowers.png", desc: "A gift for a significant other." }, {name: "Dress", src: "dress.png", desc: "Just looking at this pretty dress makes you wish you could remember going to dances." }, {name: "Angel Statue", src: "angelstatue.png", desc: "Love is war." }, { name: "Stuffed Bear",src: "bear.png", desc: "It feels soft and cuddly." },];
-    floor_foregrounds[STEALING] = [{ src: "Stealing_Object.png", desc: "[Right Click, Save Image]"},{ name: "Cooking Pot",src: "cookingpot.png", desc: "Reminds you of being on the run from the law." }, { name: "Treasure Chest",src: "fancychest.png", desc: "You wonder what kind of loot is in here." }, { name: "Gold Ingots",src: "goldingots.png", desc: "There is NO way you're going to be able to carry these out of here." }, { name: "Jewel Box",src: "jwelerybox.png", desc: "A tidy fortune in jewels." }, { name: "Necklace",src: "necklace.png", desc: "You wonder how much this would be worth on the blackmarket." }, {name: "Huge Gold Pile", src: "pileofgold1.png", desc: "You are practically drooling seeing so much gold." }, { name: "Pile of Gold",src: "pileofgold2.png", desc: "You want to bathe in this like Scrooge McDuck." }, { name: "Pile of Gold",src: "pileofgoldsmaller.png", desc: "What could you buy with this?" }, {name: "Small Gold Pile", src: "smallgoldpile.png", desc: "A modest fortune yours for the taking." }];
-    floor_foregrounds[LANGUAGE] = [{ name: "Tablet",src: "writingtablet.png", desc: "A forgotten language is perfectly translated here for you." }, { name: "Bookshelf",src: "smallbookshelf.png", desc: "It's all your favorite childhood books." }, {name: "Obelisk", src: "obelisk.png", desc: "It's a rosetta stone for every language reading out 'Zampanio is a really good game. You should play it.'" }, { name: "Books",src: "books.png", desc: "Language is used masterfully in these volumes of poetry." }, { name: "Books",src: "books.png", desc: "Somehow each book claims you are the author." }, {name: "Bookshelf", src: "bigbookshelf.png", desc: "All of the literary classics." }, {name: "Bookshelf", src: "bigbookshelf.png", desc: "Dozens upon dozens of books in every language." }];
-    floor_foregrounds[KNOWING] = [{ src: "Knowing_Object.png", desc: "I know something you don't."},{ src: "writingtablet.png", desc: "You need to know more."}, { src: "writingtablet.png", desc: "The thoughts currently in your head are perfectly etched here." }, { name: "Bookshelf",src: "smallbookshelf.png", desc: "The tomes list out the forgotten secrets of every civilization." }, {name: "Scrolls", src: "scrolls.png", desc: "Forbidden knowledge floods your mind and you can't Unknow it." }, {name: "Books", src: "books.png", desc: "Spoilers for all of fiction is somehow contained in these few volumes." }, {name: "Bookshelf", src: "books.png", desc: "The thoughts of everyone you've ever known are detailed here." }, {name: "Bookshelf", src: "bigbookshelf.png", desc: "Everything you would need to perfectly navigate this maze is listed here, if only you could remember it." }, { name: "Bookshelf",src: "bigbookshelf.png", desc: "The identity of the Eye Killer is here, long past the point where you could use it." }];
-    floor_foregrounds[ROYALTY] = [{ src: "Royal_Object.png", desc: "Long Live The... The... Is dead."},{ name: "Crown Jewels",src: "jwelerybox.png", desc: "Crown jewels." }, { name: "Huge Pile of Gold",src: "pileofgold2.png", desc: "The wealth of an Empire." }, { name: "Pile of Gold",src: "pileofgold1.png", desc: "The wealth of a kingdom." }, {name: "Fancy Bed", src: "princessbed.png", desc: "A bed fit for royalty." }, {name: "Gold Pile", src: "smallgoldpile.png", desc: "The taxes you are due." }, {name: "Throne", src: "throne.png", desc: "Your rightful place." }];
-    floor_foregrounds[SCIENCE] = [{ src: "Science_Object.png",name: "Huge Beaker", desc: "A beaker of perfectly generic fluid."},{name: "Science Textbooks", src: "smallbookshelf.png", desc: "Textbooks organized by scientific discipline line these shelves."}, { name: "Science Equipment",src: "science.png", desc: "Oh, the discoveries you could make with enough patience and equipment." }, { name: "Lab",src: "morewine.png", desc: "You get the distinct urge to do science seeing this well stocked lab." }, {name: "Jars", src: "jars.png", desc: "Specimen jars." }]
-    floor_foregrounds[CRAFTING] = [{ src: "Crafting_Object.png", desc: "Just a little bit of tape..."},{name: "Armor", src: "armor3.png", desc: "A master made this armor, you can tell." }, {name: "Armor", src: "armor2.png", desc: "You frown as you study the flaws of this piece of armor." }, { name: "Armor",src: "armor.png", desc: "You appreciate the craftsmanship here." }, {name: "hammer", src: "hammer.png", desc: "The heft of this hammer is just perfect for forging." }, {name: "Ingots", src: "metalingots.png", desc: "Fresh ingots ripe for being turned into more useful materials." }, {name: "Pickax", src: "pickax.png", desc: "You feel the strange urge to craft some mines." }, {name: "Shovel", src: "shovel.png", desc: "You just want to turn the soil with your hands and MAKE something with it." }, {name: "Ax", src: "stumpwithax.png", desc: "You feel a distinct urge to go chop some trees." }, {name: "Well", src: "well.png", desc: "Enough water to cool a thousand forges." }];
-    floor_foregrounds[BURIED] = [{ src: "Buried_Object.png", desc: "X Marks the Spot."},{ name: "Grave",src: "grave.png", desc: "You hear faint scratching from underneath." }, { name: "Grave",src: "grave.png", desc: "You could sleep under here forever buried." }, { name: "Pickax",src: "pickax.png", desc: "With this you could dig and dig and dig deep into the earth until no one could ever save you." }, { name: "Pit",src: "pit.png", desc: "The warm embrace of the earth awaits. Why must you cling so to the cold, unforgiving sky?" }, {name: "Hole", src: "pit2.png", desc: "Down and down it goes. You want to jump in." }, { name: "Inviting Well",src: "well.png", desc: "It goes so deep into the earth. You cannot see the bottom. The concept of a bottom is anathema to this well." }, {name: "Shovel", src: "shovel.png", desc: "DIG" }];
-    floor_foregrounds[ANGELS] = [{ src: "Angel_Object.png", desc: "Do you hear the tintinnabulation?" },{ name: "Holy Tablet",src: "writingtablet.png", desc: "The words of your gods are written here." }, {name: "Holy Obelisk", src: "obelisk.png", desc: "It lists out the praises of the gods." }, {name: "Jars of Holy Water", src: "jars.png", desc: "Jars of holy water." }, {name: "Holy Crystal", src: "iceglacier.png", desc: "It feels holy." }, {name: "Angel Statue", src: "angelstatue.png", desc: "The angels bless you." }];
-    floor_foregrounds[PLANTS] = [{ src: "Plants_Object2.png", desc: "What a terrible place to try and grow..."},{ src: "Plants_Object1.png", desc: "What a terrible place to try and grow..."},{ name: "Yellow Flowers",src: "yellowflowers.png", desc: "Weeds, but pretty ones." }, {name: "Wild Flowers", src: "wildflowers.png", desc: "These flowers grow with no human hand." }, {name: "Tall Potted Plant", src: "tallpottedplant.png", desc: "It seems healthy, though confined." }, {name: "Garden Shovel", src: "shovel.png", desc: "Did someone leave it here after planting something?" }, {name: "Pine Tree", src: "pinetree.png", desc: "You wonder how trees manage to grow inside this labyrinth." }, {name: "Gass", src: "grass.png", desc: "Surprisingly fertile soil produces this clump of grass." }, {name: "Flowers", src: "flowers.png", desc: "Beautiful flowers. Pointless flowers." }, {name: "Fern Creature", src: "fern.png", desc: "For an instant, you think this might be some sort of...creature. But no. Just a fern." }, { name: "Cactus",src: "cactus2.png", desc: "The most tsundere of plants." }, {name: "Cactus", src: "cactus.png", desc: "You don't think it can talk. You aren't sure why this disappoints you." }, {name: "Cabbages", src: "cabbages.png", desc: "These cabbages are well grown." }];
-    floor_foregrounds[WEB] = [{name: "Piano", src: "webzampiano.png", desc: "Your body positions itself in front of it and begins playing a jaunty tune on it." }, { name: "Wine",src: "webwine2.png", desc: "Will you choose to give up control of your body?" }, { name: "Wine",src: "webwine.png", desc: "Spiders desperately scrabble for purchase at the surface of the liquid. Some have already drowned and sunk to the bottom of the bottle." }, {name: "Vanity", src: "webvanity.png", desc: "Your hands jerkily go through the motions of putting makeup on." }, {name: "Throne", src: "webthrone.png", desc: "Are even Ruler's immune from the pressures of society?" }, {name: "Table", src: "webtable3.png", desc: "Small bugs are trapped here." }, {name: "Table", src: "webtable2.png", desc: "You see shadows moving inside." }, {name: "Table", src: "webtable.png", desc: "What could this trap?" }, {name: "Sword", src: "websword2.png", desc: "You know for a fact if you picked this up it would control you." },{ name: "Sword",src: "websword1.png", desc: "Bad things will happen if you touch it." },{name: "Sword", src: "webswords.png", desc: "Who laid them here so carefully together?" }, { name: "Shield",src: "webshield.png", desc: "You are frozen in the certainty that if you were to pick this up, threads would bind it forever to your body." }, {name: "Shelves", src: "webshelves.png", desc: "Society puppets you into keeping things maintained." }, {name: "Scrolls", src: "webscrolls.png", desc: "What is knowlege but a means to manipulate others?" }, {name: "Pot", src: "webpot.png", desc: "It's filled with spiders." }, {name: "Organ", src: "weborgan.png", desc: "It plays a haunting melody all on its own, as gossamer threads tug on the keys." }, {name: "Books", src: "webbooks.png", desc: "If you read all these books you will be dancing to the collector tune." }, { name: "Money",src: "webmoney.png", desc: "What is money but chains?" }, { name: "Jars",src: "webjars.png", desc: "Small spiders scuttle inside, endlessly trying to climb up the smooth glass then falling down." }, {name: "Jam", src: "webjam.png", desc: "Evolution has programmed you to prefer dense caloric options." }, {name: "Fortune", src: "webfortune.png", desc: "We are all bound by fate." }, {name: "Flower", src: "webflower.png", desc: "Gifts are classic ways to manipulate others." }, {name: "Eggs", src: "webeggs.png", desc: "You can see shadows moving inside the eggs. Occasionally they twitch." }, {name: "Dragon", src: "webdragon.png", desc: "Even the most powerful among us are powerless in the face of traps and manipulation." }, { name: "Books",src: "webbooks.png", desc: "What are words but a way to control others?" }, {name: "Huge Web", src: "webbing4.png", desc: "What could possibly make such a huge web?" }, { name: "Web",src: "webbing3.png", desc: "It looks like Mr. Spider is not home." }, {name: "Web", src: "webbing.png", desc: "Tiny spiders work tirelessly to spin more of this web." }, {name: "Barrel", src: "webbarrell.png", desc: "More laughs than a barrel of spiders." }, {name: "Scarecrow", src: "scarecrow2.png", desc: "Almost invisible threads jerk and tug it in a variety of directions. It seems to be in pain." }, {name: "Scarecrow", src: "scarecrow.png", desc: "Nearly invisible threads connect to each of its joints. It isn't moving, but you aren't sure it will stay that way." }];
-    floor_foregrounds[KILLING] = [{ name: "Knife",src: "knife.png", desc: "Knife goes in. Blood comes out. It's that simple." }, { name: "Violent Bed",src: "violentbed.png", desc: "A fight happened here." }, { name: "Swords",src: "webswords.png", desc: "There is clarity in killing. The why doesn't matter, only the how." }, {name: "Swords", src: "swords.png", desc: "You could kill a lot of people with these." }, {name: "Sword", src: "swordanvil.png", desc: "A weapon has only one purpose: killing." }, { name: "Ax",src: "stumpwithax.png", desc: "You feel the inexplicable urge to write 'All Work And No Play Makes Johnny A Dull Boy' over and over again." }, { name: "Pickax",src: "pickax.png", desc: "You could really do some damage to someone's skull with this." }, {name: "Chopping Block", src: "choppingblock.png", desc: "You almost wish you weren't alone in this maze, just so you could test this knife out." }, {name: "Knives", src: "boxoknives.png", desc: "You could really do some damage to someone with all these knives." }, {name: "Blood Fountain", src: "bloodfountain.png", desc: "You feel the inexplicable urge to bathe in this." }];
-    floor_foregrounds[FLESH] = [{ src: "Flesh_Object2.png", desc: "It pulsates gently."},{ src: "Flesh_Object.png", desc: "The beefy arm is waving at you in between flexing."},{ name: "Skeleton",src: "skeleton1.png", desc: "You think you could make a pretty decent bone broth from this." }, {name: "Skeleton", src: "skeleton2.png", desc: "In the end we are all just meat hanging off bones." }, {name: "Ham", src: "ham.png", desc: "Meat is meat." }, {name: "Cooked Turkey", src: "turkey.png", desc: "It smells delicious. It was alive once, as you are now. You'll smell delicious, too, one day." }, {name: "Meat Slabs", src: "meatslabs.png", desc: "Meat is me." }, {name: "Meat Grinder", src: "meatgrinder.png", desc: "You slowly feed your right arm into it and watch the ribbons of flesh pour out the other end." }, {name: "meat Chops", src: "meatchops.png", desc: "They are grown from your own cells, you can feel this in your bones." }, {name: "Meat Chops", src: "meatchops.png", desc: "This doesn't look quite like pork.  Somehow, that unsettles you." }, { name: "Fsh Crate",src: "fishcrate.png", desc: "Your flesh isn't fundamentally different than the flesh of these fish." }, {name: "Cooking Pot", src: "cookingpot.png", desc: "Something savory and meaty wafts out." }, { name: "Chopping Block",src: "choppingblock.png", desc: "It's incredible what a good quality butcher's knife can do to meat." }, { name: "Butchered Meat",src: "butcheredmeat.png", desc: "In the end we are nothing more than meat." }];
-    floor_foregrounds[APOCALYPSE] = [{ name: "Ruined House",src: "Apocalypse_Object.png", desc: "This doll house scale ruined building would be cute if it weren't for the smell emanating from it..."},{name: "Fossil", src: "fossil1.png", desc: "As death is a natural and inevitable part of life, extinction is the natural fate of all worlds." }, { name: "Fossil",src: "fossil2.png", desc: "There are entire species consisting solely of the dead." }, { name: "Fossil",src: "fossil3.png", desc: "For ever species we know have vanished, how many thousands extinguished without a sound? " }, {name: "Fossil", src: "fossil4.png", desc: "As Death comes to all beings, Extinction comes to all species." }, { name: "Fossil",src: "fossil5.png", desc: "How impossibly lucky is this creature, for their bones to survive epochs?" }, {name: "Fossil", src: "fossil6.png", desc: "To fear Extinction is to fear inevitability." }, { name: "Fossil",src: "fossil7.png", desc: "What entire ecosystems lived and died before you took your first breath?" }, { name: "Dangerous Knowledge",src: "science.png", desc: "Just enough knowledge to destroy it all." }, { name: "Prideful Books",src: "webooks.png", desc: "How long will the works of man outlast us?" }];
-    floor_foregrounds[ENDINGS] = [{name: "Stop Sign", src: "Endings_Object_2.png", desc: "Stop. Please." },{ src: "Ending_Object.png", desc: "The End" },{ name: "Grave",src: "grave.png", desc: "The End." }, {name: "Guide Post", src: "guidepost.png", desc: "All ways lead to dead ends." }, {name: "Lamp Post", src: "lamppost.png", desc: "Why are lampopsts so often signifiers of endings?" }, {name: "Skeleton", src: "skeleton1.png", desc: "There is a serenity in knowing how the story ends." }, {name: "Skeleton", src: "skeletons.png", desc: "Did they know their ends would be so similar?" }, {name: "Skull", src: "skull.png", desc: "The path differes, but the end is always the same." }, {name: "Skull", src: "skull3.png", desc: "We all end the same." }, {name: "Books", src: "webbooks.png", desc: "All the pages are torn out save the last." }, {name: "Books", src: "webooks.png", desc: "Every book within is blank, save the last page." }, {name: "Tablet", src: "writingtablet.png", desc: "It lists out the last thought you and everyone you ever met will ever have." }];
-    floor_foregrounds[DEATH] = [{ name: "Statue of Death",src: "Death_Object.png", desc: "This status of Death seems uninterested in your plight."},{ name: "Chess Set",src: "chessset.png", desc: "Do you dare cheat death?"}, {name: "Bone Pile", src: "bonepile.png", desc: "Death is the great equalizer." }, {name: "Grave", src: "grave.png", desc: "This is not your fate. But no one is beyond Death." }, { name: "Skeleton",src: "skeleton1.png", desc: "Meat is meat." }, {name: "Skeleton", src: "skeleton2.png", desc: "Memento mori." }, {name: "Skeletons", src: "skeletons.png", desc: "At least they died together." }, { name: "Skull",src: "skull.png", desc: "It was inevitable they would die." }, {name: "Skull", src: "skull3.png", desc: "Meat is meat." }, {name: "Deathbed", src: "violentbed.png", desc: "Most people die in beds." }, {name: "Hospital Bed", src: "hospitalbed.png", desc: "Someone died here." }, {name: "Grave", src: "grave.png", desc: "It simply says 'everyone' on it." }, { name: "Grave",src: "grave.png", desc: "It is yours." }, {name: "Grave", src: "grave.png", desc: "It's inscription is too worn with age to read." }, {name: "Grave", src: "grave.png", desc: "Somehow you know it has the name of your best friend." }, {name: "Grave", src: "grave.png", desc: "If you had a family, they would be listed here, you're sure of it." }, {name: "Grave", src: "grave.png", desc: "It has your name on it." }, {name: "Barrel", src: "decayingbarrel.png", desc: "Even the works of man eventually die." }, {name: "Dead Tree", src: "deadtree.png", desc: "You wonder what killed it before you remember it doesn't matter." }, {name: "Dead Bush", src: "deadbush.png", desc: "A reminder that death comes to us all." }, {name: "Corpse Blossom", src: "corpse_blossom.png", desc: "It reeks of death." }, { name: "Angel Statue",src: "angelstatue.png", desc: "In your bones you know no beautific afterlife awaits." }];
-    floor_foregrounds[CLOWNS] = [{ src: "jwelerybox.png", desc: "Clown jewels."},{ src: "Clown_Object.png", desc: "Honk honk! +u+"},{ src: "toybox.png", desc: "Laughter rings out anytime you touch this box." }, { src: "jackinaboxopen.png", desc: "Sourceless laughter peels out across the room as you jump in surprise when the jack springs out." }, { src: "jackinaboxclosed.png", desc: "It's hilarious how much anxiety the anticipation of a closed jack in the box causes." }, { src: "gift.png", desc: "When you go to open it it explodes into confetti." }, { src: "balloon5.png", desc: "A sign of life." }, { src: "balloon4.png", desc: "Surely someone must have filled these within the past day or two if they're still floating, right?" }, { src: "balloon3.png", desc: "You wonder how they float." }, { src: "balloon2.png", desc: "It feels like it might pop at any moment." }, { src: "balloon1.png", desc: "How whimsical." }];
-    floor_foregrounds[DOLLS] = [{ name: "Doll",src: "Dolls_Object.png", desc: "This Doll Recites:"},{name: "JR Doll", src: "jr_doll.png", desc: "There's something cathartic in having power over old JR." }, {name: "Train", src: "toytrain.png", desc: "Choo choo! Jaimie would be proud." }, {name: "Toy Soldier", src: "toysoldiersmall.png", desc: "It's okay. You'll be his friend." }, {name: "Wax Soldier", src: "toysoldierlarge.png", desc: "He seems to be made of wax. His eyes are wrong, though." }, {name: "Toys", src: "toyshelves.png", desc: "So many toys, it almost makes you wish you could be nostalgic." }, {name: "Toy Regiment", src: "toyregiment.png", desc: "Each time you look away they are a single step closer." }, { name: "Drummer Boy",src: "toydummerboy.png", desc: "Any time you look away you hear a single beat of his drum." }, {name: "Toy Box", src: "toybox.png", desc: "All sorts of fun to be had in here." }, {name: "Toy Army", src: "toyarmy.png", desc: "Oh." }, {name: "Teapot", src: "teapot.png", desc: "If only you had some toys, you could host a little teaparty." }, {name: "Dollhouse", src: "teachustheinsides.png", desc: "Screams are coming from inside." }, {name: "Snowman", src: "snowman.png", desc: "You know its heart yearns to look more human. What would it have to steal to get there." }, { name: "Scarecrow",src: "scarecrow2.png", desc: "It waits." }, {name: "Scarecrow", src: "scarecrow.png", desc: "You're suddenly certain it is just choosing not to move." }, { name: "Pretty Bed",src: "princessbed.png", desc: "And adorable bed you just want to cover with stuffed animals and dolls." }, {name: "Jack In A Box", src: "jackinaboxopen.png", desc: "You feel something touching your leg, but when you look down i's just this Jack In a Box." }, {name: "Jack In A Box", src: "jackinaboxclosed.png", desc: "You hear something moving inside." }, { name: "Hobby Horse",src: "hobbyhorse.png", desc: "Its eyes seem alive, and in pain." }, {name: "Gumball Machine", src: "gumballmachine.png", desc: "Delicious sweets." }, {name: "Dress", src: "dress.png", desc: "A dress in need of a doll." }, {name: "Dollhouse", src: "dollhouse.png", desc: "The dolls inside are all missing." }, {name: "Doll", src: "doll.png", desc: "Someone must miss her terribly." }, {name: "Doll", src: "doll.png", desc: "Scrawled on her face is 'will you be my mother?'" }, {name: "Doll", src: "doll.png", desc: "She is watching you." }, { name: "Chess",src: "chessset.png", desc: "It looks like a fun game." }, {name: "Stuffed Bear", src: "bear.png", desc: "Every time you look away it seems to be in a different pose." }, {name: "Balloon", src: "balloon1.png", desc: "There's little people inside, waving at you." }, {name: "Balloon", src: "armor.png", desc: "Did it just move when you weren't looking?" }, {name: "Balloon", src: "angelstatue.png", desc: "Her eyes seem to watch you." }];
-    floor_foregrounds[TWISTING] = [{ src: "zampanio_flowerkid_by_hex2.png", desc: "How do sprite sheets work???"},{ src: "Twisting_Object.png", desc: "Hee Hee Hee Hee Hee"},{ name: "JR's Lobstersona",src: "jr_lobstersona.png", desc: "This is not JR."}, { name: "JR's Slugcatsona",src: "jr_slug.png", desc: "This is not JR." }, {name: "Not Reynolds Wrap", src: "aluminum.png", desc: "This is not JR." }, {name: "Not jadedResearcher", src: "JadedResearcher.png", desc: "This is not JR." }, {name: "Not JR Doll", src: "jr_doll.png", desc: "This is not JR." }];
-    floor_foregrounds[TECHNOLOGY] =  [{name: "Laundry Machine", src: "laundry.png", desc: "Modern technology sure is convinient!"},{name: "Laptop", src: "laptop.png", desc: "The battery seems to be completely dead."},{name: "Printer", src: "printer.png", desc: "You feel the irrational urge to destroy this flawless piece of technology."}] ;
-    floor_foregrounds[SERVICE] = [{name: "Hydration Station", src: "hydration_station.png", desc: "You wonder if anyone around here is thirsty..."},{name: "Cooking Pot", src: "cookingpot.png", desc: "Is it time for you to cook dinner?"},{name: "Plates", src: "plates.png", desc: "Are you supposed to clean these dishes?"},{name: "Laundry Machine", src: "laundry.png", desc: "You can't remember the last time you've done laundry."},{ src: "Service_Object.png", desc: "Ring Bell For Service."}];
-    floor_foregrounds[ADDICTION] = [{name: "Old Wine", src: "webwine2.png", desc: "you really don't want to touch it."},{ name: "Old Wine",src: "webwine.png", desc: "Its a good thing this wine looks so gross."},{name: "Wine", src: "wineshelves.png", desc: "You're not tempted by these."},{name: "Beer", src: "beer.png", desc: "Probably shouldn't."},{name: "Wine", src: "morewine.png", desc: "Best not to."},{ name: "Teapot",src: "teapot.png", desc: "Caffeine is bad for you."},{ src: "Addiction_Object.png", desc: "A difficult subject."}];
-    floor_foregrounds[LIGHT] = [{ name: "Lamppost",src: "lamppost.png", desc: "It spreads its light over a vast area. It makes you feel safe."},{name: "Lamp", src: "lamp.png", desc: "It's soothing and bright."},{ src: "Light_Object.png", desc: "How enlightening..."}];
-    floor_foregrounds[OCEAN] =  [{ name: "Hydration Station",src: "hydrationstation3.png", desc: "Such a tiny bucket of water compared to the vast ocean..."},{ name: "Hydration Station",src: "hydrationstation2.png", desc: "The water looks so cool and refreshing..."},{name: "Hydration Station", src: "hydration_station.png", desc: "The water looks refreshing, you almost didn't realize how thirsty you were."},{name: "Crate of Fish", src: "fishcrate.png", desc: "Fish freshly caught from the ocean."},{name: "Salt Pork Barrel", src: "barrel.png", desc: "Filled with salt pork for a long sea journey."},{ src: "Ocean_Object_2.png", desc: "Why is the Baltic Sea Anomaly an Ocean Object? Don't ask me..."},{name: "Fish", src: "Ocean_Object_1.png", desc: "The fish gasps for breath."}];
-    floor_foregrounds[LONELY] = [{name: "Lonely figure", src: "lonely_figure.png", desc: "Alone..." }];
+    floor_foregrounds[DECAY] = [{ name: "Hydration Station", src: "hydration_station.png", desc: "You go to take a sip of the water before realizing it's filled with maggots." }, { src: "Decay_Object.png", desc: "I wonder if they're poisonous?" }, { name: "Corpse Blossom", src: "corpse_blossom.png", desc: "It stinks of death and decay." }, { name: "Rotten Shelves", src: "webshelves.png", desc: "These shelves haven't been able to hold anything for a long time." }, { name: "Rotten Table", src: "webtable.png", desc: "What could be trapped in here, you wonder?" }, { name: "Rotten Table", src: "webtable2.png", desc: "You peer into its cracks but see nothing inside." }, { name: "Dead Bush", src: "deadbush.png", desc: "The bush is rotting." }, { name: "Dead Tree", src: "deadtree.png", desc: "What did this look like when it was alive, you wonder." }, { name: "Mushrooms", src: "decay_is_an_extant_form_of_life.png", desc: "In your heart you know decay is an extant form of life." }, { name: "Rotten Box", src: "decayedwebbox.png", desc: "This rotten box can't be used to hold anything anymore." }, { name: "Rotten Barrel", src: "decayingbarrel.png", desc: "The barrel stinks of fermentation and rot." }, { name: "Grave", src: "grave.png", desc: "You wonder who is buried and rotting here." }, { name: "Stinking Cot", src: "shittycot.png", desc: "The cot stinks of rot." }];
+    floor_foregrounds[BUGS] = [{ name: "Wasp Nest", src: "waspnest2.png", desc: "There is a wasp nest here." }, { name: "Bees", src: "bees4.png", desc: "The bees are buzzing and crawling and flying everwhere." }, { name: "Swarm", src: "bees.png", desc: "The Swarm is judging you." }, { name: "Swarm", src: "bees3.png", desc: "Incessent buzzing." }, { name: "Swarm", src: "bees2.png", desc: "You skin crawls just looking at these buzzing insects." }, { name: "Wasp Nest", src: "waspnest1.png", desc: "There is a wasp nest here. It is filled with holes." }, { name: "Wasp Nest", src: "waspnest3.png", desc: "If you let the inhabitants of this waspnest love you, you could be a nest, too." }, { name: "Honey", src: "ruined_honey.png", desc: "Someone has already raided this bee hive." }, { name: "Nest", src: "ruined_wasp_nest.png", desc: "Who destroyed this wasp nest?" }, { name: "Wasp Statue", src: "wasp.png", desc: "It seems to be a large statue of a wasp." }];
+    floor_foregrounds[LOVE] = [{ src: "Love_Object.png", desc: "Fragile Concept." }, { name: "Wine", src: "wine2.png", desc: "If only there was someone to share this with." }, { name: "Wine", src: "wine.png", desc: "Oh to be on a picnic with someone you love." }, { name: "Necklace", src: "necklace.png", desc: "Someone beautiful could wear this." }, { name: "Gift Box", src: "jwelerybox.png", desc: "A cherished gift." }, { name: "Flowers", src: "flowers.png", desc: "A gift for a significant other." }, { name: "Dress", src: "dress.png", desc: "Just looking at this pretty dress makes you wish you could remember going to dances." }, { name: "Angel Statue", src: "angelstatue.png", desc: "Love is war." }, { name: "Stuffed Bear", src: "bear.png", desc: "It feels soft and cuddly." },];
+    floor_foregrounds[STEALING] = [{ src: "Stealing_Object.png", desc: "[Right Click, Save Image]" }, { name: "Cooking Pot", src: "cookingpot.png", desc: "Reminds you of being on the run from the law." }, { name: "Treasure Chest", src: "fancychest.png", desc: "You wonder what kind of loot is in here." }, { name: "Gold Ingots", src: "goldingots.png", desc: "There is NO way you're going to be able to carry these out of here." }, { name: "Jewel Box", src: "jwelerybox.png", desc: "A tidy fortune in jewels." }, { name: "Necklace", src: "necklace.png", desc: "You wonder how much this would be worth on the blackmarket." }, { name: "Huge Gold Pile", src: "pileofgold1.png", desc: "You are practically drooling seeing so much gold." }, { name: "Pile of Gold", src: "pileofgold2.png", desc: "You want to bathe in this like Scrooge McDuck." }, { name: "Pile of Gold", src: "pileofgoldsmaller.png", desc: "What could you buy with this?" }, { name: "Small Gold Pile", src: "smallgoldpile.png", desc: "A modest fortune yours for the taking." }];
+    floor_foregrounds[LANGUAGE] = [{ name: "Tablet", src: "writingtablet.png", desc: "A forgotten language is perfectly translated here for you." }, { name: "Bookshelf", src: "smallbookshelf.png", desc: "It's all your favorite childhood books." }, { name: "Obelisk", src: "obelisk.png", desc: "It's a rosetta stone for every language reading out 'Zampanio is a really good game. You should play it.'" }, { name: "Books", src: "books.png", desc: "Language is used masterfully in these volumes of poetry." }, { name: "Books", src: "books.png", desc: "Somehow each book claims you are the author." }, { name: "Bookshelf", src: "bigbookshelf.png", desc: "All of the literary classics." }, { name: "Bookshelf", src: "bigbookshelf.png", desc: "Dozens upon dozens of books in every language." }];
+    floor_foregrounds[KNOWING] = [{ src: "Knowing_Object.png", desc: "I know something you don't." }, { src: "writingtablet.png", desc: "You need to know more." }, { src: "writingtablet.png", desc: "The thoughts currently in your head are perfectly etched here." }, { name: "Bookshelf", src: "smallbookshelf.png", desc: "The tomes list out the forgotten secrets of every civilization." }, { name: "Scrolls", src: "scrolls.png", desc: "Forbidden knowledge floods your mind and you can't Unknow it." }, { name: "Books", src: "books.png", desc: "Spoilers for all of fiction is somehow contained in these few volumes." }, { name: "Bookshelf", src: "books.png", desc: "The thoughts of everyone you've ever known are detailed here." }, { name: "Bookshelf", src: "bigbookshelf.png", desc: "Everything you would need to perfectly navigate this maze is listed here, if only you could remember it." }, { name: "Bookshelf", src: "bigbookshelf.png", desc: "The identity of the Eye Killer is here, long past the point where you could use it." }];
+    floor_foregrounds[ROYALTY] = [{ src: "Royal_Object.png", desc: "Long Live The... The... Is dead." }, { name: "Crown Jewels", src: "jwelerybox.png", desc: "Crown jewels." }, { name: "Huge Pile of Gold", src: "pileofgold2.png", desc: "The wealth of an Empire." }, { name: "Pile of Gold", src: "pileofgold1.png", desc: "The wealth of a kingdom." }, { name: "Fancy Bed", src: "princessbed.png", desc: "A bed fit for royalty." }, { name: "Gold Pile", src: "smallgoldpile.png", desc: "The taxes you are due." }, { name: "Throne", src: "throne.png", desc: "Your rightful place." }];
+    floor_foregrounds[SCIENCE] = [{ src: "Science_Object.png", name: "Huge Beaker", desc: "A beaker of perfectly generic fluid." }, { name: "Science Textbooks", src: "smallbookshelf.png", desc: "Textbooks organized by scientific discipline line these shelves." }, { name: "Science Equipment", src: "science.png", desc: "Oh, the discoveries you could make with enough patience and equipment." }, { name: "Lab", src: "morewine.png", desc: "You get the distinct urge to do science seeing this well stocked lab." }, { name: "Jars", src: "jars.png", desc: "Specimen jars." }]
+    floor_foregrounds[CRAFTING] = [{ src: "Crafting_Object.png", desc: "Just a little bit of tape..." }, { name: "Armor", src: "armor3.png", desc: "A master made this armor, you can tell." }, { name: "Armor", src: "armor2.png", desc: "You frown as you study the flaws of this piece of armor." }, { name: "Armor", src: "armor.png", desc: "You appreciate the craftsmanship here." }, { name: "hammer", src: "hammer.png", desc: "The heft of this hammer is just perfect for forging." }, { name: "Ingots", src: "metalingots.png", desc: "Fresh ingots ripe for being turned into more useful materials." }, { name: "Pickax", src: "pickax.png", desc: "You feel the strange urge to craft some mines." }, { name: "Shovel", src: "shovel.png", desc: "You just want to turn the soil with your hands and MAKE something with it." }, { name: "Ax", src: "stumpwithax.png", desc: "You feel a distinct urge to go chop some trees." }, { name: "Well", src: "well.png", desc: "Enough water to cool a thousand forges." }];
+    floor_foregrounds[BURIED] = [{ src: "Buried_Object.png", desc: "X Marks the Spot." }, { name: "Grave", src: "grave.png", desc: "You hear faint scratching from underneath." }, { name: "Grave", src: "grave.png", desc: "You could sleep under here forever buried." }, { name: "Pickax", src: "pickax.png", desc: "With this you could dig and dig and dig deep into the earth until no one could ever save you." }, { name: "Pit", src: "pit.png", desc: "The warm embrace of the earth awaits. Why must you cling so to the cold, unforgiving sky?" }, { name: "Hole", src: "pit2.png", desc: "Down and down it goes. You want to jump in." }, { name: "Inviting Well", src: "well.png", desc: "It goes so deep into the earth. You cannot see the bottom. The concept of a bottom is anathema to this well." }, { name: "Shovel", src: "shovel.png", desc: "DIG" }];
+    floor_foregrounds[ANGELS] = [{ src: "Angel_Object.png", desc: "Do you hear the tintinnabulation?" }, { name: "Holy Tablet", src: "writingtablet.png", desc: "The words of your gods are written here." }, { name: "Holy Obelisk", src: "obelisk.png", desc: "It lists out the praises of the gods." }, { name: "Jars of Holy Water", src: "jars.png", desc: "Jars of holy water." }, { name: "Holy Crystal", src: "iceglacier.png", desc: "It feels holy." }, { name: "Angel Statue", src: "angelstatue.png", desc: "The angels bless you." }];
+    floor_foregrounds[PLANTS] = [{ src: "Plants_Object2.png", desc: "What a terrible place to try and grow..." }, { src: "Plants_Object1.png", desc: "What a terrible place to try and grow..." }, { name: "Yellow Flowers", src: "yellowflowers.png", desc: "Weeds, but pretty ones." }, { name: "Wild Flowers", src: "wildflowers.png", desc: "These flowers grow with no human hand." }, { name: "Tall Potted Plant", src: "tallpottedplant.png", desc: "It seems healthy, though confined." }, { name: "Garden Shovel", src: "shovel.png", desc: "Did someone leave it here after planting something?" }, { name: "Pine Tree", src: "pinetree.png", desc: "You wonder how trees manage to grow inside this labyrinth." }, { name: "Gass", src: "grass.png", desc: "Surprisingly fertile soil produces this clump of grass." }, { name: "Flowers", src: "flowers.png", desc: "Beautiful flowers. Pointless flowers." }, { name: "Fern Creature", src: "fern.png", desc: "For an instant, you think this might be some sort of...creature. But no. Just a fern." }, { name: "Cactus", src: "cactus2.png", desc: "The most tsundere of plants." }, { name: "Cactus", src: "cactus.png", desc: "You don't think it can talk. You aren't sure why this disappoints you." }, { name: "Cabbages", src: "cabbages.png", desc: "These cabbages are well grown." }];
+    floor_foregrounds[WEB] = [{ name: "Piano", src: "webzampiano.png", desc: "Your body positions itself in front of it and begins playing a jaunty tune on it." }, { name: "Wine", src: "webwine2.png", desc: "Will you choose to give up control of your body?" }, { name: "Wine", src: "webwine.png", desc: "Spiders desperately scrabble for purchase at the surface of the liquid. Some have already drowned and sunk to the bottom of the bottle." }, { name: "Vanity", src: "webvanity.png", desc: "Your hands jerkily go through the motions of putting makeup on." }, { name: "Throne", src: "webthrone.png", desc: "Are even Ruler's immune from the pressures of society?" }, { name: "Table", src: "webtable3.png", desc: "Small bugs are trapped here." }, { name: "Table", src: "webtable2.png", desc: "You see shadows moving inside." }, { name: "Table", src: "webtable.png", desc: "What could this trap?" }, { name: "Sword", src: "websword2.png", desc: "You know for a fact if you picked this up it would control you." }, { name: "Sword", src: "websword1.png", desc: "Bad things will happen if you touch it." }, { name: "Sword", src: "webswords.png", desc: "Who laid them here so carefully together?" }, { name: "Shield", src: "webshield.png", desc: "You are frozen in the certainty that if you were to pick this up, threads would bind it forever to your body." }, { name: "Shelves", src: "webshelves.png", desc: "Society puppets you into keeping things maintained." }, { name: "Scrolls", src: "webscrolls.png", desc: "What is knowlege but a means to manipulate others?" }, { name: "Pot", src: "webpot.png", desc: "It's filled with spiders." }, { name: "Organ", src: "weborgan.png", desc: "It plays a haunting melody all on its own, as gossamer threads tug on the keys." }, { name: "Books", src: "webbooks.png", desc: "If you read all these books you will be dancing to the collector tune." }, { name: "Money", src: "webmoney.png", desc: "What is money but chains?" }, { name: "Jars", src: "webjars.png", desc: "Small spiders scuttle inside, endlessly trying to climb up the smooth glass then falling down." }, { name: "Jam", src: "webjam.png", desc: "Evolution has programmed you to prefer dense caloric options." }, { name: "Fortune", src: "webfortune.png", desc: "We are all bound by fate." }, { name: "Flower", src: "webflower.png", desc: "Gifts are classic ways to manipulate others." }, { name: "Eggs", src: "webeggs.png", desc: "You can see shadows moving inside the eggs. Occasionally they twitch." }, { name: "Dragon", src: "webdragon.png", desc: "Even the most powerful among us are powerless in the face of traps and manipulation." }, { name: "Books", src: "webbooks.png", desc: "What are words but a way to control others?" }, { name: "Huge Web", src: "webbing4.png", desc: "What could possibly make such a huge web?" }, { name: "Web", src: "webbing3.png", desc: "It looks like Mr. Spider is not home." }, { name: "Web", src: "webbing.png", desc: "Tiny spiders work tirelessly to spin more of this web." }, { name: "Barrel", src: "webbarrell.png", desc: "More laughs than a barrel of spiders." }, { name: "Scarecrow", src: "scarecrow2.png", desc: "Almost invisible threads jerk and tug it in a variety of directions. It seems to be in pain." }, { name: "Scarecrow", src: "scarecrow.png", desc: "Nearly invisible threads connect to each of its joints. It isn't moving, but you aren't sure it will stay that way." }];
+    floor_foregrounds[KILLING] = [{ name: "Knife", src: "knife.png", desc: "Knife goes in. Blood comes out. It's that simple." }, { name: "Violent Bed", src: "violentbed.png", desc: "A fight happened here." }, { name: "Swords", src: "webswords.png", desc: "There is clarity in killing. The why doesn't matter, only the how." }, { name: "Swords", src: "swords.png", desc: "You could kill a lot of people with these." }, { name: "Sword", src: "swordanvil.png", desc: "A weapon has only one purpose: killing." }, { name: "Ax", src: "stumpwithax.png", desc: "You feel the inexplicable urge to write 'All Work And No Play Makes Johnny A Dull Boy' over and over again." }, { name: "Pickax", src: "pickax.png", desc: "You could really do some damage to someone's skull with this." }, { name: "Chopping Block", src: "choppingblock.png", desc: "You almost wish you weren't alone in this maze, just so you could test this knife out." }, { name: "Knives", src: "boxoknives.png", desc: "You could really do some damage to someone with all these knives." }, { name: "Blood Fountain", src: "bloodfountain.png", desc: "You feel the inexplicable urge to bathe in this." }];
+    floor_foregrounds[FLESH] = [{ src: "Flesh_Object2.png", desc: "It pulsates gently." }, { src: "Flesh_Object.png", desc: "The beefy arm is waving at you in between flexing." }, { name: "Skeleton", src: "skeleton1.png", desc: "You think you could make a pretty decent bone broth from this." }, { name: "Skeleton", src: "skeleton2.png", desc: "In the end we are all just meat hanging off bones." }, { name: "Ham", src: "ham.png", desc: "Meat is meat." }, { name: "Cooked Turkey", src: "turkey.png", desc: "It smells delicious. It was alive once, as you are now. You'll smell delicious, too, one day." }, { name: "Meat Slabs", src: "meatslabs.png", desc: "Meat is me." }, { name: "Meat Grinder", src: "meatgrinder.png", desc: "You slowly feed your right arm into it and watch the ribbons of flesh pour out the other end." }, { name: "meat Chops", src: "meatchops.png", desc: "They are grown from your own cells, you can feel this in your bones." }, { name: "Meat Chops", src: "meatchops.png", desc: "This doesn't look quite like pork.  Somehow, that unsettles you." }, { name: "Fsh Crate", src: "fishcrate.png", desc: "Your flesh isn't fundamentally different than the flesh of these fish." }, { name: "Cooking Pot", src: "cookingpot.png", desc: "Something savory and meaty wafts out." }, { name: "Chopping Block", src: "choppingblock.png", desc: "It's incredible what a good quality butcher's knife can do to meat." }, { name: "Butchered Meat", src: "butcheredmeat.png", desc: "In the end we are nothing more than meat." }];
+    floor_foregrounds[APOCALYPSE] = [{ name: "Ruined House", src: "Apocalypse_Object.png", desc: "This doll house scale ruined building would be cute if it weren't for the smell emanating from it..." }, { name: "Fossil", src: "fossil1.png", desc: "As death is a natural and inevitable part of life, extinction is the natural fate of all worlds." }, { name: "Fossil", src: "fossil2.png", desc: "There are entire species consisting solely of the dead." }, { name: "Fossil", src: "fossil3.png", desc: "For ever species we know have vanished, how many thousands extinguished without a sound? " }, { name: "Fossil", src: "fossil4.png", desc: "As Death comes to all beings, Extinction comes to all species." }, { name: "Fossil", src: "fossil5.png", desc: "How impossibly lucky is this creature, for their bones to survive epochs?" }, { name: "Fossil", src: "fossil6.png", desc: "To fear Extinction is to fear inevitability." }, { name: "Fossil", src: "fossil7.png", desc: "What entire ecosystems lived and died before you took your first breath?" }, { name: "Dangerous Knowledge", src: "science.png", desc: "Just enough knowledge to destroy it all." }, { name: "Prideful Books", src: "webooks.png", desc: "How long will the works of man outlast us?" }];
+    floor_foregrounds[ENDINGS] = [{ name: "Stop Sign", src: "Endings_Object_2.png", desc: "Stop. Please." }, { src: "Ending_Object.png", desc: "The End" }, { name: "Grave", src: "grave.png", desc: "The End." }, { name: "Guide Post", src: "guidepost.png", desc: "All ways lead to dead ends." }, { name: "Lamp Post", src: "lamppost.png", desc: "Why are lampopsts so often signifiers of endings?" }, { name: "Skeleton", src: "skeleton1.png", desc: "There is a serenity in knowing how the story ends." }, { name: "Skeleton", src: "skeletons.png", desc: "Did they know their ends would be so similar?" }, { name: "Skull", src: "skull.png", desc: "The path differes, but the end is always the same." }, { name: "Skull", src: "skull3.png", desc: "We all end the same." }, { name: "Books", src: "webbooks.png", desc: "All the pages are torn out save the last." }, { name: "Books", src: "webooks.png", desc: "Every book within is blank, save the last page." }, { name: "Tablet", src: "writingtablet.png", desc: "It lists out the last thought you and everyone you ever met will ever have." }];
+    floor_foregrounds[DEATH] = [{ name: "Statue of Death", src: "Death_Object.png", desc: "This status of Death seems uninterested in your plight." }, { name: "Chess Set", src: "chessset.png", desc: "Do you dare cheat death?" }, { name: "Bone Pile", src: "bonepile.png", desc: "Death is the great equalizer." }, { name: "Grave", src: "grave.png", desc: "This is not your fate. But no one is beyond Death." }, { name: "Skeleton", src: "skeleton1.png", desc: "Meat is meat." }, { name: "Skeleton", src: "skeleton2.png", desc: "Memento mori." }, { name: "Skeletons", src: "skeletons.png", desc: "At least they died together." }, { name: "Skull", src: "skull.png", desc: "It was inevitable they would die." }, { name: "Skull", src: "skull3.png", desc: "Meat is meat." }, { name: "Deathbed", src: "violentbed.png", desc: "Most people die in beds." }, { name: "Hospital Bed", src: "hospitalbed.png", desc: "Someone died here." }, { name: "Grave", src: "grave.png", desc: "It simply says 'everyone' on it." }, { name: "Grave", src: "grave.png", desc: "It is yours." }, { name: "Grave", src: "grave.png", desc: "It's inscription is too worn with age to read." }, { name: "Grave", src: "grave.png", desc: "Somehow you know it has the name of your best friend." }, { name: "Grave", src: "grave.png", desc: "If you had a family, they would be listed here, you're sure of it." }, { name: "Grave", src: "grave.png", desc: "It has your name on it." }, { name: "Barrel", src: "decayingbarrel.png", desc: "Even the works of man eventually die." }, { name: "Dead Tree", src: "deadtree.png", desc: "You wonder what killed it before you remember it doesn't matter." }, { name: "Dead Bush", src: "deadbush.png", desc: "A reminder that death comes to us all." }, { name: "Corpse Blossom", src: "corpse_blossom.png", desc: "It reeks of death." }, { name: "Angel Statue", src: "angelstatue.png", desc: "In your bones you know no beautific afterlife awaits." }];
+    floor_foregrounds[CLOWNS] = [{ src: "jwelerybox.png", desc: "Clown jewels." }, { src: "Clown_Object.png", desc: "Honk honk! +u+" }, { src: "toybox.png", desc: "Laughter rings out anytime you touch this box." }, { src: "jackinaboxopen.png", desc: "Sourceless laughter peels out across the room as you jump in surprise when the jack springs out." }, { src: "jackinaboxclosed.png", desc: "It's hilarious how much anxiety the anticipation of a closed jack in the box causes." }, { src: "gift.png", desc: "When you go to open it it explodes into confetti." }, { src: "balloon5.png", desc: "A sign of life." }, { src: "balloon4.png", desc: "Surely someone must have filled these within the past day or two if they're still floating, right?" }, { src: "balloon3.png", desc: "You wonder how they float." }, { src: "balloon2.png", desc: "It feels like it might pop at any moment." }, { src: "balloon1.png", desc: "How whimsical." }];
+    floor_foregrounds[DOLLS] = [{ name: "Doll", src: "Dolls_Object.png", desc: "This Doll Recites:" }, { name: "JR Doll", src: "jr_doll.png", desc: "There's something cathartic in having power over old JR." }, { name: "Train", src: "toytrain.png", desc: "Choo choo! Jaimie would be proud." }, { name: "Toy Soldier", src: "toysoldiersmall.png", desc: "It's okay. You'll be his friend." }, { name: "Wax Soldier", src: "toysoldierlarge.png", desc: "He seems to be made of wax. His eyes are wrong, though." }, { name: "Toys", src: "toyshelves.png", desc: "So many toys, it almost makes you wish you could be nostalgic." }, { name: "Toy Regiment", src: "toyregiment.png", desc: "Each time you look away they are a single step closer." }, { name: "Drummer Boy", src: "toydummerboy.png", desc: "Any time you look away you hear a single beat of his drum." }, { name: "Toy Box", src: "toybox.png", desc: "All sorts of fun to be had in here." }, { name: "Toy Army", src: "toyarmy.png", desc: "Oh." }, { name: "Teapot", src: "teapot.png", desc: "If only you had some toys, you could host a little teaparty." }, { name: "Dollhouse", src: "teachustheinsides.png", desc: "Screams are coming from inside." }, { name: "Snowman", src: "snowman.png", desc: "You know its heart yearns to look more human. What would it have to steal to get there." }, { name: "Scarecrow", src: "scarecrow2.png", desc: "It waits." }, { name: "Scarecrow", src: "scarecrow.png", desc: "You're suddenly certain it is just choosing not to move." }, { name: "Pretty Bed", src: "princessbed.png", desc: "And adorable bed you just want to cover with stuffed animals and dolls." }, { name: "Jack In A Box", src: "jackinaboxopen.png", desc: "You feel something touching your leg, but when you look down i's just this Jack In a Box." }, { name: "Jack In A Box", src: "jackinaboxclosed.png", desc: "You hear something moving inside." }, { name: "Hobby Horse", src: "hobbyhorse.png", desc: "Its eyes seem alive, and in pain." }, { name: "Gumball Machine", src: "gumballmachine.png", desc: "Delicious sweets." }, { name: "Dress", src: "dress.png", desc: "A dress in need of a doll." }, { name: "Dollhouse", src: "dollhouse.png", desc: "The dolls inside are all missing." }, { name: "Doll", src: "doll.png", desc: "Someone must miss her terribly." }, { name: "Doll", src: "doll.png", desc: "Scrawled on her face is 'will you be my mother?'" }, { name: "Doll", src: "doll.png", desc: "She is watching you." }, { name: "Chess", src: "chessset.png", desc: "It looks like a fun game." }, { name: "Stuffed Bear", src: "bear.png", desc: "Every time you look away it seems to be in a different pose." }, { name: "Balloon", src: "balloon1.png", desc: "There's little people inside, waving at you." }, { name: "Balloon", src: "armor.png", desc: "Did it just move when you weren't looking?" }, { name: "Balloon", src: "angelstatue.png", desc: "Her eyes seem to watch you." }];
+    floor_foregrounds[TWISTING] = [{ src: "zampanio_flowerkid_by_hex2.png", desc: "How do sprite sheets work???" }, { src: "Twisting_Object.png", desc: "Hee Hee Hee Hee Hee" }, { name: "JR's Lobstersona", src: "jr_lobstersona.png", desc: "This is not JR." }, { name: "JR's Slugcatsona", src: "jr_slug.png", desc: "This is not JR." }, { name: "Not Reynolds Wrap", src: "aluminum.png", desc: "This is not JR." }, { name: "Not jadedResearcher", src: "JadedResearcher.png", desc: "This is not JR." }, { name: "Not JR Doll", src: "jr_doll.png", desc: "This is not JR." }];
+    floor_foregrounds[TECHNOLOGY] = [{ name: "Laundry Machine", src: "laundry.png", desc: "Modern technology sure is convinient!" }, { name: "Laptop", src: "laptop.png", desc: "The battery seems to be completely dead." }, { name: "Printer", src: "printer.png", desc: "You feel the irrational urge to destroy this flawless piece of technology." }];
+    floor_foregrounds[SERVICE] = [{ name: "Hydration Station", src: "hydration_station.png", desc: "You wonder if anyone around here is thirsty..." }, { name: "Cooking Pot", src: "cookingpot.png", desc: "Is it time for you to cook dinner?" }, { name: "Plates", src: "plates.png", desc: "Are you supposed to clean these dishes?" }, { name: "Laundry Machine", src: "laundry.png", desc: "You can't remember the last time you've done laundry." }, { src: "Service_Object.png", desc: "Ring Bell For Service." }];
+    floor_foregrounds[ADDICTION] = [{ name: "Old Wine", src: "webwine2.png", desc: "you really don't want to touch it." }, { name: "Old Wine", src: "webwine.png", desc: "Its a good thing this wine looks so gross." }, { name: "Wine", src: "wineshelves.png", desc: "You're not tempted by these." }, { name: "Beer", src: "beer.png", desc: "Probably shouldn't." }, { name: "Wine", src: "morewine.png", desc: "Best not to." }, { name: "Teapot", src: "teapot.png", desc: "Caffeine is bad for you." }, { src: "Addiction_Object.png", desc: "A difficult subject." }];
+    floor_foregrounds[LIGHT] = [{ name: "Lamppost", src: "lamppost.png", desc: "It spreads its light over a vast area. It makes you feel safe." }, { name: "Lamp", src: "lamp.png", desc: "It's soothing and bright." }, { src: "Light_Object.png", desc: "How enlightening..." }];
+    floor_foregrounds[OCEAN] = [{ name: "Hydration Station", src: "hydrationstation3.png", desc: "Such a tiny bucket of water compared to the vast ocean..." }, { name: "Hydration Station", src: "hydrationstation2.png", desc: "The water looks so cool and refreshing..." }, { name: "Hydration Station", src: "hydration_station.png", desc: "The water looks refreshing, you almost didn't realize how thirsty you were." }, { name: "Crate of Fish", src: "fishcrate.png", desc: "Fish freshly caught from the ocean." }, { name: "Salt Pork Barrel", src: "barrel.png", desc: "Filled with salt pork for a long sea journey." }, { src: "Ocean_Object_2.png", desc: "Why is the Baltic Sea Anomaly an Ocean Object? Don't ask me..." }, { name: "Fish", src: "Ocean_Object_1.png", desc: "The fish gasps for breath." }];
+    floor_foregrounds[LONELY] = [{ name: "Lonely figure", src: "lonely_figure.png", desc: "Alone..." }];
 
     //JR NOTE: from here down are just ghoul objects, need to go back and add things from sprite sheets as well
-    floor_foregrounds[FREEDOM] =  [{ src: "Freedom_Object.png", desc: "Have you seen the freedom object? It seems to have gotten out..." }];
-    floor_foregrounds[FIRE] =  [{ src: "Fire_Object.png", desc: "Hmm Interesting..."}];
-    floor_foregrounds[OCEAN] =  [{ src: "Ocean_Object_2.png", desc: "Why is the Baltic Sea Anomaly an Ocean Object? Don't ask me..."},{ src: "Ocean_Object_1.png", desc: "The fish gasps for breath."}];
-    floor_foregrounds[MATH] =  [{ src: "Math_Object.png", desc: "Don't you hate it when the beads break? Makes math so much harder." }];
-    floor_foregrounds[FAMILY] = [{ src: "Family_Object.png", desc: "Family Tree Pruned."}];
-    floor_foregrounds[MAGIC] = [{ src: "Magic_Object.png", desc: "Look Inward."}];
-    floor_foregrounds[CHOICES] = [{ src: "Choice_Object.png", desc: "Signs like this tend to be more useful when labeled..."}];
-    floor_foregrounds[ZAP] = [{ src: "zap_object.png", desc: "zap pow kaboom", name:"Zap Object"}];
-    floor_foregrounds[SOUL] = [{ src: "Spirit_Object2.png", desc: "TEAM SPIRIT LETS GO!"},{ src: "Spirit_Object.png", desc: "The wandering dead..."}] ;
-    floor_foregrounds[ANGER] = [{ src: "Anger_Object.png", desc: "Seems to have been pushed into the floor pretty hard..."}];
-    floor_foregrounds[GUIDING] = [{ src: "Guiding_Object.png", desc: "Do you ever wish somebody else would point the way for you?"}];
-    floor_foregrounds[HEALING] = [{ src: "Healing_Object.png", desc: "It's important to know what your innards are doing."}];
-    floor_foregrounds[SPYING] = [{ src: "eye13.png", desc: "IT LOOKS."},{ src: "eye12.png", desc: "IT TREMBLES."},{ src: "eye11.png", desc: "IT GAZES."},{ src: "eye10.png", desc: "IT FOCUSES."},{ src: "eye9.png", desc: "IT WAITS."},{ src: "eye8.png", desc: "IT WATCHES."},{ src: "eye7.png", desc: "IT GLISTENS."},{ src: "eye6.png", desc: "IT SEES."},{ src: "eye5.png", desc: "IT CANNOT BLINK."},{ src: "eye4.png", desc: "IT CRIES."},{ src: "eye3.png", desc: "IT SEES."},{ src: "eye2.png", desc: "IT STARES."},{ src: "eye1.png", desc: "IT WEEPS."}];
+    floor_foregrounds[FREEDOM] = [{ src: "Freedom_Object.png", desc: "Have you seen the freedom object? It seems to have gotten out..." }];
+    floor_foregrounds[FIRE] = [{ src: "Fire_Object.png", desc: "Hmm Interesting..." }];
+    floor_foregrounds[OCEAN] = [{ src: "Ocean_Object_2.png", desc: "Why is the Baltic Sea Anomaly an Ocean Object? Don't ask me..." }, { src: "Ocean_Object_1.png", desc: "The fish gasps for breath." }];
+    floor_foregrounds[MATH] = [{ src: "Math_Object.png", desc: "Don't you hate it when the beads break? Makes math so much harder." }];
+    floor_foregrounds[FAMILY] = [{ src: "Family_Object.png", desc: "Family Tree Pruned." }];
+    floor_foregrounds[MAGIC] = [{ src: "Magic_Object.png", desc: "Look Inward." }];
+    floor_foregrounds[CHOICES] = [{ src: "Choice_Object.png", desc: "Signs like this tend to be more useful when labeled..." }];
+    floor_foregrounds[ZAP] = [{ src: "zap_object.png", desc: "zap pow kaboom", name: "Zap Object" }];
+    floor_foregrounds[SOUL] = [{ src: "Spirit_Object2.png", desc: "TEAM SPIRIT LETS GO!" }, { src: "Spirit_Object.png", desc: "The wandering dead..." }];
+    floor_foregrounds[ANGER] = [{ src: "Anger_Object.png", desc: "Seems to have been pushed into the floor pretty hard..." }];
+    floor_foregrounds[GUIDING] = [{ src: "Guiding_Object.png", desc: "Do you ever wish somebody else would point the way for you?" }];
+    floor_foregrounds[HEALING] = [{ src: "Healing_Object.png", desc: "It's important to know what your innards are doing." }];
+    floor_foregrounds[SPYING] = [{ src: "eye13.png", desc: "IT LOOKS." }, { src: "eye12.png", desc: "IT TREMBLES." }, { src: "eye11.png", desc: "IT GAZES." }, { src: "eye10.png", desc: "IT FOCUSES." }, { src: "eye9.png", desc: "IT WAITS." }, { src: "eye8.png", desc: "IT WATCHES." }, { src: "eye7.png", desc: "IT GLISTENS." }, { src: "eye6.png", desc: "IT SEES." }, { src: "eye5.png", desc: "IT CANNOT BLINK." }, { src: "eye4.png", desc: "IT CRIES." }, { src: "eye3.png", desc: "IT SEES." }, { src: "eye2.png", desc: "IT STARES." }, { src: "eye1.png", desc: "IT WEEPS." }];
     //note to future jr doing two at once is p sustainable
     /*
     floor_foregrounds[MATH] =  ["blackboard.png"];
@@ -1181,10 +1181,10 @@ const initObjects = () => {
 
 
 
-    //complete:TIME, SPACE, ART, TECHNOLOGY, angels, hunting, service, family, knowing, endings, language, defense, waste, apocalypse
+//complete:TIME, SPACE, ART, TECHNOLOGY, angels, hunting, service, family, knowing, endings, language, defense, waste, apocalypse
 
-    // const keys = [NULL, FLESH, BURIED, STEALING, FREEDOM, FIRE,LONELY, OCEAN,SCIENCE,MATH,TWISTING,DEATH,APOCALYPSE, WASTE,SERVICE,FAMILY,MAGIC,ANGELS, LIGHT,HUNTING,CLOWNS,PLANTS,DECAY,CHOICES,ZAP,LOVE,SOUL,ANGER,WEB,ROYALTY,ENDINGS,KNOWING,GUIDING,CRAFTING,ADDICTION,SPYING,HEALING,DOLLS,OBFUSCATION,DARKNESS,KILLING,MUSIC,DEFENSE,QUESTING,BUGS,LANGUAGE];
-    /*   memories[ANGELS] =  [
+// const keys = [NULL, FLESH, BURIED, STEALING, FREEDOM, FIRE,LONELY, OCEAN,SCIENCE,MATH,TWISTING,DEATH,APOCALYPSE, WASTE,SERVICE,FAMILY,MAGIC,ANGELS, LIGHT,HUNTING,CLOWNS,PLANTS,DECAY,CHOICES,ZAP,LOVE,SOUL,ANGER,WEB,ROYALTY,ENDINGS,KNOWING,GUIDING,CRAFTING,ADDICTION,SPYING,HEALING,DOLLS,OBFUSCATION,DARKNESS,KILLING,MUSIC,DEFENSE,QUESTING,BUGS,LANGUAGE];
+/*   memories[ANGELS] =  [
 new Memory("question","yes response","no response","yes comment","no comment")
 ,new Memory("question","yes response","no response","yes comment","no comment")
 ,new Memory("question","yes response","no response","yes comment","no comment")
@@ -1246,7 +1246,7 @@ const createOpinion = (baseline = 0, specificOpinions) => {
         DEFENSE: baseline,
         QUESTING: baseline
     };
-    for(let key of Object.keys(specificOpinions)){
+    for (let key of Object.keys(specificOpinions)) {
         ret[key] = specificOpinions[key];
     }
 
@@ -1259,75 +1259,75 @@ const createOpinion = (baseline = 0, specificOpinions) => {
 //procedural opinions are v useful
 const initThemeOpinions = () => {
     //free press plz (spying is the most pure incarnation of quotidians so i went with their morals)
-    theme_opinions[SPYING] = createOpinion(113, { WEB: -113, APOCALYPSE:-113, TWISTING: -113});
+    theme_opinions[SPYING] = createOpinion(113, { WEB: -113, APOCALYPSE: -113, TWISTING: -113 });
     //things are alright, i guess
-    theme_opinions[LONELY] = createOpinion(0, {LONELY: 20,LOVE: -113, SERVICE: -113, FAMILY: -113, FREEDOM:20, SPACE: 20, OCEAN:20 });
+    theme_opinions[LONELY] = createOpinion(0, { LONELY: 20, LOVE: -113, SERVICE: -113, FAMILY: -113, FREEDOM: 20, SPACE: 20, OCEAN: 20 });
     //all is art
-    theme_opinions[ART] = createOpinion(55, { });
+    theme_opinions[ART] = createOpinion(55, {});
     //technology and science have some pretty strong opinions on a narrow range of topics
-    theme_opinions[TECHNOLOGY] = createOpinion(0, {CRAFTING: 113,TECHNOLOGY: 113,SPACE: 113,TIME:113,SCIENCE:113,ZAP:113,FLESH:-113});
-    theme_opinions[SCIENCE] = createOpinion(0, {QUESTING: 55,BUGS: 113,OBFUSCATION: -113,KNOWING: 113,PLANTS: 113,MAGIC: -113,MATH: 113,TECHNOLOGY: 113,SPACE: 113,TIME:113,SCIENCE:113,ZAP:113 });
+    theme_opinions[TECHNOLOGY] = createOpinion(0, { CRAFTING: 113, TECHNOLOGY: 113, SPACE: 113, TIME: 113, SCIENCE: 113, ZAP: 113, FLESH: -113 });
+    theme_opinions[SCIENCE] = createOpinion(0, { QUESTING: 55, BUGS: 113, OBFUSCATION: -113, KNOWING: 113, PLANTS: 113, MAGIC: -113, MATH: 113, TECHNOLOGY: 113, SPACE: 113, TIME: 113, SCIENCE: 113, ZAP: 113 });
     //nothing really matters much to the vastness of space
-    theme_opinions[SPACE] = createOpinion(0, {BURIED: -1,DARKNESS: 1,SPACE: 1,LONELY:1 });
-    theme_opinions[TIME] = createOpinion(0, {TIME: 50,ENDINGS: 10, DECAY: 10,FREEDOM: -50,MATH: 10,APOCALYPSE:10,FAMILY: 10 });
-    theme_opinions[STEALING] = createOpinion(-10, {ART: 50,SPYING: -113,ROYALTY: 50,STEALING: 113,FREEDOM:10,HUNTING:-30 });
-    theme_opinions[FREEDOM] = createOpinion(0, {BURIED: -113, QUESTING: -30, ADDICTION: -113, GUIDING: -50, ROYALTY: -85, WEB: -113, LOVE: -50,CHOICES: 113, HUNTING: -50, FAMILY: -113, SERVICE: -113, ANGELS: 33, TWISTING:10, ART: 50, FREEDOM: 113,SPACE: 100 });
+    theme_opinions[SPACE] = createOpinion(0, { BURIED: -1, DARKNESS: 1, SPACE: 1, LONELY: 1 });
+    theme_opinions[TIME] = createOpinion(0, { TIME: 50, ENDINGS: 10, DECAY: 10, FREEDOM: -50, MATH: 10, APOCALYPSE: 10, FAMILY: 10 });
+    theme_opinions[STEALING] = createOpinion(-10, { ART: 50, SPYING: -113, ROYALTY: 50, STEALING: 113, FREEDOM: 10, HUNTING: -30 });
+    theme_opinions[FREEDOM] = createOpinion(0, { BURIED: -113, QUESTING: -30, ADDICTION: -113, GUIDING: -50, ROYALTY: -85, WEB: -113, LOVE: -50, CHOICES: 113, HUNTING: -50, FAMILY: -113, SERVICE: -113, ANGELS: 33, TWISTING: 10, ART: 50, FREEDOM: 113, SPACE: 100 });
     //everything should be fire when you get right down to it
-    theme_opinions[FIRE] = createOpinion(-1000, {KILLING: 20, APOCALYPSE: 10,DEATH: 10,DECAY: 10, ENDINGS: 20, FIRE: 1000, });
-    theme_opinions[OCEAN] = createOpinion(10, {TECHNOLOGY: -113,LONELY: 113, DARKNESS: 113,TIME: 30, SPACE: 30, SOUL: 30,OCEAN: 113, MAGIC: 30, PLANTS: 30 });
-    theme_opinions[FLESH] = createOpinion(0, {FLESH: 113,KILLING: 13, SOUL: -113, ZAP: -13, DECAY: -13, DEATH: -50, TECHNOLOGY: -113, SCIENCE: -113, FIRE: -113, TWISTING: 13 });
-    theme_opinions[BURIED] = createOpinion(0, {BURIED: 113, DARKNESS: 50, ADDICTION: 50, ENDINGS: 10, WEB: 50, PLANTS: 10,DEATH: 50, SPYING: -50, SPACE: -50, FREEDOM: -50 });
+    theme_opinions[FIRE] = createOpinion(-1000, { KILLING: 20, APOCALYPSE: 10, DEATH: 10, DECAY: 10, ENDINGS: 20, FIRE: 1000, });
+    theme_opinions[OCEAN] = createOpinion(10, { TECHNOLOGY: -113, LONELY: 113, DARKNESS: 113, TIME: 30, SPACE: 30, SOUL: 30, OCEAN: 113, MAGIC: 30, PLANTS: 30 });
+    theme_opinions[FLESH] = createOpinion(0, { FLESH: 113, KILLING: 13, SOUL: -113, ZAP: -13, DECAY: -13, DEATH: -50, TECHNOLOGY: -113, SCIENCE: -113, FIRE: -113, TWISTING: 13 });
+    theme_opinions[BURIED] = createOpinion(0, { BURIED: 113, DARKNESS: 50, ADDICTION: 50, ENDINGS: 10, WEB: 50, PLANTS: 10, DEATH: 50, SPYING: -50, SPACE: -50, FREEDOM: -50 });
     //now we know why faq writer is such a positive person
-    theme_opinions[MATH] = createOpinion(85, {MUSIC: 113,OBFUSCATION: 13,KNOWING: 113, WEB: 100, SOUL: -13, MAGIC: -13, TWISTING: 113, TIME: 113, SPACE: 113, SCIENCE: 113, TECHNOLOGY: 113, MATH: 113 });
+    theme_opinions[MATH] = createOpinion(85, { MUSIC: 113, OBFUSCATION: 13, KNOWING: 113, WEB: 100, SOUL: -13, MAGIC: -13, TWISTING: 113, TIME: 113, SPACE: 113, SCIENCE: 113, TECHNOLOGY: 113, MATH: 113 });
     //:) :) :) Everything would be in its blind volumes. ... Everything: but for every sensible line or accurate fact there would be millions of meaningless cacophonies, verbal farragoes, and babblings.
-    theme_opinions[TWISTING] = createOpinion(1000, { });
-    theme_opinions[KNOWING] = createOpinion(113, {TWISTING: -113, OBFUSCATION: -113, DARKNESS: -113 });
+    theme_opinions[TWISTING] = createOpinion(1000, {});
+    theme_opinions[KNOWING] = createOpinion(113, { TWISTING: -113, OBFUSCATION: -113, DARKNESS: -113 });
     //nothing matters in the face of inevitability
-    theme_opinions[DEATH] = createOpinion(0, { });
+    theme_opinions[DEATH] = createOpinion(0, {});
     //definitely a fan of things humans can use to just fuck their shit right up
-    theme_opinions[APOCALYPSE] = createOpinion(0, {APOCALYPSE:113,TECHNOLOGY:113,SCIENCE:113,ENDINGS:113 });
-    theme_opinions[ANGELS] = createOpinion(-10, {HEALING: 113,LOVE: 20, STEALING: -50, QUESTING: 113,MUSIC: 55,SOUL: 113,FAMILY: 55,ANGELS: 113,SERVICE: 113,LIGHT: 55,APOCALYPSE:-113,LONELY: -55,FREEDOM:-55,FLESH:-55,GUIDING: 55 });
-    theme_opinions[LIGHT] = createOpinion(10, {QUESTING: 20,DARKNESS: -113,OBFUSCATION: -55,SOUL: 45,ZAP: 75,HEALING: 20,MAGIC: 55,BURIED: -50, SCIENCE: 55,TECHNOLOGY: 55, ART: 30,FIRE: 20 });
-    theme_opinions[SERVICE] = createOpinion(0, {DEFENSE: 113, QUESTING: 113, GUIDING: 113, ROYALTY: 113,WEB: 85,LOVE: 20, CHOICES: -30, PLANTS: 85, HEALING: 113,FAMILY: 113, SERVICE: 113,APOCALYPSE: -30,TWISTING: -85, FREEDOM: -113, STEALING: -20, LONELY: -20,SPYING: 20 });
-    theme_opinions[FAMILY] = createOpinion(10, {DEFENSE: 113,DOLLS: 55,SOUL: 55,LOVE: 113,LONELY:-113,FREEDOM: -113,FLESH: 113,DEATH:-113,SERVICE: 113 });
-    theme_opinions[MAGIC] = createOpinion(0, {QUESTING: 55,DARKNESS: 113,LANGUAGE: 55,SOUL: 55,ZAP: 113,PLANTS: 113,HEALING: 113,LIGHT: 113,KNOWING: 55,TWISTING: 55,BURIED: 113,OCEAN: 113, FIRE: 113,SPYING: 55,MAGIC: 113 });
-    theme_opinions[HEALING] = createOpinion(0, {QUESTING: -55,DEFENSE: 55,KILLING: -113,ENDINGS: -113,DECAY: -113,HUNTING: -55,MAGIC: 113,SERVICE:55,ANGELS: 113,HEALING: 113,LONELY:-55,TECHNOLOGY:113,SCIENCE: 113,FLESH:113,KNOWING:55,DEATH:-113, APOCALYPSE:-113 });
-    theme_opinions[PLANTS] = createOpinion(0, {BUGS: -113,APOCALYSE: -113,TWISTING: -113,PLANTS:113,LONELY:55, TECHNOLOGY:-113,SCIENCE:-55,FREEDOM: 113,FIRE:-113 });
-    theme_opinions[HUNTING] = createOpinion(0, {GUIDING: -55,QUESTING: 55,DARKNESS: 55, KILLING: 113,HUNTING: 113,SPYING:113,LONELY:55,FLESH: 113, DEATH: 113});
+    theme_opinions[APOCALYPSE] = createOpinion(0, { APOCALYPSE: 113, TECHNOLOGY: 113, SCIENCE: 113, ENDINGS: 113 });
+    theme_opinions[ANGELS] = createOpinion(-10, { HEALING: 113, LOVE: 20, STEALING: -50, QUESTING: 113, MUSIC: 55, SOUL: 113, FAMILY: 55, ANGELS: 113, SERVICE: 113, LIGHT: 55, APOCALYPSE: -113, LONELY: -55, FREEDOM: -55, FLESH: -55, GUIDING: 55 });
+    theme_opinions[LIGHT] = createOpinion(10, { QUESTING: 20, DARKNESS: -113, OBFUSCATION: -55, SOUL: 45, ZAP: 75, HEALING: 20, MAGIC: 55, BURIED: -50, SCIENCE: 55, TECHNOLOGY: 55, ART: 30, FIRE: 20 });
+    theme_opinions[SERVICE] = createOpinion(0, { DEFENSE: 113, QUESTING: 113, GUIDING: 113, ROYALTY: 113, WEB: 85, LOVE: 20, CHOICES: -30, PLANTS: 85, HEALING: 113, FAMILY: 113, SERVICE: 113, APOCALYPSE: -30, TWISTING: -85, FREEDOM: -113, STEALING: -20, LONELY: -20, SPYING: 20 });
+    theme_opinions[FAMILY] = createOpinion(10, { DEFENSE: 113, DOLLS: 55, SOUL: 55, LOVE: 113, LONELY: -113, FREEDOM: -113, FLESH: 113, DEATH: -113, SERVICE: 113 });
+    theme_opinions[MAGIC] = createOpinion(0, { QUESTING: 55, DARKNESS: 113, LANGUAGE: 55, SOUL: 55, ZAP: 113, PLANTS: 113, HEALING: 113, LIGHT: 113, KNOWING: 55, TWISTING: 55, BURIED: 113, OCEAN: 113, FIRE: 113, SPYING: 55, MAGIC: 113 });
+    theme_opinions[HEALING] = createOpinion(0, { QUESTING: -55, DEFENSE: 55, KILLING: -113, ENDINGS: -113, DECAY: -113, HUNTING: -55, MAGIC: 113, SERVICE: 55, ANGELS: 113, HEALING: 113, LONELY: -55, TECHNOLOGY: 113, SCIENCE: 113, FLESH: 113, KNOWING: 55, DEATH: -113, APOCALYPSE: -113 });
+    theme_opinions[PLANTS] = createOpinion(0, { BUGS: -113, APOCALYSE: -113, TWISTING: -113, PLANTS: 113, LONELY: 55, TECHNOLOGY: -113, SCIENCE: -55, FREEDOM: 113, FIRE: -113 });
+    theme_opinions[HUNTING] = createOpinion(0, { GUIDING: -55, QUESTING: 55, DARKNESS: 55, KILLING: 113, HUNTING: 113, SPYING: 113, LONELY: 55, FLESH: 113, DEATH: 113 });
     //all should rot away and we should be one together. doesnt enjoy being killed with fire
-    theme_opinions[DECAY] = createOpinion(-55, {DECAY: 113,ADDICTION:55,BUGS: 55,LONELY: -113,FIRE: -113,DEATH: 55, ANGELS: -113,HEALING:-113});
+    theme_opinions[DECAY] = createOpinion(-55, { DECAY: 113, ADDICTION: 55, BUGS: 55, LONELY: -113, FIRE: -113, DEATH: 55, ANGELS: -113, HEALING: -113 });
     //exactly neutral on the web. on the one hand, web can choose for you. on the other, web can let you choose for others. same for freedom
-    theme_opinions[CHOICES] = createOpinion(55, {OBFUSCATION: -55,ADDICTION: -113,WEB:0,CHOICES: 113,FREEDOM: 0,BURIED: -113,TWISTING:-113,KNOWING:113});
+    theme_opinions[CHOICES] = createOpinion(55, { OBFUSCATION: -55, ADDICTION: -113, WEB: 0, CHOICES: 113, FREEDOM: 0, BURIED: -113, TWISTING: -113, KNOWING: 113 });
     //zap!
-    theme_opinions[ZAP] = createOpinion(-113, {ZAP: 1000});
-    theme_opinions[LOVE] = createOpinion(85, {ENDINGS: -55,DECAY: -113,LONELY:-113, DEATH: -113,APOCALYPSE:-113,ANGELS: 113,SERVICE:113,FAMILY:113,HEALING:113 });
+    theme_opinions[ZAP] = createOpinion(-113, { ZAP: 1000 });
+    theme_opinions[LOVE] = createOpinion(85, { ENDINGS: -55, DECAY: -113, LONELY: -113, DEATH: -113, APOCALYPSE: -113, ANGELS: 113, SERVICE: 113, FAMILY: 113, HEALING: 113 });
     //what is anything but a calm lake reflecting the self?
-    theme_opinions[SOUL] = createOpinion(0, {SOUL: 113});
-    theme_opinions[ANGER] = createOpinion(-113, {KILLING: 0, ANGER: 13,MUSIC: 8});
-    theme_opinions[WEB] = createOpinion(13, {QUESTING: 55,ADDICTION:113,GUIDING: 113,WEB: 113,SPYING: 55, TECHNOLOGY:55,FREEDOM:-55, FAMILY:55});
+    theme_opinions[SOUL] = createOpinion(0, { SOUL: 113 });
+    theme_opinions[ANGER] = createOpinion(-113, { KILLING: 0, ANGER: 13, MUSIC: 8 });
+    theme_opinions[WEB] = createOpinion(13, { QUESTING: 55, ADDICTION: 113, GUIDING: 113, WEB: 113, SPYING: 55, TECHNOLOGY: 55, FREEDOM: -55, FAMILY: 55 });
     //there really is a window into my soul for you all to peer into just based on what opinions i think themes have
-    theme_opinions[ROYALTY] = createOpinion(-13, {FAMILY: 55,SERVICE:113,APOCALYPSE: -55,FREEDOM: -55,STEALING:-113});
+    theme_opinions[ROYALTY] = createOpinion(-13, { FAMILY: 55, SERVICE: 113, APOCALYPSE: -55, FREEDOM: -55, STEALING: -113 });
     //all should end, much less patient thatn death
-    theme_opinions[ENDINGS] = createOpinion(-55, {KILLING: 113,DEATH: 113,HEALING:-113,APOCALYPSE: 113});
-    theme_opinions[GUIDING] = createOpinion(30, {QUESTING: 55,LANGUAGE: 55,HUNTING: -55,FAMILY: 55,SERVICE: 55,ANGELS: 55,KNOWING: 55,BURIED: 55,OCEAN: 113,FREEDOM: -55,SCIENCE: 55,LONELY: -55,GUIDING: 55});
-    theme_opinions[CRAFTING] = createOpinion(0, {QUEST: 33,ZAP: 55,FIRE: 55,STEALING: -55,TECHNOLOGY: 113,ART: 113,CRAFTING: 113});
+    theme_opinions[ENDINGS] = createOpinion(-55, { KILLING: 113, DEATH: 113, HEALING: -113, APOCALYPSE: 113 });
+    theme_opinions[GUIDING] = createOpinion(30, { QUESTING: 55, LANGUAGE: 55, HUNTING: -55, FAMILY: 55, SERVICE: 55, ANGELS: 55, KNOWING: 55, BURIED: 55, OCEAN: 113, FREEDOM: -55, SCIENCE: 55, LONELY: -55, GUIDING: 55 });
+    theme_opinions[CRAFTING] = createOpinion(0, { QUEST: 33, ZAP: 55, FIRE: 55, STEALING: -55, TECHNOLOGY: 113, ART: 113, CRAFTING: 113 });
     //say no to book worms and censorship
-    theme_opinions[LANGUAGE] = createOpinion(13, {MUSIC: 85,OBFUSCATION: -113,BUGS: -113,ART: 85,TECHNOLOGY: 55, SCIENCE:55, KNOWING:113,WEB:33});
-    theme_opinions[BUGS] = createOpinion(10, {WEB:-113,DECAY:113,PLANTS:113,FAMILY:113,BURIED:113,FLESH:113,ZAP:-113,FIRE: -113,LONELY: -113,STEALING:113});
+    theme_opinions[LANGUAGE] = createOpinion(13, { MUSIC: 85, OBFUSCATION: -113, BUGS: -113, ART: 85, TECHNOLOGY: 55, SCIENCE: 55, KNOWING: 113, WEB: 33 });
+    theme_opinions[BUGS] = createOpinion(10, { WEB: -113, DECAY: 113, PLANTS: 113, FAMILY: 113, BURIED: 113, FLESH: 113, ZAP: -113, FIRE: -113, LONELY: -113, STEALING: 113 });
     //there is only room for one thing, not exactly healthy now is it, wanderer
-    theme_opinions[ADDICTION] = createOpinion(-1000, {ADDICTION: 1000});
-    theme_opinions[DOLLS] = createOpinion(85, {MUSIC: 113,CRAFTING: 113,SOUL: 113,DECAY: -113, BUGS: -113,MAGIC: 113,FLESH: -113,ART: 113, ROYALTY: 113, FAMILY: 113, LONELY: -113, CLOWNS: 113, DOLLS: 113});
-    theme_opinions[CLOWNS] = createOpinion(113, {ENDINGS: -113,ROYALTY:-113,ANGER:-113,WEB:-113,LONELY: -113});
+    theme_opinions[ADDICTION] = createOpinion(-1000, { ADDICTION: 1000 });
+    theme_opinions[DOLLS] = createOpinion(85, { MUSIC: 113, CRAFTING: 113, SOUL: 113, DECAY: -113, BUGS: -113, MAGIC: 113, FLESH: -113, ART: 113, ROYALTY: 113, FAMILY: 113, LONELY: -113, CLOWNS: 113, DOLLS: 113 });
+    theme_opinions[CLOWNS] = createOpinion(113, { ENDINGS: -113, ROYALTY: -113, ANGER: -113, WEB: -113, LONELY: -113 });
     //anything could be in the dark
-    theme_opinions[DARKNESS] = createOpinion(0, {LIGHT: -113});
+    theme_opinions[DARKNESS] = createOpinion(0, { LIGHT: -113 });
     //hide everything
-    theme_opinions[CENSORSHIP] = createOpinion(-85, {LIGHT:-113,MATH: 113,KNOWING: -113,SCIENCE: -113,SPYING: 113,DARKNESS: 113,LANGUAGE: -113});
+    theme_opinions[CENSORSHIP] = createOpinion(-85, { LIGHT: -113, MATH: 113, KNOWING: -113, SCIENCE: -113, SPYING: 113, DARKNESS: 113, LANGUAGE: -113 });
 
-    theme_opinions[OBFUSCATION] = createOpinion(-85, {LIGHT:-113,MATH: 113,KNOWING: -113,SCIENCE: -113,SPYING: 113,DARKNESS: 113,LANGUAGE: -113});
-    theme_opinions[KILLING] = createOpinion(-113, {CRAFTING: 33,ANGER: 85,KILLING: 113, FLESH: 113});
-    theme_opinions[MUSIC] = createOpinion(33, {LANGUAGE: 85,ANGELS: 85,MATH: 85,FREEDOM: 85,ART: 85,MUSIC: 113});
-    theme_opinions[QUESTING] = createOpinion(33, {SERVICE: 113,MAGIC: 85,HUNTING: 113,CHOICES: 113,wEB: 55,ENDINGS:55,GUIDING:85,KILLING: 85,BURIED: 55,FREEDOM: 85,SPYING: 55,QUESTING: 113});
-    theme_opinions[DEFENSE] = createOpinion(0, {HEALING:33,CRAFTING:113,KILLING: -113,ROYALTY:55,DEATH: -113,DEFENSE: 113});
+    theme_opinions[OBFUSCATION] = createOpinion(-85, { LIGHT: -113, MATH: 113, KNOWING: -113, SCIENCE: -113, SPYING: 113, DARKNESS: 113, LANGUAGE: -113 });
+    theme_opinions[KILLING] = createOpinion(-113, { CRAFTING: 33, ANGER: 85, KILLING: 113, FLESH: 113 });
+    theme_opinions[MUSIC] = createOpinion(33, { LANGUAGE: 85, ANGELS: 85, MATH: 85, FREEDOM: 85, ART: 85, MUSIC: 113 });
+    theme_opinions[QUESTING] = createOpinion(33, { SERVICE: 113, MAGIC: 85, HUNTING: 113, CHOICES: 113, wEB: 55, ENDINGS: 55, GUIDING: 85, KILLING: 85, BURIED: 55, FREEDOM: 85, SPYING: 55, QUESTING: 113 });
+    theme_opinions[DEFENSE] = createOpinion(0, { HEALING: 33, CRAFTING: 113, KILLING: -113, ROYALTY: 55, DEATH: -113, DEFENSE: 113 });
 }
 
 //i would expect a/n [BLANK] individual such as yourself to come to such a conclusion, yes.
@@ -1491,7 +1491,7 @@ const initInsults = () => {
 }
 
 const initPhilosophy = () => {
-    philosophy[ART] = ["https://jadedresearcher.itch.io/rabbit-simulator","Art is set aside from ordinary life and made a dramatic focus of experience.", "With a few important exceptions like abstract painting, works of art simulate experiences of the world.", "People make a point of judging, appreciating, and interpreting works of art.", "Artistic objects and performances satisfy rules of composition that place them in a recognizable style.", "People enjoy art for art's sake, and do not demand that it keep them warm or put food on the table.", "Humans cultivate, recognize, and admire technical artistic skills.", "Aesthetics is a branch of philosophy that deals with the nature of beauty and taste, as well as the philosophy of art (its own area of philosophy that comes out of aesthetics).", "In considering the nature of beauty, aesthetics intersects with metaphysics; and questions asked about how we know and recognize beauty are epistemological."];
+    philosophy[ART] = ["https://jadedresearcher.itch.io/rabbit-simulator", "Art is set aside from ordinary life and made a dramatic focus of experience.", "With a few important exceptions like abstract painting, works of art simulate experiences of the world.", "People make a point of judging, appreciating, and interpreting works of art.", "Artistic objects and performances satisfy rules of composition that place them in a recognizable style.", "People enjoy art for art's sake, and do not demand that it keep them warm or put food on the table.", "Humans cultivate, recognize, and admire technical artistic skills.", "Aesthetics is a branch of philosophy that deals with the nature of beauty and taste, as well as the philosophy of art (its own area of philosophy that comes out of aesthetics).", "In considering the nature of beauty, aesthetics intersects with metaphysics; and questions asked about how we know and recognize beauty are epistemological."];
     philosophy[TECHNOLOGY] = ["With Pong having led the way for videogames to their present popularity, it was also the important basis for all that video games have become.", "I really do believe that design is the highest form of creative expression...You know, video games can be truly deep... So time, space, aesthetics, and then, most important, behavior. The real core issue of interaction design is behavior.", "Within this evolution, the debate of whether or not video games could be considered art had arisen. The establishment of the debate came when Roger Ebert, a celebrated and respected film critic, donned video games to not be art despite the growing claims to the contrary. There are sides to the debate of video games and each thoroughly explains how video games definitively are or are not to be classified as art.", "The game developers Atari initially released the arcade game in November of 1972. During the development of the game, coin-operated, arcade, test-versions had been released and the coin-boxes came back overflowing. ", "There is demonstrably no way to prove the 'correctness' of any given computer program, even for 'simple' ones such as 'does this program halt'.", "A technology can be thought of as a neutral entity only when the sociocultural context and issues circulating the specific technology are removed.", "What engineers do is subject to moral evaluation.", "In this sense, engineering can be considered a social as well a technological discipline and judged not just by whether its artifacts work, in a narrow sense, but also by how they influence and serve social values.", "Changes in technology, and specifically productive technology, are the primary influence on human social relations and organizational structure, and that social relations and cultural practices ultimately revolve around the technological and economic base of a given society.", "A society's technology determines the development of its social structure and cultural values."];
     philosophy[SPACE] = ["Many people assume agoraphobia is simply a fear of open spaces, but it's actually a more complex condition.", "Acrophobia is an excessive fear of heights and manifests as severe anxiety. A person could have an attack just walking up stairs or climbing a ladder. Sometimes the fear is so great a person can't move. Acrophobia can create a dangerous situation for someone who has it.", "We are tiny specks in the infinite vastness of the universe; our lives are mere instants even on a geological time scale, let alone a cosmic one; we will all be dead any minute.", "If you traveled at the speed of light, it would still take you ten thousand years to explore just your home planet's arm of the Milky Way. The universe is vast and beyond your capacity to productively engage with.", "The number of uncountable rational numbers is far, far larger than the number of countable integers. In a very real, provable sense there are more numbers between 0 and 1 than there are whole numbers in the universe.", "Focus on a number of basic issues, including whether time and space exist independently of the mind and whether they exist independently of one another.", "While such ideas have been central to philosophy from its inception, the philosophy of space and time was both an inspiration for and a central aspect of early analytic philosophy."];
     philosophy[TIME] = ["If you conceptualize time to be a river, consider the ox bow lake. When a river loops in on itself enough it can pinch off a little circle entirely seperate from the main river. A paradoxical river that creates itself and yet can never escape itself.", "An actual infinite cannot exist. All things end in time.", "One must ask oneself: what accounts for time's apparently unidirectional flow, whether times other than the present moment exist, and questions about the nature of identity (particularly the nature of identity over time).", "Focus on a number of basic issues, including whether time and space exist independently of the mindand whether they exist independently of one another.", "While such ideas have been central to philosophy from its inception, the philosophy of space and time was both an inspiration for and a central aspect of early analytic philosophy."];
@@ -1534,7 +1534,7 @@ const initPhilosophy = () => {
     philosophy[CLOWNS] = ["exigua replaces the tongue, some feed on the host's blood and many others feed on fish mucus. This is the only known case of a parasite assumed to be functionally replacing a host organ. When a host fish dies, C. exigua, after some time, detaches itself from the tongue stub and leaves the fish's mouth cavity.", "Most clowns aren't hiding anything, except maybe a bunch of fake flowers or a balloon animal.", "Then there's the 1892 Italian opera, Pagliacci (Clowns), in which the cuckolded main character, an actor of the Grimaldian clown mold, murders his cheating wife on stage during a performance. Clowns were unsettling—and a great source for drama.", "That Dickens's version of Grimaldi's memoirs was massively popular meant that this perception, of something dark and troubled masked by humor, would stick.", "Grimaldi made the clown the leading character of the pantomime, changing the way he looked and acted. Before him, a clown may have worn make-up, but it was usually just a bit of rouge on the cheeks to heighten the sense of them being florid, funny drunks or rustic yokels. Grimaldi, however, suited up in bizarre, colorful costumes, stark white face paint punctuated by spots of bright red on his cheeks and topped with a blue mohawk. ", "“Mischief” is one thing; homicidal urges is certainly another. What's changed about clowns is how that darkness is manifest", "Clowns, as pranksters, jesters, jokers, harlequins, and mythologized tricksters have been around for ages.", "Most clowns aren't trying to be odd. They're trying to be silly and sweet, fun personified. ", "Very few children like clowns. They are unfamiliar and come from a different era. They don't look funny, they just look odd.", "You aren't alone in your fear of makeup-clad entertainers; people have been frightened by clowns for centuries", "Clowns are treated as a symbol which means that actual professional clowns are left aside from this analysis.", "Clowns will be treated as an embodiment of humour and champions of the peculiar relationship between violence and humour. The main argument is that clowns reveal the inherent violent nature of humour in various ways. ", "How is it possible that clowns, the epitomes of humour and bringers of joy, can do the most horrible deeds?", "To discuss the relationship between humour and violence from a philosophical perspective, it is necessary to analyze different forms of violence and humour to understand in which ways humour can be violent and violence humorous.", "Clown history is not cement that hardens around our feet holding us in place.  It is a foundation forming a launch pad for our future.  However, if our foundation is slanted by bias or misinformation we will be tilted off course.  That is one reason why accurate clown history is important.", "Tramp clowns were not allowed to juggle because it was inconsistent with the slow movement required of them.", "What philosophy can we derive from this history?  First, that clowning is not bound by rigid rules.  The history of clowning is one of creativity and evolution.    Specific clown characters generally start as the stupid victim, gradually become the clever rogue, transform into the authoritarian, and then fade away.", "The appearance of the Whiteface clown has also evolved.  Joseph Grimaldi's costumes in the early nineteenth century were colorful but not elegant.  The very beautiful style of clothing that we associate with the classic Whiteface clown was developed during the twentieth century as the character became more of an authority figure than a prankster.", "The appearance of the characters evolved in correspondence to the evolution of their status.  Originally Harlequin's costume had randomly placed irregular shaped patches.  By the time he turned into a rogue, the patches were formalized into a diamond pattern covering the costume.  As an authoritarian character, Harlequin wore satin clothing trimmed with ribbons.", "In order to have any movement forward in clowning, you have to have a philosophy of clowning.  In order to have a philosophy of clowning, you have to have a history of clowning.", "A clown rarely became rich and noble but he often got clouts. Dressed up in a cap with bells, he was a little tyrant and at the same time, a victim of the crowd. ... A clown adorning your ornaments symbolizes humor, playfulness, talent, carelessness, volatility of life, acting, luck, etc.", "Clowning is about the freedom that comes from a state of total, unconditional acceptance of our most authentic selves, warts and all. It offers us respite from our self-doubts and fears, and opens the door to joy. And the best part is, we are all already our clowns."];
     philosophy[DOLLS] = ["", "Perceptual tension occurs when an individual perceives conflicting cues to category membership, such as when a humanoid figure moves like a robot, or has other visible robot features. This cognitive conflict is experienced as psychological discomfort (i.e., 'eeriness'), much like the discomfort that is experienced with cognitive dissonance.", "The existence of artificial but humanlike entities is viewed by some as a threat to the concept of human identity.", "If an entity looks sufficiently nonhuman, its human characteristics are noticeable, generating empathy. However, if the entity looks almost human, it elicits our model of a human other and its detailed normative expectations. The nonhuman characteristics are noticeable, giving the human viewer a sense of strangeness.", "Stimuli with human and nonhuman traits undermine our sense of human identity by linking qualitatively different categories, human and nonhuman, by a quantitative metric, degree of human likeness.", "Uncanny stimuli may activate a cognitive mechanism that originally evolved to motivate the avoidance of potential sources of pathogens by eliciting a disgust response. ", "Viewing an 'uncanny' robot elicits an innate fear of death and culturally supported defenses for coping with death's inevitability.... ", "If an object is obviously enough non-human, its human characteristics will stand out and be endearing; however, if that object reaches a certain threshold of human-like appearance, its non-human characteristics will stand out, and be disturbing.", "Uncanny feelings arise when there is an intellectual uncertainty about whether an object is alive or not.", "Lifelike or anatomically correct dolls are used by health professionals, medical schools and social workers to train doctors and nurses in various health procedures.", "Since ancient times, dolls have played a central role in magic and religious rituals and have been used as representations of deities.", "Exposure therapy usually starts off small. While your therapist is present, you may view a photograph of a doll and practice relaxation techniques. Later, with your therapist present, you may watch a short video about dolls, again working on breathing and relaxation. Eventually, you may be in the same room with your therapist with an actual doll as you perform your relaxation exercises.", "The fear experienced is out of proportion to the actual danger posed by the object (dolls). If the phobia becomes severe, a person with pediophobia may even re-organize their entire life just to avoid dolls.", "", "When automatonophobia develops because of a traumatic event related to human-like figures, it's known as an experiential phobia. This traumatic event could be a scary movie with human-like figures or an in-person event involving human-like figures.", "Automatonophobia causes an automatic, uncontrollable fear response to human-like figures. The sight or thought of these human-like figures can trigger anxiety for some people. Pediophobia is a fear of dolls and is a related phobia.", "Automatonophobia is a fear of human-like figures, such as mannequins, wax figures, statues, dummies, animatronics, or robots.", "Can you remember what it was like to play as a child?", "Many people associate dolls with fertility, so depending on how the doll appears, it could symbolize a desire to have children or fear of having children. For other people, dolls symbolize a desire to return to the innocence of childhood.", "Though The Stranger is a work of fiction, it contains a strong resonance of Camus's philosophical notion of absurdity. In his essays, Camus asserts that individual lives and human existence in general have no rational meaning or order."];
     philosophy[OBFUSCATION] = ["The psychological term for fear of the unknown is “xenophobia.” In modern usage, the word has evolved to mean the fear of strangers or foreigners — but its original meaning is much broader. It includes anything or anyone that's unfamiliar or unknown.", "Two can keep a secret if one is dead.", "Plato in The Republic advocates censorship in literature to avoid the corruption of youth.", "Even if noumena are unknowable, they are still needed as a limiting concept,[26] Kant tells us. Without them, there would be only phenomena, and since potentially we have complete knowledge of our phenomena, we would in a sense know everything.", "hese unknown somethings are manifested within the noumenon—although we can never know how or why as our perceptions of these unknown somethings via our physical senses are bound by the limitations of the categories of the understanding and we are therefore never able to fully know the 'thing-in-itself'.", "According to Kant, objects of which we are cognizant via the physical senses are merely representations of unknown somethings—what Kant refers to as the transcendental object—as interpreted through the a priori or categories of the understanding.", "By Kant's Critique, our minds may attempt to correlate in useful ways, perhaps even closely accurate ways, with the structure and order of the various aspects of the universe, but cannot know these 'things-in-themselves' (noumena) directly. ", "Humans can make sense out of phenomena in these various ways, but in doing so can never know the 'things-in-themselves', the actual objects and dynamics of the natural world in their noumenal dimension - this being the negative correlate to phenomena and that which escapes the limits of human understanding.", "Immanuel Kant first developed the notion of the noumenon as part of his transcendental idealism, suggesting that while we know the noumenal world to exist because human sensibility is merely receptive, it is not itself sensible and must therefore remain otherwise unknowable to us.", "The sense of philosophical mystery is an intellec tual reaction to what we do not know. It does not come merely from ignoranceȄthat is, the lack of knowledge or evidenceȄor from simply assuming that there is more to reality than we currently know.", "Can there be meaning in mystery, or is wonder––as a state of being lost for words in the face of mystery––rather antithetical to meaning?", "For Dufourmantelle, the secret is a powerful and dynamic thing: deadly if unheard or misused, perhaps, but equally the source of creativity and of ethics. An ethics of the secret, we can hear her say, means listening hard and sensitively, respecting the secret in its secret essence, unafraid of it and open to what it has to say."];
-       philosophy[CENSORSHIP] = ["The psychological term for fear of the unknown is “xenophobia.” In modern usage, the word has evolved to mean the fear of strangers or foreigners — but its original meaning is much broader. It includes anything or anyone that's unfamiliar or unknown.", "Two can keep a secret if one is dead.", "Plato in The Republic advocates censorship in literature to avoid the corruption of youth.", "Even if noumena are unknowable, they are still needed as a limiting concept,[26] Kant tells us. Without them, there would be only phenomena, and since potentially we have complete knowledge of our phenomena, we would in a sense know everything.", "hese unknown somethings are manifested within the noumenon—although we can never know how or why as our perceptions of these unknown somethings via our physical senses are bound by the limitations of the categories of the understanding and we are therefore never able to fully know the 'thing-in-itself'.", "According to Kant, objects of which we are cognizant via the physical senses are merely representations of unknown somethings—what Kant refers to as the transcendental object—as interpreted through the a priori or categories of the understanding.", "By Kant's Critique, our minds may attempt to correlate in useful ways, perhaps even closely accurate ways, with the structure and order of the various aspects of the universe, but cannot know these 'things-in-themselves' (noumena) directly. ", "Humans can make sense out of phenomena in these various ways, but in doing so can never know the 'things-in-themselves', the actual objects and dynamics of the natural world in their noumenal dimension - this being the negative correlate to phenomena and that which escapes the limits of human understanding.", "Immanuel Kant first developed the notion of the noumenon as part of his transcendental idealism, suggesting that while we know the noumenal world to exist because human sensibility is merely receptive, it is not itself sensible and must therefore remain otherwise unknowable to us.", "The sense of philosophical mystery is an intellec tual reaction to what we do not know. It does not come merely from ignoranceȄthat is, the lack of knowledge or evidenceȄor from simply assuming that there is more to reality than we currently know.", "Can there be meaning in mystery, or is wonder––as a state of being lost for words in the face of mystery––rather antithetical to meaning?", "For Dufourmantelle, the secret is a powerful and dynamic thing: deadly if unheard or misused, perhaps, but equally the source of creativity and of ethics. An ethics of the secret, we can hear her say, means listening hard and sensitively, respecting the secret in its secret essence, unafraid of it and open to what it has to say."];
+    philosophy[CENSORSHIP] = ["The psychological term for fear of the unknown is “xenophobia.” In modern usage, the word has evolved to mean the fear of strangers or foreigners — but its original meaning is much broader. It includes anything or anyone that's unfamiliar or unknown.", "Two can keep a secret if one is dead.", "Plato in The Republic advocates censorship in literature to avoid the corruption of youth.", "Even if noumena are unknowable, they are still needed as a limiting concept,[26] Kant tells us. Without them, there would be only phenomena, and since potentially we have complete knowledge of our phenomena, we would in a sense know everything.", "hese unknown somethings are manifested within the noumenon—although we can never know how or why as our perceptions of these unknown somethings via our physical senses are bound by the limitations of the categories of the understanding and we are therefore never able to fully know the 'thing-in-itself'.", "According to Kant, objects of which we are cognizant via the physical senses are merely representations of unknown somethings—what Kant refers to as the transcendental object—as interpreted through the a priori or categories of the understanding.", "By Kant's Critique, our minds may attempt to correlate in useful ways, perhaps even closely accurate ways, with the structure and order of the various aspects of the universe, but cannot know these 'things-in-themselves' (noumena) directly. ", "Humans can make sense out of phenomena in these various ways, but in doing so can never know the 'things-in-themselves', the actual objects and dynamics of the natural world in their noumenal dimension - this being the negative correlate to phenomena and that which escapes the limits of human understanding.", "Immanuel Kant first developed the notion of the noumenon as part of his transcendental idealism, suggesting that while we know the noumenal world to exist because human sensibility is merely receptive, it is not itself sensible and must therefore remain otherwise unknowable to us.", "The sense of philosophical mystery is an intellec tual reaction to what we do not know. It does not come merely from ignoranceȄthat is, the lack of knowledge or evidenceȄor from simply assuming that there is more to reality than we currently know.", "Can there be meaning in mystery, or is wonder––as a state of being lost for words in the face of mystery––rather antithetical to meaning?", "For Dufourmantelle, the secret is a powerful and dynamic thing: deadly if unheard or misused, perhaps, but equally the source of creativity and of ethics. An ethics of the secret, we can hear her say, means listening hard and sensitively, respecting the secret in its secret essence, unafraid of it and open to what it has to say."];
 
     philosophy[DARKNESS] = ["Scotomaphobia is the irrational fear of blindness. Someone suffering from this condition can expect to experience a very high amount of anxiety from merely thinking of blindness, let alone actually experiencing it.", "Darkness is a symbol of evil or mystery or fear. ... The emotional response to an absence of light has inspired metaphor in literature, symbolism in art, and emphasis. The story of the Light versus the Darkness is one that everyone thinks that they know. The Light is good and the Dark is bad.", "Darkness the absence of light, it obscures objects in its veil. It can hide wonders and dangers that lurk. ", "We need darkness to feed our spirit, protect our health and protect the health of our planet. Light at night may be a sign of life on Earth, but the darkness will proclaim our true intelligence.", "Darkness can encompass a primitive chaos, and the powers of that chaos; it is not essentially evil, yet it is largely associated with death and destruction, captivity and spiritual darkness.", "The philosophy of darkness is very simple, it will not let you go towards light and it loves to keep everyone in darkness and at the end make brother fight brother. For this first you need to understand what is light and where it is available. People think they are in light but in fact they are in dark.", "Nyctophobia is an extreme fear of night or darkness that can cause intense symptoms of anxiety and depression. A fear becomes a phobia when it's excessive, irrational, or impacts your day-to-day life. Being afraid of the dark often starts in childhood and is viewed as a normal part of development.", "Some people pulled the lamp-post down because they wanted an electric light; some because they wanted old iron; some because they wanted darkness, because their deeds were evil."];
     philosophy[KILLING] = ["Hoplophobia, (pronounced [ˌhɔpləˈfoʊbiə]), from the Greek hoplon, or weapon, is defined as the 'fear of firearms' or alternatively, a fear of weapons in general, and describes a specific phobia.", "Aichmophobia is a fear of sharp objects like knives, needles, or pencils. ", "Knife goes in. Blood comes out.", "Should we model justified killing in war on justified killing outside of war? Or, in focusing on the justification of killing in war, might we then discover that there are some non-canonical cases of permissible killing outside of war?", "This masks a deeper methodological disagreement: when thinking about the morality of war, should we start by thinking about war, or by thinking about the permissible use of force outside of war?", "The debate between reductivism and exceptionalism is overblown—the concept of “war” is vague, and while typical wars involve properties that are not instantiated in typical conflicts outside of war, we can always come up with far-fetched hypotheticals that don't involve those properties, which we wouldn't call “wars”. ", "Artificial hypotheticals have their place, but any conclusions they support must be tested against the messy reality of war.", "Any normative theory of war should pay attention both to what the laws of war should be, and to what we morally ought to do. These are two distinct but equally important questions. And they entail the importance of a third: what ought we to do all things considered, for example when law and morality conflict? ", "Some reject the very idea of the “morality of war”.[1] Of those, some deny that morality applies at all once the guns strike up; for others, no plausible moral theory could license the exceptional horrors of war."];
@@ -2030,7 +2030,7 @@ const initChildBackstories = () => {
     child_backstories[QUESTING] = ["were an obsessive child", "came up with the best games as a child", "loved playing scavenger hunts as a child"];
 }
 
- const initThemeParts = () => {
+const initThemeParts = () => {
     initPeople();
     initObjects();
     initLocations();
@@ -2066,9 +2066,9 @@ const initChildBackstories = () => {
 
 
 //auto populated by creating themes. 
- const all_themes = {};
+const all_themes = {};
 
- class Theme {
+class Theme {
     //TODO refactor solo/first/second/super to instead by parts of speect like
     //TODO ing, 's, ed, etc.
     key;
@@ -2098,8 +2098,8 @@ const initChildBackstories = () => {
 
 
 
-    pickPossibilityFor = (key,rand) => {
-        if(rand){
+    pickPossibilityFor = (key, rand) => {
+        if (rand) {
             return rand.pickFrom(this.getPossibilitiesFor(key));
         }
         return pickFrom(this.getPossibilitiesFor(key));
@@ -2108,16 +2108,18 @@ const initChildBackstories = () => {
     //takes in things like noun, adj, insult etc etc
     getPossibilitiesFor = (key) => {
         //console.log("JR NOTE: picking possibilities for ",key)
-          if (!this.string_possibilities) {
-              return [`Zampanio`];
-          }
-          if ((key in this.string_possibilities) && this.string_possibilities[key]) {
-              return this.string_possibilities[key];
-          } else {
-              console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
-              return [`Zampanio`];
-          }
-      }
+        if (!this.string_possibilities) {
+            return [`Zampanio`];
+        }
+        if ((key in this.string_possibilities) && this.string_possibilities[key]) {
+            return this.string_possibilities[key];
+        } else {
+            if (this.key !== "waste") {
+                console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
+            }
+            return [`Zampanio`];
+        }
+    }
 
     initializeIfNecessary = (tier) => {
         if (!this.tier || this.tier === 0) {
@@ -2134,7 +2136,7 @@ const initChildBackstories = () => {
 }
 
 
- const keysToThemes = (theme_keys) => {
+const keysToThemes = (theme_keys) => {
     let themes = [];
     for (let theme of theme_keys) {
         themes.push(all_themes[theme]);

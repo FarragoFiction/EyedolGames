@@ -151,9 +151,17 @@ const generateRamble = (name, personal_adj, rand, your_themes, your_rivals_theme
   return ret;
 }
 
+//very shitty hax
 const haxMode = ()=>{
-  let form = document.querySelector("#zampanio-personality-form");
-  let data = new FormData(form);
+  //let form = document.querySelector("#zampanio-personality-form");
+  //let data = new FormData(form);
+  let inputs = document.querySelectorAll("input");
+  for(let input of inputs){
+    if(Math.random() > 0.75){
+      input.selected = !input.selected;
+      input.checked = !input.checked;
+    }
+  }
 }
 
 const quizMode = () => {
