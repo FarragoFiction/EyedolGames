@@ -1603,6 +1603,8 @@ const initLocDesc = () => {
 
 //useful for quests, and the longer you're in the ThisIsAGame the more likely they are to spawn and HURT you.
 const initMonsterDesc = () => {
+    monster_desc[CENSORSHIP] = ["DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOKDON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK"];
+
     monster_desc[ART] = ["It carries a paintbrush dripping with blood.", "It drags dismembered statue parts behind it.", "It wears an incongrous artist's beret."];
     monster_desc[TECHNOLOGY] = ["Its inflamed flesh badly integrates with sparking circuitry.", "Its eyes are whirring cameras.", "Most of its body is metal and circuits.", "A single glowing red eye whirrs as it focus on you.", "It moves with robotic precision."];
     monster_desc[SPACE] = ["Its head towers over the clouds.", "It is terrifyingly huge.", "You can see the void of space in the depths of its eyes.", "When it breathes a vacuum is created, sucking things in.", "Its flesh is mottled with starscapes."];
@@ -2112,7 +2114,7 @@ const initChildBackstories = () => {
           if ((key in this.string_possibilities) && this.string_possibilities[key]) {
               return this.string_possibilities[key];
           } else {
-              console.error(`[ERROR: ${key} NOT FOUND ]`, this.string_possibilities);
+              console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
               return [`Zampanio`];
           }
       }

@@ -73,7 +73,6 @@ const feelQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(FEELING))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -95,7 +94,6 @@ const soundQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(SOUND))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -117,7 +115,6 @@ const tasteQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(TASTE))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -209,7 +206,6 @@ const zampanioQuestion = () => {
     
     answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers,true);
@@ -232,7 +228,6 @@ const noMore = () => {
     
     answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers,true);
@@ -267,7 +262,6 @@ const goncharovQuoteQuestion = () => {
     
     answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers,true);
@@ -290,7 +284,6 @@ const philosophyQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  (chosenTheme.pickPossibilityFor(PHILOSOPHY))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
   return pickFrom(generators)(pickFrom(questions), answers,true);
 }
@@ -314,7 +307,6 @@ const colorQuestion = () => {
   for (let i = 0; i < amount; i++) {
     answers.push({value:undecided, label:  pickFrom(CSS_COLOR_NAMES)});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox, randomSelect]
 
   return pickFrom(generators)(pickFrom(questions), answers,false,true);
@@ -335,7 +327,6 @@ const adjQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(ADJ))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
   return pickFrom(generators)(pickFrom(questions), answers);
 }
@@ -358,7 +349,6 @@ const insultQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(INSULT))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
   if (question_index > 33) {
     generators.push(randomSelect);
@@ -383,7 +373,6 @@ const complimentQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -405,7 +394,6 @@ const smellQuestion = () => {
     const chosenTheme = all_themes[chosenThemeKey];
     answers.push({value:chosenThemeKey, label:  titleCase(chosenTheme.pickPossibilityFor(SMELL))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -434,8 +422,6 @@ const objectQuestion = () => {
     const modifier = modifiers?   chosenTheme.pickPossibilityFor(ADJ):""
     answers.push({value:chosenThemeKey, label:  modifier + titleCase(chosenTheme.pickPossibilityFor(OBJECT))});
   }
-
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -462,7 +448,6 @@ const personQuestion = () => {
     const modifier = modifiers?   chosenTheme.pickPossibilityFor(ADJ):""
     answers.push({value:chosenThemeKey, label:  modifier + titleCase(chosenTheme.pickPossibilityFor(PERSON))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -490,7 +475,6 @@ const locationQuestion = () => {
 
     answers.push({value:chosenThemeKey, label:  modifier + titleCase(chosenTheme.pickPossibilityFor(LOCATION))});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   return pickFrom(generators)(pickFrom(questions), answers);
@@ -532,7 +516,6 @@ const genderQuestion = () => {
   for (let i = 0; i < amount; i++) {
     answers.push({value:undecided, label:  pickFrom(gender_source())});
   }
-  question_index++;
   let generators = [randomRadio, randomCheckbox]
 
   if (question_index > 33) {

@@ -13,6 +13,13 @@ label:not(.gender){
   display: block;
 }
 
+#hax{
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+}
+
 .copy-button{
   padding: 5px;
   height: 22px;
