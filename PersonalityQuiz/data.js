@@ -222,7 +222,7 @@ const pickARandomThemeFromListAndGrabKey = (rand,themeKeys, attributeKey, capita
         return (chosenTheme.pickPossibilityFor(attributeKey,rand)).toLowerCase();
     
     }catch(e){
-        return "Zampanio";
+        return `[ERROR: something went wrong]`;
     }
 
 }
@@ -377,7 +377,7 @@ const PERSON = "person";
  const TECHNOLOGY = "technology";  //JR NOTE TODO
 
 
- const keys = [TECHNOLOGY, ART, SPACE, TIME, FLESH, BURIED, STEALING, FREEDOM, FIRE, LONELY, OCEAN, SCIENCE, MATH, TWISTING, DEATH, APOCALYPSE, SERVICE, FAMILY, MAGIC, ANGELS, LIGHT, HUNTING, CLOWNS, PLANTS, DECAY, CHOICES, ZAP, LOVE, SOUL, ANGER, WEB, ROYALTY, ENDINGS, KNOWING, GUIDING, CRAFTING, ADDICTION, SPYING, HEALING, DOLLS, OBFUSCATION, CENSORSHIP,DARKNESS, KILLING, MUSIC, DEFENSE, QUESTING, BUGS, LANGUAGE];
+ const keys = [WASTE,TECHNOLOGY, ART, SPACE, TIME, FLESH, BURIED, STEALING, FREEDOM, FIRE, LONELY, OCEAN, SCIENCE, MATH, TWISTING, DEATH, APOCALYPSE, SERVICE, FAMILY, MAGIC, ANGELS, LIGHT, HUNTING, CLOWNS, PLANTS, DECAY, CHOICES, ZAP, LOVE, SOUL, ANGER, WEB, ROYALTY, ENDINGS, KNOWING, GUIDING, CRAFTING, ADDICTION, SPYING, HEALING, DOLLS, OBFUSCATION, CENSORSHIP,DARKNESS, KILLING, MUSIC, DEFENSE, QUESTING, BUGS, LANGUAGE];
 
 
 
@@ -2105,17 +2105,17 @@ const initChildBackstories = () => {
 
     //takes in things like noun, adj, insult etc etc
     getPossibilitiesFor = (key) => {
-      //console.log("JR NOTE: picking possibilities for ",key)
-        if (!this.string_possibilities) {
-            return ["Zampanio"];
-        }
-        if ((key in this.string_possibilities) && this.string_possibilities[key]) {
-            return this.string_possibilities[key];
-        } else {
-            //console.error(`[ERROR: ${key} NOT FOUND ]`, this.string_possibilities);
-            return [`Zampanio`];
-        }
-    }
+        //console.log("JR NOTE: picking possibilities for ",key)
+          if (!this.string_possibilities) {
+              return [`Zampanio`];
+          }
+          if ((key in this.string_possibilities) && this.string_possibilities[key]) {
+              return this.string_possibilities[key];
+          } else {
+              console.error(`[ERROR: ${key} NOT FOUND ]`, this.string_possibilities);
+              return [`Zampanio`];
+          }
+      }
 
     initializeIfNecessary = (tier) => {
         if (!this.tier || this.tier === 0) {
