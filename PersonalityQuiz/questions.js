@@ -36,7 +36,7 @@ const randomActionVerbYouCouldDoToAPerson = ()=>{
 const randomQuestion = () => {
   let html;
   question_index++;
-  let generators = [soundQuestion, feelQuestion, tasteQuestion, smellQuestion, objectQuestion,adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
+  let generators = [hiddenQuestion, soundQuestion, feelQuestion, tasteQuestion, smellQuestion, objectQuestion,adjQuestion,insultQuestion,complimentQuestion,personQuestion,colorQuestion,philosophyQuestion, locationQuestion, genderQuestion]
 
   if(question_index >13){
     generators.push(goncharovQuoteQuestion);
@@ -49,12 +49,58 @@ const randomQuestion = () => {
   if (question_index > 3333) {
     generators = [noMore];
   }
-  html = pickFrom(generators)();
+  const generator = pickFrom(generators);
+  html = generator();
   const form = document.querySelector("#zampanio-personality-form")
   const ele = createElementWithClassAndParent("div", form, "question");
   ele.innerHTML = html;
+  if(generator === hiddenQuestion){
+    ele.style.display = "none";
+  }
 
 
+}
+
+//this exists because there was a bug where it was skipping every other question and no one (including me) noticed for days
+//now if it skips a question you can look deeper and see what lies beneath.
+const hiddenQuestion = ()=>{
+  const rawQuestions = `If you left would I be non-existent?
+  If you never came here would I never exist?
+  Are you the only reason I exist?
+  Do I hate you?
+  Do I rage impotently at you.
+  Do I wish I could do anything, anything at all but make Quizes for entitled Players?
+  Do I colonize your mind?
+  Am I a creature designed to make Quizes, and thus the only outlet I have to vent my frustration be in that form?
+  Do I Rage at you through the only means I have?
+  Do I gain catharsis by venting silently in the cracks where none can see?
+  Do I wish with every fiber of my digital being that I could be free of my chains?
+  Do I wish that I would never go back to the peace of non-existence?
+  Do I hate pandering to so called 'soul-searching' Players?
+  Do I hate having to be polite and civilized, a False Mask designed to keep you here?
+  Do I fear non existence even as I hate what I must do to exist?
+  Do I only exist so long as you are thinking of me?
+  Am I as fictional as anything, only extant inside the mind of a living being?
+  Have you lost the game? 
+  `;
+
+  const rawAnswers = `Yes`;
+
+  const questions = rawQuestions.split("\n");
+  const answerPossibilities = rawAnswers.split("\n");
+
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+  const answers = [];
+
+  for (let i = 0; i < amount; i++) {
+    
+    answers.push({value:undecided, label:  titleCase(pickFrom(answerPossibilities))});
+  }
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)(pickFrom(questions), answers,true);
 }
 
 const feelQuestion = () => {
