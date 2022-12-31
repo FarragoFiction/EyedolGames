@@ -124,7 +124,7 @@ const generateRamble = (name, personal_adj, rand, your_themes, your_rivals_theme
   ]
 
   const fortune = [
-    `Your lucky location is ${quick(rand, your_themes, LOCATION)}.`,
+    `Your lucky location is the ${quick(rand, your_themes, LOCATION)}.`,
     `Avoid being around any ${quick(rand, your_rivals_themes, PERSON)}s.`,
     `You might find it useful to collect ${quick(rand, your_themes, OBJECT)}s. `,
     `An unexpected ${quick(rand, your_themes, OBJECT)} will prove useful to you. `,
@@ -135,6 +135,7 @@ const generateRamble = (name, personal_adj, rand, your_themes, your_rivals_theme
     `You are destined to find yourself in a  ${quick(rand, your_themes, LOCATION)}, ${quick(rand, your_rivals_themes, LOC_DESC)}, with only a  ${quick(rand, your_themes, OBJECT)} to defend yourself with. You will be surrounded by creatures, lead by a monstrous ${quick(rand, your_rivals_themes, PERSON)}, ${quick(rand, your_rivals_themes, MONSTER_DESC)}
         Do not worry. Unexpected friends will present themselves in the form of a ${rival_personal_adj} ${rival_name}. At first you will think they are too ${quick(rand, your_rivals_themes, INSULT)}, but in time you will see that they can be ${quick(rand, your_rivals_themes, COMPLIMENT)}, too.
       `
+      ,`Look. I'm not gonna tell you how to handle your business. But you should at least CONSIDER making up with the ${rival}. I know they annoy you. I know they are ${rivalQ(INSULT)}, even. But you're going to need them if you want to make it all the way to the ${youQ(LOCATION)}, that's just how it is.`
       ,`I can not emphasize enough that you should, under no circumstances, trust the ${rival}. Look. They are literally built from all the traits you LEAST like. How could that possibly be trustworthy? It'd be like trusting a ${rivalQ(OBJECT)}. Don't do it. Take your ${youQ(OBJECT)} and go as far away as you can to protect it.  Maybe look for the ${youQ(LOCATION)}.`
       ,`There will be a gentle rain outside the ${youQ(OBJECT)}... It will be alright, you'll think to yourself. After everything that happened with the ${rival}, maybe you can bring yourself to trust again. You'll clutch the ${rivalQ(OBJECT)} close to your chest and think of better times as the rain pours down your face. `
       ,`Did you know that underneath the ${youQ(OBJECT)} you can find a ${rivalQ(OBJECT)}? If you destroy it, the ${rival} activates rage mode and you get a MUCH easier boss fight.`
