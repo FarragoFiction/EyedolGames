@@ -74,11 +74,11 @@ const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   const rest = createElementWithClassAndParent("div",ele, "rest-name");
   rest.innerHTML = titleCase(label);
   const facts = createElementWithClassAndParent("div",ele, "facts");
-  const left = createElementWithClassAndParent("div",ele, "left");
+  const left = createElementWithClassAndParent("div",facts, "left");
   left.innerHTML = `   ${rand.pickFrom(prices)} ${theme_keys.map((item)=>titleCase(item)).join(",")}
   <Br>
   ${(rand.getRandomNumberBetween(0,5) + rand.nextDouble()).toFixed(1)} ⭐`;
-  const right = createElementWithClassAndParent("div",ele, "right");
+  const right = createElementWithClassAndParent("div",facts, "right");
   right.innerHTML = `    ${rand.getRandomNumberBetween(0,85)} Miles or ${rand.getRandomNumberBetween(0,90)} minutes
   <Br>
   $0 delivery fee over $${rand.getRandomNumberBetween(1,85)}`;
