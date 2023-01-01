@@ -1196,7 +1196,7 @@ const initSuperNames = () => {
 }
 
 const initLocations = () => {
-    location_possibilities[BAKERY] = ["restaurant","kitchen","house"];
+    location_possibilities[BAKERY] = ["bakery","oven","restaurant","kitchen","house"];
     location_possibilities[BREAKFAST] = ["restaurant","kitchen","house"];
     location_possibilities[BURGERS ] = ["hut","shack","restaurant","kitchen","house"];
     location_possibilities[CHICKEN] = ["coop","restaurant","kitchen","house"];

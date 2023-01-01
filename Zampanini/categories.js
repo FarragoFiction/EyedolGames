@@ -9,6 +9,7 @@ const handleCategories = ()=>{
         renderCategoryForTheme(container,theme);
       }
     }
+    handleRestaurants([Object.keys(all_themes)[0]])
     handleScrolling(container);
 }
 

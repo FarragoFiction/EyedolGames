@@ -5,7 +5,7 @@ const handleRestaurants = (keys)=>{
     resteraunts.innerHTML = "";
     const rand = new SeededRandom(Object.keys(all_themes).indexOf(keys[0]));
     if(resteraunts){
-      for(let i =0; i<10; i++){
+      for(let i =0; i<3; i++){
         renderRestaurantForThemes(rand,resteraunts,keys);
       }
       for(let i =0; i<10; i++){
@@ -46,7 +46,8 @@ const renderRestaurantForThemes = (rand,container, base_keys,weird)=>{
   const ele = createElementWithClassAndParent("div",container, "single-rest");
   let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
 
-  const price = rand.pickFrom(["!!!","!!","!!","!!"])
+  let prices = ["💰💰💰","💰💰","💰💰","💰"];
+  console.log("JR NOTE prices ",prices)
   const label = getRestaurantName(rand, theme_keys)
   ele.innerHTML = `
     <img class="preview" src ="${image}">
@@ -54,9 +55,16 @@ const renderRestaurantForThemes = (rand,container, base_keys,weird)=>{
     ${titleCase(label)}
     </div>
     <div class="facts">
-    ${pickFrom(price)} ${theme_keys.map((item)=>titleCase(item)).join(",")}
+    <div class = "left">
+    ${rand.pickFrom(prices)} ${theme_keys.map((item)=>titleCase(item)).join(",")}
     <Br>
     ${(rand.getRandomNumberBetween(0,5) + rand.nextDouble()).toFixed(1)} ⭐
+    </div>
+    <div class = "right">
+    ${rand.pickFrom(prices)} Miles * ${rand.getRandomNumberBetween(0,90)} minutes}
+    <Br>
+    $0 delivery fee over $${rand.getRandomNumberBetween(1,85)}
+    </div>
     </div>
   `;
 
