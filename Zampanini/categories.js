@@ -57,7 +57,7 @@ const renderCategoryForTheme = (container,themeKey, fakeView)=>{
   `;
 
   ele.onclick  = ()=>{
-    handleRestaurants(themeKey);
+    handleRestaurants([themeKey]);
   }
 
 }
