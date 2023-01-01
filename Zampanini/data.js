@@ -596,6 +596,7 @@ const initEmojis = ()=>{
     emoji_possibilities[MUSIC] = ["🎵"];
     emoji_possibilities[DEFENSE] = ["🛡️"];
     emoji_possibilities[QUESTING] = ["❗"];
+    emoji_possibilities[WASTE] = ["👽"]
 }
 
 

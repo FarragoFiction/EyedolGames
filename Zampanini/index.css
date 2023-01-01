@@ -49,6 +49,8 @@ body {
   width: 60px;
   line-height: 16px;
   text-align:center;
+  height: 16px;
+  overflow: hidden;
 }
 
 
