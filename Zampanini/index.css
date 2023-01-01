@@ -13,6 +13,31 @@ body {
   height: 100px;
 }
 
+#resteraunts{
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rest-name{
+  font-weight: 700;
+  text-align: center;
+}
+
+.preview{
+  width: 375px;
+  height: 235px;
+  border-radius: 8px;
+}
+
+.single-rest{
+  gap: 100px;
+}
+
 .category{
   margin-top: 12px;
   margin-bottom: 12px;
