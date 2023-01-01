@@ -533,17 +533,69 @@ const initEmojis = ()=>{
     emoji_possibilities[BURGERS ] = ["🍔","🍟"];
     emoji_possibilities[CHICKEN] = ["🍗"];
     emoji_possibilities[COFFEE ] = ["☕","🍩"];
-    emoji_possibilities[DESSERTS ] = ["🥖"];
-    emoji_possibilities[DINER] = ["🍔","🍟","🥔","🥙","🍲","🥘","🧆"];
+    emoji_possibilities[DESSERTS ] = ["🥧","🎂","🍰","🧁"];
+    emoji_possibilities[DINER] = ["🍔","🍟","🥔","🥙","🍲","🥘","🧆","🍽️"];
     emoji_possibilities[ITALIAN ] = ["🍝"];
     emoji_possibilities[MEXICAN ] = ["🌮","🌯"];
-    emoji_possibilities[PIZZA ] = ["🥖"];
+    emoji_possibilities[PIZZA ] = ["🍕"];
     emoji_possibilities[PREMIUM ] = ["🥖","🥔","🥩","🍖"];
     emoji_possibilities[SALAD ] = ["🥗"];
-    emoji_possibilities[SANDWICHES ] = ["🥖","🌯","🥙","🥪","🍞"];
+    emoji_possibilities[SANDWICHES ] = ["🌯","🥙","🥪","🍞"];
     emoji_possibilities[SEAFOOD ] = ["🍤","🦐"];
-    emoji_possibilities[SUSHI ] = ["🥟","🍱","🍣","🍙","🍜","🥡","🍛"];
+    emoji_possibilities[SUSHI ] = ["🥠","🥟","🍱","🍣","🍙","🍜","🥡","🍛"];
     emoji_possibilities[ART ] = ["🎨"];
+
+
+    
+    emoji_possibilities[TECHNOLOGY] = ["💻","🖥️"];
+    emoji_possibilities[TIME] = ["⏲️","⏰","🕰️"];
+    emoji_possibilities[SPACE] = ["🪐"];
+    emoji_possibilities[OCEAN] = ["🌊"];
+    emoji_possibilities[LONELY] = ["🌫️"];
+    emoji_possibilities[FIRE] = ["🔥"];
+    emoji_possibilities[FREEDOM] = ["🐦"];
+    emoji_possibilities[STEALING] = ["💰"];
+    emoji_possibilities[BURIED] = ["🕳️"];
+    emoji_possibilities[FLESH] =["🥩","🍖","🩸","🦴"];
+    emoji_possibilities[SCIENCE] = ["🧪"];
+    emoji_possibilities[MATH] = ["🧮"];
+    emoji_possibilities[TWISTING] = ["😵"];
+    emoji_possibilities[DEATH] = ["💀","👻"];
+    emoji_possibilities[APOCALYPSE] = ["☢️"];
+    emoji_possibilities[ANGELS] = ["😇"];
+    emoji_possibilities[SERVICE] = ["🛎️"];
+    emoji_possibilities[FAMILY] = ["👪"];
+    emoji_possibilities[MAGIC] = ["🧚"];
+    emoji_possibilities[LIGHT] = ["☀️"];
+    emoji_possibilities[HEALING] = ["🚑"];
+    emoji_possibilities[PLANTS] = ["🌳","🌸"];
+    emoji_possibilities[HUNTING] = ["🔫"];
+    emoji_possibilities[DECAY] = ["🤢"];
+    emoji_possibilities[CHOICES] = ["🛣️"];
+    emoji_possibilities[ZAP] = ["🌩️"];
+    emoji_possibilities[LOVE] = ["❤️"];
+    emoji_possibilities[SOUL] = ["❄️"];
+    emoji_possibilities[ANGER] = ["😡"];
+    emoji_possibilities[WEB] = ["🕷️","🕸️"];
+    emoji_possibilities[ROYALTY] = ["👑"];
+    emoji_possibilities[ENDINGS] = ["⌛"];
+    emoji_possibilities[KNOWING] = ["📕"];
+    emoji_possibilities[GUIDING] = ["🧭"];
+    emoji_possibilities[CRAFTING] = ["🧵","🔨"];
+    emoji_possibilities[LANGUAGE] = ["👌"];
+    emoji_possibilities[BUGS] = ["🐜","🦟","🐝"];
+    emoji_possibilities[ADDICTION] = ["💉","🃏"];
+    emoji_possibilities[SPYING] = ["👁️"];
+    emoji_possibilities[CLOWNS] = ["🤡"];
+    emoji_possibilities[DOLLS] = ["🎎 "];
+    emoji_possibilities[OBFUSCATION] = ["⛔"];
+    emoji_possibilities[CENSORSHIP] = ["⛔"];
+
+    emoji_possibilities[DARKNESS] = ["🕶️"];
+    emoji_possibilities[KILLING] = ["🩸","🔪"];
+    emoji_possibilities[MUSIC] = ["🎵"];
+    emoji_possibilities[DEFENSE] = ["🛡️"];
+    emoji_possibilities[QUESTING] = ["❗"];
 }
 
 
