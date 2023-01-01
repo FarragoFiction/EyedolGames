@@ -1,0 +1,13 @@
+
+
+window.onload = () => {
+
+  initThemes();
+  handleCategories();
+
+
+
+}
+
+
+
