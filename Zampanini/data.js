@@ -211,7 +211,7 @@ const genders = rawGender.split("\n");
 
 
 const pickARandomThemeFromListAndGrabKey = (rand, themeKeys, attributeKey, capitalize) => {
-    console.log("JR NOTE:",rand, themeKeys, attributeKey, capitalize )
+    //console.log("JR NOTE:",rand, themeKeys, attributeKey, capitalize )
     try {
         const chosenThemeKey = rand.pickFrom(themeKeys);
 
@@ -2253,6 +2253,7 @@ const initThemeParts = () => {
 
 }
 
+const imageLocation = "http://eyedolgames.com/Zampanini/images/";
 
 
 //auto populated by creating themes. 
@@ -2263,6 +2264,7 @@ class Theme {
     //TODO ing, 's, ed, etc.
     key;
     stats = {};
+    images = [];
 
     /*will look like this: 
     nouns: [],
@@ -2284,6 +2286,18 @@ class Theme {
         this.string_possibilities = string_possibilities;
 
         all_themes[key] = this;
+    }
+
+    getImages = async ()=>{
+        if(this.images && this.images.length != 0){
+            return this.images;
+        }else{
+            //this.images = await getImages("http://farragofiction.com/99RoomsSim/images/Rooms/");
+
+            let tmp = await getImages(imageLocation+this.key+"/");
+            this.images =tmp.map((item)=>imageLocation+this.key+"/"+item);
+            return this.images;
+        }
     }
 
 

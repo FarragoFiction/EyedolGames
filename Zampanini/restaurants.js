@@ -1,5 +1,6 @@
 
 
+
 const handleRestaurants = (keys)=>{
     const resteraunts = document.querySelector("#resteraunts");
     resteraunts.innerHTML = "";
@@ -30,27 +31,62 @@ const getRestaurantName = (rand,theme_keys)=>{
   return rand.pickFrom(possibilities);
 }
 
-const renderRestaurantForThemes = (rand,container, base_keys,weird)=>{
+const collateAllImages = async (rand, base_keys)=>{
+  
+  let ret =[];
+  let i = 0;
+  while(i< base_keys.length){
+    let key = base_keys[i];
+    let images = await all_themes[key].getImages();
+    ret.push(images);
+    i++
+  }
+
+  return ret;
+}
+
+const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   let theme_keys = [...base_keys];
-  console.log("JR NOTE:renderRestaurantForThemes ",{rand,container, theme_keys,weird})
 
   if(food_keys.indexOf(theme_keys[0])== -1){
-    console.log("JR NOTE: food time")
-    theme_keys.push(pickFrom(food_keys)); //add some food in here man
+    theme_keys.push(rand.pickFrom(food_keys)); //add some food in here man
   }else if(weird){
-    console.log("JR NOTE: foweirdod time")
 
-    theme_keys.push(pickFrom(Object.keys(all_themes))); //add some weird in here, man
+    theme_keys.push(rand.pickFrom(Object.keys(all_themes))); //add some weird in here, man
 
   }
   const ele = createElementWithClassAndParent("div",container, "single-rest");
-  let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+  //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+  let images =  collateAllImages(rand, base_keys);
+  images.then((results)=>{
+    console.log("JR NOTE: results", results)
+   //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+   preview.src = rand.pickFrom(results[0]);
+   if(rand.nextDouble()>.5){
+    preview.style.objectFit = "none";
+   }
+})
 
   let prices = ["💰💰💰","💰💰","💰💰","💰"];
-  console.log("JR NOTE prices ",prices)
   const label = getRestaurantName(rand, theme_keys)
+
+  const preview = createElementWithClassAndParent("img",ele, "preview");
+  const rest = createElementWithClassAndParent("div",ele, "rest-name");
+  rest.innerHTML = titleCase(label);
+  const facts = createElementWithClassAndParent("div",ele, "facts");
+  const left = createElementWithClassAndParent("div",ele, "left");
+  left.innerHTML = `   ${rand.pickFrom(prices)} ${theme_keys.map((item)=>titleCase(item)).join(",")}
+  <Br>
+  ${(rand.getRandomNumberBetween(0,5) + rand.nextDouble()).toFixed(1)} ⭐`;
+  const right = createElementWithClassAndParent("div",ele, "right");
+  right.innerHTML = `    ${rand.getRandomNumberBetween(0,85)} Miles or ${rand.getRandomNumberBetween(0,90)} minutes
+  <Br>
+  $0 delivery fee over $${rand.getRandomNumberBetween(1,85)}`;
+
+
+  /*
   ele.innerHTML = `
-    <img class="preview" src ="${image}">
+    <img class="preview" src ="${rand.pickFrom(images)}">
     <div class="rest-name">
     ${titleCase(label)}
     </div>
@@ -61,12 +97,12 @@ const renderRestaurantForThemes = (rand,container, base_keys,weird)=>{
     ${(rand.getRandomNumberBetween(0,5) + rand.nextDouble()).toFixed(1)} ⭐
     </div>
     <div class = "right">
-    ${rand.pickFrom(prices)} Miles * ${rand.getRandomNumberBetween(0,90)} minutes}
+    ${rand.getRandomNumberBetween(0,85)} Miles or ${rand.getRandomNumberBetween(0,90)} minutes
     <Br>
     $0 delivery fee over $${rand.getRandomNumberBetween(1,85)}
     </div>
     </div>
-  `;
+  `;*/
 
   ele.onclick  = ()=>{
     window.alert("TODO: refresh page with themes");
