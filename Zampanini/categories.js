@@ -57,7 +57,13 @@ const renderCategoryForTheme = (container,themeKey, fakeView)=>{
     </div>
   `;
 
-  ele.onclick  = ()=>{
+  ele.onclick  = (e)=>{
+    const others = container.querySelectorAll(".category");
+    for(let other of others){
+      other.style.background ="#f4f4f4";
+    }
+    ele.style.background ="#e4e4e4"
+
     handleRestaurants([themeKey]);
   }
 
