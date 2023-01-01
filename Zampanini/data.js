@@ -543,10 +543,9 @@ const initEmojis = ()=>{
     emoji_possibilities[SANDWICHES ] = ["🌯","🥙","🥪","🍞"];
     emoji_possibilities[SEAFOOD ] = ["🍤","🦐"];
     emoji_possibilities[SUSHI ] = ["🥠","🥟","🍱","🍣","🍙","🍜","🥡","🍛"];
+
+
     emoji_possibilities[ART ] = ["🎨"];
-
-
-    
     emoji_possibilities[TECHNOLOGY] = ["💻","🖥️"];
     emoji_possibilities[TIME] = ["⏲️","⏰","🕰️"];
     emoji_possibilities[SPACE] = ["🪐"];
@@ -601,6 +600,22 @@ const initEmojis = ()=>{
 
 
 const initPeople = () => {
+    person_posibilities[BAKERY] = ["baker"];
+    person_posibilities[BREAKFAST] = ["farmer","logger","lumberjack"];
+    person_posibilities[BURGERS ] = ["big boy","bob","king"];
+    person_posibilities[CHICKEN] = ["chicken","chick","chicky"];
+    person_posibilities[COFFEE ] = ["barista"];
+    person_posibilities[DESSERTS ] = ["Baker","Fairy","Unicorn"];
+    person_posibilities[DINER] = ["Lucy","Cook","Diner","Sally","Bob","Bill","Joe","Jeff"];
+    person_posibilities[ITALIAN ] = ["Chef"];
+    person_posibilities[MEXICAN ] = ["Chef"];
+    person_posibilities[PIZZA ] = ["Chef"];
+    person_posibilities[PREMIUM ] = ["critic","chef"];
+    person_posibilities[SALAD ] = ["Chef"];
+    person_posibilities[SANDWICHES ] = ["Chef","Baker"];
+    person_posibilities[SEAFOOD ] = ["Captain","Skipper","Sailor"];
+    person_posibilities[SUSHI ] = ["Chef"];
+
     person_posibilities[ART] = ["artist", "painter", "sculpter", "curator"];
     person_posibilities[TECHNOLOGY] = ["engineer", "programmer", "hacker", "coder"];
     person_posibilities[SPACE] = ["astronaut", "climber", "mountaineer", "alpinist", "diver", "skydiver"];
@@ -654,6 +669,22 @@ const initPeople = () => {
 }
 
 const initAdjs = () => {
+    adj_possibilities[BAKERY] = ["fresh","warm","toasted"];
+    adj_possibilities[BREAKFAST] = ["smothered","stacked","sizzling","sweet"];
+    adj_possibilities[BURGERS ] = ["stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
+    adj_possibilities[CHICKEN] = ["grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
+    adj_possibilities[COFFEE ] = ["hot","iced","cold"];
+    adj_possibilities[DESSERTS ] = ["iced","frosted","sweet","decadent","sinful","guilty"];
+    adj_possibilities[DINER] = ["fried","baked","sliced","stuffed","special","sale"];
+    adj_possibilities[ITALIAN ] = ["garlic","parmesan","cream","sauce","stuffed"];
+    adj_possibilities[MEXICAN ] = ["crunchy","soft","gringo","sizzling","mexi"];
+    adj_possibilities[PIZZA ] = ["large","extra-large","personal","sliced","wood-oven","brick-fired"];
+    adj_possibilities[PREMIUM ] = ["salted","confit","premium","rare","gourmet","juicy"];
+    adj_possibilities[SALAD ] = ["fresh","healthy","organic"];
+    adj_possibilities[SANDWICHES ] = ["cruncy","spicy","fried"];
+    adj_possibilities[SEAFOOD ] = ["fried","boiled","blackened","broiled","baked"];
+    adj_possibilities[SUSHI ] = ["spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
+
     adj_possibilities[ART] = ["artistic", "aesthetic", "beautiful", "moving", "balanced"];
     adj_possibilities[TECHNOLOGY] = ["technological", "advanced", "smart", "programmatic", "procedural"];
     adj_possibilities[TIME] = ["timely", "measured", "punctual", "clock-work", "steady", "ticking", "beating"];
@@ -1162,6 +1193,22 @@ const initSuperNames = () => {
 }
 
 const initLocations = () => {
+    location_possibilities[BAKERY] = ["restaurant","kitchen","house"];
+    location_possibilities[BREAKFAST] = ["restaurant","kitchen","house"];
+    location_possibilities[BURGERS ] = ["hut","shack","restaurant","kitchen","house"];
+    location_possibilities[CHICKEN] = ["coop","restaurant","kitchen","house"];
+    location_possibilities[COFFEE ] = ["cafe","restaurant","kitchen","house"];
+    location_possibilities[DESSERTS ] = ["parlor","restaurant","kitchen","house"];
+    location_possibilities[DINER] = ["diner","restaurant","kitchen","house"];
+    location_possibilities[ITALIAN ] = ["restaurant","kitchen","house"];
+    location_possibilities[MEXICAN ] = ["restaurant","kitchen","house"];
+    location_possibilities[PIZZA ] = ["shack","kitchen","pizzeria","restaurant"];
+    location_possibilities[PREMIUM ] = ["bistro","restaurant","kitchen","house"];
+    location_possibilities[SALAD ] = ["restaurant","kitchen","house"];
+    location_possibilities[SANDWICHES ] = ["bistro","restaurant","kitchen","house"];
+    location_possibilities[SEAFOOD ] = ["cove","restaurant","kitchen","house"];
+    location_possibilities[SUSHI ] = ["restaurant","kitchen","house"];
+
     location_possibilities[ART] = ["museum", "studio", "craft shop", "workshop"];
     location_possibilities[TECHNOLOGY] = ["server farm", "office", "isp"];
     location_possibilities[TIME] = ["clock-tower", "factory", "dateline", "train-station"];
@@ -1215,6 +1262,23 @@ const initLocations = () => {
 }
 
 const initObjects = () => {
+
+    object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry"];
+    object_possibilities[BREAKFAST] = ["pancakes","bacon","eggs","waffles","toast","french toast","scramble"];
+    object_possibilities[BURGERS ] = ["burger","burger","burger","burger","burger","burger","fries","shake","tots","milkshake"];
+    object_possibilities[CHICKEN] = ["chicken","chicken","chicken","wing","thigh","breast","tender","fries"];
+    object_possibilities[COFFEE ] = ["coffee","coffee","coffee","coffee","coffee","tea","cafe","latte","cappuccino"];
+    object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","custard","frozen yogurt","milkshake"];
+    object_possibilities[DINER] = ["special","burger","fries","potato","wrap","bowl","soup","plate","special"];
+    object_possibilities[ITALIAN ] = ["ravioli","pasta","spaghetti","lasagna","parmesan","ziti","penne","noodles","tomato","eggplant"];
+    object_possibilities[MEXICAN ] = ["taco","burrito","fajita","arepa","empanada","taquito","quesadilla"];
+    object_possibilities[PIZZA ] = ["mozarella","pizza","pizza","pizza","pizza","pizza","pizza","calzone","stromboli","sandwich"];
+    object_possibilities[PREMIUM ] = ["lobster","crab","fresh baked bread","potato","steak","chop"];
+    object_possibilities[SALAD ] = ["salad","fry"];
+    object_possibilities[SANDWICHES ] = ["wrap","pita","sandwich","hoagie","sub"];
+    object_possibilities[SEAFOOD ] = ["shrimp","fish","crab","seafood","lobster","boil","tilapia","hush puppies"];
+    object_possibilities[SUSHI ] = ["roll","bowl","fry","sashimi","nigiri","ball","tempura","dumpling","rice"];
+
     object_possibilities[ART] = ["chisel", "paint brush", "paint pot", "sponge", "apron", "canvas"];
     object_possibilities[TECHNOLOGY] = ["computer", "lap-top", "phone", "tablet"];
     object_possibilities[SPACE] = ["toy rocket", "globe", "rope", "stardust", "compass", "sextant"];
@@ -1422,6 +1486,22 @@ const initThemeOpinions = () => {
 
 //i would expect a/n [BLANK] individual such as yourself to come to such a conclusion, yes.
 const initCompliments = () => {
+    compliment_possibilities[BAKERY] = ["fresh","warm","toasted"];
+    compliment_possibilities[BREAKFAST] = ["smothered","stacked","sizzling","sweet"];
+    compliment_possibilities[BURGERS ] = ["stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
+    compliment_possibilities[CHICKEN] = ["grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
+    compliment_possibilities[COFFEE ] = ["hot","iced","cold"];
+    compliment_possibilities[DESSERTS ] = ["iced","frosted","sweet","decadent","sinful","guilty"];
+    compliment_possibilities[DINER] = ["fried","baked","sliced","stuffed","special","sale"];
+    compliment_possibilities[ITALIAN ] = ["garlic","parmesan","cream","sauce","stuffed"];
+    compliment_possibilities[MEXICAN ] = ["crunchy","soft","gringo","sizzling","mexi"];
+    compliment_possibilities[PIZZA ] = ["large","extra-large","personal","sliced","wood-oven","brick-fired"];
+    compliment_possibilities[PREMIUM ] = ["confit","premium","rare","gourmet","juicy"];
+    compliment_possibilities[SALAD ] = ["fresh","healthy","organic"];
+    compliment_possibilities[SANDWICHES ] = ["crunchy","spicy","fried","italian"];
+    compliment_possibilities[SEAFOOD ] = ["fried","boiled","blackened","broiled","baked"];
+    compliment_possibilities[SUSHI ] = ["spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
+
     compliment_possibilities[ART] = ["artistic"];
     compliment_possibilities[TECHNOLOGY] = ["technological"];
     compliment_possibilities[SPACE] = ["spacious"];
@@ -1528,6 +1608,22 @@ const initMiracles = () => {
 }
 
 const initInsults = () => {
+    insult_possibilities[BAKERY] = ["canned","limp","over-cooked","frozen","stale"];
+    insult_possibilities[BREAKFAST] = ["canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[BURGERS ] = ["canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[CHICKEN] = ["canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[COFFEE ] = ["canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[DESSERTS ] = ["canned","limp","over-cooked","frozen"];
+    insult_possibilities[DINER] = ["canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[ITALIAN ] = ["canned","limp","over-cooked","frozen"];
+    insult_possibilities[MEXICAN ] = ["canned","limp","over-cooked","frozen"];
+    insult_possibilities[PIZZA ] = ["canned","limp","over-cooked","frozen"];
+    insult_possibilities[PREMIUM ] = ["canned","limp","over-cooked","snooty","over-priced"];
+    insult_possibilities[SALAD ] = ["canned","limp","over-cooked"];
+    insult_possibilities[SANDWICHES ] = ["greasy","stale","thin"];
+    insult_possibilities[SEAFOOD ] = ["canned","limp","over-cooked"];
+    insult_possibilities[SUSHI ] = ["canned","limp","over-cooked","cheap"];
+
     insult_possibilities[ART] = ["trite"];
     insult_possibilities[TECHNOLOGY] = ["hacky"];
     insult_possibilities[SPACE] = ["stand-offish"];
