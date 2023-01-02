@@ -2,6 +2,7 @@ let restaurant_name = "";
 let total_reviews = 0;
 let total_featured_items = 0;
 let total_menu_items = 0;
+let total_food_options = 0;
 const handleRestaurantPage = (name, themes, seed) => {
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
@@ -16,13 +17,15 @@ const handleRestaurantPage = (name, themes, seed) => {
   const features = createElementWithClassAndParent("div", container, "features");
   const reviews = createElementWithClassAndParent("div", container, "reviews");
   const menu = createElementWithClassAndParent("div", container, "menu-container");
+  //use this later
+   createElementWithClassAndParent("div", container, "chosen-container");
 
   title.innerText = name;
   setupFeaturedItems(features, rand, theme_keys);
   setupReviews(reviews, rand, theme_keys);
   setupMenuSections(menu, rand, theme_keys);
 
-
+  console.log("JR NOTE: scrolling")
 
   let images = collateAllImages(rand, theme_keys);
   images.then((results) => {
@@ -30,6 +33,9 @@ const handleRestaurantPage = (name, themes, seed) => {
     if (rand.nextDouble() > .5) {
       image.style.objectFit = "none";
     }
+    window.scrollTo(0, 0);
+
+
   });
 }
 
@@ -67,27 +73,61 @@ const setupMenuSections = (container, rand, theme_keys) => {
 
   title.innerHTML = "Full Menu";
   for (let key of theme_keys) {
-    for (let object of all_themes[key].getPossibilitiesFor(OBJECT)){
-      renderOneMenuSection(parent, titleCase(object), false);
+    const shuffled_possibilities = rand.shuffle(all_themes[key].getPossibilitiesFor(OBJECT));
+
+    for (let object of shuffled_possibilities){
+      renderOneMenuSection(parent, titleCase(object), rand, theme_keys);
 
     }
   }
 
     for (let i = 0; i<10; i++){
       const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
-      renderOneMenuSection(parent, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), true);
-
+      renderOneMenuSection(parent, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), rand, theme_keys);
     }
 
 }
 
-const getItemName = (rand, theme_keys, weird) => {
+const setupChosenMenu = (name, rand,theme_keys)=>{
+  total_food_options = 0;
+  
+  const chosen_container = document.querySelector(".chosen-container");
+  chosen_container.innerHTML = "";
+  renderOneFoodItem
+  for (let i = 0; i < 3; i++) {
+    renderOneFoodItem(chosen_container, rand, name,theme_keys, false);
+  }
+
+  for (let i = 0; i < 13; i++) {
+    renderOneFoodItem(chosen_container, rand, name, theme_keys, true);
+  }
+
+}
+
+const getItemDescription = (rand, theme_keys, weird)=>{
+  let ret = [`Hot.`,"Fresh"];
+  const quick = (key, cap) => {
+    if (weird && rand.nextDouble() > 0.5) {
+      return pickARandomThemeFromListAndGrabKey(rand, Object.keys(all_themes), key, cap);
+
+    } else {
+      return pickARandomThemeFromListAndGrabKey(rand, theme_keys, key, cap)
+    }
+  };
+  return rand.pickFrom(ret);
+}
+
+const getItemName = (required_name, rand, theme_keys, weird) => {
+  let name = pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)
+  if(required_name){
+    name = required_name
+  }
   const possibilities = [
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, COMPLIMENT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, PERSON, true)}'s ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, LOCATION, true)}'s ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`
+    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${name}`,
+    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, COMPLIMENT, true)} ${name}`,
+    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, PERSON, true)}'s ${name}`,
+    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${name}`,
+    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, LOCATION, true)}'s ${name}`
   ];
 
   if (weird) {
@@ -123,7 +163,7 @@ const handleMenuScrolling = (container, rand, existing_keys) => {
 
     window.requestAnimationFrame(() => {
       const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
-      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), true);
+      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), rand,theme_keys);
 
     });
 
@@ -146,6 +186,42 @@ const handleReviewScrolling = (container, rand, existing_keys) => {
   };
 }
 
+const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
+  const container = createElementWithClassAndParent("div", parent, "one-food-item");
+  total_featured_items++;
+
+
+  const left = createElementWithClassAndParent("div", container, "food-left");
+
+  const right = createElementWithClassAndParent("div", container, "food-right");
+
+  const image = createElementWithClassAndParent("img", right, "meal-image");
+  const title = createElementWithClassAndParent("h3", left, "meal-title");
+  const desc = createElementWithClassAndParent("div", left, "meal-title");
+  desc.innerHTML = getItemDescription(rand, theme_keys,weird);
+
+  title.innerHTML = getItemName(required_name,rand, theme_keys, weird,);
+  if (total_featured_items > 216) {
+    title.innerHTML = "Please Stop";
+  }
+  const price = createElementWithClassAndParent("div", left, "food-price");
+  price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
+  const add_button = createElementWithClassAndParent("button", right, "add");
+  add_button.innerHTML = "Add";
+
+  if (total_featured_items < 216 && rand.nextDouble()>0.80) {
+
+    let images = collateAllImages(rand, theme_keys);
+    images.then((results) => {
+      image.src = rand.pickFrom(results);
+      if (rand.nextDouble() > .5) {
+        image.style.objectFit = "none";
+      }
+    });
+  }
+
+}
+
 
 const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-featured-meal");
@@ -155,7 +231,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
 
   const image = createElementWithClassAndParent("img", imageContainer, "meal-image");
   const title = createElementWithClassAndParent("h3", container, "meal-title");
-  title.innerHTML = getItemName(rand, theme_keys, weird);
+  title.innerHTML = getItemName(null,rand, theme_keys, weird);
   if (total_featured_items > 216) {
     title.innerHTML = "Please Stop";
   }
@@ -177,8 +253,13 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
 
 }
 
-const renderOneMenuSection = (parent, name) => {
+
+
+const renderOneMenuSection = (parent, name, rand,keys) => {
   const container = createElementWithClassAndParent("div", parent, "one-menu-item");
+  if(total_menu_items === 0){
+    setupChosenMenu(name,rand,keys)
+  }
   total_menu_items++;
 
 
@@ -275,7 +356,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
     console.log("JR NOTE: stop")
     reviews = [
       `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,
-
+      "I could go forever. Please don't make me.",
       `It is ${new Date().toLocaleDateString()} where you are. It's not too late. Please. Stop.`,
 
     ]

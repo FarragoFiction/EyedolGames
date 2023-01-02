@@ -19,7 +19,18 @@ body {
   margin-top: 50px;
 }
 
-#resteraunts{
+.chosen-container{
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+#chosen{
   display: flex;
   margin-top: 50px;
   gap: 50px;
@@ -133,7 +144,8 @@ body {
   overflow-x: scroll;
   overflow-y: hidden;
   height: 60px;
-  margin-bottom: 50px;}
+  margin-bottom: 50px;
+}
 
 .one-menu-item{
   height: 50px;
@@ -143,6 +155,35 @@ body {
   font-weight: 400;
 
 }
+
+.food-price{
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.one-food-item{
+  border-radius: 8px;
+  border: 1px solid #e4e4e4;
+  display: flex;
+  width: 385px;
+  height: 150px;
+  gap: 50px;
+  justify-content: space-between;
+}
+
+.food-left{
+  display: inline-block;
+  padding: 20px;
+  padding-top: 0px;
+
+}
+
+.food-right{
+  height: 150px;
+  display: inline-block;
+  position: relative;
+}
+
 
 
 .menu-title{
@@ -180,7 +221,6 @@ body {
 }
 
 .meal-image{
-  width: 150px;
   height: 150px;
   border-radius: 8px;
 }
