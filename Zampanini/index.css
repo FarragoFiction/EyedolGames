@@ -34,6 +34,9 @@ body {
   justify-content: space-between;
   line-height: 25px;
 }
+.logo{
+  cursor: pointer;
+}
 
 .rest-name{
   font-weight: 700;
