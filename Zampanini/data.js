@@ -687,7 +687,7 @@ const initAdjs = () => {
     adj_possibilities[PREMIUM ] = ["small","large","medium","salted","confit","premium","rare","gourmet","juicy"];
     adj_possibilities[SALAD ] = ["create-your-own","small","large","medium","fresh","healthy","organic"];
     adj_possibilities[SANDWICHES ] = ["create-your-own","small","large","medium","sliced","hot","cold","crunchy","spicy","fried"];
-    adj_possibilities[SEAFOOD ] = ["small","large","medium","breaded","hot","fried","boiled","blackened","broiled","baked"];
+    adj_possibilities[SEAFOOD ] = ["sea","ocean","lake","riverside","small","large","medium","breaded","hot","fried","boiled","blackened","broiled","baked"];
     adj_possibilities[SUSHI ] = ["ginger","basil","mixed","peanut","garlic","chinese","thai","korean","japanese","small","large","medium","spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
 
     adj_possibilities[ART] = ["artistic", "aesthetic", "beautiful", "moving", "balanced"];
@@ -1276,7 +1276,7 @@ const initObjects = () => {
     object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","snow cone","gelato","sherbert","sorbet","italian ice","custard","frozen yogurt","milkshake"];
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
     object_possibilities[ITALIAN ] = ["ravioli","pasta","spaghetti","lasagna","parmesan","ziti","penne","noodles","tomato","eggplant"];
-    object_possibilities[MEXICAN ] = ["torta","cubano","nachos","tostada","enchilada","mole","taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];
+    object_possibilities[MEXICAN ] = ["bean","torta","cubano","nachos","tostada","enchilada","mole","taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];
     object_possibilities[PIZZA ] = ["pizza","cheese","mozarella","calzone","stromboli","sandwich"];
     object_possibilities[PREMIUM ] = ["lamb","veal","lobster","crab","fresh baked bread","potato","steak","chop"];
     object_possibilities[SALAD ] = ["salad","fry","soup","breadbowl"];
