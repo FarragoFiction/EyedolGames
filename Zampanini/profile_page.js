@@ -224,6 +224,8 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   `Don't even bother trying the ${quick(OBJECT)}.`,
   `I can't believe how cheap the ${quick(OBJECT)} was!`,
   `My ${quick(OBJECT)} wasn't in the bag.`,
+  `Best ${quick(OBJECT)} place in town!`,
+
   `Don't bother getting the ${quick(OBJECT)}.`,
   `I don't need willpower, I need ${quick(OBJECT)}.`,
 
@@ -251,11 +253,14 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
       `${quick(PHILOSOPHY, true)}`,
       `I guess I work for ${restaurant_name} now.`,
       `I think my driver is a weird ${quick(PERSON)}?`,
+      `Have I always worked for ${restaurant_name}?.`,
+      `i am so scared.`,
+      `Zampanio is a really great game, you should play it...`,
 
-      `Why did my driver cast ${quick(SUPERMOVE)}?`,
+      `Why did my driver cause the ${quick(SUPERMOVE)}?`,
       `Whenever I take a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
       `i am so so scared of my driver. ${rand.pickFrom(["he", "she"])} is outside and ${quick(MONSTER_DESC)}  help!`,
-
+`${quick(MONSTER_DESC)}`,
       `I am scared of my driver. ${rand.pickFrom(["He", "She"])} is still here and ${quick(MONSTER_DESC)}`,
       `When I touched the ${quick(OBJECT)} I saw a flash of a weird place, ${quick(LOC_DESC)}.`
 

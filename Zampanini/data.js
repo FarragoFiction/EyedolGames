@@ -1,9 +1,9 @@
 //https://genders.wtf/gauntlet/
 
 
-const first_names = ["Tom","Amelie","Wanda","Wodin","Piper","Jasna","Brian","Todd","Joshua","Wyatt","Joshua","Penny","Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
+const first_names = ["Ben","Karen","Ennis","Dallas","Berga","Eve","Adam","Nice","Luck","Lucky","Maiza","Miria","Czeslaw","Ladd","Marcoccio","Issac","Firo","Claire","Vino","Jacuzzi","Chane","Mike","Dracula","Sypha","Alucard","Trevor","Power","Denji","Aki","Kobeni","Tom","Amelie","Wanda","Wodin","Piper","Jasna","Brian","Todd","Joshua","Wyatt","Joshua","Penny","Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
 
-const last_names = ["Peyote","Blightheart","Gilbert","Howard","Davidson","Vastheight","Gillespie","Mann","Rusting","Researcher","Gently","Egbert","Claire","Lalonde","Strider","Hussain","King","Stoker","Sims","Blackwood","Barker","James","Blake","Dalon","Vasil","Hebert","Jensen","Lindt","Newell","Laborn","Fell","Wilbourn","Livsey","Lamb","Bacama","Kharun","Reynolds","Braggi","Seelee","Cassan","Folnir","Citato","Grigor","Crew","Robertson","Fairchild","Lukas","Richardson","Dominguez","Cane","Salesa","Shelly"];
+const last_names = ["Jefferson","Genoard","Holystone","Gandor","Quates","Harvent","Meyer","Russo","Dian","Prochainezo","Stanfield","Splot","Laforet","Peyote","Blightheart","Gilbert","Howard","Davidson","Vastheight","Gillespie","Mann","Rusting","Researcher","Gently","Egbert","Claire","Lalonde","Strider","Hussain","King","Stoker","Sims","Blackwood","Barker","James","Blake","Dalon","Vasil","Hebert","Jensen","Lindt","Newell","Laborn","Fell","Wilbourn","Livsey","Lamb","Bacama","Kharun","Reynolds","Braggi","Seelee","Cassan","Folnir","Citato","Grigor","Crew","Robertson","Fairchild","Lukas","Richardson","Dominguez","Cane","Salesa","Shelly"];
 
 const lameGenderRaw = `Male
 Female
@@ -607,19 +607,19 @@ const initEmojis = ()=>{
 const initPeople = () => {
     person_posibilities[BAKERY] = ["baker"];
     person_posibilities[BREAKFAST] = ["farmer","logger","lumberjack"];
-    person_posibilities[BURGERS ] = ["piggy","grillmaster","big boy","bob","king"];
+    person_posibilities[BURGERS ] = ["piggy","grillmaster","big boy","rancher","cowboy"];
     person_posibilities[CHICKEN] = ["chicken","chick","chicky"];
     person_posibilities[COFFEE ] = ["barista"];
     person_posibilities[DESSERTS ] = ["Baker","Fairy","Unicorn"];
     person_posibilities[DINER] = ["piggy","Lucy","Cook","Diner","Sally","Bob","Bill","Joe","Jeff"];
     person_posibilities[ITALIAN ] = ["Chef"];
-    person_posibilities[MEXICAN ] = ["Chef"];
+    person_posibilities[MEXICAN ] = ["Chef","Cowboy"];
     person_posibilities[PIZZA ] = ["Chef"];
     person_posibilities[PREMIUM ] = ["critic","chef","gourmet"];
     person_posibilities[SALAD ] = ["Chef"];
     person_posibilities[SANDWICHES ] = ["Chef","Baker"];
     person_posibilities[SEAFOOD ] = ["Captain","Skipper","Sailor","Pirate","Smuggler"];
-    person_posibilities[SUSHI ] = ["Chef"];
+    person_posibilities[SUSHI ] = ["Chef","Shogun","Ninja","Samurai"];
 
     person_posibilities[ART] = ["artist", "painter", "sculpter", "curator"];
     person_posibilities[TECHNOLOGY] = ["engineer", "programmer", "hacker", "coder"];
@@ -676,14 +676,14 @@ const initPeople = () => {
 const initAdjs = () => {
     adj_possibilities[BAKERY] = ["small","large","medium","hot","fresh","warm","toasted"];
     adj_possibilities[BREAKFAST] = ["small","large","medium","hot","smothered","stacked","sizzling","sweet"];
-    adj_possibilities[BURGERS ] = ["create-your-own","small","large","medium","barbecue","bbq","texas","smokey","heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
+    adj_possibilities[BURGERS ] = ["ranch","create-your-own","small","large","medium","barbecue","bbq","texas","smokey","heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
     adj_possibilities[CHICKEN] = ["small","large","medium","barbecue","bbq","buffalo","smokey","hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
     adj_possibilities[COFFEE ] = ["small","large","medium","hot","iced","cold","light-roast","dark-roast"];
     adj_possibilities[DESSERTS ] = ["small","large","medium","hot","iced","frosted","sweet","decadent","sinful","guilty"];
     adj_possibilities[DINER] = ["small","large","medium","heartattack","smokey","hot","fried","baked","sliced","stuffed","special","sale"];
     adj_possibilities[ITALIAN ] = ["small","large","medium","hot","garlic","parmesan","cream","sauce","stuffed"];
     adj_possibilities[MEXICAN ] = ["fiesta","pastor","chicharron","barbacoa","carne asada","carnitas","chorizo","pollo","caribe","queso","quacamole","venezuelan","dominican","mexican","cuban","lingua","supreme","supremo","adobo","small","large","medium","tex mex","spicy","hot","crunchy","soft","gringo","sizzling","mexi"];
-    adj_possibilities[PIZZA ] = ["create-your-own","3 topping","2 topping","1 topping","small","large","medium","california","new york","detroit","chicago","deep-dish","neopolitan","white","meat-lovers","vegetarian","supreme","hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
+    adj_possibilities[PIZZA ] = ["bianca","italian","milano","create-your-own","3 topping","2 topping","1 topping","small","large","medium","california","new york","detroit","chicago","deep-dish","neopolitan","white","meat-lovers","vegetarian","supreme","hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
     adj_possibilities[PREMIUM ] = ["small","large","medium","salted","confit","premium","rare","gourmet","juicy"];
     adj_possibilities[SALAD ] = ["create-your-own","small","large","medium","fresh","healthy","organic"];
     adj_possibilities[SANDWICHES ] = ["create-your-own","small","large","medium","sliced","hot","cold","crunchy","spicy","fried"];
@@ -1270,7 +1270,7 @@ const initObjects = () => {
 
     object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry"];
     object_possibilities[BREAKFAST] = ["pancakes","bacon","eggs","waffles","toast","french toast","scramble"];
-    object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","burger","burger","burger","burger","burger","fries","shake","tots","milkshake"];
+    object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","fries","shake","tots","milkshake"];
     object_possibilities[CHICKEN] = ["drumstick","leg","fry","chicken","wing","thigh","chicken breast","tender","fries"];
     object_possibilities[COFFEE ] = ["coffee","americano","mocha","espresso","java","beans","tea","cafe","latte","cappuccino","mug"];
     object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","snow cone","gelato","sherbert","sorbet","italian ice","custard","frozen yogurt","milkshake"];
@@ -2333,7 +2333,7 @@ class Theme {
     getPossibilitiesFor = (key) => {
         //console.log("JR NOTE: picking possibilities for ",key, "i am", this.key)
         if (!this.string_possibilities) {
-            return [`Zampanio`];
+            return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
         }
         if ((key in this.string_possibilities) && this.string_possibilities[key]) {
             return this.string_possibilities[key];
@@ -2341,7 +2341,7 @@ class Theme {
             if (this.key !== "waste" && (food_keys.indexOf(this.key) === -1)) {
                 console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
             }
-            return [`Zampanio`];
+            return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
         }
     }
 

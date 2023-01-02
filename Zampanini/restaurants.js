@@ -66,9 +66,9 @@ const getRestaurantName = (rand, theme_keys, weird) => {
   const goodwords = goodwordsraw.split("\n")
 
   const possibilities = [
-    `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])}  ${quick(OBJECT, true)}`,
+    `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress","lord","lady","knight"])}  ${quick(OBJECT, true)}`,
     `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])} ${quick(ADJ, true)} ${quick(OBJECT, true)}`,
-    ` ${quick(OBJECT, true)} ${rand.pickFrom(["master","mistress"])}`,
+    ` ${quick(OBJECT, true)} ${rand.pickFrom(["master","mistress","lord","lady","knight"])}`,
 
     `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
     `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
