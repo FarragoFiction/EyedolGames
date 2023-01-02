@@ -124,7 +124,7 @@ const getItemDescription = (name,rand, theme_keys, weird)=>{
     `${name} with choice of sides`,
     `${name} with extra ${quick(OBJECT)}`,
     `${name} with extra ${quick(OBJECT)}.`,
-
+    'No refunds.',
     `${name} with ${quick(ADJ)} sauce`,
     `${name} with ${quick(ADJ)} topping`,
     `${name} with ${quick(ADJ)} sauce.`,
@@ -134,9 +134,11 @@ const getItemDescription = (name,rand, theme_keys, weird)=>{
      `NO ${quick(OBJECT)}`,
     `${quick(ADJ,true)}.`,
     `${quick(ADJ,true)}`
-
-
   ];
+  if(weird){
+    const weirdshit  =["It's too late.",`${quick(MONSTER_DESC)}`, `served with ${quick(LOC_DESC)}`, `limited time offer: ${quick(MIRACLE)}`,`${quick(EFFECTS)}`]
+    ret = ret.concat(weirdshit);
+  }
   return rand.pickFrom(ret);
 }
 
@@ -244,7 +246,7 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   title.innerHTML = getItemName(required_name,rand, theme_keys, weird,);
   if (total_featured_items > 216) {
     title.innerHTML = "Please Stop";
-    desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. But I don't want to be a parasite either. You can let me rest. I'll be here when you return.";
+    desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. But I don't want to hurt you either. You can let me rest. I'll be here when you return.";
   }
   const price = createElementWithClassAndParent("div", left, "food-price");
   price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
