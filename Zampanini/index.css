@@ -97,6 +97,18 @@ body {
 
 }
 
+.featured-reviews{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 230px;
+  margin-bottom: 50px;
+}
+
+
 .featured-meals{
   display: flex;
   flex-wrap: nowrap;

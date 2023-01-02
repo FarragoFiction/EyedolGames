@@ -16,6 +16,7 @@ const handleRestaurantPage = (name, themes, seed) => {
   setupReviews(reviews, rand, theme_keys);
 
 
+
   let images = collateAllImages(rand, theme_keys);
   images.then((results) => {
     image.src = rand.pickFrom(results);
@@ -28,6 +29,8 @@ const handleRestaurantPage = (name, themes, seed) => {
 const setupFeaturedItems = (container, rand, theme_keys) => {
   const title = createElementWithClassAndParent("h2", container, "section-title");
   const parent = createElementWithClassAndParent("div", container, "featured-meals");
+  handleFeatureScrolling(parent,rand,theme_keys );
+
 
   title.innerHTML = "Featured Items";
   for (let i = 0; i < 10; i++) {
@@ -37,7 +40,8 @@ const setupFeaturedItems = (container, rand, theme_keys) => {
 
 const setupReviews = (container, rand, theme_keys) => {
   const title = createElementWithClassAndParent("h2", container, "section-title");
-  const parent = createElementWithClassAndParent("div", container, "featured-meals");
+  const parent = createElementWithClassAndParent("div", container, "featured-reviews");
+  handleReviewScrolling(parent,rand,theme_keys );
 
   title.innerHTML = "What people are saying";
   for (let i = 0; i < 10; i++) {
@@ -58,6 +62,38 @@ const getItemName = (rand, theme_keys, weird) => {
     possibilities.push(`${pickARandomThemeFromListAndGrabKey(rand, theme_keys, INSULT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,)
   }
   return rand.pickFrom(possibilities);
+}
+
+const handleFeatureScrolling = (container,rand, existing_keys)=>{
+  let lastScrollTime = 0; //not to spam events
+  container.onscroll = () => {
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 50) {
+      return;
+    }
+    lastScrollTime = newTime;
+
+    window.requestAnimationFrame(() => {
+      renderOneFeaturedItem(container, rand, [...existing_keys,rand.pickFrom(Object.keys(all_themes))],true);
+    });
+
+  };
+}
+
+const handleReviewScrolling = (container, rand,existing_keys)=>{
+  let lastScrollTime = 0; //not to spam events
+  container.onscroll = () => {
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 50) {
+      return;
+    }
+    lastScrollTime = newTime;
+
+    window.requestAnimationFrame(() => {
+      renderOneReview(container, rand,[...existing_keys,rand.pickFrom(Object.keys(all_themes))],true);
+    });
+
+  };
 }
 
 
@@ -106,10 +142,12 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
 
   console.log("JR NOTE: ", qObject)
 
-  const reviews = [`The ${quick(OBJECT)} smelled like ${quick(SMELL)}.`,
+  let reviews = [`The ${quick(OBJECT)} smelled like ${quick(SMELL)}.`,
   `Don't even bother trying the ${quick(OBJECT)}.`,
   `I can't believe how cheap the ${quick(OBJECT)} was!`,
   `My ${quick(OBJECT)} wasn't in the bag.`,
+  `Don't bother getting the ${quick(OBJECT)}.`,
+
   `The ${quick(OBJECT)} here is a classic.`,
   `${quick(OBJECT)} is AMAZING even tho they forgot the sauce.`,
 
@@ -124,7 +162,19 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   `Can't go wrong with the ${quick(OBJECT)}.`,
   `Don't listen to anyone saying the food is ${quick(INSULT)}.`,
 
-  `I highly recommend the ${qObject()}.`,"Food arrived thirty minutes late. Never ordering from here again!",`The ${qObject()} was a little ${qInsult()}.`,`The ${qObject()} was so ${qCompliment()}!.`,`Did not like the ${qObject()}.`,`The ${qObject()} was so fresh and juicy!.`,"Never eating here again."]
+  `I highly recommend the ${qObject()}.`,"Food arrived thirty minutes late. Never ordering from here again!",`The ${qObject()} was a little ${qInsult()}.`,`The ${qObject()} was so ${qCompliment()}!`,`Did not like the ${qObject()}.`,`The ${qObject()} was so fresh and juicy!.`,"Never eating here again."]
+ 
+  if(weird){
+    const weird_reviews = [
+      `${quick(PHILOSOPHY)}`,
+      `Why did my driver cast ${quick(SUPERMOVE)}?`,
+      `When I took a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
+      `I was scared of my driver. ${quick(MONSTER_DESC)}.`,
+      `When I touched the ${quick(OBJECT)} I saw a flash of a weird place, ${quick(LOC_DESC)}.`
+
+    ];
+    reviews = reviews.concat(weird_reviews);
+  }
   review.innerHTML = rand.pickFrom(reviews);
 
 
