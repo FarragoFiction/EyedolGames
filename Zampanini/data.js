@@ -1611,21 +1611,21 @@ const initMiracles = () => {
 }
 
 const initInsults = () => {
-    insult_possibilities[BAKERY] = ["canned","limp","over-cooked","frozen","stale"];
-    insult_possibilities[BREAKFAST] = ["canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[BURGERS ] = ["canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[CHICKEN] = ["canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[COFFEE ] = ["canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[DESSERTS ] = ["canned","limp","over-cooked","frozen"];
-    insult_possibilities[DINER] = ["canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[ITALIAN ] = ["canned","limp","over-cooked","frozen"];
-    insult_possibilities[MEXICAN ] = ["canned","limp","over-cooked","frozen"];
-    insult_possibilities[PIZZA ] = ["canned","limp","over-cooked","frozen"];
-    insult_possibilities[PREMIUM ] = ["canned","limp","over-cooked","snooty","over-priced"];
-    insult_possibilities[SALAD ] = ["canned","limp","over-cooked"];
-    insult_possibilities[SANDWICHES ] = ["greasy","stale","thin"];
-    insult_possibilities[SEAFOOD ] = ["canned","limp","over-cooked"];
-    insult_possibilities[SUSHI ] = ["canned","limp","over-cooked","cheap"];
+    insult_possibilities[BAKERY] = ["room temperature","luke-warm","soggy","discount","burnt","day-old","canned","limp","over-cooked","frozen","stale"];
+    insult_possibilities[BREAKFAST] = ["soggy","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[BURGERS ] = ["room temperature","luke-warm","soggy","discount","burnt","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[CHICKEN] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[COFFEE ] = ["watery","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[DESSERTS ] = ["room temperature","luke-warm","soggy","discount","burnt","room-temperature","melted","canned","limp","over-cooked","frozen"];
+    insult_possibilities[DINER] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[ITALIAN ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
+    insult_possibilities[MEXICAN ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
+    insult_possibilities[PIZZA ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
+    insult_possibilities[PREMIUM ] = ["room temperature","luke-warm","soggy","discount","burnt","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","snooty","over-priced"];
+    insult_possibilities[SALAD ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked"];
+    insult_possibilities[SANDWICHES ] = ["room temperature","luke-warm","soggy","discount","burnt","greasy","stale","thin"];
+    insult_possibilities[SEAFOOD ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked"];
+    insult_possibilities[SUSHI ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","cheap"];
 
     insult_possibilities[ART] = ["trite"];
     insult_possibilities[TECHNOLOGY] = ["hacky"];
@@ -2289,6 +2289,9 @@ class Theme {
     }
 
     getImages = async ()=>{
+        if(!food_keys.includes(this.key)){
+            return [];
+        }
         if(this.images && this.images.length != 0){
             return this.images;
         }else{

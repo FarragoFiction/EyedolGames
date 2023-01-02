@@ -9,10 +9,10 @@ window.onload = () => {
   let seed = urlParams.get('seed');
   let name = urlParams.get('name');
 
-  if(name !== null || themes !== null || seed !== null){
+  if (name !== null || themes !== null || seed !== null) {
     handleRestaurantPage(name, themes, seed);
-  }else{
-  handleCategories();
+  } else {
+    handleCategories();
   }
 
 

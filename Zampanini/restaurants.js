@@ -41,19 +41,22 @@ const handleRestaurantScrolling = (rand,keys)=>{
   };
 }
 
-const getRestaurantName = (rand,theme_keys)=>{
+const getRestaurantName = (rand,theme_keys,weird)=>{
   const possibilities = [
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)}`,
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, COMPLIMENT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, INSULT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)}`,
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, PERSON, true)}'s ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)}`,
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, LOCATION, true)}`,
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, LOCATION, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, INSULT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, LOCATION, true)}`,
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, COMPLIMENT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, LOCATION, true)}`,
 
     `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, LOCATION, true)}`
   ];
+
+  if(weird){
+    possibilities.push(    `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, INSULT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)}`,    )
+    possibilities.push(    `${pickARandomThemeFromListAndGrabKey(rand,theme_keys, INSULT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand,theme_keys, LOCATION, true)}`,    )
+  }
   return rand.pickFrom(possibilities);
 }
 
@@ -94,7 +97,7 @@ const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
 })
 
   let prices = ["💰💰💰","💰💰","💰💰","💰"];
-  const label = getRestaurantName(rand, theme_keys)
+  const label = getRestaurantName(rand, theme_keys,weird)
 
   const preview = createElementWithClassAndParent("img",ele, "preview");
   const rest = createElementWithClassAndParent("div",ele, "rest-name");
