@@ -25,7 +25,7 @@ const handleRestaurants = (keys,seed)=>{
 const handleRestaurantScrolling = (rand,container)=>{
   console.log("JR NOTE: handleRestaurantScrolling");
   let lastScrollTime = 0; //not to spam events
-  container.onscroll = () => {
+  window.onscroll = () => {
     const newTime = new Date().getTime();
     if (((newTime - lastScrollTime)) < 50) {
       return;
@@ -101,7 +101,7 @@ const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   rest.innerHTML = titleCase(label);
   const facts = createElementWithClassAndParent("div",ele, "facts");
   const left = createElementWithClassAndParent("div",facts, "left");
-  left.innerHTML = `   ${rand.pickFrom(prices)} ${theme_keys.map((item)=>titleCase(item)).join(",")}
+  left.innerHTML = `   <span class="price"s>${rand.pickFrom(prices)}</span> <span class="genre">${theme_keys.map((item)=>titleCase(item)).join(", ")}</span>
   <Br>
   ${(rand.getRandomNumberBetween(0,5) + rand.nextDouble()).toFixed(1)} ⭐`;
   const right = createElementWithClassAndParent("div",facts, "right");

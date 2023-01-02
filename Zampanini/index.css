@@ -42,6 +42,19 @@ body {
   border-radius: 8px;
 }
 
+.price{
+  font-size: 10px;
+  vertical-align: top;
+}
+
+.genre{
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+
 .single-rest{
   gap: 100px;
 }
