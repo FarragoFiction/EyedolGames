@@ -43,6 +43,7 @@ body {
 
 #header{
   display: flex;
+  z-index: 999;
   justify-content: space-between;
   margin: 0px;
   position: fixed;
@@ -94,6 +95,7 @@ body {
   padding: 10px;
   border-radius: 8px;
   background: #fefefe;
+  overflow: hidden;
 
 }
 

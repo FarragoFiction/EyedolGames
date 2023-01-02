@@ -1,9 +1,11 @@
+let restaurant_name = "";
 const handleRestaurantPage = (name, themes, seed) => {
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
   const rand = new SeededRandom(seed);
   container.id = "profile";
 
+  restaurant_name = name;
   const header = createElementWithClassAndParent("div", container, "profile_header");
   const image = createElementWithClassAndParent("img", container, "profile_image");
 
@@ -44,8 +46,12 @@ const setupReviews = (container, rand, theme_keys) => {
   handleReviewScrolling(parent,rand,theme_keys );
 
   title.innerHTML = "What people are saying";
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 3; i++) {
     renderOneReview(parent, rand, theme_keys, false);
+  }
+
+  for (let i = 0; i < 13; i++) {
+    renderOneReview(parent, rand, theme_keys, true);
   }
 }
 
@@ -138,9 +144,15 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   const qObject = ()=> pickARandomThemeFromListAndGrabKey(rand,theme_keys,OBJECT);
   const qCompliment = ()=>pickARandomThemeFromListAndGrabKey(rand,theme_keys,COMPLIMENT);
   const qInsult = ()=>pickARandomThemeFromListAndGrabKey(rand,theme_keys,INSULT);
-  const quick = (key)=>pickARandomThemeFromListAndGrabKey(rand,theme_keys,key);
+  const quick = (key,cap)=>{
+    if(weird && rand.nextDouble()>0.5){
+      return pickARandomThemeFromListAndGrabKey(rand,Object.keys(all_themes),key,cap);
 
-  console.log("JR NOTE: ", qObject)
+    }else{
+      return pickARandomThemeFromListAndGrabKey(rand,theme_keys,key,cap)
+    }
+  };
+
 
   let reviews = [`The ${quick(OBJECT)} smelled like ${quick(SMELL)}.`,
   `Don't even bother trying the ${quick(OBJECT)}.`,
@@ -149,12 +161,12 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   `Don't bother getting the ${quick(OBJECT)}.`,
 
   `The ${quick(OBJECT)} here is a classic.`,
-  `${quick(OBJECT)} is AMAZING even tho they forgot the sauce.`,
+  `${quick(OBJECT,true)} is AMAZING even tho they forgot the sauce.`,
 
   `The ${quick(OBJECT)} here reminds me of home!`,
   `mmmmmmmmmmmmmmmmmmm  gotta love that ${quick(OBJECT)}`,
 
-  `${quick(OBJECT)} was good. Only problem was there was it wasn't ${quick(ADJ)} like I ordered.`,
+  `${quick(OBJECT,true)} was good. Only problem was it wasn't ${quick(ADJ)} like I ordered.`,
   `Got everything right.`,
   `Forgot ${getRandomNumberBetween(0,5)} items out of our bag.`,
   "It's food.",
@@ -166,10 +178,16 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
  
   if(weird){
     const weird_reviews = [
-      `${quick(PHILOSOPHY)}`,
+      `${quick(PHILOSOPHY,true)}`,
+      `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,
+
+      `It is ${new Date().toLocaleDateString()} where you are. It's not too late. Please. Stop.`,
+      `I guess I work for ${restaurant_name} now.`,
       `Why did my driver cast ${quick(SUPERMOVE)}?`,
-      `When I took a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
-      `I was scared of my driver. ${quick(MONSTER_DESC)}.`,
+      `Whenever I take a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
+      `i am so so scared of my driver. ${rand.pickFrom(["He","She"])} is outside and ${quick(MONSTER_DESC)}. Send help!`,
+
+      `I am scared of my driver. ${rand.pickFrom(["He","She"])} is still here and ${quick(MONSTER_DESC)}.`,
       `When I touched the ${quick(OBJECT)} I saw a flash of a weird place, ${quick(LOC_DESC)}.`
 
     ];
