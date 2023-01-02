@@ -17,7 +17,7 @@ const handleRestaurantPage = (name, themes, seed) => {
   const reviews = createElementWithClassAndParent("div", container, "reviews");
   const menu = createElementWithClassAndParent("div", container, "menu-container");
 
-  title.innerHTML = name;
+  title.innerText = name;
   setupFeaturedItems(features, rand, theme_keys);
   setupReviews(reviews, rand, theme_keys);
   setupMenuSections(menu, rand, theme_keys);
