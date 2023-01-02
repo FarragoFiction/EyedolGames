@@ -1271,7 +1271,7 @@ const initObjects = () => {
     object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry"];
     object_possibilities[BREAKFAST] = ["pancakes","bacon","eggs","waffles","toast","french toast","scramble"];
     object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","burger","burger","burger","burger","burger","fries","shake","tots","milkshake"];
-    object_possibilities[CHICKEN] = ["fry","chicken","chicken","chicken","wing","thigh","chicken breast","tender","fries"];
+    object_possibilities[CHICKEN] = ["drumstick","leg","fry","chicken","chicken","chicken","wing","thigh","chicken breast","tender","fries"];
     object_possibilities[COFFEE ] = ["coffee","coffee","coffee","coffee","coffee","tea","cafe","latte","cappuccino"];
     object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","custard","frozen yogurt","milkshake"];
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
@@ -2331,7 +2331,7 @@ class Theme {
 
     //takes in things like noun, adj, insult etc etc
     getPossibilitiesFor = (key) => {
-        //console.log("JR NOTE: picking possibilities for ",key)
+        //console.log("JR NOTE: picking possibilities for ",key, "i am", this.key)
         if (!this.string_possibilities) {
             return [`Zampanio`];
         }

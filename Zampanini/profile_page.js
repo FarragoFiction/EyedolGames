@@ -1,6 +1,7 @@
 let restaurant_name = "";
 let total_reviews = 0;
 let total_featured_items = 0;
+let total_menu_items = 0;
 const handleRestaurantPage = (name, themes, seed) => {
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
@@ -14,10 +15,12 @@ const handleRestaurantPage = (name, themes, seed) => {
   const title = createElementWithClassAndParent("h1", container, "title");
   const features = createElementWithClassAndParent("div", container, "features");
   const reviews = createElementWithClassAndParent("div", container, "reviews");
+  const menu = createElementWithClassAndParent("div", container, "menu-container");
 
   title.innerHTML = name;
   setupFeaturedItems(features, rand, theme_keys);
   setupReviews(reviews, rand, theme_keys);
+  setupMenuSections(menu, rand, theme_keys);
 
 
 
@@ -57,6 +60,27 @@ const setupReviews = (container, rand, theme_keys) => {
   }
 }
 
+const setupMenuSections = (container, rand, theme_keys) => {
+  const title = createElementWithClassAndParent("h2", container, "section-title");
+  const parent = createElementWithClassAndParent("div", container, "menu");
+  handleMenuScrolling(parent, rand, theme_keys);
+
+  title.innerHTML = "Full Menu";
+  for (let key of theme_keys) {
+    for (let object of all_themes[key].getPossibilitiesFor(OBJECT)){
+      renderOneMenuSection(parent, titleCase(object), false);
+
+    }
+  }
+
+    for (let i = 0; i<10; i++){
+      const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
+      renderOneMenuSection(parent, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), true);
+
+    }
+
+}
+
 const getItemName = (rand, theme_keys, weird) => {
   const possibilities = [
     `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
@@ -83,6 +107,22 @@ const handleFeatureScrolling = (container, rand, existing_keys) => {
 
     window.requestAnimationFrame(() => {
       renderOneFeaturedItem(container, rand, [...existing_keys, rand.pickFrom(Object.keys(all_themes))], true);
+    });
+
+  };
+}
+
+const handleMenuScrolling = (container, rand, existing_keys) => {
+  let lastScrollTime = 0; //not to spam events
+  container.onscroll = () => {
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 50) {
+      return;
+    }
+    lastScrollTime = newTime;
+
+    window.requestAnimationFrame(() => {
+      renderOneMenuSection(parent, rand.pickFrom(Object.keys(all_themes)),titleCase(object), true);
     });
 
   };
@@ -135,6 +175,24 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
 
 }
 
+const renderOneMenuSection = (parent, name) => {
+  const container = createElementWithClassAndParent("div", parent, "one-menu-item");
+  total_menu_items++;
+
+
+  const title = createElementWithClassAndParent("div", container, "menu-title");
+  title.innerHTML = name;
+  if(total_menu_items === 1){
+    title.classList.add("selected-menu-title")
+  }
+
+  if (total_menu_items > 500) {
+    title.innerHTML = "Please Stop";
+  }
+
+
+}
+
 const renderOneReview = (parent, rand, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-review");
   total_reviews++;
@@ -145,7 +203,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   title.innerHTML = `${rand.pickFrom(first_names)} ${rand.pickFrom(first_names)[0]} `;
   const rating = createElementWithClassAndParent("div", container, "rating");
   const ratings = ["<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>"];
-  rating.innerHTML = pickFrom(ratings);
+  rating.innerHTML = rand.pickFrom(ratings);
 
   const review = createElementWithClassAndParent("div", container, "meal-title");
 
@@ -167,6 +225,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   `I can't believe how cheap the ${quick(OBJECT)} was!`,
   `My ${quick(OBJECT)} wasn't in the bag.`,
   `Don't bother getting the ${quick(OBJECT)}.`,
+  `I don't need willpower, I need ${quick(OBJECT)}.`,
 
   `The ${quick(OBJECT)} here is a classic.`,
   `${quick(OBJECT, true)} is AMAZING even tho they forgot the sauce.`,

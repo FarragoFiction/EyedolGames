@@ -125,6 +125,35 @@ body {
   margin-bottom: 50px;
 }
 
+.menu{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 60px;
+  margin-bottom: 50px;}
+
+.one-menu-item{
+  height: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 400;
+
+}
+
+
+.menu-title{
+  padding-bottom: 10px;
+
+}
+.selected-menu-title{
+  border-bottom: 2px solid black;
+  border-radius: 3px;
+}
+
 .one-featured-meal{
   width: 150;
   height: 200px;
