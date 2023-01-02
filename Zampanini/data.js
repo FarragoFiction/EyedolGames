@@ -607,7 +607,7 @@ const initEmojis = ()=>{
 const initPeople = () => {
     person_posibilities[BAKERY] = ["baker"];
     person_posibilities[BREAKFAST] = ["farmer","logger","lumberjack"];
-    person_posibilities[BURGERS ] = ["big boy","bob","king"];
+    person_posibilities[BURGERS ] = ["piggy","grillmaster","big boy","bob","king"];
     person_posibilities[CHICKEN] = ["chicken","chick","chicky"];
     person_posibilities[COFFEE ] = ["barista"];
     person_posibilities[DESSERTS ] = ["Baker","Fairy","Unicorn"];
@@ -676,11 +676,11 @@ const initPeople = () => {
 const initAdjs = () => {
     adj_possibilities[BAKERY] = ["hot","fresh","warm","toasted"];
     adj_possibilities[BREAKFAST] = ["hot","smothered","stacked","sizzling","sweet"];
-    adj_possibilities[BURGERS ] = ["heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
+    adj_possibilities[BURGERS ] = ["smokey","heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
     adj_possibilities[CHICKEN] = ["smokey","hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
     adj_possibilities[COFFEE ] = ["hot","iced","cold"];
     adj_possibilities[DESSERTS ] = ["hot","iced","frosted","sweet","decadent","sinful","guilty"];
-    adj_possibilities[DINER] = ["smokey","hot","fried","baked","sliced","stuffed","special","sale"];
+    adj_possibilities[DINER] = ["heartattack","smokey","hot","fried","baked","sliced","stuffed","special","sale"];
     adj_possibilities[ITALIAN ] = ["hot","garlic","parmesan","cream","sauce","stuffed"];
     adj_possibilities[MEXICAN ] = ["spicy","hot","crunchy","soft","gringo","sizzling","mexi"];
     adj_possibilities[PIZZA ] = ["hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
@@ -1198,21 +1198,21 @@ const initSuperNames = () => {
 }
 
 const initLocations = () => {
-    location_possibilities[BAKERY] = ["shop","bakery","oven","restaurant","kitchen","house"];
-    location_possibilities[BREAKFAST] = ["restaurant","kitchen","house"];
-    location_possibilities[BURGERS ] = ["hut","shack","restaurant","kitchen","house"];
-    location_possibilities[CHICKEN] = ["coop","restaurant","kitchen","house"];
-    location_possibilities[COFFEE ] = ["cafe","restaurant","kitchen","house"];
-    location_possibilities[DESSERTS ] = ["parlor","restaurant","kitchen","house"];
-    location_possibilities[DINER] = ["bbq","smokehouse","cafeteria","diner","restaurant","kitchen","house","spoon","eatery"];
-    location_possibilities[ITALIAN ] = ["restaurant","kitchen","house"];
-    location_possibilities[MEXICAN ] = ["restaurant","kitchen","house"];
+    location_possibilities[BAKERY] = ["hut","shop","bakery","oven","restaurant","kitchen","house"];
+    location_possibilities[BREAKFAST] = ["hut","restaurant","kitchen","house"];
+    location_possibilities[BURGERS ] = ["barbecue","bbq","hut","shack","restaurant","kitchen","house"];
+    location_possibilities[CHICKEN] = ["hut","coop","restaurant","kitchen","house"];
+    location_possibilities[COFFEE ] = ["hut","cafe","restaurant","kitchen","house"];
+    location_possibilities[DESSERTS ] = ["hut","parlor","restaurant","kitchen","house"];
+    location_possibilities[DINER] = ["barbecue","hut","bbq","smokehouse","cafeteria","diner","restaurant","kitchen","house","spoon","eatery"];
+    location_possibilities[ITALIAN ] = ["hut","restaurant","kitchen","house"];
+    location_possibilities[MEXICAN ] = ["hut","restaurant","kitchen","house"];
     location_possibilities[PIZZA ] = ["shack","kitchen","pizzeria","restaurant"];
-    location_possibilities[PREMIUM ] = ["bistro","restaurant","kitchen","house","steakhouse"];
-    location_possibilities[SALAD ] = ["restaurant","kitchen","house"];
-    location_possibilities[SANDWICHES ] = ["shop","delicatessen","deli","bistro","restaurant","kitchen","house"];
-    location_possibilities[SEAFOOD ] = ["cove","restaurant","kitchen","house"];
-    location_possibilities[SUSHI ] = ["restaurant","kitchen","house"];
+    location_possibilities[PREMIUM ] = ["hut","bistro","restaurant","kitchen","house","steakhouse"];
+    location_possibilities[SALAD ] = ["hut","restaurant","kitchen","house"];
+    location_possibilities[SANDWICHES ] = ["hut","shop","delicatessen","deli","bistro","restaurant","kitchen","house"];
+    location_possibilities[SEAFOOD ] = ["hut","cove","restaurant","kitchen","house"];
+    location_possibilities[SUSHI ] = ["hut","restaurant","kitchen","house"];
 
     location_possibilities[ART] = ["museum", "studio", "craft shop", "workshop"];
     location_possibilities[TECHNOLOGY] = ["server farm", "office", "isp"];
