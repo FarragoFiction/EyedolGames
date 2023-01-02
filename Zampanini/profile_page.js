@@ -3,6 +3,8 @@ let total_reviews = 0;
 let total_featured_items = 0;
 let total_menu_items = 0;
 let total_food_options = 0;
+
+let current_food = "";
 const handleRestaurantPage = (name, themes, seed) => {
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
@@ -25,7 +27,6 @@ const handleRestaurantPage = (name, themes, seed) => {
   setupReviews(reviews, rand, theme_keys);
   setupMenuSections(menu, rand, theme_keys);
 
-  console.log("JR NOTE: scrolling")
 
   let images = collateAllImages(rand, theme_keys);
   images.then((results) => {
@@ -90,10 +91,11 @@ const setupMenuSections = (container, rand, theme_keys) => {
 
 const setupChosenMenu = (name, rand,theme_keys)=>{
   total_food_options = 0;
+  current_food = name;
   
   const chosen_container = document.querySelector(".chosen-container");
+  handleFoodScrolling(chosen_container, rand, theme_keys);
   chosen_container.innerHTML = "";
-  renderOneFoodItem
   for (let i = 0; i < 13; i++) {
     renderOneFoodItem(chosen_container, rand, name,theme_keys, false);
   }
@@ -152,7 +154,7 @@ const getItemName = (required_name, rand, theme_keys, weird) => {
   ];
 
   if (weird) {
-    possibilities.push(`${pickARandomThemeFromListAndGrabKey(rand, theme_keys, INSULT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,)
+    possibilities.push(`${pickARandomThemeFromListAndGrabKey(rand, theme_keys, INSULT, true)} ${name}`,)
   }
   return rand.pickFrom(possibilities);
 }
@@ -168,6 +170,24 @@ const handleFeatureScrolling = (container, rand, existing_keys) => {
 
     window.requestAnimationFrame(() => {
       renderOneFeaturedItem(container, rand, [...existing_keys, rand.pickFrom(Object.keys(all_themes))], true);
+    });
+
+  };
+}
+
+const handleFoodScrolling = (container, rand, existing_keys) => {
+  let lastScrollTime = 0; //not to spam events
+  window.onscroll = () => {
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 50) {
+      return;
+    }
+    lastScrollTime = newTime;
+
+    window.requestAnimationFrame(() => {
+      const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
+      renderOneFoodItem(container, rand,current_food, existing_keys,true);
+
     });
 
   };
@@ -224,6 +244,7 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   title.innerHTML = getItemName(required_name,rand, theme_keys, weird,);
   if (total_featured_items > 216) {
     title.innerHTML = "Please Stop";
+    desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. But I don't want to be a parasite either. You can let me rest. I'll be here when you return.";
   }
   const price = createElementWithClassAndParent("div", left, "food-price");
   price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
