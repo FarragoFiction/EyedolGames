@@ -94,7 +94,7 @@ const setupChosenMenu = (name, rand,theme_keys)=>{
   const chosen_container = document.querySelector(".chosen-container");
   chosen_container.innerHTML = "";
   renderOneFoodItem
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 13; i++) {
     renderOneFoodItem(chosen_container, rand, name,theme_keys, false);
   }
 
@@ -104,8 +104,8 @@ const setupChosenMenu = (name, rand,theme_keys)=>{
 
 }
 
-const getItemDescription = (rand, theme_keys, weird)=>{
-  let ret = [`Hot.`,"Fresh"];
+const getItemDescription = (name,rand, theme_keys, weird)=>{
+
   const quick = (key, cap) => {
     if (weird && rand.nextDouble() > 0.5) {
       return pickARandomThemeFromListAndGrabKey(rand, Object.keys(all_themes), key, cap);
@@ -114,6 +114,27 @@ const getItemDescription = (rand, theme_keys, weird)=>{
       return pickARandomThemeFromListAndGrabKey(rand, theme_keys, key, cap)
     }
   };
+  let ret = [
+    `${quick(COMPLIMENT,true)}.`,
+    `${quick(COMPLIMENT,true)}`,
+    "Limited time offer.",
+    `${name} with choice of sides.`,
+    `${name} with choice of sides`,
+    `${name} with extra ${quick(OBJECT)}`,
+    `${name} with extra ${quick(OBJECT)}.`,
+
+    `${name} with ${quick(ADJ)} sauce`,
+    `${name} with ${quick(ADJ)} topping`,
+    `${name} with ${quick(ADJ)} sauce.`,
+    `${name} with ${quick(ADJ)} topping.`,
+    `NO ${quick(OBJECT)}.`,
+
+     `NO ${quick(OBJECT)}`,
+    `${quick(ADJ,true)}.`,
+    `${quick(ADJ,true)}`
+
+
+  ];
   return rand.pickFrom(ret);
 }
 
@@ -196,9 +217,9 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const right = createElementWithClassAndParent("div", container, "food-right");
 
   const image = createElementWithClassAndParent("img", right, "meal-image");
-  const title = createElementWithClassAndParent("h3", left, "meal-title");
+  const title = createElementWithClassAndParent("h3", left, "food-title");
   const desc = createElementWithClassAndParent("div", left, "meal-title");
-  desc.innerHTML = getItemDescription(rand, theme_keys,weird);
+  desc.innerHTML = getItemDescription(required_name,rand, theme_keys,weird);
 
   title.innerHTML = getItemName(required_name,rand, theme_keys, weird,);
   if (total_featured_items > 216) {

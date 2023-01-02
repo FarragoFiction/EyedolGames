@@ -681,10 +681,10 @@ const initAdjs = () => {
     adj_possibilities[COFFEE ] = ["small","large","medium","hot","iced","cold","light-roast","dark-roast"];
     adj_possibilities[DESSERTS ] = ["small","large","medium","hot","iced","frosted","sweet","decadent","sinful","guilty"];
     adj_possibilities[DINER] = ["small","large","medium","heartattack","smokey","hot","fried","baked","sliced","stuffed","special","sale"];
-    adj_possibilities[ITALIAN ] = ["small","large","medium","hot","garlic","parmesan","cream","sauce","stuffed"];
+    adj_possibilities[ITALIAN ] = ["homestyle","wine","vodka","pomodoro","pesto","marinara","small","large","medium","hot","garlic","parmesan","cream","sauce","stuffed"];
     adj_possibilities[MEXICAN ] = ["fiesta","pastor","chicharron","barbacoa","carne asada","carnitas","chorizo","pollo","caribe","queso","quacamole","venezuelan","dominican","mexican","cuban","lingua","supreme","supremo","adobo","small","large","medium","tex mex","spicy","hot","crunchy","soft","gringo","sizzling","mexi"];
-    adj_possibilities[PIZZA ] = ["bianca","italian","milano","create-your-own","3 topping","2 topping","1 topping","small","large","medium","california","new york","detroit","chicago","deep-dish","neopolitan","white","meat-lovers","vegetarian","supreme","hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
-    adj_possibilities[PREMIUM ] = ["small","large","medium","salted","confit","premium","rare","gourmet","juicy"];
+    adj_possibilities[PIZZA ] = ["marinara","bianca","italian","milano","create-your-own","3 topping","2 topping","1 topping","small","large","medium","california","new york","detroit","chicago","deep-dish","neopolitan","white","meat-lovers","vegetarian","supreme","hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
+    adj_possibilities[PREMIUM ] = ["house made","small","large","medium","salted","confit","premium","rare","gourmet","juicy"];
     adj_possibilities[SALAD ] = ["create-your-own","small","large","medium","fresh","healthy","organic"];
     adj_possibilities[SANDWICHES ] = ["create-your-own","small","large","medium","sliced","hot","cold","crunchy","spicy","fried"];
     adj_possibilities[SEAFOOD ] = ["sea","ocean","lake","riverside","small","large","medium","breaded","hot","fried","boiled","blackened","broiled","baked"];

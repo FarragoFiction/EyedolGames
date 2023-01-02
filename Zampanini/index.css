@@ -214,6 +214,10 @@ body {
   height: 25px
 }
 
+.food-title{
+  margin-bottom: 5px;
+}
+
 .meal-image-container{
   width: 150px;
   height: 150px;
