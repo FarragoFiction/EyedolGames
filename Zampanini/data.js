@@ -684,7 +684,7 @@ const initAdjs = () => {
     adj_possibilities[PIZZA ] = ["hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
     adj_possibilities[PREMIUM ] = ["salted","confit","premium","rare","gourmet","juicy"];
     adj_possibilities[SALAD ] = ["fresh","healthy","organic"];
-    adj_possibilities[SANDWICHES ] = ["hot","cold","crunchy","spicy","fried"];
+    adj_possibilities[SANDWICHES ] = ["sliced","hot","cold","crunchy","spicy","fried"];
     adj_possibilities[SEAFOOD ] = ["hot","fried","boiled","blackened","broiled","baked"];
     adj_possibilities[SUSHI ] = ["spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
 
@@ -1196,19 +1196,19 @@ const initSuperNames = () => {
 }
 
 const initLocations = () => {
-    location_possibilities[BAKERY] = ["bakery","oven","restaurant","kitchen","house"];
+    location_possibilities[BAKERY] = ["shop","bakery","oven","restaurant","kitchen","house"];
     location_possibilities[BREAKFAST] = ["restaurant","kitchen","house"];
     location_possibilities[BURGERS ] = ["hut","shack","restaurant","kitchen","house"];
     location_possibilities[CHICKEN] = ["coop","restaurant","kitchen","house"];
     location_possibilities[COFFEE ] = ["cafe","restaurant","kitchen","house"];
     location_possibilities[DESSERTS ] = ["parlor","restaurant","kitchen","house"];
-    location_possibilities[DINER] = ["diner","restaurant","kitchen","house"];
+    location_possibilities[DINER] = ["cafeteria","diner","restaurant","kitchen","house"];
     location_possibilities[ITALIAN ] = ["restaurant","kitchen","house"];
     location_possibilities[MEXICAN ] = ["restaurant","kitchen","house"];
     location_possibilities[PIZZA ] = ["shack","kitchen","pizzeria","restaurant"];
     location_possibilities[PREMIUM ] = ["bistro","restaurant","kitchen","house"];
     location_possibilities[SALAD ] = ["restaurant","kitchen","house"];
-    location_possibilities[SANDWICHES ] = ["bistro","restaurant","kitchen","house"];
+    location_possibilities[SANDWICHES ] = ["shop","delicatessen","deli","bistro","restaurant","kitchen","house"];
     location_possibilities[SEAFOOD ] = ["cove","restaurant","kitchen","house"];
     location_possibilities[SUSHI ] = ["restaurant","kitchen","house"];
 
