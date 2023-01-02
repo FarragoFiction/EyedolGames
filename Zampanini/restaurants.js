@@ -32,13 +32,15 @@ const getRestaurantName = (rand,theme_keys)=>{
 }
 
 const collateAllImages = async (rand, base_keys)=>{
-  
+  console.log("JR NOTE: base keys are", base_keys)
   let ret =[];
   let i = 0;
   while(i< base_keys.length){
     let key = base_keys[i];
+    console.log("JR NOTE: key is",key)
     let images = await all_themes[key].getImages();
-    ret.push(images);
+    console.log("JR NOTE: got images", images, "for key", base_keys[i])
+    ret = ret.concat(images);
     i++
   }
 
@@ -57,11 +59,11 @@ const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   }
   const ele = createElementWithClassAndParent("div",container, "single-rest");
   //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
-  let images =  collateAllImages(rand, base_keys);
+  let images =  collateAllImages(rand, theme_keys);
   images.then((results)=>{
     console.log("JR NOTE: results", results)
    //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
-   preview.src = rand.pickFrom(results[0]);
+   preview.src = rand.pickFrom(results);
    if(rand.nextDouble()>.5){
     preview.style.objectFit = "none";
    }
