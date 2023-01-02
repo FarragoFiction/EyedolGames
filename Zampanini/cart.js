@@ -40,7 +40,7 @@ const syncCartNumber = ()=>{
 const syncCartTotal = ()=>{
   const entries = getCartFromLocalStorage();
   const ele = document.querySelector("#cart-total");
-  ele.innerText = "Total: $" + entries.reduce((a,b)=>{return a + parseFloat(b.price)},0)
+  ele.innerText = "Total: $" + (entries.reduce((a,b)=>{return a + parseFloat(b.price)},0)).toFixed(2)
 }
 
 const getCartFromLocalStorage = ()=>{
