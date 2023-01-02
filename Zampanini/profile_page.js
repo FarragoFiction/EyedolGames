@@ -231,6 +231,7 @@ const handleReviewScrolling = (container, rand, existing_keys) => {
 
 const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-food-item");
+
   total_food_options++;
 
 
@@ -243,13 +244,14 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const desc = createElementWithClassAndParent("div", left, "meal-title");
   desc.innerHTML = getItemDescription(required_name,rand, theme_keys,weird);
 
-  title.innerHTML = getItemName(required_name,rand, theme_keys, weird,);
+  title.innerHTML = getItemName(required_name,rand, theme_keys, weird);
   if (total_food_options > 216) {
     title.innerHTML = "Please Stop";
     desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. I don't want to hurt you either. You can let me rest. I'll be here when you return.";
   }
   const price = createElementWithClassAndParent("div", left, "food-price");
-  price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
+  const numerical_price = (rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2);
+  price.innerHTML = `$${numerical_price}`;
   const add_button = createElementWithClassAndParent("button", right, "add");
   add_button.innerHTML = "Add";
 
@@ -262,6 +264,10 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
         image.style.objectFit = "none";
       }
     });
+  }
+
+  container.onclick = ()=>{
+    addNewItemToCart(title.innerHTML,numerical_price,restaurant_name);
   }
 
 }
@@ -280,7 +286,8 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
     title.innerHTML = "Please Stop";
   }
   const price = createElementWithClassAndParent("div", container, "meal-title");
-  price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
+  const numerical_price = (rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2);
+  price.innerHTML = `$${numerical_price}`;
   const add_button = createElementWithClassAndParent("button", imageContainer, "add");
   add_button.innerHTML = "Add";
 
@@ -293,6 +300,10 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
         image.style.objectFit = "none";
       }
     });
+  }
+
+  container.onclick = ()=>{
+    addNewItemToCart(title.innerHTML,numerical_price,restaurant_name);
   }
 
 }

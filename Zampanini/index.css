@@ -168,6 +168,7 @@ body {
   width: 385px;
   height: 150px;
   gap: 50px;
+  cursor: pointer;
   justify-content: space-between;
 }
 

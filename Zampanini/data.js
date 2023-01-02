@@ -607,7 +607,7 @@ const initEmojis = ()=>{
 const initPeople = () => {
     person_posibilities[BAKERY] = ["baker"];
     person_posibilities[BREAKFAST] = ["farmer","logger","lumberjack"];
-    person_posibilities[BURGERS ] = ["piggy","grillmaster","big boy","rancher","cowboy"];
+    person_posibilities[BURGERS ] = ["parker","piggy","grillmaster","big boy","rancher","cowboy"];
     person_posibilities[CHICKEN] = ["chicken","chick","chicky"];
     person_posibilities[COFFEE ] = ["barista"];
     person_posibilities[DESSERTS ] = ["Baker","Fairy","Unicorn"];

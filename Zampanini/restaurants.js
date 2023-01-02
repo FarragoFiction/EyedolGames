@@ -119,7 +119,7 @@ const collateAllImages = async (rand, base_keys) => {
 const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   let theme_keys = [...base_keys];
   num_restaurants++;
-  const max = 150;
+  const max = 216;
 
   //if theres no food theme, or you know, if you're feeling frisky
   if (food_keys.indexOf(theme_keys[0]) == -1 || rand.nextDouble() > 0.5) {
