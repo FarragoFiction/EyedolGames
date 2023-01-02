@@ -50,7 +50,7 @@ const getRestaurantName = (rand, theme_keys, weird) => {
 
   const firstName = ()=>rand.pickFrom(first_names);
   const lastName = ()=>rand.pickFrom(last_names);
-  const goodwords = `Happy
+  const goodwordsraw = `Happy
   Joy
   Blushing
   Party
@@ -63,6 +63,7 @@ const getRestaurantName = (rand, theme_keys, weird) => {
   Great
   Awesome
   Ultimate`;
+  const goodwords = goodwordsraw.split("\n")
 
   const possibilities = [
     `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])}  ${quick(OBJECT, true)}`,

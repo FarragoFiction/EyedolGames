@@ -1273,7 +1273,7 @@ const initObjects = () => {
     object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","burger","burger","burger","burger","burger","fries","shake","tots","milkshake"];
     object_possibilities[CHICKEN] = ["drumstick","leg","fry","chicken","wing","thigh","chicken breast","tender","fries"];
     object_possibilities[COFFEE ] = ["coffee","americano","mocha","espresso","java","beans","tea","cafe","latte","cappuccino","mug"];
-    object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","custard","frozen yogurt","milkshake"];
+    object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","snow cone","gelato","sherbert","sorbet","italian ice","custard","frozen yogurt","milkshake"];
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
     object_possibilities[ITALIAN ] = ["ravioli","pasta","spaghetti","lasagna","parmesan","ziti","penne","noodles","tomato","eggplant"];
     object_possibilities[MEXICAN ] = ["torta","cubano","nachos","tostada","enchilada","mole","taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];
@@ -1491,7 +1491,7 @@ const initThemeOpinions = () => {
 
 //i would expect a/n [BLANK] individual such as yourself to come to such a conclusion, yes.
 const initCompliments = () => {
-    compliment_possibilities[BAKERY] = ["flaky","tasty","delicious","yummy","hot","fresh","warm","toasted"];
+    compliment_possibilities[BAKERY] = ["soft","flaky","tasty","delicious","yummy","hot","fresh","warm","toasted"];
     compliment_possibilities[BREAKFAST] = ["tasty","delicious","yummy","hot","smothered","stacked","sizzling","sweet"];
     compliment_possibilities[BURGERS ] = ["tasty","delicious","yummy","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
     compliment_possibilities[CHICKEN] = ["tasty","delicious","yummy","hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
