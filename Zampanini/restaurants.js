@@ -2,7 +2,8 @@
 let num_restaurants = 0;
 
 const handleRestaurants = (keys, seed) => {
-  console.log("JR NOTE: what", seed);
+  num_restaurants = 0;
+
 
   const resteraunts = document.querySelector("#resteraunts");
   resteraunts.innerHTML = "";
@@ -49,6 +50,19 @@ const getRestaurantName = (rand, theme_keys, weird) => {
 
   const firstName = ()=>rand.pickFrom(first_names);
   const lastName = ()=>rand.pickFrom(last_names);
+  const goodwords = `Happy
+  Joy
+  Blushing
+  Party
+  Fiesta
+  Central
+  Cozy
+  Comfort
+  Joyful
+  Good
+  Great
+  Awesome
+  Ultimate`;
 
   const possibilities = [
     `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])}  ${quick(OBJECT, true)}`,
@@ -56,11 +70,14 @@ const getRestaurantName = (rand, theme_keys, weird) => {
     ` ${quick(OBJECT, true)} ${rand.pickFrom(["master","mistress"])}`,
 
     `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
+    `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
+
     `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
     `${quick( PERSON, true)}'s ${quick(OBJECT, true)}`,
     `${quick( ADJ, true)} ${quick(LOCATION, true)}`,
     `The ${quick( ADJ, true)} ${quick(LOCATION, true)}`,
     `The ${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
+    `The ${rand.pickFrom(goodwords)} ${quick(OBJECT, true)}`,
 
     `${quick(ADJ, true)} ${quick( OBJECT, true)} ${quick(LOCATION, true)}`,
     `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)} ${quick(LOCATION, true)}`,
