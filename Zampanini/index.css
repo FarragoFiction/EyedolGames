@@ -71,6 +71,32 @@ body {
   margin-right: auto;
 }
 
+.rating{
+  margin-bottom: 10px;
+}
+
+.rating{
+  filter: grayscale();
+}
+
+.rating .good{
+  filter: grayscale() brightness(0.5);
+}
+
+.rating .bad{
+  filter: grayscale() contrast(100);
+}
+
+.one-review{
+  border: 1px solid #d4d4d4;
+  height: 150px;
+  min-width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fefefe;
+
+}
+
 .featured-meals{
   display: flex;
   flex-wrap: nowrap;
@@ -78,7 +104,8 @@ body {
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
-  height: 300px
+  height: 300px;
+  margin-bottom: 50px;
 }
 
 .one-featured-meal{

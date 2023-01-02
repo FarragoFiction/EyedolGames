@@ -1489,7 +1489,7 @@ const initThemeOpinions = () => {
 
 //i would expect a/n [BLANK] individual such as yourself to come to such a conclusion, yes.
 const initCompliments = () => {
-    compliment_possibilities[BAKERY] = ["tasty","delicious","yummy","hot","fresh","warm","toasted"];
+    compliment_possibilities[BAKERY] = ["flaky","tasty","delicious","yummy","hot","fresh","warm","toasted"];
     compliment_possibilities[BREAKFAST] = ["tasty","delicious","yummy","hot","smothered","stacked","sizzling","sweet"];
     compliment_possibilities[BURGERS ] = ["tasty","delicious","yummy","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
     compliment_possibilities[CHICKEN] = ["tasty","delicious","yummy","hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
@@ -1499,7 +1499,7 @@ const initCompliments = () => {
     compliment_possibilities[ITALIAN ] = ["tasty","delicious","yummy","baked","hot","garlic","parmesan","cream","sauce","stuffed"];
     compliment_possibilities[MEXICAN ] = ["tasty","delicious","yummy","hot","crunchy","soft","gringo","sizzling","mexi"];
     compliment_possibilities[PIZZA ] = ["tasty","delicious","yummy","hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
-    compliment_possibilities[PREMIUM ] = ["tasty","delicious","yummy","confit","premium","rare","gourmet","juicy"];
+    compliment_possibilities[PREMIUM ] = ["juicy","tasty","delicious","yummy","confit","premium","rare","gourmet","juicy"];
     compliment_possibilities[SALAD ] = ["tasty","delicious","yummy","fresh","healthy","organic"];
     compliment_possibilities[SANDWICHES ] = ["tasty","delicious","yummy","cold","hot","crunchy","spicy","fried","italian"];
     compliment_possibilities[SEAFOOD ] = ["tasty","delicious","yummy","fried","boiled","blackened","broiled","baked"];
@@ -1611,21 +1611,21 @@ const initMiracles = () => {
 }
 
 const initInsults = () => {
-    insult_possibilities[BAKERY] = ["room temperature","luke-warm","soggy","discount","burnt","day-old","canned","limp","over-cooked","frozen","stale"];
-    insult_possibilities[BREAKFAST] = ["soggy","burnt","canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[BURGERS ] = ["room temperature","luke-warm","soggy","discount","burnt","burnt","canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[CHICKEN] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[COFFEE ] = ["watery","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[DESSERTS ] = ["room temperature","luke-warm","soggy","discount","burnt","room-temperature","melted","canned","limp","over-cooked","frozen"];
-    insult_possibilities[DINER] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
-    insult_possibilities[ITALIAN ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
-    insult_possibilities[MEXICAN ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
-    insult_possibilities[PIZZA ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
-    insult_possibilities[PREMIUM ] = ["room temperature","luke-warm","soggy","discount","burnt","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","snooty","over-priced"];
-    insult_possibilities[SALAD ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked"];
-    insult_possibilities[SANDWICHES ] = ["room temperature","luke-warm","soggy","discount","burnt","greasy","stale","thin"];
-    insult_possibilities[SEAFOOD ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked"];
-    insult_possibilities[SUSHI ] = ["room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","cheap"];
+    insult_possibilities[BAKERY] = ["flavorless","gross","disgusting","room temperature","luke-warm","soggy","discount","burnt","day-old","canned","limp","over-cooked","frozen","stale"];
+    insult_possibilities[BREAKFAST] = ["flavorless","soggy","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[BURGERS ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[CHICKEN] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[COFFEE ] = ["flavorless","watery","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[DESSERTS ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","room-temperature","melted","canned","limp","over-cooked","frozen"];
+    insult_possibilities[DINER] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen","greasy"];
+    insult_possibilities[ITALIAN ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
+    insult_possibilities[MEXICAN ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
+    insult_possibilities[PIZZA ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","frozen"];
+    insult_possibilities[PREMIUM ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","snooty","over-priced"];
+    insult_possibilities[SALAD ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked"];
+    insult_possibilities[SANDWICHES ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","greasy","stale","thin"];
+    insult_possibilities[SEAFOOD ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked"];
+    insult_possibilities[SUSHI ] = ["flavorless","room temperature","luke-warm","soggy","discount","burnt","canned","limp","over-cooked","cheap"];
 
     insult_possibilities[ART] = ["trite"];
     insult_possibilities[TECHNOLOGY] = ["hacky"];
@@ -2005,6 +2005,21 @@ const initTastes = () => {
 }
 
 const initSmells = () => {
+    smell_possibilities[BAKERY] = ["warm bread","cinnamon","butter","yeast","burnt-toast"];
+    smell_possibilities[BREAKFAST] = ["bacon","maple syrup","sausage","rotten eggs"];
+    smell_possibilities[BURGERS ] = ["grease","beef","mustard","ketchup"];
+    smell_possibilities[CHICKEN] = ["grease","sage","tarragon"];
+    smell_possibilities[COFFEE ] = ["coffee","tea"];
+    smell_possibilities[DESSERTS ] = ["chocolate","vanilla","cinnamon","butter"];
+    smell_possibilities[DINER] = ["grease","coffee","bacon"];
+    smell_possibilities[ITALIAN ] = ["garlic","parsley","basil","garlic","garlic","garlic"];
+    smell_possibilities[MEXICAN ] = ["peppers","cumin","chilis"];
+    smell_possibilities[PIZZA ] = ["garlic","garlic","anchovies"];
+    smell_possibilities[PREMIUM ] = ["truffles","saffron","caviar","spices"];
+    smell_possibilities[SALAD ] = ["garlic","parsley","chives","grass"];
+    smell_possibilities[SANDWICHES ] = ["garlic","warm bread"];
+    smell_possibilities[SEAFOOD ] = ["the ocean","rotten fish","garlic","spices"];
+    smell_possibilities[SUSHI ] = ["rotten fish","sea salt","the ocean"];
     smell_possibilities[ART] = ["paint", "dust", "paper"];
     smell_possibilities[TECHNOLOGY] = ["ozone", "plastic", "dust"];
     smell_possibilities[SPACE] = ["vacuum", "wind", "void"];
