@@ -676,7 +676,7 @@ const initPeople = () => {
 const initAdjs = () => {
     adj_possibilities[BAKERY] = ["small","large","medium","hot","fresh","warm","toasted"];
     adj_possibilities[BREAKFAST] = ["small","large","medium","hot","smothered","stacked","sizzling","sweet"];
-    adj_possibilities[BURGERS ] = ["ranch","create-your-own","small","large","medium","barbecue","bbq","texas","smokey","heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
+    adj_possibilities[BURGERS ] = ["ranch","create-your-own","small","large","medium","barbecue","bbq","texas","smokey","heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked","chicken","pork"];
     adj_possibilities[CHICKEN] = ["small","large","medium","barbecue","bbq","buffalo","smokey","hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
     adj_possibilities[COFFEE ] = ["small","large","medium","hot","iced","cold","light-roast","dark-roast"];
     adj_possibilities[DESSERTS ] = ["small","large","medium","hot","iced","frosted","sweet","decadent","sinful","guilty"];
@@ -1270,7 +1270,7 @@ const initObjects = () => {
 
     object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry"];
     object_possibilities[BREAKFAST] = ["pancakes","bacon","eggs","waffles","toast","french toast","scramble"];
-    object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","fries","shake","tots","milkshake"];
+    object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","fries","shake","tots","milkshake","butt","ribs","chicken","pork"];
     object_possibilities[CHICKEN] = ["drumstick","leg","fry","chicken","wing","thigh","chicken breast","tender","fries"];
     object_possibilities[COFFEE ] = ["coffee","americano","mocha","espresso","java","beans","tea","cafe","latte","cappuccino","mug"];
     object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","snow cone","gelato","sherbert","sorbet","italian ice","custard","frozen yogurt","milkshake"];
