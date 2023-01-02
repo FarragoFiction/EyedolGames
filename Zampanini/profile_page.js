@@ -105,15 +105,26 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   const quick = (key)=>pickARandomThemeFromListAndGrabKey(rand,theme_keys,key);
 
   console.log("JR NOTE: ", qObject)
- /* const reviews = [
-    `Did not like the ${qObject}.`
-    `The ${qObject} was so fresh and juicy!.`,
-    `The ${qObject} was so ${qCompliment()}!.`,
-    `The ${qObject} was a little ${qInsult()}.`,
-    `Did not like the ${qObject}.`
 
-  ];*/
-  const reviews = [`The ${quick(OBJECT)} smelled like ${quick(SMELL)}.`,`I highly recommend the ${qObject()}.`,"Food arrived thirty minutes late. Never ordering from here again!",`The ${qObject()} was a little ${qInsult()}.`,`The ${qObject()} was so ${qCompliment()}!.`,`Did not like the ${qObject()}.`,`The ${qObject()} was so fresh and juicy!.`,"Never eating here again."]
+  const reviews = [`The ${quick(OBJECT)} smelled like ${quick(SMELL)}.`,
+  `Don't even bother trying the ${quick(OBJECT)}.`,
+  `I can't believe how cheap the ${quick(OBJECT)} was!`,
+  `My ${quick(OBJECT)} wasn't in the bag.`,
+  `The ${quick(OBJECT)} here is a classic.`,
+  `${quick(OBJECT)} is AMAZING even tho they forgot the sauce.`,
+
+  `The ${quick(OBJECT)} here reminds me of home!`,
+  `mmmmmmmmmmmmmmmmmmm  gotta love that ${quick(OBJECT)}`,
+
+  `${quick(OBJECT)} was good. Only problem was there was it wasn't ${quick(ADJ)} like I ordered.`,
+  `Got everything right.`,
+  `Forgot ${getRandomNumberBetween(0,5)} items out of our bag.`,
+  "It's food.",
+  `Everything was okay till I tasted the ${quick(OBJECT)}. Really disappointed because usually everything I get here is great.`,
+  `Can't go wrong with the ${quick(OBJECT)}.`,
+  `Don't listen to anyone saying the food is ${quick(INSULT)}.`,
+
+  `I highly recommend the ${qObject()}.`,"Food arrived thirty minutes late. Never ordering from here again!",`The ${qObject()} was a little ${qInsult()}.`,`The ${qObject()} was so ${qCompliment()}!.`,`Did not like the ${qObject()}.`,`The ${qObject()} was so fresh and juicy!.`,"Never eating here again."]
   review.innerHTML = rand.pickFrom(reviews);
 
 
