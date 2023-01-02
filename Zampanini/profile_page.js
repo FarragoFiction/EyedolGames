@@ -1,4 +1,6 @@
 let restaurant_name = "";
+let total_reviews = 0;
+let total_featured_items = 0;
 const handleRestaurantPage = (name, themes, seed) => {
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
@@ -31,7 +33,7 @@ const handleRestaurantPage = (name, themes, seed) => {
 const setupFeaturedItems = (container, rand, theme_keys) => {
   const title = createElementWithClassAndParent("h2", container, "section-title");
   const parent = createElementWithClassAndParent("div", container, "featured-meals");
-  handleFeatureScrolling(parent,rand,theme_keys );
+  handleFeatureScrolling(parent, rand, theme_keys);
 
 
   title.innerHTML = "Featured Items";
@@ -43,7 +45,7 @@ const setupFeaturedItems = (container, rand, theme_keys) => {
 const setupReviews = (container, rand, theme_keys) => {
   const title = createElementWithClassAndParent("h2", container, "section-title");
   const parent = createElementWithClassAndParent("div", container, "featured-reviews");
-  handleReviewScrolling(parent,rand,theme_keys );
+  handleReviewScrolling(parent, rand, theme_keys);
 
   title.innerHTML = "What people are saying";
   for (let i = 0; i < 3; i++) {
@@ -70,7 +72,7 @@ const getItemName = (rand, theme_keys, weird) => {
   return rand.pickFrom(possibilities);
 }
 
-const handleFeatureScrolling = (container,rand, existing_keys)=>{
+const handleFeatureScrolling = (container, rand, existing_keys) => {
   let lastScrollTime = 0; //not to spam events
   container.onscroll = () => {
     const newTime = new Date().getTime();
@@ -80,13 +82,13 @@ const handleFeatureScrolling = (container,rand, existing_keys)=>{
     lastScrollTime = newTime;
 
     window.requestAnimationFrame(() => {
-      renderOneFeaturedItem(container, rand, [...existing_keys,rand.pickFrom(Object.keys(all_themes))],true);
+      renderOneFeaturedItem(container, rand, [...existing_keys, rand.pickFrom(Object.keys(all_themes))], true);
     });
 
   };
 }
 
-const handleReviewScrolling = (container, rand,existing_keys)=>{
+const handleReviewScrolling = (container, rand, existing_keys) => {
   let lastScrollTime = 0; //not to spam events
   container.onscroll = () => {
     const newTime = new Date().getTime();
@@ -96,7 +98,7 @@ const handleReviewScrolling = (container, rand,existing_keys)=>{
     lastScrollTime = newTime;
 
     window.requestAnimationFrame(() => {
-      renderOneReview(container, rand,[...existing_keys,rand.pickFrom(Object.keys(all_themes))],true);
+      renderOneReview(container, rand, [...existing_keys, rand.pickFrom(Object.keys(all_themes))], true);
     });
 
   };
@@ -105,51 +107,58 @@ const handleReviewScrolling = (container, rand,existing_keys)=>{
 
 const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-featured-meal");
-
+  total_featured_items++;
 
   const imageContainer = createElementWithClassAndParent("div", container, "meal-image-container");
 
   const image = createElementWithClassAndParent("img", imageContainer, "meal-image");
   const title = createElementWithClassAndParent("h3", container, "meal-title");
   title.innerHTML = getItemName(rand, theme_keys, weird);
+  if (total_featured_items > 500) {
+    title.innerHTML = "Please Stop";
+  }
   const price = createElementWithClassAndParent("div", container, "meal-title");
-  price.innerHTML = `$${(rand.getRandomNumberBetween(0,5) + rand.nextDouble()).toFixed(2)}`;
+  price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
   const add_button = createElementWithClassAndParent("button", imageContainer, "add");
   add_button.innerHTML = "Add";
 
-  let images = collateAllImages(rand, theme_keys);
-  images.then((results) => {
-    image.src = rand.pickFrom(results);
-    if (rand.nextDouble() > .5) {
-      image.style.objectFit = "none";
-    }
-  });
+  if (total_featured_items < 500) {
+
+    let images = collateAllImages(rand, theme_keys);
+    images.then((results) => {
+      image.src = rand.pickFrom(results);
+      if (rand.nextDouble() > .5) {
+        image.style.objectFit = "none";
+      }
+    });
+  }
 
 }
 
 const renderOneReview = (parent, rand, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-review");
+  total_reviews++;
 
 
-  const first_names = ["Jake","Rachel","Tobias","Marco","Cassie","Tom","Erek","Camille","Yongki","Parker","Ria","Devona","Neville","Witherby", "Hoon","River","Khana","Vik","Craig","John","Jude","Jade","Joey","Rose","Roxy","Jeff","Dave","Dirk","Jove","Jake","Sophie","Jaxon","Basira","Daisy","Martin","Georgie","Sasha","James","Taylor","Victoria","Jean-Paul","Bob","Alice","Carol","Eve","Adam","Rachel","Brian","Aisha","Alexandra","Alex","Tobias","Marco","Cassie","Tom","Lisa","Sarah"," Sylvester","Gordon","Helen","Jamie","Lillian","Mary","Ashton","Peter","Zawhei","Eirikr","Volour","Okarin","Peewee","Hagala","Despap","Othala","Gertrude","Mike","Michael","Peter","Simon","Manuela","Annabel"];
+  const first_names = ["Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
 
   const title = createElementWithClassAndParent("h3", container, "meal-title");
-  title.innerHTML =`${rand.pickFrom(first_names)} ${rand.pickFrom(first_names)[0]} `;
+  title.innerHTML = `${rand.pickFrom(first_names)} ${rand.pickFrom(first_names)[0]} `;
   const rating = createElementWithClassAndParent("div", container, "rating");
-  const ratings = ["<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span>","<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span>","<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>","<span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>","<span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>"];
+  const ratings = ["<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>"];
   rating.innerHTML = pickFrom(ratings);
 
   const review = createElementWithClassAndParent("div", container, "meal-title");
 
-  const qObject = ()=> pickARandomThemeFromListAndGrabKey(rand,theme_keys,OBJECT);
-  const qCompliment = ()=>pickARandomThemeFromListAndGrabKey(rand,theme_keys,COMPLIMENT);
-  const qInsult = ()=>pickARandomThemeFromListAndGrabKey(rand,theme_keys,INSULT);
-  const quick = (key,cap)=>{
-    if(weird && rand.nextDouble()>0.5){
-      return pickARandomThemeFromListAndGrabKey(rand,Object.keys(all_themes),key,cap);
+  const qObject = () => pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT);
+  const qCompliment = () => pickARandomThemeFromListAndGrabKey(rand, theme_keys, COMPLIMENT);
+  const qInsult = () => pickARandomThemeFromListAndGrabKey(rand, theme_keys, INSULT);
+  const quick = (key, cap) => {
+    if (weird && rand.nextDouble() > 0.5) {
+      return pickARandomThemeFromListAndGrabKey(rand, Object.keys(all_themes), key, cap);
 
-    }else{
-      return pickARandomThemeFromListAndGrabKey(rand,theme_keys,key,cap)
+    } else {
+      return pickARandomThemeFromListAndGrabKey(rand, theme_keys, key, cap)
     }
   };
 
@@ -161,37 +170,50 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   `Don't bother getting the ${quick(OBJECT)}.`,
 
   `The ${quick(OBJECT)} here is a classic.`,
-  `${quick(OBJECT,true)} is AMAZING even tho they forgot the sauce.`,
+  `${quick(OBJECT, true)} is AMAZING even tho they forgot the sauce.`,
 
   `The ${quick(OBJECT)} here reminds me of home!`,
   `mmmmmmmmmmmmmmmmmmm  gotta love that ${quick(OBJECT)}`,
 
-  `${quick(OBJECT,true)} was good. Only problem was it wasn't ${quick(ADJ)} like I ordered.`,
-  `Got everything right.`,
-  `Forgot ${getRandomNumberBetween(0,5)} items out of our bag.`,
-  "It's food.",
+  `${quick(OBJECT, true)} was good. Only problem was it wasn't ${quick(ADJ)} like I ordered.`,
+    `Got everything right.`,
+  `Forgot ${getRandomNumberBetween(0, 5)} items out of our bag.`,
+    "It's food.",
   `Everything was okay till I tasted the ${quick(OBJECT)}. Really disappointed because usually everything I get here is great.`,
   `Can't go wrong with the ${quick(OBJECT)}.`,
+  `I found an extra ${quick(OBJECT)} in the bag...`,
+  `I found an unexpected ${quick(OBJECT)} in the bag...`,
+
   `Don't listen to anyone saying the food is ${quick(INSULT)}.`,
 
-  `I highly recommend the ${qObject()}.`,"Food arrived thirty minutes late. Never ordering from here again!",`The ${qObject()} was a little ${qInsult()}.`,`The ${qObject()} was so ${qCompliment()}!`,`Did not like the ${qObject()}.`,`The ${qObject()} was so fresh and juicy!.`,"Never eating here again."]
- 
-  if(weird){
-    const weird_reviews = [
-      `${quick(PHILOSOPHY,true)}`,
-      `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,
+  `I highly recommend the ${qObject()}.`, "Food arrived thirty minutes late. Never ordering from here again!", `The ${qObject()} was a little ${qInsult()}.`, `The ${qObject()} was so ${qCompliment()}!`, `Did not like the ${qObject()}.`, `The ${qObject()} was so fresh and juicy!.`, "Never eating here again."]
 
-      `It is ${new Date().toLocaleDateString()} where you are. It's not too late. Please. Stop.`,
+  if (weird) {
+    const weird_reviews = [
+      `${quick(PHILOSOPHY, true)}`,
       `I guess I work for ${restaurant_name} now.`,
+      `I think my driver is a weird ${quick(PERSON)}?`,
+
       `Why did my driver cast ${quick(SUPERMOVE)}?`,
       `Whenever I take a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
-      `i am so so scared of my driver. ${rand.pickFrom(["He","She"])} is outside and ${quick(MONSTER_DESC)}. Send help!`,
+      `i am so so scared of my driver. ${rand.pickFrom(["He", "She"])} is outside and ${quick(MONSTER_DESC)}. Send help!`,
 
-      `I am scared of my driver. ${rand.pickFrom(["He","She"])} is still here and ${quick(MONSTER_DESC)}.`,
+      `I am scared of my driver. ${rand.pickFrom(["He", "She"])} is still here and ${quick(MONSTER_DESC)}.`,
       `When I touched the ${quick(OBJECT)} I saw a flash of a weird place, ${quick(LOC_DESC)}.`
 
     ];
+
     reviews = reviews.concat(weird_reviews);
+  }
+  
+  if (total_reviews > 500) {
+    console.log("JR NOTE: stop")
+    reviews = [
+      `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,
+
+      `It is ${new Date().toLocaleDateString()} where you are. It's not too late. Please. Stop.`,
+
+    ]
   }
   review.innerHTML = rand.pickFrom(reviews);
 

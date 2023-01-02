@@ -2336,7 +2336,7 @@ class Theme {
         if ((key in this.string_possibilities) && this.string_possibilities[key]) {
             return this.string_possibilities[key];
         } else {
-            if (this.key !== "waste") {
+            if (this.key !== "waste" && (food_keys.indexOf(this.key) === -1)) {
                 console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
             }
             return [`Zampanio`];
