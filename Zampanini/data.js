@@ -682,13 +682,13 @@ const initAdjs = () => {
     adj_possibilities[DESSERTS ] = ["small","large","medium","hot","iced","frosted","sweet","decadent","sinful","guilty"];
     adj_possibilities[DINER] = ["small","large","medium","heartattack","smokey","hot","fried","baked","sliced","stuffed","special","sale"];
     adj_possibilities[ITALIAN ] = ["small","large","medium","hot","garlic","parmesan","cream","sauce","stuffed"];
-    adj_possibilities[MEXICAN ] = ["small","large","medium","tex mex","spicy","hot","crunchy","soft","gringo","sizzling","mexi"];
+    adj_possibilities[MEXICAN ] = ["pastor","chicharron","barbacoa","carne asada","carnitas","chorizo","pollo","caribe","queso","quacamole","venezuelan","dominican","mexican","cuban","lingua","supreme","supremo","adobo","small","large","medium","tex mex","spicy","hot","crunchy","soft","gringo","sizzling","mexi"];
     adj_possibilities[PIZZA ] = ["create-your-own","3 topping","2 topping","1 topping","small","large","medium","california","new york","detroit","chicago","deep-dish","neopolitan","white","meat-lovers","vegetarian","supreme","hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
     adj_possibilities[PREMIUM ] = ["small","large","medium","salted","confit","premium","rare","gourmet","juicy"];
     adj_possibilities[SALAD ] = ["create-your-own","small","large","medium","fresh","healthy","organic"];
     adj_possibilities[SANDWICHES ] = ["create-your-own","small","large","medium","sliced","hot","cold","crunchy","spicy","fried"];
     adj_possibilities[SEAFOOD ] = ["small","large","medium","breaded","hot","fried","boiled","blackened","broiled","baked"];
-    adj_possibilities[SUSHI ] = ["small","large","medium","spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
+    adj_possibilities[SUSHI ] = ["basil","mixed","peanut","garlic","chinese","thai","korean","japanese","small","large","medium","spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
 
     adj_possibilities[ART] = ["artistic", "aesthetic", "beautiful", "moving", "balanced"];
     adj_possibilities[TECHNOLOGY] = ["technological", "advanced", "smart", "programmatic", "procedural"];
@@ -1206,7 +1206,7 @@ const initLocations = () => {
     location_possibilities[DESSERTS ] = ["hut","parlor","restaurant","kitchen","house"];
     location_possibilities[DINER] = ["barbecue","hut","bbq","smokehouse","cafeteria","diner","restaurant","kitchen","house","spoon","eatery"];
     location_possibilities[ITALIAN ] = ["hut","restaurant","kitchen","house"];
-    location_possibilities[MEXICAN ] = ["hut","restaurant","kitchen","house"];
+    location_possibilities[MEXICAN ] = ["hut","restaurant","kitchen","house","taqueria"];
     location_possibilities[PIZZA ] = ["shack","kitchen","pizzeria","restaurant"];
     location_possibilities[PREMIUM ] = ["hut","bistro","restaurant","kitchen","house","steakhouse"];
     location_possibilities[SALAD ] = ["hut","restaurant","kitchen","house"];
@@ -1276,13 +1276,13 @@ const initObjects = () => {
     object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","custard","frozen yogurt","milkshake"];
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
     object_possibilities[ITALIAN ] = ["ravioli","pasta","spaghetti","lasagna","parmesan","ziti","penne","noodles","tomato","eggplant"];
-    object_possibilities[MEXICAN ] = ["taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];
+    object_possibilities[MEXICAN ] = ["torta","cubano","nachos","tostada","enchilada","mole","taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];
     object_possibilities[PIZZA ] = ["pizza","cheese","mozarella","calzone","stromboli","sandwich"];
     object_possibilities[PREMIUM ] = ["lamb","veal","lobster","crab","fresh baked bread","potato","steak","chop"];
     object_possibilities[SALAD ] = ["salad","fry","soup","breadbowl"];
     object_possibilities[SANDWICHES ] = ["wrap","pita","sandwich","hoagie","sub"];
     object_possibilities[SEAFOOD ] = ["fry","shrimp","fish","crab","seafood","lobster","boil","tilapia","hush puppies"];
-    object_possibilities[SUSHI ] = ["roll","bowl","fry","sashimi","nigiri","ball","tempura","dumpling","rice"];
+    object_possibilities[SUSHI ] = ["sushi","salad","soup","satay","curry","hibachi","roll","bowl","fry","sashimi","nigiri","ball","tempura","dumpling","rice","gyoza","fried rice","noodle"];
 
     object_possibilities[ART] = ["chisel", "paint brush", "paint pot", "sponge", "apron", "canvas"];
     object_possibilities[TECHNOLOGY] = ["computer", "lap-top", "phone", "tablet"];

@@ -51,6 +51,10 @@ const getRestaurantName = (rand, theme_keys, weird) => {
   const lastName = ()=>rand.pickFrom(last_names);
 
   const possibilities = [
+    `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])}  ${quick(OBJECT, true)}`,
+    `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])} ${quick(ADJ, true)} ${quick(OBJECT, true)}`,
+    ` ${quick(OBJECT, true)} ${rand.pickFrom(["master","mistress"])}`,
+
     `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
     `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
     `${quick( PERSON, true)}'s ${quick(OBJECT, true)}`,
