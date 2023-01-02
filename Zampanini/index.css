@@ -230,7 +230,7 @@ body {
   border-radius: 8px;
 }
 
-#header #cart{
+#header #cart-icon{
   margin: 0px;
   cursor: pointer;
   background: #d4d4d4;
@@ -242,6 +242,18 @@ body {
   font-size: 25px;
   vertical-align: middle;
 }
+
+#header #cart{
+  position: fixed;
+  top: 50px;
+  display: none;
+  border: 1px solid #e4e4e4;
+  right: 0px;
+  height: 100vh;
+  width: 400px;
+  background-color: white;
+}
+
 
 .profile_image{
   object-fit: cover;

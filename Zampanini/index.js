@@ -14,6 +14,7 @@ window.onload = () => {
   } else {
     handleCategories();
   }
+  initCart();
 
 
 
