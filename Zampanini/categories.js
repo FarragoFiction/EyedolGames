@@ -49,7 +49,10 @@ const renderCategoryForTheme = (index,container,themeKey, fakeView)=>{
     icon = missingEmoji();
   }
   num_categories++;
-  const label = fakeView ? fakeLabelForTheme(theme): themeKey;
+  let label = fakeView ? fakeLabelForTheme(theme): themeKey;
+  if(num_categories>100){
+    label = "STOP";
+  }
   ele.innerHTML = `
     <div class="icon">
     ${icon}
