@@ -684,7 +684,7 @@ const initAdjs = () => {
     adj_possibilities[PIZZA ] = ["hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
     adj_possibilities[PREMIUM ] = ["salted","confit","premium","rare","gourmet","juicy"];
     adj_possibilities[SALAD ] = ["fresh","healthy","organic"];
-    adj_possibilities[SANDWICHES ] = ["hot","cold","cruncy","spicy","fried"];
+    adj_possibilities[SANDWICHES ] = ["hot","cold","crunchy","spicy","fried"];
     adj_possibilities[SEAFOOD ] = ["hot","fried","boiled","blackened","broiled","baked"];
     adj_possibilities[SUSHI ] = ["spicy","crunchy","sweet and sour","sesame","fried","steamed","soy","teriyaki"];
 
