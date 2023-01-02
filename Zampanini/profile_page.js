@@ -122,7 +122,9 @@ const handleMenuScrolling = (container, rand, existing_keys) => {
     lastScrollTime = newTime;
 
     window.requestAnimationFrame(() => {
-      renderOneMenuSection(parent, rand.pickFrom(Object.keys(all_themes)),titleCase(object), true);
+      const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
+      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), true);
+
     });
 
   };

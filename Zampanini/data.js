@@ -1282,7 +1282,7 @@ const initObjects = () => {
     object_possibilities[SALAD ] = ["salad","fry","soup","breadbowl"];
     object_possibilities[SANDWICHES ] = ["wrap","pita","sandwich","hoagie","sub"];
     object_possibilities[SEAFOOD ] = ["fry","shrimp","fish","crab","seafood","lobster","boil","tilapia","hush puppies"];
-    object_possibilities[SUSHI ] = ["sushi","katsu","salad","soup","satay","curry","hibachi","roll","bowl","fry","sashimi","nigiri","ball","tempura","dumpling","rice","gyoza","fried rice","noodle"];
+    object_possibilities[SUSHI ] = ["sushi","ramen","udon","katsu","salad","soup","satay","curry","hibachi","roll","bowl","fry","sashimi","nigiri","ball","tempura","dumpling","rice","gyoza","fried rice","noodle"];
 
     object_possibilities[ART] = ["chisel", "paint brush", "paint pot", "sponge", "apron", "canvas"];
     object_possibilities[TECHNOLOGY] = ["computer", "lap-top", "phone", "tablet"];
