@@ -1,18 +1,44 @@
 
 
 
-const handleRestaurants = (keys)=>{
+const handleRestaurants = (keys,seed)=>{
+  console.log("JR NOTE: what",seed);
+
     const resteraunts = document.querySelector("#resteraunts");
     resteraunts.innerHTML = "";
-    const rand = new SeededRandom(Object.keys(all_themes).indexOf(keys[0]));
+    const rand = new SeededRandom(seed);
     if(resteraunts){
-      for(let i =0; i<3; i++){
+      console.log("JR NOTE: what");
+
+      handleRestaurantScrolling(rand,resteraunts);
+
+      for(let i =0; i<10; i++){
         renderRestaurantForThemes(rand,resteraunts,keys);
       }
       for(let i =0; i<10; i++){
         renderRestaurantForThemes(rand,resteraunts,keys,true);
       }
     }
+}
+
+
+const handleRestaurantScrolling = (rand,container)=>{
+  console.log("JR NOTE: handleRestaurantScrolling");
+  let lastScrollTime = 0; //not to spam events
+  container.onscroll = () => {
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 50) {
+      return;
+    }
+    lastScrollTime = newTime;
+
+    window.requestAnimationFrame(() => {
+      console.log("JR NOTE: sroll");
+
+      renderRestaurantForThemes(rand,resteraunts,[rand.pickFrom(Object.keys(all_themes))],true);
+    });
+
+  };
 }
 
 const getRestaurantName = (rand,theme_keys)=>{
@@ -32,14 +58,11 @@ const getRestaurantName = (rand,theme_keys)=>{
 }
 
 const collateAllImages = async (rand, base_keys)=>{
-  console.log("JR NOTE: base keys are", base_keys)
   let ret =[];
   let i = 0;
   while(i< base_keys.length){
     let key = base_keys[i];
-    console.log("JR NOTE: key is",key)
     let images = await all_themes[key].getImages();
-    console.log("JR NOTE: got images", images, "for key", base_keys[i])
     ret = ret.concat(images);
     i++
   }
@@ -50,10 +73,12 @@ const collateAllImages = async (rand, base_keys)=>{
 const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   let theme_keys = [...base_keys];
 
-  if(food_keys.indexOf(theme_keys[0])== -1){
+  //if theres no food theme, or you know, if you're feeling frisky
+  if(food_keys.indexOf(theme_keys[0])== -1 || rand.nextDouble() >0.5){
     theme_keys.push(rand.pickFrom(food_keys)); //add some food in here man
-  }else if(weird){
-
+  }
+  //weird gets extra shit tacked on
+  if(weird){
     theme_keys.push(rand.pickFrom(Object.keys(all_themes))); //add some weird in here, man
 
   }
@@ -61,7 +86,6 @@ const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
   let images =  collateAllImages(rand, theme_keys);
   images.then((results)=>{
-    console.log("JR NOTE: results", results)
    //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
    preview.src = rand.pickFrom(results);
    if(rand.nextDouble()>.5){

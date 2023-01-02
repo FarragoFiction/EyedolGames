@@ -1,19 +1,20 @@
 
 
+let num_categories = 0;
 const handleCategories = ()=>{
     const categories = document.querySelector("#categories");
     const container = createElementWithClassAndParent("div",categories, "container");
 
     if(categories){
       for(let theme in all_themes){
-        renderCategoryForTheme(container,theme);
+        renderCategoryForTheme(num_categories,container,theme);
       }
     }
-    handleRestaurants([Object.keys(all_themes)[0]])
-    handleScrolling(container);
+    handleRestaurants([Object.keys(all_themes)[0]], num_categories)
+    handleCategoryScrolling(container);
 }
 
-const handleScrolling = (container)=>{
+const handleCategoryScrolling = (container)=>{
   let lastScrollTime = 0; //not to spam events
   container.onscroll = () => {
     const newTime = new Date().getTime();
@@ -23,7 +24,7 @@ const handleScrolling = (container)=>{
     lastScrollTime = newTime;
 
     window.requestAnimationFrame(() => {
-      renderCategoryForTheme(container, pickFrom(Object.keys(all_themes)),true);
+      renderCategoryForTheme(num_categories, container, pickFrom(Object.keys(all_themes)),true);
     });
 
   };
@@ -40,13 +41,14 @@ const fakeLabelForTheme = (theme)=>{
   return pickFrom([theme.pickPossibilityFor(ADJ),theme.pickPossibilityFor(LOCATION),theme.pickPossibilityFor(COMPLIMENT),theme.pickPossibilityFor(INSULT),theme.pickPossibilityFor(PERSON),theme.pickPossibilityFor(OBJECT)]);
 }
 
-const renderCategoryForTheme = (container,themeKey, fakeView)=>{
+const renderCategoryForTheme = (index,container,themeKey, fakeView)=>{
   const theme = all_themes[themeKey];
   const ele = createElementWithClassAndParent("div",container, "category");
   let icon = theme.pickPossibilityFor(ICON);
   if(icon === "Zampanio" || fakeView && Math.random()>0.5){
     icon = missingEmoji();
   }
+  num_categories++;
   const label = fakeView ? fakeLabelForTheme(theme): themeKey;
   ele.innerHTML = `
     <div class="icon">
@@ -64,7 +66,7 @@ const renderCategoryForTheme = (container,themeKey, fakeView)=>{
     }
     ele.style.background ="#e4e4e4"
 
-    handleRestaurants([themeKey]);
+    handleRestaurants([themeKey],index);
   }
 
 }
