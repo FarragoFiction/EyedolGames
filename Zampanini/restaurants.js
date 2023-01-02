@@ -42,15 +42,36 @@ const handleRestaurantScrolling = (rand, keys) => {
 }
 
 const getRestaurantName = (rand, theme_keys, weird) => {
-  const possibilities = [
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, COMPLIMENT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, PERSON, true)}'s ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, LOCATION, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, ADJ, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, LOCATION, true)}`,
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, COMPLIMENT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, LOCATION, true)}`,
 
-    `${pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)} ${pickARandomThemeFromListAndGrabKey(rand, theme_keys, LOCATION, true)}`
+  const quick = (key, cap) => {
+    return pickARandomThemeFromListAndGrabKey(rand, theme_keys, key, cap)
+  };
+
+  const firstName = ()=>rand.pickFrom(first_names);
+  const lastName = ()=>rand.pickFrom(last_names);
+
+  const possibilities = [
+    `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
+    `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
+    `${quick( PERSON, true)}'s ${quick(OBJECT, true)}`,
+    `${quick( ADJ, true)} ${quick(LOCATION, true)}`,
+    `The ${quick( ADJ, true)} ${quick(LOCATION, true)}`,
+    `The ${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
+
+    `${quick(ADJ, true)} ${quick( OBJECT, true)} ${quick(LOCATION, true)}`,
+    `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)} ${quick(LOCATION, true)}`,
+    `${firstName()}'s ${quick( OBJECT, true)} ${quick(LOCATION, true)}`,
+    `${firstName()}'s ${quick( OBJECT, true)}`,
+    `${lastName()}'s ${quick( OBJECT, true)} ${quick(LOCATION, true)}`,
+    `${lastName()}'s ${quick( OBJECT, true)}`,
+    `${lastName()}'s`,
+
+    `${lastName()}'s ${quick(COMPLIMENT, true)} ${quick( OBJECT, true)}`,
+    `${firstName()}'s ${quick(COMPLIMENT, true)} ${quick( OBJECT, true)}`,
+    `${lastName()}'s ${quick(ADJ, true)} ${quick( OBJECT, true)}`,
+    `${firstName()}'s ${quick(ADJ, true)} ${quick( OBJECT, true)}`,
+
+    `${quick(OBJECT, true)} ${quick(LOCATION, true)}`
   ];
 
   if (weird) {

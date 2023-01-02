@@ -140,7 +140,6 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
   total_reviews++;
 
 
-  const first_names = ["Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
 
   const title = createElementWithClassAndParent("h3", container, "meal-title");
   title.innerHTML = `${rand.pickFrom(first_names)} ${rand.pickFrom(first_names)[0]} `;
@@ -196,7 +195,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
 
       `Why did my driver cast ${quick(SUPERMOVE)}?`,
       `Whenever I take a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
-      `i am so so scared of my driver. ${rand.pickFrom(["He", "She"])} is outside and ${quick(MONSTER_DESC)} Send help!`,
+      `i am so so scared of my driver. ${rand.pickFrom(["he", "she"])} is outside and ${quick(MONSTER_DESC)}  help!`,
 
       `I am scared of my driver. ${rand.pickFrom(["He", "She"])} is still here and ${quick(MONSTER_DESC)}`,
       `When I touched the ${quick(OBJECT)} I saw a flash of a weird place, ${quick(LOC_DESC)}.`

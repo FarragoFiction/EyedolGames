@@ -1,7 +1,9 @@
 //https://genders.wtf/gauntlet/
 
 
+const first_names = ["Tom","Amelie","Wanda","Wodin","Piper","Jasna","Brian","Todd","Joshua","Wyatt","Joshua","Penny","Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
 
+const last_names = ["Peyote","Blightheart","Gilbert","Howard","Davidson","Vastheight","Gillespie","Mann","Rusting","Researcher","Gently","Egbert","Claire","Lalonde","Strider","Hussain","King","Stoker","Sims","Blackwood","Barker","James","Blake","Dalon","Vasil","Hebert","Jensen","Lindt","Newell","Laborn","Fell","Wilbourn","Livsey","Lamb","Bacama","Kharun","Reynolds","Braggi","Seelee","Cassan","Folnir","Citato","Grigor","Crew","Robertson","Fairchild","Lukas","Richardson","Dominguez","Cane","Salesa","Shelly"];
 
 const lameGenderRaw = `Male
 Female
@@ -609,14 +611,14 @@ const initPeople = () => {
     person_posibilities[CHICKEN] = ["chicken","chick","chicky"];
     person_posibilities[COFFEE ] = ["barista"];
     person_posibilities[DESSERTS ] = ["Baker","Fairy","Unicorn"];
-    person_posibilities[DINER] = ["Lucy","Cook","Diner","Sally","Bob","Bill","Joe","Jeff"];
+    person_posibilities[DINER] = ["piggy","Lucy","Cook","Diner","Sally","Bob","Bill","Joe","Jeff"];
     person_posibilities[ITALIAN ] = ["Chef"];
     person_posibilities[MEXICAN ] = ["Chef"];
     person_posibilities[PIZZA ] = ["Chef"];
-    person_posibilities[PREMIUM ] = ["critic","chef"];
+    person_posibilities[PREMIUM ] = ["critic","chef","gourmet"];
     person_posibilities[SALAD ] = ["Chef"];
     person_posibilities[SANDWICHES ] = ["Chef","Baker"];
-    person_posibilities[SEAFOOD ] = ["Captain","Skipper","Sailor"];
+    person_posibilities[SEAFOOD ] = ["Captain","Skipper","Sailor","Pirate","Smuggler"];
     person_posibilities[SUSHI ] = ["Chef"];
 
     person_posibilities[ART] = ["artist", "painter", "sculpter", "curator"];
@@ -674,11 +676,11 @@ const initPeople = () => {
 const initAdjs = () => {
     adj_possibilities[BAKERY] = ["hot","fresh","warm","toasted"];
     adj_possibilities[BREAKFAST] = ["hot","smothered","stacked","sizzling","sweet"];
-    adj_possibilities[BURGERS ] = ["hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
-    adj_possibilities[CHICKEN] = ["hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
+    adj_possibilities[BURGERS ] = ["heartattack","mino","hot","stacked","fried","mondo","huge","mega","heart attack","flame-broiled","grilled","smoked"];
+    adj_possibilities[CHICKEN] = ["smokey","hot","grilled","crispy","crunchy","spicy","fried","baked","broiled","roasted","spiced","herb and garlic","herb"];
     adj_possibilities[COFFEE ] = ["hot","iced","cold"];
     adj_possibilities[DESSERTS ] = ["hot","iced","frosted","sweet","decadent","sinful","guilty"];
-    adj_possibilities[DINER] = ["hot","fried","baked","sliced","stuffed","special","sale"];
+    adj_possibilities[DINER] = ["smokey","hot","fried","baked","sliced","stuffed","special","sale"];
     adj_possibilities[ITALIAN ] = ["hot","garlic","parmesan","cream","sauce","stuffed"];
     adj_possibilities[MEXICAN ] = ["spicy","hot","crunchy","soft","gringo","sizzling","mexi"];
     adj_possibilities[PIZZA ] = ["hot","large","extra-large","personal","sliced","wood-oven","brick-fired"];
@@ -1202,11 +1204,11 @@ const initLocations = () => {
     location_possibilities[CHICKEN] = ["coop","restaurant","kitchen","house"];
     location_possibilities[COFFEE ] = ["cafe","restaurant","kitchen","house"];
     location_possibilities[DESSERTS ] = ["parlor","restaurant","kitchen","house"];
-    location_possibilities[DINER] = ["cafeteria","diner","restaurant","kitchen","house"];
+    location_possibilities[DINER] = ["bbq","smokehouse","cafeteria","diner","restaurant","kitchen","house","spoon","eatery"];
     location_possibilities[ITALIAN ] = ["restaurant","kitchen","house"];
     location_possibilities[MEXICAN ] = ["restaurant","kitchen","house"];
     location_possibilities[PIZZA ] = ["shack","kitchen","pizzeria","restaurant"];
-    location_possibilities[PREMIUM ] = ["bistro","restaurant","kitchen","house"];
+    location_possibilities[PREMIUM ] = ["bistro","restaurant","kitchen","house","steakhouse"];
     location_possibilities[SALAD ] = ["restaurant","kitchen","house"];
     location_possibilities[SANDWICHES ] = ["shop","delicatessen","deli","bistro","restaurant","kitchen","house"];
     location_possibilities[SEAFOOD ] = ["cove","restaurant","kitchen","house"];
