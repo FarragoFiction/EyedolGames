@@ -1269,7 +1269,7 @@ const initObjects = () => {
     object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry"];
     object_possibilities[BREAKFAST] = ["pancakes","bacon","eggs","waffles","toast","french toast","scramble"];
     object_possibilities[BURGERS ] = ["fry","burger","burger","burger","burger","burger","burger","fries","shake","tots","milkshake"];
-    object_possibilities[CHICKEN] = ["fry","chicken","chicken","chicken","wing","thigh","breast","tender","fries"];
+    object_possibilities[CHICKEN] = ["fry","chicken","chicken","chicken","wing","thigh","chicken breast","tender","fries"];
     object_possibilities[COFFEE ] = ["coffee","coffee","coffee","coffee","coffee","tea","cafe","latte","cappuccino"];
     object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","custard","frozen yogurt","milkshake"];
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
