@@ -225,6 +225,33 @@ body {
   position: relative;
 }
 
+.one-cart-item{
+  padding: 10px;
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4e4e4;
+  border-radius: 3px;
+  margin-right: 10px;
+
+}
+
+.cart-item-restaurant{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.cart-item-title{
+  font-size: 18px;
+  margin-top: 0px;
+  vertical-align: top;
+}
+
+.cart-item-price{
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .meal-image{
   height: 150px;
   border-radius: 8px;
@@ -243,7 +270,7 @@ body {
   vertical-align: middle;
 }
 
-#header #cart{
+#header #cart-container{
   position: fixed;
   top: 50px;
   display: none;
@@ -254,6 +281,10 @@ body {
   background-color: white;
 }
 
+#cart-total{
+  text-align: right;
+  margin-right: 10px;
+}
 
 .profile_image{
   object-fit: cover;
