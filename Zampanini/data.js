@@ -1268,7 +1268,7 @@ const initLocations = () => {
 
 const initObjects = () => {
 
-    object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry"];
+    object_possibilities[BAKERY] = ["bread","roll","baguette","muffin","slice","pastry","piece"];
     object_possibilities[BREAKFAST] = ["pancakes","bacon","eggs","waffles","toast","french toast","scramble"];
     object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","fries","shake","tots","milkshake","butt","ribs","chicken","pork"];
     object_possibilities[CHICKEN] = ["drumstick","leg","fry","chicken","wing","thigh","chicken breast","tender","fries"];
@@ -1277,7 +1277,7 @@ const initObjects = () => {
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
     object_possibilities[ITALIAN ] = ["ravioli","pasta","spaghetti","lasagna","parmesan","ziti","penne","noodles","tomato","eggplant"];
     object_possibilities[MEXICAN ] = ["bean","torta","cubano","nachos","tostada","enchilada","mole","taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];
-    object_possibilities[PIZZA ] = ["pizza","cheese","mozarella","calzone","stromboli","sandwich"];
+    object_possibilities[PIZZA ] = ["slice","pizza","cheese","mozarella","calzone","stromboli","sandwich"];
     object_possibilities[PREMIUM ] = ["lamb","veal","lobster","crab","fresh baked bread","potato","steak","chop"];
     object_possibilities[SALAD ] = ["salad","fry","soup","breadbowl"];
     object_possibilities[SANDWICHES ] = ["wrap","pita","sandwich","hoagie","sub"];

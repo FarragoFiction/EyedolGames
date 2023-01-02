@@ -299,6 +299,9 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
 
 const renderOneMenuSection = (parent, name, rand,keys) => {
   const container = createElementWithClassAndParent("div", parent, "one-menu-item");
+  container.onclick = ()=>{
+    setupChosenMenu(name, rand,keys);
+  }
   if(total_menu_items === 0){
     setupChosenMenu(name,rand,keys)
   }
