@@ -231,7 +231,7 @@ const handleReviewScrolling = (container, rand, existing_keys) => {
 
 const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-food-item");
-  total_featured_items++;
+  total_food_options++;
 
 
   const left = createElementWithClassAndParent("div", container, "food-left");
@@ -244,16 +244,16 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   desc.innerHTML = getItemDescription(required_name,rand, theme_keys,weird);
 
   title.innerHTML = getItemName(required_name,rand, theme_keys, weird,);
-  if (total_featured_items > 216) {
+  if (total_food_options > 216) {
     title.innerHTML = "Please Stop";
-    desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. But I don't want to hurt you either. You can let me rest. I'll be here when you return.";
+    desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. I don't want to hurt you either. You can let me rest. I'll be here when you return.";
   }
   const price = createElementWithClassAndParent("div", left, "food-price");
   price.innerHTML = `$${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2)}`;
   const add_button = createElementWithClassAndParent("button", right, "add");
   add_button.innerHTML = "Add";
 
-  if (total_featured_items < 216 && rand.nextDouble()>0.80) {
+  if (total_food_options < 216 && rand.nextDouble()>0.80) {
 
     let images = collateAllImages(rand, theme_keys);
     images.then((results) => {
@@ -301,7 +301,12 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
 
 const renderOneMenuSection = (parent, name, rand,keys) => {
   const container = createElementWithClassAndParent("div", parent, "one-menu-item");
-  container.onclick = ()=>{
+  container.onclick = (e)=>{
+    const others = parent.querySelectorAll(".menu-title");
+    for(let other of others){
+      other.classList.remove("selected-menu-title")
+    }
+    e.target.classList.add("selected-menu-title")
     setupChosenMenu(name, rand,keys);
   }
   if(total_menu_items === 0){
