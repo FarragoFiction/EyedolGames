@@ -156,7 +156,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const image = createElementWithClassAndParent("img", imageContainer, "meal-image");
   const title = createElementWithClassAndParent("h3", container, "meal-title");
   title.innerHTML = getItemName(rand, theme_keys, weird);
-  if (total_featured_items > 500) {
+  if (total_featured_items > 216) {
     title.innerHTML = "Please Stop";
   }
   const price = createElementWithClassAndParent("div", container, "meal-title");
@@ -164,7 +164,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const add_button = createElementWithClassAndParent("button", imageContainer, "add");
   add_button.innerHTML = "Add";
 
-  if (total_featured_items < 100) {
+  if (total_featured_items < 216) {
 
     let images = collateAllImages(rand, theme_keys);
     images.then((results) => {
@@ -271,7 +271,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
     reviews = reviews.concat(weird_reviews);
   }
   
-  if (total_reviews > 500) {
+  if (total_reviews > 216) {
     console.log("JR NOTE: stop")
     reviews = [
       `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,
