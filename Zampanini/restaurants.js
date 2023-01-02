@@ -10,7 +10,7 @@ const handleRestaurants = (keys,seed)=>{
     if(resteraunts){
       console.log("JR NOTE: what");
 
-      handleRestaurantScrolling(rand,resteraunts);
+      handleRestaurantScrolling(rand,keys);
 
       for(let i =0; i<10; i++){
         renderRestaurantForThemes(rand,resteraunts,keys);
@@ -22,7 +22,7 @@ const handleRestaurants = (keys,seed)=>{
 }
 
 
-const handleRestaurantScrolling = (rand,container)=>{
+const handleRestaurantScrolling = (rand,keys)=>{
   console.log("JR NOTE: handleRestaurantScrolling");
   let lastScrollTime = 0; //not to spam events
   window.onscroll = () => {
@@ -35,7 +35,7 @@ const handleRestaurantScrolling = (rand,container)=>{
     window.requestAnimationFrame(() => {
       console.log("JR NOTE: sroll");
 
-      renderRestaurantForThemes(rand,resteraunts,[rand.pickFrom(Object.keys(all_themes))],true);
+      renderRestaurantForThemes(rand,resteraunts,keys,true);
     });
 
   };
