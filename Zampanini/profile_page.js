@@ -196,9 +196,9 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
 
       `Why did my driver cast ${quick(SUPERMOVE)}?`,
       `Whenever I take a bite of the ${quick(OBJECT)}, ${quick(EFFECTS)}.`,
-      `i am so so scared of my driver. ${rand.pickFrom(["He", "She"])} is outside and ${quick(MONSTER_DESC)}. Send help!`,
+      `i am so so scared of my driver. ${rand.pickFrom(["He", "She"])} is outside and ${quick(MONSTER_DESC)} Send help!`,
 
-      `I am scared of my driver. ${rand.pickFrom(["He", "She"])} is still here and ${quick(MONSTER_DESC)}.`,
+      `I am scared of my driver. ${rand.pickFrom(["He", "She"])} is still here and ${quick(MONSTER_DESC)}`,
       `When I touched the ${quick(OBJECT)} I saw a flash of a weird place, ${quick(LOC_DESC)}.`
 
     ];
