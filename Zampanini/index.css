@@ -57,6 +57,7 @@ body {
 
 .single-rest{
   gap: 100px;
+  cursor: pointer;
 }
 
 .category{

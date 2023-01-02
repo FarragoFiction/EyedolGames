@@ -131,7 +131,8 @@ const renderRestaurantForThemes =  async (rand,container, base_keys,weird)=>{
   `;*/
 
   ele.onclick  = ()=>{
-    window.alert("TODO: refresh page with themes");
+    updateURLParams(`name=${label}&themes=${theme_keys}&seed=${rand.getRandomNumberBetween(0,99999999)}`);
+    window.location.reload();
   }
 }
 
