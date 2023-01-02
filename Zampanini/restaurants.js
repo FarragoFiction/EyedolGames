@@ -148,7 +148,7 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   let prices = ["💰💰💰", "💰💰", "💰💰", "💰"];
   let label = getRestaurantName(rand, theme_keys, weird)
   if (num_restaurants > max) {
-    label = "STOP"
+    label = "PLEASE STOP"
   }
 
   const preview = createElementWithClassAndParent("img", ele, "preview");

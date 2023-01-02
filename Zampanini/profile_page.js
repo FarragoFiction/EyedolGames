@@ -164,7 +164,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const add_button = createElementWithClassAndParent("button", imageContainer, "add");
   add_button.innerHTML = "Add";
 
-  if (total_featured_items < 500) {
+  if (total_featured_items < 100) {
 
     let images = collateAllImages(rand, theme_keys);
     images.then((results) => {
@@ -188,7 +188,7 @@ const renderOneMenuSection = (parent, name) => {
     title.classList.add("selected-menu-title")
   }
 
-  if (total_menu_items > 500) {
+  if (total_menu_items > 100) {
     title.innerHTML = "Please Stop";
   }
 
