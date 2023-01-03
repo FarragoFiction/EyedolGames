@@ -1273,7 +1273,7 @@ const initObjects = () => {
     object_possibilities[BURGERS ] = ["onion rings","cheese","fry","burger","fries","shake","tots","milkshake","butt","ribs","chicken","pork"];
     object_possibilities[CHICKEN] = ["drumstick","leg","fry","chicken","wing","thigh","chicken breast","tender","fries"];
     object_possibilities[COFFEE ] = ["coffee","americano","mocha","espresso","java","beans","tea","cafe","latte","cappuccino","mug"];
-    object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","snow cone","gelato","sherbert","sorbet","italian ice","custard","frozen yogurt","milkshake"];
+    object_possibilities[DESSERTS ] = ["pie","cake","cupcake","ice cream","snow cone","gelato","sherbert","sorbet","italian ice","custard","frozen yogurt","milkshake","treat"];
     object_possibilities[DINER] = ["casserole","soup","salad","stew","special","burger","fries","potato","wrap","bowl","soup","plate","special"];
     object_possibilities[ITALIAN ] = ["ravioli","pasta","spaghetti","lasagna","parmesan","ziti","penne","noodles","tomato","eggplant"];
     object_possibilities[MEXICAN ] = ["bean","torta","cubano","nachos","tostada","enchilada","mole","taco","burrito","fajita","arepa","empanada","taquito","quesadilla","salsa","dip"];

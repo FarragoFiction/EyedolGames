@@ -73,6 +73,9 @@ const getRestaurantName = (rand, theme_keys, weird) => {
 
     `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
     `${quick( PERSON, true)}'s ${quick(OBJECT, true)}`,
+    `${quick( PERSON, true)}'s ${quick(OBJECT, true)}s`,
+    `${quick( PERSON, true)}'s ${quick(OBJECT, true)}s`,
+
     `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
     `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
     `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
