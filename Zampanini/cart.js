@@ -12,7 +12,9 @@ const initCart = ()=>{
 
   window.onclick = (e)=>{
     console.log("JR NOTE: ",e, e.target.id)
-    if(!e.target.id.includes("cart")){
+    if(!e.target.id.includes("cart") && !e.target.className.includes("cart")){
+      console.log("JR NOTE: closing cart",e, e.target.id)
+
       closeCart();
     }
   }
