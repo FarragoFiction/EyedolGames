@@ -9,8 +9,6 @@ const handleRestaurants = (keys, seed) => {
   resteraunts.innerHTML = "";
   const rand = new SeededRandom(seed+113);
   if (resteraunts) {
-    console.log("JR NOTE: what");
-
     handleRestaurantScrolling(rand, keys);
 
     for (let i = 0; i < 50; i++) {
@@ -133,7 +131,6 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   //weird gets extra shit tacked on
   if (weird) {
     theme_keys.push(rand.pickFrom(Object.keys(all_themes))); //add some weird in here, man
-
   }
   const ele = createElementWithClassAndParent("div", container, "single-rest");
   //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
