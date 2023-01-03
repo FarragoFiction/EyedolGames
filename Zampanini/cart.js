@@ -9,6 +9,8 @@ const initCart = ()=>{
     toggleCart();
   }
 
+
+
   window.onclick = (e)=>{
     console.log("JR NOTE: ",e, e.target.id)
     if(!e.target.className.includes("one-featured-meal") && !e.target.className.includes("one-food-item") && !e.target.id.includes("cart") && !e.target.className.includes("cart")){
@@ -17,6 +19,11 @@ const initCart = ()=>{
   }
 
   const entries = getCartFromLocalStorage();
+
+  const checkout = document.querySelector("#cart-total");
+  checkout.onclick = ()=>{
+    window.location.href =`/News?referer=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}}`;
+  }
   const cart = document.querySelector("#cart");
   cart.innerHTML = "";
   for(let entry of entries){
