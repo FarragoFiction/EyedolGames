@@ -12,7 +12,6 @@ const initCart = ()=>{
 
 
   window.onclick = (e)=>{
-    console.log("JR NOTE: ",e, e.target.id)
     if(!e.target.className.includes("one-featured-meal") && !e.target.className.includes("one-food-item") && !e.target.id.includes("cart") && !e.target.className.includes("cart")){
       closeCart();
     }
@@ -25,7 +24,7 @@ const initCart = ()=>{
     localStorage.removeItem(cart_key);
     closeCart();
 
-    window.location.href =`/News?referer=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}`;
+    window.location.href =`/News?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}`;
   }
   const cart = document.querySelector("#cart");
   cart.innerHTML = "";
@@ -91,7 +90,6 @@ const syncCartToggle = ()=>{
 
 const toggleCart = ()=>{
   const open = JSON.parse(localStorage.getItem(cart_toggle_key));
-  console.log("JR NOTE: open is", open)
   if(!open){
     openCart();
   }else{
@@ -101,7 +99,6 @@ const toggleCart = ()=>{
 }
 
 const openCart = ()=>{
-  console.log("JR NOTE: opening cart")
   localStorage.setItem(cart_toggle_key, JSON.stringify(true));
   const cart = document.querySelector("#cart-container");
   cart.style.display = "block";
@@ -109,7 +106,6 @@ const openCart = ()=>{
 }
 
 const closeCart = ()=>{
-  console.log("JR NOTE: closing cart")
 
   localStorage.setItem(cart_toggle_key, JSON.stringify(false));
   const cart = document.querySelector("#cart-container");

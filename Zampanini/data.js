@@ -2333,7 +2333,7 @@ class Theme {
     getPossibilitiesFor = (key) => {
         //console.log("JR NOTE: picking possibilities for ",key, "i am", this.key)
         if (!this.string_possibilities) {
-            return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
+            return  ["we chose not to escape","the end is never the end","i am so scared", "why doesn't this end", "where is the end", "how do i get out", "???", "don't follow us", "don't come closer", "leave now", "forget this", "Zampiano"];
         }
         if ((key in this.string_possibilities) && this.string_possibilities[key]) {
             return this.string_possibilities[key];
@@ -2341,7 +2341,7 @@ class Theme {
             if (this.key !== "waste" && (food_keys.indexOf(this.key) === -1)) {
                 console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
             }
-            return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
+            return  ["we chose not to escape","the end is never the end","i am so scared", "why doesn't this end", "where is the end", "how do i get out", "???", "don't follow us", "don't come closer", "leave now", "forget this", "Zampiano"];
         }
     }
 

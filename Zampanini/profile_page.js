@@ -92,7 +92,6 @@ const setupMenuSections = (container, rand, theme_keys) => {
 const setupChosenMenu = (name,theme_keys)=>{
   //if we use the rand the rest of the page uses it'll be diff depending on when we clicked
   const rand = new SeededRandom(stringtoseed(name));
-  console.log("JR NOTE: ",rand)
   total_food_options = 0;
   current_food = name;
   
@@ -356,6 +355,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
 
   const title = createElementWithClassAndParent("h3", container, "meal-title");
   title.innerHTML = `${rand.pickFrom(first_names)} ${rand.pickFrom(first_names)[0]} `;
+
   const rating = createElementWithClassAndParent("div", container, "rating");
   const ratings = ["<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>", "<span class='good'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span><span class='bad'>⭐</span>"];
   rating.innerHTML = rand.pickFrom(ratings);
@@ -435,6 +435,12 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
     ]
   }
   review.innerHTML = rand.pickFrom(reviews);
+
+  if(!window.location.search.includes("victim")){
+    if(review.innerHTML.includes("scared")){
+      updateURLParams("victim="+title.innerHTML);
+    }
+  }
 
 
 }
