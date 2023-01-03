@@ -50,7 +50,7 @@ const renderCategoryForTheme = (index,container,themeKey, fakeView)=>{
   }
   num_categories++;
   let label = fakeView ? fakeLabelForTheme(theme): themeKey;
-  if(num_categories>100){
+  if(num_categories>how_long_well_let_them_explore){
     label = "STOP";
   }
   ele.innerHTML = `

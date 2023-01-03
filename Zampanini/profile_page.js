@@ -77,19 +77,22 @@ const setupMenuSections = (container, rand, theme_keys) => {
     const shuffled_possibilities = rand.shuffle(all_themes[key].getPossibilitiesFor(OBJECT));
 
     for (let object of shuffled_possibilities){
-      renderOneMenuSection(parent, titleCase(object), rand, theme_keys);
+      renderOneMenuSection(parent, titleCase(object), theme_keys);
 
     }
   }
 
     for (let i = 0; i<10; i++){
       const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
-      renderOneMenuSection(parent, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), rand, theme_keys);
+      renderOneMenuSection(parent, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), theme_keys);
     }
 
 }
 
-const setupChosenMenu = (name, rand,theme_keys)=>{
+const setupChosenMenu = (name,theme_keys)=>{
+  //if we use the rand the rest of the page uses it'll be diff depending on when we clicked
+  const rand = new SeededRandom(stringtoseed(name));
+  console.log("JR NOTE: ",rand)
   total_food_options = 0;
   current_food = name;
   
@@ -206,7 +209,7 @@ const handleMenuScrolling = (container, rand, existing_keys) => {
 
     window.requestAnimationFrame(() => {
       const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
-      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))), rand,theme_keys);
+      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))),theme_keys);
 
     });
 
@@ -245,7 +248,7 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   desc.innerHTML = getItemDescription(required_name,rand, theme_keys,weird);
 
   title.innerHTML = getItemName(required_name,rand, theme_keys, weird);
-  if (total_food_options > 216) {
+  if (total_food_options > how_long_well_let_them_explore) {
     title.innerHTML = "Please Stop";
     desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. I don't want to hurt you either. You can let me rest. I'll be here when you return.";
   }
@@ -255,7 +258,7 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const add_button = createElementWithClassAndParent("button", right, "add");
   add_button.innerHTML = "Add";
 
-  if (total_food_options < 216 && rand.nextDouble()>0.80) {
+  if (total_food_options < how_long_well_let_them_explore && rand.nextDouble()>0.80) {
 
     let images = collateAllImages(rand, theme_keys);
     images.then((results) => {
@@ -282,7 +285,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const image = createElementWithClassAndParent("img", imageContainer, "meal-image");
   const title = createElementWithClassAndParent("h3", container, "meal-title");
   title.innerHTML = getItemName(null,rand, theme_keys, weird);
-  if (total_featured_items > 216) {
+  if (total_featured_items > how_long_well_let_them_explore) {
     title.innerHTML = "Please Stop";
   }
   const price = createElementWithClassAndParent("div", container, "meal-title");
@@ -291,7 +294,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const add_button = createElementWithClassAndParent("button", imageContainer, "add");
   add_button.innerHTML = "Add";
 
-  if (total_featured_items < 216) {
+  if (total_featured_items < how_long_well_let_them_explore) {
 
     let images = collateAllImages(rand, theme_keys);
     images.then((results) => {
@@ -310,7 +313,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
 
 
 
-const renderOneMenuSection = (parent, name, rand,keys) => {
+const renderOneMenuSection = (parent, name,keys) => {
   const container = createElementWithClassAndParent("div", parent, "one-menu-item");
   container.onclick = (e)=>{
     const others = parent.querySelectorAll(".menu-title");
@@ -318,10 +321,10 @@ const renderOneMenuSection = (parent, name, rand,keys) => {
       other.classList.remove("selected-menu-title")
     }
     e.target.classList.add("selected-menu-title")
-    setupChosenMenu(name, rand,keys);
+    setupChosenMenu(name,keys);
   }
   if(total_menu_items === 0){
-    setupChosenMenu(name,rand,keys)
+    setupChosenMenu(name,keys)
   }
   total_menu_items++;
 
@@ -332,7 +335,7 @@ const renderOneMenuSection = (parent, name, rand,keys) => {
     title.classList.add("selected-menu-title")
   }
 
-  if (total_menu_items > 100) {
+  if (total_menu_items > how_long_well_let_them_explore) {
     title.innerHTML = "Please Stop";
   }
 
@@ -368,6 +371,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
 
   let reviews = [`The ${quick(OBJECT)} smelled like ${quick(SMELL)}.`,
   `Don't even bother trying the ${quick(OBJECT)}.`,
+  `I never want to eat anything else ever again!`,
   `I can't believe how cheap the ${quick(OBJECT)} was!`,
   `My ${quick(OBJECT)} wasn't in the bag.`,
   `Best ${quick(OBJECT)} place in town!`,
@@ -415,7 +419,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
     reviews = reviews.concat(weird_reviews);
   }
   
-  if (total_reviews > 216) {
+  if (total_reviews > how_long_well_let_them_explore) {
     console.log("JR NOTE: stop")
     reviews = [
       `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,

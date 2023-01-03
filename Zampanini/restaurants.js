@@ -7,7 +7,7 @@ const handleRestaurants = (keys, seed) => {
 
   const resteraunts = document.querySelector("#resteraunts");
   resteraunts.innerHTML = "";
-  const rand = new SeededRandom(seed);
+  const rand = new SeededRandom(seed+113);
   if (resteraunts) {
     console.log("JR NOTE: what");
 
@@ -66,15 +66,20 @@ const getRestaurantName = (rand, theme_keys, weird) => {
   const goodwords = goodwordsraw.split("\n")
 
   const possibilities = [
-    `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress","lord","lady","knight"])}  ${quick(OBJECT, true)}`,
-    `${rand.pickFrom(['mr','miss','mrs',"mx","master","mistress"])} ${quick(ADJ, true)} ${quick(OBJECT, true)}`,
-    ` ${quick(OBJECT, true)} ${rand.pickFrom(["master","mistress","lord","lady","knight"])}`,
+    `${rand.pickFrom(['Mr','Miss','Mrs',"Mx","Master","Mistress","Lord","Lady"])}  ${quick(OBJECT, true)}`,
+    `${rand.pickFrom(['Mr','Miss','Mrs',"Mx","Master","Mistress"])} ${quick(ADJ, true)} ${quick(OBJECT, true)}`,
+    ` ${quick(OBJECT, true)} ${rand.pickFrom(["Master","Mistress","Lord","Lady"])}`,
 
     `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
     `${quick(ADJ, true)} ${quick(OBJECT, true)}`,
 
     `${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
     `${quick( PERSON, true)}'s ${quick(OBJECT, true)}`,
+    `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
+    `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
+    `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
+    `${quick( PERSON, true)}'s ${quick(LOCATION, true)}`,
+
     `${quick( ADJ, true)} ${quick(LOCATION, true)}`,
     `The ${quick( ADJ, true)} ${quick(LOCATION, true)}`,
     `The ${quick(COMPLIMENT, true)} ${quick(OBJECT, true)}`,
@@ -119,7 +124,7 @@ const collateAllImages = async (rand, base_keys) => {
 const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   let theme_keys = [...base_keys];
   num_restaurants++;
-  const max = 216;
+  const max = how_long_well_let_them_explore;
 
   //if theres no food theme, or you know, if you're feeling frisky
   if (food_keys.indexOf(theme_keys[0]) == -1 || rand.nextDouble() > 0.5) {

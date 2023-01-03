@@ -10,7 +10,16 @@ const initCart = ()=>{
     toggleCart();
   }
 
+  window.onclick = (e)=>{
+    console.log("JR NOTE: ",e, e.target.id)
+    if(!e.target.id.includes("cart")){
+      closeCart();
+    }
+  }
+
   const entries = getCartFromLocalStorage();
+  const cart = document.querySelector("#cart");
+  cart.innerHTML = "";
   for(let entry of entries){
     renderOneCartEntry(entry);
   }
@@ -53,12 +62,12 @@ const getCartFromLocalStorage = ()=>{
 
 const addNewItemToCart = (item_name, price, restaurant_name)=>{
   const entries = getCartFromLocalStorage();
-  entries.push({item_name, price, restaurant_name})
+  entries.unshift({item_name, price, restaurant_name})
 
   localStorage.setItem(cart_key, JSON.stringify(entries));
   renderOneCartEntry({item_name, price, restaurant_name})
   openCart();
-  syncCartNumber();
+  initCart();
 }
 
 const syncCartToggle = ()=>{
@@ -86,7 +95,6 @@ const openCart = ()=>{
   localStorage.setItem(cart_toggle_key, JSON.stringify(true));
   const cart = document.querySelector("#cart-container");
   cart.style.display = "block";
-  console.log("JR NOTE: todo open cart")
 
 }
 
@@ -94,6 +102,4 @@ const closeCart = ()=>{
   localStorage.setItem(cart_toggle_key, JSON.stringify(false));
   const cart = document.querySelector("#cart-container");
   cart.style.display = "none";
-  console.log("JR NOTE: todo close cart")
-
 }
