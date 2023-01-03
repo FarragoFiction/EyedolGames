@@ -22,7 +22,10 @@ const initCart = ()=>{
 
   const checkout = document.querySelector("#cart-total");
   checkout.onclick = ()=>{
-    window.location.href =`/News?referer=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}}`;
+    localStorage.removeItem(cart_key);
+    closeCart();
+
+    window.location.href =`/News?referer=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}`;
   }
   const cart = document.querySelector("#cart");
   cart.innerHTML = "";
