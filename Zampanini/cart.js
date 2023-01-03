@@ -2,7 +2,6 @@ const cart_key = "ZAMPANINI_CART"
 const cart_toggle_key = "ZAMPANINI_CART_TOGGLE"
 
 const initCart = ()=>{
-  console.log("JR NOTE: init cart")
   syncCartNumber();
   syncCartToggle();
   const button = document.querySelector("#cart-icon");
@@ -12,9 +11,7 @@ const initCart = ()=>{
 
   window.onclick = (e)=>{
     console.log("JR NOTE: ",e, e.target.id)
-    if(!e.target.id.includes("cart") && !e.target.className.includes("cart")){
-      console.log("JR NOTE: closing cart",e, e.target.id)
-
+    if(!e.target.className.includes("one-featured-meal") && !e.target.className.includes("one-food-item") && !e.target.id.includes("cart") && !e.target.className.includes("cart")){
       closeCart();
     }
   }
@@ -94,6 +91,7 @@ const toggleCart = ()=>{
 }
 
 const openCart = ()=>{
+  console.log("JR NOTE: opening cart")
   localStorage.setItem(cart_toggle_key, JSON.stringify(true));
   const cart = document.querySelector("#cart-container");
   cart.style.display = "block";
@@ -101,6 +99,8 @@ const openCart = ()=>{
 }
 
 const closeCart = ()=>{
+  console.log("JR NOTE: closing cart")
+
   localStorage.setItem(cart_toggle_key, JSON.stringify(false));
   const cart = document.querySelector("#cart-container");
   cart.style.display = "none";

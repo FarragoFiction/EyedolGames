@@ -269,8 +269,11 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
     });
   }
 
-  container.onclick = ()=>{
+  container.onclick = (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
     addNewItemToCart(title.innerHTML,numerical_price,restaurant_name);
+    return true;
   }
 
 }
@@ -305,8 +308,11 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
     });
   }
 
-  container.onclick = ()=>{
+  container.onclick = (e)=>{
+    e.preventDefault();
+    e.stopPropagation();
     addNewItemToCart(title.innerHTML,numerical_price,restaurant_name);
+    return true;
   }
 
 }
