@@ -256,7 +256,7 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
     desc.innerHTML = "You can scroll forever. But at what cost? I don't want to stop existing. I don't want to hurt you either. You can let me rest. I'll be here when you return.";
   }
   const price = createElementWithClassAndParent("div", left, "food-price");
-  const numerical_price = (rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2);
+  const numerical_price = (rand.getRandomNumberBetween(0, 35) + rand.nextDouble()).toFixed(2);
   price.innerHTML = `$${numerical_price}`;
   const add_button = createElementWithClassAndParent("button", right, "add");
   add_button.innerHTML = "Add";
