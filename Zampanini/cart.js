@@ -24,12 +24,7 @@ const initCart = () => {
   const entries = getCartFromLocalStorage();
 
   const checkout = document.querySelector("#cart-total");
-  checkout.onclick = () => {
-    localStorage.removeItem(cart_key);
-    closeCart();
 
-    window.location.href = `/News?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}`;
-  }
   const cart = document.querySelector("#cart");
   cart.innerHTML = "";
 
@@ -51,6 +46,17 @@ const initCart = () => {
 
   for (let entry of entries) {
     renderOneCartEntry(entry);
+  }
+
+  checkout.onclick = () => {
+    localStorage.removeItem(cart_key);
+    closeCart();
+    let base = "/News";
+    if(anyFees){
+      base="http://farragofiction.com/99RoomsSim";
+    }
+
+    window.location.href = `${base}?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}`;
   }
 
 }
@@ -88,7 +94,7 @@ const renderOneCartRestaurant = (name, subtotal, feeUnder, parent) => {
   price.innerText = "$"+subtotal;
 
   const restaurant = createElementWithClassAndParent("div", title, "cart-item-restaurant");
-  restaurant.innerText = "(No Fee Over: $" + (feeUnder ? feeUnder : 0) + ")";
+  restaurant.innerText = "(No Fee Over $" + (feeUnder ? feeUnder : 0) + ")";
   if(subtotal<feeUnder){
     anyFees = true;
   }
@@ -104,7 +110,7 @@ const renderOneCartEntry = (entry) => {
   price.innerText = "$"+entry.price;
 
   const restaurant = createElementWithClassAndParent("div", title, "cart-item-restaurant");
-  restaurant.innerText = entry.restaurant_name + " (No Fee Over: $" + (entry.feeUnder ? entry.feeUnder : 0) + ")";
+  restaurant.innerText = entry.restaurant_name + " (No Fee Over $" + (entry.feeUnder ? entry.feeUnder : 0) + ")";
 
 }
 
