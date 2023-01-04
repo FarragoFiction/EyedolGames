@@ -1,7 +1,9 @@
 const cart_key = "ZAMPANINI_CART"
 const cart_toggle_key = "ZAMPANINI_CART_TOGGLE"
 
-let anyFees =true; 
+let anyFees; 
+
+let chosenEntry;
 
 
 const initCart = () => {
@@ -55,8 +57,11 @@ const initCart = () => {
     if(anyFees){
       base="http://farragofiction.com/99RoomsSim";
     }
+    if(!chosenEntry){
+      chosenEntry = entries[0];
+    }
 
-    window.location.href = `${base}?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(entries[0]))}`;
+    window.location.href = `${base}?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(chosenEntry))}`;
   }
 
 }
@@ -96,7 +101,7 @@ const renderOneCartRestaurant = (name, subtotal, feeUnder, parent) => {
   const restaurant = createElementWithClassAndParent("div", title, "cart-item-restaurant");
   restaurant.innerText = "(No Fee Over $" + (feeUnder ? feeUnder : 0) + ")";
   if(subtotal<feeUnder){
-    anyFees = true;
+    anyFees = name;
   }
 
 }
@@ -108,6 +113,9 @@ const renderOneCartEntry = (entry) => {
   title.innerText = entry.item_name;
   const price = createElementWithClassAndParent("div", container, "cart-item-price");
   price.innerText = "$"+entry.price;
+  if(entry.restaurant_name === anyFees){
+    chosenEntry = entry; //just pick one
+  }
 
   const restaurant = createElementWithClassAndParent("div", title, "cart-item-restaurant");
   restaurant.innerText = entry.restaurant_name + " (No Fee Over $" + (entry.feeUnder ? entry.feeUnder : 0) + ")";
