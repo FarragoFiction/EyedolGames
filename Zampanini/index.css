@@ -312,6 +312,21 @@ body {
 #cart{
   height: 80vh;
   overflow-y: scroll;
+  padding-left: 10px;
+}
+
+.cart-restaurant-container{
+  margin-bottom: 50px;
+}
+
+#warning{
+  font-size: 12px;
+  margin-left: 13px;
+  text-align: center;
+  color: #ee0000;
+  letter-spacing: 2px;
+  margin-right: 13px;
+  font-weight: bold;
 }
 
 #cart-total{

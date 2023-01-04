@@ -157,6 +157,8 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   }
 
   const preview = createElementWithClassAndParent("img", ele, "preview");
+
+  const feeUnder = rand.getRandomNumberBetween(1, 85);
   const rest = createElementWithClassAndParent("div", ele, "rest-name");
   rest.innerHTML = titleCase(label);
   const facts = createElementWithClassAndParent("div", ele, "facts");
@@ -167,7 +169,7 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   const right = createElementWithClassAndParent("div", facts, "right");
   right.innerHTML = `    ${rand.getRandomNumberBetween(0, 85)} Miles or ${rand.getRandomNumberBetween(0, 90)} minutes
   <Br>
-  $0 delivery fee over $${rand.getRandomNumberBetween(1, 85)}`;
+  No delivery fee over $${feeUnder}`;
 
 
   /*
@@ -191,7 +193,7 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   `;*/
 
   ele.onclick = () => {
-    updateURLParams(`name=${label}&themes=${theme_keys}&seed=${rand.getRandomNumberBetween(0, 99999999)}`);
+    updateURLParams(`name=${label}&themes=${theme_keys}&seed=${rand.getRandomNumberBetween(0, 99999999)}&feeUnder=${feeUnder}`);
     window.location.reload();
   }
 }

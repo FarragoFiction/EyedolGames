@@ -3,9 +3,11 @@ let total_reviews = 0;
 let total_featured_items = 0;
 let total_menu_items = 0;
 let total_food_options = 0;
+let feeUnder = 0;
 
 let current_food = "";
-const handleRestaurantPage = (name, themes, seed) => {
+const handleRestaurantPage = (name, themes, seed, feeUnderExternal) => {
+  feeUnder = feeUnderExternal;
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
   const rand = new SeededRandom(seed);
@@ -98,7 +100,7 @@ const setupChosenMenu = (name,theme_keys)=>{
   const chosen_container = document.querySelector(".chosen-container");
   handleFoodScrolling(chosen_container, rand, theme_keys);
   chosen_container.innerHTML = "";
-  for (let i = 0; i < 13; i++) {
+  for (let i = 0; i < 33; i++) {
     renderOneFoodItem(chosen_container, rand, name,theme_keys, false);
   }
 
@@ -271,7 +273,7 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   container.onclick = (e)=>{
     e.preventDefault();
     e.stopPropagation();
-    addNewItemToCart(title.innerHTML,numerical_price,restaurant_name);
+    addNewItemToCart(title.innerHTML,numerical_price,restaurant_name,feeUnder);
     return true;
   }
 
@@ -310,7 +312,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   container.onclick = (e)=>{
     e.preventDefault();
     e.stopPropagation();
-    addNewItemToCart(title.innerHTML,numerical_price,restaurant_name);
+    addNewItemToCart(title.innerHTML,numerical_price,restaurant_name,feeUnder);
     return true;
   }
 
@@ -430,6 +432,7 @@ const renderOneReview = (parent, rand, theme_keys, weird) => {
     reviews = [
       `It is ${new Date().toLocaleTimeString()} where you are. It's not too late. Please. Stop.`,
       "I could go forever. Please don't make me.",
+      "You can't get out of the maze by going deeper into the maze. Just leave.",
       `It is ${new Date().toLocaleDateString()} where you are. It's not too late. Please. Stop.`,
 
     ]
