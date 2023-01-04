@@ -193,7 +193,7 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   `;*/
 
   ele.onclick = () => {
-    updateURLParams(`name=${label}&themes=${theme_keys}&seed=${rand.getRandomNumberBetween(0, 99999999)}&feeUnder=${feeUnder}`);
+    updateURLParams(`name=${label}&themes=${theme_keys}&feeUnder=${feeUnder}`);
     window.location.reload();
   }
 }
