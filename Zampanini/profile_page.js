@@ -146,7 +146,9 @@ const getItemDescription = (name,rand, theme_keys, weird)=>{
   return rand.pickFrom(ret);
 }
 
-const getItemName = (required_name, rand, theme_keys, weird) => {
+const getItemName = (required_name, rand, keys, weird) => {
+  let theme_keys = weird? Object.keys(all_themes):keys;
+
   let name = pickARandomThemeFromListAndGrabKey(rand, theme_keys, OBJECT, true)
   if(required_name){
     name = required_name
