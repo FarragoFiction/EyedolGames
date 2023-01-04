@@ -4,6 +4,12 @@
   src: url("cavalier/Cavalier.ttf");
 }
 
+@font-face {
+  font-family: times;
+  src: url("gv-time-font/GvTimeRegular-BW768.ttf");
+}
+
+
 
 body {
   background-color: white;
@@ -117,6 +123,7 @@ body {
   left: 0px;
   color: white;
   width: 100%;
+  font-family: times;
 
   height: 75px;
   vertical-align: middle;
@@ -128,6 +135,8 @@ body {
 #header .headline{
   padding-right: 50%;
   text-align: center;
+  font-family:  Georgia,Cambria,Times New Roman,Times,serif;
+
 }
 
 .content{
