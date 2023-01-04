@@ -295,7 +295,7 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
     title.innerHTML = "Please Stop";
   }
   const price = createElementWithClassAndParent("div", container, "meal-title");
-  const numerical_price = (rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(2);
+  const numerical_price = (rand.getRandomNumberBetween(0, 35) + rand.nextDouble()).toFixed(2);
   price.innerHTML = `$${numerical_price}`;
   const add_button = createElementWithClassAndParent("button", imageContainer, "add");
   add_button.innerHTML = "Add";
