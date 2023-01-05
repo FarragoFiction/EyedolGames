@@ -484,7 +484,7 @@ const checkIfAllKeysPresent = () => {
         }
 
         if (!(key in child_backstories)) {
-            //console.error("JR NOTE: key", key, "not found in child_backstories");
+            //console.error(": key", key, "not found in child_backstories");
         }
 
         if (!(key in general_backstories)) {

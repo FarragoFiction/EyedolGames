@@ -71,6 +71,10 @@ window.onload = () => {
 
 }
 
+const quick = (key, cap) => {
+  return pickARandomThemeFromListAndGrabKey(rand, Object.keys(all_themes), key, cap)
+};
+
 const placeHolderDataAsNeeded = ()=>{
   if(!referer){
     referer = "Zampanini"
@@ -88,6 +92,12 @@ const placeHolderDataAsNeeded = ()=>{
 
 }
 
+const collateAllQuizImages = async () => {
+  const url = "http://eyedolgames.com/News/images/Quizzes/"
+    let images = await getImages(url);
+  return images.map((item) => `${url}${item}`);
+}
+
 
 const collateAllThemeImages = async (base_keys) => {
   let ret = [];
@@ -103,16 +113,122 @@ const collateAllThemeImages = async (base_keys) => {
 }
 
 //they move around and change height and what not but they are always here
-const setupLeftAd = ()=>{
+const setupLeftAd = async()=>{
   const ele = document.querySelector(".link1");
+  const img = ele.querySelector("img");
+  const footer = ele.querySelector(".footer");
+
+  ele.style.width = getRandomNumberBetween(10,30)+"%";
+  ele.style.height = getRandomNumberBetween(30,70)+"%";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  ele.style.top = getRandomNumberBetween(10,100-parseInt(ele.style.height))+"%"
+
+  footer.style.backgroundColor = `rgb(${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)})`;
+
+  
+  let images = collateAllQuizImages();
+  images.then((results) => {
+    if(results.length ===0){
+      return;
+    }
+    //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+    img.src = pickFrom(results);
+    if (Math.random() > .5) {
+      img.style.objectFit = "none";
+    }
+  })
+
+
+
+  const textOptions = [`DIG`
+  ,`SELF CARE`
+  ,`run`
+  ,`RUN`
+  ,"quiz"
+  ,`${quick(COMPLIMENT)}`
+  ,`${quick(OBJECT)}`
+  ,`${quick(LOCATION)}`
+  ,`${quick(PERSON)}`
+  ,`${quick(INSULT)}`
+  ,`${quick(ICON)}`
+  ,`${quick(ADJ)}`
+  ,`${quick(SUPERMOVE)}`
+  ,`gender`
+
+  ,"spiral"]
+  footer.innerText = pickFrom(textOptions) + " QUIZ";
+  await sleep(60000);
+  setupRightAd();
 
 }
 
 //they move around and change height and what not but they are always here
 
-const setupRightAd = ()=>{
+const setupRightAd = async ()=>{
   const ele = document.querySelector(".link2");
+  const img = ele.querySelector("img");
+  const header = ele.querySelector(".header");
+  const footer = ele.querySelector(".footer");
 
+  ele.style.width = getRandomNumberBetween(10,30)+"%";
+  ele.style.height = getRandomNumberBetween(30,70)+"%";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  ele.style.top = getRandomNumberBetween(10,100-parseInt(ele.style.height))+"%"
+  header.style.backgroundColor = `rgb(${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)})`;
+  footer.style.backgroundColor = `rgb(${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)})`;
+
+
+  
+  let images = collateAllQuizImages();
+  images.then((results) => {
+    if(results.length ===0){
+      return;
+    }
+    //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+    img.src = pickFrom(results);
+    if (Math.random() > .5) {
+      img.style.objectFit = "none";
+    }
+  })
+
+
+  const bottomText = [`DIG`
+  ,`SELF CARE`
+  ,`run`
+  ,"bottom text"
+  ,`RUN`
+  ,"quiz"
+  ,`${quick(COMPLIMENT)}`
+  ,`${quick(OBJECT)}`
+  ,`${quick(LOCATION)}`
+  ,`${quick(PERSON)}`
+  ,`${quick(INSULT)}`
+  ,`${quick(ICON)}`
+  ,`${quick(ADJ)}`
+  ,`${quick(SUPERMOVE)}`
+  ,`personality`
+
+  ,"spiral"]
+
+  const topText = [`FIND A QUIZ THAT LOVES YOU BACK`
+  ,`HAVE YOU EVER WONDERED IF YOU'RE ${quick(COMPLIMENT)}?`
+  ,`WHAT KIND OF ${quick(OBJECT)} ARE YOU?`
+  ,`WOULD YOU DIE IN A ${quick(LOCATION)}?`
+  ,`WHICH ${quick(PERSON)} ARE YOU?`
+  ,`WHAT IF YOU'RE ${quick(INSULT)}?`
+  ,`HEY. MAYBE ${quick(ICON)} ISN'T SO BAD.`
+  ,`ARE YOU ${quick(ADJ)}? FIND OUT NOW!`
+  ,`WHAT DOCTORS DON'T WANT YOU TO KNOW ABOUT ${quick(SUPERMOVE)}`
+  ,`LEARN ABOUT YOUR PERSONALITY HERE`
+
+  ,"ZAMPANIO IS A REALLY FUN GAME AND YOU'RE ALREADY PLAYING IT."]
+  footer.innerText = pickFrom(bottomText)+ " QUIZ";
+  header.innerText = pickFrom(topText) ;
+
+  await sleep(10000);
+  setupLeftAd();
 }
 
 
@@ -139,9 +255,7 @@ const setUpMiddleAD = (container)=>{
   name.innerText = details?.restaurant_name;
   const slogan = createElementWithClassAndParent("div",center,"slogan");
 
-  const quick = (key, cap) => {
-    return pickARandomThemeFromListAndGrabKey(rand, theme_keys, key, cap)
-  };
+
   const refs = [`Powered by ${referer}.`];
   const slogans = ["Fees are optional. Living is not.",`Now delivering ${quick(OBJECT)}s.`,"What will you order?",'Always local. Always.',`You can almost taste the ${quick(OBJECT)}.`,`${quick(COMPLIMENT,true)}. Every time.`,`So many options. So little time.`,`Reaching the end should not be your goal.`];
   slogan.innerText = `${pickFrom(refs)} ${pickFrom(slogans)}`;
@@ -153,12 +267,12 @@ const setUpMiddleAD = (container)=>{
     }
     //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
     left.src = pickFrom(results);
-    if (rand.nextDouble() > .5) {
+    if (Math.random() > .5) {
       left.style.objectFit = "none";
     }
 
     right.src = pickFrom(results);
-    if (rand.nextDouble() > .5) {
+    if (Math.random() > .5) {
       right.style.objectFit = "none";
     }
   })

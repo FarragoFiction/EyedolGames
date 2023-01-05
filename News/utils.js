@@ -75,7 +75,9 @@ const updateURLParams = (params) => {
   window.history.pushState('', '', pageUrl);
 }
 
-
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
 
 const imageExtendsions = [
   "png",
