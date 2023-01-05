@@ -77,12 +77,15 @@ const placeHolderDataAsNeeded = ()=>{
   }
 
   rand = new SeededRandom(stringtoseed(referer));
-  details={
-    feeUnder:216,
-    item_name: "Mysterious Object",
-    price: 13,
-    restaurant_name: "Piggy's BBQ"
+  if(!details){
+    details={
+      feeUnder:216,
+      item_name: "Mysterious Object",
+      price: 13,
+      restaurant_name: "Piggy's BBQ"
+    }
   }
+
 }
 
 
@@ -99,32 +102,19 @@ const collateAllThemeImages = async (base_keys) => {
   return ret;
 }
 
+//they move around and change height and what not but they are always here
 const setupLeftAd = ()=>{
   const ele = document.querySelector(".link1");
-  Math.random() > 0.5 ? setupShortAd(ele): setupTallAd(ele);
 
 }
+
+//they move around and change height and what not but they are always here
 
 const setupRightAd = ()=>{
   const ele = document.querySelector(".link2");
-  Math.random() > 0.5 ? setupShortAd(ele): setupTallAd(ele);
 
 }
 
-//don't mess with link
-const setupShortAd = (ele)=>{
-  //only bottom or top, less tall
-  //random words, not clear its a quiz. pick a location or object or adj. i don't care and neither should you 
-  //if pleading mode, gif of clock
-  console.log("JR NOTE: todo short ad")
-}
-
-const setupTallAd = (ele)=>{
-  //both bottom and top, slogans like "find a quiz that loves you" and "are you really <COMPLIMENT>?"
-  //if pleading mode, gif of clock
-  console.log("JR NOTE: todo short ad")
-
-}
 
 //always an ad for the restaurant that killed the person
 //this is the only ad that shows up multiple times
