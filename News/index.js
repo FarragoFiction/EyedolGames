@@ -87,7 +87,6 @@ const placeHolderDataAsNeeded = ()=>{
 
 
 const collateAllThemeImages = async (base_keys) => {
-  console.log("JR NOTE: collating theme images",base_keys)
   let ret = [];
   let i = 0;
   while (i < base_keys.length) {
@@ -130,15 +129,19 @@ const setupTallAd = (ele)=>{
 //always an ad for the restaurant that killed the person
 //this is the only ad that shows up multiple times
 const setUpMiddleADInit = ()=>{
-  const center = document.querySelector(".center");
-  const left = document.querySelector(".left");
-  const right = document.querySelector(".right");
+  const container = document.querySelector(".link3")
 
-  center.innerHTML = "";
-  setUpMiddleAD(center,left,right);
+
+  setUpMiddleAD(container);
 }
 
-const setUpMiddleAD = (center,left,right)=>{
+const setUpMiddleAD = (container)=>{
+  container.href = `http://eyedolgames.com/${referer}${referer_details}`;
+  const center = container.querySelector(".center");
+  center.innerHTML = "";
+
+  const left = container.querySelector(".left");
+  const right = container.querySelector(".right");
   const logo = createElementWithClassAndParent("div",center,"logo");
   logo.innerText = missingEmoji() ;
   const name = createElementWithClassAndParent("div",center,"restaurant_name");
@@ -154,17 +157,16 @@ const setUpMiddleAD = (center,left,right)=>{
 
   let images = collateAllThemeImages(theme_keys);
   images.then((results) => {
-    console.log("JR NOTE: then",results)
     if(results.length ===0){
       return;
     }
     //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
-    left.src = rand.pickFrom(results);
+    left.src = pickFrom(results);
     if (rand.nextDouble() > .5) {
       left.style.objectFit = "none";
     }
 
-    right.src = rand.pickFrom(results);
+    right.src = pickFrom(results);
     if (rand.nextDouble() > .5) {
       right.style.objectFit = "none";
     }

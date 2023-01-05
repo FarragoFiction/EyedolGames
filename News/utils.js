@@ -89,7 +89,6 @@ const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
 
 
  const getImages = async(url)=>{
-  console.log("JR NOTE: trying to get image for",url)
   try{
   const rawText = await httpGetAsync(url);
   
