@@ -139,6 +139,7 @@ const setUpMiddleAD = (container)=>{
   container.href = `http://eyedolgames.com/${referer}${referer_details}`;
   const center = container.querySelector(".center");
   center.innerHTML = "";
+  center.style.backgroundColor = `rgb(${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)},${getRandomNumberBetween(0,100)})`;
 
   const left = container.querySelector(".left");
   const right = container.querySelector(".right");
@@ -152,7 +153,7 @@ const setUpMiddleAD = (container)=>{
     return pickARandomThemeFromListAndGrabKey(rand, theme_keys, key, cap)
   };
   const refs = [`Powered by ${referer}.`];
-  const slogans = [`Now delivering ${quick(OBJECT)}s.`,"What will you order?",'Always local. Always.',`You can almost taste the ${quick(OBJECT)}.`,`${quick(COMPLIMENT,true)}. Every time.`,`So many options. So little time.`,`Reaching the end should not be your goal.`];
+  const slogans = ["Fees are optional. Living is not.",`Now delivering ${quick(OBJECT)}s.`,"What will you order?",'Always local. Always.',`You can almost taste the ${quick(OBJECT)}.`,`${quick(COMPLIMENT,true)}. Every time.`,`So many options. So little time.`,`Reaching the end should not be your goal.`];
   slogan.innerText = `${pickFrom(refs)} ${pickFrom(slogans)}`;
 
   let images = collateAllThemeImages(theme_keys);
