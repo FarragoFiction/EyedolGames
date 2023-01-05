@@ -214,7 +214,14 @@ const setupRightAd = async ()=>{
 
   const topText = [`FIND A QUIZ THAT LOVES YOU BACK`
   ,`HAVE YOU EVER WONDERED IF YOU'RE ${quick(COMPLIMENT)}?`
+  ,`everyone is finding out if they're ${quick(COMPLIMENT)}`
+
   ,`WHAT KIND OF ${quick(OBJECT)} ARE YOU?`
+  ,"I DON'T BLAME YOU"
+  ,"IT SHOULD HAVE BEEN YOU"
+  ,"WHY ARE YOU STILL HERE?"
+  ,"YOU CAN STIL LEAVE"
+  ,"YOU CAN LEAVE ANY TIME"
   ,`WOULD YOU DIE IN A ${quick(LOCATION)}?`
   ,`WHICH ${quick(PERSON)} ARE YOU?`
   ,`WHAT IF YOU'RE ${quick(INSULT)}?`
