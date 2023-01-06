@@ -59,7 +59,7 @@ const fleshOutNewsArticle = (ele) => {
 
 const getIntro = () => {
   let templates = [`${capitalizeFirstLetter(victim_name)}, a local resident of the local neighborhood of ${neighborhood} was attacked while accepting a ${details?.restaurant_name} delivery ${corner1} last night.`,
-    `Authorities are on the lookout for an unknown assailant that was spotted loitering outside the home of ${victim_name} on the corner of ${corner1} and ${corner2} yesterday evening, shortly before their body was discovered.`,
+    `Authorities are on the lookout for an unknown assailant that was spotted loitering outside the home of ${victim_name} on the corner of ${corner1} and ${corner2} yesterday evening, shortly before their body${how_many_died>1?` and ${how_many_died-1} others`:""} ${how_many_died>1?"were":"was"} discovered.`,
   ];
   if (victim_was_killer) {
     templates = [`A food delivery driver in the local neighborhood of ${neighborhood} was attacked while making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night.`,
@@ -70,8 +70,10 @@ const getIntro = () => {
 }
 
 const getMiddle = () => {
-  let templates = [` `,
-    `Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. Local experts reassure the public that this is likely a mass hallucination.`,
+
+  const hollowReassurances = [`A local parent says that kid's are just taking pranks too far.`,"Authorities say this is likely some form of hazing by local teens.","Local experts reassure the public that this is likely a mass hallucination."]
+  let templates = [`According to reports, the monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`,
+    `Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`,
   ];
   if (victim_was_killer) {
     templates = [``,
@@ -84,10 +86,9 @@ const getMiddle = () => {
 }
 
 const getOutro = () => {
-  let templates = [``,
-    ``,
-    ``,
-    ``
+  let templates = [`${details?.restaurant_name} have released a statement saying that they bear no responsibility.`,
+    `Police say that citizens should remain in their homes and they will be safe.`,
+    `${details?.restaurant_name} could not be reached for comment.`,
   ];
   if (victim_was_killer) {
     templates = [``,
