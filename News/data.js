@@ -1799,6 +1799,21 @@ const initLocDesc = () => {
 
 //useful for quests, and the longer you're in the ThisIsAGame the more likely they are to spawn and HURT you.
 const initMonsterDesc = () => {
+    monster_desc[BAKERY] = ["It wore a baker's hat and dragged a long rolling pin behind it embedded with spikes."];
+    monster_desc[BREAKFAST] = ["It dripped rotten eggs as it walked."];
+    monster_desc[BURGERS ] = ["It left a trail of grease and smoke behind it as it moved."];
+    monster_desc[CHICKEN] = ["It appeared to be someone left to rot in a chicken mascot costume."];
+    monster_desc[COFFEE ] = ["It constantly repeated 'that'll be 1.99 would you like two sugars?'."];
+    monster_desc[DESSERTS ] = ["It was frozen solid."];
+    monster_desc[DINER] = ["It dragged a broken jukebox behind it."];
+    monster_desc[ITALIAN ] = ["It had noodely appendages."];
+    monster_desc[MEXICAN ] = ["It was encased from head to toe in a tortilla."];
+    monster_desc[PIZZA ] = ["It had pepperoni for eyes."];
+    monster_desc[PREMIUM ] = ["It's nose was held high into the air."];
+    monster_desc[SALAD ] = ["It was stick thin and sickly."];
+    monster_desc[SANDWICHES ] = ["It had on a hair net."];
+    monster_desc[SEAFOOD ] = ["It had wide black eyes, gills and a sallow look."];
+    monster_desc[SUSHI ] = ["It had the sharpest knife they'd ever seen."];
     monster_desc[CENSORSHIP] = ["DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK DON'T LOOK."];
 
     monster_desc[ART] = ["It carries a paintbrush dripping with blood.", "It drags dismembered statue parts behind it.", "It wears an incongrous artist's beret."];
@@ -2339,6 +2354,8 @@ class Theme {
     getPossibilitiesFor = (key) => {
         //console.log("JR NOTE: picking possibilities for ",key, "i am", this.key)
         if (!this.string_possibilities) {
+            console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
+
             return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
         }
         if ((key in this.string_possibilities) && this.string_possibilities[key]) {
@@ -2347,6 +2364,8 @@ class Theme {
             if (this.key !== "waste" && (food_keys.indexOf(this.key) === -1)) {
                 console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
             }
+            console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
+
             return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
         }
     }

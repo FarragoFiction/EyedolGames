@@ -40,6 +40,7 @@ item_name: "Create-your-own Chicken"
 price: "1.48"
 restaurant_name: "Master  Fries" */
 let details;
+let victim; //first name and last initial
 
 window.onload = () => {
 
@@ -57,7 +58,8 @@ window.onload = () => {
   if (tmp_ref) {
     referer_details = tmp_ref_details;
     let tmp = new URLSearchParams(referer_details)
-    theme_keys = tmp.get("themes").split(',');
+    theme_keys = tmp.get("themes")?.split(',');
+    victim = tmp.get("victim") //could be undefined
   }
 
   if (tmp_d) {
@@ -68,11 +70,16 @@ window.onload = () => {
   setupLeftAd();
   setUpMiddleADInit();
   setupRightAd();
+  replaceFirstArticleAndHeader();
 
 }
 
 const quick = (key, cap) => {
   return pickARandomThemeFromListAndGrabKey(rand, Object.keys(all_themes), key, cap)
+};
+
+const quickButThemed = (key, cap) => {
+  return pickARandomThemeFromListAndGrabKey(rand, Object.keys(theme_keys), key, cap)
 };
 
 const placeHolderDataAsNeeded = ()=>{
@@ -211,7 +218,7 @@ const setupRightAd = async ()=>{
   ,`personality`
 
   ,"spiral"]
-
+//DO NOT FORGET: YOU DID NOT KILL HIM.
   const topText = [`FIND A QUIZ THAT LOVES YOU BACK`
   ,`HAVE YOU EVER WONDERED IF YOU'RE ${quick(COMPLIMENT)}?`
   ,`everyone is finding out if they're ${quick(COMPLIMENT)}`
