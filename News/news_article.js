@@ -6,7 +6,7 @@ let customer_name = "an unidentified victim"
 const DEAD = "DEAD";
 const MISSING = "MISSING";
 const INJURED = "INJURED";
-let killer_name = "killer";
+let monster_name = "killer";
 let primary_victim_name = "victim";
 let restaurant_name = "???"
 let crimeStatus = MISSING; //certainty is hard to come by
@@ -23,9 +23,9 @@ const initialize_details = () => {
   if(reviewer){
     customer_name = `${reviewer.split(" ")[0]} ${rand.pickFrom(filterMatches(last_names, new RegExp(reviewer.split(" ")[1])))}`
   }
-  killer_name = pickFrom([customer_name, `the ${restaurant_name} driver`,`the ${restaurant_name} driver`,`the ${restaurant_name} driver`])
+  monster_name = pickFrom([customer_name, `the ${restaurant_name} driver`,`the ${restaurant_name} driver`,`the ${restaurant_name} driver`])
 
-  if(killer_name === customer_name){
+  if(monster_name === customer_name){
     primary_victim_name = `the ${restaurant_name} driver`;
   }else{
     primary_victim_name = customer_name;
@@ -84,7 +84,7 @@ const getActions = (monster)=>{
   if(!monster && (primary_victim_name === customer_name)){
     return[`a resident of the local neighborhood of ${neighborhood}`,`waiting for a ${restaurant_name} delivery, notably featuring a flavorful ${details.item_name}`];
   }else{
-    return  [`on a routine delivery`,`delivering to ${neighborhood}`,`making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night.`];
+    return  [`was in the process of delivering food to ${customer_name}`,`on a routine delivery`,`delivering to ${neighborhood}`,`making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night.`];
   }
 }
 
@@ -107,9 +107,9 @@ getIntro = ()=>{
   let monster_details = detailMonsterActions();
 
 
-  let templates = [`${capitalizeFirstLetter(killer_name)}, ${rand.pickFrom(monster_details)}, is alleged to have attacked ${primary_victim_name}, ${rand.pickFrom(victim_details)},  at the corner of ${corner1} and ${corner2} last night.`];
+  let templates = [`${capitalizeFirstLetter(monster_name)}, ${rand.pickFrom(monster_details)}, is alleged to have attacked ${primary_victim_name}, ${rand.pickFrom(victim_details)},  at the corner of ${corner1} and ${corner2} last night.`];
   if(crimeStatus === DEAD){
-    templates.push(`${primary_victim_name},${rand.pickFrom(victim_details)}, was tragically killed. Authorities blame ${killer_name}, ${rand.pickFrom(monster_details)}.`);
+    templates.push(`${primary_victim_name},${rand.pickFrom(victim_details)}, was tragically killed. Authorities blame ${monster_name}, ${rand.pickFrom(monster_details)}.`);
 
   }else if (crimeStatus === MISSING){
     templates.push(`Authorities are asking for any information regarding the whereabouts of ${primary_victim_name}, ${rand.pickFrom(victim_details)}, last seen  in the  neighborhood of ${neighborhood} last night.`);
@@ -132,16 +132,16 @@ const getMiddle = () => {
   let monster_details = detailMonsterActions();
   const hollowReassurances = [`It is unclear if ${primary_victim_name} was on any mind altering substances.`,"Authorities say this is likely some form of hazing by local teens.","Local experts reassure the public that this is likely a mass hallucination."]
 
-  let templates = [`According to reports, ${killer_name} transformed into a monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`];
-  templates.push(`Eye witnesses, describing ${killer_name}, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
+  let templates = [`According to witnesses, ${monster_name} ${monster_details} suddenly began to grow in size and change in appearance. Within minutes, they had become a terrifying monster, ${quick(MONSTER_DESC)}.`,`According to reports, ${monster_name} transformed into a monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`];
+  templates.push(`Eye witnesses, describing ${monster_name}, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
   if(crimeStatus === DEAD){
-    templates.push(`${killer_name},  before their death, reported that the monster ${killer_name} turned into seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
+    templates.push(`${monster_name},  before their death, reported that the monster ${monster_name} turned into seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
 
   }else if (crimeStatus === MISSING){
     templates.push(`Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
 
   }else{
-    templates.push(`${primary_victim_name},  who was able to escape with minor injuries, reported that the monster ${killer_name} had become seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
+    templates.push(`${primary_victim_name},  who was able to escape with minor injuries, reported that the monster ${monster_name} had become seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
   }
 
   return rand.pickFrom(templates);
