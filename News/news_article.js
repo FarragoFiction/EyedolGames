@@ -7,7 +7,7 @@ const DEAD = "DEAD";
 const MISSING = "MISSING";
 const INJURED = "INJURED";
 let monster_name = "killer";
-let primary_victim_name = "victim";
+let victim_name = "victim";
 let restaurant_name = "???"
 let crimeStatus = MISSING; //certainty is hard to come by
 
@@ -26,9 +26,9 @@ const initialize_details = () => {
   monster_name = pickFrom([customer_name, `the ${restaurant_name} driver`,`the ${restaurant_name} driver`,`the ${restaurant_name} driver`])
 
   if(monster_name === customer_name){
-    primary_victim_name = `the ${restaurant_name} driver`;
+    victim_name = `the ${restaurant_name} driver`;
   }else{
-    primary_victim_name = customer_name;
+    victim_name = customer_name;
   }
 
   corner1 = `${quick(OBJECT, true)} ${rand.pickFrom(road_endings)}`;
@@ -81,10 +81,10 @@ const fleshOutNewsArticle = (ele) => {
 }
 
 const getActions = (monster)=>{
-  if(!monster && (primary_victim_name === customer_name)){
+  if(!monster && (victim_name === customer_name)){
     return[`a resident of the local neighborhood of ${neighborhood}`,`waiting for a ${restaurant_name} delivery, notably featuring a flavorful ${details.item_name}`];
   }else{
-    return  [`was in the process of delivering food to ${customer_name}`,`on a routine delivery`,`delivering to ${neighborhood}`,`making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night.`];
+    return  [`has not yet been identified`,`was in the process of delivering food to ${customer_name}`,`on a routine delivery`,`delivering to ${neighborhood}`,`making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night.`];
   }
 }
 
@@ -107,16 +107,17 @@ getIntro = ()=>{
   let monster_details = detailMonsterActions();
 
 
-  let templates = [`${capitalizeFirstLetter(monster_name)}, ${rand.pickFrom(monster_details)}, is alleged to have attacked ${primary_victim_name}, ${rand.pickFrom(victim_details)},  at the corner of ${corner1} and ${corner2} last night.`];
+  let templates = [`${victim_name}, in the suburban neighborhood of ${neighborhood} was attacked by a monstrous creature believed to be ${monster_name} while ${rand.pickFrom(victim_details)}.  `,`In a shocking turn of events, ${monster_name}, ${rand.pickFrom(monster_details)}, transformed into a monstrous creature and attacked ${victim_name}, ${rand.pickFrom(victim_details)}.`,`${capitalizeFirstLetter(monster_name)}, ${rand.pickFrom(monster_details)}, is alleged to have attacked ${victim_name}, ${rand.pickFrom(victim_details)},  at the corner of ${corner1} and ${corner2} last night.`];
   if(crimeStatus === DEAD){
-    templates.push(`${primary_victim_name},${rand.pickFrom(victim_details)}, was tragically killed. Authorities blame ${monster_name}, ${rand.pickFrom(monster_details)}.`);
+    templates.push(`${victim_name},${rand.pickFrom(victim_details)}, was tragically killed. Authorities blame ${monster_name}, ${rand.pickFrom(monster_details)}.`);
 
   }else if (crimeStatus === MISSING){
-    templates.push(`Authorities are asking for any information regarding the whereabouts of ${primary_victim_name}, ${rand.pickFrom(victim_details)}, last seen  in the  neighborhood of ${neighborhood} last night.`);
+    templates.push(`Authorities are asking for any information regarding the whereabouts of ${victim_name}, ${rand.pickFrom(victim_details)}, last seen  in the  neighborhood of ${neighborhood} last night.`);
 
 
   }else{
-    templates.push(`${primary_victim_name} in the local neighborhood of ${neighborhood} was attacked while ${rand.pickFrom(victim_details)} last night.`);
+    templates.push(`According to ${victim_name},${rand.pickFrom(victim_details)}, when the monster emerged from the darkness and attacked them. ${victim_name} sustained serious injuries in the attack and is currently being treated at a local hospital.`)
+    templates.push(`${victim_name} ${rand.pickFrom(victim_details)} was attacked while ${rand.pickFrom(victim_details)} last night.`);
 
   }
   return rand.pickFrom(templates)
@@ -130,18 +131,19 @@ const getMiddle = () => {
   
   let victim_details = detailVictimActions();
   let monster_details = detailMonsterActions();
-  const hollowReassurances = [`It is unclear if ${primary_victim_name} was on any mind altering substances.`,"Authorities say this is likely some form of hazing by local teens.","Local experts reassure the public that this is likely a mass hallucination."]
+  const hollowReassurances = [`It is unclear if ${victim_name} was on any mind altering substances.`,"Authorities say this is likely some form of hazing by local teens.","Local experts reassure the public that this is likely a mass hallucination."]
 
-  let templates = [`According to witnesses, ${monster_name} ${monster_details} suddenly began to grow in size and change in appearance. Within minutes, they had become a terrifying monster, ${quick(MONSTER_DESC)}.`,`According to reports, ${monster_name} transformed into a monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`];
+  let templates = [`According to witnesses, ${monster_name} ${rand.pickFrom(monster_details)} suddenly began to grow in size and change in appearance. Within minutes, they had become a terrifying monster, ${quick(MONSTER_DESC)}.`,`According to reports, ${monster_name} transformed into a monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`];
   templates.push(`Eye witnesses, describing ${monster_name}, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
   if(crimeStatus === DEAD){
+    templates.push(`According to eyewitnesses, ${victim_name} ${rand.pickFrom(victim_details)} when the monster suddenly appeared and dragged them away. The creature then proceeded to attack and kill the victim before disappearing into the night.`)
     templates.push(`${monster_name},  before their death, reported that the monster ${monster_name} turned into seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
 
   }else if (crimeStatus === MISSING){
-    templates.push(`Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
+    templates.push(`When authorities arrived on the scene, the monster had fled the area, but not before causing considerable damage to the exterior of the building. It is currently unknown what the monster was trying to accomplish by its actions or where it has gone.`,`Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
 
   }else{
-    templates.push(`${primary_victim_name},  who was able to escape with minor injuries, reported that the monster ${monster_name} had become seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
+    templates.push(`${victim_name},  who was able to escape with minor injuries, reported that the monster ${monster_name} had become seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
   }
 
   return rand.pickFrom(templates);
@@ -150,12 +152,15 @@ const getMiddle = () => {
 
 
 const getOutro = () => {
-  let templates= [`${details?.restaurant_name} have released a statement saying that they bear no responsibility.`,
+  let templates= [`The ${restaurant_name} restaurant has been closed indefinitely as a result of the incident, and authorities are advising residents to stay vigilant and report any suspicious activity to the police.`,`Authorities are urging residents to be on the lookout for the monster and to report any sightings to the police immediately. In the meantime, the ${restaurant_name} restaurant has been closed while drivers are retrained and is expected to reopen within the next week.`,`This is the second monster attack to occur in the ${neighborhood} neighborhood in the past month, and residents are understandably on edge. `,`It is unclear at this time what caused ${monster_name} to transform into a monster or how many other potential victims besides ${victim_name} there are. The investigation into the incident is ongoing, and authorities are urging residents to be vigilant and to report any unusual activity to the police.`
+  ];
+
+  let templates2= [`Our thoughts and condolences go out to the victims's family and loved ones during this difficult time.`,`Authorities are urging people to be cautious and to report any suspicious activity to the police.`,`The investigation is ongoing.`,`${details?.restaurant_name} have released a statement saying that they bear no responsibility.`,
     `Police say that citizens should remain in their homes and they will be safe.`,
     `${details?.restaurant_name} could not be reached for comment.`,
   ];
 
-  return rand.pickFrom(templates);
+  return `${rand.pickFrom(templates)} ${rand.pickFrom(templates2)}`;
 }
 
 //includes an intro (NEVER dangerously set inner html cuz some of my content is from url)
