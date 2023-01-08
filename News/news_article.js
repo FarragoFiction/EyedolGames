@@ -136,14 +136,14 @@ const fleshOutNewsArticle = (ele) => {
 const getActions = (monster)=>{
 
   if(num_articles>10){
-    return [`was exposed to the Zampanio memetic hazard`,`heard the word 'Zampanio' somewhere once and mostly forgot about it until now`,`really enjoyed the Goncharov meme a while back`,"thinks the creepy pasta about Polybius is incredible","read house of leaves once and hasn't stopped thinking about it since","wishes they could create a never ending arg of connections and branches","wants to create branches of Zampanio of their own"]
+    return [`who was exposed to the Zampanio memetic hazard`,`who heard the word 'Zampanio' somewhere once and mostly forgot about it until now`,`who really enjoyed the Goncharov meme a while back`,"who thinks the creepy pasta about Polybius is incredible","who read house of leaves once and hasn't stopped thinking about it since","who wishes they could create a never ending arg of connections and branches","who wants to create branches of Zampanio of their own"]
   }
 
 //i'm llking for the victim and the victim is the customer
   if(!monster && (victim_name === customer_name) || (monster && victim_name !== customer_name)) {
-    return[`a resident of the local neighborhood of ${neighborhood}`,`waiting for a ${restaurant_name} delivery, notably featuring a flavorful ${details.item_name}`];
+    return[`who lives on the corner of ${corner1} and ${corner2}`,`who was waiting at their ${neighborhood} home for a food delivery`,`who is a resident of the local neighborhood of ${neighborhood}`,`who was waiting for a ${restaurant_name} delivery, notably featuring a flavorful ${details.item_name}`];
   }else{ //i'm looking for the victim and the victim is not the customer
-    return  [`has not yet been identified`,`was in the process of delivering food to ${customer_name}`,`on a routine delivery`,`delivering to ${neighborhood}`,`making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night`];
+    return  [`who has not yet been identified`,`who was in the process of delivering food to ${customer_name}`,`who was on a routine delivery`,`delivering to ${neighborhood}`,`who was making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night`];
   }
 }
 
@@ -192,10 +192,10 @@ const getMiddle = () => {
 
   
 
-  const hollowReassurances = [`It is unclear if ${victim_name} was on any mind altering substances.`,"Authorities say this is likely some form of hazing by local teens.","Local experts reassure the public that this is likely a mass hallucination."]
+  const hollowReassurances = [`Authorities were not available for comment. `,`Authorities reassure the public that such crimes simply do not happen here.`,`Local experts are baffled as to how such events could occur.`,`It is unclear if the witnesses were on any mind altering substances.`,"Authorities say this is likely some form of hazing by local teens.","Local experts reassure the public that this is likely a mass hallucination."]
 
   let templates = [`According to witnesses, ${monster_name},  suddenly began to grow in size and change in appearance. Within minutes, they had become a terrifying monster, ${quick(MONSTER_DESC)}`,`According to reports, ${monster_name} transformed into a monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`];
-  templates.push(`Eye witnesses, describing ${monster_name}, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
+  templates.push(`Eye witnesses, describing ${monster_name}, say ${quick(MONSTER_DESC)} ${rand.pickFrom(hollowReassurances)}`)
   templates.push(`Eye witnesses say there is no possible way a ${details.item_name} could possibly be worth all of this.`)
   num_articles > 2 && templates.push("Observers wonder if you're still going to be scrolling forever.")
   num_articles > 4 && templates.push("Observers wonder if you're still going to be scrolling forever.")
@@ -203,22 +203,28 @@ const getMiddle = () => {
   num_articles > 6 && templates.push("Observers wonder if you'll create a new branch of Zampanio.")
   num_articles > 7 && templates.push("Observers wonder how long you'll remember the word 'Zampanio'.")
   num_articles > 8 && templates.push("Observers wonder if you've noticed that Zampanio has colonized your mind?")
+  templates.push(`Locals report feeling sicked by the appearance of ${monster_name}, describing it as "${quick(MONSTER_DESC)}".`)
 
   num_articles > 13 && templates.push("Local Authorities say that thoughts lie dormant outside a body. Encasing themselves in the hard shells of words to survive the desert of the inert. They wait, ever so patient for a warm and living mind to infect. You've been infected.")
   num_articles > 2 &&templates.push(`${capitalizeFirstLetter(victim_name)} could have been you. You paid your fee. They did not pay their fee.`)
   num_articles > 13 &&templates.push("Local Authorities say that Zampanio is a really fun game and you're already playing it.")
 
+  templates.push(`Witnesses say that at one point it appeared that ${monster_name}, and ${victim_name} began fighting over a luke-warm ${details.item_name}.`)
 
   if(crimeStatus === DEAD){
     templates.push(`According to eyewitnesses, ${victim_name} was peaceful when the monster suddenly appeared and dragged them away. The creature then proceeded to attack and kill the victim before disappearing into the night.`)
     templates.push(`${capitalizeFirstLetter(monster_name)},  before their death, reported that the monster ${monster_name} turned into seemed to have no awareness of its actions and appeared to be in a state of frenzy. Authorities arrived on the scene shortly thereafter and were able to subdue the creature, but not before it caused significant damage to the residence.`)
     num_articles > 2 && templates.push(`${capitalizeFirstLetter(victim_name)} is dead. Maybe they weren't dead before but you're here now and reading these words and the wave form is collapsed. Uncertainties become certainties and all because of you.`)
     num_articles > 3 &&templates.push(`${capitalizeFirstLetter(monster_name)} has become a killer. We will never know why. Not really. They can't talk anymore.`)
+    templates.push(`It is our sad duty to report that ${victim_name}'s body was found several hours later, apparently dead from a combination of minor surface wounds and exposure. Local experts have no comment as to how such levels of exposure could be reached in such a short time.`)
+    templates.push(`It is reported that ${victim_name}'s body was found several hours later, massively dehydrated. Witnesses claim that they had been perfectly fine prior to being dragged off by ${monster_name}. It is unclear what could possibly have happened.`)
 
   }else if (crimeStatus === MISSING){
     templates.push(`When authorities arrived on the scene, the monster had fled the area, but not before causing considerable damage to the exterior of the building. It is currently unknown what the monster was trying to accomplish by its actions or where it has gone.`)
     templates.push(`Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
     templates.push(`It is currently unclear where ${victim_name} or even ${monster_name} is. `)
+    templates.push(`${capitalizeFirstLetter(monster_name)} is reported to have dragged ${victim_name} off, despite attempts from witnesses to prevent this. It is unknown where either are at present.`)
+
     num_articles > 2 &&templates.push(`${capitalizeFirstLetter(victim_name)} could leave any time.`)
     num_articles > 3 &&templates.push(`${capitalizeFirstLetter(victim_name)} wanders Zampanio. They could leave any time. They know this. You know this. Why do they remain? Why do you?`)
     num_articles > 4 &&templates.push(`${capitalizeFirstLetter(victim_name)} wanders Zampanio. They could leave any time. They know this. You know this. Why do they remain? Why do you?`)
@@ -229,6 +235,10 @@ const getMiddle = () => {
   }else{
     templates.push(`${capitalizeFirstLetter(victim_name)},  currently hospitalized, is quoted as saying they never even want to see a ${details.item_name} again.`)
     templates.push(`${capitalizeFirstLetter(victim_name)} got off easy.`)
+    templates.push(`${capitalizeFirstLetter(victim_name)} refuses to remain still even while hospitalized, repeating that they have to keep going, they haven't seen everything yet.`)
+
+    templates.push(`${capitalizeFirstLetter(monster_name)} is reported to have begun dragging ${victim_name} off, but was prevented from fully absconding with the victim by vigillant passersby.`)
+
     num_articles > 2 &&templates.push(`${capitalizeFirstLetter(victim_name)} chose to leave. You could chose to leave too. You could be one of the lucky few.`)
     num_articles > 3 &&templates.push(`${capitalizeFirstLetter(victim_name)} wasn't the right sort of victim for Zampanio to digest.`)
     num_articles > 3 &&templates.push(`${capitalizeFirstLetter(victim_name)} decided to leave. They decided that they no longer wanted to obsess. You could decide this, too.`)
