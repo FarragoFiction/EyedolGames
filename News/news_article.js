@@ -143,7 +143,7 @@ const getActions = (monster)=>{
   if(!monster && (victim_name === customer_name) || (monster && victim_name !== customer_name)) {
     return[`who lives on the corner of ${corner1} and ${corner2}`,`who was waiting at their ${neighborhood} home for a food delivery`,`who is a resident of the local neighborhood of ${neighborhood}`,`who was waiting for a ${restaurant_name} delivery, notably featuring a flavorful ${details.item_name}`];
   }else{ //i'm looking for the victim and the victim is not the customer
-    return  [`who has not yet been identified`,`who was in the process of delivering food to ${customer_name}`,`who was on a routine delivery`,`delivering to ${neighborhood}`,`who was making a ${details?.restaurant_name} delivery to a local residence on ${corner1} last night`];
+    return  [`who has not yet been identified`,`who was in the process of delivering food to ${customer_name}`,`who was on a routine delivery`,`delivering to ${neighborhood}`,`who was making a "${details?.restaurant_name}" delivery to a local residence on ${corner1} last night`];
   }
 }
 
@@ -221,7 +221,7 @@ const getMiddle = () => {
 
   }else if (crimeStatus === MISSING){
     templates.push(`When authorities arrived on the scene, the monster had fled the area, but not before causing considerable damage to the exterior of the building. It is currently unknown what the monster was trying to accomplish by its actions or where it has gone.`)
-    templates.push(`Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} Authorities were not available for comment. ${rand.pickFrom(hollowReassurances)}`)
+    templates.push(`Eye witnesses, describing the assailant, say ${quick(MONSTER_DESC)} ${rand.pickFrom(hollowReassurances)}`)
     templates.push(`It is currently unclear where ${victim_name} or even ${monster_name} is. `)
     templates.push(`${capitalizeFirstLetter(monster_name)} is reported to have dragged ${victim_name} off, despite attempts from witnesses to prevent this. It is unknown where either are at present.`)
 
