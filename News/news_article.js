@@ -70,10 +70,10 @@ const initialize_details = () => {
   if(reviewer){
     customer_name = `${reviewer.split(" ")[0]} ${rand.pickFrom(filterMatches(last_names, new RegExp(reviewer.split(" ")[1])))}`
   }
-  monster_name = pickFrom([customer_name, `the ${restaurant_name} driver`,`the ${restaurant_name} driver`,`the ${restaurant_name} driver`])
+  monster_name = pickFrom([customer_name, `the '${restaurant_name}' driver`,`the '${restaurant_name}' driver`,`the '${restaurant_name}' driver`])
 
   if(monster_name === customer_name){
-    victim_name = `the ${restaurant_name} driver`;
+    victim_name = `the '${restaurant_name}' driver`;
   }else{
     victim_name = customer_name;
   }
