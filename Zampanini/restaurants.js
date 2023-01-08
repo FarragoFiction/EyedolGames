@@ -167,7 +167,7 @@ const renderRestaurantForThemes = async (rand, container, base_keys, weird) => {
   <Br>
   ${(rand.getRandomNumberBetween(0, 5) + rand.nextDouble()).toFixed(1)} ⭐`;
   const right = createElementWithClassAndParent("div", facts, "right");
-  right.innerHTML = `    ${rand.getRandomNumberBetween(0, 85)} Miles or ${rand.getRandomNumberBetween(0, 90)} minutes
+  right.innerHTML = `    ${rand.getRandomNumberBetween(1, 85)} Miles or ${rand.getRandomNumberBetween(1, 90)} minutes
   <Br>
   No delivery fee over $${feeUnder}`;
 

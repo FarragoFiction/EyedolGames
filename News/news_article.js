@@ -141,7 +141,7 @@ const getActions = (monster)=>{
 
 //i'm llking for the victim and the victim is the customer
   if(!monster && (victim_name === customer_name) || (monster && victim_name !== customer_name)) {
-    return[`who lives on the corner of ${corner1} and ${corner2}`,`who was waiting at their ${neighborhood} home for a food delivery`,`who is a resident of the local neighborhood of ${neighborhood}`,`who was waiting for a ${restaurant_name} delivery, notably featuring a flavorful ${details.item_name}`];
+    return[`who lives on the corner of ${corner1} and ${corner2}`,`who was waiting at their ${neighborhood} home for a food delivery`,`who is a resident of the local neighborhood of ${neighborhood}`,`who was waiting for a '${restaurant_name}' delivery, notably featuring a flavorful ${details.item_name}`];
   }else{ //i'm looking for the victim and the victim is not the customer
     return  [`who has not yet been identified`,`who was in the process of delivering food to ${customer_name}`,`who was on a routine delivery`,`delivering to ${neighborhood}`,`who was making a "${details?.restaurant_name}" delivery to a local residence on ${corner1} last night`];
   }
