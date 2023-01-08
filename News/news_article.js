@@ -201,9 +201,9 @@ const getMiddle = () => {
   num_articles > 2 && templates.push("Observers wonder if you're still going to be scrolling forever.")
   num_articles > 4 && templates.push("Observers wonder if you're still going to be scrolling forever.")
   num_articles > 5 && templates.push("Observers wonder if you're still going to be scrolling forever.")
-  num_articles > 6 && templates.push("Observers wonder if you're still going to be scrolling forever.")
-  num_articles > 7 && templates.push("Observers wonder if you're still going to be scrolling forever.")
-  num_articles > 8 && templates.push("Observers wonder if you're still going to be scrolling forever.")
+  num_articles > 6 && templates.push("Observers wonder if you'll create a new branch of Zampanio.")
+  num_articles > 7 && templates.push("Observers wonder how long you'll remember the word 'Zampanio'.")
+  num_articles > 8 && templates.push("Observers wonder if you've noticed that Zampanio has colonized your mind?")
 
   num_articles > 13 && templates.push("Local Authorities say that thoughts lie dormant outside a body. Encasing themselves in the hard shells of words to survive the desert of the inert. They wait, ever so patient for a warm and living mind to infect. You've been infected.")
   num_articles > 2 &&templates.push(`${capitalizeFirstLetter(victim_name)} could have been you. You paid your fee. They did not pay their fee.`)
