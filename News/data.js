@@ -2354,7 +2354,7 @@ class Theme {
     getPossibilitiesFor = (key) => {
         //console.log("JR NOTE: picking possibilities for ",key, "i am", this.key)
         if (!this.string_possibilities) {
-            console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
+            //console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
 
             return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
         }
@@ -2364,7 +2364,7 @@ class Theme {
             if (this.key !== "waste" && (food_keys.indexOf(this.key) === -1)) {
                 console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
             }
-            console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
+            //console.error(`[ERROR: ${key} NOT FOUND in ${this.key} ]`, this.string_possibilities);
 
             return  ["we chose not to escape","the end is never the end","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"];
         }
