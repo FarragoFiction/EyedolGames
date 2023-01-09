@@ -82,6 +82,8 @@ const initCart = () => {
       chosenEntry = entries[0];
     }
     const tip = getTipFromLocalStorage();
+    localStorage.removeItem(tip_key);
+
 
     window.location.href = `${base}?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(chosenEntry))}&tip=${tip}`;
   }
