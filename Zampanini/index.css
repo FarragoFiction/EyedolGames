@@ -12,6 +12,19 @@ body {
 
 }
 
+input{
+  text-align: right;
+  width: 50px;
+}
+
+.cart-tip-holder{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-right: 15px;
+  margin-left: 20px;
+}
+
 #categories{
   background-color: #f4f4f4;
   width: 100%;

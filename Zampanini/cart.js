@@ -38,6 +38,21 @@ const initCart = () => {
   itemsHeader.innerText = "Items:";
 
   handleCollatingRestaurants(entries, restaurantContainer);
+
+
+  const tipHolder = createElementWithClassAndParent("div",restaurantContainer,"cart-tip-holder");
+  const tipLabel = createElementWithClassAndParent("label",tipHolder,"cart-tip-label");
+  tipLabel.innerText = "Tip: "
+
+  const tip = createElementWithClassAndParent("input",tipHolder,"cart-tip");
+  tip.type="number";
+  tip.min = 0.0;
+  tip.id = "cart-tip";
+  tip.step = 0.01;
+  tip.onchange = (e)=>{
+    updateURLParams("tip="+e.target.value)
+  }
+
   const warning = document.querySelector("#warning");
   if(anyFees){
     warning.style.display = "block";
