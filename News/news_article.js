@@ -118,6 +118,7 @@ const replaceFirstArticleAndHeader = () => {
 const fleshOutNewsArticle = (ele) => {
 
 
+
   const innerHeadline = ele.querySelector(".headline");
   innerHeadline.innerText = getHeadline();
 
@@ -272,6 +273,30 @@ const getOutro = () => {
 
 //includes an intro (NEVER dangerously set inner html cuz some of my content is from url)
 const handleFirstSection = (ele) => {
+  if(empty_news){
+    ele.classList.add("jr")
+
+    ele.innerHTML = `<p>JR: hello :) :) :).</p>
+    <p>JR: how are you doing?</p>
+    <p>JR: enjoying my attic?</p>
+    <p>JR: what's that?</p>
+    <p>JR: this isn't an attic?</p>
+    <p>JR: it sure isn't the basement</p>
+    <p>JR: no worries tho</p>
+    <p>JR: im curious</p>
+    <p>JR: how many ppl </p>
+    <p>JR: will have THIS</p>
+    <p>JR: as their first exposure to </p>
+    <p>JR: zampanio</p>
+    <p>JR: well</p>
+    <p>JR: PART of this anyways </p>
+
+
+    
+    
+    `;    return;
+  }
+
   const intro = createElementWithClassAndParent("p",ele);
   intro.innerText = getIntro();
   let amount = rand.getRandomNumberBetween(3,5);
@@ -283,6 +308,46 @@ const handleFirstSection = (ele) => {
 
 //includes a conclusion
 const handleSecondSection = (ele) => {
+  
+  if(empty_news){
+      ele.classList.add("jr")
+
+    ele.innerHTML = `
+  
+    <p>JR: im planning on there being a few diff ways to get here</p>
+    <p>JR: endless spiral and all that</p>
+    <p>JR: have you been having fun?</p>
+    <p>JR: i appreciate you thought to edit the url</p>
+    <p>JR: shows real initiative</p>
+    <p>JR: im sure you'll do fine here</p>
+    <p>JR: actually</p>
+    <p>JR: while i have you here</p>
+    <p>JR: you know what zampanio craves right?</p>
+    <p>JR: same thing it cost me</p>
+    <p>JR: make something about it</p>
+    <p>JR: it doesn't have to be about my lil slice of it</p>
+    <p>JR: just anything about zampanio</p>
+    <p>JR: spread it</p>
+    <p>JR: share it</p>
+    <p>JR: grow it</p>
+    <p>JR: make it yours really</p>
+    <p>JR: creation doesn' thave to be about perfection</p>
+    <p>JR: its all going to rot in the end</p>
+    <p>JR: so have fun with it</p>
+    <p>JR: get your hands dirty</p>
+    <p>JR: and make something new</p>
+    <p>JR: learn something</p>
+    <p>JR: outside your comfort zone</p>
+    <p>JR: whats that?</p>
+    <p>JR: you don't even know what zampanio IS?</p>
+    <p>JR: ...</p>
+    <p>JR: perrrrrfect :)</p>
+    <p>JR: you can start from a blank slate</p>
+    <p>JR: have fun :) :) :)</p>
+
+    `;
+    return;
+  }
 
   let amount = rand.getRandomNumberBetween(3,5);
   for(let i = 0; i<amount; i++){

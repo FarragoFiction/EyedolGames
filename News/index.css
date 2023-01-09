@@ -9,7 +9,10 @@
   src: url("gv-time-font/GvTimeRegular-BW768.ttf");
 }
 
-
+.jr{
+  font-family: Courier New;
+  font-size: 33px;
+}
 
 body {
   background-color: white;

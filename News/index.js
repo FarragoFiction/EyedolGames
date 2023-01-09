@@ -34,7 +34,7 @@ let referer;
 let referer_details;
 let theme_keys;
 let chosen_extra_themes = [];
-
+let empty_news = false;
 //json object 
 /*feeUnder: 76
 item_name: "Create-your-own Chicken"
@@ -47,6 +47,9 @@ window.onload = () => {
 
   initThemes();
   const queryString = window.location.search;
+  if(!queryString){
+    empty_news = true;
+  }
   const urlParams = new URLSearchParams(queryString);
   let tmp_ref = urlParams.get('referer');
   let tmp_d = urlParams.get('details');
@@ -60,11 +63,15 @@ window.onload = () => {
     referer_details = tmp_ref_details;
     let tmp = new URLSearchParams(referer_details)
     theme_keys = tmp.get("themes")?.split(',');
+ 
     reviewer = tmp.get("victim") //could be undefined
   }
 
   if (tmp_d) {
     details = JSON.parse(decodeURIComponent(tmp_d));
+  }
+  if(!theme_keys){
+    theme_keys = [];
   }
   placeHolderDataAsNeeded();
   console.log("JR NOTE:", { referer, referer_details, details });
