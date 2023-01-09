@@ -1,5 +1,6 @@
 const cart_key = "ZAMPANINI_CART"
 const cart_toggle_key = "ZAMPANINI_CART_TOGGLE"
+const tip_key = "ZAMPANINI_TIP"
 
 let anyFees; 
 
@@ -52,8 +53,10 @@ const initCart = () => {
   tip.min = 0.0;
   tip.id = "cart-tip";
   tip.step = 0.01;
+  syncCartTip();
+
   tip.onchange = (e)=>{
-    updateURLParams("tip="+e.target.value)
+    updateTipInLocalStorage(e.target.value);
   }
 
   const warning = document.querySelector("#warning");
@@ -78,8 +81,9 @@ const initCart = () => {
     if(!chosenEntry){
       chosenEntry = entries[0];
     }
+    const tip = getTipFromLocalStorage();
 
-    window.location.href = `${base}?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(chosenEntry))}`;
+    window.location.href = `${base}?referer=Zampanini&referer_details=${encodeURIComponent(JSON.stringify(window.location.search))}&details=${encodeURIComponent(JSON.stringify(chosenEntry))}&tip=${tip}`;
   }
 
 }
@@ -153,12 +157,31 @@ const syncCartTotal = () => {
   ele.innerText = "Checkout: $" + (entries.reduce((a, b) => { return a + parseFloat(b.price) }, 0)).toFixed(2)
 }
 
+const syncCartTip = () => {
+  const tip = getTipFromLocalStorage();
+  const ele = document.querySelector("#cart-tip");
+  ele.value = tip;
+}
+
 const getCartFromLocalStorage = () => {
   let entries = JSON.parse(localStorage.getItem(cart_key));
   if (!entries) {
     return [];
   }
   return entries;
+}
+
+const getTipFromLocalStorage = () => {
+  let entries = JSON.parse(localStorage.getItem(tip_key));
+  if (!entries) {
+    return 0.0;
+  }
+  return entries;
+}
+
+const updateTipInLocalStorage = (value)=>{
+  localStorage.setItem(tip_key, JSON.stringify(value));
+
 }
 
 const addNewItemToCart = (item_name, price, restaurant_name, feeUnder) => {
