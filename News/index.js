@@ -26,7 +26,7 @@ to remember you,too
 
 should i learn of you
 */
-
+let tip = 0.0;
 let rand;
 //string
 let referer;
@@ -53,6 +53,10 @@ window.onload = () => {
   const urlParams = new URLSearchParams(queryString);
   let tmp_ref = urlParams.get('referer');
   let tmp_d = urlParams.get('details');
+  let tmp_tip = urlParams.get('tip');
+  if(tmp_tip){
+    tip = parseFloat(tmp_tip).toFixed(2);
+  }
 
   let tmp_ref_details = urlParams.get('referer_details') && urlParams.get('referer_details').replaceAll('"', '');
   if (tmp_ref) {

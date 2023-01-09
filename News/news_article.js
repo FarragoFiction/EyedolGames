@@ -198,6 +198,11 @@ const getMiddle = () => {
   let templates = [`According to witnesses, ${monster_name},  suddenly began to grow in size and change in appearance. Within minutes, they had become a terrifying monster, ${quick(MONSTER_DESC)}`,`According to reports, ${monster_name} transformed into a monster, which is described as '${quick(MONSTER_DESC)}', was seen lurking in the shadows and peering into the windows of the home. Several neighbors reported feeling threatened by the creature's presence and called the police. It is unclear where it is at present.`];
   templates.push(`Eye witnesses, describing ${monster_name}, say ${quick(MONSTER_DESC)} ${rand.pickFrom(hollowReassurances)}`)
   templates.push(`Eye witnesses say there is no possible way a ${details.item_name} could possibly be worth all of this.`)
+  
+  if(tip<3 || tip > 100){
+    templates.push("Eye witnesses report that an argument over the tip seem to have preceded the tragedy.")
+  }
+  
   num_articles > 2 && templates.push("Observers wonder if you're still going to be scrolling forever.")
   num_articles > 4 && templates.push("Observers wonder if you're still going to be scrolling forever.")
   num_articles > 5 && templates.push("Observers wonder if you're still going to be scrolling forever.")
