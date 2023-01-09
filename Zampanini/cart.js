@@ -44,7 +44,10 @@ const initCart = () => {
   const tipLabel = createElementWithClassAndParent("label",tipHolder,"cart-tip-label");
   tipLabel.innerText = "Tip: "
 
-  const tip = createElementWithClassAndParent("input",tipHolder,"cart-tip");
+  const tipObject = createElementWithClassAndParent("div",tipHolder,"cart-tip-object");
+  const currencySymbol = createElementWithClassAndParent("div",tipObject,"cart-tip-currency");
+  currencySymbol.innerText = "$";
+  const tip = createElementWithClassAndParent("input",tipObject,"cart-tip");
   tip.type="number";
   tip.min = 0.0;
   tip.id = "cart-tip";

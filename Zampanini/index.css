@@ -12,16 +12,27 @@ body {
 
 }
 
+.cart-tip-currency{
+  position: absolute;
+  font-size: 13px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.cart-tip-object{
+  position: relative;
+}
+
 input{
   text-align: right;
-  width: 50px;
+  width: 65px;
 }
 
 .cart-tip-holder{
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  margin-right: 15px;
+  margin-right: 20px;
   margin-left: 20px;
 }
 
