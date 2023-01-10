@@ -212,7 +212,7 @@ const handleMenuScrolling = (container, rand, existing_keys) => {
 
     window.requestAnimationFrame(() => {
       const theme = all_themes[rand.pickFrom(Object.keys(all_themes))];
-      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))),theme_keys);
+      renderOneMenuSection(container, (rand.pickFrom(theme.getPossibilitiesFor(OBJECT))),Object.keys(all_themes));
 
     });
 
