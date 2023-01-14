@@ -127,6 +127,8 @@ Boys
 Girls
 Men
 Stainless Steel
+Stainless Steel
+Stained Steel
 Female
 Male
 N/A
@@ -503,7 +505,7 @@ const initPeople = () => {
     person_posibilities[ADDICTION] = ["gambler", "dealer","stoner"];
     person_posibilities[SPYING] = ["eye", "watcher", "observer", "listener", "spy"];
     person_posibilities[CLOWNS] = ["clown", "mime", "jester", "acrobat", "performer", "harlequin", "ringmaster"];
-    person_posibilities[DOLLS] = ["doll", "mannequin", "dressform", "statue", "dummy", "puppet", "marionette", "figure", "figurine", "toy"];
+    person_posibilities[DOLLS] = ["slender man","doll", "mannequin", "dressform", "statue", "dummy", "puppet", "marionette", "figure", "figurine", "toy"];
     person_posibilities[OBFUSCATION] = ["hider", "ninja", "censor", "disguise artist"];
     person_posibilities[CENSORSHIP] = ["hider", "ninja", "censor", "disguise artist"];
 
