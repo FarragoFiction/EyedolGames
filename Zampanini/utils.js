@@ -75,6 +75,8 @@ const updateURLParams = (params) => {
   window.history.pushState('', '', pageUrl);
 }
 
+//key, value status
+const cachedImages = {}
 
 
 const imageExtendsions = [
@@ -88,7 +90,42 @@ const filePattern = new RegExp('<a href="([^?]*?)">','g');
 const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
 
 
- const getImages = async(url)=>{
+
+//returns a promise which resolves with the content, prevents network spam
+const getImages = async(url)=>{
+  if(cachedImages[url]){
+    return cachedImages[url];
+  }
+
+  let promise = new Promise(async (resolve, rejct)=>{
+    try{
+      const rawText = await httpGetAsync(url);
+      
+      let files= [];
+      const match = rawText.matchAll(filePattern);
+      const matches = Array.from(match, (res) => res);
+      for(let m of matches){
+        const item = m[1];
+        if(item.match(extensionPattern)){
+          files.push(item);
+        }
+      }
+      cachedImages[url] = files;
+      console.log("JR NOTE: returned from network for",url)
+      resolve(files);
+      }catch(e){
+        console.log("JR NOTE: error",e)
+        reject();
+        return [];
+      }
+  })
+  cachedImages[url] = promise;
+  return promise;
+}
+
+ const getImagesOld = async(url)=>{
+  console.log("JR NOTE: trying to get images: ", url);
+
   try{
   const rawText = await httpGetAsync(url);
   
@@ -101,7 +138,8 @@ const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
       files.push(item);
     }
   }
-
+  cachedImages[url] = files;
+  console.log("JR NOTE: returned from network for",url)
   return files;
   }catch(e){
     console.log("JR NOTE: error",e)
