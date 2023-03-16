@@ -1,0 +1,619 @@
+@font-face {
+  font-family: cav;
+  src: url("cavalier/Cavalier.ttf");
+}
+
+body {
+  background-color: white;
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-family:   ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+.cart-tip-currency{
+  position: absolute;
+  font-size: 13px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.cart-tip-object{
+  position: relative;
+}
+
+input{
+  text-align: right;
+  width: 65px;
+}
+
+.cart-tip-holder{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#categories{
+  background-color: #f4f4f4;
+  width: 100%;
+  height: 100px;
+  margin-top: 50px;
+}
+
+.chosen-container{
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+#chosen{
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.facts{
+  display: flex;
+  justify-content: space-between;
+  line-height: 25px;
+}
+.logo{
+  cursor: pointer;
+}
+
+.rest-name{
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#header{
+  display: flex;
+  z-index: 999;
+  justify-content: space-between;
+  margin: 0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  vertical-align: middle;
+  border-bottom: 1px solid #e4e4e4;
+  background: #ffffff;
+}
+
+#header h1{
+  margin: 0px;
+  left: 0px;
+  margin-left: 50px;
+  color: #ee0000;
+  font-family: cav;
+  letter-spacing: 8px;
+  margin-top: 5px;
+}
+
+#profile{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rating{
+  margin-bottom: 10px;
+}
+
+.rating{
+  filter: grayscale();
+}
+
+.rating .good{
+  filter: grayscale() brightness(0.5);
+}
+
+.rating .bad{
+  filter: grayscale() contrast(100);
+}
+
+.one-review{
+  border: 1px solid #d4d4d4;
+  height: 150px;
+  min-width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fefefe;
+  overflow: hidden;
+
+}
+
+.featured-reviews{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 230px;
+  margin-bottom: 50px;
+}
+
+
+.featured-meals{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
+.menu{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 60px;
+  margin-bottom: 50px;
+}
+
+.one-menu-item{
+  height: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 400;
+
+}
+
+.food-price{
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.one-food-item{
+  border-radius: 8px;
+  border: 1px solid #e4e4e4;
+  display: flex;
+  width: 385px;
+  height: 150px;
+  gap: 50px;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.food-left{
+  display: inline-block;
+  padding: 20px;
+  padding-top: 0px;
+  overflow: hidden;
+
+}
+
+.food-right{
+  height: 150px;
+  display: inline-block;
+  position: relative;
+}
+
+
+
+.menu-title{
+  padding-bottom: 10px;
+
+}
+.selected-menu-title{
+  border-bottom: 2px solid black;
+  border-radius: 3px;
+}
+
+.one-featured-meal{
+  width: 150;
+  height: 200px;
+  cursor: pointer;
+}
+
+.add{
+  position: absolute;
+  bottom: 5px; 
+  right: 5px;
+  pointer-events: none;
+  border-radius: 33px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border: none;
+  height: 25px
+}
+
+
+
+.food-title{
+  margin-bottom: 5px;
+}
+
+.meal-image-container{
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
+
+.one-cart-item{
+  padding: 10px;
+  height: 43px;
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4e4e4;
+  border-radius: 3px;
+  margin-right: 10px;
+
+}
+
+.cart-item-restaurant{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.cart-item-title{
+  font-size: 18px;
+  margin-top: 0px;
+  vertical-align: top;
+}
+
+.cart-item-price{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.meal-image{
+  height: 150px;
+  border-radius: 8px;
+}
+
+#header #cart-icon{
+  margin: 0px;
+  cursor: pointer;
+  background: #d4d4d4;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  border-radius: 8px;
+  right: 0px;
+  font-size: 25px;
+  vertical-align: middle;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #ee0000;
+  ; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e4e4e4; 
+}
+
+#header #cart-container{
+  position: fixed;
+  top: 50px;
+  display: none;
+  border: 1px solid #e4e4e4;
+  right: 0px;
+  height: 100vh;
+  width: 400px;
+  background-color: white;
+}
+
+#cart{
+  height: 80vh;
+  overflow-y: scroll;
+  padding-left: 10px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: white;
+  color: #fff;
+  text-align: center;
+  border: 3px solid #ee0000;
+  padding: 10px;
+  color: #ee0000;
+  border-radius: 8px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.cart-restaurant-container{
+  margin-bottom: 50px;
+}
+
+#warning{
+  font-size: 12px;
+  margin-left: 13px;
+  text-align: center;
+  color: #ee0000;
+  letter-spacing: 2px;
+  margin-right: 13px;
+  font-weight: bold;
+}
+
+#cart-total{
+  text-align: right;
+  margin-right: 10px;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  width: 85%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border: none;
+  border-radius: 13px;
+  text-align: center;
+  background: #ee0000;
+  letter-spacing: 2px;
+
+
+}
+
+#cart-total:hover{
+  background: #dd0000;
+  letter-spacing: 3px;
+}
+
+.profile_image{
+  object-fit: cover;
+  width: 100%;
+  height: 172px;
+  border-radius: 8px;
+}
+
+
+.preview{
+  object-fit: cover;
+  width: 375px;
+  height: 172px;
+  border-radius: 8px;
+}
+
+.price{
+  font-size: 10px;
+  vertical-align: top;
+}
+
+.genre{
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+#resteraunts{
+  display: flex;
+  margin-top: 50px;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.single-rest{
+  gap: 100px;
+  cursor: pointer;
+}
+
+.category{
+  margin-top: 12px;
+  margin-bottom: 12px;
+  display: inline;
+  width: 80px;
+  height: 70px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.category:hover{
+  background-color: #e4e4e4 !important;
+}
+
+
+.container{
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  overflow-x: scroll;
+
+
+}
+
+.category .icon{
+  width: 60px;
+  height: 60px;
+  display: block;
+  font-size: 32px;
+
+  text-align:center;
+
+}
+
+.category .label{
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  width: 60px;
+  line-height: 16px;
+  text-align:center;
+  height: 16px;
+  overflow: hidden;
+}
+
+
+
+
+label:not(.gender){
+  font-weight: bolder;
+  margin-bottom: 13px;
+  display: block;
+}
+
+#hax{
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+}
+
+.copy-button{
+  padding: 5px;
+  height: 22px;
+  display: inline-block;
+  line-height: 10px;
+  margin-left: 10px;
+}
+
+hr{
+  margin: 33px;
+}
+
+.hidden{
+  display: none !important; 
+}
+
+#result{
+  text-align: center;
+  margin-top: 100px;
+}
+
+
+
+.title{
+  font-weight: 600;
+  font-size: 48px;
+}
+
+#ramble{
+  margin: 50px;
+}
+
+#result-link{
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#result-name{
+  font-weight: 800;
+  font-size: 42px;
+}
+
+select{
+  width: 100%;
+  max-width: 300px;
+}
+
+.question{
+  margin-bottom: 33px;
+}
+
+select{
+  margin-left: 13px;
+}
+
+
+button{
+  height: 50px;
+}
+
+#footer{
+    text-transform: capitalize;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid black;
+    width: 100%;
+    background: white;
+}
+
+#recieve-gender{
+  margin-top: 13px;
+}
+
+.horizontal-radio{
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+  align-items: center;
+
+}
+
+#instructions{
+  background: #f4f4f4;
+  padding: 33px;
+  width: 500px;
+  margin-bottom: 33px;
+
+}
+
+
+
+.vertical-radio{
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+}
+

@@ -1,0 +1,1 @@
+don't forget that the images are hosted on farrago because for some reason no matter what i do eyedol isn't set up for CORS so i can develop locally
