@@ -23,8 +23,8 @@ class HomePage extends PageObject {
 
 const makeGender = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["Female", "Male", "Neither", "Complicated", "I don't know..."])
-    genderSelect.oninput = (e) => {
+    let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["...","Female", "Male", "Neither", "Complicated", "I don't know..."])
+    genderSelect.onchange = (e) => {
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("don't")) {
@@ -39,8 +39,8 @@ const makeGender = (box) => {
 
 const makeOrientation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["Straight", "Gay", "Bi", "Complicated", "I don't know..."])
-    genderSelect.oninput = (e) => {
+    let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["...","Straight", "Gay", "Bi", "Complicated", "I don't know..."])
+    genderSelect.onchange = (e) => {
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("don't")) {
@@ -55,8 +55,8 @@ const makeOrientation = (box) => {
 
 const makeLocation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your location?", ["Westerville, Ohio", "Orlando, Florida", "Naples, Italy", "Somewhere else"])
-    genderSelect.oninput = (e) => {
+    let genderSelect = makeSelect(genderSection, "Could I ask you your location?", ["...","Westerville, Ohio", "Orlando, Florida", "Naples, Italy", "Somewhere else"])
+    genderSelect.onchange = (e) => {
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("else")) {
