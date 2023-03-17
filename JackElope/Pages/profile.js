@@ -1,0 +1,4 @@
+class ProfilePage extends PageObject {
+
+
+}
