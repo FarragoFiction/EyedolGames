@@ -5,6 +5,13 @@ let currentPage;
 let normalImageList = [];
 let weirdImageList = [];
 
+yourLocation = "Westerville, Ohio"
+
+//whichever location you pick we'll add a hundred times to this list
+//and each time we render a sexy single we'll remove one of them
+const locations = ["Naples, Italy", "Orlando, Florida","Westerville, Ohio"]
+
+
 //pure string, convert to numerical seed later.
 let seedSource = "seed="
 

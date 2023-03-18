@@ -14,7 +14,7 @@ class HomePage extends PageObject {
         let desc = createElementWithClassAndParent("div", splash, "splash-desc");
         desc.innerText = "We just need to learn a few things about you to get started.";
 
-        let content = createElementWithClassAndParent("div", box,"homepage-content");
+        let content = createElementWithClassAndParent("div", box, "homepage-content");
 
         makeGender(content);
 
@@ -23,16 +23,16 @@ class HomePage extends PageObject {
 
 const makeGender = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["...","Female", "Male", "Neither", "Complicated", "I don't know..."])
+    let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["...", "Female", "Male", "Neither", "Complicated", "I don't know..."])
     genderSelect.onchange = (e) => {
-        seedSource+= e.target.value;
+        seedSource += e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("don't")) {
             let title = createElementWithClassAndParent("div", box, "quip");
             title.innerHTML = "If you need help figuring out your gender, try <a target='blank' href ='http://eyedolgames.com/Gender/'>here</a>! ";
-        }else{
-            title.innerText = "Interesting!!! I'll remember that you're " + e.target.value+"!";
+        } else {
+            title.innerText = "Interesting!!! I'll remember that you're " + e.target.value + "!";
         }
         makeOrientation(box);
     }
@@ -40,16 +40,16 @@ const makeGender = (box) => {
 
 const makeOrientation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["...","Straight", "Gay", "Bi", "Complicated", "I don't know..."])
+    let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["...", "Straight", "Gay", "Bi", "Complicated", "I don't know..."])
     genderSelect.onchange = (e) => {
-        seedSource+= e.target.value;
+        seedSource += e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("don't")) {
             let title = createElementWithClassAndParent("div", box, "quip");
             title.innerHTML = "If you need help figuring out your orientaion, try <a target='blank' href ='http://farragofiction.com/LightAndVoid/?seerOfVoid=true'>here</a>! ";
-        }else{
-            title.innerText = "Hmmm... I'll remember that you're " + e.target.value+ "!";
+        } else {
+            title.innerText = "Hmmm... I'll remember that you're " + e.target.value + "!";
         }
         makeLocation(box);
     }
@@ -57,21 +57,26 @@ const makeOrientation = (box) => {
 
 const makeLocation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your location?", ["...","Westerville, Ohio", "Orlando, Florida", "Naples, Italy", "Somewhere else"])
+    let genderSelect = makeSelect(genderSection, "Could I ask you your location?", ["...", "Westerville, Ohio", "Orlando, Florida", "Naples, Italy", "Somewhere else"])
     genderSelect.onchange = (e) => {
-        seedSource+= e.target.value;
+        yourLocation = e.target.value;
+        seedSource += e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("else")) {
             let title = createElementWithClassAndParent("div", box, "quip");
             title.innerHTML = "Oh, no... You sound confused! There are only three possible places in the entire Universe. I've gone ahead and picked the one most close to you.";
-        }else{
-            title.innerText = "Yes. I'll remember that you're in "  + e.target.value + "!";
+            yourLocation = pickFrom(locations);// true random. space is FUCKED up. 
+        } else {
+            title.innerText = "Yes. I'll remember that you're in " + e.target.value + "!";
+        }
+        for (let i = 0; i < 100; i++) {
+            locations.push(yourLocation); //add your "real" location one hundred times.
         }
 
         let button = createElementWithClassAndParent("button", box);
         button.innerText = "Click When You Are Ready To Experience The Sexy Singles"
-        button.onclick = ()=>{
+        button.onclick = () => {
             makeSexySingles(box);
         }
 
@@ -96,7 +101,9 @@ const makeSelect = (parent, label, options) => {
 }
 
 
-const makeSexySingles = async (parent)=>{
+let numSingles = 0;
+
+const makeSexySingles = async (parent) => {
     parent.innerHTML = "";
     let loadingAnimation = createElementWithClassAndParent("div", parent);
     loadingAnimation.innerHTML = `<div class="lds-heart"><div></div></div>`;
@@ -117,36 +124,68 @@ const makeSexySingles = async (parent)=>{
 
     splashT.innerText = "We've Scientifically Calculated These Sexy Singles To Be a Match For You!";
     splashD.innerText = "Why not message one of them today?";
+    let container = createElementWithClassAndParent("div", parent, "sexy-singles");
 
-
-    return;
-    for(let i =0; i<85; i++){
-        renderOneSexySingle(rand);
+    for (let i = 0; i < 85; i++) {
+        renderOneSexySingle(rand, container);
     }
 
-    handleRestaurantScrolling(rand);
+    handleSexySinglesScrolling(rand,container);
 }
 
-const handleSexySinglesScrolling = (rand) => {
+const renderOneSexySingle = (rand, container) => {
+    numSingles++;
+    const name = rand.pickFrom(first_names);
+    const image = rand.pickFrom(normalImageList);
+    //match percent gets worse and worse as you go, eventually flipping negative. 
+    const matchPercent = rand.getRandomNumberBetween(100 - numSingles, 100);
+    //each time we generate a sexy single they are ever so slightly less likely to be local.
+    removeItemOnce(locations, yourLocation);
+    const loc = rand.pickFrom(locations);
+
+
+    let single = createElementWithClassAndParent("div", container,"single");
+
+    let imageEle = createElementWithClassAndParent("img", single,"preview", 'results-image');
+    imageEle.src = image;
+
+    let nameEle = createElementWithClassAndParent("div", single,"results-name");
+    nameEle.innerText = name;
+
+    
+    let locationEle = createElementWithClassAndParent("div", single,"results-location");
+    locationEle.innerText = loc;
+
+    let matchEle = createElementWithClassAndParent("div", single, "results-match");
+    matchEle.innerText = `${matchPercent}%`;
+
+
+
+
+
+
+}
+
+const handleSexySinglesScrolling = (rand, container) => {
     console.log("JR NOTE: handleRestaurantScrolling");
     let lastScrollTime = 0; //not to spam events
     window.onscroll = () => {
-      const newTime = new Date().getTime();
-      if (((newTime - lastScrollTime)) < 50) {
-        return;
-      }
-      lastScrollTime = newTime;
-  
-      window.requestAnimationFrame(() => {
-        console.log("JR NOTE: sroll");
-        renderOneSexySingle(rand);
-        renderOneSexySingle(rand);
-        renderOneSexySingle(rand);
-      });
-  
+        const newTime = new Date().getTime();
+        if (((newTime - lastScrollTime)) < 50) {
+            return;
+        }
+        lastScrollTime = newTime;
+
+        window.requestAnimationFrame(() => {
+            console.log("JR NOTE: scroll");
+            renderOneSexySingle(rand, container);
+            renderOneSexySingle(rand, container);
+            renderOneSexySingle(rand, container);
+        });
+
     };
-  }
-  
+}
+
 
 
 
