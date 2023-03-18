@@ -32,7 +32,7 @@ const grabNormalImages = async () => {
 
 
 const grabWeirdImages = async () => {
-  const loc = 'http://eyedolgames.com/JackElope/images/SexySingles/BigNormalPile/'
+  const loc = 'http://eyedolgames.com/JackElope/images/SexySingles/BigWeirdPile/'
   let tmp = await getImages(loc);
   weirdImageList = tmp.map((item) => loc  + item);
 }

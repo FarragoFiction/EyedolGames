@@ -136,7 +136,7 @@ const makeSexySingles = async (parent) => {
 const renderOneSexySingle = (rand, container) => {
     numSingles++;
     const name = rand.pickFrom(first_names);
-    const image = rand.pickFrom(normalImageList);
+    const image = rand.pickFrom(numSingles>50? weirdImageList: normalImageList);
     //match percent gets worse and worse as you go, eventually flipping negative. 
     const matchPercent = rand.getRandomNumberBetween(100 - numSingles, 100);
     //each time we generate a sexy single they are ever so slightly less likely to be local.
