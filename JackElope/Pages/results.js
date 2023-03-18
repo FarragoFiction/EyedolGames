@@ -1,4 +1,0 @@
-class ResultsPage extends PageObject {
-
-
-}

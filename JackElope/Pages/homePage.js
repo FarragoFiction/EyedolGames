@@ -25,6 +25,7 @@ const makeGender = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
     let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["...","Female", "Male", "Neither", "Complicated", "I don't know..."])
     genderSelect.onchange = (e) => {
+        seedSource+= e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("don't")) {
@@ -41,6 +42,7 @@ const makeOrientation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
     let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["...","Straight", "Gay", "Bi", "Complicated", "I don't know..."])
     genderSelect.onchange = (e) => {
+        seedSource+= e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("don't")) {
@@ -57,6 +59,7 @@ const makeLocation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
     let genderSelect = makeSelect(genderSection, "Could I ask you your location?", ["...","Westerville, Ohio", "Orlando, Florida", "Naples, Italy", "Somewhere else"])
     genderSelect.onchange = (e) => {
+        seedSource+= e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
         if (e.target.value.includes("else")) {
@@ -65,7 +68,13 @@ const makeLocation = (box) => {
         }else{
             title.innerText = "Yes. I'll remember that you're in "  + e.target.value + "!";
         }
-        //todo button
+
+        let button = createElementWithClassAndParent("button", box);
+        button.innerText = "Click When You Are Ready To Experience The Sexy Singles"
+        button.onclick = ()=>{
+            makeSexySingles(box);
+        }
+
     }
 }
 
@@ -84,9 +93,60 @@ const makeSelect = (parent, label, options) => {
         }
     }
     return select;
-
-
 }
+
+
+const makeSexySingles = async (parent)=>{
+    parent.innerHTML = "";
+    let loadingAnimation = createElementWithClassAndParent("div", parent);
+    loadingAnimation.innerHTML = `<div class="lds-heart"><div></div></div>`;
+
+    seed = stringtoseed(seedSource)
+    const rand = new SeededRandom(seed);
+
+
+    const splashT = document.querySelector(".splash-title")
+    splashT.innerText = "Searching for Sexy Singles In Your Area!";
+
+    const splashD = document.querySelector(".splash-desc")
+    splashD.innerText = "Please wait...";
+
+    await grabNormalImages();
+    await grabWeirdImages();
+    loadingAnimation.remove();
+
+    splashT.innerText = "We've Scientifically Calculated These Sexy Singles To Be a Match For You!";
+    splashD.innerText = "Why not message one of them today?";
+
+
+    return;
+    for(let i =0; i<85; i++){
+        renderOneSexySingle(rand);
+    }
+
+    handleRestaurantScrolling(rand);
+}
+
+const handleSexySinglesScrolling = (rand) => {
+    console.log("JR NOTE: handleRestaurantScrolling");
+    let lastScrollTime = 0; //not to spam events
+    window.onscroll = () => {
+      const newTime = new Date().getTime();
+      if (((newTime - lastScrollTime)) < 50) {
+        return;
+      }
+      lastScrollTime = newTime;
+  
+      window.requestAnimationFrame(() => {
+        console.log("JR NOTE: sroll");
+        renderOneSexySingle(rand);
+        renderOneSexySingle(rand);
+        renderOneSexySingle(rand);
+      });
+  
+    };
+  }
+  
 
 
 
