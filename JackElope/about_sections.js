@@ -69,7 +69,6 @@ const dating = datingRaw.split('\n');
 
 
 class AboutSection {
-  ramble = "TODO";
   constructor(title, rand, obsessions) {
     this.rand = rand;
     this.title = title;
@@ -77,65 +76,58 @@ class AboutSection {
   }
 
   makeRamble = () => {
-    ramble = "PLZ TODO";
+    this.ramble = "PLZ TODO";
   }
 }
 
 
 class SummarySection extends AboutSection {
-  ramble = "TODO";
   
   makeRamble = () => {
-    ramble = "PLZ TODO summary";
+    this.ramble = "PLZ TODO summary";
   }
 }
 
 class AspirationSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO aspirations";
+    this.ramble = "PLZ TODO aspirations";
   }
 }
 
 class TalentSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO talent";
+    this.ramble = "PLZ TODO talent";
   }
 }
 
 class NeedsSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO needs";
+    this.ramble = "PLZ TODO needs";
   }
 }
 
 class HobbiesSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO hobbies";
+    console.log("JR NOTE: title",this.title, this.obsessions)
+    this.ramble = `PLZ TODO hobbies I really like ${this.obsessions.map((i)=>i.name).join(", ")}`;
   }
 }
 
 class MomentsSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO moment";
+    this.ramble = "PLZ TODO moment";
   }
 }
 
 class SecretsSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO secret";
+    this.ramble = "PLZ TODO secret";
   }
 }
 
 class DatingSection extends AboutSection {
-  ramble = "TODO";
   makeRamble = ()=>{
-    ramble = "PLZ TODO dating";
+    this.ramble = "PLZ TODO dating";
   }
 }
 

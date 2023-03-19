@@ -18,6 +18,7 @@ let horrors = ["protojr1.png",
   , "protojr18.png"]
 class ProfilePage extends PageObject {
 
+  obsessions=[];
 
   //  currentPage = profile? new Profile(name,image,matchPercent,loc) : new HomePage();
 
@@ -25,6 +26,10 @@ class ProfilePage extends PageObject {
     super();
     this.seed = seed ? seed : 13;
     this.rand = new SeededRandom(this.seed);
+    let numberObsessions = this.rand.getRandomNumberBetween(1,3);
+    for(let i = 0; i<numberObsessions; i++){
+      this.obsessions.push(this.rand.pickFrom(Object.values(all_obsessions)));
+    }
     this.age = this.rand.getRandomNumberBetween(18, 99);
     this.name = name ? name : "Shambling Horror With Your Face";
     this.image = image ? baseURL + image : `http://farragofiction.com/ZampanioHotlink/KRsAIExperiments/${pickFrom(horrors)}`;
@@ -336,9 +341,10 @@ class ProfilePage extends PageObject {
       textEle.innerText = text;
     }
   
-    let sections =getPossibleSections(this.rand, []);
+    let sections =getPossibleSections(this.rand, this.obsessions);
   
     for(let section of sections){
+      section.makeRamble();
       createSection(section.title, section.ramble)
     }
   
