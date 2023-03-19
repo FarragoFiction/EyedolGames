@@ -109,7 +109,50 @@ class NeedsSection extends AboutSection {
 class HobbiesSection extends AboutSection {
   makeRamble = ()=>{
     console.log("JR NOTE: title",this.title, this.obsessions)
-    this.ramble = `PLZ TODO hobbies I really like ${this.obsessions.map((i)=>i.name).join(", ")}`;
+
+
+    const obsessiveParagraph = (obsession,first)=>{
+      const introPhrases = [`I am totally obsessed with ${obsession.name}.`];
+
+      const bridgePhrases = [`Oh yeah, and how could I forget about  ${obsession.name}?`,`Another thing I'm obsessed with is  ${obsession.name}.`];
+
+      const favoriteMinorBlorbo = obsession.randomMinorBlorbo(this.rand);
+      const leastFavoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const mostTearJerkingEvent = obsession.randomEvent(this.rand);
+      const favoriteQuote = obsession.randomCommonPhrases(this.rand);
+      const threeHotTakes = [obsession.randomOpinion(this.rand),obsession.randomOpinion(this.rand),obsession.randomOpinion(this.rand)]
+
+      const randomGoal = obsession.randomGoal(this.rand);
+      const rambles = [
+        `One day, I'm going to ${randomGoal}.`,
+        `Look, I'm not going to apologize for believing ${threeHotTakes[0]}.`,
+        `I cry every time I think about ${mostTearJerkingEvent}. How did the creators even think to do that?`,
+        `My FAVORITE character is ${favoriteMinorBlorbo}. Sure, they aren't the most popular but they're such a great blank slate!  It's EASY to like a character like ${leastFavoriteMainBlorbo} who gets all the screen time, but true fans know its quality not quantity. `,
+        `You know, I don't think people think hard enough about "${favoriteQuote}". Sure on a surface level you might think you understand it, but what about a deeper reading? I feel like every time I meditate on it I learn something new about myself.,`,
+        `${favoriteMainBlorbo} has so much good fanart! I can't wait to see what the fandom does with them next! Oh, my little blorbo...`,
+      ]
+      const numberSentences = this.rand.getRandomNumberBetween(1,5);
+      let ret = "<p>";
+      if(first){
+        ret += this.rand.pickFrom(introPhrases);
+      }else{
+        ret += this.rand.pickFrom(bridgePhrases);
+      }
+      for(let i = 0; i<numberSentences; i++){
+        ret += ` ${this.rand.pickFrom(rambles)}`;
+      }
+      ret += "</p>"
+      return ret;
+  
+    }
+
+    this.ramble = "";
+    let first = true;
+    for(let obsession of this.obsessions){
+      this.ramble += obsessiveParagraph(obsession, first);
+      first = false;
+    }
   }
 }
 

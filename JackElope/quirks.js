@@ -32,7 +32,10 @@ class QuirkMap {
 
   //only replace WHOLE words
   //https://onecompiler.com/javascript/3x8rumubz
-  replace(phrase) {
+  replace(phrase,rand) {
+    if(!this.choosenValue){
+      this.chooseValue(rand);
+    }
     const regex = new RegExp(key, 'g'); // correct way
     return phrase.replace(regex, this.chosenValue);
   }
@@ -40,6 +43,7 @@ class QuirkMap {
 
 //these keys you need to pepper your writing with, just like sburbsim. IC was right this does need to exist again
 //NOTE these are WHOLE WORDS
+//if you want a porn bot to have this COPY Them and choose a value
 const all_quirk_mappings = [
   new QuirkMap("\\bfuck\\b", ["...great","piss","motherfuck","um","crap","cocks","nope","fiddlesticks","darn", "really","damn","...","dang","oh my god"]),
 

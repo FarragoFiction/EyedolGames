@@ -338,7 +338,7 @@ class ProfilePage extends PageObject {
       labelEle.innerText = label;
   
       let textEle = createElementWithClassAndParent("div", ele, "profile-section-text");
-      textEle.innerText = text;
+      textEle.innerHTML = text;
     }
   
     let sections =getPossibleSections(this.rand, this.obsessions);
