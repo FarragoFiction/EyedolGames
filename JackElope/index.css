@@ -200,6 +200,7 @@ select {
 .profile-details-text{
   padding-left: 50px;
   display: inline-block;
+  width: 180px;
 }
 .profile-details-wrapper{
   border: 1px solid #efefef;
