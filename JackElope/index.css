@@ -4,8 +4,13 @@
 }
 
 @font-face {
-  font-family: GT America Thin;
+  font-family: GT AmericaT;
   src: url("fonts/GT-America/GT-America-Compressed-Thin-Trial.otf");
+}
+
+@font-face {
+  font-family: GT AmericaB;
+  src: url("fonts/GT-America/GT-America-Compressed-Bold-Trial.otf");
 }
 
 body {
@@ -110,7 +115,7 @@ body {
 
 .splash-desc {
   font-size: 14px;
-  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 button {
@@ -150,12 +155,12 @@ button {
 
 .profile-age{
   font-size: 14px;
-  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .profile-loc{
   font-size: 14px;
-  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .match {
@@ -189,12 +194,28 @@ select {
   position: relative;
 }
 
+.profile-section-wrapper{
+  padding-bottom: 30px;
+}
+
+.profile-section-title{
+  font-size: 16px;
+  color: #00649f;
+  font-family: "GT AmericaB", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-about{
+  font-size: 12px;
+
+
+}
+
 .profile-details-label{
   color: #6f6f6f;
   padding-left: 10px;
   width: 100px;
   display: inline-block;
-  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .profile-details-text{
@@ -205,6 +226,7 @@ select {
 .profile-details-wrapper{
   border: 1px solid #efefef;
   padding: 5px;
+  font-size: 14px;
 }
 
 .profile-header-content {
@@ -240,6 +262,7 @@ select {
   display: flex;
   flex-direction: row;
   gap: 25px;
+  justify-content: space-between;
 }
 
 .profile-image {
@@ -287,7 +310,7 @@ div.single {
 
 .results-location {
   font-size: 12px;
-  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .results-match {
