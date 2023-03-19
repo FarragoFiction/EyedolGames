@@ -146,11 +146,10 @@ const renderOneSexySingle = (rand, container) => {
     const seed = rand.internal_seed;
 
 
-    let single = createElementWithClassAndParent("div", container,"single");
-    single.onclick = ()=>{
-        updateURLParams(`seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`);
-        window.location.href = window.location.href;
-    }
+    let single = createElementWithClassAndParent("a", container,"single");
+    single.target = "_blank";
+    single.href = `?seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`;
+    
 
     let imageEle = createElementWithClassAndParent("img", single,"preview", 'results-image');
     imageEle.src = baseURL+image;
