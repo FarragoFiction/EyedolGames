@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: GT America;
   src: url("fonts/GT-America/GT-America-Compressed-Regular-Trial.otf");
@@ -17,18 +16,18 @@ body {
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 1px;
-  font-family:   "GT America", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT America", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
 
-.inner-box{
+.inner-box {
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
   width: 66%;
 }
 
-.splash{
+.splash {
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 50px;
@@ -37,20 +36,21 @@ body {
   background-color: #abc9de;
 }
 
-.homepage-content{
+.homepage-content {
   margin-top: 50px;
 }
 
 .lds-heart {
   display: block;
   position: relative;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: auto;
   width: 80px;
   height: 80px;
   transform: rotate(45deg);
   transform-origin: 40px 40px;
 }
+
 .lds-heart div {
   top: 32px;
   left: 32px;
@@ -60,6 +60,7 @@ body {
   background: red;
   animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 .lds-heart div:after,
 .lds-heart div:before {
   content: " ";
@@ -69,54 +70,122 @@ body {
   height: 32px;
   background: red;
 }
+
 .lds-heart div:before {
   left: -24px;
   border-radius: 50% 0 0 50%;
 }
+
 .lds-heart div:after {
   top: -24px;
   border-radius: 50% 50% 0 0;
 }
+
 @keyframes lds-heart {
   0% {
     transform: scale(0.95);
   }
+
   5% {
     transform: scale(1.1);
   }
+
   39% {
     transform: scale(0.85);
   }
+
   45% {
     transform: scale(1);
   }
+
   60% {
     transform: scale(0.95);
   }
+
   100% {
     transform: scale(0.9);
   }
 }
 
 
-.splash-desc{
-  font-family:   "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+.splash-desc {
+  font-size: 14px;
+  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-button{
+button {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 25px;
 }
 
+.logo {
+  cursor: pointer;
+}
+
+.profile-match-box{
+  width: 100px;
+  background: white;
+  margin-top: -24px;
+  padding: 10px;
+}
+
+.profile-name{
+  font-size: 24px;
+  color: hotpink;
+  margin-top: 33px;
+}
+
+.profile-age{
+  font-size: 14px;
+  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-loc{
+  font-size: 14px;
+  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.match {
+  color: #a10000;
+  text-align: center;
+
+}
+
+.friend {
+  color: #1939ad;
+  text-align: center;
+
+}
+
+.enemy {
+  color: black;
+  text-align: center;
+}
 
 
-select{
+.profile-header-right{
+  margin: 25px;
+}
+
+select {
   margin-left: 15px;
 }
 
-.fullbox{
+.profile-header {
+  background-color: #efefef;
+}
+
+.profile-header-content {
+  margin: 25px;
+  margin-top: 0px;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.fullbox {
   margin-left: 5vw;
   min-height: 100%;
   width: 76vw;
@@ -124,14 +193,24 @@ select{
   flex-direction: row;
 }
 
-.target{
+.profile-content {
+  margin: 25px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.target {
   background-color: white;
   width: 66vw;
   min-height: 100%;
   margin-top: 72px;
 }
 
-.logo{
+.logo {
   max-width: 216px;
   min-width: 216px;
   width: 215px;
@@ -141,29 +220,29 @@ select{
 
 }
 
-.quip{
+.quip {
   margin-bottom: 10px;
 }
 
 
-.single{
+.single {
   gap: 100px;
   cursor: pointer;
   width: 175px;
 }
 
-div.single{
- margin-left: auto;
- margin-right: auto;
- text-align: center;
+div.single {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-.results-location{
+.results-location {
   font-size: 12px;
-  font-family:   "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "GT America Thin", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.results-match{
+.results-match {
   border: 1px solid #1939ad;
   border-radius: 25px;
   padding: 3px;
@@ -174,7 +253,7 @@ div.single{
   margin-top: 15px;
 }
 
-.sexy-singles{
+.sexy-singles {
   display: flex;
   margin-top: 50px;
   gap: 43px;
@@ -184,9 +263,8 @@ div.single{
   margin-right: auto;
 }
 
-.preview{
+.preview {
   object-fit: cover;
   width: 95%;
   border-radius: 8px;
 }
-

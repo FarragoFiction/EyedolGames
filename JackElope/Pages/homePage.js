@@ -133,6 +133,7 @@ const makeSexySingles = async (parent) => {
     handleSexySinglesScrolling(rand,container);
 }
 
+//http://www.farragofiction.com/SBURBSim/gnosis.html
 const renderOneSexySingle = (rand, container) => {
     numSingles++;
     const name = rand.pickFrom(first_names);
@@ -142,12 +143,17 @@ const renderOneSexySingle = (rand, container) => {
     //each time we generate a sexy single they are ever so slightly less likely to be local.
     removeItemOnce(locations, yourLocation);
     const loc = rand.pickFrom(locations);
+    const seed = rand.internal_seed;
 
 
     let single = createElementWithClassAndParent("div", container,"single");
+    single.onclick = ()=>{
+        updateURLParams(`seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`);
+        window.location.href = window.location.href;
+    }
 
     let imageEle = createElementWithClassAndParent("img", single,"preview", 'results-image');
-    imageEle.src = image;
+    imageEle.src = baseURL+image;
 
     let nameEle = createElementWithClassAndParent("div", single,"results-name");
     nameEle.innerText = name;

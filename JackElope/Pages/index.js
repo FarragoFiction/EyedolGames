@@ -16,6 +16,10 @@ class PageObject {
         //logo in upper right corner
         let logo = createElementWithClassAndParent("img",bigbox, "logo");
         logo.src = "images/pathos/Zamparamour_logo.png"
+        logo.onclick=()=>{
+
+            window.location.href = 'index.html'
+        }
 
         //white page content next to logo
         let target = createElementWithClassAndParent("div",bigbox, "target");
