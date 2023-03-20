@@ -26,6 +26,8 @@ class ProfilePage extends PageObject {
     super();
     this.seed = seed ? seed : 13;
     this.rand = new SeededRandom(this.seed);
+    this.quirk = testQuirk(this.rand);
+
     let numberObsessions = this.rand.getRandomNumberBetween(1,3);
     for(let i = 0; i<numberObsessions; i++){
       this.obsessions.push(this.rand.pickFrom(Object.values(all_obsessions)));
@@ -338,7 +340,7 @@ class ProfilePage extends PageObject {
       labelEle.innerText = label;
   
       let textEle = createElementWithClassAndParent("div", ele, "profile-section-text");
-      textEle.innerHTML = text;
+      textEle.innerHTML = this.quirk.apply(text);
     }
   
     let sections =getPossibleSections(this.rand, this.obsessions);

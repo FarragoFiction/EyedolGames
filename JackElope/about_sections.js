@@ -112,7 +112,7 @@ class HobbiesSection extends AboutSection {
 
 
     const obsessiveParagraph = (obsession,first)=>{
-      const introPhrases = [`I am totally obsessed with ${obsession.name}.`];
+      const introPhrases = [`Hey I am totally obsessed with ${obsession.name}.`];
 
       const bridgePhrases = [`Oh yeah, and how could I forget about  ${obsession.name}?`,`Another thing I'm obsessed with is  ${obsession.name}.`];
 
@@ -128,8 +128,8 @@ class HobbiesSection extends AboutSection {
         `One day, I'm going to ${randomGoal}.`,
         `Look, I'm not going to apologize for believing ${threeHotTakes[0]}.`,
         `I cry every time I think about ${mostTearJerkingEvent}. How did the creators even think to do that?`,
-        `My FAVORITE character is ${favoriteMinorBlorbo}. Sure, they aren't the most popular but they're such a great blank slate!  It's EASY to like a character like ${leastFavoriteMainBlorbo} who gets all the screen time, but true fans know its quality not quantity. `,
-        `You know, I don't think people think hard enough about "${favoriteQuote}". Sure on a surface level you might think you understand it, but what about a deeper reading? I feel like every time I meditate on it I learn something new about myself.,`,
+        `My FAVORITE character is ${favoriteMinorBlorbo}. Sure, they aren't the most popular but they're such a great blank slate!  It's EASY to like a character like ${leastFavoriteMainBlorbo} who gets all the screen time, but true fans know it's quality not quantity. `,
+        `You know, I don't think people think hard enough about "${favoriteQuote}". Sure on a surface level you might think you understand it, but what about a deeper reading? I feel like every time I meditate on it I learn something new about myself.`,
         `${favoriteMainBlorbo} has so much good fanart! I can't wait to see what the fandom does with them next! Oh, my little blorbo...`,
       ]
       const numberSentences = this.rand.getRandomNumberBetween(1,5);
