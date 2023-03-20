@@ -26,7 +26,7 @@ class ProfilePage extends PageObject {
     super();
     this.seed = seed ? seed : 13;
     this.rand = new SeededRandom(this.seed);
-    this.quirk = testQuirk(this.rand);
+    this.quirk = randomQuirk(this.rand);
 
     let numberObsessions = this.rand.getRandomNumberBetween(1,3);
     for(let i = 0; i<numberObsessions; i++){

@@ -49,7 +49,7 @@ class Quirk {
   handleReplacements = (input, rand) => {
     let ret = input;
     for (let r of this.replacementList) {
-      r.replace(ret, rand);
+      ret = r.replace(ret, rand);
     }
     return ret;
   }
@@ -57,7 +57,6 @@ class Quirk {
   handlePunctuation = (input) => {
     let ret = input;
     if (this.punctation == NOPUNC) {
-      console.log("JR NOTE: no punc")
       let punctuationless = ret.replaceAll(/[.?,\/#!;{}=\-_`~]/g, "");
       ret = punctuationless.replaceAll(/"""\s{2,}""/g, " ");
     } else if (this.punctation == ENDPUNC) {
@@ -109,8 +108,8 @@ class QuirkMap {
   constructor(key, possibleValues) {
     this.key = key;
     this.possibleValues = possibleValues
-    if (this.possibleValues.indexOf(key) === -1) { //don't add it if you already had it, the clone system would make clones increasingly normal if we did that, which is def not what we want
-      this.possibleValues.push(key);//you can always just. not replace things.
+    if (this.possibleValues.indexOf(key.replace("\\b","")) === -1) { //don't add it if you already had it, the clone system would make clones increasingly normal if we did that, which is def not what we want
+      this.possibleValues.push(key.replaceAll("\\b",""));//you can always just. not replace things.
     }
   }
 
@@ -132,7 +131,9 @@ class QuirkMap {
     }
     //console.log("JR NOTE: quirk map key of ", this.key, "value of", this.chosenValue)
     const regex = new RegExp(this.key, 'g'); // correct way
-    return phrase.toLowerCase().replace(regex, this.chosenValue);
+    const ret= phrase.toLowerCase().replaceAll(regex, this.chosenValue);
+ 
+    return ret;
   }
 }
 
@@ -169,6 +170,8 @@ const all_quirk_mappings = [
   new QuirkMap("right", ["right", "right", "right", "rite"]),
   new QuirkMap("n't", ["n't", "n't", "n't", "not", "nt"]),
   new QuirkMap("'m'", ["am", "am", "'m", "m"]),
+  new QuirkMap("'d'", ["would", "d","'d"]),
+
   new QuirkMap("kind of", ["kinda", "kind of"]),
   new QuirkMap("okay", ["ok", "okay", "OK", "O.K.", "okey dokey"]),//what kind of beast spells it O.K.
   new QuirkMap("\\band\\b", ["and", "and", "&"]),
