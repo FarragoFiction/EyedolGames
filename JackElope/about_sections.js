@@ -277,7 +277,40 @@ class SecretsSection extends AboutSection {
 
 class DatingSection extends AboutSection {
   makeRamble = ()=>{
-    this.ramble = "PLZ TODO dating";
+    const obsessiveParagraph = (obsession)=>{
+      const introPhrases = ["It feels awkward to admit but...","I feel shallow but ",`Okay, I'll admit it.`,`I thought really hard about what gets me going romantically, and `];
+
+
+      const favoriteMinorBlorbo = obsession.randomMinorBlorbo(this.rand);
+      const leastFavoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const mostTearJerkingEvent = obsession.randomEvent(this.rand);
+      const favoriteEvent = obsession.randomEvent(this.rand);
+      const favLocation = obsession.randomLocation(this.rand);
+      const favJob = obsession.randomJob(this.rand);
+      const favObject = obsession.randomObject(this.rand);
+
+      const favoriteQuote = obsession.randomCommonPhrases(this.rand);
+      const hotTake =obsession.randomOpinion(this.rand);
+
+      const randomGoal = obsession.randomGoal(this.rand);
+      const rambles = [
+        `I'm really hoping to date someone who doesn't think ${hotTake}. ${this.rand.pickFrom(["Like, I get everyone is entitled to their opinion but I just do not vibe with that.","Like. Gross.","Miss me with that.","I'm not sure I'd even want to be friends with someone like that, to be honest."])}`,
+           
+      ]
+      const numberSentences = this.rand.getRandomNumberBetween(1,5);
+      let ret = " <p> ";
+      ret += this.rand.pickFrom(introPhrases);
+      ret += this.rand.pickFrom(rambles);
+
+   
+      ret += " </p> "
+      return ret;
+  
+    }
+
+    this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
+
   }
 }
 
