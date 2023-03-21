@@ -223,7 +223,40 @@ class HobbiesSection extends AboutSection {
 
 class MomentsSection extends AboutSection {
   makeRamble = ()=>{
-    this.ramble = "PLZ TODO moment";
+    const obsessiveParagraph = (obsession)=>{
+
+      const favoriteMinorBlorbo = obsession.randomMinorBlorbo(this.rand);
+      const leastFavoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const mostTearJerkingEvent = obsession.randomEvent(this.rand);
+      const favoriteEvent = obsession.randomEvent(this.rand);
+      const favLocation = obsession.randomLocation(this.rand);
+      const favJob = obsession.randomJob(this.rand);
+      const favObject = obsession.randomObject(this.rand);
+
+      const favoriteQuote = obsession.randomCommonPhrases(this.rand);
+      const hotTake =obsession.randomOpinion(this.rand);
+
+      const randomGoal = obsession.randomGoal(this.rand);
+      const setups = ["Between work and school I almost never have any free time, but when I do I","Honestly I just sleep in till noon and then I","I work nights so when I get home all I want to do is"]
+
+      const dayToDayHobbies = ["sleep all day","cook a huge meal","cook a healthy meal", "order take out","go on a jog", `read some fan fiction about ${obsession.name}`,`fight internet strangers who think ${hotTake}`]
+      const rambles = [
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(dayToDayHobbies)}.`,
+        `I just really enjoy spending time in nature and thinking about ${favoriteMinorBlorbo} from ${obsession.name}.`
+      ]
+      const numberSentences = this.rand.getRandomNumberBetween(1,5);
+      let ret = " <p> ";
+      ret += this.rand.pickFrom(rambles);
+
+   
+      ret += " </p> "
+      return ret;
+  
+    }
+
+    this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
+
   }
 }
 
@@ -294,9 +327,14 @@ class DatingSection extends AboutSection {
       const hotTake =obsession.randomOpinion(this.rand);
 
       const randomGoal = obsession.randomGoal(this.rand);
+      const whoStarts = ["I'm really hoping to date someone who","I really can't see myself dating someone who"]
       const rambles = [
-        `I'm really hoping to date someone who doesn't think ${hotTake}. ${this.rand.pickFrom(["Like, I get everyone is entitled to their opinion but I just do not vibe with that.","Like. Gross.","Miss me with that.","I'm not sure I'd even want to be friends with someone like that, to be honest."])}`,
-           
+        `${this.rand.pickFrom(whoStarts)} doesn't think ${hotTake}. ${this.rand.pickFrom(["Like, I get everyone is entitled to their opinion but I just do not vibe with that.","Like. Gross.","Miss me with that.","I'm not sure I'd even want to be friends with someone like that, to be honest."])}`,
+        `Message me if you want to check out ${favLocation} with me.`,
+        `Message me if you want to hear my thoughts on '${favoriteQuote}' and how it relates to ${this.rand.pickFrom(["zampanio","feminism on a global scale","a post modern critique of capitalism"])}.`,
+
+        `Maybe we can connect if you think you want to cosplay ${favJob} with me at a convention :)`,
+        `${this.rand.pickFrom(whoStarts)} is afraid to admit they still collect ${favObject} figurines. `  
       ]
       const numberSentences = this.rand.getRandomNumberBetween(1,5);
       let ret = " <p> ";
