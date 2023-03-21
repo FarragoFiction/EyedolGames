@@ -162,15 +162,16 @@ const all_quirk_mappings = [
   new QuirkMap("don't know", ["dunno"]),
   new QuirkMap("\\bthe\\b", ["teh","the","the","the","the","the","the","the"]),
   new QuirkMap("aren't", ["ain't", "aren't"]),
-  new QuirkMap("ie", ["ei"]),
+  new QuirkMap("ie", ["ei","ie","ie","ie","ie","ie","ie"]),
   new QuirkMap("apologize", ["say sorry"]),
 
   new QuirkMap("though", ["tho", "though"]),
   new QuirkMap("you", ["u", "you"]),
   new QuirkMap("right", ["right", "right", "right", "rite"]),
   new QuirkMap("n't", ["n't", "n't", "n't", "n not", "nt"]),
-  new QuirkMap("'m'", ["am", "am", "'m", "m"]),
-  new QuirkMap("'d'", ["would", "d","'d"]),
+  new QuirkMap("'m", ["am", "am", "'m", "m"]),
+  new QuirkMap("'d", ["would", "d","'d"]),
+  new QuirkMap("sorry", ["fuck you", "sorry","sorry", "sorry","sorry", "sorry","sorry", "sorry","sorry", "sorry","sorry"]),
 
   new QuirkMap("kind of", ["kinda", "kind of"]),
   new QuirkMap("okay", ["ok", "okay", "OK", "O.K.", "okey dokey"]),//what kind of beast spells it O.K.

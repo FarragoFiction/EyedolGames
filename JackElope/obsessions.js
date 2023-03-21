@@ -19,6 +19,7 @@ const ZAMPANIO = 'ZAMPANIO'; //jr
 const HENCH = 'HENCH'; //kr
 const FIVEDARPS = 'FIVEDARPS'; //IC
 const TOGITHINGY = 'TOGITHINGY'; //CD
+const SUBTLEWARS = 'SUBTLEWARS'; //MI
 
 const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr
 
@@ -233,7 +234,7 @@ all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
 
 const darpsCharRaw = `Priska, Piper, Riku, Otto`;
 const darpsChar2Raw = `Street, Mars, Venus, Tank, Mr. Yurlungur, Giltia, Kohl, Trudie, Hexe Trude, Grace, Marie, Anu, Apollo, Lucius, Phantom Dealer, Beatdown, Officer Lane, Nyan Nyan, Officer Moriard, Brad, Sano, Bob, Decoy Otto, Uria, Sasuke, Ninkendog, Thriller Killer, Serpent Night Terror`;
-const darpsImportantEventsRaw=`when Riku killed the Netherworld King, when Maha Vailo broke Otto’s criminal mark, when Hexe Trude took over the Satellite`
+const darpsImportantEventsRaw=`when Riku killed the Netherworld King, when Maha Vailo broke Otto's criminal mark, when Hexe Trude took over the Satellite`
 const darpsOpinionsRaw=``;
 const darpsMemesRaw=``;
 const darpsGoalsRaw=``;
@@ -342,6 +343,212 @@ all_obsessions[TOGITHINGY] = new Obsession(
   togiObjectsRaw.split("\n"),
   togiJobsRaw.split("\n")  
 );
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                  SubtleWArs   (submitted by MI)                      //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//MI NOTE: These are all Gods, so that'll be fun
+const swCharRaw = `The Immaculate
+The Skinless Forest
+The Masked Crown
+The Storm-Cord
+The Leviathan
+The Cyclopean
+The Daughter
+The Moonson
+The Anabasis
+The Spider-in-Sharpness
+The Imago
+The Pageantine
+The Old Queen Carnage
+The Lady Thorn
+The Shackle-Forge
+The Gorge Gnash
+The Pale Dancer
+The Mother Locust
+The Undercradle
+The Incarnadine
+The Mendicant
+The Incarnadine
+The Other Sun`;
+const swChar2Raw = `W. Aster
+Sandra Wakelight
+The Rapture-Wurm
+General Ruin
+Wings-of-Tempest
+The Splintered
+The First Flame
+Ruth of Rieche
+James “Invincible” Kastanza (Self titled)
+Thomson Osgood
+Sun-In-Waiting
+Lady Sapphire
+The Cogwhale
+The Knight-in-The-Woods
+The Unblivion`;
+const swImportantEventsRaw = `when the Second Dawn broke
+when the Dawn of Time came
+when the Old War was won
+when the Farmer's Crime was punished
+when the Paracosm came
+when the Nine Breath Truth was implemented
+when the Splintered ascended 
+when the First Flame ascended 
+when the First Exodus of Beasts occurred
+when the Leviathan drank the Moonson
+When the Infant Vendetta ended
+when Atlantis fell
+when Leviathan, Winter, and the Pale Dancer fought the War of Frost
+when the First Luthier committed the Tragedy of the Storm-Cord
+when Old Queen Carnage waged the War of Death
+when the Red Revel ended the Berlin Convergence
+when the Alica bound the Enlaced
+when Oliver gazed into the Infestation
+when General Ruin died
+when the Emergence came
+when the Reckoning happened
+when the Corpse of the Primordial Dragon hit Detroit
+when the New War begins `;
+const swOpinionsRaw = `The Moonson did nothing wrong.
+The Unplace is a great idea.
+Leviathan is responsible for everything.
+Fae are overpowered.
+Ruth of Reiche is the best author.
+C. Ambrose is the best author.
+Sandra Wakelight is the best author.
+Leila Raines is the worst author.
+The Spider-in-Sharpness is the most important God.
+The timeline doesn't make sense.
+The Farmer's Crime was Cain and Abel.
+The Imago is the son of the Other Sun
+Plato was right, the world is a supernal reflection
+The Mountain is as a gem with 813 facets
+Moths are those who Seek
+Magic is an extensive kind of Lie
+The world created the Gods, not the other way round
+The Pageantine's dream is all of our world
+The Mountain is a collective hallucination `;
+const swMemesRaw = `Almire is a peaceful land
+As above so below
+TENDON DAMAGE
+All my worlds lost
+The Wolves Wore Smiling Skin
+:) 
+Anabased
+Who is W. Aster?
+ITS NOT THE FUCKING UNPLACE YOU PIECE OF SHIT AZURITE
+I will never forgive the Mendicant
+JAMES KASTZANA LIVES
+Ask me about the Moon`;
+const swGoalsRaw = `Dream of the Mountain
+Solve a Grimoire
+Ascend during a Convergence
+Kill an Endless
+Kill a God
+Remake the Other Mountain
+Find a Rite
+Build a stronger Cult
+Become an Entity
+Write a complete guide to the Mountain
+Find the Moonson's Secret
+Solve the secret of the Exaltation
+Wake the Pageantine
+Free the Moonson
+Become a star-soul
+Become Omniscient
+Create new Magic`;
+const swLocationsRaw = `Almire
+The Mountain in Dreams
+The Head
+The Summit
+The Alabaster Library
+The Chancery
+The Aviary Incandescent
+The Watchtowers
+The Ivory Maze
+Summer's Lodge 
+The Innards
+Court
+House of Traitors
+The Gullet
+The Workshop
+The Pyre
+Warrens
+The Gallery
+Dancer's Hall
+Burrows
+The Flanks
+The Orchestra 
+The Forest
+Deep Woods
+The Heart of the Forest
+The Abattoir
+Museum of Scars
+The Arena 
+The Trench
+House of Needles
+The Swarm
+The Unfair Embassy
+The Waystone Path
+Pillar of Brass
+The Depths
+Lake Lethe, 
+City of Gears
+Blackstone Cathedral
+Heartbreak Grove
+The Abyss
+The Spider Door
+The Half-jails
+Tomb of the Moonson
+The Buried
+THE Aether
+The Observatory
+The Titan's Road
+The Winding Road
+The Other Mountain
+Realms Between
+Unplace
+Impossible Angles
+Beyond
+Eras' Court`;
+const swObjectsRaw = `Skyglass Knife
+Altar of Sacrifice
+Rite of Reforging
+Knowledge of Impossible Edges
+Courtly Manners 1934 edition
+Dragon Egg
+Sliver of Oak
+Hadur-Bag
+Sword of Loss
+The Eclipse Tarot
+Madman's Head`;
+const swJobsRaw = `Occultist
+Endless
+Awakened
+Azurite
+Weaver
+Author
+Archmage
+Entity`;
+
+
+all_obsessions[SUBTLEWARS] = new Obsession(
+  "Subtle Wars",
+  swCharRaw.split("\n"),
+  swChar2Raw.split("\n"),
+  swImportantEventsRaw.split("\n"),
+  swOpinionsRaw.split("\n"),
+  swMemesRaw.split("\n"),
+  swGoalsRaw.split("\n"),
+  swLocationsRaw.split("\n"),
+  swObjectsRaw.split("\n"),
+  swJobsRaw.split("\n")  
+);
+
 
 
 
