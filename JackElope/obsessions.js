@@ -16,6 +16,7 @@ themes from zampanios should go into the obsession engine and build themselves f
 const GLITCH = 'GLITCH'; //jr
 const HOMESTUCK = 'HOMESTUCK'; //jr
 const ZAMPANIO = 'ZAMPANIO'; //jr
+const HENCH = 'HENCH'; //kr
 
 const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr
 
@@ -163,4 +164,63 @@ all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                        HENCH  (submitted by KR)                      //
+//////////////////////////////////////////////////////////////////////////////////////////
 
+  //kr filled this one out
+
+  const henchCharRaw = `Anna/The Auditor
+  Leviathan
+  Supercollider
+  June
+  Quantum Entanglement`
+
+  const henchChar2Raw = `Greg
+  Keller
+  Vesper
+  Darla
+  Jav
+  Molly
+  McKinnon
+  Electric Eel`
+
+  const henchImportantEventsRaw =`when Supercollider broke Anna's leg
+  when Anna created the Injury Report
+  when Anna had to do fieldwork
+  when June cut Anna off
+  when Quantum did THAT`;
+
+  const henchOpinionsRaw = `Supercollider deserved it
+  NO ONE deserves what happened to Supercollider
+  Leviathan's compound was a communist utopia
+  `;
+
+  const henchMemesRaw = `Frigid Auditor Bitch`
+
+  const henchGoalsRaw = `write some fanfic in this setting
+  make a hench OC
+  make a supervillain OC`;
+
+  const henchLocationsRaw = `Leviathan's compound
+  Dovecote`;
+
+  const henchObjectsRaw = `Anna's cane
+  Leviathan's armor`
+
+  const henchJobsRaw= `supervillain
+  superhero
+  hench`
+
+  all_obsessions[HENCH] = new Obsession(
+    "Hench by Natalie Zina Walschots",
+    henchCharRaw.split("\n"),
+    henchChar2Raw.split("\n"),
+    henchImportantEventsRaw.split("\n"),
+    henchOpinionsRaw.split("\n"),
+    henchMemesRaw.split("\n"),
+    henchGoalsRaw.split("\n"),
+    henchLocationsRaw.split("\n"),
+    henchObjectsRaw.split("\n"),
+    henchJobsRaw.split("\n")  
+  );

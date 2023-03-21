@@ -160,7 +160,7 @@ const all_quirk_mappings = [
   new QuirkMap("we're", ["we are"]),
   new QuirkMap("forever", ["5ever", "4evar", "4ever", "forever"]),
   new QuirkMap("don't know", ["dunno"]),
-  new QuirkMap("the", ["teh"]),
+  new QuirkMap("\\bthe\\b", ["teh","the","the","the","the","the","the","the"]),
   new QuirkMap("aren't", ["ain't", "aren't"]),
   new QuirkMap("ie", ["ei"]),
   new QuirkMap("apologize", ["say sorry"]),
@@ -168,7 +168,7 @@ const all_quirk_mappings = [
   new QuirkMap("though", ["tho", "though"]),
   new QuirkMap("you", ["u", "you"]),
   new QuirkMap("right", ["right", "right", "right", "rite"]),
-  new QuirkMap("n't", ["n't", "n't", "n't", " not", "nt"]),
+  new QuirkMap("n't", ["n't", "n't", "n't", "n not", "nt"]),
   new QuirkMap("'m'", ["am", "am", "'m", "m"]),
   new QuirkMap("'d'", ["would", "d","'d"]),
 
