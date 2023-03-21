@@ -13,9 +13,11 @@ themes from zampanios should go into the obsession engine and build themselves f
 
 //dont want it to work how themes do
 
-const GLITCH = 'GLITCH';
-const HOMESTUCK = 'HOMESTUCK';
-const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES';
+const GLITCH = 'GLITCH'; //jr
+const HOMESTUCK = 'HOMESTUCK'; //jr
+const ZAMPANIO = 'ZAMPANIO'; //jr
+
+const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr
 
 
 
@@ -106,6 +108,20 @@ inscryption
 
 
 all_obsessions[GLITCH] = new Obsession(
+  "[INSERT FANDOM HERE]",
+  ["CHARACTER1","CHARACTER2","CHARACTER3"],
+  ["MINORCHARACTER1","MINORCHARACTER2","MINORCHARACTER3"],
+  ["EVENT1","EVENT2","EVENT3"],
+  ["HEADCANON1","HEADCANON2","HEADCANON3"],
+  ["your insides are worth as much as your outsides","MEME2","MEME3"],
+  ["GOAL1","GOAL2","GOAL2"],
+  ["LOCATION1","LOCATION2","LOCATION3"],
+  ["OBJECT1","OBJECT2","OBJECT3"],
+  ["JOB1","JOB2","JOB3"]
+
+);
+
+all_obsessions[ZAMPANIO] = new Obsession(
   "[INSERT FANDOM HERE]",
   ["CHARACTER1","CHARACTER2","CHARACTER3"],
   ["MINORCHARACTER1","MINORCHARACTER2","MINORCHARACTER3"],

@@ -18,7 +18,7 @@ let horrors = ["protojr1.png",
   , "protojr18.png"]
 class ProfilePage extends PageObject {
 
-  obsessions=[];
+  obsessions = [];
 
   //  currentPage = profile? new Profile(name,image,matchPercent,loc) : new HomePage();
 
@@ -27,11 +27,32 @@ class ProfilePage extends PageObject {
     this.seed = seed ? seed : 13;
     this.rand = new SeededRandom(this.seed);
     this.quirk = randomQuirk(this.rand);
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    //for debugging and for showing ppl specific fandoms
+    let secrets = urlParams.get('secrets');
+    if (secrets) {
+      let secretsArray = JSON.parse(secrets);
+      for(let s of secretsArray){
+        this.obsessions.push(Object.values(all_obsessions)[s])
+      }
 
-    let numberObsessions = this.rand.getRandomNumberBetween(1,3);
-    for(let i = 0; i<numberObsessions; i++){
-      this.obsessions.push(this.rand.pickFrom(Object.values(all_obsessions)));
+    } else {
+      let numberObsessions = this.rand.getRandomNumberBetween(1, 3);
+      let secrets = []
+      let obsessionArray = Object.values(all_obsessions);
+      for (let i = 0; i < numberObsessions; i++) {
+        let o = this.rand.pickFrom(obsessionArray);
+        secrets.push(obsessionArray.indexOf(o))
+        this.obsessions.push(o);
+      }
+      updateURLParams(`secrets=${JSON.stringify(secrets)}`)
     }
+
+
+
+
+
     this.age = this.rand.getRandomNumberBetween(18, 99);
     this.name = name ? name : "Shambling Horror With Your Face";
     this.image = image ? baseURL + image : `http://farragofiction.com/ZampanioHotlink/KRsAIExperiments/${pickFrom(horrors)}`;
@@ -332,25 +353,25 @@ class ProfilePage extends PageObject {
 
   setupAbout = (parent) => {
     let content = createElementWithClassAndParent("div", parent, "profile-about");
-  
+
     const createSection = (label, text) => {
       let ele = createElementWithClassAndParent("div", content, "profile-section-wrapper");
-  
+
       let labelEle = createElementWithClassAndParent("div", ele, "profile-section-title");
       labelEle.innerText = label;
-  
+
       let textEle = createElementWithClassAndParent("div", ele, "profile-section-text");
       textEle.innerHTML = this.quirk.apply(text);
     }
-  
-    let sections =getPossibleSections(this.rand, this.obsessions);
-  
-    for(let section of sections){
+
+    let sections = getPossibleSections(this.rand, this.obsessions);
+
+    for (let section of sections) {
       section.makeRamble();
       createSection(section.title, section.ramble)
     }
-  
-  
+
+
   }
 
 }
