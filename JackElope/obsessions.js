@@ -331,7 +331,7 @@ alchuemist`;
 
 
 all_obsessions[TOGITHINGY] = new Obsession(
-  "Togigagetas",
+  "Togigageta",
   togiCharRaw.split("\n"),
   togiChar2Raw.split("\n"),
   togiImportantEventsRaw.split("\n"),

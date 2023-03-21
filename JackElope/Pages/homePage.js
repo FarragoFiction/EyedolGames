@@ -148,7 +148,18 @@ const renderOneSexySingle = (rand, container) => {
 
     let single = createElementWithClassAndParent("a", container,"single");
     single.target = "_blank";
-    single.href = `?seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`;
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    //for debugging and for showing ppl specific fandoms
+    let secrets = urlParams.get('secrets');
+    if(secrets){
+        single.href = `?secrets=${secrets}&seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`;
+
+    }else{
+        single.href = `?seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`;
+
+    }
     
 
     let imageEle = createElementWithClassAndParent("img", single,"preview", 'results-image');
@@ -163,11 +174,6 @@ const renderOneSexySingle = (rand, container) => {
 
     let matchEle = createElementWithClassAndParent("div", single, "results-match");
     matchEle.innerText = `${matchPercent}%`;
-
-
-
-
-
 
 }
 
