@@ -280,6 +280,8 @@ class SecretsSection extends AboutSection {
 
       const randomGoal = obsession.randomGoal(this.rand);
       const rambles = [
+        `I think ${favoriteMainBlorbo} and ${favoriteMinorBlorbo} would be really hot if they dated.`,
+        `I totally ship ${favoriteMainBlorbo} and ${favoriteMinorBlorbo} from ${obsession.name}.`,
         `I sleep with a giant stuffed ${favObject}.`,
         `I once punched someone who said ${hotTake}.`,
         `I have a tattoo showing ${favoriteEvent} in ${obsession.name}. ${this.rand.pickFrom(["","You can't see it normally, though ;)","If we hit it off maybe I can show you where ;)"])}`,
@@ -334,7 +336,7 @@ class DatingSection extends AboutSection {
         `Message me if you want to hear my thoughts on '${favoriteQuote}' and how it relates to ${this.rand.pickFrom(["zampanio","feminism on a global scale","a post modern critique of capitalism"])}.`,
 
         `Maybe we can connect if you think you want to cosplay ${favJob} with me at a convention :)`,
-        `${this.rand.pickFrom(whoStarts)} is afraid to admit they still collect ${favObject} figurines. `  
+        `${this.rand.pickFrom(whoStarts)} isn't afraid to admit they still collect ${favObject} figurines. `  
       ]
       const numberSentences = this.rand.getRandomNumberBetween(1,5);
       let ret = " <p> ";

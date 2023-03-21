@@ -17,6 +17,8 @@ const GLITCH = 'GLITCH'; //jr
 const HOMESTUCK = 'HOMESTUCK'; //jr
 const ZAMPANIO = 'ZAMPANIO'; //jr
 const HENCH = 'HENCH'; //kr
+const FIVEDARPS = 'FIVEDARPS'; //IC
+const TOGITHINGY = 'TOGITHINGY'; //CD
 
 const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr
 
@@ -168,7 +170,6 @@ all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
 //                                        HENCH  (submitted by KR)                      //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-  //kr filled this one out
 
   const henchCharRaw = `Anna/The Auditor
   Leviathan
@@ -224,3 +225,148 @@ all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
     henchObjectsRaw.split("\n"),
     henchJobsRaw.split("\n")  
   );
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                        5Darps  (submitted by IC)                     //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+const darpsCharRaw = `Priska, Piper, Riku, Otto`;
+const darpsChar2Raw = `Street, Mars, Venus, Tank, Mr. Yurlungur, Giltia, Kohl, Trudie, Hexe Trude, Grace, Marie, Anu, Apollo, Lucius, Phantom Dealer, Beatdown, Officer Lane, Nyan Nyan, Officer Moriard, Brad, Sano, Bob, Decoy Otto, Uria, Sasuke, Ninkendog, Thriller Killer, Serpent Night Terror`;
+const darpsImportantEventsRaw=`when Riku killed the Netherworld King, when Maha Vailo broke Otto’s criminal mark, when Hexe Trude took over the Satellite`
+const darpsOpinionsRaw=``;
+const darpsMemesRaw=``;
+const darpsGoalsRaw=``;
+const darpsLocationsRaw=``;
+const darpsObjectsRaw=``;
+const darpsJobsRaw=``;
+
+all_obsessions[FIVEDARPS] = new Obsession(
+  "5Darps",
+  darpsCharRaw.split(","),
+  darpsChar2Raw.split(","),
+  darpsImportantEventsRaw.split(","),
+  darpsOpinionsRaw.split(","),
+  darpsMemesRaw.split(","),
+  darpsGoalsRaw.split(","),
+  darpsLocationsRaw.split(","),
+  darpsObjectsRaw.split(","),
+  darpsJobsRaw.split(",")  
+);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                  Togigageta   (submitted by CD)                      //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+const togiCharRaw = `Bastonia
+Forest
+Fiction
+Adeff
+Esafa`;
+const togiChar2Raw = `Fibasie
+Tosbab
+Fofo
+Didaes
+Egast
+Coddy
+Bab
+The Mayor`;
+const togiImportantEventsRaw = `when the siblings found the terminal
+when Bastonia escaped their home
+when Bastonia found the first gateway
+when Esafa stole the ancient artifact
+when Adeff pierced the veil
+when the secret temple was uncovered
+when the mayor finally appeared`;
+const togiOpinionsRaw = `Cube is a better name
+Adeff is irredeemable
+Forest is the best character in anything ever
+Fiction shouldn't have forgiven Forest
+Esafa is the cutest
+Lagamorph's Alley is terrifying
+the projection sequences are pretty cool
+the twist about the mayor is cliche`;
+const togiMemesRaw = `putting silverware in the bathtub
+ripe snow globes
+the everything collection
+I hope you get shot soon
+The Locksmith
+crowbars`;
+const togiGoalsRaw = `write a fanfic about Didaes' daily schedule
+make a remix of Tosbab's song
+paint all of Bab's paintings in real life
+write a fanfic about the siblings' past
+write out how Esafa's sidequest works
+make a map of the Rotting Woods
+document all of Coddy's dialogue
+draw fanart of Fofo at work on a new tool
+draw the siblings in the Temple of Above`;
+const togiLocationsRaw = `Bas' house
+Esafa's lab
+the Temple of Above
+Somewhat Standard Supermarket
+Lagomorph's Alley
+The Rotting Woods
+The Labyrinth
+Breakdown Junction
+the siblings' house
+the mayor's office
+Fibasie's tutorial booth
+the playground
+the Temple of Identity`;
+const togiObjectsRaw = `source mirror
+drop decoder
+purple key
+terminal
+liminal lens
+eye candy
+sandy bottle`;
+const togiJobsRaw = `cashier
+hunter
+painter
+reologist
+alchuemist`;
+
+
+all_obsessions[TOGITHINGY] = new Obsession(
+  "Togigagetas",
+  togiCharRaw.split("\n"),
+  togiChar2Raw.split("\n"),
+  togiImportantEventsRaw.split("\n"),
+  togiOpinionsRaw.split("\n"),
+  togiMemesRaw.split("\n"),
+  togiGoalsRaw.split("\n"),
+  togiLocationsRaw.split("\n"),
+  togiObjectsRaw.split("\n"),
+  togiJobsRaw.split("\n")  
+);
+
+
+
+/*
+
+const togiCharRaw = ``;
+const togiChar2Raw = ``;
+const togiImportantEventsRaw = ``;
+const togiOpinionsRaw = ``;
+const togiMemesRaw = ``;
+const togiGoalsRaw = ``;
+const togiLocationsRaw = ``;
+const togiObjectsRaw = ``;
+const togiJobsRaw = ``;
+
+
+all_obsessions[TOGITHINGY] = new Obsession(
+  "Togigagetas",
+  togiCharRaw.split("\n"),
+  togiChar2Raw.split("\n"),
+  togiImportantEventsRaw.split("\n"),
+  togiOpinionsRaw.split("\n"),
+  togiMemesRaw.split("\n"),
+  togiGoalsRaw.split("\n"),
+  togiLocationsRaw.split("\n"),
+  togiObjectsRaw.split("\n"),
+  togiJobsRaw.split("\n")  
+);*/

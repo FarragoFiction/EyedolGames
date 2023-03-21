@@ -148,7 +148,7 @@ const all_quirk_mappings = [
   new QuirkMap("\\bguess\\b", ["suppose", "estimate"]),
   new QuirkMap("oh my god", ["omg", "omfg"]),
   new QuirkMap("\\blike\\b", ["like", "liek"]),
-  new QuirkMap("ing", ["in", "ing"]),
+  new QuirkMap("ing", ["in", "ing", "ing", "ing", "ing", "ing"]),
   new QuirkMap("have to", ["hafta", "have to"]),
   new QuirkMap("want to", ["wanta", "want to"]),
   new QuirkMap("need to", ["needta", "need to"]),
