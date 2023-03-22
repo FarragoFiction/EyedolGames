@@ -598,7 +598,7 @@ all_obsessions[SUBTLEWARS] = new Obsession(
 const cncCharRaw = `Abom79
 This Old Tony
 Tubalcain`;
-const cncChar2Raw = `that one guy`;
+const cncChar2Raw = ``;
 const cncImportantEventsRaw = `when Tony broke a bit
 when Abom79 used the overhead crane
 when Abom79 used a Starrett indicator to center stock on a lathe
@@ -636,21 +636,90 @@ all_obsessions[CNC] = new Obsession(
 //////////////////////////////////////////////////////////////////////////////////////////
 //                        The Way Ahead    (submitted by Daedalus)                      //
 //////////////////////////////////////////////////////////////////////////////////////////
+//https://www.royalroad.com/fiction/42202/the-way-ahead/
+
+const twaCharRaw = `Edwin Karl Maxlin`;
+const twaChar2Raw = `Inion, Rillah, Lefi`;
+const twaImportantEventsRaw = `when Edwin fell through worlds and from the sky, when Edwin argued with the god-emperor of birdkind, when Edwin slew the mage of the blood plague, when Edwin made a machine to control the weather, when Edwin discovered that some bacteria are immune to fire`;
+const twaOpinionsRaw = `The Empire is obviously evil and wrong for having Skill control, Edwin is an absolute idiot and that's not at all how social anxiety works, a twelve-skill limit is tantamount to genocide, the Empire is dystopic, Niall is a brave and upstanding freedom fighter, the bandit arc was absolutely awful, Rillah is incredibly untrustworthy, Inion thinks of Edwin as a pet, Edwin is a complete blank slate, Edwin's personality makes the story basically unreadable and is so unrealistic, Edwin is a very realistic look at social anxiety, social anxiety doesn't exist, they call themselves the Empire obviously they're evil, the dwarf king whatsisname is just the absolute worst, Lefi is secretly Loki, Lefi has the Immortality and Age Resistance skills`;
+const twaMemesRaw = `Further testing required!,Further research required!`;
+const twaGoalsRaw = `Map out all the skills, write a Lefi fanfiction`;
+const twaLocationsRaw = `Highpeak Kingdoms, The Verdant, Joriah, Vinstead`;
+const twaObjectsRaw = ` a crystal erlenmyer flask holding a perpetually-burning flame`;
+const twaJobsRaw = `Alchemist`;
 
 
+all_obsessions[THEWAYAHEAD] = new Obsession(
+  "The Way Ahead",
+  twaCharRaw.split(","),
+  twaChar2Raw.split(","),
+  twaImportantEventsRaw.split(","),
+  twaOpinionsRaw.split(","),
+  twaMemesRaw.split(","),
+  twaGoalsRaw.split(","),
+  twaLocationsRaw.split(","),
+  twaObjectsRaw.split(","),
+  twaJobsRaw.split(",")  
+);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-//                       For Want of Knowledge    (submitted by Daedalus)               //
+//                       The Encyclopedia Arcane    (submitted by Daedalus)             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+//https://www.royalroad.com/fiction/56715/the-encyclopedia-arcane
+const fwokCharRaw = ``;
+const fwokChar2Raw = `T. Ketveh, Senior Gosiah`;
+const fwokImportantEventsRaw = ``;
+const fwokOpinionsRaw = `The Encyclopedia is solid exposition`;
+const fwokMemesRaw = ``;
+const fwokGoalsRaw = `Develop more`;
+const fwokLocationsRaw = `Ikraish, Ithular`;
+const fwokObjectsRaw = ``;
+const fwokJobsRaw = `Mage-researcher, teleportation engineer`;
 
+
+all_obsessions[FORWANTOFKNOWLEDGE] = new Obsession(
+  "The Encyclopedia Arcane",
+  fwokCharRaw.split(","),
+  fwokChar2Raw.split(","),
+  fwokImportantEventsRaw.split(","),
+  fwokOpinionsRaw.split(","),
+  fwokMemesRaw.split(","),
+  fwokGoalsRaw.split(","),
+  fwokLocationsRaw.split(","),
+  fwokObjectsRaw.split(","),
+  fwokJobsRaw.split(",")  
+);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //                       Of And They Shall    (submitted by Daedalus)                   //
 //////////////////////////////////////////////////////////////////////////////////////////
+//:) :) :)
+
+const oatsCharRaw = `Ilkur Taisal Relikar`;
+const oatsChar2Raw = `Zenunual, Garin, Etuia`;
+const oatsImportantEventsRaw = `when Ilkur conquered Ikraish, when Etuia betrayed her family, when Ilkur became The Archgod`;
+const oatsOpinionsRaw = `Ilkur did nothing wrong, Zenunal is hot (Zenunal would kill you/yes I know), I ship Etuia and Ilkur`;
+const oatsMemesRaw = ``;
+const oatsGoalsRaw = `Zenunal (a succubus)/everyone smut fanfiction`;
+const oatsLocationsRaw = `Ikraish`;
+const oatsObjectsRaw = ``;
+const oatsJobsRaw = `Archking, Battlemage, a Chosen One`;
 
 
+all_obsessions[OFANDTHEYSHALL] = new Obsession(
+  "Of And They Shall",
+  oatsCharRaw.split(","),
+  oatsChar2Raw.split(","),
+  oatsImportantEventsRaw.split(","),
+  oatsOpinionsRaw.split(","),
+  oatsMemesRaw.split(","),
+  oatsGoalsRaw.split(","),
+  oatsLocationsRaw.split(","),
+  oatsObjectsRaw.split(","),
+  oatsJobsRaw.split(",")  
+);
 /*
 
 const CharRaw = ``;
