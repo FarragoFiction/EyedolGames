@@ -720,6 +720,98 @@ all_obsessions[OFANDTHEYSHALL] = new Obsession(
   oatsObjectsRaw.split(","),
   oatsJobsRaw.split(",")  
 );
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Zampanio    (Bullshit, Guesses and Extroploations about Zampanio the Game)           //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+const zCharRaw = `Castor, Pollux,Mary King,noli,the Author,Web,The Player,Truth,Narrator,Cutsey Anime Girl, The Partigiano, Waste of Lies,Jaxon Researcher,NotAMinotaur`;
+const zChar2Raw = `Zampano,Mysterious Hooded Cat Person,Librarian, Talking Animal, Nameless Invisible Character,ZEUS ,Mermaid, Savepoint Fairy, Susan,Clarence,lionfish, Princess, Janky Sprite,Memory Guy,Eye,Data Collectors, Shambling Horror With Your Face,ShamblingHorrorWithYourFace`;
+const zImportantEventsRaw = `when you mistook an old lady in the forest with moss growing on her for a background statue ,when you find the banquet hall,when you realize you've played this game before, when you lose the game, when you realize you're already playing the game,when you rescued your sister, when the adventures of castor and pollux started, when you ragequit so bad you decided to delete your save, when you had to dodge the meteor shower,when the playe rescued a kitten, when we ended up cutting these magic pipes that delivered energy to a mermaid city and they had to be repaired in the epilogue, when we watched a meteor shower in the sky together,when the player saved all the mermaids from some evil threat,when the player mastered their magic powers , when you found a copy of yourself in the maze,when the player jaywalked, when the player made the world's most grand and destructive BBQ, when the player stopped a big bad evil guy through powers of friendship and incredible violence, when the player character was seated at some kind of banquet hall that looked like it could have held dozens of people, but only one other person was in it`;
+const zOpinionsRaw = `Zampanio is a good game,
+it seems like the developers were well aware and went "fuck it, it's a feature" instead of actually fixing it.,
+The sum of what I have said.,This fruit and this meat change people. ,There are no guests.,The feast is laid out for those meant to partake.,My quest is, at last, at its end.,everyone is getting scary or getting scared,that won't make sense to a lot of you. maybe not even any of you, really. but. just trust me on this one.,you've played this game before, i've played this game before,A pawn on a stage; no matter its colour at this precise moment, it is a pawn on a stage., We were all born for it, one way or the other, in this circling, spiraling chain of exchanges.,A notion of the pneuma; nothing else, other than what is.,To testify, through our actions, that we are alive, and are.,The choices we don't make, as do the choices we make.,Love, justice, duty and mercy, like belief in a higher power, are an act of faith; they are because they are assumed to be.,There is serenity in clockwork. Listen to the tick of seconds. It will guide you where you belong.,Awash in blood, no matter how you phrase it; whenever it unites or separates, whenever it's scaffolding or alkahest.,you should really play zampanio if you haven't already,the weird absence online only ended up intriguing me,it would make weird noises sometimes that made me naueous,the black screen was a maze,authors always stick text in ciphers when (in the fiction) that text would have no real reason to be encoded,the Author specifically recalled their father working on Zampanio before his disappearance,the Author was specifically looking for evidence of their father's trademark in the game,the most memorable scene from Zampanio recreated in this game was one where, from what i can remember, the player character was seated at some kind of banquet hall that looked like it could have held dozens of people but only one other person was in it, it might have been the Author's way of testing to see who would really be dedicated enough to this search that they'd go all the way of finding every secret they'd hidden in the gameyour customisation utterly changes your character's skill tree,Zampanio seems to be some sort of a weird western-style role-playing game,apparently Zampanio has a living community,it breaks my heart to see peeps miss out on [Secrets] because they're trying to explore everything traditionally,I found starting with a new branch everytime led to less variation then playing the same one over and over and letting the game do its thing`;
+const zMemesRaw = `ancient italian video games slash greek myths,inexplicable force that deletes zampanio content,zampanio is a very good game you should play it",What color is the shade of Disbelief,you is needed to end the world,colonize your mind, verified fact,blatant lie,contemporary of pong,do you traverse mazes clockwise or counterclockwise, rip grumpy cat, the susan isnt there,dodge this moist pimp,Time Is Dead,L'n hpkpi wr ef jofghlqluf.,verses lines words,step 3, cut them in threes, this was the best birthday present i could have asked for, i looked away from my computer and realized that i had been playing zampanio for 14 hours straight,i swea i only palyed it 3 times.,YOUR TWIN IS GONE,GO TO ZEUS TO PLEAD FOR HER LIFE,There are no guests.,you've played this game before,There is serenity in clockwork. Listen to the tick of seconds. It will guide you where you belong.,guide you to your ascension,lattice of infinite possibilities,everyone should play it :),do not ask how the LAN party went,A coffee stain appeared in the settings menu,This is 100% anecdotal, but I found starting with a new branch everytime led to less variation then playing the same one over and over and letting the game do its thing,Vescillation is way overhyped,when you went with a standard Joriahn creation, when you got the memory of his death, You watch those two feet sway back and forth,Clear your mind. Focus only on what you find here. Do not think of the world without, do not bring your own memories. That leads to corruption.,:), How much do you think waffles cost?,The Susan isn't there`;
+const zGoalsRaw = `delete at least three zampanio fan works,not a fed, died like cowards, give the bear lots of air, beware oblivion is at hand,longest table everget lost forever, tell my friends about zampanio, make a zampanio fan hack, make a zampanio fan game, write a zampanio fan fiction, draw a zampanio fan comic, make a zampanio arg, keep reading this site and never forget anything i find in it`;
+const zLocationsRaw = `mermaid city, wasteland,banquet hall,classroom I used to go to as a kid,temple to Noli,Zampanio,sprawling jungle,vast metropolis,maze,labyrinth, A vast hall set with many long tables`;
+const zObjectsRaw = `weird spiral pattern, the lights, clown nose, long table, boat, mediafire link, spiral pupils, computer`;
+const zJobsRaw = `priest of Noli,savepoint fairy,god, Achievement System,dev console,Data Collector,bomber`;
+
+
+all_obsessions[ZAMPANIO] = new Obsession(
+  "Zampanio",
+  zCharRaw.split(","),
+  zChar2Raw.split(","),
+  zImportantEventsRaw.split(","),
+  zOpinionsRaw.split(","),
+  zMemesRaw.split(","),
+  zGoalsRaw.split(","),
+  zLocationsRaw.split(","),
+  zObjectsRaw.split(","),
+  zJobsRaw.split(",")  
+);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                   The Echidna Universe    (JR and IC's Zampanio Fanwork)             //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+const teuCharRaw = ``;
+const teuChar2Raw = ``;
+const teuImportantEventsRaw = ``;
+const teuOpinionsRaw = ``;
+const teuMemesRaw = ``;
+const teuGoalsRaw = ``;
+const teuLocationsRaw = ``;
+const teuObjectsRaw = ``;
+const teuJobsRaw = ``;
+
+
+all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
+  "The Echidna Universe",
+  teuCharRaw.split("\n"),
+  teuChar2Raw.split("\n"),
+  teuImportantEventsRaw.split("\n"),
+  teuOpinionsRaw.split("\n"),
+  teuMemesRaw.split("\n"),
+  teuGoalsRaw.split("\n"),
+  teuLocationsRaw.split("\n"),
+  teuObjectsRaw.split("\n"),
+  teuJobsRaw.split("\n")  
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                   Farragnarok    (Farrago Fiction's Not!SBURB Session)               //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+const ffCharRaw = ``;
+const ffChar2Raw = ``;
+const ffImportantEventsRaw = ``;
+const ffOpinionsRaw = ``;
+const ffMemesRaw = ``;
+const ffGoalsRaw = ``;
+const ffLocationsRaw = ``;
+const ffObjectsRaw = ``;
+const ffJobsRaw = ``;
+
+
+all_obsessions[FARRAGNAROK] = new Obsession(
+  "Farragnarok",
+  ffCharRaw.split("\n"),
+  ffChar2Raw.split("\n"),
+  ffImportantEventsRaw.split("\n"),
+  ffOpinionsRaw.split("\n"),
+  ffMemesRaw.split("\n"),
+  ffGoalsRaw.split("\n"),
+  ffLocationsRaw.split("\n"),
+  ffObjectsRaw.split("\n"),
+  ffJobsRaw.split("\n")  
+);
+
 /*
 
 const CharRaw = ``;
