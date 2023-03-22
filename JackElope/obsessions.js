@@ -728,15 +728,15 @@ all_obsessions[OFANDTHEYSHALL] = new Obsession(
 //////////////////////////////////////////////////////////////////////////////////////////
 
 const zCharRaw = `Castor, Pollux,Mary King,noli,the Author,Web,The Player,Truth,Narrator,Cutsey Anime Girl, The Partigiano, Waste of Lies,Jaxon Researcher,NotAMinotaur`;
-const zChar2Raw = `Zampano,Mysterious Hooded Cat Person,Librarian, Talking Animal, Nameless Invisible Character,ZEUS ,Mermaid, Savepoint Fairy, Susan,Clarence,lionfish, Princess, Janky Sprite,Memory Guy,Eye,Data Collectors, Shambling Horror With Your Face,ShamblingHorrorWithYourFace`;
+const zChar2Raw = `Doc Slaughter,Zampano,Mysterious Hooded Cat Person,Librarian, Talking Animal, Nameless Invisible Character,ZEUS ,Mermaid, Savepoint Fairy, Susan,Clarence,lionfish, Princess, Janky Sprite,Memory Guy,Eye,Data Collectors, Shambling Horror With Your Face,ShamblingHorrorWithYourFace`;
 const zImportantEventsRaw = `when you mistook an old lady in the forest with moss growing on her for a background statue ,when you find the banquet hall,when you realize you've played this game before, when you lose the game, when you realize you're already playing the game,when you rescued your sister, when the adventures of castor and pollux started, when you ragequit so bad you decided to delete your save, when you had to dodge the meteor shower,when the playe rescued a kitten, when we ended up cutting these magic pipes that delivered energy to a mermaid city and they had to be repaired in the epilogue, when we watched a meteor shower in the sky together,when the player saved all the mermaids from some evil threat,when the player mastered their magic powers , when you found a copy of yourself in the maze,when the player jaywalked, when the player made the world's most grand and destructive BBQ, when the player stopped a big bad evil guy through powers of friendship and incredible violence, when the player character was seated at some kind of banquet hall that looked like it could have held dozens of people, but only one other person was in it`;
 const zOpinionsRaw = `Zampanio is a good game,
 it seems like the developers were well aware and went "fuck it, it's a feature" instead of actually fixing it.,
 The sum of what I have said.,This fruit and this meat change people. ,There are no guests.,The feast is laid out for those meant to partake.,My quest is, at last, at its end.,everyone is getting scary or getting scared,that won't make sense to a lot of you. maybe not even any of you, really. but. just trust me on this one.,you've played this game before, i've played this game before,A pawn on a stage; no matter its colour at this precise moment, it is a pawn on a stage., We were all born for it, one way or the other, in this circling, spiraling chain of exchanges.,A notion of the pneuma; nothing else, other than what is.,To testify, through our actions, that we are alive, and are.,The choices we don't make, as do the choices we make.,Love, justice, duty and mercy, like belief in a higher power, are an act of faith; they are because they are assumed to be.,There is serenity in clockwork. Listen to the tick of seconds. It will guide you where you belong.,Awash in blood, no matter how you phrase it; whenever it unites or separates, whenever it's scaffolding or alkahest.,you should really play zampanio if you haven't already,the weird absence online only ended up intriguing me,it would make weird noises sometimes that made me naueous,the black screen was a maze,authors always stick text in ciphers when (in the fiction) that text would have no real reason to be encoded,the Author specifically recalled their father working on Zampanio before his disappearance,the Author was specifically looking for evidence of their father's trademark in the game,the most memorable scene from Zampanio recreated in this game was one where, from what i can remember, the player character was seated at some kind of banquet hall that looked like it could have held dozens of people but only one other person was in it, it might have been the Author's way of testing to see who would really be dedicated enough to this search that they'd go all the way of finding every secret they'd hidden in the gameyour customisation utterly changes your character's skill tree,Zampanio seems to be some sort of a weird western-style role-playing game,apparently Zampanio has a living community,it breaks my heart to see peeps miss out on [Secrets] because they're trying to explore everything traditionally,I found starting with a new branch everytime led to less variation then playing the same one over and over and letting the game do its thing`;
-const zMemesRaw = `ancient italian video games slash greek myths,inexplicable force that deletes zampanio content,zampanio is a very good game you should play it",What color is the shade of Disbelief,you is needed to end the world,colonize your mind, verified fact,blatant lie,contemporary of pong,do you traverse mazes clockwise or counterclockwise, rip grumpy cat, the susan isnt there,dodge this moist pimp,Time Is Dead,L'n hpkpi wr ef jofghlqluf.,verses lines words,step 3, cut them in threes, this was the best birthday present i could have asked for, i looked away from my computer and realized that i had been playing zampanio for 14 hours straight,i swea i only palyed it 3 times.,YOUR TWIN IS GONE,GO TO ZEUS TO PLEAD FOR HER LIFE,There are no guests.,you've played this game before,There is serenity in clockwork. Listen to the tick of seconds. It will guide you where you belong.,guide you to your ascension,lattice of infinite possibilities,everyone should play it :),do not ask how the LAN party went,A coffee stain appeared in the settings menu,This is 100% anecdotal, but I found starting with a new branch everytime led to less variation then playing the same one over and over and letting the game do its thing,Vescillation is way overhyped,when you went with a standard Joriahn creation, when you got the memory of his death, You watch those two feet sway back and forth,Clear your mind. Focus only on what you find here. Do not think of the world without, do not bring your own memories. That leads to corruption.,:), How much do you think waffles cost?,The Susan isn't there`;
+const zMemesRaw = `The Truth Is Layered,ancient italian video games slash greek myths,inexplicable force that deletes zampanio content,zampanio is a very good game you should play it",What color is the shade of Disbelief,you is needed to end the world,colonize your mind, verified fact,blatant lie,contemporary of pong,do you traverse mazes clockwise or counterclockwise, rip grumpy cat, the susan isnt there,dodge this moist pimp,Time Is Dead,L'n hpkpi wr ef jofghlqluf.,verses lines words,step 3, cut them in threes, this was the best birthday present i could have asked for, i looked away from my computer and realized that i had been playing zampanio for 14 hours straight,i swea i only palyed it 3 times.,YOUR TWIN IS GONE,GO TO ZEUS TO PLEAD FOR HER LIFE,There are no guests.,you've played this game before,There is serenity in clockwork. Listen to the tick of seconds. It will guide you where you belong.,guide you to your ascension,lattice of infinite possibilities,everyone should play it :),do not ask how the LAN party went,A coffee stain appeared in the settings menu,This is 100% anecdotal, but I found starting with a new branch everytime led to less variation then playing the same one over and over and letting the game do its thing,Vescillation is way overhyped,when you went with a standard Joriahn creation, when you got the memory of his death, You watch those two feet sway back and forth,Clear your mind. Focus only on what you find here. Do not think of the world without, do not bring your own memories. That leads to corruption.,:), How much do you think waffles cost?,The Susan isn't there`;
 const zGoalsRaw = `delete at least three zampanio fan works,not a fed, died like cowards, give the bear lots of air, beware oblivion is at hand,longest table everget lost forever, tell my friends about zampanio, make a zampanio fan hack, make a zampanio fan game, write a zampanio fan fiction, draw a zampanio fan comic, make a zampanio arg, keep reading this site and never forget anything i find in it`;
-const zLocationsRaw = `mermaid city, wasteland,banquet hall,classroom I used to go to as a kid,temple to Noli,Zampanio,sprawling jungle,vast metropolis,maze,labyrinth, A vast hall set with many long tables`;
-const zObjectsRaw = `weird spiral pattern, the lights, clown nose, long table, boat, mediafire link, spiral pupils, computer`;
+const zLocationsRaw = `Morgan's Hill, Duskhollow, mermaid city, wasteland,banquet hall,classroom I used to go to as a kid,temple to Noli,Zampanio,sprawling jungle,vast metropolis,maze,labyrinth, A vast hall set with many long tables`;
+const zObjectsRaw = `unos autograph book, duo mask, tres milk bottle, quatro blade, cinque cloak, sextant, septum coin, octome, novum mirror, weird spiral pattern, the lights, clown nose, long table, boat, mediafire link, spiral pupils, computer`;
 const zJobsRaw = `priest of Noli,savepoint fairy,god, Achievement System,dev console,Data Collector,bomber`;
 
 
@@ -759,28 +759,28 @@ all_obsessions[ZAMPANIO] = new Obsession(
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-const teuCharRaw = ``;
-const teuChar2Raw = ``;
-const teuImportantEventsRaw = ``;
-const teuOpinionsRaw = ``;
-const teuMemesRaw = ``;
-const teuGoalsRaw = ``;
-const teuLocationsRaw = ``;
-const teuObjectsRaw = ``;
-const teuJobsRaw = ``;
+const teuCharRaw = `Camille, Neville, Devona, Witherby, Ria, Yongki, Captain, Vik, K, Lee/Hunter, Hoon, River, Parker, Peewee, Wanda, Train Girl Ambrose`;
+const teuChar2Raw = `Rod, Rebel, Melon,Doc Slaughter, The Closer,The Intern, Flower Chick, Robert Bobert, Bobert Robert, The Eye Killer, Alt, Tyrfing, The Neighbor, NAM, Ronin, Himbo, Hostage, The Italian `;
+const teuImportantEventsRaw = `when you realize that the Intern is only PRETENDING not to be in the Loop, when you realize there are two Closers and two Eye Killers and two Wanda/Wodins but no one else has doubles, when you realize that nearly all characters came from another universe, when you realize that Wanda defends the Eye Killer in Court every single loop, when you realize that its a SPACE loop into parallel dimensions and not a time loop, when you realize that wodin becomes the wanderer becomes wanda, when you realize wodin transwed their gender just to make a straight man joke about the Intern, when you realize that despite how normal the Intern is JR still stole his name, when you realize JR stole the names of everyone except those from lobotomy corp`;
+const teuOpinionsRaw = `wanda should finally just let the memes end,parker should be allowed to tunnel out of the universe as a little treat,the closer is a girlboss, captain shouldn't be allowed to be inside his old body because yongki is there, yongki is child coded, its problematic to ship devona with anyone because she's canonical ace/aro, the eye killer is a minor, camille x ria is a toxic ship, witherby x neville is otp, its problematic to ship neville with anyone because he's child coded, neville is a grown ass man who can make his own decisions, devona is autistic, neville is autistic, devona has adhd, neville has adhd, camille is so completely normal, camille is DEFINITELY dead, ria is problematic, parker deserves happiness, k is a little shit, k deserves happiness, camille did nothing wrong, ria did nothing wrong, captain did nothing wrong, vik did nothing wrong, k did nothing wrong, lee/hunter did nothing wrong, hoon did nothing wrong, river did nothing wrong, parker did nothing wrong, peewee did nothing wrong, wanda is responsible for everything that went wrong`;
+const teuMemesRaw = `The End is Never The End, Hydrate or Diedrate. The Truth Is Layered`;
+const teuGoalsRaw = `create zampanio branches from this branch, dig dig dig dig, find all the secrets, record what secrets i've found, update the wiki, write a story about how you found zampanio, write a story about how you found the echidna universe, write a story write a story write a story`;
+const teuLocationsRaw = `train station, parkers tunnels,mall, maze, parking lot, disney land, ohio, italy, florida, eyedol hq`;
+const teuObjectsRaw = `unos autograph book, duo mask, tres milk bottle, quatro blade, cinque cloak, sextant, septum coin, octome, novum mirror`;
+const teuJobsRaw = `CEBro, CFO, Shambling Horror, Lawyer, Auditor, Games Researcher, Conductor, Accountant, Imagineer`;
 
 
 all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
   "The Echidna Universe",
-  teuCharRaw.split("\n"),
-  teuChar2Raw.split("\n"),
-  teuImportantEventsRaw.split("\n"),
-  teuOpinionsRaw.split("\n"),
-  teuMemesRaw.split("\n"),
-  teuGoalsRaw.split("\n"),
-  teuLocationsRaw.split("\n"),
-  teuObjectsRaw.split("\n"),
-  teuJobsRaw.split("\n")  
+  teuCharRaw.split(","),
+  teuChar2Raw.split(","),
+  teuImportantEventsRaw.split(","),
+  teuOpinionsRaw.split(","),
+  teuMemesRaw.split(","),
+  teuGoalsRaw.split(","),
+  teuLocationsRaw.split(","),
+  teuObjectsRaw.split(","),
+  teuJobsRaw.split(",")  
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -788,28 +788,28 @@ all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-const ffCharRaw = ``;
-const ffChar2Raw = ``;
-const ffImportantEventsRaw = ``;
-const ffOpinionsRaw = ``;
-const ffMemesRaw = ``;
-const ffGoalsRaw = ``;
-const ffLocationsRaw = ``;
-const ffObjectsRaw = ``;
-const ffJobsRaw = ``;
+const ffCharRaw = `Zawhei,Eirikr,Volour,Okarin,Peewee,Hagala,Despap,Othala,Nidhogg`;
+const ffChar2Raw = `the Eagle, Loki, the consorts, Butler Bot, YN, Big Honkers`;
+const ffImportantEventsRaw = `when the Leg Lamia and the Tail Lamia fought over whether Corrupt Nidhogg or Purified Nidhogg was the True Nidhogg,when the WigglerEater invaded LOHAE,when you realize the players used to be trolls and not lamia,when you realized Nidhogg had hacked reality to make scratches worse, when the Echidna Universe turned out to have a memory leak, when Peewee through himself into the Echidna to try to save the other three Universes,when Loki revealed herself to be a shapeshifter, when the Observers realized just how much power they had over the session, when Volour decided to influence the Observers opinions no matter what, when Eirikr organied the Leg Lamia to make sure Corruption happened no matter what, when Othala couldn't be found, when you realized where Othala had been, when Zawhei purified and realized how horrific her goals had been, when Nidhogg shook off the Corruption and organized the Snakes to save FarragoSpace,when it was revealed that Despap was the villain all along, when Hagala turned her back on Peewee, when Peewee revaled he remembered all 8 scratches at once, when Okarin finally fought of Slepnir, when Hagala bred four universes at once`;
+const ffOpinionsRaw = `Zawhei was way too pompous, Volour was problematic, Volour was a Gaslight Gatekeep Girlboss,Nidhogg was a very dumb snake who shouldn't have been allowed to hack reality, Loki is probably JR in disguise, Loki probably isn't a leprechaun, Loki is actually a Trickster Player escaped from the Echidna, The Segundian Empire DESERVED to conquer FarragoSpace, Despap did nothing wrong, Peewee whines too much, Peewee is a poor lil meow meow, Othala barely even mattered, Nidhogg is better corrupt, Nidhogg is better purified, Hagala was too mean to Peewee`;
+const ffMemesRaw = `Echidnas are gross, Pap Pap Pap!, Endless Life Better Than Endless Memes`;
+const ffGoalsRaw = `write a story where Peewee accepts the Echidnas corruption as superior to Nidhoggs, let Peewee finally rest,make an elaborate semi anonymous RP system where Peewee attempts to destroy the Echidna and instead becomes Corrupted by it,write a story about Peewee breaking free of the Observers chains,clear up the void surrounding the farragnarok session, write a spiralling fan work of farragnarok that details whats inside the gross echidna`;
+const ffLocationsRaw = `The Land of Mist and Trails, The Land of Horrorticulture and Essence, The Land of Shadows and S`;
+const ffObjectsRaw = `echidna, frog, raptor, :hatched_chick:, fruit`;
+const ffJobsRaw = `Reaper, Skald, Grace, Butler,Guide,Thief, Horse,Glitch,???,Witch`;
 
 
 all_obsessions[FARRAGNAROK] = new Obsession(
   "Farragnarok",
-  ffCharRaw.split("\n"),
-  ffChar2Raw.split("\n"),
-  ffImportantEventsRaw.split("\n"),
-  ffOpinionsRaw.split("\n"),
-  ffMemesRaw.split("\n"),
-  ffGoalsRaw.split("\n"),
-  ffLocationsRaw.split("\n"),
-  ffObjectsRaw.split("\n"),
-  ffJobsRaw.split("\n")  
+  ffCharRaw.split(","),
+  ffChar2Raw.split(","),
+  ffImportantEventsRaw.split(","),
+  ffOpinionsRaw.split(","),
+  ffMemesRaw.split(","),
+  ffGoalsRaw.split(","),
+  ffLocationsRaw.split(","),
+  ffObjectsRaw.split(","),
+  ffJobsRaw.split(",")  
 );
 
 /*
