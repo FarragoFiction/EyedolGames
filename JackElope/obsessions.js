@@ -16,12 +16,17 @@ themes from zampanios should go into the obsession engine and build themselves f
 const GLITCH = 'GLITCH'; //jr
 const HOMESTUCK = 'HOMESTUCK'; //jr
 const ZAMPANIO = 'ZAMPANIO'; //jr
+const FARRAGNAROK = 'FARRAGNAROK'; //jr
+const THEECHIDNAUNIVERSE = 'THEECHIDNAUNIVERSE'; //jr
+const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr
 const HENCH = 'HENCH'; //kr
 const FIVEDARPS = 'FIVEDARPS'; //IC
 const TOGITHINGY = 'TOGITHINGY'; //CD
 const SUBTLEWARS = 'SUBTLEWARS'; //MI
-
-const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr
+const CNC = 'CNC'; //DM
+const THEWAYAHEAD = 'THEWAYAHEAD'; //Daedalus
+const FORWANTOFKNOWLEDGE = 'FORWANTOFKNOWLEDGE'; //Daedalus
+const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
 
 
 
@@ -53,39 +58,75 @@ class Obsession {
   }
 
   randomLocation =(rand)=>{
-    return rand.pickFrom(this.locations);
+    const arr = this.locations;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["that one place","the labyrinth","the spiral"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomObject =(rand)=>{
-    return rand.pickFrom(this.objects);
+    const arr = this.objects;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["thingamajig","spiral","mask","book","tome","mirror","sextant","coin","blade","milk bottle","cloak"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomJob =(rand)=>{
-    return rand.pickFrom(this.jobs);
+    const arr = this.jobs;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["shambling horror with your face","minotaur","horror"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomBlorbo =(rand)=>{
-    return rand.pickFrom(this.blorbos);
+    const arr = this.blorbos;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["that one guy","shambling horror with your face","whats-their-face"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomMinorBlorbo =(rand)=>{
-    return rand.pickFrom(this.minorBlorbos);
+    const arr = this.minorBlorbos;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["that one guy","shambling horror with your face","whats-their-face"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomEvent =(rand)=>{
-    return rand.pickFrom(this.importantEvents);
+    const arr = this.importantEvents;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["when you inevitably succumbed to the endless maze","when you finally took a break from digging and drank some water","when you realized the end was never the end"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomCommonPhrases =(rand)=>{
-    return rand.pickFrom(this.commonPhrases);
+    const arr = this.commonPhrases;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["the end is never the end","zampanio is a really fun game","the truth is layered","your insides are worth as much as your outsides","the only thing keeping you here is your obsessive need to know more"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomOpinion =(rand)=>{
-    return rand.pickFrom(this.opinions);
+    const arr = this.opinions;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["I should draw others to the maze","I should make a fan work of Zampanio","an endless labyrinth of websites that are not what they are is a really great idea","the end is never the end","zampanio is a really fun game","the truth is layered","your insides are worth as much as your outsides","the only thing keeping you here is your obsessive need to know more"]);
+    }
+    return rand.pickFrom(arr);
   }
 
   randomGoal =(rand)=>{
-    return rand.pickFrom(this.fanGoals);
+    const arr = this.fanGoals;
+    if(arr.length === 1 && arr[0] === ""){
+      return rand.pickFrom(["never forget what I find at https://discord.gg/tZmtKwnbac","tell all my friends about zampanio","spread the maze as far possible","dig and dig and dig and dig","tell others that zampanio is a really fun game"]);
+    }
+    return rand.pickFrom(arr);
   }
 
 }
@@ -537,7 +578,7 @@ Entity`;
 
 
 all_obsessions[SUBTLEWARS] = new Obsession(
-  "Subtle Wars",
+  "Mountain-in-Dreams",
   swCharRaw.split("\n"),
   swChar2Raw.split("\n"),
   swImportantEventsRaw.split("\n"),
@@ -550,11 +591,69 @@ all_obsessions[SUBTLEWARS] = new Obsession(
 );
 
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//                         CNC (aka machining)   (submitted by DM)                      //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+const cncCharRaw = `Abom79
+This Old Tony
+Tubalcain`;
+const cncChar2Raw = `that one guy`;
+const cncImportantEventsRaw = `when Tony broke a bit
+when Abom79 used the overhead crane
+when Abom79 used a Starrett indicator to center stock on a lathe
+when Tony added a DRO to the mill
+when Tony fed his cat metal scraps until it pooped machine bolts`;
+const cncOpinionsRaw = `Tony is too poor to buy cheap tools`;
+const cncMemesRaw = `Tram the head.
+Check your chuck for concentricity.
+Shop math.
+`;
+const cncGoalsRaw = `acquire a power tap`;
+const cncLocationsRaw = `the home shop.
+the garage.
+the metal fan`;
+const cncObjectsRaw = `drill bit
+screw`;
+const cncJobsRaw = `machinist`;
+
+
+all_obsessions[CNC] = new Obsession(
+  "The Machining Hobby",
+  cncCharRaw.split("\n"),
+  cncChar2Raw.split("\n"),
+  cncImportantEventsRaw.split("\n"),
+  cncOpinionsRaw.split("\n"),
+  cncMemesRaw.split("\n"),
+  cncGoalsRaw.split("\n"),
+  cncLocationsRaw.split("\n"),
+  cncObjectsRaw.split("\n"),
+  cncJobsRaw.split("\n")  
+);
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                        The Way Ahead    (submitted by Daedalus)                      //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                       For Want of Knowledge    (submitted by Daedalus)               //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                       Of And They Shall    (submitted by Daedalus)                   //
+//////////////////////////////////////////////////////////////////////////////////////////
 
 
 /*
 
-const togiCharRaw = ``;
+const CharRaw = ``;
 const togiChar2Raw = ``;
 const togiImportantEventsRaw = ``;
 const togiOpinionsRaw = ``;
@@ -566,14 +665,14 @@ const togiJobsRaw = ``;
 
 
 all_obsessions[TOGITHINGY] = new Obsession(
-  "Togigagetas",
-  togiCharRaw.split("\n"),
-  togiChar2Raw.split("\n"),
-  togiImportantEventsRaw.split("\n"),
-  togiOpinionsRaw.split("\n"),
-  togiMemesRaw.split("\n"),
-  togiGoalsRaw.split("\n"),
-  togiLocationsRaw.split("\n"),
-  togiObjectsRaw.split("\n"),
-  togiJobsRaw.split("\n")  
+  "tbd",
+  CharRaw.split("\n"),
+  Char2Raw.split("\n"),
+  ImportantEventsRaw.split("\n"),
+  OpinionsRaw.split("\n"),
+  MemesRaw.split("\n"),
+  GoalsRaw.split("\n"),
+  LocationsRaw.split("\n"),
+  ObjectsRaw.split("\n"),
+  JobsRaw.split("\n")  
 );*/
