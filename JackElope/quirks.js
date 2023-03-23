@@ -164,6 +164,7 @@ const all_quirk_mappings = [
   new QuirkMap("aren't", ["ain't", "aren't"]),
   new QuirkMap("ie", ["ei","ie","ie","ie","ie","ie","ie"]),
   new QuirkMap("apologize", ["say sorry"]),
+  new QuirkMap("people", ["ppl", "people","people","people","people","people"]),
 
   new QuirkMap("though", ["tho", "though"]),
   new QuirkMap("you", ["u", "you"]),

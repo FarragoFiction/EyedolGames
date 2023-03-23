@@ -28,8 +28,7 @@ const talent = talentRaw.split('\n');
 
 const needsRaw = `I value
 Some things I could never do without
-I couldn't function without
-`;
+I couldn't function without`;
 
 const needs = needsRaw.split('\n');
 
@@ -96,13 +95,67 @@ class AspirationSection extends AboutSection {
 
 class TalentSection extends AboutSection {
   makeRamble = ()=>{
-    this.ramble = "PLZ TODO talent";
+    const obsessiveParagraph = (obsession)=>{
+
+      const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const randomJob = obsession.randomJob(this.rand);
+
+      const favObject = obsession.randomObject(this.rand);
+      let objs = [obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand)];
+      objs = uniq(objs);
+
+      const setups = ["I don't like to brag but, ","My friends always tell me","I got an award once because I"]
+      const brags = ["I never forget a face","I can juggle six balls at once","I once actually reached the end of Zampanio"]
+
+      const rambles = [
+        `Wouldn't you like to know, weatherboy.`,
+        `My friend says I do a killer ${this.rand.pickFrom([randomJob, favoriteMainBlorbo])} impression.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(brags)}.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(brags)}.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(brags)}.`,
+        "Why don't you message me and find out :)",
+      ]
+      let ret = " <p> ";
+      ret += this.rand.pickFrom(rambles);
+
+   
+      ret += " </p> "
+      return ret;
+  
+    }
+
+    this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
   }
 }
 
 class NeedsSection extends AboutSection {
   makeRamble = ()=>{
-    this.ramble = "PLZ TODO needs";
+    const obsessiveParagraph = (obsession)=>{
+
+      const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const favObject = obsession.randomObject(this.rand);
+      let objs = [obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand)];
+      objs = uniq(objs);
+
+      const rambles = [
+        `If I'm not in a fandom you can assume I'm dead.`,
+        `${this.rand.pickFrom(["Honestly","To be honest","In all honesty"])}, all I really need is good food, a good book and my ${favObject} plushie.`,
+        `${(objs.join(","))}`,
+        `I can't sleep at night unless I have my ${favoriteMainBlorbo} plush.`,
+        "You can take my laptop away when you pry it out of my cold dead fingers.",
+        "Water, hands down, I'm never hydrated enough.",
+        `This one is hard. I can't really think of anything I could do without, besides obvious things like food and water.`
+      ]
+      let ret = " <p> ";
+      ret += this.rand.pickFrom(rambles);
+
+   
+      ret += " </p> "
+      return ret;
+  
+    }
+
+    this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
   }
 }
 
@@ -184,6 +237,9 @@ class HobbiesSection extends AboutSection {
         `The belief that ${hotTakes[3]} has definitely divided the fandom`,
         `It was so good when ${events[3]}. ${this.rand.pickFrom(["I don't understand how anyone could see it as tragic.","It's so epic!","The creators really are geniuses, you know?","How did the creators even think to do that?"])}`,
         ` ${hotTakes[3]} might be controversial but it just makes sense to me.`,
+        `I just want ${favoriteMinorBlorbo} to be happy.`,
+        `I just want to put ${favoriteMinorBlorbo} in the dryer on the spin cycle.`,
+        `I just think people should give ${favoriteMinorBlorbo} a chance.`,
 
         `I cry every time I think about ${events[4]}. ${this.rand.pickFrom(["I don't understand how anyone could see it as funny.","It's so cathartic!","The creators really can be jerks, you know?","How did the creators even think to do that?"])}`,
         `Have you ever thought about "${favoriteQuotes[4]}". I feel like even non-fans can relate to it.`,
@@ -238,14 +294,18 @@ class MomentsSection extends AboutSection {
       const hotTake =obsession.randomOpinion(this.rand);
 
       const randomGoal = obsession.randomGoal(this.rand);
-      const setups = ["Between work and school I almost never have any free time, but when I do I","Honestly I just sleep in till noon and then I","I work nights so when I get home all I want to do is"]
+      const setups = ["Between work and school I almost never have any free time, but when I do I","Honestly I just sleep in till noon and then I","I work nights so when I get home all I want to do is", "I wake up pretty early and go for a jog. Then, I make a healthy breakfast and spend a few hours reading. After that, it's lunch time, so I head out to spend time with friends. After that, all I'm in the mood to do is"]
 
-      const dayToDayHobbies = ["sleep all day","cook a huge meal","cook a healthy meal", "order take out","go on a jog", `read some fan fiction about ${obsession.name}`,`fight internet strangers who think ${hotTake}`]
+      const dayToDayHobbies = [`pracitce trying to figure out how to be a ${favJob}`,`write a fanfiction of ${favoriteEvent} in ${obsession.name}`,`get a group of friends together so we can try to ${randomGoal}`,`spend a few hours trying to ${randomGoal}`,`try to ${randomGoal}`,"sleep all day","cook a huge meal","cook a healthy meal", "order take out","go on a jog", `read some fan fiction about ${obsession.name}`,`fight internet strangers who think ${hotTake}`]
       const rambles = [
+        `Go on a walk and try to list out all the things that remind me of ${favoriteMainBlorbo} from ${obsession.name}`,
         `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(dayToDayHobbies)}.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(dayToDayHobbies)}.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(dayToDayHobbies)}.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(dayToDayHobbies)}.`,
+
         `I just really enjoy spending time in nature and thinking about ${favoriteMinorBlorbo} from ${obsession.name}.`
       ]
-      const numberSentences = this.rand.getRandomNumberBetween(1,5);
       let ret = " <p> ";
       ret += this.rand.pickFrom(rambles);
 
@@ -256,7 +316,6 @@ class MomentsSection extends AboutSection {
     }
 
     this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
-
   }
 }
 
