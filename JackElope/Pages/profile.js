@@ -36,17 +36,17 @@ class ProfilePage extends PageObject {
     if (secrets) {
       let secretsArray = JSON.parse(secrets);
       //if i don't do this here you can't share the fake profiles. well. the more fake than usual profiles. 
-      for(let theme of Object.values(all_themes)){
+      for (let theme of Object.values(all_themes)) {
         createObessionFromTheme(theme, this.rand);
       }
-      for(let s of secretsArray){
+      for (let s of secretsArray) {
         this.obsessions.push(Object.values(all_obsessions)[s])
       }
 
     } else {
-      if(this.matchPercent <25){
+      if (this.matchPercent < 25) {
         //only if low match AND you didn't hardcode the obsessions
-        for(let theme of Object.values(all_themes)){
+        for (let theme of Object.values(all_themes)) {
           createObessionFromTheme(theme, this.rand);
         }
       }
@@ -72,6 +72,39 @@ class ProfilePage extends PageObject {
     this.lastOnline = this.rand.getRandomNumberBetween(0, 7);//days ago, 1 in X chance of being online now to talk to.
   }
 
+  fuckShitUP = () => {
+    const wrapper = document.querySelector("#img-wrapper");
+    let fucked_up_image_holder = createElementWithClassAndParent("div", wrapper, "fucked-up-image-holder");
+    fucked_up_image_holder.style.background = "black";
+    fucked_up_image_holder.style.width = 200 + "px";
+    fucked_up_image_holder.style.height = 200 + "px";
+    const size = 5;
+
+    for (let y = 0; y < 200; y += size) {
+      for (let x = 0; x < 200; x += size) {
+        let box = createElementWithClassAndParent("div", fucked_up_image_holder, "box");
+        box.style.position = "absolute";
+        box.style.top = y + "px";
+        box.style.left = x+"px";
+        box.style.backgroundPositionY = 200-y + "px";
+        box.style.backgroundPositionX = 200-x + "px";
+        box.style.backgroundImage = `url('${this.image}')`;
+        box.style.width = size + "px";
+        box.style.height = size + "px";
+        //https://www.tumblr.com/keskaowl/712515091508166656?source=share was my original goal but i ended up liking this experiment better
+        if(Math.random()>0.5){
+          box.style.animation = "james-webb-telescope-mirrors-mirrored 10.2s infinite linear 10s"
+        }else{
+          box.style.animation = "james-webb-telescope-mirrors-mirrored 10.5s infinite linear 20s"
+        }
+      }
+    }
+
+
+
+
+  }
+
   deploy = () => {
     const parent = document.querySelector("#container");
     let target = this.basicPageStructure(parent);
@@ -82,7 +115,11 @@ class ProfilePage extends PageObject {
     let header = createElementWithClassAndParent("div", target, "profile-header");
     let headerContent = createElementWithClassAndParent("div", header, "profile-header-content");
 
-    let imageEle = createElementWithClassAndParent("img", headerContent, "profile-image");
+    let imageWrapper = createElementWithClassAndParent("div", headerContent, "img-wrapper");
+    imageWrapper.id = "img-wrapper";
+
+
+    let imageEle = createElementWithClassAndParent("img", imageWrapper, "profile-image");
     imageEle.src = this.image;
 
     let rightCol = createElementWithClassAndParent("div", headerContent, "profile-header-right");
@@ -120,6 +157,9 @@ class ProfilePage extends PageObject {
     let content = createElementWithClassAndParent("div", target, "profile-content");
     this.setupAbout(content);
     this.setupDetails(content);
+    if (this.matchPercent < 0) {
+      this.fuckShitUP();
+    }
 
 
 

@@ -86,6 +86,29 @@ body {
   border-radius: 50% 50% 0 0;
 }
 
+@keyframes james-webb-telescope-mirrors{
+  0%{
+    background-size: 211px 211px;
+  }
+  100%{
+  }
+}
+
+@keyframes james-webb-telescope-mirrors-mirrored{
+  0%{
+    background-size: 200px 200px;
+
+  }
+  50%{
+      background-size: 211px 211px;
+
+  }
+  100%{
+    background-size: 200px 200px;
+
+  }
+}
+
 @keyframes lds-heart {
   0% {
     transform: scale(0.95);
@@ -208,6 +231,22 @@ select {
   font-size: 12px;
 
 
+}
+
+#img-wrapper{
+  position: relative;
+}
+
+.box{
+  background-size: 200px 200px;
+}
+
+
+
+.fucked-up-image-holder{
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .profile-details-label{
