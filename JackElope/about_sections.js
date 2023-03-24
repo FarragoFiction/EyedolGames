@@ -104,7 +104,7 @@ class TalentSection extends AboutSection {
       let objs = [obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand)];
       objs = uniq(objs);
 
-      const setups = ["I don't like to brag but, ","My friends always tell me","I got an award once because I"]
+      const setups = ["I don't like to brag but, ","My friends always tell me","I got an award once because"]
       const brags = ["I never forget a face","I can juggle six balls at once","I once actually reached the end of Zampanio"]
 
       const rambles = [

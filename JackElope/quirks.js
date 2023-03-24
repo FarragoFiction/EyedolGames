@@ -170,8 +170,8 @@ const all_quirk_mappings = [
   new QuirkMap("you", ["u", "you"]),
   new QuirkMap("right", ["right", "right", "right", "rite"]),
   new QuirkMap("n't", ["n't", "n't", "n't", "n not", "nt"]),
-  new QuirkMap("'m", ["am", "am", "'m", "m"]),
-  new QuirkMap("'d", ["would", "d","'d"]),
+  new QuirkMap("'m", [" am", " am", "'m", "m"]),
+  new QuirkMap("'d", [" would", "d","'d"]),
   new QuirkMap("sorry", ["fuck you", "sorry","sorry", "sorry","sorry", "sorry","sorry", "sorry","sorry", "sorry","sorry"]),
 
   new QuirkMap("kind of", ["kinda", "kind of"]),

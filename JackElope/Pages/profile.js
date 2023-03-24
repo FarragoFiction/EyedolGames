@@ -29,15 +29,27 @@ class ProfilePage extends PageObject {
     this.quirk = randomQuirk(this.rand);
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
+    this.matchPercent = matchPercent ? matchPercent : "-216";
+
     //for debugging and for showing ppl specific fandoms
     let secrets = urlParams.get('secrets');
     if (secrets) {
       let secretsArray = JSON.parse(secrets);
+      //if i don't do this here you can't share the fake profiles. well. the more fake than usual profiles. 
+      for(let theme of Object.values(all_themes)){
+        createObessionFromTheme(theme, this.rand);
+      }
       for(let s of secretsArray){
         this.obsessions.push(Object.values(all_obsessions)[s])
       }
 
     } else {
+      if(this.matchPercent <25){
+        //only if low match AND you didn't hardcode the obsessions
+        for(let theme of Object.values(all_themes)){
+          createObessionFromTheme(theme, this.rand);
+        }
+      }
       let numberObsessions = this.rand.getRandomNumberBetween(1, 3);
       let secrets = []
       let obsessionArray = Object.values(all_obsessions);
@@ -57,8 +69,7 @@ class ProfilePage extends PageObject {
     this.name = name ? name : "Shambling Horror With Your Face";
     this.image = image ? baseURL + image : `http://farragofiction.com/ZampanioHotlink/KRsAIExperiments/${pickFrom(horrors)}`;
     this.loc = loc ? loc : "Right Behind You ;)";
-    this.matchPercent = matchPercent ? matchPercent : "-216";
-    this.lastOnline = this.rand.getRandomNumberBetween(0, 30);//days ago, 1 in X chance of being online now to talk to.
+    this.lastOnline = this.rand.getRandomNumberBetween(0, 7);//days ago, 1 in X chance of being online now to talk to.
   }
 
   deploy = () => {
@@ -142,7 +153,7 @@ class ProfilePage extends PageObject {
     createDetail("Diet", this.rand.pickFrom(["Exclusively My Own Flesh", "Pica", "Theft Based", "Sexual Canibalism", "Human Flesh", "Carrion", "Fast Food", "Bones", "Mold", "Fungus", "More than 70% Meat", "30-70% Meat", "Less than 30% Meat", "Wood ;)", "Pollen", "Grass", "Honey", "Nectar", "Flowers", "Zooplankton", "Worms", "Squid", "Frozen Rodents", "Small Insects", "Crickets", "Cake", "Frogs", "Snakes", "Mucus", "Molluscs", "Blood", "Eggs", "Coral", "Phagocytosis", "Myzocytosis", "Suction Feeding", "Ram Feeding", "", "Bulk Feeding", "Fluid Feeding", "Deposit Feeding", "Filter Feeding", "Trash", "Small Mammals", "Vertebrates", "Aquatic Invertebrates", "Larvae", "Aquatic Vegetation", "Grain", "Brains", "Other Birds", "Fruit, Seeds, Berries, Insects", "Bugs", "Omnivore", "Spiders", "Only Plants", "Vegan", "Mostly Meat", "Corn Chips", "Pizza", "Information", "Obsession"]));
     createDetail("Smokes", this.rand.pickFrom(["Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
     createDetail("Drinks", this.rand.pickFrom(["Tea", "Coffee", "Never", "Milk", "Soda", "Blood", "Juice", "Alcohol", "Water", "Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
-    createDetail("Drugs", this.rand.pickFrom(["Insulin", "Ibuprofen", "A Weed", "Alchohol", "Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
+    createDetail("Drugs", this.rand.pickFrom(["Insulin", "Ibuprofen", "A Weed", "Alchohol", "Socially", "While On Fire", "Eh", "Nope", "Yes", "No", "Eh", "No", "No", "No", "No", "No", "No", "No"]));
     createDetail("Religion", this.rand.pickFrom(["Atheiest " + this.rand.pickFrom(modifiers), "Agnostic " + this.rand.pickFrom(modifiers), "8 Divine", "Socially", "While On Fire", "During Parties", "After Sex", "Yes " + this.rand.pickFrom(modifiers), "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
     const signs = ["Cancer", "Taurus", "Aries", "Libra", "Leo", "Virgo", "Gemini", "Scorpius", "Sagittarius", "Pisces", "Aquarius", "Capricorn"]
     createDetail("Sign", `${this.rand.pickFrom(signs)} ${this.rand.pickFrom(modifiers)}`);

@@ -178,7 +178,6 @@ const renderOneSexySingle = (rand, container) => {
 }
 
 const handleSexySinglesScrolling = (rand, container) => {
-    console.log("JR NOTE: handleRestaurantScrolling");
     let lastScrollTime = 0; //not to spam events
     window.onscroll = () => {
         const newTime = new Date().getTime();
@@ -188,7 +187,6 @@ const handleSexySinglesScrolling = (rand, container) => {
         lastScrollTime = newTime;
 
         window.requestAnimationFrame(() => {
-            console.log("JR NOTE: scroll");
             renderOneSexySingle(rand, container);
             renderOneSexySingle(rand, container);
             renderOneSexySingle(rand, container);

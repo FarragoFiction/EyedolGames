@@ -151,6 +151,45 @@ inscryption
 */
 
 
+//don't call these all at once, instead as you scroll
+const createObessionFromTheme = (theme,rand)=>{
+
+  let events = [];
+
+  let backstory = theme.getPossibilitiesFor(GENERALBACKSTORY);
+  let childbackstory = theme.getPossibilitiesFor(CHILDBACKSTORY);
+
+  for(let b of backstory){
+    events.push(`when The ${theme.pickPossibilityFor(ADJ,rand)} ${theme.pickPossibilityFor(PERSON,rand)} ${b}`);
+  }
+
+  for(let b of childbackstory){
+    events.push(`when The ${theme.pickPossibilityFor(ADJ,rand)} ${theme.pickPossibilityFor(PERSON,rand)} ${b}`);
+  }
+  
+
+  let loc_desc = theme.getPossibilitiesFor(LOC_DESC);
+
+  let goals = [];
+  for(let b of loc_desc){
+    goals.push(`find the place where there is ${b}`);
+  }
+
+  all_obsessions[theme.key] = new Obsession(
+    `${titleCase(theme.key)}`,
+    [...theme.getPossibilitiesFor(PERSON).map((i)=>`The ${theme.pickPossibilityFor(ADJ,rand)} ${titleCase(i)}`)],
+    [...theme.getPossibilitiesFor(PERSON).map((i)=>`The ${rand.pickFrom(["Glitchy","Little","Small","Minor","Mysterious","Background",`${theme.pickPossibilityFor(INSULT,rand)}`])} ${titleCase(i)}`)],
+    [...events],
+    [...theme.getPossibilitiesFor(PHILOSOPHY)],
+    [...theme.getPossibilitiesFor(PHILOSOPHY)],
+    [...goals],
+    [...theme.getPossibilitiesFor(LOCATION)],
+    [...theme.getPossibilitiesFor(LOCATION)],
+    [...theme.getPossibilitiesFor(PERSON).map((i)=>`The ${theme.pickPossibilityFor(COMPLIMENT,rand)} ${titleCase(i)}`)],
+  
+  );
+}
+
 
 all_obsessions[GLITCH] = new Obsession(
   "[INSERT FANDOM HERE]",
