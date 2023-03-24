@@ -70,6 +70,10 @@ function onlyUnique(value, index, self) {
 }
 
  const uniq  =(a) =>{return a.filter(onlyUnique)};
+ 
+ const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 
 //if you give it new values for existing params it layers them on

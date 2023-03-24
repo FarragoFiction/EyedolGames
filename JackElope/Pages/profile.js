@@ -72,10 +72,8 @@ class ProfilePage extends PageObject {
     this.lastOnline = this.rand.getRandomNumberBetween(0, 7);//days ago, 1 in X chance of being online now to talk to.
   }
 
-  fuckShitUP = () => {
-    const audio = new Audio("heartbeat.mp3");
-    audio.loop = true;
-    audio.autoplay = true;
+  fuckShitUP = async() => {
+
 
     const wrapper = document.querySelector("#img-wrapper");
     let fucked_up_image_holder = createElementWithClassAndParent("div", wrapper, "fucked-up-image-holder");
@@ -89,21 +87,25 @@ class ProfilePage extends PageObject {
         let box = createElementWithClassAndParent("div", fucked_up_image_holder, "box");
         box.style.position = "absolute";
         box.style.top = y + "px";
-        box.style.left = x+"px";
-        box.style.backgroundPositionY = 200-y + "px";
-        box.style.backgroundPositionX = 200-x + "px";
+        box.style.left = x + "px";
+        box.style.backgroundPositionY = 200 - y + "px";
+        box.style.backgroundPositionX = 200 - x + "px";
         box.style.backgroundImage = `url('${this.image}')`;
         box.style.width = size + "px";
         box.style.height = size + "px";
         //https://www.tumblr.com/keskaowl/712515091508166656?source=share was my original goal but i ended up liking this experiment better
-        if(Math.random()>0.5){
+        if (Math.random() > 0.5) {
           box.style.animation = "james-webb-telescope-mirrors-mirrored 10.2s infinite linear 10s"
-        }else{
+        } else {
           box.style.animation = "james-webb-telescope-mirrors-mirrored 10.5s infinite linear 20s"
         }
       }
-    }
 
+    }
+    await sleep(10*1000)
+    const audio = new Audio("heartbeat.mp3");
+    audio.loop = true;
+    audio.autoplay = true;
 
 
 
