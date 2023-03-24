@@ -73,6 +73,10 @@ class ProfilePage extends PageObject {
   }
 
   fuckShitUP = () => {
+    const audio = new Audio("heartbeat.mp3");
+    audio.loop = true;
+    audio.autoplay = true;
+
     const wrapper = document.querySelector("#img-wrapper");
     let fucked_up_image_holder = createElementWithClassAndParent("div", wrapper, "fucked-up-image-holder");
     fucked_up_image_holder.style.background = "black";
