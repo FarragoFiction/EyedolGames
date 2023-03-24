@@ -78,7 +78,7 @@ class ProfilePage extends PageObject {
     fucked_up_image_holder.style.background = "black";
     fucked_up_image_holder.style.width = 200 + "px";
     fucked_up_image_holder.style.height = 200 + "px";
-    const size = 5;
+    const size = 10;
 
     for (let y = 0; y < 200; y += size) {
       for (let x = 0; x < 200; x += size) {
