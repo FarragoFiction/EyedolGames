@@ -84,7 +84,7 @@ class SummarySection extends AboutSection {
   
   makeRamble = ()=>{
     const obsessiveParagraph = (obsession)=>{
-      const introPhrases = ["I hope this profile catches your eye :)","Hey, glad to meet you!",`Hey, I am a human being who is interested in some good times.`,"I never know what to put in these things..."];
+      const introPhrases = [`Hey, I'm ${detailsMap["NAME"]} and I'm really excited to meet new people in ${detailsMap["LOC"]}!`, `I'm new to ${detailsMap["LOC"]} and hoping to meet people to show me around :)`,`Hey, I'm ${detailsMap["AGE"]} months old and looking to meet new people :)`,"I hope this profile catches your eye :)","Hey, glad to meet you!",`Hey, I am a human being who is interested in some good times.`,"I never know what to put in these things..."];
       const randomGoal = obsession.randomGoal(this.rand);
 
       const rambles1 = [
@@ -98,7 +98,7 @@ class SummarySection extends AboutSection {
       ]
 
       const rambles3 = [
-        `I ${this.rand.pickFrom(["had a friend try it out","had a dream last night","thought about it a lot"])} and decided I only eat ${detailsMap["Diet"]}.`,
+        `I ${this.rand.pickFrom(["had a friend try out a crazy new diet","had a dream last night","thought about it a lot"])} and decided I only eat ${detailsMap["Diet"]}.`,
         `I honestly ${this.rand.pickFrom(["gag","puke","gain weight","lose weight","smell funny"])} if I eat anything but ${detailsMap["Diet"]}.`
 
       ]

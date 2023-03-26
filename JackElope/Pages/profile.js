@@ -71,13 +71,18 @@ class ProfilePage extends PageObject {
 
 
     this.age = this.rand.getRandomNumberBetween(18, 99);
+    detailsMap["AGE"] = this.age;
     this.name = name ? name : "Shambling Horror With Your Face";
+    detailsMap["NAME"] = this.name;
+
     this.image = image ? baseURL + image : `http://farragofiction.com/ZampanioHotlink/KRsAIExperiments/${pickFrom(horrors)}`;
     this.loc = loc ? loc : "Right Behind You ;)";
+    detailsMap["LOC"] = this.loc;
+
     this.lastOnline = this.rand.getRandomNumberBetween(0, 7);//days ago, 1 in X chance of being online now to talk to.
   }
 
-  fuckShitUP = async() => {
+  fuckShitUP = async () => {
 
 
     const wrapper = document.querySelector("#img-wrapper");
@@ -107,7 +112,7 @@ class ProfilePage extends PageObject {
       }
 
     }
-    await sleep(10*1000)
+    await sleep(10 * 1000)
     const audio = new Audio("heartbeat.mp3");
     audio.loop = true;
     audio.autoplay = true;
@@ -118,6 +123,7 @@ class ProfilePage extends PageObject {
 
   deploy = () => {
     const parent = document.querySelector("#container");
+
     let target = this.basicPageStructure(parent);
 
 
@@ -132,6 +138,9 @@ class ProfilePage extends PageObject {
 
     let imageEle = createElementWithClassAndParent("img", imageWrapper, "profile-image");
     imageEle.src = this.image;
+    if(this.matchPercent <0){
+      imageEle.classList.add("negative_match")
+    }
 
     let rightCol = createElementWithClassAndParent("div", headerContent, "profile-header-right");
 
@@ -139,27 +148,49 @@ class ProfilePage extends PageObject {
 
     let matchPercent = createElementWithClassAndParent("div", matchBox, "profile-percent match");
     matchPercent.innerText = this.matchPercent + "% Match";
+    if(this.matchPercent <0){
+      matchPercent.classList.add("negative_match")
+    }
 
     let friendPercent = createElementWithClassAndParent("div", matchBox, "profile-percent friend");
     friendPercent.innerText = this.rand.getRandomNumberBetween(0, 100) + "% Friend"
+    if(this.matchPercent <0){
+      friendPercent.classList.add("negative_match")
+    }
 
     let enemyPercent = createElementWithClassAndParent("div", matchBox, "profile-percent enemy");
     enemyPercent.innerText = this.rand.getRandomNumberBetween(this.matchPercent, 100 - this.matchPercent) + "% Enemy"
-
+    if(this.matchPercent <0){
+      enemyPercent.classList.add("negative_match")
+    }
 
     let nameEle = createElementWithClassAndParent("div", rightCol, "profile-name");
     nameEle.innerText = this.name;
 
+    if(this.matchPercent <0){
+      nameEle.classList.add("negative_match")
+    }
+
     let ageEle = createElementWithClassAndParent("div", rightCol, "profile-age");
     ageEle.innerText = this.age;
 
+    if(this.matchPercent <0){
+      ageEle.classList.add("negative_match")
+    }
+
     let locEle = createElementWithClassAndParent("div", rightCol, "profile-loc");
     locEle.innerText = this.loc;
-
+    if(this.matchPercent <0){
+      locEle.classList.add("negative_match")
+    }
 
 
     let messageButton = createElementWithClassAndParent("button", headerContent, "message-button");
     messageButton.innerText = "Message Them";
+
+    if(this.matchPercent <0){
+      messageButton.classList.add("negative_match")
+    }
 
 
 
@@ -167,14 +198,20 @@ class ProfilePage extends PageObject {
 
     let content = createElementWithClassAndParent("div", target, "profile-content");
     let a = createElementWithClassAndParent("div", content, "profile-about");
+    if(this.matchPercent <0){
+      a.classList.add("negative_match")
+    }
 
     let d = createElementWithClassAndParent("div", content, "profile-details");
+    if(this.matchPercent <0){
+      d.classList.add("negative_match")
+    }
 
-    this.setupDetails(d);
+    this.setupDetails(d, this.matchPercent<0);
     if (this.matchPercent < 0) {
       this.fuckShitUP();
     }
-    this.setupAbout(a);
+    this.setupAbout(a, this.matchPercent<0);
 
 
 
@@ -184,7 +221,7 @@ class ProfilePage extends PageObject {
 
 
 
-  setupDetails = (content) => {
+  setupDetails = (content, flip) => {
 
     let header = createElementWithClassAndParent("div", content, "profile-details-header");
     header.innerText = "Their Details";
@@ -192,6 +229,7 @@ class ProfilePage extends PageObject {
     const createDetail = (label, text) => {
       detailsMap[label] = text;
       let ele = createElementWithClassAndParent("div", content, "profile-details-wrapper");
+
 
       let labelEle = createElementWithClassAndParent("div", ele, "profile-details-label");
       labelEle.innerText = label;
@@ -213,7 +251,7 @@ class ProfilePage extends PageObject {
     createDetail("Religion", this.rand.pickFrom(["Atheiest " + this.rand.pickFrom(modifiers), "Agnostic " + this.rand.pickFrom(modifiers), "8 Divine", "Socially", "While On Fire", "During Parties", "After Sex", "Yes " + this.rand.pickFrom(modifiers), "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
     const signs = ["Cancer", "Taurus", "Aries", "Libra", "Leo", "Virgo", "Gemini", "Scorpius", "Sagittarius", "Pisces", "Aquarius", "Capricorn"]
     createDetail("Sign", `${this.rand.pickFrom(signs)} ${this.rand.pickFrom(modifiers)}`);
-    createDetail("Education", this.rand.pickFrom(["University of Ohio","University","Harvard","Zampanio", "Eyedlr University", "Internet", "Community College", "Cooking School", "Clown College", "Med School", "Tech School", "School of Hard Knocks", "Doctorate", "Masters", "Bachelors", "Dropped Out of College", "High-School", "Dropped Out of High-School", "College"]));
+    createDetail("Education", this.rand.pickFrom(["University of Ohio", "University", "Harvard", "Zampanio", "Eyedlr University", "Internet", "Community College", "Cooking School", "Clown College", "Med School", "Tech School", "School of Hard Knocks", "Doctorate", "Masters", "Bachelors", "Dropped Out of College", "High-School", "Dropped Out of High-School", "College"]));
     createDetail("Job", this.rand.pickFrom(["Spy", "Porn Bot", "Software Developer", "Nurse", "Truck Driver", "Manager", "Office Drone", "Black Smith", "Carpenter", "Mechanic", "Handy Man", "Electrician", "Plumber", "Fire Fighter", "Clown", "Military", "Police Officer", "Marketing", "Sales", "Customer Service", "Tech Support", "Secretary", "Bartender", "Assistant", "Accountant", "Wait Staff", "Construction Worker", "Model", "Doctor", "Lawyer", "Janitor", "No", "Yes", "Food Prep", "Cashier", "Military", "Programming", "Retail"]));
     let income = this.rand.getRandomNumberBetween(0, 7) * 10000;
     if (this.rand.nextDouble() > 0.5) {

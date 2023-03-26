@@ -86,6 +86,29 @@ body {
   border-radius: 50% 50% 0 0;
 }
 
+.negative_match{
+  transform: scaleX(-1);
+}
+
+.spin{
+  animation: spin 10s linear infinite;
+}
+
+
+@keyframes spin{
+  0%{
+    transform: scaleX(1);
+  }
+
+  50%{
+    transform: scaleX(-1);
+  }
+
+  100%{
+    transform: scaleX(1);
+  }
+}
+
 @keyframes james-webb-telescope-mirrors{
   0%{
     background-size: 211px 211px;
