@@ -29,7 +29,7 @@ const logOff = async () => {
 
 
 const handleResponding = async (value) => {
-  await sleep(getRandomNumberBetween(1, 10) * 1000);
+  await sleep(getRandomNumberBetween(1, 5) * 1000);
 
   if (mirrored) {
     addPornBotToCurrentChat("Zampanio is a really fun game, you should play it!", name, icon)
@@ -39,13 +39,13 @@ const handleResponding = async (value) => {
         logOff();
         preparedToLogOff = true;
       }
-      const all_keys = Object.values(chatMap);
+      const all_keys = Object.keys(chatMap);
       let chosen_possible_responses;
       //we have a system at work that gets upset if you EVER even mention the word key for some damn reason
       //thinks its  aprivate key we shouldn't put in get. look. i'm sorry system. javascript is based on key/value pairs. 
       //thats just how it is.
       for (let key of all_keys) {
-        if (value.includes(key)) {
+        if (value.toLowerCase().includes(key.toLowerCase())) {
           chosen_possible_responses = chatMap[key];//yeah they can overwrite each other.
         }
       }
