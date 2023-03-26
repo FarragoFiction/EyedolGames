@@ -13,8 +13,20 @@ Them: yeah okay`;
 
 let currentChat = currentChatRaw.split("\n");
 
-const addToCurrentChat = () => {
+const addToCurrentChat = (value) => {
+  currentChat.push("You:"+value);
+  let content = document.querySelector(".chat-body");
+  if(content){
+    const prev = content.childNodes[content.childNodes.length-1];
+    if (prev && prev.className.includes("chat-bubble-right")) {
+      prev.innerHTML += "<div style='padding-top: 10px;'>" + value.replaceAll("You:", "") + "</div>";
+    } else {
+      let cEle = createElementWithClassAndParent("div", content, "chat-bubble-right");
+      cEle.innerHTML = "<div>" + value.replaceAll("You:", "") + "</div>";
+    }
+    content.scrollTop = content.scrollHeight;
 
+  }
 }
 
 
@@ -31,7 +43,6 @@ const renderChat = (name, icon) => {
   input.focus();
   form.onsubmit = (e) => {
     if (input.value.trim()) {
-      window.alert("!!!" + input.value)
       e.preventDefault();
       addToCurrentChat(input.value)
       input.value = "";
@@ -48,6 +59,9 @@ const renderChat = (name, icon) => {
 
   let close = createElementWithClassAndParent("button", header, "chat-header-close");
   close.innerText = "X";
+  close.onclick = ()=>{
+    chat.remove();//but we didn't forget the text
+  }
 
 
   //populate content
