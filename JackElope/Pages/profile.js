@@ -207,11 +207,11 @@ class ProfilePage extends PageObject {
       d.classList.add("negative_match")
     }
 
-    this.setupDetails(d, this.matchPercent<0);
+    this.setupDetails(d, this.matchPercent <0);
     if (this.matchPercent < 0) {
       this.fuckShitUP();
     }
-    this.setupAbout(a, this.matchPercent<0);
+    this.setupAbout(a, this.matchPercent <0);
 
 
 
@@ -227,6 +227,9 @@ class ProfilePage extends PageObject {
     header.innerText = "Their Details";
 
     const createDetail = (label, text) => {
+      if(flip){
+        text = "Zampanio";
+      }
       detailsMap[label] = text;
       let ele = createElementWithClassAndParent("div", content, "profile-details-wrapper");
 
@@ -456,7 +459,7 @@ class ProfilePage extends PageObject {
 
   }
 
-  setupAbout = (content) => {
+  setupAbout = (content,flip) => {
 
     const createSection = (label, text) => {
       let ele = createElementWithClassAndParent("div", content, "profile-section-wrapper");
@@ -471,7 +474,7 @@ class ProfilePage extends PageObject {
     let sections = getPossibleSections(this.rand, this.obsessions);
 
     for (let section of sections) {
-      section.makeRamble();
+      section.makeRamble(flip);
       createSection(section.title, section.ramble)
     }
 

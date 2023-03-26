@@ -82,8 +82,12 @@ class AboutSection {
 
 class SummarySection extends AboutSection {
   
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
+    
     const obsessiveParagraph = (obsession)=>{
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
       const introPhrases = [`Hey, I'm ${detailsMap["NAME"]} and I'm really excited to meet new people in ${detailsMap["LOC"]}!`, `I'm new to ${detailsMap["LOC"]} and hoping to meet people to show me around :)`,`Hey, I'm ${detailsMap["AGE"]} months old and looking to meet new people :)`,"I hope this profile catches your eye :)","Hey, glad to meet you!",`Hey, I am a human being who is interested in some good times.`,"I never know what to put in these things..."];
       const randomGoal = obsession.randomGoal(this.rand);
 
@@ -130,8 +134,11 @@ class SummarySection extends AboutSection {
 }
 
 class AspirationSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession)=>{
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
 
       const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
       const randomJob = obsession.randomJob(this.rand);
@@ -164,8 +171,11 @@ class AspirationSection extends AboutSection {
 }
 
 class TalentSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession)=>{
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
 
       const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
       const randomJob = obsession.randomJob(this.rand);
@@ -199,9 +209,11 @@ class TalentSection extends AboutSection {
 }
 
 class NeedsSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession)=>{
-
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
       const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
       const favObject = obsession.randomObject(this.rand);
       let objs = [obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand),obsession.randomObject(this.rand)];
@@ -230,8 +242,11 @@ class NeedsSection extends AboutSection {
 }
 
 class HobbiesSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession,first)=>{
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
       const introPhrases = [`Hey I am totally obsessed with ${obsession.name}.`];
 
       const bridgePhrases = [`Oh yeah, and how could I forget about  ${obsession.name}?`,`Another thing I'm obsessed with is  ${obsession.name}.`];
@@ -348,9 +363,11 @@ class HobbiesSection extends AboutSection {
 }
 
 class MomentsSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession)=>{
-
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
       const favoriteMinorBlorbo = obsession.randomMinorBlorbo(this.rand);
       const leastFavoriteMainBlorbo = obsession.randomBlorbo(this.rand);
       const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
@@ -390,8 +407,11 @@ class MomentsSection extends AboutSection {
 }
 
 class SecretsSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession)=>{
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
       const introPhrases = ["It feels awkward to admit but...","Sure, I'll admit something.",`Okay, I'll admit it.`,`I never told anyone this but...`];
 
 
@@ -440,8 +460,11 @@ class SecretsSection extends AboutSection {
 }
 
 class DatingSection extends AboutSection {
-  makeRamble = ()=>{
+  makeRamble = (flip)=>{
     const obsessiveParagraph = (obsession)=>{
+      if(flip){
+        return `Zampanio is a really good game, you should play it because ${JSON.stringify(obsession)}`;
+      }
       const introPhrases = ["It feels awkward to admit but...","I feel shallow but ",`Okay, I'll admit it.`,`I thought really hard about what gets me going romantically, and `];
 
 
