@@ -62,6 +62,9 @@ const renderChat = (name,icon)=>{
     }
   }
 
+  //open already scrolled to bottom
+  content.scrollTop = content.scrollHeight;
+
 
 
 
