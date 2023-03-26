@@ -2,19 +2,43 @@
 // check your logic at the desk you won't need it to progress, https://www.youtube.com/watch?v=-u7R4nZE1fM
 
 let currentChat = []
+let preparedToLogOff = false;
 
 
 const doop = new Audio('264828__cmdrobot__text-message-or-videogame-jump.mp3');
 
+//don't log off right away, instead its eventually
+const logOff = async () => {
+  console.log("JR NOTE: preparing to log off")
+  if (currentOnline) {
+    //between 1 and 10 minutes
+    await sleep(getRandomNumberBetween(1, 10)*60 * 1000);
+
+    currentChat.push("<i class='offline'>This user is currently offline.</i>");
+    let content = document.querySelector(".chat-body");
+    if(content){
+      let cEle = createElementWithClassAndParent("div", content, "message");
+      cEle.innerHTML = "<div>" + "<i class='offline'>This user is currently offline.</i>" + "</div>";
+      content.scrollTop = content.scrollHeight;
+
+    }
+
+    currentOnline = false;
+  }
+}
+
 
 const handleResponding = async (value) => {
-  console.log("JR NOTE: handle responding")
   await sleep(getRandomNumberBetween(1, 10) * 1000);
 
   if (mirrored) {
     addPornBotToCurrentChat("Zampanio is a really fun game, you should play it!", name, icon)
   } else {
     if (currentOnline) {
+      if (!preparedToLogOff) {
+        logOff();
+        preparedToLogOff = true;
+      }
       const all_keys = Object.values(chatMap);
       let chosen_possible_responses;
       //we have a system at work that gets upset if you EVER even mention the word key for some damn reason
@@ -122,7 +146,7 @@ const renderChat = (name, icon) => {
   close.onclick = () => {
     chat.remove();//but we didn't forget the text
   }
-  if(currentChat.length === 0 && !currentOnline){
+  if (currentChat.length === 0 && !currentOnline) {
     currentChat.push("<i class='offline'>This user is currently offline.</i>")
   }
 
@@ -138,7 +162,7 @@ const renderChat = (name, icon) => {
         prev = cEle;
       }
 
-    } else if(c.includes("Them")) {
+    } else if (c.includes("Them")) {
       if (prev && prev.className.includes("chat-bubble-left")) {
         prev.innerHTML += "<div style='padding-top: 10px;'>" + c.replaceAll("Them:", "") + "</div>";
       } else {
@@ -146,9 +170,9 @@ const renderChat = (name, icon) => {
         cEle.innerHTML = "<div>" + c.replaceAll("Them:", "") + "</div>";
         prev = cEle;
       }
-    }else{
+    } else {
       let cEle = createElementWithClassAndParent("div", content, "message");
-        cEle.innerHTML = "<div>"+c + "</div>";
+      cEle.innerHTML = "<div>" + c + "</div>";
     }
   }
 
