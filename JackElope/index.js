@@ -34,6 +34,8 @@ window.onload = () => {
   let profile = name || image || matchPercent || loc;
 
   currentPage = profile? new ProfilePage(seed,name,image,matchPercent,loc) : new HomePage();
+  initChatMap();
+
   currentPage.deploy();
 }
 

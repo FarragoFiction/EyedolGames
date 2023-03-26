@@ -87,6 +87,7 @@ class ProfilePage extends PageObject {
     if(this.lastOnline === 0){
       currentOnline = true;
     }
+
   }
 
   fuckShitUP = async () => {
