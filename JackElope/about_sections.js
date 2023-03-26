@@ -82,14 +82,84 @@ class AboutSection {
 
 class SummarySection extends AboutSection {
   
-  makeRamble = () => {
-    this.ramble = "PLZ TODO summary";
+  makeRamble = ()=>{
+    const obsessiveParagraph = (obsession)=>{
+      const introPhrases = ["I hope this profile catches your eye :)","Hey, glad to meet you!",`Hey, I am a human being who is interested in some good times.`,"I never know what to put in these things..."];
+      const randomGoal = obsession.randomGoal(this.rand);
+
+      const rambles1 = [
+        `I ${this.rand.pickFrom(["went to school at","got a degree from","attended","was valedictorion of"])} ${detailsMap["Education"]}.`,
+        `Some people might ${this.rand.pickFrom(["brag","complain"])} about going to ${detailsMap["Education"]} but I never really got that...`
+     
+      ]
+
+      const rambles4 = [
+        `${this.rand.pickFrom(["I don't care what anyone says","I know its not to everyones taste","Fuck all the haters"])}, I'm proud to have a good ${detailsMap["Body Type"]} body!`
+      ]
+
+      const rambles3 = [
+        `I ${this.rand.pickFrom(["had a friend try it out","had a dream last night","thought about it a lot"])} and decided I only eat ${detailsMap["Diet"]}.`,
+        `I honestly ${this.rand.pickFrom(["gag","puke","gain weight","lose weight","smell funny"])} if I eat anything but ${detailsMap["Diet"]}.`
+
+      ]
+
+      const rambles2 = [
+        `Being a good ${detailsMap["Job"]} is honestly ${this.rand.pickFrom(["takes up a lot of my time","my dream job","my worst nightmare","a living hell","just a way to make money","killing time until I find a way to make " + randomGoal + " into a career.", "only because it turns out " + obsession.randomJob(this.rand) + " isn't a real career path."])}`
+      ]
+
+      const rambles5 = [
+        `I have ${detailsMap["Offspring"]} kids and thats important to me.`,
+      ]
+
+      const dontrepeatrambles = [rambles1, rambles2, rambles3,rambles4,rambles5]
+      const numberSentences = this.rand.getRandomNumberBetween(3,5);
+      let ret = " <p> ";
+      ret += this.rand.pickFrom(introPhrases);
+
+      for(let i = 0; i<numberSentences; i++){
+        ret += ` ${this.rand.pickFrom(dontrepeatrambles[i])}`;
+      }
+      ret += " </p> "
+      return ret;
+  
+    }
+
+    this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
+
   }
 }
 
 class AspirationSection extends AboutSection {
   makeRamble = ()=>{
-    this.ramble = "PLZ TODO aspirations";
+    const obsessiveParagraph = (obsession)=>{
+
+      const favoriteMainBlorbo = obsession.randomBlorbo(this.rand);
+      const randomJob = obsession.randomJob(this.rand);
+
+      const goal = obsession.randomGoal(this.rand);
+ 
+
+      const setups = ["One day I'm finally going to ","I just need to motivate myself to","Ever since I was a kid I wanted to","More than anything, I want to"]
+
+      const rambles = [
+        `${this.rand.pickFrom(setups)} ${goal}.`,
+        `${this.rand.pickFrom(setups)} ${goal}.`,
+        `${this.rand.pickFrom(setups)} ${goal}.`,
+        `${this.rand.pickFrom(setups)} escape this time loop.`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom(["earn","lose","make","eat"])} a ${this.rand.pickFrom(["thousand","million","billion","trillion","quadrillion"])} dollars`,
+        `${this.rand.pickFrom(setups)} ${this.rand.pickFrom([`learn how to cosplay ${randomJob}`, `Finally stop thinking about ${favoriteMainBlorbo} `,])}.`,
+        "Why don't you message me and find out :)",
+      ]
+      let ret = " <p> ";
+      ret += this.rand.pickFrom(rambles);
+
+   
+      ret += " </p> "
+      return ret;
+  
+    }
+
+    this.ramble = obsessiveParagraph(this.rand.pickFrom(this.obsessions));
   }
 }
 

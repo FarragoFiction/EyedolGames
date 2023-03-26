@@ -169,16 +169,18 @@ const all_quirk_mappings = [
   new QuirkMap("though", ["tho", "though"]),
   new QuirkMap("you", ["u", "you"]),
   new QuirkMap("right", ["right", "right", "right", "rite"]),
-  new QuirkMap("n't", ["n't", "n't", "n't", "n not", "nt"]),
+  new QuirkMap("n't", ["n't", "n't", "n't", " not", "nt"]),
   new QuirkMap("'m", [" am", " am", "'m", "m"]),
   new QuirkMap("'d", [" would", "d","'d"]),
   new QuirkMap("sorry", ["fuck you", "sorry","sorry", "sorry","sorry", "sorry","sorry", "sorry","sorry", "sorry","sorry"]),
 
   new QuirkMap("kind of", ["kinda", "kind of"]),
+  new QuirkMap("honestly", ["legitimately", "mostly"]),
+
   new QuirkMap("okay", ["ok", "okay", "OK", "O.K.", "okey dokey"]),//what kind of beast spells it O.K.
   new QuirkMap("\\band\\b", ["and", "and", "&"]),
   new QuirkMap("\\bat\\b", ["at", "at", "at", "@"]),
-  new QuirkMap("\\bgood\\b", ["sexy", "acceptable", "very good", "amazing", "agreeable", "marvelous", "ace", "wonderful", "sweet", "dope", "awesome", "great", "radical", "perfect"]),
+  new QuirkMap("\\bgood\\b", ["tempting","flirty","salacious","raunchy","sexy","sexy","sexy","sexy", "hot",,"hawt","lewd","acceptable", "very good", "amazing", "agreeable", "marvelous", "ace", "wonderful", "sweet", "dope", "awesome", "great", "radical", "perfect"]),
   new QuirkMap("\\bfucker\\b", ["asshat", "dickhead", "fucker", "radical", "bgood", "fucknut", "pukestain", "dirtbag", "fuckhead", "asshole", "dipshit", "garbage person", "poopyhead", "shit sniffer", "jerk","jerk","jerk","jerk","jerk","jerk","jerk","jerk","jerk", "douchecanoe", "douche", "plebian", "fuckstain", "douchebag", "fuckface", "fuckass"]),
 
   new QuirkMap("\\blol\\b", [":)", "*giggle*", "bwahah", "roflcopter", "lawl", "snrk", "hee", "...", "funny", "rofl", "lol", "haha", "ehehe", "heh", "omg lol"]),
@@ -188,7 +190,7 @@ const all_quirk_mappings = [
   new QuirkMap("\\bdude\\b", ["guy", "yo", "bro", "man", "friend", "asshole", "fella"]),
   new QuirkMap("\\bdude\\b", ["guy", "yo", "bro", "man", "friend", "asshole", "fella", "partner"]),
   new QuirkMap("\\byes\\b", ["hell yes", "okay", "sure", "certainly", "indeed", "yes", "yeppers", "right", "yeah", "nah"]),
-  new QuirkMap("\\bno\\b", ["nope", "absolutely not", "he;l no", "absolutely no", "no way", "hello"]),
+  new QuirkMap("\\bno\\b", ["nope", "absolutely not", "he;l no", "absolutely no", "no way", "hell no"]),
   new QuirkMap("friend", ["bestie","bro", "buddy", "pal", "friend", "compadre", "comrade", "homey", "best friend"]),
   new QuirkMap(":\\)", [":)", ":)", ":)", ":)", ":)", ":)", "=)", "=}", "=]", ":>", "8D", "XD", ":3", ":-)", "¯\_(ツ)_/¯", "uwu", "0u0", "~_^", ";)", ":)", ":0)", ":]", ":B", "^_^", ":o)", ">: ]"]),
 

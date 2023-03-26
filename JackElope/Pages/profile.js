@@ -1,3 +1,8 @@
+
+let detailsMap = {
+
+}
+
 let horrors = ["protojr1.png",
   , "protojr2.png"
   , "protojr3.png"
@@ -161,11 +166,16 @@ class ProfilePage extends PageObject {
 
 
     let content = createElementWithClassAndParent("div", target, "profile-content");
-    this.setupAbout(content);
-    this.setupDetails(content);
+    let a = createElementWithClassAndParent("div", content, "profile-about");
+
+    let d = createElementWithClassAndParent("div", content, "profile-details");
+
+    this.setupDetails(d);
     if (this.matchPercent < 0) {
       this.fuckShitUP();
     }
+    this.setupAbout(a);
+
 
 
 
@@ -174,13 +184,13 @@ class ProfilePage extends PageObject {
 
 
 
-  setupDetails = (parent) => {
-    let content = createElementWithClassAndParent("div", parent, "profile-details");
+  setupDetails = (content) => {
 
     let header = createElementWithClassAndParent("div", content, "profile-details-header");
     header.innerText = "Their Details";
 
     const createDetail = (label, text) => {
+      detailsMap[label] = text;
       let ele = createElementWithClassAndParent("div", content, "profile-details-wrapper");
 
       let labelEle = createElementWithClassAndParent("div", ele, "profile-details-label");
@@ -203,7 +213,7 @@ class ProfilePage extends PageObject {
     createDetail("Religion", this.rand.pickFrom(["Atheiest " + this.rand.pickFrom(modifiers), "Agnostic " + this.rand.pickFrom(modifiers), "8 Divine", "Socially", "While On Fire", "During Parties", "After Sex", "Yes " + this.rand.pickFrom(modifiers), "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
     const signs = ["Cancer", "Taurus", "Aries", "Libra", "Leo", "Virgo", "Gemini", "Scorpius", "Sagittarius", "Pisces", "Aquarius", "Capricorn"]
     createDetail("Sign", `${this.rand.pickFrom(signs)} ${this.rand.pickFrom(modifiers)}`);
-    createDetail("Education", this.rand.pickFrom(["Zampanio", "Eyedlr University", "Internet", "Community College", "Cooking School", "Clown College", "Med School", "Tech School", "School of Hard Knocks", "Doctorate", "Masters", "Bachelors", "Dropped Out of College", "High-School", "Dropped Out of High-School", "College"]));
+    createDetail("Education", this.rand.pickFrom(["University of Ohio","University","Harvard","Zampanio", "Eyedlr University", "Internet", "Community College", "Cooking School", "Clown College", "Med School", "Tech School", "School of Hard Knocks", "Doctorate", "Masters", "Bachelors", "Dropped Out of College", "High-School", "Dropped Out of High-School", "College"]));
     createDetail("Job", this.rand.pickFrom(["Spy", "Porn Bot", "Software Developer", "Nurse", "Truck Driver", "Manager", "Office Drone", "Black Smith", "Carpenter", "Mechanic", "Handy Man", "Electrician", "Plumber", "Fire Fighter", "Clown", "Military", "Police Officer", "Marketing", "Sales", "Customer Service", "Tech Support", "Secretary", "Bartender", "Assistant", "Accountant", "Wait Staff", "Construction Worker", "Model", "Doctor", "Lawyer", "Janitor", "No", "Yes", "Food Prep", "Cashier", "Military", "Programming", "Retail"]));
     let income = this.rand.getRandomNumberBetween(0, 7) * 10000;
     if (this.rand.nextDouble() > 0.5) {
@@ -408,8 +418,7 @@ class ProfilePage extends PageObject {
 
   }
 
-  setupAbout = (parent) => {
-    let content = createElementWithClassAndParent("div", parent, "profile-about");
+  setupAbout = (content) => {
 
     const createSection = (label, text) => {
       let ele = createElementWithClassAndParent("div", content, "profile-section-wrapper");

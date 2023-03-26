@@ -636,25 +636,81 @@ all_obsessions[SUBTLEWARS] = new Obsession(
 
 const cncCharRaw = `Abom79
 This Old Tony
-Tubalcain`;
-const cncChar2Raw = ``;
-const cncImportantEventsRaw = `when Tony broke a bit
-when Abom79 used the overhead crane
-when Abom79 used a Starrett indicator to center stock on a lathe
-when Tony added a DRO to the mill
-when Tony fed his cat metal scraps until it pooped machine bolts`;
-const cncOpinionsRaw = `Tony is too poor to buy cheap tools`;
+Tubalcain
+Titans of CnC
+Shane Wighton
+Destin Sandlin
+Jeremy Fielding`;
+const cncChar2Raw = `Shane's wife
+Destin's dad
+Destin's brother
+Old Tony's wife
+Abom79's wife
+Jeremy's kids`;
+const cncImportantEventsRaw = `When Tony broke a bit.
+When Abom79 used the overhead crane.
+When Abom79 used a Starrett indicator to center stock on a lathe.
+When Tony added a DRO to the mill.
+When Tony fed his cat metal scraps until it pooped machine bolts.
+When Shane's wife was underwhelmed by his 3-month project.
+When Shane assembled a Tormach in his basement.
+When Destin visited his Dad and saw the sun shield of the James Web Telescope.
+When Jeremy's robot punched out a dummy
+When Jeremy's robot couldn't plasma cut a straight line`;
+const cncOpinionsRaw = `Tony is too poor to buy cheap tools.
+Abom79 should lose weight
+Starrett tools are too expensive
+You don't need a shaper if you have a mill
+Don't change your coolant.  Change your entire mill.
+Every chainsaw needs a cutting laser attachment.
+Jeremy doesn't need to get his kids involved in his projects.`;
 const cncMemesRaw = `Tram the head.
 Check your chuck for concentricity.
 Shop math.
-`;
-const cncGoalsRaw = `acquire a power tap`;
-const cncLocationsRaw = `the home shop.
-the garage.
-the metal fan`;
-const cncObjectsRaw = `drill bit
-screw`;
-const cncJobsRaw = `machinist`;
+Grab yourself a bar of 6160 steel
+Make some chips`;
+const cncGoalsRaw = `Acquire a FlexArm power tap.
+Duplicate that machinist's jack
+Buy another knurling tool
+Add CNC to my mill
+Buy a CNC router
+Buy an FDM 3D printer
+Buy a resin 3D printer
+Buy a lathe
+Buy a mill
+Upgrade to a 10" table saw
+Get hired at a CNC shop
+Build a robot arm from scratch
+Square a piece of stock`;
+const cncLocationsRaw = `The home shop.
+The garage.
+The metal fab.
+The basement shop.
+The plant where the tools are made.
+The metrology lab for the JWST's sun shield.
+The construction site for a grain bin
+The construction site for a center pivot irrigation rig`;
+const cncObjectsRaw = `Bridgeport mill
+Lathe
+Tool post
+MIG welder
+Table saw
+forceps
+oscilloscope
+wave form generator
+adjustable dc power supply
+drill press
+ten inch table saw
+laser cutter
+Tormach cnc
+pocket hole jig
+Slide rule
+CRC handbook`;
+const cncJobsRaw = `Machinist
+CNC programmer
+Part designer
+Mad scientist
+Youtube influencer`;
 
 
 all_obsessions[CNC] = new Obsession(
@@ -761,7 +817,7 @@ all_obsessions[OFANDTHEYSHALL] = new Obsession(
 );
 
 
-
+//https://www.tumblr.com/jadedresearcher/712808371793903616/zampanio-breadcrumb?source=share
 //////////////////////////////////////////////////////////////////////////////////////////
 // Zampanio    (Bullshit, Guesses and Extroploations about Zampanio the Game)           //
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -831,7 +887,7 @@ all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
 const ffCharRaw = `Zawhei,Eirikr,Volour,Okarin,Peewee,Hagala,Despap,Othala,Nidhogg`;
 const ffChar2Raw = `the Eagle, Loki, the consorts, Butler Bot, YN, Big Honkers`;
 const ffImportantEventsRaw = `when the Leg Lamia and the Tail Lamia fought over whether Corrupt Nidhogg or Purified Nidhogg was the True Nidhogg,when the WigglerEater invaded LOHAE,when you realize the players used to be trolls and not lamia,when you realized Nidhogg had hacked reality to make scratches worse, when the Echidna Universe turned out to have a memory leak, when Peewee through himself into the Echidna to try to save the other three Universes,when Loki revealed herself to be a shapeshifter, when the Observers realized just how much power they had over the session, when Volour decided to influence the Observers opinions no matter what, when Eirikr organied the Leg Lamia to make sure Corruption happened no matter what, when Othala couldn't be found, when you realized where Othala had been, when Zawhei purified and realized how horrific her goals had been, when Nidhogg shook off the Corruption and organized the Snakes to save FarragoSpace,when it was revealed that Despap was the villain all along, when Hagala turned her back on Peewee, when Peewee revaled he remembered all 8 scratches at once, when Okarin finally fought of Slepnir, when Hagala bred four universes at once`;
-const ffOpinionsRaw = `Zawhei was way too pompous, Volour was problematic, Volour was a Gaslight Gatekeep Girlboss,Nidhogg was a very dumb snake who shouldn't have been allowed to hack reality, Loki is probably JR in disguise, Loki probably isn't a leprechaun, Loki is actually a Trickster Player escaped from the Echidna, The Segundian Empire DESERVED to conquer FarragoSpace, Despap did nothing wrong, Peewee whines too much, Peewee is a poor lil meow meow, Othala barely even mattered, Nidhogg is better corrupt, Nidhogg is better purified, Hagala was too mean to Peewee`;
+const ffOpinionsRaw = `The Space Raptor universe probably had cool dinosaur people or something in it, the :hatched chick: universe was the Obscure Game, the Frog universe was just normal homestuck bullshit, the Echidna Universe was wrong and gross, Zawhei was way too pompous, Volour was problematic, Volour was a Gaslight Gatekeep Girlboss,Nidhogg was a very dumb snake who shouldn't have been allowed to hack reality, Loki is probably JR in disguise, Loki probably isn't a leprechaun, Loki is actually a Trickster Player escaped from the Echidna, The Segundian Empire DESERVED to conquer FarragoSpace, Despap did nothing wrong, Peewee whines too much, Peewee is a poor lil meow meow, Othala barely even mattered, Nidhogg is better corrupt, Nidhogg is better purified, Hagala was too mean to Peewee`;
 const ffMemesRaw = `Echidnas are gross, Pap Pap Pap!, Endless Life Better Than Endless Memes`;
 const ffGoalsRaw = `write a story where Peewee accepts the Echidnas corruption as superior to Nidhoggs, let Peewee finally rest,make an elaborate semi anonymous RP system where Peewee attempts to destroy the Echidna and instead becomes Corrupted by it,write a story about Peewee breaking free of the Observers chains,clear up the void surrounding the farragnarok session, write a spiralling fan work of farragnarok that details whats inside the gross echidna`;
 const ffLocationsRaw = `The Land of Mist and Trails, The Land of Horrorticulture and Essence, The Land of Shadows and S`;
