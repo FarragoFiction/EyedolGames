@@ -522,7 +522,14 @@ Anabased
 Who is W. Aster?
 ITS NOT THE FUCKING UNPLACE YOU PIECE OF SHIT AZURITE
 I will never forgive the Mendicant
+The Daughter is pursued, always.
 JAMES KASTZANA LIVES
+Survivors of the Ivory Maze speak of horned and faceless creatures that stalk its halls, blocking passages and hunting seekers to exhaustion.
+The paths of the Gallery twist through the Innards of the Mountain.
+Poet or fool, soldier or saint: The Depths breaks them all.
+Every eye is a doorway, and the Spider-in-Sharpness locks it.
+Some ideas are impossible to be rid of.
+To be Endless does not make you infinite. Memories eventually overflow from the mind.
 Ask me about the Moon`;
 const swGoalsRaw = `Dream of the Mountain
 Solve a Grimoire

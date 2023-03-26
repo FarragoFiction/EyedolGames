@@ -139,7 +139,7 @@ class ProfilePage extends PageObject {
     let imageEle = createElementWithClassAndParent("img", imageWrapper, "profile-image");
     imageEle.src = this.image;
     if(this.matchPercent <0){
-      imageEle.classList.add("negative_match")
+      imageWrapper.classList.add("negative_match")
     }
 
     let rightCol = createElementWithClassAndParent("div", headerContent, "profile-header-right");
@@ -228,7 +228,7 @@ class ProfilePage extends PageObject {
 
     const createDetail = (label, text) => {
       if(flip){
-        text = "Zampanio";
+        text = "What Truths Do You See Within The Mirror?";
       }
       detailsMap[label] = text;
       let ele = createElementWithClassAndParent("div", content, "profile-details-wrapper");
