@@ -187,6 +187,9 @@ class ProfilePage extends PageObject {
 
     let messageButton = createElementWithClassAndParent("button", headerContent, "message-button");
     messageButton.innerText = "Message Them";
+    messageButton.onclick = ()=>{
+      renderChat(this.name, this.image);
+    }
 
     if(this.matchPercent <0){
       messageButton.classList.add("negative_match")

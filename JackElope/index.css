@@ -86,47 +86,111 @@ body {
   border-radius: 50% 50% 0 0;
 }
 
-.negative_match{
+.negative_match {
   transform: scaleX(-1);
 }
 
-.spin{
+.spin {
   animation: spin 10s linear infinite;
 }
 
+.chat-header {
+  display: flex;
+  flex-direction: row;
+  background: #111111;
+  padding: 10px;
+  border-radius: 4px;
+  height: 25px;
+  color: #c4c4c4;
+  justify-content: space-between;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
 
-@keyframes spin{
-  0%{
+.chat-body{
+  color: black;
+  height: 329px;
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+
+
+}
+
+.chat-bubble-right{
+  background: lightgreen;
+  text-align: right;
+  width: 66%;
+  margin-left: 27%;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom-right-radius: 1px;
+
+}
+
+.chat-bubble-left{
+  background: lightblue;
+  width: 66%;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom-left-radius: 1px;
+
+}
+
+.chat-header-icon {
+  width: 25px;
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+}
+
+.chat {
+  position: absolute;
+  border-radius: 4px;
+  bottom: 3px;
+  right: 50px;
+  width: 300px;
+  height: 400px;
+  background: white;
+}
+
+
+@keyframes spin {
+  0% {
     transform: scaleX(1);
   }
 
-  50%{
+  50% {
     transform: scaleX(-1);
   }
 
-  100%{
+  100% {
     transform: scaleX(1);
   }
 }
 
-@keyframes james-webb-telescope-mirrors{
-  0%{
+@keyframes james-webb-telescope-mirrors {
+  0% {
     background-size: 211px 211px;
   }
-  100%{
-  }
+
+  100% {}
 }
 
-@keyframes james-webb-telescope-mirrors-mirrored{
-  0%{
+@keyframes james-webb-telescope-mirrors-mirrored {
+  0% {
     background-size: 200px 200px;
 
   }
-  50%{
-      background-size: 211px 211px;
+
+  50% {
+    background-size: 211px 211px;
 
   }
-  100%{
+
+  100% {
     background-size: 200px 200px;
 
   }
@@ -175,7 +239,7 @@ button {
   cursor: pointer;
 }
 
-.message-button{
+.message-button {
   position: absolute;
   right: 25px;
   color: white;
@@ -183,28 +247,28 @@ button {
   padding: 10px;
   padding-left: 25px;
   padding-right: 25px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.profile-match-box{
+.profile-match-box {
   width: 100px;
   background: white;
   margin-top: -24px;
   padding: 10px;
 }
 
-.profile-name{
+.profile-name {
   font-size: 24px;
   color: hotpink;
   margin-top: 33px;
 }
 
-.profile-age{
+.profile-age {
   font-size: 14px;
   font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.profile-loc{
+.profile-loc {
   font-size: 14px;
   font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -227,7 +291,7 @@ button {
 }
 
 
-.profile-header-right{
+.profile-header-right {
   margin: 25px;
 }
 
@@ -240,39 +304,39 @@ select {
   position: relative;
 }
 
-.profile-section-wrapper{
+.profile-section-wrapper {
   padding-bottom: 30px;
 }
 
-.profile-section-title{
+.profile-section-title {
   font-size: 16px;
   color: #00649f;
   font-family: "GT AmericaB", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.profile-about{
+.profile-about {
   font-size: 12px;
 
 
 }
 
-#img-wrapper{
+#img-wrapper {
   position: relative;
 }
 
-.box{
+.box {
   background-size: 200px 200px;
 }
 
 
 
-.fucked-up-image-holder{
+.fucked-up-image-holder {
   position: absolute;
   top: 0px;
   left: 0px;
 }
 
-.profile-details-label{
+.profile-details-label {
   color: #6f6f6f;
   padding-left: 10px;
   width: 100px;
@@ -280,12 +344,13 @@ select {
   font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.profile-details-text{
+.profile-details-text {
   padding-left: 50px;
   display: inline-block;
   width: 180px;
 }
-.profile-details-wrapper{
+
+.profile-details-wrapper {
   border: 1px solid #efefef;
   padding: 5px;
   font-size: 14px;
@@ -299,13 +364,13 @@ select {
   flex-direction: row;
 }
 
-.profile-details{
+.profile-details {
   border: 1px solid #efefef;
   width: 366px;
   height: 100%;
 }
 
-.profile-details-header{
+.profile-details-header {
   background-color: #abc9de;
   padding: 7px;
   color: #00145c;
