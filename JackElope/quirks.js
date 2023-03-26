@@ -153,6 +153,8 @@ const all_quirk_mappings = [
   new QuirkMap("want to", ["wanta", "want to"]),
   new QuirkMap("need to", ["needta", "need to"]),
   new QuirkMap("going to", ["gonna", "going to"]),
+  new QuirkMap("right now", ["rn", "right now", "right now", "right now", "right now", "right now"]),
+
   new QuirkMap("i'm", ["i am"]),
   new QuirkMap("I'm", ["I am"]),
 
