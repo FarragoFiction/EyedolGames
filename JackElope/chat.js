@@ -6,9 +6,16 @@ You: Hello World
 Them: the astral projects onto benign undefined archetypal objects
 You: these frequencies are frequently the key to whats percieved to be and leads me to believe they are feeding off the reaches of the mind
 Them: you are home you remind us happy hurt
-You: check your logic at the desk you won't need it to progress`;
+You: check your logic at the desk you won't need it to progress
+You: actually make sure that if you say multiple things in a row
+You: it puts it in the same bubble
+Them: yeah okay`;
 
 let currentChat = currentChatRaw.split("\n");
+
+const addToCurrentChat = ()=>{
+
+}
 
 
 //http://killi.palo-alto.ca.us/ kr found vibes
@@ -19,6 +26,7 @@ const renderChat = (name,icon)=>{
   let header = createElementWithClassAndParent("div", chat, "chat-header");
   let content = createElementWithClassAndParent("div", chat, "chat-body");
   let input = createElementWithClassAndParent("input", chat, "chat-input");
+  input.focus();
 
   //popuplate header
 
@@ -32,13 +40,25 @@ const renderChat = (name,icon)=>{
 
 
   //populate content
+  let prev;
   for(let c of currentChat){
     if(c.includes("You")){
-      let cEle = createElementWithClassAndParent("div", content, "chat-bubble-right");
-      cEle.innerText = c.replaceAll("You:","");
+      if(prev && prev.className.includes("chat-bubble-right")){
+        prev.innerHTML += "<div style='padding-top: 10px;'>"+c.replaceAll("You:","") +"</div>";
+      }else{
+        let cEle = createElementWithClassAndParent("div", content, "chat-bubble-right");
+        cEle.innerHTML = "<div>"+c.replaceAll("You:","") +"</div>";
+        prev = cEle;
+      }
+      
     }else{
-      let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
-      cEle.innerText = c.replaceAll("Them:","");
+      if(prev && prev.className.includes("chat-bubble-left")){
+        prev.innerHTML += "<div style='padding-top: 10px;'>"+c.replaceAll("Them:","") +"</div>";
+      }else{
+        let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
+        cEle.innerHTML = "<div>"+c.replaceAll("Them:","") +"</div>";
+        prev = cEle;
+      }
     }
   }
 
