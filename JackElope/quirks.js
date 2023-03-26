@@ -180,12 +180,13 @@ const all_quirk_mappings = [
   new QuirkMap("okay", ["ok", "okay", "OK", "O.K.", "okey dokey"]),//what kind of beast spells it O.K.
   new QuirkMap("\\band\\b", ["and", "and", "&"]),
   new QuirkMap("\\bat\\b", ["at", "at", "at", "@"]),
-  new QuirkMap("\\bgood\\b", ["tempting","flirty","salacious","raunchy","sexy","sexy","sexy","sexy", "hot",,"hawt","lewd","acceptable", "very good", "amazing", "agreeable", "marvelous", "ace", "wonderful", "sweet", "dope", "awesome", "great", "radical", "perfect"]),
+  new QuirkMap("\\bgood\\b", ["tempting","flirty","salacious","cool","raunchy","sexy","sexy","sexy","hot", "hot",,"hawt","lewd","acceptable", "very good", "amazing", "agreeable", "marvelous", "ace", "wonderful", "sweet", "dope", "awesome", "great", "radical", "perfect"]),
   new QuirkMap("\\bfucker\\b", ["asshat", "dickhead", "fucker", "radical", "bgood", "fucknut", "pukestain", "dirtbag", "fuckhead", "asshole", "dipshit", "garbage person", "poopyhead", "shit sniffer", "jerk","jerk","jerk","jerk","jerk","jerk","jerk","jerk","jerk", "douchecanoe", "douche", "plebian", "fuckstain", "douchebag", "fuckface", "fuckass"]),
 
   new QuirkMap("\\blol\\b", [":)", "*giggle*", "bwahah", "roflcopter", "lawl", "snrk", "hee", "...", "funny", "rofl", "lol", "haha", "ehehe", "heh", "omg lol"]),
 
   new QuirkMap("\\bhey\\b", ["sup", "yo", "greetings", "hey there", "hi", "hello"]),
+
   new QuirkMap("\\bsexy\\b", ["sexy", "sexy","sexy", "hot stuff", "champ", "partner", "gorgeous", "beautiful"]),
   new QuirkMap("\\bdude\\b", ["guy", "yo", "bro", "man", "friend", "asshole", "fella"]),
   new QuirkMap("\\bdude\\b", ["guy", "yo", "bro", "man", "friend", "asshole", "fella", "partner"]),

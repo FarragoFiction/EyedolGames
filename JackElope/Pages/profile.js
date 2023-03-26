@@ -138,7 +138,7 @@ class ProfilePage extends PageObject {
 
     let imageEle = createElementWithClassAndParent("img", imageWrapper, "profile-image");
     imageEle.src = this.image;
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       imageWrapper.classList.add("negative_match")
     }
 
@@ -148,50 +148,54 @@ class ProfilePage extends PageObject {
 
     let matchPercent = createElementWithClassAndParent("div", matchBox, "profile-percent match");
     matchPercent.innerText = this.matchPercent + "% Match";
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       matchPercent.classList.add("negative_match")
     }
 
     let friendPercent = createElementWithClassAndParent("div", matchBox, "profile-percent friend");
     friendPercent.innerText = this.rand.getRandomNumberBetween(0, 100) + "% Friend"
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       friendPercent.classList.add("negative_match")
     }
 
     let enemyPercent = createElementWithClassAndParent("div", matchBox, "profile-percent enemy");
     enemyPercent.innerText = this.rand.getRandomNumberBetween(this.matchPercent, 100 - this.matchPercent) + "% Enemy"
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       enemyPercent.classList.add("negative_match")
     }
 
     let nameEle = createElementWithClassAndParent("div", rightCol, "profile-name");
     nameEle.innerText = this.name;
 
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       nameEle.classList.add("negative_match")
     }
 
     let ageEle = createElementWithClassAndParent("div", rightCol, "profile-age");
     ageEle.innerText = this.age;
 
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       ageEle.classList.add("negative_match")
     }
 
     let locEle = createElementWithClassAndParent("div", rightCol, "profile-loc");
     locEle.innerText = this.loc;
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       locEle.classList.add("negative_match")
     }
 
 
     let messageButton = createElementWithClassAndParent("button", headerContent, "message-button");
     messageButton.innerText = "Message Them";
-    messageButton.onclick = ()=>{
+    messageButton.onclick = () => {
       renderChat(this.name, this.image);
     }
+    //true random if they message you or not, like they're people
+    if(this.matchPercent < 0 || this.lastOnline === 0 && Math.random() >0.5){
+      initiateMessage(this.name, this.icon, this.matchPercent <0)
+    }
 
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       messageButton.classList.add("negative_match")
     }
 
@@ -201,20 +205,20 @@ class ProfilePage extends PageObject {
 
     let content = createElementWithClassAndParent("div", target, "profile-content");
     let a = createElementWithClassAndParent("div", content, "profile-about");
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       a.classList.add("negative_match")
     }
 
     let d = createElementWithClassAndParent("div", content, "profile-details");
-    if(this.matchPercent <0){
+    if (this.matchPercent < 0) {
       d.classList.add("negative_match")
     }
 
-    this.setupDetails(d, this.matchPercent <0);
+    this.setupDetails(d, this.matchPercent < 0);
     if (this.matchPercent < 0) {
       this.fuckShitUP();
     }
-    this.setupAbout(a, this.matchPercent <0);
+    this.setupAbout(a, this.matchPercent < 0);
 
 
 
@@ -230,7 +234,7 @@ class ProfilePage extends PageObject {
     header.innerText = "Their Details";
 
     const createDetail = (label, text) => {
-      if(flip){
+      if (flip) {
         text = "What Truths Do You See Within The Mirror?";
       }
       detailsMap[label] = text;
@@ -462,7 +466,7 @@ class ProfilePage extends PageObject {
 
   }
 
-  setupAbout = (content,flip) => {
+  setupAbout = (content, flip) => {
 
     const createSection = (label, text) => {
       let ele = createElementWithClassAndParent("div", content, "profile-section-wrapper");
