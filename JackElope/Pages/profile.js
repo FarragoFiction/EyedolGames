@@ -1,7 +1,10 @@
-
+//used to store facts later on
 let detailsMap = {
 
 }
+
+let currentOnline = false;
+let mirrored  = false;
 
 let horrors = ["protojr1.png",
   , "protojr2.png"
@@ -35,6 +38,7 @@ class ProfilePage extends PageObject {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     this.matchPercent = matchPercent ? matchPercent : "-216";
+    mirrored = this.matchPercent<0
 
     //for debugging and for showing ppl specific fandoms
     let secrets = urlParams.get('secrets');
@@ -79,7 +83,10 @@ class ProfilePage extends PageObject {
     this.loc = loc ? loc : "Right Behind You ;)";
     detailsMap["LOC"] = this.loc;
 
-    this.lastOnline = this.rand.getRandomNumberBetween(0, 7);//days ago, 1 in X chance of being online now to talk to.
+    this.lastOnline = this.rand.getRandomNumberBetween(0, 3);//days ago, 1 in X chance of being online now to talk to.
+    if(this.lastOnline === 0){
+      currentOnline = true;
+    }
   }
 
   fuckShitUP = async () => {
@@ -192,8 +199,10 @@ class ProfilePage extends PageObject {
     }
     //true random if they message you or not, like they're people
     if(this.matchPercent < 0 || this.lastOnline === 0 && Math.random() >0.5){
-      initiateMessage(this.name, this.icon, this.matchPercent <0)
+      initiateMessage(this.name, this.image, this.matchPercent <0)
     }
+
+
 
     if (this.matchPercent < 0) {
       messageButton.classList.add("negative_match")
@@ -253,7 +262,7 @@ class ProfilePage extends PageObject {
     createDetail("Last Online", `${this.lastOnline === 0 ? 'Online Now!' : this.lastOnline + " days ago."}`);
     createDetail("Ethnicity", this.rand.pickFrom(["It's a secret ;)", "Wouldn't you like to know, weather boy.", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "Intentionally Left Blank", "Yes", "No", "Not Disclosed"]));
     createDetail("Height", `${this.rand.getRandomNumberBetween(3, 7)}' ${this.rand.getRandomNumberBetween(0, 12)}'' (${(this.rand.nextDouble() + 1).toFixed(2)}m)`);//the birbs don't know what a reasonable conversion of feet to meters would be, they just know profiles have this format. 
-    createDetail("Body Type", this.rand.pickFrom(["Just Like Yours", "Universal", "Expensive", "Colorful", "Stable", "Vast", "Cold", "Temperate", "Abnormal", "Glorious", "Warm", "Hospitable", "Celestial", "Super Massive", "Clean", "Fashionable", "Skeletal", "Rotting", "Pleasant", "Angled", "Strange", "Haunted", "Crowded", "Cozy", "Filled with Natural Light", "Plant-Based", "Vibrant", "Elegant", "Controversial", "Dramatic", "Old-fashioned", "Trendy", "Classic", "Simple", "Spacious", "Bad", "Good", "Incorrect", "Correct", "Snuggly", "Soft", "Intimidating", "Powerful", "Curvy", "Non-Euclidean", "Athletic", "Thin", "Monstrous", "Shambling"]));
+    createDetail("Body Type", this.rand.pickFrom(["Just Like Yours", "Universal", "Expensive", "Colorful", "Stable", "Vast", "Cold", "Temperate", "Abnormal", "Glorious", "Deceased","Warm", "Hospitable", "Celestial", "Super Massive", "Clean", "Fashionable", "Skeletal", "Rotting", "Pleasant", "Angled", "Strange", "Haunted", "Crowded", "Cozy", "Filled with Natural Light", "Plant-Based", "Vibrant", "Elegant", "Controversial", "Dramatic", "Old-fashioned", "Trendy", "Classic", "Simple", "Spacious", "Bad", "Good", "Incorrect", "Correct", "Snuggly", "Soft", "Intimidating", "Powerful", "Curvy", "Non-Euclidean", "Athletic", "Thin", "Monstrous", "Shambling"]));
     createDetail("Diet", this.rand.pickFrom(["Exclusively My Own Flesh", "Pica", "Theft Based", "Sexual Canibalism", "Human Flesh", "Carrion", "Fast Food", "Bones", "Mold", "Fungus", "More than 70% Meat", "30-70% Meat", "Less than 30% Meat", "Wood ;)", "Pollen", "Grass", "Honey", "Nectar", "Flowers", "Zooplankton", "Worms", "Squid", "Frozen Rodents", "Small Insects", "Crickets", "Cake", "Frogs", "Snakes", "Mucus", "Molluscs", "Blood", "Eggs", "Coral", "Phagocytosis", "Myzocytosis", "Suction Feeding", "Ram Feeding", "", "Bulk Feeding", "Fluid Feeding", "Deposit Feeding", "Filter Feeding", "Trash", "Small Mammals", "Vertebrates", "Aquatic Invertebrates", "Larvae", "Aquatic Vegetation", "Grain", "Brains", "Other Birds", "Fruit, Seeds, Berries, Insects", "Bugs", "Omnivore", "Spiders", "Only Plants", "Vegan", "Mostly Meat", "Corn Chips", "Pizza", "Information", "Obsession"]));
     createDetail("Smokes", this.rand.pickFrom(["Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
     createDetail("Drinks", this.rand.pickFrom(["Tea", "Coffee", "Never", "Milk", "Soda", "Blood", "Juice", "Alcohol", "Water", "Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));

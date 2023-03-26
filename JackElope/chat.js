@@ -1,33 +1,52 @@
 //so we remember it even on close
 // check your logic at the desk you won't need it to progress, https://www.youtube.com/watch?v=-u7R4nZE1fM
-let currentChatRaw = `You: test 1
-Them: test2
-You: Hello World
-Them: the astral projects onto benign undefined archetypal objects
-You: these frequencies are frequently the key to whats percieved to be and leads me to believe they are feeding off the reaches of the mind
-Them: you are home you remind us happy hurt
-You: check your logic at the desk you won't need it to progress
-You: actually make sure that if you say multiple things in a row
-You: it puts it in the same bubble
-Them: yeah okay`;
 
-let currentChat = currentChatRaw.split("\n");
+let currentChat = []
 
 
 const doop = new Audio('264828__cmdrobot__text-message-or-videogame-jump.mp3');
 
+
+const handleResponding = async (value) => {
+  console.log("JR NOTE: handle responding")
+  await sleep(getRandomNumberBetween(1, 10) * 1000);
+
+  if (mirrored) {
+    addPornBotToCurrentChat("Zampanio is a really fun game, you should play it!", name, icon)
+  } else {
+    if (currentOnline) {
+      const all_keys = Object.values(chatMap);
+      let chosen_possible_responses;
+      //we have a system at work that gets upset if you EVER even mention the word key for some damn reason
+      //thinks its  aprivate key we shouldn't put in get. look. i'm sorry system. javascript is based on key/value pairs. 
+      //thats just how it is.
+      for (let key of all_keys) {
+        if (value.includes(key)) {
+          chosen_possible_responses = chatMap[key];//yeah they can overwrite each other.
+        }
+      }
+      if (!chosen_possible_responses) {
+        chosen_possible_responses = chatMap["*"];//answer to life, the universe, and everything in it
+      }
+      addPornBotToCurrentChat(pickFrom(chosen_possible_responses, currentPage.name, currentPage.icon));
+
+    }
+  }
+
+}
+
 //allowed to be true random. 
-const initiateMessage = async (name, icon,mirrored)=>{
+const initiateMessage = async (name, icon, mirrored) => {
   //if mirrored just vomit everything at once in a big spammy pile
   //otherwise, just send a greeting
-  await sleep(getRandomNumberBetween(10,60) * 1000);
-  if(!mirrored){
+  await sleep(getRandomNumberBetween(10, 60) * 1000);
+  if (!mirrored) {
     addPornBotToCurrentChat(pickFrom(chatMap["greeting"], name, icon));
-  }else{
+  } else {
     //once i really get the chat bot going this is going to be so upsetting
     const all_values = Object.values(chatMap);
-    for(let values of all_values){
-      for(let v of values){
+    for (let values of all_values) {
+      for (let v of values) {
         await sleep(1000);
         addPornBotToCurrentChat(v, name, icon);
       }
@@ -35,7 +54,7 @@ const initiateMessage = async (name, icon,mirrored)=>{
   }
 }
 
-const addPornBotToCurrentChat = (value,name,icon) => {
+const addPornBotToCurrentChat = (value, name, icon) => {
   doop.play();
   currentChat.push("Them:" + value);
   let content = document.querySelector(".chat-body");
@@ -49,8 +68,8 @@ const addPornBotToCurrentChat = (value,name,icon) => {
     }
     content.scrollTop = content.scrollHeight;
 
-  }else{
-    renderChat(name,icon);
+  } else {
+    renderChat(name, icon);
   }
 }
 
@@ -66,7 +85,7 @@ const addYouToCurrentChat = (value) => {
       cEle.innerHTML = "<div>" + value.replaceAll("You:", "") + "</div>";
     }
     content.scrollTop = content.scrollHeight;
-
+    handleResponding(value);
   }
 }
 
@@ -103,7 +122,9 @@ const renderChat = (name, icon) => {
   close.onclick = () => {
     chat.remove();//but we didn't forget the text
   }
-
+  if(currentChat.length === 0 && !currentOnline){
+    currentChat.push("<i class='offline'>This user is currently offline.</i>")
+  }
 
   //populate content
   let prev;
@@ -117,7 +138,7 @@ const renderChat = (name, icon) => {
         prev = cEle;
       }
 
-    } else {
+    } else if(c.includes("Them")) {
       if (prev && prev.className.includes("chat-bubble-left")) {
         prev.innerHTML += "<div style='padding-top: 10px;'>" + c.replaceAll("Them:", "") + "</div>";
       } else {
@@ -125,6 +146,9 @@ const renderChat = (name, icon) => {
         cEle.innerHTML = "<div>" + c.replaceAll("Them:", "") + "</div>";
         prev = cEle;
       }
+    }else{
+      let cEle = createElementWithClassAndParent("div", content, "message");
+        cEle.innerHTML = "<div>"+c + "</div>";
     }
   }
 
