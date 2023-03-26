@@ -142,6 +142,15 @@ body {
 
 }
 
+.chat-header-close{
+  border: none;
+  background: none;
+  color: #c4c4c4;
+  margin: 0px;
+  cursor: pointer;
+
+}
+
 .chat-input{
   width: 100%;
   height: 25px;

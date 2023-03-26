@@ -13,20 +13,31 @@ Them: yeah okay`;
 
 let currentChat = currentChatRaw.split("\n");
 
-const addToCurrentChat = ()=>{
+const addToCurrentChat = () => {
 
 }
 
 
 //http://killi.palo-alto.ca.us/ kr found vibes
-const renderChat = (name,icon)=>{
+const renderChat = (name, icon) => {
   const body = document.querySelector("body");
   let chat = createElementWithClassAndParent("div", body, "chat");
   //main sections
   let header = createElementWithClassAndParent("div", chat, "chat-header");
   let content = createElementWithClassAndParent("div", chat, "chat-body");
-  let input = createElementWithClassAndParent("input", chat, "chat-input");
+  let form = createElementWithClassAndParent("form", chat);
+
+  let input = createElementWithClassAndParent("input", form, "chat-input");
   input.focus();
+  form.onsubmit = (e) => {
+    if (input.value.trim()) {
+      window.alert("!!!" + input.value)
+      e.preventDefault();
+      addToCurrentChat(input.value)
+      input.value = "";
+    }
+    return false;
+  }
 
   //popuplate header
 
@@ -35,28 +46,28 @@ const renderChat = (name,icon)=>{
   let nameEle = createElementWithClassAndParent("div", header, "chat-header-name");
   nameEle.innerText = name;
 
-  let close = createElementWithClassAndParent("div", header, "chat-header-close");
+  let close = createElementWithClassAndParent("button", header, "chat-header-close");
   close.innerText = "X";
 
 
   //populate content
   let prev;
-  for(let c of currentChat){
-    if(c.includes("You")){
-      if(prev && prev.className.includes("chat-bubble-right")){
-        prev.innerHTML += "<div style='padding-top: 10px;'>"+c.replaceAll("You:","") +"</div>";
-      }else{
+  for (let c of currentChat) {
+    if (c.includes("You")) {
+      if (prev && prev.className.includes("chat-bubble-right")) {
+        prev.innerHTML += "<div style='padding-top: 10px;'>" + c.replaceAll("You:", "") + "</div>";
+      } else {
         let cEle = createElementWithClassAndParent("div", content, "chat-bubble-right");
-        cEle.innerHTML = "<div>"+c.replaceAll("You:","") +"</div>";
+        cEle.innerHTML = "<div>" + c.replaceAll("You:", "") + "</div>";
         prev = cEle;
       }
-      
-    }else{
-      if(prev && prev.className.includes("chat-bubble-left")){
-        prev.innerHTML += "<div style='padding-top: 10px;'>"+c.replaceAll("Them:","") +"</div>";
-      }else{
+
+    } else {
+      if (prev && prev.className.includes("chat-bubble-left")) {
+        prev.innerHTML += "<div style='padding-top: 10px;'>" + c.replaceAll("Them:", "") + "</div>";
+      } else {
         let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
-        cEle.innerHTML = "<div>"+c.replaceAll("Them:","") +"</div>";
+        cEle.innerHTML = "<div>" + c.replaceAll("Them:", "") + "</div>";
         prev = cEle;
       }
     }

@@ -186,7 +186,7 @@ const all_quirk_mappings = [
   new QuirkMap("\\blol\\b", [":)", "*giggle*", "bwahah", "roflcopter", "lawl", "snrk", "hee", "...", "funny", "rofl", "lol", "haha", "ehehe", "heh", "omg lol"]),
 
   new QuirkMap("\\bhey\\b", ["sup", "yo", "greetings", "hey there", "hi", "hello"]),
-  new QuirkMap("\\bsexy\\b", ["sexy", "sexy", "hot stuff", "champ", "partner", "gorgeous", "beautiful"]),
+  new QuirkMap("\\bsexy\\b", ["sexy", "sexy","sexy", "hot stuff", "champ", "partner", "gorgeous", "beautiful"]),
   new QuirkMap("\\bdude\\b", ["guy", "yo", "bro", "man", "friend", "asshole", "fella"]),
   new QuirkMap("\\bdude\\b", ["guy", "yo", "bro", "man", "friend", "asshole", "fella", "partner"]),
   new QuirkMap("\\byes\\b", ["hell yes", "okay", "sure", "certainly", "indeed", "yes", "yeppers", "right", "yeah", "nah"]),

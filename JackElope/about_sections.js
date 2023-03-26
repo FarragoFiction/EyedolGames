@@ -98,7 +98,7 @@ class SummarySection extends AboutSection {
       ]
 
       const rambles4 = [
-        `${this.rand.pickFrom(["I don't care what anyone says","I know its not to everyones taste","Fuck all the haters"])}, I'm proud to have a good ${detailsMap["Body Type"]} body!`
+        `${this.rand.pickFrom(["I don't care what anyone says","I know its not to everyones taste","Fuck all the haters"])}, I'm proud to have a sexy ${detailsMap["Body Type"]} body!`
       ]
 
       const rambles3 = [
