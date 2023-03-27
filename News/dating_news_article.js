@@ -51,7 +51,7 @@ class DatingArticle {
   }
 
   getHeadline = () => {
-    const options = [`Authorities Warn Not To Trust Shady Dating Sites`, `${this.sexy_single_loc} Loses Another Resident to Sketch Dating Sites`, "Local Single Disappears Suddenly", `${this.sexy_single_name} never loved you`];
+    const options = [`Authorities Warn Not To Trust Shady Dating Sites`, `${this.sexy_single_loc} Loses Another Resident to Sketchy Dating Sites`, "Local Single Disappears Suddenly", `${this.sexy_single_name} never loved you`];
     return this.rand.pickFrom(options)
   }
 

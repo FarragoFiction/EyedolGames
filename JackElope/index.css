@@ -181,7 +181,7 @@ body {
 }
 
 .chat {
-  position: absolute;
+  position: fixed;
   border-radius: 4px;
   bottom: 3px;
   right: 50px;

@@ -32,7 +32,7 @@ const handleResponding = async (value) => {
   await sleep(getRandomNumberBetween(1, 5) * 1000);
 
   if (mirrored) {
-    addPornBotToCurrentChat("Zampanio is a really fun game, you should play it!", name, icon)
+    addPornBotToCurrentChat("Zampanio is a really fun game, you should play it!", "Zampanio", currentPage.icon)
   } else {
     if (currentOnline) {
       if (!preparedToLogOff) {
@@ -85,10 +85,13 @@ const addPornBotToCurrentChat = (value, name, icon) => {
   if (content) {
     const prev = content.childNodes[content.childNodes.length - 1];
     if (prev && prev.className.includes("chat-bubble-left")) {
-      prev.innerHTML += "<div style='padding-top: 10px;'>" + value.replaceAll("Them:", "") + "</div>";
+      prev.innerHTML += "<div style='padding-top: 10px;'>" + currentPage.quir.apply(value.replaceAll("Them:", "")) + "</div>";
     } else {
       let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
-      cEle.innerHTML = "<div>" + value.replaceAll("Them:", "") + "</div>";
+      cEle.innerHTML = "<div>" + currentPage.quirk.apply(value.replaceAll("Them:", "")) + "</div>";
+      if (mirrored) {
+        cEle.classList.add("negative_match")
+      }
     }
     content.scrollTop = content.scrollHeight;
 
@@ -107,6 +110,7 @@ const addYouToCurrentChat = (value) => {
     } else {
       let cEle = createElementWithClassAndParent("div", content, "chat-bubble-right");
       cEle.innerHTML = "<div>" + value.replaceAll("You:", "") + "</div>";
+      //you arne' tmirrored, they are
     }
     content.scrollTop = content.scrollHeight;
     handleResponding(value);
@@ -138,8 +142,14 @@ const renderChat = (name, icon) => {
 
   let iconEle = createElementWithClassAndParent("img", header, "chat-header-icon");
   iconEle.src = icon;
+  if (mirrored) {
+    iconEle.classList.add("negative_match")
+  }
   let nameEle = createElementWithClassAndParent("div", header, "chat-header-name");
   nameEle.innerText = name;
+  if (mirrored) {
+    nameEle.classList.add("negative_match")
+  }
 
   let close = createElementWithClassAndParent("button", header, "chat-header-close");
   close.innerText = "X";
@@ -164,11 +174,14 @@ const renderChat = (name, icon) => {
 
     } else if (c.includes("Them")) {
       if (prev && prev.className.includes("chat-bubble-left")) {
-        prev.innerHTML += "<div style='padding-top: 10px;'>" + c.replaceAll("Them:", "") + "</div>";
+        prev.innerHTML += "<div style='padding-top: 10px;'>" + currentPage.quirk.apply(c.replaceAll("Them:", "")) + "</div>";
       } else {
         let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
-        cEle.innerHTML = "<div>" + c.replaceAll("Them:", "") + "</div>";
+        cEle.innerHTML = "<div>" + currentPage.quirk.apply(c.replaceAll("Them:", "")) + "</div>";
         prev = cEle;
+        if (mirrored) {
+          cEle.classList.add("negative_match")
+        }
       }
     } else {
       let cEle = createElementWithClassAndParent("div", content, "message");
