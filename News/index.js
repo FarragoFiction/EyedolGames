@@ -27,7 +27,7 @@ to remember you,too
 should i learn of you
 */
 let tip = 0.0;
-let rand;
+let rand = new SeededRandom(13);
 //string
 let referer;
 //calback url
@@ -52,6 +52,12 @@ window.onload = () => {
   }
   const urlParams = new URLSearchParams(queryString);
   let tmp_ref = urlParams.get('referer');
+  if(tmp_ref==="JackElope"){
+    theme_keys = [LOVE, DOLLS]
+    referer_details="?theend=nevertheend"
+    datingsiteArticle();
+    return;
+  }
   let tmp_d = urlParams.get('details');
   let tmp_tip = urlParams.get('tip');
   if(tmp_tip){
@@ -84,6 +90,14 @@ window.onload = () => {
   setupRightAd();
   replaceFirstArticleAndHeader();
 
+}
+
+const datingsiteArticle= ()=>{
+  placeHolderDataAsNeeded();
+  setupLeftAd();
+  setUpMiddleADInit();
+  setupRightAd();
+  new DatingArticle().replaceFirstArticleAndHeader();
 }
 
 const quick = (key, cap) => {
@@ -283,7 +297,7 @@ const setUpMiddleADInit = () => {
 }
 
 const setUpMiddleAD = (container) => {
-  container.href = `http://eyedolgames.com/${referer}${referer_details}`;
+  container.href = `http://eyedolgames.com/Zampanini${referer_details}`;
   const center = container.querySelector(".center");
   center.innerHTML = "";
   center.style.backgroundColor = `rgb(${getRandomNumberBetween(0, 100)},${getRandomNumberBetween(0, 100)},${getRandomNumberBetween(0, 100)})`;
