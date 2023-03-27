@@ -86,6 +86,7 @@ window.onload = () => {
   placeHolderDataAsNeeded();
   console.log("JR NOTE:", { referer, referer_details, details });
   setupLeftAd();
+  setupBottomAd();
   setUpMiddleADInit();
   setupRightAd();
   replaceFirstArticleAndHeader();
@@ -95,6 +96,7 @@ window.onload = () => {
 const datingsiteArticle= ()=>{
   placeHolderDataAsNeeded();
   setupLeftAd();
+  setupBottomAd();
   setUpMiddleADInit();
   setupRightAd();
   new DatingArticle().replaceFirstArticleAndHeader();
@@ -130,6 +132,18 @@ const placeHolderDataAsNeeded = () => {
 
 }
 
+const collateAllSexySinglesImages = async () => {
+  const url = "http://eyedolgames.com/JackElope/images/SexySingles/BigNormalPile/"
+  let images = await getImages(url);
+  return images.map((item) => `${url}${item}`);
+}
+
+const collateAllFuckedUpSinglesImages = async () => {
+  const url = "http://eyedolgames.com/JackElope/images/SexySingles/BigWeirdPile/"
+  let images = await getImages(url);
+  return images.map((item) => `${url}${item}`);
+}
+
 const collateAllQuizImages = async () => {
   const url = "http://eyedolgames.com/News/images/Quizzes/"
   let images = await getImages(url);
@@ -148,6 +162,60 @@ const collateAllThemeImages = async (base_keys) => {
   }
 
   return ret;
+}
+
+
+const setupBottomAd = async()=>{
+  const ele = document.querySelector(".link4");
+  const img = ele.querySelector("img");
+  const footer = ele.querySelector(".footer");
+
+  ele.style.width = getRandomNumberBetween(10, 30) + "%";
+  ele.style.height = getRandomNumberBetween(30, 70) + "%";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  ele.style.left = getRandomNumberBetween(25, 27) + "%"
+
+
+  if (num_articles < max_articles) {
+    let images = collateAllSexySinglesImages();
+    images.then((results) => {
+      if (results.length === 0) {
+        return;
+      }
+      //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+      img.src = pickFrom(results);
+      if (Math.random() > .5) {
+        img.style.objectFit = "none";
+      }
+    })
+  } else {
+    let images = collateAllFuckedUpSinglesImages();
+    images.then((results) => {
+      if (results.length === 0) {
+        return;
+      }
+      //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
+      img.src = pickFrom(results);
+      if (Math.random() > .5) {
+        img.style.objectFit = "none";
+      }
+    })
+  }
+
+
+
+  const textOptions = [`LONELY?`
+    , `MEET SEXY SINGLES`
+    , `SEXY SINGLES WANT TO TALK TO YOU!`
+    , `LOCAL SEXY SINGLES`
+    , "quiz"
+    , `${quick(COMPLIMENT)} SINGLES`
+]
+  footer.innerText = pickFrom(textOptions);
+  await sleep(60000);
+  setupBottomAd();
+
 }
 
 //they move around and change height and what not but they are always here
