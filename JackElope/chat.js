@@ -85,7 +85,7 @@ const addPornBotToCurrentChat = (value, name, icon) => {
   if (content) {
     const prev = content.childNodes[content.childNodes.length - 1];
     if (prev && prev.className.includes("chat-bubble-left")) {
-      prev.innerHTML += "<div style='padding-top: 10px;'>" + currentPage.quir.apply(value.replaceAll("Them:", "")) + "</div>";
+      prev.innerHTML += "<div style='padding-top: 10px;'>" + currentPage.quirk.apply(value.replaceAll("Them:", "")) + "</div>";
     } else {
       let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
       cEle.innerHTML = "<div>" + currentPage.quirk.apply(value.replaceAll("Them:", "")) + "</div>";
