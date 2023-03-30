@@ -15,7 +15,14 @@ class PageObject {
         //generous margins
         //logo in upper right corner
         let logo = createElementWithClassAndParent("img",bigbox, "logo");
-        logo.src = "images/pathos/Zamparamour_logo.png"
+        if(new Date().getHours() == 0 || new Date().getDay() === 5){
+            //midnight and fridays are always special.
+            logo.src = "images/pathos/Zamparamour_logo.png"
+        }else{
+            logo.src = "images/logos/JackElope_logo.png";
+        }
+
+       
         logo.onclick=()=>{
 
             window.location.href = 'index.html'
