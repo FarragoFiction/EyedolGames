@@ -36,12 +36,17 @@ class Quirk {
   }
 
   apply = (phrase) => {
+    console.log("JR NOTE: trying to apply to phrase",phrase,phrase.toLowerCase().includes("http"))
+    if(phrase.toLowerCase().includes("http")){//even more warning not the click the links, they're out of char
+      console.log("JR NOTE:just returning")
+
+      return phrase;
+    }
     let ret = phrase;
     ret = this.handleCapitilization(ret);
     ret = this.handlePunctuation(ret);
     ret = this.handleReplacements(ret, this.rand);
     ret = this.handleCapitilization(ret);
-
     return ret;
 
   }
