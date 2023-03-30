@@ -136,8 +136,8 @@ const makeSexySingles = async (parent) => {
 //http://www.farragofiction.com/SBURBSim/gnosis.html
 const renderOneSexySingle = (rand, container) => {
     numSingles++;
-    const name = rand.pickFrom(first_names);
-    const image = rand.pickFrom(numSingles>50? weirdImageList: normalImageList);
+    const name = numSingles < 1000 ?rand.pickFrom(first_names): "Porn Bot";
+    const image = numSingles < 1000 ?rand.pickFrom(numSingles>50? weirdImageList: normalImageList): "BigWeirdPile/this_is_fine.png";
     //match percent gets worse and worse as you go, eventually flipping negative. 
     const matchPercent = rand.getRandomNumberBetween(100 - numSingles, 100);
     //each time we generate a sexy single they are ever so slightly less likely to be local.
