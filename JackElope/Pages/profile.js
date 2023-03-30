@@ -27,6 +27,7 @@ let horrors = ["protojr1.png",
 class ProfilePage extends PageObject {
 
   obsessions = [];
+  glitched = false;
 
   //  currentPage = profile? new Profile(name,image,matchPercent,loc) : new HomePage();
 
@@ -72,15 +73,15 @@ class ProfilePage extends PageObject {
 
 
 
-
+    this.glitched = containsGlitchObession(this.obsessions);
 
     this.age = this.rand.getRandomNumberBetween(18, 99);
     detailsMap["AGE"] = this.age;
-    this.name = name ? name : "Shambling Horror With Your Face";
+    this.name = (name && !this.glitched) ? name : "Shambling Horror With Your Face";
     detailsMap["NAME"] = this.name;
 
-    this.image = image ? baseURL + image : `http://farragofiction.com/ZampanioHotlink/KRsAIExperiments/${pickFrom(horrors)}`;
-    this.loc = loc ? loc : "Right Behind You ;)";
+    this.image = (image && !this.glitched) ? baseURL + image : `http://farragofiction.com/ZampanioHotlink/KRsAIExperiments/${pickFrom(horrors)}`;
+    this.loc = (loc && !this.glitched) ? loc : "Right Behind You ;)";
     detailsMap["LOC"] = this.loc;
 
     this.lastOnline = this.rand.getRandomNumberBetween(0, 3);//days ago, 1 in X chance of being online now to talk to.
@@ -156,24 +157,41 @@ class ProfilePage extends PageObject {
 
     let matchPercent = createElementWithClassAndParent("div", matchBox, "profile-percent match");
     matchPercent.innerText = this.matchPercent + "% Match";
+    if(this.glitched){
+      matchPercent.setAttribute("contenteditable","true")
+      matchPercent.setAttribute("alt","what will you become")
+    }
+
     if (this.matchPercent < 0) {
       matchPercent.classList.add("negative_match")
     }
 
     let friendPercent = createElementWithClassAndParent("div", matchBox, "profile-percent friend");
     friendPercent.innerText = this.rand.getRandomNumberBetween(0, 100) + "% Friend"
+    if(this.glitched){
+      friendPercent.setAttribute("contenteditable","true")
+      friendPercent.setAttribute("alt","what will you become")
+    }
     if (this.matchPercent < 0) {
       friendPercent.classList.add("negative_match")
     }
 
     let enemyPercent = createElementWithClassAndParent("div", matchBox, "profile-percent enemy");
     enemyPercent.innerText = this.rand.getRandomNumberBetween(this.matchPercent, 100 - this.matchPercent) + "% Enemy"
+    if(this.glitched){
+      enemyPercent.setAttribute("contenteditable","true")
+      enemyPercent.setAttribute("alt","what will you become")
+    }
     if (this.matchPercent < 0) {
       enemyPercent.classList.add("negative_match")
     }
 
     let nameEle = createElementWithClassAndParent("div", rightCol, "profile-name");
     nameEle.innerText = this.name;
+    if(this.glitched){
+      nameEle.setAttribute("contenteditable","true")
+      nameEle.setAttribute("alt","what will you become")
+    }
 
     if (this.matchPercent < 0) {
       nameEle.classList.add("negative_match")
@@ -181,6 +199,10 @@ class ProfilePage extends PageObject {
 
     let ageEle = createElementWithClassAndParent("div", rightCol, "profile-age");
     ageEle.innerText = this.age;
+    if(this.glitched){
+      ageEle.setAttribute("contenteditable","true")
+      ageEle.setAttribute("alt","what will you become")
+    }
 
     if (this.matchPercent < 0) {
       ageEle.classList.add("negative_match")
@@ -188,6 +210,10 @@ class ProfilePage extends PageObject {
 
     let locEle = createElementWithClassAndParent("div", rightCol, "profile-loc");
     locEle.innerText = this.loc;
+    if(this.glitched){
+      locEle.setAttribute("contenteditable","true")
+      locEle.setAttribute("alt","what will you become")
+    }
     if (this.matchPercent < 0) {
       locEle.classList.add("negative_match")
     }
@@ -195,6 +221,10 @@ class ProfilePage extends PageObject {
 
     let messageButton = createElementWithClassAndParent("button", headerContent, "message-button");
     messageButton.innerText = "Message Them";
+    if(this.glitched){
+      messageButton.setAttribute("contenteditable","true")
+      messageButton.setAttribute("alt","what will you become")
+    }
     messageButton.onclick = () => {
       renderChat(this.name, this.image);
     }
@@ -242,6 +272,10 @@ class ProfilePage extends PageObject {
 
     let header = createElementWithClassAndParent("div", content, "profile-details-header");
     header.innerText = "Their Details";
+    if(this.glitched){
+      header.setAttribute("contenteditable","true")
+      header.setAttribute("alt","what will you become")
+    }
 
     const createDetail = (label, text) => {
       if (flip) {
@@ -253,9 +287,18 @@ class ProfilePage extends PageObject {
 
       let labelEle = createElementWithClassAndParent("div", ele, "profile-details-label");
       labelEle.innerText = label;
+      if(this.glitched){
+        labelEle.setAttribute("contenteditable","true")
+        labelEle.setAttribute("alt","what will you become")
+      }
 
       let textEle = createElementWithClassAndParent("div", ele, "profile-details-text");
-      textEle.innerText = text;
+      textEle.innerText = this.glitched ?"<INSERT DETAIL HERE>":text;
+      if(this.glitched){
+        textEle.setAttribute("contenteditable","true")
+        textEle.setAttribute("alt","what will you become")
+      }
+
     }
 
     const modifiers = ["and serious about it", "but not serious about it", "but it doesn't matter", "but only on weekends", "whenever family asks"]
@@ -483,9 +526,17 @@ class ProfilePage extends PageObject {
 
       let labelEle = createElementWithClassAndParent("div", ele, "profile-section-title");
       labelEle.innerText = label;
+      if(this.glitched){
+        labelEle.setAttribute("contenteditable","true")
+        labelEle.setAttribute("alt","what will you become")
+      }
 
       let textEle = createElementWithClassAndParent("div", ele, "profile-section-text");
-      textEle.innerHTML = this.quirk.apply(text);
+      textEle.innerHTML = this.quirk.apply(this.glitched?"[INSERT ANSWER HERE]":text);
+      if(this.glitched){
+        textEle.setAttribute("contenteditable","true")
+        textEle.setAttribute("alt","what will you become")
+      }
     }
 
     let sections = getPossibleSections(this.rand, this.obsessions);

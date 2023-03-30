@@ -20,6 +20,8 @@ let initChatMap = () => {
     "please": ["Oh! So polite!", "You are very nice."],
     "thank you": ["Oh! So polite!", "You are very nice."],
     "no": ["Why not?", "Are you just a hater?"],
+    "dying": ["There's no need to be dramatic."],
+
     "hello": [...links,`hey I'm ${currentPage.name}, I found your number when I checked my cell phone address book. Do we know each other?`,"who are you?", "lol, we met the other day and i totally forgot to message you until now", "Hey there sexy, wanna see my <a target='_blank' href = 'http://farragofiction.com/SecurityLog/cctv.html'>cam show</a> ;) ;) ;)"],
     "hey": [...links,`hey I'm ${currentPage.name}, I found your number when I checked my cell phone address book. Do we know each other?`,"why are you talking to me?", "lol, we met the other day and i totally forgot to message you until now", "Hey there sexy, wanna see my <a target='_blank' href = 'http://farragofiction.com/SecurityLog/cctv.html'>cam show</a> ;) ;) ;)"],
     "greeting": [...links,`hey I'm ${currentPage.name}, I found your number when I checked my cell phone address book. Do we know each other?`,"whoa, how did you find me?", "lol, we met the other day and i totally forgot to message you until now", "Hey there sexy, wanna see my <a target='_blank' href = 'http://farragofiction.com/SecurityLog/cctv.html'>cam show</a> ;) ;) ;)"],
