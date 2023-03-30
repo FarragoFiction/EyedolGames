@@ -29,6 +29,16 @@ const FORWANTOFKNOWLEDGE = 'FORWANTOFKNOWLEDGE'; //Daedalus
 const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
 const LTE = 'LTE'; //jr but as eon337
 
+//if they have a glitch obsession it fucks up their whole page :) :) :)
+const containsGlitchObession = (obsessions)=>{
+  for(let o of obsessions){
+    if(o.name === "[INSERT FANDOM HERE]"){
+      return true;
+    }
+  }
+  return false;
+}
+
 
 
 class Obsession {
