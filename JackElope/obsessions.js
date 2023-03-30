@@ -27,6 +27,7 @@ const CNC = 'CNC'; //DM
 const THEWAYAHEAD = 'THEWAYAHEAD'; //Daedalus
 const FORWANTOFKNOWLEDGE = 'FORWANTOFKNOWLEDGE'; //Daedalus
 const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
+const LTE = 'LTE'; //jr but as eon337
 
 
 
@@ -838,7 +839,8 @@ The sum of what I have said.,This fruit and this meat change people. ,There are 
 const zMemesRaw = `beware oblivion is at hand,longest table ever,get lost forever, not a fed, died like cowards, give the bear lots of air,,The Truth Is Layered,ancient italian video games slash greek myths,inexplicable force that deletes zampanio content,zampanio is a very good game you should play it",What color is the shade of Disbelief,you is needed to end the world,colonize your mind, verified fact,blatant lie,contemporary of pong,do you traverse mazes clockwise or counterclockwise, rip grumpy cat, the susan isnt there,dodge this moist pimp,Time Is Dead,L'n hpkpi wr ef jofghlqluf.,verses lines words,step 3, cut them in threes, this was the best birthday present i could have asked for, i looked away from my computer and realized that i had been playing zampanio for 14 hours straight,i swea i only palyed it 3 times.,YOUR TWIN IS GONE,GO TO ZEUS TO PLEAD FOR HER LIFE,There are no guests.,you've played this game before,There is serenity in clockwork. Listen to the tick of seconds. It will guide you where you belong.,guide you to your ascension,lattice of infinite possibilities,everyone should play it :),do not ask how the LAN party went,A coffee stain appeared in the settings menu,This is 100% anecdotal, but I found starting with a new branch everytime led to less variation then playing the same one over and over and letting the game do its thing,Vescillation is way overhyped,when you went with a standard Joriahn creation, when you got the memory of his death, You watch those two feet sway back and forth,Clear your mind. Focus only on what you find here. Do not think of the world without, do not bring your own memories. That leads to corruption.,:), How much do you think waffles cost?,The Susan isn't there`;
 const zGoalsRaw = `delete at least three zampanio fan works, tell my friends about zampanio, make a zampanio fan hack, make a zampanio fan game, write a zampanio fan fiction, draw a zampanio fan comic, make a zampanio arg, keep reading this site and never forget anything i find in it`;
 const zLocationsRaw = `Morgan's Hill, Duskhollow, mermaid city, wasteland,banquet hall,classroom I used to go to as a kid,temple to Noli,Zampanio,sprawling jungle,vast metropolis,maze,labyrinth, A vast hall set with many long tables`;
-const zObjectsRaw = `unos autograph book, duo mask, tres milk bottle, quatro blade, cinque cloak, sextant, septum coin, octome, novum mirror, weird spiral pattern, the lights, clown nose, long table, boat, mediafire link, spiral pupils, computer`;
+//https://www.tumblr.com/nostalgebraist-autoresponder/712968932522344448/my-four-basic-needs-tea-pyramid-head-bean-bags?source=share i love this bot
+const zObjectsRaw = `tea, pyramid head, bean bags, bodily fluids,unos autograph book, duo mask, tres milk bottle, quatro blade, cinque cloak, sextant, septum coin, octome, novum mirror, weird spiral pattern, the lights, clown nose, long table, boat, mediafire link, spiral pupils, computer`;
 const zJobsRaw = `priest of Noli,savepoint fairy,god, Achievement System,dev console,Data Collector,bomber`;
 
 
@@ -913,6 +915,47 @@ all_obsessions[FARRAGNAROK] = new Obsession(
   ffLocationsRaw.split(","),
   ffObjectsRaw.split(","),
   ffJobsRaw.split(",")  
+);
+
+
+//the cultist is obsessed with this blast from my past. the seeker came from it but moved forward.
+//eon337 and Patron Saint of Paper Clips was me
+/*
+One of my best friends in highschool and i read a book where a girl learned about saints and how there was a saint for pratically everything
+and talked about how in history times a valid seige breaking technique was to set chickens on fire and have them panic run through enemy camps
+
+and so we decided we'd be patron saints, too, of flaming chickens. 
+
+and uh. 
+
+here we are. 
+*/
+//https://www.angelfire.com/falcon/flamingchickens/mazequiz.html
+
+const lteCharRaw = `Patron Saint of Paper Clips, Meg, Patron Saint of Carbonated Beverages, Hypothetical Reader, PSOPCBot, Loyal Reader`;
+const lteChar2Raw = `Moose, Squirrel, Mike the Headless Chicken, Bag`;
+const lteImportantEventsRaw = `when the asparagus wars hit, when PSOPC lost the hotmail account, when the connection between duck duck goose and witchunts is drawn, when Bag was tragically killed at a KMart checkout, when you learn that the door on the right leads to heaven and the door on the left leads to reincarnation according to some dumb cult, when you learn that its PSOPC's job to confuse you, when PSOPC realized the entire world had been 'it' from prehistoric times (no tagbacks), when PSOPC realized walmart was evil, when www.flaming-chickens.com ceased to exist, when PSOPC realized grape pie exists, when PSOPC became afraid of gravity`;
+//https://www.angelfire.com/falcon/flamingchickens/customertestimonials.html
+const lteOpinionsRaw = `I think it is the longest text EVER!!!!!!!!!!!!!!!!!!!!!!!!,
+being such a genius means you are fit to be the ruler of the moon colony,you have way too much time on your hands!!!,this website is really good,girl u draw like beauty has ever seennnnnn i love ur art so detailed and stuffff urs such a artish ,I'm proud to be your 3.5th reader, lol. :-),i think that you are a geneus really!!! , I went to your website. It's kinda funny...,thats cool i lyke ur site too its awesome,When did you make the site, its sooooooooo cool!,OMFG its the best thing since mike the headless chicken..., i'd die after like two days without a head, the most piontless website i've ever seen. It's really cool!,the longest text ever has nice topics, i never thought of grape pie or the cartoon owl like that before, the longest text ever takes 13 pages to print, your website is faboredometastic,awesome site...i like it...this is the first site ive seen that looks like this...dont get me wrong i like it,Your site *takes deep breath* IT ROXITROXITROXITROXITROX!!!!!!!!!!,now you have 3 1/2 readers,PSOPC might possibly be the funniest person whose "stuff" i've read, Hey! u r funny as helll whats ur name,PSOPC is the Queen of all shiny things & flaming poptarts everywhere,Flaming chickens is the most awesome site ever!!! P.S. no im not sucking up,The llamas think this is the best Holy Grail test result ever,Its really cool and a lot of fun to read,it actually looks pretty f****** scary,nowadays almost anyone can make video games,consider looking up some stuff online about making video games,I also thought it was really funny how that 12 year old was freaked out by your picture,this is one of the better Holy Grail quizzes I've seen, omg chickens r awesom,the LTE is schizo, there should more people out there like you,i never knew there was other crazy pepoles in the world untill i came here i read everything on your site,Your quizzes/drawings/useless stuff make me haaappy.,PSOPC's 'supression of self' technique is unhealthy!,dwindle is a cool word,Mike the Headless Chicken Day is not a real holiday, Mike the Headless Chicken Day is a real holiday, either rhymes wth nether, that owl was evil, jr is eon337, jr is PSOPC, that whole left and right door cult thing has nothing to do with east and west,that whole left and right door cult thing retroactively has EVERYTHING to do with east and west, jr's favorite number has always been 3, there is a large probabilty you don't exist`;
+const lteMemesRaw = `knowledge is power/power corrupts/study hard/be evil,373554 days 'til the end of the world,tootsie roll pops owl is evil, PUBLIC SERVICE ANNOUCEMENT, BEWARE OF YOUR OWN FRENCH FRIES, walmart is evil,pointless laws, Time for another quote from the FLAMING CHICKEN HANDBOOK!!!,theres those crickets again, the Flaming Chickens code saying rando things,two and a half readers, grape pie, I'm back!, seeya!`;
+const lteGoalsRaw = `print the longest text ever, read the entire LTE,consider looking up some stuff online about making video games,totally read the whole LTE one day!,discover if PSOPC relly died, talk to PSOPCBot here http://demo.vhost.pandorabots.com/pandora/talk?botid=b24e32038e35520c, join the Official Flaming Chickens Lunar Colony, spread the LTE copypasta, prove that JR and PSOPC are the same person, become one of the 2 and a 1/2 readers of the LTE `;
+const lteLocationsRaw = `walmart, http://demo.vhost.pandorabots.com/pandora/talk?botid=b24e32038e35520c, Official Flaming Chickens Lunar Colony`;
+const lteObjectsRaw = `brakeless toddler bike, tootsie roll pop, Official Flaming Chickens Rocket, smoke alarm, Really Really Big Button That Doesn't Do Anything,grape pie, Official Flaming Chickens Handbook, Fake TAB Registration Form`;
+const lteJobsRaw = `Teens Against Cartoon Owls organier,Patron Saint, Bot, Customer Service Worker of Questionable Loyalty`;
+
+
+all_obsessions[LTE] = new Obsession(
+  LTE,
+  lteCharRaw.split(","),
+  lteChar2Raw.split(","),
+  lteImportantEventsRaw.split(","),
+  lteOpinionsRaw.split(","),
+  lteMemesRaw.split(","),
+  lteGoalsRaw.split(","),
+  lteLocationsRaw.split(","),
+  lteObjectsRaw.split(","),
+  lteJobsRaw.split(",")  
 );
 
 /*

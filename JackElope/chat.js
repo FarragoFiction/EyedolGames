@@ -14,11 +14,12 @@ const logOff = async () => {
     //between 1 and 10 minutes
     await sleep(getRandomNumberBetween(1, 10)*60 * 1000);
 
-    currentChat.push("<i class='offline'>This user is currently offline.</i>");
+    let offline  = mirrored? "reflected":"offline";
+    currentChat.push(`<i class='offline'>This user is currently ${offline}.</i>`);
     let content = document.querySelector(".chat-body");
     if(content){
       let cEle = createElementWithClassAndParent("div", content, "message");
-      cEle.innerHTML = "<div>" + "<i class='offline'>This user is currently offline.</i>" + "</div>";
+      cEle.innerHTML = "<div>" + `<i class='offline'>This user is currently ${offline}.</i>` + "</div>";
       content.scrollTop = content.scrollHeight;
 
     }
@@ -157,7 +158,8 @@ const renderChat = (name, icon) => {
     chat.remove();//but we didn't forget the text
   }
   if (currentChat.length === 0 && !currentOnline) {
-    currentChat.push("<i class='offline'>This user is currently offline.</i>")
+    let offline  = mirrored? "reflected":"offline";
+    currentChat.push(`<i class='offline'>This user is currently ${offline}.</i>`)
   }
 
   //populate content
