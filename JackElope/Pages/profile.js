@@ -4,7 +4,7 @@ let detailsMap = {
 }
 
 let currentOnline = false;
-let mirrored  = false;
+let mirrored = false;
 
 let horrors = ["protojr1.png",
   , "protojr2.png"
@@ -39,7 +39,7 @@ class ProfilePage extends PageObject {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     this.matchPercent = matchPercent ? matchPercent : "-216";
-    mirrored = this.matchPercent<0
+    mirrored = this.matchPercent < 0
 
     //for debugging and for showing ppl specific fandoms
     let secrets = urlParams.get('secrets');
@@ -85,7 +85,7 @@ class ProfilePage extends PageObject {
     detailsMap["LOC"] = this.loc;
 
     this.lastOnline = this.rand.getRandomNumberBetween(0, 3);//days ago, 1 in X chance of being online now to talk to.
-    if(this.lastOnline === 0){
+    if (this.lastOnline === 0) {
       currentOnline = true;
     }
 
@@ -157,9 +157,9 @@ class ProfilePage extends PageObject {
 
     let matchPercent = createElementWithClassAndParent("div", matchBox, "profile-percent match");
     matchPercent.innerText = this.matchPercent + "% Match";
-    if(this.glitched){
-      matchPercent.setAttribute("contenteditable","true")
-      matchPercent.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      matchPercent.setAttribute("contenteditable", "true")
+      matchPercent.setAttribute("alt", "what will you become")
     }
 
     if (this.matchPercent < 0) {
@@ -168,9 +168,9 @@ class ProfilePage extends PageObject {
 
     let friendPercent = createElementWithClassAndParent("div", matchBox, "profile-percent friend");
     friendPercent.innerText = this.rand.getRandomNumberBetween(0, 100) + "% Friend"
-    if(this.glitched){
-      friendPercent.setAttribute("contenteditable","true")
-      friendPercent.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      friendPercent.setAttribute("contenteditable", "true")
+      friendPercent.setAttribute("alt", "what will you become")
     }
     if (this.matchPercent < 0) {
       friendPercent.classList.add("negative_match")
@@ -178,9 +178,9 @@ class ProfilePage extends PageObject {
 
     let enemyPercent = createElementWithClassAndParent("div", matchBox, "profile-percent enemy");
     enemyPercent.innerText = this.rand.getRandomNumberBetween(this.matchPercent, 100 - this.matchPercent) + "% Enemy"
-    if(this.glitched){
-      enemyPercent.setAttribute("contenteditable","true")
-      enemyPercent.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      enemyPercent.setAttribute("contenteditable", "true")
+      enemyPercent.setAttribute("alt", "what will you become")
     }
     if (this.matchPercent < 0) {
       enemyPercent.classList.add("negative_match")
@@ -188,9 +188,9 @@ class ProfilePage extends PageObject {
 
     let nameEle = createElementWithClassAndParent("div", rightCol, "profile-name");
     nameEle.innerText = this.name;
-    if(this.glitched){
-      nameEle.setAttribute("contenteditable","true")
-      nameEle.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      nameEle.setAttribute("contenteditable", "true")
+      nameEle.setAttribute("alt", "what will you become")
     }
 
     if (this.matchPercent < 0) {
@@ -199,9 +199,9 @@ class ProfilePage extends PageObject {
 
     let ageEle = createElementWithClassAndParent("div", rightCol, "profile-age");
     ageEle.innerText = this.age;
-    if(this.glitched){
-      ageEle.setAttribute("contenteditable","true")
-      ageEle.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      ageEle.setAttribute("contenteditable", "true")
+      ageEle.setAttribute("alt", "what will you become")
     }
 
     if (this.matchPercent < 0) {
@@ -210,9 +210,9 @@ class ProfilePage extends PageObject {
 
     let locEle = createElementWithClassAndParent("div", rightCol, "profile-loc");
     locEle.innerText = this.loc;
-    if(this.glitched){
-      locEle.setAttribute("contenteditable","true")
-      locEle.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      locEle.setAttribute("contenteditable", "true")
+      locEle.setAttribute("alt", "what will you become")
     }
     if (this.matchPercent < 0) {
       locEle.classList.add("negative_match")
@@ -221,16 +221,16 @@ class ProfilePage extends PageObject {
 
     let messageButton = createElementWithClassAndParent("button", headerContent, "message-button");
     messageButton.innerText = "Message Them";
-    if(this.glitched){
-      messageButton.setAttribute("contenteditable","true")
-      messageButton.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      messageButton.setAttribute("contenteditable", "true")
+      messageButton.setAttribute("alt", "what will you become")
     }
     messageButton.onclick = () => {
       renderChat(this.name, this.image);
     }
     //true random if they message you or not, like they're people
-    if(this.matchPercent < 0 || this.lastOnline === 0 && Math.random() >0.5){
-      initiateMessage(this.name, this.image, this.matchPercent <0)
+    if (this.matchPercent < 0 || this.lastOnline === 0 && Math.random() > 0.5) {
+      initiateMessage(this.name, this.image, this.matchPercent < 0)
     }
 
 
@@ -260,21 +260,39 @@ class ProfilePage extends PageObject {
     }
     this.setupAbout(a, this.matchPercent < 0);
 
+    if (this.glitched) {
+      this.setupRabbitHole();
+    }
 
 
 
   }
 
 
+  setupRabbitHole = () => {
+    let elements = document.querySelectorAll('div[contenteditable="true"]');
+    const pws = Object.keys(passwords);
+    for (let e of elements) {
+      e.oninput = (e) => {
+        const input = e.target.innerHTML.toUpperCase();
+        for (let pw of pws) {
+          if (input.includes(pw)) {
+            const regEx = new RegExp(pw, "ig");
 
+            e.target.innerHTML =  e.target.innerHTML.replace(regEx, passwords[pw]);
+          }
+        }
+      }
+    }
+  }
 
   setupDetails = (content, flip) => {
 
     let header = createElementWithClassAndParent("div", content, "profile-details-header");
     header.innerText = "Their Details";
-    if(this.glitched){
-      header.setAttribute("contenteditable","true")
-      header.setAttribute("alt","what will you become")
+    if (this.glitched) {
+      header.setAttribute("contenteditable", "true")
+      header.setAttribute("alt", "what will you become")
     }
 
     const createDetail = (label, text) => {
@@ -287,16 +305,16 @@ class ProfilePage extends PageObject {
 
       let labelEle = createElementWithClassAndParent("div", ele, "profile-details-label");
       labelEle.innerText = label;
-      if(this.glitched){
-        labelEle.setAttribute("contenteditable","true")
-        labelEle.setAttribute("alt","what will you become")
+      if (this.glitched) {
+        labelEle.setAttribute("contenteditable", "true")
+        labelEle.setAttribute("alt", "what will you become")
       }
 
       let textEle = createElementWithClassAndParent("div", ele, "profile-details-text");
-      textEle.innerText = this.glitched ?"<INSERT DETAIL HERE>":text;
-      if(this.glitched){
-        textEle.setAttribute("contenteditable","true")
-        textEle.setAttribute("alt","what will you become")
+      textEle.innerText = this.glitched ? "<INSERT DETAIL HERE>" : text;
+      if (this.glitched) {
+        textEle.setAttribute("contenteditable", "true")
+        textEle.setAttribute("alt", "what will you become")
       }
 
     }
@@ -306,7 +324,7 @@ class ProfilePage extends PageObject {
     createDetail("Last Online", `${this.lastOnline === 0 ? 'Online Now!' : this.lastOnline + " days ago."}`);
     createDetail("Ethnicity", this.rand.pickFrom(["It's a secret ;)", "Wouldn't you like to know, weather boy.", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "Intentionally Left Blank", "Yes", "No", "Not Disclosed"]));
     createDetail("Height", `${this.rand.getRandomNumberBetween(3, 7)}' ${this.rand.getRandomNumberBetween(0, 12)}'' (${(this.rand.nextDouble() + 1).toFixed(2)}m)`);//the birbs don't know what a reasonable conversion of feet to meters would be, they just know profiles have this format. 
-    createDetail("Body Type", this.rand.pickFrom(["Just Like Yours", "Universal", "Expensive", "Colorful", "Stable", "Vast", "Cold", "Temperate", "Abnormal", "Glorious", "Deceased","Warm", "Hospitable", "Celestial", "Super Massive", "Clean", "Fashionable", "Skeletal", "Rotting", "Pleasant", "Angled", "Strange", "Haunted", "Crowded", "Cozy", "Filled with Natural Light", "Plant-Based", "Vibrant", "Elegant", "Controversial", "Dramatic", "Old-fashioned", "Trendy", "Classic", "Simple", "Spacious", "Bad", "Good", "Incorrect", "Correct", "Snuggly", "Soft", "Intimidating", "Powerful", "Curvy", "Non-Euclidean", "Athletic", "Thin", "Monstrous", "Shambling"]));
+    createDetail("Body Type", this.rand.pickFrom(["Just Like Yours", "Universal", "Expensive", "Colorful", "Stable", "Vast", "Cold", "Temperate", "Abnormal", "Glorious", "Deceased", "Warm", "Hospitable", "Celestial", "Super Massive", "Clean", "Fashionable", "Skeletal", "Rotting", "Pleasant", "Angled", "Strange", "Haunted", "Crowded", "Cozy", "Filled with Natural Light", "Plant-Based", "Vibrant", "Elegant", "Controversial", "Dramatic", "Old-fashioned", "Trendy", "Classic", "Simple", "Spacious", "Bad", "Good", "Incorrect", "Correct", "Snuggly", "Soft", "Intimidating", "Powerful", "Curvy", "Non-Euclidean", "Athletic", "Thin", "Monstrous", "Shambling"]));
     createDetail("Diet", this.rand.pickFrom(["Exclusively My Own Flesh", "Pica", "Theft Based", "Sexual Canibalism", "Human Flesh", "Carrion", "Fast Food", "Bones", "Mold", "Fungus", "More than 70% Meat", "30-70% Meat", "Less than 30% Meat", "Wood ;)", "Pollen", "Grass", "Honey", "Nectar", "Flowers", "Zooplankton", "Worms", "Squid", "Frozen Rodents", "Small Insects", "Crickets", "Cake", "Frogs", "Snakes", "Mucus", "Molluscs", "Blood", "Eggs", "Coral", "Phagocytosis", "Myzocytosis", "Suction Feeding", "Ram Feeding", "", "Bulk Feeding", "Fluid Feeding", "Deposit Feeding", "Filter Feeding", "Trash", "Small Mammals", "Vertebrates", "Aquatic Invertebrates", "Larvae", "Aquatic Vegetation", "Grain", "Brains", "Other Birds", "Fruit, Seeds, Berries, Insects", "Bugs", "Omnivore", "Spiders", "Only Plants", "Vegan", "Mostly Meat", "Corn Chips", "Pizza", "Information", "Obsession"]));
     createDetail("Smokes", this.rand.pickFrom(["Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
     createDetail("Drinks", this.rand.pickFrom(["Tea", "Coffee", "Never", "Milk", "Soda", "Blood", "Juice", "Alcohol", "Water", "Socially", "While On Fire", "During Parties", "After Sex", "Yes", "No", "Sometimes", "No", "No", "No", "No", "No", "No", "No"]));
@@ -526,16 +544,16 @@ class ProfilePage extends PageObject {
 
       let labelEle = createElementWithClassAndParent("div", ele, "profile-section-title");
       labelEle.innerText = label;
-      if(this.glitched){
-        labelEle.setAttribute("contenteditable","true")
-        labelEle.setAttribute("alt","what will you become")
+      if (this.glitched) {
+        labelEle.setAttribute("contenteditable", "true")
+        labelEle.setAttribute("alt", "what will you become")
       }
 
       let textEle = createElementWithClassAndParent("div", ele, "profile-section-text");
-      textEle.innerHTML = this.quirk.apply(this.glitched?"[INSERT ANSWER HERE]":text);
-      if(this.glitched){
-        textEle.setAttribute("contenteditable","true")
-        textEle.setAttribute("alt","what will you become")
+      textEle.innerHTML = this.quirk.apply(this.glitched ? "[INSERT ANSWER HERE]" : text);
+      if (this.glitched) {
+        textEle.setAttribute("contenteditable", "true")
+        textEle.setAttribute("alt", "what will you become")
       }
     }
 
