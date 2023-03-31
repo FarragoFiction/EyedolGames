@@ -280,6 +280,7 @@ class ProfilePage extends PageObject {
             const regEx = new RegExp(pw, "ig");
 
             e.target.innerHTML =  e.target.innerHTML.replace(regEx, passwords[pw]);
+            break;
           }
         }
       }
