@@ -23,12 +23,12 @@ class HomePage extends PageObject {
 
 const makeGender = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["...", "Female", "Male", "Neither", "Complicated", "I don't know..."])
+    let genderSelect = makeSelect(genderSection, "Could I ask you your Gender?", ["...", "Female", "Male", "Don't have one of those", "Complicated", "I don't know..."])
     genderSelect.onchange = (e) => {
         seedSource += e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
-        if (e.target.value.includes("don't")) {
+        if (e.target.value.includes("know")) {
             let title = createElementWithClassAndParent("div", box, "quip");
             title.innerHTML = "If you need help figuring out your gender, try <a target='blank' href ='http://eyedolgames.com/Gender/'>here</a>! ";
         } else {
@@ -40,12 +40,12 @@ const makeGender = (box) => {
 
 const makeOrientation = (box) => {
     let genderSection = createElementWithClassAndParent("div", box, "form-section");
-    let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["...", "Straight", "Gay", "Bi", "Complicated", "I don't know..."])
+    let genderSelect = makeSelect(genderSection, "Could I ask you your sexual orientation?", ["...", "Straight", "Gay", "Bi", "Complicated","Don't have one of those", "I don't know..."])
     genderSelect.onchange = (e) => {
         seedSource += e.target.value;
         genderSection.remove();
         let title = createElementWithClassAndParent("div", box, "quip");
-        if (e.target.value.includes("don't")) {
+        if (e.target.value.includes("know")) {
             let title = createElementWithClassAndParent("div", box, "quip");
             title.innerHTML = "If you need help figuring out your orientaion, try <a target='blank' href ='http://farragofiction.com/LightAndVoid/?seerOfVoid=true'>here</a>! ";
         } else {
