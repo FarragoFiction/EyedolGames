@@ -56,6 +56,25 @@ function stringtoseed(seed){
   return output
 }
 
+function removeItemOnce(arr, value) {
+  var index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+}
+
+//https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
+ const uniq  =(a) =>{return a.filter(onlyUnique)};
+ 
+ const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 //if you give it new values for existing params it layers them on
 const updateURLParams = (params) => {
