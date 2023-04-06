@@ -10,6 +10,7 @@
 */
 class Post{
   text;
+  tags;
   owner;
   likes; //array of profiles that liked this
   replies; //array of text and owner pairs cluttering up the notes
@@ -42,6 +43,12 @@ class Character{
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character{
+
+
+}
+
+//you should get to post, and your posts are treated just like any other (aka they can be reblogged and commented on and etc)
+class Observer extends Character{
 
 
 }
@@ -124,6 +131,13 @@ class FlowerChick extends Character{
 //chats with everyone she can and directs people to jackElope
 //runs the porn bot net so other characters @ her to complain about their spam occasionally
 class Alt extends Character{
+
+}
+
+//reblogs the things alt posts
+//whenever it does reblog, only speaks in the tags
+class Truth extends Character{
+
 
 }
 
@@ -254,7 +268,7 @@ class Vik extends Character{
 
 
 //reblogs hatsune miku
-//reblogs objects with faces
+//reblogs objects with faces (alt hates this)
 //reblogs dirt (that fucking cow video i love so much. Claire! It's DIRT!)
 //posts and reblogs pictures of holes
 //deranged anime takes (people reblog his deranged takes and say mean things, then vik attacks them)
@@ -302,6 +316,7 @@ class RobertBobert extends Character{
 }
 
 //reblogs anything peewee says without comment but the tag is just a <3<
+//reblogs anything camille says with a :( (jealous that peewee likes her spades)
 class Eggman extends Character{
   
 }
