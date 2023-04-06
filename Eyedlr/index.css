@@ -91,19 +91,18 @@ body {
   position: relative;
 }
 
-.icon {
-  position: sticky;
-  cursor: pointer;
-  top: 0px;
-  display: block;
-  align-self: flex-start;
-}
+
 
 .post-icon img {
   width: 64px;
   height: 64px;
   object-fit: cover;
   border-radius: 5px;
+  position: sticky;
+  cursor: pointer;
+  top: 0px;
+  display: block;
+  align-self: flex-start;
 
 }
 
