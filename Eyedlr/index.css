@@ -1,5 +1,3 @@
-
-
 body {
   background-color: #001972;
   color: black;
@@ -13,13 +11,13 @@ body {
 
 }
 
-#header-container{
+#header-container {
   width: 100%;
   height: 50px;
   border-bottom: 1px solid #344583;
 }
 
-#search-bar{
+#search-bar {
   background-color: #344583;
   height: 24px;
   width: 400px;
@@ -30,7 +28,7 @@ body {
   padding: 5px;
 }
 
-#search-bar input{
+#search-bar input {
   width: 100%;
   border: none;
   outline: none;
@@ -38,8 +36,8 @@ body {
   background-color: #344583;
 }
 
-#header{
-  height:100%;
+#header {
+  height: 100%;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -47,39 +45,39 @@ body {
   justify-content: space-between;
 }
 
-#make-new-post{
+#make-new-post {
   background: #0084ff;
   border-radius: 5px;
 }
 
-#logo{
+#logo {
   height: 100%;
   display: block;
 }
 
-#header-left{
+#header-left {
   display: flex;
 }
 
-#header-right{
-  display:flex;
+#header-right {
+  display: flex;
 }
 
-#container{
-  width: 1000px;
+#container {
+  width: 604px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
 }
 
-.post-icon{
+.post-icon {
   width: 64px;
-  height: 100%;
+  height: auto;
   position: sticky;
   margin-right: 20px;
 }
 
-.post-container{
+.post-container {
   background-color: white;
   color: #001972;
   border-radius: 5px;
@@ -87,20 +85,29 @@ body {
   width: 90%;
 }
 
-.post{
+.post {
   display: flex;
   margin-bottom: 20px;
+  position: relative;
 }
 
-.post-icon img{
-  width:64px;
+.icon {
+  position: sticky;
+  cursor: pointer;
+  top: 0px;
+  display: block;
+  align-self: flex-start;
+}
+
+.post-icon img {
+  width: 64px;
   height: 64px;
   object-fit: cover;
   border-radius: 5px;
-  position: sticky;
+
 }
 
-#header-right div{
+#header-right div {
   height: 100%;
   text-align: center;
   margin-right: 5px;
@@ -114,7 +121,7 @@ body {
   padding-right: 10px;
 }
 
-#header-right div:hover{
+#header-right div:hover {
   background: #002022;
   border-radius: 5px;
 
