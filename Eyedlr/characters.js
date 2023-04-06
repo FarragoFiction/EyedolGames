@@ -47,6 +47,7 @@ class PornBot extends Character{
 
 }
 
+//you should be allowed to follow people
 //you should get to post, and your posts are treated just like any other (aka they can be reblogged and commented on and etc)
 class Observer extends Character{
 
@@ -162,6 +163,7 @@ class Neville extends Character{
 //she is VERY chatty in tags
 //v much likes reblogging adhd and anxiety tips, both for herself and neville
 class Devona extends Character{
+  //https://www.tumblr.com/foone/713863322485850112?source=share
 
 
 }

@@ -47,6 +47,11 @@ body {
   justify-content: space-between;
 }
 
+#make-new-post{
+  background: #0084ff;
+  border-radius: 5px;
+}
+
 #logo{
   height: 100%;
   display: block;
@@ -57,5 +62,25 @@ body {
 }
 
 #header-right{
+  display:flex;
+}
+
+#header-right div{
+  height: 100%;
+  text-align: center;
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 5px;
+  cursor: pointer;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#header-right div:hover{
+  background: #002022;
+  border-radius: 5px;
 
 }
