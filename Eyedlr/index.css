@@ -41,6 +41,21 @@ body {
 
 }
 
+.notes-count{
+  font-weight: 600;
+  color: #666666;
+}
+
+.post-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.notes-icons{
+  display: flex;
+  gap:20px;
+}
+
 #header {
   height: 100%;
   width: 90%;
