@@ -48,6 +48,7 @@ class PornBot extends Character{
 }
 
 //you should be allowed to follow people
+//you can get asks (if you reply, posts), do you traverse mazes clockwise or counterclockwise
 //you should get to post, and your posts are treated just like any other (aka they can be reblogged and commented on and etc)
 class Observer extends Character{
 
@@ -61,6 +62,17 @@ class Observer extends Character{
 class Wanda extends Character{
 
   
+}
+
+//only reblogs their own posts. 
+//only does a single new post. 
+//http://farragofiction.com/Gopher/NORTH/
+//when they reblog a post, load up the page for that location in the gopher maze
+//then determine which paths are available from there
+//create a reblog with the content of the new page (including false doors and hydration stations, basically all .txt files)
+//the wanderer only can wander.
+class Wanderer extends Character{
+
 }
 
 
