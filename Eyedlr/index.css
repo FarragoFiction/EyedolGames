@@ -56,6 +56,10 @@ body {
   gap:20px;
 }
 
+.broken{
+  filter: contrast(5000)invert(1) grayscale(1);
+}
+
 #header {
   height: 100%;
   width: 90%;
