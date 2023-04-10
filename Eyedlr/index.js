@@ -1,15 +1,11 @@
 
 
-let currentPage;
 
 let normalImageList = [];
 let weirdImageList = [];
 
-yourLocation = "Westerville, Ohio"
 
-//whichever location you pick we'll add a hundred times to this list
-//and each time we render a sexy single we'll remove one of them
-const locations = ["Naples, Italy", "Orlando, Florida","Westerville, Ohio"]
+
 
 
 //pure string, convert to numerical seed later.
@@ -31,12 +27,6 @@ window.onload = () => {
 
   let loc = urlParams.get('loc');
 
-  let profile = name || image || matchPercent || loc;
-
-  currentPage = profile? new ProfilePage(seed,name,image,matchPercent,loc) : new HomePage();
-  initChatMap();
-
-  currentPage.deploy();
 }
 
 const grabNormalImages = async () => {
