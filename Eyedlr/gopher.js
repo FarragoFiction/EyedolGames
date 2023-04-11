@@ -12,20 +12,62 @@ Also, given a link like http://farragofiction.com/Gopher/NORTH/ it knows how to 
 const base_gopher_url = "http://farragofiction.com/Gopher/NORTH/";
 
 
-const test = async () => {
-  const rawText = await httpGetAsync(base_gopher_url);
+const base_location = window.location.href.replaceAll("index.html","")
+
+const getFileNameFromPath =(nameString)=>{
+  return nameString.split("/").pop();
+}
+
+const fetchAllTextFromGopherHoleLocation = async(url)=>{
+  const content = await findAllContentFromGopherHoleLocation(url);
+  let ret = [];
+  for(let c of content){
+    const rawText = await httpGetAsync(c);
+    ret.push({name:getFileNameFromPath(c),text: rawText });
+
+  }
+  return ret;
+
+}
+
+const findAllContentFromGopherHoleLocation = async(url)=>{
+  const data = await getGopherData(url);
+  let ret = [];
+  for(let d of data){
+    if(d.size && d.size.trim() !="-"){
+      ret.push(base_gopher_url + d.href.replaceAll(base_location,''))
+    }
+  } 
+  return ret;
+}
+
+
+const findAllExitsFromGopherHoleLocation = async(url)=>{
+  const data = await getGopherData(url);
+  let ret = [];
+  for(let d of data){
+    if(d.size && d.size.trim() ==="-"){
+      ret.push(base_gopher_url + d.href.replaceAll(base_location,''))
+    }
+  } 
+  console.log("JR NOTE: exits found are",ret)
+  return ret;
+}
+
+
+const getGopherData = async (url) => {
+  const rawText = await httpGetAsync(url);
   const virtualDom = document.createElement("div");
   virtualDom.innerHTML = rawText;
   const rows = virtualDom.querySelectorAll("tr");
   let ret = [];
   let index = 0;
   for (let row of rows) {
-    console.log("JR NOTE: row is", row);
     const cells = row.querySelectorAll("td");
-    console.log("JR NOTE: cells are", cells);
     if (cells && cells.length) {
       const href = cells[1].querySelector("a").href;
       if (href) {
+        console.log("JR NOTE: href is",href)
         const size = cells[3].innerText;
         ret[index] = { href, size };
         index++;
@@ -33,7 +75,6 @@ const test = async () => {
     }
 
   }
-  console.log("JR NOTE: ret is",ret)
   return ret;
 
 }
