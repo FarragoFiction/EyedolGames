@@ -20,7 +20,7 @@ const getFileNameFromPath =(nameString)=>{
 
 const turnGopherContentIntoHTML = async (url)=>{
   const content = await fetchAllTextFromGopherHoleLocation(url);
-  let ret = `<h2>> ${url.replaceAll("http://farragofiction.com/Gopher/",'')}</h2>`;
+  let ret = `<h2>> ${url.replaceAll("http://farragofiction.com/Gopher/",'').replaceAll("/","<wbr>/")}</h2>`;
   for(let c of content){
     ret += `<h3>${c.name}</h3> <p>${c.text}</p>`;
   }
