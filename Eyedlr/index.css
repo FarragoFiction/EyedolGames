@@ -178,3 +178,15 @@ body {
   fill: #001972;
 
 }
+.post-tags{
+  padding-bottom: 20px;
+}
+
+.tag{
+  color: rgba(0,0,0,0.65);
+  margin-right: 10px;
+}
+
+.notes-icons svg{
+  fill: black;
+}

@@ -7,34 +7,132 @@
 
 /*
    a post is a doubly linked list chain of reblogs
+
+   TODO: if you have a parent, instead of keeping track of your own notes, you use the parents, recursively
 */
 class Post {
-  text;
+  text; //can be html
   tags;
-  owner;
-  likes; //array of profiles that liked this
-  replies; //array of text and owner pairs cluttering up the notes
-  parent;
-  children;
-  //for the porn bots, how should they react
-  suggested_reblogs;
-  suggested_tags;
+  owner; //a character
+  likes = 0; //array of profiles that liked this
+  replies = []; //array of text and owner pairs cluttering up the notes
+  parent; //a post
+  timestamp;
+  children = []; //posts
+  //for the porn bots, how should they react when reblogging
+  suggested_reblogs = [];
+  suggested_tags = [];
+
+  constructor(owner, text,parent, tags, suggested_reblogs,suggested_tags){
+    this.owner = owner;
+    this.text = text;
+    this.parent = parent;
+    this.tags = tags;
+    this.timestamp = Date.now();
+    this.suggested_reblogs = suggested_reblogs;
+    this.suggested_tags = suggested_tags;
+  }
+
+  //looking at this, you really can get the feeling for why react and other frameworks were invented
+  //this is *miserable* to read
+  renderToScreen = (parent) => {
+    console.log("JR NOTE: todo instead of using own values for likes/replies/children use parents")
+    const post = createElementWithClassAndParent("div", parent, "post");
+    const postIcon = createElementWithClassAndParent("div", post, "post-icon");
+    const postIconImg = createElementWithClassAndParent("img", postIcon);
+    postIconImg.src = this.owner.icon;
+
+
+    const container = createElementWithClassAndParent("div", post, "post-container");
+    const header = createElementWithClassAndParent("div", container, "post-header");
+    const myName = createElementWithClassAndParent("span", header);
+    myName.innerText = this.owner.name;
+    if (this.parent) {
+      const reblogArrow = createElementWithClassAndParent("span", header, "reblog-arrow");
+      reblogArrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="12px" viewBox="0 0 24 24" width="12px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="18,12 22,8 18,4 18,7 3,7 3,9 18,9"/><polygon points="6,12 2,16 6,20 6,17 21,17 21,15 6,15"/></g></g></svg>`;
+      const theirName = createElementWithClassAndParent("span", header);
+      theirName.innerText = this.parent.owner.name;
+    }
+
+    const body = createElementWithClassAndParent("div", container, "post-body");
+
+    const bodyContent = createElementWithClassAndParent("div", body);
+    bodyContent.innerHTML = this.text;
+
+    const tags = createElementWithClassAndParent("div", body, "post-tags");
+    for (let tag of this.tags) {
+      const ele = createElementWithClassAndParent("span", tags, "tag");
+      ele.innerText = "#" + tag;
+    }
+
+    const footer = createElementWithClassAndParent("div", body, "post-footer");
+    const notesCount = createElementWithClassAndParent("div", footer, "notes-count");
+    notesCount.innerText = this.likes + this.replies.length + this.children.length + " notes";
+
+    const notesIcons = createElementWithClassAndParent("div", footer, "notes-icons");
+
+    const shareIcon = createElementWithClassAndParent("div", notesIcons, "broken");
+    shareIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ff0000">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+  </svg>`;
+
+    const replyIcon = createElementWithClassAndParent("div", notesIcons, "broken");
+    replyIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+    <path d="M0 0h24v24H0V0z" fill="none" />
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+  </svg>`;
+    const reblogIcon = createElementWithClassAndParent("div", notesIcons, "broken");
+    reblogIcon.innerHTML = ` <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+    viewBox="0 0 24 24" width="24px" fill="#000000">
+    <g>
+      <rect fill="none" height="24" width="24" x="0" />
+    </g>
+    <g>
+      <g>
+        <polygon points="18,12 22,8 18,4 18,7 3,7 3,9 18,9" />
+        <polygon points="6,12 2,16 6,20 6,17 21,17 21,15 6,15" />
+      </g>
+    </g>
+  </svg>`;
+    const likeIcon = createElementWithClassAndParent("div", notesIcons, "broken");
+    likeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
+  </svg>`;
+
+
+
+
+
+  }
 }
 
 class Character {
   name;
-  icon;
-  pinned_posts;//each char has up to one of these
-  posts;
+  icon; //could be an absolute or relative url
+  pinned_post;//each char has up to one of these
+  posts = [];
 
   //responds to keyphrases
   readied_reblogs;
 
-  constructor(name, icon, posts, readied_reblogs) {
-    this.name = name;
-    this.icon = icon;
-    this.posts = posts;
-    this.readied_reblogs = readied_reblogs;
+
+  createNewPost(text,tags,suggested_reblogs,suggested_tags){
+    const post = new Post(this, text,null, tags, suggested_reblogs,suggested_tags);
+    this.posts.push(post);
+  }
+
+  //if you're on someones profiles, thats what you see
+  renderAllPosts =(parent)=>{
+    if(this.pinned_post){
+      this.pinned_post.renderToScreen(parent);
+    }
+    for(let post of this.posts){
+      post.renderToScreen(parent);
+    }
   }
 
 
@@ -72,6 +170,8 @@ class Wanda extends Character {
 //create a reblog with the content of the new page (including false doors and hydration stations, basically all .txt files)
 //the wanderer only can wander.
 class Wanderer extends Character {
+  name = "wanderer";
+  icon = "images/icons/wanderer.png";
 
 }
 
