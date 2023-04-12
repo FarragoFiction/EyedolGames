@@ -26,7 +26,16 @@ window.onload = () => {
   let seed = parseInt(urlParams.get('seed'));
 
   let loc = urlParams.get('loc');
+  test();
 
+}
+
+const test = async()=>{
+  //eventually decide whether we have wodin, wanderer or wanda. 
+  const wanderer = new Wanderer();
+  let content = await turnGopherContentIntoHTML(base_gopher_url);
+  wanderer.createNewPost(content,["look what i just found","weird right"],["goodbye world"],["goodbye","world"]);
+  wanderer.renderAllPosts(document.querySelector("#container"));
 }
 
 const grabNormalImages = async () => {
