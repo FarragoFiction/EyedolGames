@@ -128,6 +128,10 @@ body {
   margin-right: 5px;
 }
 
+.reblog-arrow svg{
+  vertical-align: middle;
+}
+
 .post {
   display: flex;
   margin-bottom: 20px;
@@ -165,7 +169,12 @@ body {
 }
 
 #header-right div:hover {
-  background: #002022;
+  background: #2f98fb;
   border-radius: 5px;
+
+}
+
+#header-right svg:hover {
+  fill: #001972;
 
 }
