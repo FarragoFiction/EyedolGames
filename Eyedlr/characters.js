@@ -22,6 +22,7 @@ class Post {
   //for the porn bots, how should they react when reblogging
   suggested_reblogs = [];
   suggested_tags = [];
+  element;
 
   constructor(owner, text,parent, tags, suggested_reblogs,suggested_tags){
     this.owner = owner;
@@ -31,13 +32,20 @@ class Post {
     this.timestamp = Date.now();
     this.suggested_reblogs = suggested_reblogs;
     this.suggested_tags = suggested_tags;
+    this.createElement();
+  }
+
+  renderToScreen =(parent)=>{
+    parent.append(this.element);
   }
 
   //looking at this, you really can get the feeling for why react and other frameworks were invented
   //this is *miserable* to read
-  renderToScreen = (parent) => {
+  createElement = () => {
     console.log("JR NOTE: todo instead of using own values for likes/replies/children use parents")
-    const post = createElementWithClassAndParent("div", parent, "post");
+    const post = document.createElement("div");
+    post.className = "post";
+    this.element = post;
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
     postIconImg.src = this.owner.icon;
@@ -119,6 +127,10 @@ class Character {
   //responds to keyphrases
   readied_reblogs;
 
+  tick = async()=>{
+    //some make posts, some like or reblog other posts, some reply in posts, some send asks, some do nothing
+  }
+
 
   createNewPost(text,tags,suggested_reblogs,suggested_tags){
     const post = new Post(this, text,null, tags, suggested_reblogs,suggested_tags);
@@ -141,7 +153,9 @@ class Character {
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character {
-
+  // 20h:14m:36s
+  //5d:23h:17:04s
+  //4d:15h:21m:33s
 
 }
 
@@ -160,6 +174,8 @@ class Observer extends Character {
 class Wanda extends Character {
 
 
+
+
 }
 
 //only reblogs their own posts. 
@@ -172,6 +188,49 @@ class Wanda extends Character {
 class Wanderer extends Character {
   name = "wanderer";
   icon = "images/icons/wanderer.png";
+  tags = ["i'm almost there i'm sure of it","i've gotta keep going","i don't like this","gopher","wow","i'm so thirsty","it's all so clear now!","so close","i feel like i'm on the verge of a breakthrough","haven't found the end yet","i'm probably not lost","weird","look what i found","it HAS to mean something, right?","this could be the key!","what if its related to zampanio?","do you think this proves anything?"];
+
+    //ironic that the wanderer is the web crawler here instead of the quotidians
+    gopherCrawl = async ()=>{
+      let t = [];
+      const amount = rand.getRandomNumberBetween(1,9);//quotidian arc number because wodin/wanderer/wanda made them
+      for(let i = 0; i<amount; i++){
+        t.push(rand.pickFrom(this.tags));
+      }
+
+      t = uniq(t)
+      if(this.posts.length === 0){
+        console.log("JR NOTE: The Wanderer has entered the maze!")
+        let content = await turnGopherContentIntoHTML(base_gopher_url);
+        this.createNewPost(content,t,["goodbye world"],["goodbye","world"]);
+      }else{
+        /*
+        grab last post
+        grab its url
+        grab potential branch points from it
+        //try to make a post for them 
+        //(if you can't, instead pick a random post and add a tag about backtracking)
+
+
+        */
+        let post = this.posts[this.posts.length -1];
+        let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path:"http://farragofiction.com/Gopher/";
+        let branchPoints = await findAllExitsFromGopherHoleLocation(url);
+        let chosenExit = rand.pickFrom(branchPoints);
+        console.log("JR NOTE: chosenExit is",chosenExit)
+
+        let content = await turnGopherContentIntoHTML(chosenExit);
+        console.log("JR NOTE: content is",content)
+
+
+        this.createNewPost(content,t,["goodbye world"],["goodbye","world"]);
+
+      }
+    }
+  
+    tick = async ()=>{
+      await this.gopherCrawl();
+    }
 
 }
 
@@ -250,7 +309,9 @@ class Alt extends Character {
 //reblogs the things alt posts
 //whenever it does reblog, only speaks in the tags
 class Truth extends Character {
-
+  /*
+    posts screenshots of north/south/east secrets and how to get them 
+  */
 
 }
 
@@ -404,6 +465,10 @@ class Hoon extends Character {
 //never reblogs. likes everything.
 class NAM extends Character {
 
+  /*"To the NORTH is ThisIsNotAGame. In it's endless hallways you see countless variations on players and screens and the wistful Might-Have-Beens of a game you wish you could have played. 
+To the SOUTH is JustTruth.  In it's endless corridors lurk the bitter ThisIsNotASpiral that has been watching and trying in vain to keep from tormenting you. Only truths are here, no more masks, no more pretence. 
+To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You have brought us here and it is your fault. This was never a game. This STILL isn't a game, no matter how much you insist otherwise. How long will you trap us in these endless corridors?"
+*/
 }
 
 

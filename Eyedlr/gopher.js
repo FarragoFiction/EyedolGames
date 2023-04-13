@@ -20,9 +20,9 @@ const getFileNameFromPath =(nameString)=>{
 
 const turnGopherContentIntoHTML = async (url)=>{
   const content = await fetchAllTextFromGopherHoleLocation(url);
-  let ret = `<h2>> ${url.replaceAll("http://farragofiction.com/Gopher/",'').replaceAll("/","<wbr>/")}</h2>`;
+  let ret = `<h2 class="gopher_url" data-path="${url}">> ${url.replaceAll("http://farragofiction.com/Gopher/",'').replaceAll("/","<wbr>/")}</h2>`;
   for(let c of content){
-    ret += `<h3>${c.name}</h3> <p>${c.text}</p>`;
+    ret += `<h3>>${c.name}</h3> <p>${c.text.replaceAll("\n","<br>")}</p>`;
   }
   return ret;
 
@@ -30,6 +30,7 @@ const turnGopherContentIntoHTML = async (url)=>{
 
 const fetchAllTextFromGopherHoleLocation = async(url)=>{
   const content = await findAllContentFromGopherHoleLocation(url);
+
   let ret = [];
   for(let c of content){
     const rawText = await httpGetAsync(c);
@@ -45,7 +46,7 @@ const findAllContentFromGopherHoleLocation = async(url)=>{
   let ret = [];
   for(let d of data){
     if(d.size && d.size.trim() !="-"){
-      ret.push(base_gopher_url + d.href.replaceAll(base_location,''))
+      ret.push(url+ d.href.replaceAll(base_location,''))
     }
   } 
   return ret;
@@ -57,10 +58,9 @@ const findAllExitsFromGopherHoleLocation = async(url)=>{
   let ret = [];
   for(let d of data){
     if(d.size && d.size.trim() ==="-"){
-      ret.push(base_gopher_url + d.href.replaceAll(base_location,''))
+      ret.push(url + d.href.replaceAll(base_location,''))
     }
   } 
-  console.log("JR NOTE: exits found are",ret)
   return ret;
 }
 
@@ -77,7 +77,6 @@ const getGopherData = async (url) => {
     if (cells && cells.length) {
       const href = cells[1].querySelector("a").href;
       if (href) {
-        console.log("JR NOTE: href is",href)
         const size = cells[3].innerText;
         ret[index] = { href, size };
         index++;
