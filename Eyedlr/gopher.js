@@ -19,6 +19,7 @@ const getFileNameFromPath =(nameString)=>{
 }
 
 const turnGopherContentIntoHTML = async (url)=>{
+  console.warn("JR NOTE: The Wanderer has reached ",url)
   const content = await fetchAllTextFromGopherHoleLocation(url);
   let ret = `<h2 class="gopher_url" data-path="${url}">> ${url.replaceAll("http://farragofiction.com/Gopher/",'').replaceAll("/","<wbr>/")}</h2>`;
   for(let c of content){
@@ -91,13 +92,11 @@ const getGopherData = async (url) => {
 //useful for querying specific files.
 //https://stackoverflow.com/questions/2313620/is-it-possible-to-retrieve-the-last-modified-date-of-a-file-using-javascript
 gimmeFacts = (url) => {
-  console.log("JR NOTE: getting facts for", url);
   try {
     var req = new XMLHttpRequest();
     req.open("HEAD", url, false);
     req.send(null);
     if (req.status == 200) {
-      console.log("JR NOTE: it was 200")
       let date = req.getResponseHeader("Last-Modified");
       let size = req.getResponseHeader("Content-Length");
       if (!date) {
