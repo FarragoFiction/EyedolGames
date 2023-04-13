@@ -5,7 +5,7 @@ let normalImageList = [];
 let weirdImageList = [];
 
 
-
+let characters = [];
 
 
 //pure string, convert to numerical seed later.
@@ -30,13 +30,37 @@ window.onload = () => {
   rand = new SeededRandom(seed);
 
   let loc = urlParams.get('loc');
-  test();
+  init();
+  handleScrolling();
 
+}
+
+const init = async()=>{
+  const wanderer = new Wanderer();
+  characters.push(wanderer);
+  for(let i = 0; i<10; i++){
+    await tick();
+  }
+  collatePremadePosts();
+}
+
+const collatePremadePosts = ()=>{
+  let posts = characters.map((c)=>c.posts).flat();
+  //chronological order, newest posts are down (opposite of tumblr) (needed for infinite procedural scroll)
+  posts = posts.sort((a,b)=>a.timestamp-b.timestamp)
+  for(let post of posts){
+    post.renderToScreen(document.querySelector("#container"))
+  }
+}
+
+const tick = async(parentToRenderTo)=>{
+  for(let c of characters){
+    await c.tick(parentToRenderTo);
+  }
 }
 
 const test = async()=>{
   //eventually decide whether we have wodin, wanderer or wanda. 
-  const wanderer = new Wanderer();
   await wanderer.tick();
   await wanderer.tick();
   await wanderer.tick();
@@ -61,3 +85,20 @@ const grabWeirdImages = async () => {
 }
 
 
+
+const handleScrolling = (rand, container) => {
+  let lastScrollTime = 0; //not to spam events
+  let parent = document.querySelector("#container");
+  window.onscroll = () => {
+      const newTime = new Date().getTime();
+      if (((newTime - lastScrollTime)) < 50) {
+          return;
+      }
+      lastScrollTime = newTime;
+
+      window.requestAnimationFrame(() => {
+          tick(parent);
+      });
+
+  };
+}

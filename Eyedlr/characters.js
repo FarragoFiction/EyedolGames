@@ -24,7 +24,7 @@ class Post {
   suggested_tags = [];
   element;
 
-  constructor(owner, text,parent, tags, suggested_reblogs,suggested_tags){
+  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
     this.owner = owner;
     this.text = text;
     this.parent = parent;
@@ -35,7 +35,7 @@ class Post {
     this.createElement();
   }
 
-  renderToScreen =(parent)=>{
+  renderToScreen = (parent) => {
     parent.append(this.element);
   }
 
@@ -127,22 +127,23 @@ class Character {
   //responds to keyphrases
   readied_reblogs;
 
-  tick = async()=>{
+  tick = async (parentToRenderTo) => {
     //some make posts, some like or reblog other posts, some reply in posts, some send asks, some do nothing
   }
 
 
-  createNewPost(text,tags,suggested_reblogs,suggested_tags){
-    const post = new Post(this, text,null, tags, suggested_reblogs,suggested_tags);
+  createNewPost(text, tags, suggested_reblogs, suggested_tags) {
+    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags);
     this.posts.push(post);
+    return post;
   }
 
   //if you're on someones profiles, thats what you see
-  renderAllPosts =(parent)=>{
-    if(this.pinned_post){
+  renderAllPosts = (parent) => {
+    if (this.pinned_post) {
       this.pinned_post.renderToScreen(parent);
     }
-    for(let post of this.posts){
+    for (let post of this.posts) {
       post.renderToScreen(parent);
     }
   }
@@ -187,50 +188,74 @@ class Wanda extends Character {
 //the wanderer only can wander.
 class Wanderer extends Character {
   name = "wanderer";
+
   icon = "images/icons/wanderer.png";
-  tags = ["i'm almost there i'm sure of it","i've gotta keep going","i don't like this","gopher","wow","i'm so thirsty","it's all so clear now!","so close","i feel like i'm on the verge of a breakthrough","haven't found the end yet","i'm probably not lost","weird","look what i found","it HAS to mean something, right?","this could be the key!","what if its related to zampanio?","do you think this proves anything?"];
+  tags = ["i'm almost there i'm sure of it", "i've gotta keep going", "i don't like this", "gopher", "wow", "i'm so thirsty", "it's all so clear now!", "so close", "i feel like i'm on the verge of a breakthrough", "haven't found the end yet", "i'm probably not lost", "weird", "look what i found", "it HAS to mean something, right?", "this could be the key!", "what if its related to zampanio?", "do you think this proves anything?"];
 
-    //ironic that the wanderer is the web crawler here instead of the quotidians
-    gopherCrawl = async ()=>{
-      let t = [];
-      const amount = rand.getRandomNumberBetween(1,9);//quotidian arc number because wodin/wanderer/wanda made them
-      for(let i = 0; i<amount; i++){
-        t.push(rand.pickFrom(this.tags));
-      }
+  //ironic that the wanderer is the web crawler here instead of the quotidians
+  gopherCrawl = async () => {
+    let t = [];
+    const amount = rand.getRandomNumberBetween(1, 9);//quotidian arc number because wodin/wanderer/wanda made them
+    for (let i = 0; i < amount; i++) {
+      t.push(rand.pickFrom(this.tags));
+    }
 
-      t = uniq(t)
-      if(this.posts.length === 0){
-        console.log("JR NOTE: The Wanderer has entered the maze!")
-        let content = await turnGopherContentIntoHTML(base_gopher_url);
-        this.createNewPost(content,t,["goodbye world"],["goodbye","world"]);
-      }else{
-        /*
-        grab last post
-        grab its url
-        grab potential branch points from it
-        //try to make a post for them 
-        //(if you can't, instead pick a random post and add a tag about backtracking)
+    t = uniq(t)
+    if (this.posts.length === 0) {
+      console.warn("JR NOTE: The Wanderer has entered the maze!")
+      let content = await turnGopherContentIntoHTML(base_gopher_url);
+      return this.createNewPost(content, t, ["goodbye world"], ["goodbye", "world"]);
+    } else {
+      /*
+      grab last post
+      grab its url
+      grab potential branch points from it
+      //try to make a post for them 
+      //(if you can't, instead pick a random post and add a tag about backtracking)
 
 
-        */
-        let post = this.posts[this.posts.length -1];
-        let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path:"http://farragofiction.com/Gopher/";
+      */
+     //wow i hate these nested tryes. good job me. 
+      try {
+        let post = this.posts[this.posts.length - 1];
+        let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path : "http://farragofiction.com/Gopher/";
         let branchPoints = await findAllExitsFromGopherHoleLocation(url);
         let chosenExit = rand.pickFrom(branchPoints);
-        console.log("JR NOTE: chosenExit is",chosenExit)
 
         let content = await turnGopherContentIntoHTML(chosenExit);
-        console.log("JR NOTE: content is",content)
 
 
-        this.createNewPost(content,t,["goodbye world"],["goodbye","world"]);
+        return this.createNewPost(content, t, ["goodbye world"], ["goodbye", "world"]);
+      } catch (e) {
+        console.error(e);
+        try {
 
+
+          this.tags.push("i got turned around. have to go back.")
+          let post = rand.pickFrom(this.posts);
+          let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path : "http://farragofiction.com/Gopher/";
+          let branchPoints = await findAllExitsFromGopherHoleLocation(url);
+          let chosenExit = rand.pickFrom(branchPoints);
+
+          let content = await turnGopherContentIntoHTML(chosenExit);
+
+
+          return this.createNewPost(content, t, ["goodbye world"], ["goodbye", "world"]);
+        } catch (e) {
+          console.error(e);
+
+        }
       }
+
     }
-  
-    tick = async ()=>{
-      await this.gopherCrawl();
+  }
+
+  tick = async (parentToRenderTo) => {
+    let post = await this.gopherCrawl();
+    if(post && parent){
+      post.renderToScreen(parentToRenderTo);
     }
+  }
 
 }
 
