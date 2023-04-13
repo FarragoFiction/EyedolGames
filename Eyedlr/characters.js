@@ -157,6 +157,7 @@ class PornBot extends Character {
   // 20h:14m:36s
   //5d:23h:17:04s
   //4d:15h:21m:33s
+  //http://knucklessux.com/PuzzleBox/Secrets/Watcher/shambling_yes_no_presentation_by_the_watcher_of_threads.ppsx 
 
 }
 
