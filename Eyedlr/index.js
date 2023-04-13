@@ -12,7 +12,7 @@ let weirdImageList = [];
 let seedSource = "seed="
 let baseURL = `http://eyedolgames.com/JackElope/images/SexySingles/`
 let seed = 0;
-
+let rand;
 window.onload = () => {
 
   initThemes();
@@ -24,6 +24,10 @@ window.onload = () => {
   let image = urlParams.get('image');
   let matchPercent = parseInt(urlParams.get('matchPercent'));
   let seed = parseInt(urlParams.get('seed'));
+  if(!seed){
+    seed = 13;
+  }
+  rand = new SeededRandom(seed);
 
   let loc = urlParams.get('loc');
   test();
@@ -33,8 +37,13 @@ window.onload = () => {
 const test = async()=>{
   //eventually decide whether we have wodin, wanderer or wanda. 
   const wanderer = new Wanderer();
-  let content = await turnGopherContentIntoHTML(base_gopher_url);
-  wanderer.createNewPost(content,["look what i just found","weird right"],["goodbye world"],["goodbye","world"]);
+  await wanderer.tick();
+  await wanderer.tick();
+  await wanderer.tick();
+  await wanderer.tick();
+  await wanderer.tick();
+  await wanderer.tick();
+
   wanderer.renderAllPosts(document.querySelector("#container"));
 }
 
