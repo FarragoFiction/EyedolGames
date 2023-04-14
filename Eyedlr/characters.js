@@ -289,6 +289,7 @@ class Wanderer extends Character {
   tags = ["i'm almost there i'm sure of it", "i've gotta keep going", "i don't like this", "gopher", "wow", "i'm so thirsty", "it's all so clear now!", "so close", "i feel like i'm on the verge of a breakthrough", "haven't found the end yet", "i'm probably not lost", "weird", "look what i found", "it HAS to mean something, right?", "this could be the key!", "what if its related to zampanio?", "do you think this proves anything?"];
 
 
+  //just made the repo public cuz i figure i've been doing more and more dev work here and its alreayd found so why not
   getPostURL = (post) => {
     let eles = post.element.querySelectorAll(".gopher_url");
     if(eles && eles.length > 0){
