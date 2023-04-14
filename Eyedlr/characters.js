@@ -88,8 +88,14 @@ class Post {
 
   //adds own text to array, then parents, then that parents parents till it runs out of parents
   //then reverses the order so root goes first
-  renderReblogChain = () => {
-
+  //needs to return owner, text pairs. (so i can grab name and etc)
+  grabReblogChain = (so_far=[]) => {
+    so_far.push({owner: this.owner,text: this.text});
+    if(this.parent){
+      return this.parent.grabReblogChain(so_far);
+    }else{
+      return so_far;
+    }
   }
 
 
@@ -102,8 +108,12 @@ class Post {
 
   //looking at this, you really can get the feeling for why react and other frameworks were invented
   //this is *miserable* to read
+  //future me is gonna HATE this.
+  //oh well future me
+  //you can refactor it to make it more readable if you like
+  //but im basically half dead from moving
+  //and am allowed to be lazy
   createElement = () => {
-    console.log("JR NOTE: todo instead of using own values for likes/replies/children use parents")
     const post = document.createElement("div");
     post.className = "post";
     this.element = post;
@@ -126,15 +136,31 @@ class Post {
     const body = createElementWithClassAndParent("div", container, "post-body");
 
     const bodyContent = createElementWithClassAndParent("div", body);
-    bodyContent.innerHTML = this.text;
+    if(this.parent){
+      let postData = this.grabReblogChain([]);
+      postData.reverse();
+      for(let p of postData){
+        const reblog_ele = createElementWithClassAndParent("div", container, "reblog-post");
+        const reblog_header = createElementWithClassAndParent("div", reblog_ele, "reblog-header");
 
-    const tags = createElementWithClassAndParent("div", body, "post-tags");
+        const reblogIcon = createElementWithClassAndParent("img", reblog_header,"reblog-icon");
+        const reblog_name = createElementWithClassAndParent("div", reblog_header, "reblog-name");
+        reblog_name.innerText = p.owner.name;
+        reblogIcon.src = p.owner.icon;
+        const reblog_text = createElementWithClassAndParent("div", reblog_ele, "reblog-text");
+        reblog_text.innerHTML = p.text;
+      }
+    }else{
+      bodyContent.innerHTML = this.text;
+    }
+
+    const tags = createElementWithClassAndParent("div", container, "post-tags");
     for (let tag of this.tags) {
       const ele = createElementWithClassAndParent("span", tags, "tag");
       ele.innerText = "#" + tag;
     }
 
-    const footer = createElementWithClassAndParent("div", body, "post-footer");
+    const footer = createElementWithClassAndParent("div", container, "post-footer");
     const notesCount = createElementWithClassAndParent("div", footer, "notes-count");
     notesCount.innerText = this.getLikes() + this.getNumberReplies() + this.getNumberReblogs() + " notes";
 
@@ -308,6 +334,7 @@ class Wanderer extends Character {
           let chosenExit = rand.pickFrom(branchPoints);
 
           let content = await turnGopherContentIntoHTML(chosenExit);
+          content ="<p>I think I got turned around...</p>"+content;
 
 
           return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
