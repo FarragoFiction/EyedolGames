@@ -89,11 +89,11 @@ class Post {
   //adds own text to array, then parents, then that parents parents till it runs out of parents
   //then reverses the order so root goes first
   //needs to return owner, text pairs. (so i can grab name and etc)
-  grabReblogChain = (so_far=[]) => {
-    so_far.push({owner: this.owner,text: this.text});
-    if(this.parent){
+  grabReblogChain = (so_far = []) => {
+    so_far.push({ owner: this.owner, text: this.text });
+    if (this.parent) {
       return this.parent.grabReblogChain(so_far);
-    }else{
+    } else {
       return so_far;
     }
   }
@@ -136,21 +136,21 @@ class Post {
     const body = createElementWithClassAndParent("div", container, "post-body");
 
     const bodyContent = createElementWithClassAndParent("div", body);
-    if(this.parent){
+    if (this.parent) {
       let postData = this.grabReblogChain([]);
       postData.reverse();
-      for(let p of postData){
+      for (let p of postData) {
         const reblog_ele = createElementWithClassAndParent("div", container, "reblog-post");
         const reblog_header = createElementWithClassAndParent("div", reblog_ele, "reblog-header");
 
-        const reblogIcon = createElementWithClassAndParent("img", reblog_header,"reblog-icon");
+        const reblogIcon = createElementWithClassAndParent("img", reblog_header, "reblog-icon");
         const reblog_name = createElementWithClassAndParent("div", reblog_header, "reblog-name");
         reblog_name.innerText = p.owner.name;
         reblogIcon.src = p.owner.icon;
         const reblog_text = createElementWithClassAndParent("div", reblog_ele, "reblog-text");
         reblog_text.innerHTML = p.text;
       }
-    }else{
+    } else {
       bodyContent.innerHTML = this.text;
     }
 
@@ -288,6 +288,17 @@ class Wanderer extends Character {
   icon = "images/icons/wanderer.png";
   tags = ["i'm almost there i'm sure of it", "i've gotta keep going", "i don't like this", "gopher", "wow", "i'm so thirsty", "it's all so clear now!", "so close", "i feel like i'm on the verge of a breakthrough", "haven't found the end yet", "i'm probably not lost", "weird", "look what i found", "it HAS to mean something, right?", "this could be the key!", "what if its related to zampanio?", "do you think this proves anything?"];
 
+
+  getPostURL = (post) => {
+    let eles = post.element.querySelectorAll(".gopher_url");
+    if(eles && eles.length > 0){
+      let last = eles[eles.length=1]
+      return last.dataset.path ;
+
+    }else{
+      return "http://farragofiction.com/Gopher/";
+    }
+  }
   //ironic that the wanderer is the web crawler here instead of the quotidians
   gopherCrawl = async () => {
     let t = [];
@@ -314,7 +325,7 @@ class Wanderer extends Character {
       //wow i hate these nested tryes. good job me. 
       try {
         let post = this.posts[this.posts.length - 1];
-        let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path : "http://farragofiction.com/Gopher/";
+        let url = this.getPostURL();
         let branchPoints = await findAllExitsFromGopherHoleLocation(url);
         let chosenExit = rand.pickFrom(branchPoints);
 
@@ -326,7 +337,6 @@ class Wanderer extends Character {
         console.error(e);
         try {
 
-
           this.tags.push("i got turned around. have to go back.")
           let post = rand.pickFrom(this.posts);
           let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path : "http://farragofiction.com/Gopher/";
@@ -334,7 +344,7 @@ class Wanderer extends Character {
           let chosenExit = rand.pickFrom(branchPoints);
 
           let content = await turnGopherContentIntoHTML(chosenExit);
-          content ="<p>I think I got turned around...</p>"+content;
+          content = "<p>I think I got turned around...</p>" + content;
 
 
           return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
