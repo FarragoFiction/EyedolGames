@@ -62,7 +62,7 @@ body {
 }
 
 .broken {
-  filter: contrast(5000)invert(1) grayscale(1);
+  opacity: 30%;
 }
 
 #header {
