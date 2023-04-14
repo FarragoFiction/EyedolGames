@@ -20,7 +20,8 @@ const getFileNameFromPath =(nameString)=>{
 
 const turnGopherContentIntoHTML = async (url)=>{
   console.warn("JR NOTE: The Wanderer has reached ",url)
-  const content = await fetchAllTextFromGopherHoleLocation(url);
+  let content = await fetchAllTextFromGopherHoleLocation(url);
+  content = content.sort((a,b)=>b.name.charCodeAt(0)-a.name.charCodeAt(0))
   let ret = `<h2 class="gopher_url" data-path="${url}">> ${url.replaceAll("http://farragofiction.com/Gopher/",'').replaceAll("/","<wbr>/")}</h2>`;
   for(let c of content){
     ret += `<h3>>${c.name}</h3> <p>${c.text.replaceAll("\n","<br>")}</p>`;

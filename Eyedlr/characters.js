@@ -253,7 +253,7 @@ class Wanderer extends Character {
 
   tick = async (parentToRenderTo) => {
     let post = await this.gopherCrawl();
-    if(post && parent){
+    if(post && parentToRenderTo){
       post.renderToScreen(parentToRenderTo);
     }
   }
@@ -318,11 +318,17 @@ class Italian extends Character {
 }
 
 
+/*
+because she is wasted she gets into all sort of things i've hidden and shows everyone.
+even the memes
+ESPECIALLY The memes (hey there cool kid is this you)
+*/
 //posts about her skyrim mods
 //and other video game stuff
 //plus links to her favorite burger places on zampanini (with plenty of warnings to make sure you don't get a fee)
 class FlowerChick extends Character {
 
+  //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
 
 }
 
