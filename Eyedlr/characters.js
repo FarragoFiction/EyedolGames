@@ -14,8 +14,10 @@ class Post {
   text; //can be html
   tags;
   owner; //a character
-  likes = 0; //array of profiles that liked this
-  replies = []; //array of text and owner pairs cluttering up the notes
+  //next three are internal because they only work if you have no parent, otherwise its the root.
+  internal_likes = 0; //array of profiles that liked this
+  internal_numreblogs = 0;//instead of recursing across everything, just count
+  internal_replies = []; //array of text and owner pairs cluttering up the notes
   parent; //a post
   timestamp;
   children = []; //posts
@@ -28,12 +30,71 @@ class Post {
     this.owner = owner;
     this.text = text;
     this.parent = parent;
+    //this isn't expected to change.
+    if (this.parent) {
+      this.root = this.getParent();
+      this.root.internal_numreblogs++;
+    }
     this.tags = tags;
     this.timestamp = Date.now();
     this.suggested_reblogs = suggested_reblogs;
     this.suggested_tags = suggested_tags;
     this.createElement();
   }
+
+  //used for queing likes, rebogs, replies, etc. 
+  //tumblr seems to store these in the root blindly
+  getParent = () => {
+    if (!this.parent) {
+      return this;
+    } else {
+      return this.parent.getParent();
+    }
+  }
+
+  getLikes = () => {
+    if (!this.parent) {
+      return this.internal_likes;
+    } else {
+      return this.root.internal_likes;
+    }
+  }
+
+  getNumberReblogs = () => {
+    if (!this.parent) {
+      return this.internal_numreblogs;
+    } else {
+      return this.root.internal_numreblogs;
+    }
+  }
+
+  getNumberReplies = () => {
+    if (!this.parent) {
+      return this.internal_replies.length;
+    } else {
+      return this.root.internal_replies.length;
+    }
+  }
+
+  getReplies = () => {
+    if (!this.parent) {
+      return this.internal_replies;
+    } else {
+      return this.root.internal_replies;
+    }
+  }
+
+
+
+  //adds own text to array, then parents, then that parents parents till it runs out of parents
+  //then reverses the order so root goes first
+  renderReblogChain = () => {
+
+  }
+
+
+
+
 
   renderToScreen = (parent) => {
     parent.append(this.element);
@@ -75,7 +136,7 @@ class Post {
 
     const footer = createElementWithClassAndParent("div", body, "post-footer");
     const notesCount = createElementWithClassAndParent("div", footer, "notes-count");
-    notesCount.innerText = this.likes + this.replies.length + this.children.length + " notes";
+    notesCount.innerText = this.getLikes() + this.getNumberReplies() + this.getNumberReblogs() + " notes";
 
     const notesIcons = createElementWithClassAndParent("div", footer, "notes-icons");
 
@@ -135,6 +196,14 @@ class Character {
   createNewPost(text, tags, suggested_reblogs, suggested_tags) {
     const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags);
     this.posts.push(post);
+    return post;
+  }
+
+  reblogAPost(parent, text, tags, suggested_reblogs, suggested_tags) {
+    //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
+    const post = new Post(this, text, parent, tags, suggested_reblogs, suggested_tags);
+    this.posts.push(post);
+    parent.children.push(post);
     return post;
   }
 
@@ -216,7 +285,7 @@ class Wanderer extends Character {
 
 
       */
-     //wow i hate these nested tryes. good job me. 
+      //wow i hate these nested tryes. good job me. 
       try {
         let post = this.posts[this.posts.length - 1];
         let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path : "http://farragofiction.com/Gopher/";
@@ -226,7 +295,7 @@ class Wanderer extends Character {
         let content = await turnGopherContentIntoHTML(chosenExit);
 
 
-        return this.createNewPost(content, t, ["goodbye world"], ["goodbye", "world"]);
+        return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
       } catch (e) {
         console.error(e);
         try {
@@ -241,7 +310,7 @@ class Wanderer extends Character {
           let content = await turnGopherContentIntoHTML(chosenExit);
 
 
-          return this.createNewPost(content, t, ["goodbye world"], ["goodbye", "world"]);
+          return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
         } catch (e) {
           console.error(e);
 
@@ -253,7 +322,7 @@ class Wanderer extends Character {
 
   tick = async (parentToRenderTo) => {
     let post = await this.gopherCrawl();
-    if(post && parentToRenderTo){
+    if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
   }
