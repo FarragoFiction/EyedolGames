@@ -347,7 +347,7 @@ class Wanderer extends Character {
           let chosenExit = rand.pickFrom(branchPoints);
 
           let content = await turnGopherContentIntoHTML(chosenExit);
-          content = `<p>I think I got turned around...Why did I think ${url} was a direction?</p>` + content;
+          content = `<p>I think I got turned around...</p>` + content;
 
 
           return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
