@@ -87,7 +87,7 @@ const grabWeirdImages = async () => {
 
 
 const handleScrolling = (rand, container) => {
-  throw("JR NOTE: turn scrolling back on later.")
+  //throw("JR NOTE: turn scrolling back on later.")
   let lastScrollTime = 0; //not to spam events
   let parent = document.querySelector("#container");
   window.onscroll = () => {
