@@ -293,7 +293,7 @@ class Wanderer extends Character {
   getPostURL = (post) => {
     let eles = post.element.querySelectorAll(".gopher_url");
     if(eles && eles.length > 0){
-      let last = eles[eles.length=1]
+      let last = eles[eles.length-1]
       return last.dataset.path ;
 
     }else{
@@ -324,9 +324,11 @@ class Wanderer extends Character {
 
       */
       //wow i hate these nested tryes. good job me. 
+      let pendingDirection = "";
       try {
         let post = this.posts[this.posts.length - 1];
-        let url = this.getPostURL();
+        let url = this.getPostURL(post);
+        pendingDirection = url;
         let branchPoints = await findAllExitsFromGopherHoleLocation(url);
         let chosenExit = rand.pickFrom(branchPoints);
 
@@ -340,12 +342,12 @@ class Wanderer extends Character {
 
           this.tags.push("i got turned around. have to go back.")
           let post = rand.pickFrom(this.posts);
-          let url = post.element.querySelector(".gopher_url") ? post.element.querySelector(".gopher_url").dataset.path : "http://farragofiction.com/Gopher/";
+          let url = this.getPostURL(post);
           let branchPoints = await findAllExitsFromGopherHoleLocation(url);
           let chosenExit = rand.pickFrom(branchPoints);
 
           let content = await turnGopherContentIntoHTML(chosenExit);
-          content = "<p>I think I got turned around...</p>" + content;
+          content = `<p>I think I got turned around...Why did I think ${url} was a direction?</p>` + content;
 
 
           return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
