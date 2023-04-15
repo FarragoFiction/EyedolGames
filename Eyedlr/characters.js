@@ -139,6 +139,13 @@ class Post {
 
   renderToScreen = (parent) => {
     parent.append(this.element);
+    let bodyContent = this.element.querySelector(".post-body");
+    bodyContent.scrollTop = bodyContent.scrollHeight
+
+  }
+  
+  createPostBody = ()=>{
+
   }
 
   //looking at this, you really can get the feeling for why react and other frameworks were invented
@@ -170,12 +177,13 @@ class Post {
 
     const body = createElementWithClassAndParent("div", container, "post-body");
 
-    const bodyContent = createElementWithClassAndParent("div", body);
+    const bodyContent = createElementWithClassAndParent("div", body,"post-body-content");
+
     if (this.parent) {
       let postData = this.grabReblogChain([]);
       postData.reverse();
       for (let p of postData) {
-        const reblog_ele = createElementWithClassAndParent("div", container, "reblog-post");
+        const reblog_ele = createElementWithClassAndParent("div", bodyContent, "reblog-post");
         const reblog_header = createElementWithClassAndParent("div", reblog_ele, "reblog-header");
 
         const reblogIcon = createElementWithClassAndParent("img", reblog_header, "reblog-icon");
@@ -308,7 +316,7 @@ class PornBot extends Character {
   //5d:23h:17:04s
   //4d:15h:21m:33s
   //http://knucklessux.com/PuzzleBox/Secrets/Watcher/shambling_yes_no_presentation_by_the_watcher_of_threads.ppsx 
-
+  //https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share   porn bots should post
 }
 
 //you should be allowed to follow people
@@ -407,8 +415,7 @@ class Wanderer extends Character {
 
           return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
         } catch (e) {
-          console.error(e);
-
+          //console.error(e);
         }
       }
 
