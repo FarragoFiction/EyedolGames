@@ -56,6 +56,15 @@ body {
   justify-content: space-between;
 }
 
+.liked{
+  cursor:pointer;
+}
+
+.unliked{
+  cursor:pointer;
+}
+
+
 .notes-icons {
   display: flex;
   gap: 20px;
@@ -223,4 +232,8 @@ body {
 
 .notes-icons svg {
   fill: black;
+}
+
+.notes-icons .liked svg {
+  fill: #f38fcb;
 }
