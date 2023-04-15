@@ -13,6 +13,7 @@ let seedSource = "seed="
 let baseURL = `http://eyedolgames.com/JackElope/images/SexySingles/`
 let seed = 0;
 let rand;
+let observer;
 window.onload = () => {
 
   initThemes();
@@ -37,6 +38,7 @@ window.onload = () => {
 
 const init = async()=>{
   const wanderer = new Wanderer();
+  observer = new Observer();
   characters.push(wanderer);
   for(let i = 0; i<10; i++){
     await tick();
