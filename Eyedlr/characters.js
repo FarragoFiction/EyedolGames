@@ -13,6 +13,7 @@
 class Post {
   text; //can be html
   tags;
+  notesEle;
   owner; //a character
   //next three are internal because they only work if you have no parent, otherwise its the root.
   internal_likes = 0; //array of profiles that liked this
@@ -60,6 +61,34 @@ class Post {
     }
   }
 
+  syncNotes = ()=>{
+    //won't get everything but at least goes all the way up the chain
+    if(this.parent){
+      this.parent.syncNotes();
+    }
+    this.notesEle.innerText = this.getLikes() + this.getNumberReplies() + this.getNumberReblogs() + " notes";
+  }
+
+  likePost = () => {
+    if (!this.parent) {
+      this.internal_likes +=1;
+    } else {
+      return this.root.internal_likes+=1;
+    }
+    this.syncNotes();
+    
+  }
+
+  unlikePost = () => {
+    if (!this.parent) {
+      this.internal_likes += -1;
+    } else {
+      return this.root.internal_likes += -1;
+    }
+    this.syncNotes();
+
+  }
+
   getNumberReblogs = () => {
     if (!this.parent) {
       return this.internal_numreblogs;
@@ -96,6 +125,12 @@ class Post {
     } else {
       return so_far;
     }
+  }
+
+  addChild = (child)=>{
+    this.children.push(child);
+    this.syncNotes();
+
   }
 
 
@@ -161,8 +196,8 @@ class Post {
     }
 
     const footer = createElementWithClassAndParent("div", container, "post-footer");
-    const notesCount = createElementWithClassAndParent("div", footer, "notes-count");
-    notesCount.innerText = this.getLikes() + this.getNumberReplies() + this.getNumberReblogs() + " notes";
+    this.notesEle = createElementWithClassAndParent("div", footer, "notes-count");
+    this.notesEle.innerText = this.getLikes() + this.getNumberReplies() + this.getNumberReblogs() + " notes";
 
     const notesIcons = createElementWithClassAndParent("div", footer, "notes-icons");
 
@@ -203,10 +238,12 @@ class Post {
       if (observer.liked_posts.indexOf(this) === -1) {
         likeIcon.classList = ["liked"];
         observer.liked_posts.push(this);
+        this.likePost();
         likeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
       } else {
         likeIcon.classList = ["unliked"];
-        removeItemOnce(observer.liked_posts,this);
+        removeItemOnce(observer.liked_posts, this);
+        this.unlikePost();
         likeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
         <path d="M0 0h24v24H0z" fill="none" />
         <path
@@ -247,7 +284,7 @@ class Character {
     //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
     const post = new Post(this, text, parent, tags, suggested_reblogs, suggested_tags);
     this.posts.push(post);
-    parent.children.push(post);
+    parent.addChild(post);
     return post;
   }
 
