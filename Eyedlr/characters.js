@@ -15,12 +15,12 @@ class Character {
     //some make posts, some like or reblog other posts, some reply in posts, some send asks, some do nothing
   }
 
-  likePost = (post)=>{
+  likePost = (post) => {
     this.liked_posts.push(post);
     post.likePost();
   }
 
-  unlikePost = (post)=>{
+  unlikePost = (post) => {
     removeItemOnce(this.liked_posts, post);
     post.unlikePost();
   }
@@ -32,18 +32,17 @@ class Character {
     return post;
   }
 
-  findAPostEvenIfYouHaveInteractedWithIt = ()=>{
+  findAPostEvenIfYouHaveInteractedWithIt = () => {
     return rand.pickFrom(all_posts);
   }
 
-  findAPostYouHaventInteractedWith = ()=>{
 
-  }
 
   reblogAPost(parent, text, tags, suggested_reblogs, suggested_tags) {
     //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
     const post = new Post(this, text, parent, tags, suggested_reblogs, suggested_tags);
     this.posts.push(post);
+    this.reblogged_posts.push(post);
     parent.addChild(post);
     return post;
   }
@@ -87,7 +86,7 @@ class Observer extends Character {
 class Wanda extends Character {
 
 
-  
+
 
 }
 
@@ -343,7 +342,35 @@ class Ambrose extends Character {
 //reblogs EVEYR single post he sees with "get reblogged, idiot" in an attempt to go viral
 //also reblogs popular posts with takes on top and eggs lee/hunter on 
 class K extends Character {
+  name = "K";//proud he got such an early name
+  icon = 'http://farragofiction.com/TwoGayJokes/Stories/MurderGameIcons/k.png';
 
+  //k wants to be seen on EVERY post in the entire system
+  //and also if a subsequent reblog goes viral, he does too
+  //theif of light
+  getRebloggedIdiot = (target) => {
+    //he likes seeing his own name.
+    if (target.text.toLowerCase().includes("k")) {
+      return this.reblogAPost(target, "get reblogged idiot", ["get reblogged", "idiot", "k", "k post", "follow me for more quality content"], ["k", "kek", "k spam", "spam", "meme", "lol", "why would you do this", "so annoying", "trigger warning: annoying"]);
+    }
+
+  }
+
+
+  tick = async (parentToRenderTo) => {
+    //you are GOING to see more of K than anyone else.
+    for (let i = 0; i < 3; i++) {
+      let target = this.findAPostEvenIfYouHaveInteractedWithIt();
+
+      if (target) {
+        //for now, this is all K can do. will flesh him out later.
+        let post = this.getRebloggedIdiot(target);
+        if (post && parentToRenderTo) {
+          post.renderToScreen(parentToRenderTo);
+        }
+      }
+    }
+  }
 }
 
 
@@ -475,7 +502,7 @@ class Rod extends Character {
 }
 
 //don't actually create JR, isntead store important things here
-class JR extends Character{
+class JR extends Character {
   //https://www.tumblr.com/hazyscrounger/714681029142691840/i-want-to-like-zampanio-so-bad-i-feel-like-an?source=share
   //https://www.tumblr.com/jadedresearcher/714684745826566144/wait-wait-wait-sorry-to-send-a-second-ask-but?source=share
 }
