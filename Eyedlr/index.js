@@ -3,7 +3,9 @@
 
 let normalImageList = [];
 let weirdImageList = [];
-
+//quotidians post from here, because i feel like the uninitiated deserve confusion
+//as a treat
+let zampanioEyes = [];
 
 let characters = [];
 
@@ -31,7 +33,8 @@ window.onload = () => {
   rand = new SeededRandom(seed);
 
   let loc = urlParams.get('loc');
-
+  //not awaited, it either loads or it doesn't, its slow
+  grabZampanioEyes();
   init();
   handleScrolling();
 
@@ -105,6 +108,12 @@ const grabWeirdImages = async () => {
   const loc = 'BigWeirdPile/';
   let tmp = await getImages(baseURL + loc);
   weirdImageList = tmp.map((item) => loc + item);
+}
+
+const grabZampanioEyes = async () => {
+  const loc = 'http://www.farragofiction.com/ZampanioEyes2/';
+  let tmp = await getImages(loc);
+  zampanioEyes = tmp.map((item) => loc + item);
 }
 
 

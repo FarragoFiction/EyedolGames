@@ -61,7 +61,7 @@ class Character {
 }
 
 const randomPornBotIcon = () => {
-  if(rand.nextDouble()>0.81){
+  if (rand.nextDouble() > 0.81) {
     return rand.pickFrom(weirdImageList);
 
   }
@@ -69,11 +69,11 @@ const randomPornBotIcon = () => {
 }
 
 const randomPornBotName = () => {
-  return "randomPornBot" + getRandomNumberBetween(0, 9999);
+  return rand.pickFrom(first_names) + getRandomNumberBetween(0, 9999);
 }
 
-const randomPornBot = ()=>{
-  return new PornBot(randomPornBotName(), "http://eyedolgames.com/JackElope/images/SexySingles/" +randomPornBotIcon());
+const randomPornBot = () => {
+  return new PornBot(randomPornBotName(), "http://eyedolgames.com/JackElope/images/SexySingles/" + randomPornBotIcon());
 }
 
 
@@ -95,34 +95,37 @@ class PornBot extends Character {
     this.quirk = randomQuirk(rand);
   }
 
-  quotidianPost = ()=>{
-    let innaneComments = [...links,"caw!!!","so true bestie!","!!!","i feel so attacked right now","i'm in this picture and i don't like it"];
-
+  quotidianPost = () => {
+    let innaneComments = ["caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     let possiblePosts = [
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
       `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
     ]
+    if (zampanioEyes.length > 0) {
+      let zEye = rand.pickFrom(zampanioEyes);
+      possiblePosts.push(`I spy with my little eye: <img src='${zEye}'>`,)
+    }
 
-    return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments, innaneComments);
+    return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments.concat(links), innaneComments);
 
   }
 
   quotidianReblog = (post) => {
-    let innaneComments = [...links,"caw!!!","so true bestie!","!!!","i feel so attacked right now","i'm in this picture and i don't like it"];
-    if (post.suggested_reblogs && rand.nextDouble() > 0.5) {    
+    let innaneComments = ["caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    if (post.suggested_reblogs && rand.nextDouble() > 0.5) {
       let t = [];
-      if(post.suggested_tags){
+      if (post.suggested_tags) {
         t.push(this.quirk.apply(rand.pickFrom(post.suggested_tags)));
       }
 
-      if(post.root && post.root.suggested_tags){
+      if (post.root && post.root.suggested_tags) {
         t.push(this.quirk.apply(rand.pickFrom(post.root.suggested_tags)));
       }
-      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(post.suggested_reblogs)), t, ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], [...innaneComments,"link", "sexy"]);
-    }else{
-      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(innaneComments)), [this.quirk.apply(rand.pickFrom(innaneComments))], ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], [...innaneComments,"link", "sexy"]);
+      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(post.suggested_reblogs)), t, ["message me for a good time!", "that's so sexy!", "wow! so interesting!", "tell me more!", "what a great idea!"], [...innaneComments, "link", "sexy"]);
+    } else {
+      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(innaneComments.concat(links))), [this.quirk.apply(rand.pickFrom(innaneComments))], ["message me for a good time!", "that's so sexy!", "wow! so interesting!", "tell me more!", "what a great idea!"], [...innaneComments, "link", "sexy"]);
     }
   }
 
@@ -139,11 +142,11 @@ class PornBot extends Character {
           post.renderToScreen(parentToRenderTo);
         }
       }
-    }else{
+    } else {
       let post = this.quotidianPost();
-        if (post && parentToRenderTo) {
-          post.renderToScreen(parentToRenderTo);
-        }
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
     }
   }
 }
@@ -205,7 +208,8 @@ class Wanderer extends Character {
     if (this.posts.length === 0) {
       console.warn("JR NOTE: The Wanderer has entered the maze!")
       let content = await turnGopherContentIntoHTML(base_gopher_url);
-      return this.createNewPost(content, t, ["goodbye world"], ["goodbye", "world"]);
+      let responses = ["the end is never the end", "the maze has you", "the maze is within and the maze is without", "the truth is layered", "there is nothing worth finding here", "we wait", "friday beckons", "when will you wake up"];
+      return this.createNewPost(content, t, [rand.pickFrom(responses)], [rand.pickFrom(responses)]);
     } else {
       /*
       grab last post
@@ -429,7 +433,7 @@ class K extends Character {
   getRebloggedIdiot = (target) => {
     //he likes seeing his own name.
     if (target.text.toLowerCase().includes("k")) {
-      return this.reblogAPost(target, "get reblogged idiot", ["get reblogged", "idiot", "k", "k post", "follow me for more quality content"], ["k", "kek", "k spam", "spam", "meme", "lol", "why would you do this", "so annoying", "trigger warning: annoying"]);
+      return this.reblogAPost(target, "get reblogged idiot", ["get reblogged", "idiot", "k", "k post", "check out my profile for more quality content"], ["k", "kek", "k spam", "spam", "meme", "lol", "why would you do this", "so annoying", "trigger warning: annoying"]);
     }
 
   }
