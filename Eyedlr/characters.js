@@ -61,7 +61,11 @@ class Character {
 }
 
 const randomPornBotIcon = () => {
-  return 'http://eyedolgames.com/JackElope/images/SexySingles/Creepy/00008-img.png';
+  if(rand.nextDouble()>0.81){
+    return rand.pickFrom(weirdImageList);
+
+  }
+  return rand.pickFrom(normalImageList);
 }
 
 const randomPornBotName = () => {
@@ -69,8 +73,10 @@ const randomPornBotName = () => {
 }
 
 const randomPornBot = ()=>{
-  return new PornBot(randomPornBotName(), randomPornBotIcon());
+  return new PornBot(randomPornBotName(), "http://eyedolgames.com/JackElope/images/SexySingles/" +randomPornBotIcon());
 }
+
+
 
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
@@ -89,6 +95,20 @@ class PornBot extends Character {
     this.quirk = randomQuirk(rand);
   }
 
+  quotidianPost = ()=>{
+    let innaneComments = [...links,"caw!!!","so true bestie!","!!!","i feel so attacked right now","i'm in this picture and i don't like it"];
+
+    let possiblePosts = [
+      "20h:14m:36s",
+      "5d:23h:17:04s",
+      "4d:15h:21m:33s",
+      `<iframe width="500" src="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"></iframe>`
+    ]
+
+    return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments, innaneComments);
+
+  }
+
   quotidianReblog = (post) => {
     let innaneComments = [...links,"caw!!!","so true bestie!","!!!","i feel so attacked right now","i'm in this picture and i don't like it"];
     if (post.suggested_reblogs && rand.nextDouble() > 0.5) {    
@@ -100,9 +120,9 @@ class PornBot extends Character {
       if(post.root && post.root.suggested_tags){
         t.push(this.quirk.apply(rand.pickFrom(post.root.suggested_tags)));
       }
-      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(post.suggested_reblogs)), t, ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], ["link", "sexy"]);
+      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(post.suggested_reblogs)), t, ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], [...innaneComments,"link", "sexy"]);
     }else{
-      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(innaneComments)), [this.quirk.apply(rand.pickFrom(innaneComments))], ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], ["link", "sexy"]);
+      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(innaneComments)), [this.quirk.apply(rand.pickFrom(innaneComments))], ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], [...innaneComments,"link", "sexy"]);
     }
   }
 
@@ -110,7 +130,7 @@ class PornBot extends Character {
     console.log("JR NOTE: quotidian tick");
     let target = this.findAPostEvenIfYouHaveInteractedWithIt();
 
-    if (target) {
+    if (target && rand.nextDouble() > 0.75) {
       if (rand.nextDouble() > 0.5) {
         this.likePost(target);
       } else {
@@ -119,6 +139,11 @@ class PornBot extends Character {
           post.renderToScreen(parentToRenderTo);
         }
       }
+    }else{
+      let post = this.quotidianPost();
+        if (post && parentToRenderTo) {
+          post.renderToScreen(parentToRenderTo);
+        }
     }
   }
 }
