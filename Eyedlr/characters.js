@@ -102,7 +102,7 @@ class PornBot extends Character {
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
-      `<iframe width="500" src="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"></iframe>`
+      `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
     ]
 
     return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments, innaneComments);
