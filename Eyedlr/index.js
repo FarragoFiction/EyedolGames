@@ -42,6 +42,8 @@ const init = async()=>{
   k = new K();
   characters.push(wanderer);
   characters.push(k);
+  characters.push(randomPornBot())
+  characters.push(randomPornBot());
 
   for(let i = 0; i<10; i++){
     await tick();

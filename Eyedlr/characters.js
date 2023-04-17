@@ -60,6 +60,18 @@ class Character {
 
 }
 
+const randomPornBotIcon = () => {
+  return 'http://eyedolgames.com/JackElope/images/SexySingles/Creepy/00008-img.png';
+}
+
+const randomPornBotName = () => {
+  return "randomPornBot" + getRandomNumberBetween(0, 9999);
+}
+
+const randomPornBot = ()=>{
+  return new PornBot(randomPornBotName(), randomPornBotIcon());
+}
+
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character {
@@ -68,6 +80,47 @@ class PornBot extends Character {
   //4d:15h:21m:33s
   //http://knucklessux.com/PuzzleBox/Secrets/Watcher/shambling_yes_no_presentation_by_the_watcher_of_threads.ppsx 
   //https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share   porn bots should post
+
+  //the names and icons vary but at the end of the day they're all pornbots
+  constructor(name, icon) {
+    super();
+    this.name = name;
+    this.icon = icon;
+    this.quirk = randomQuirk(rand);
+  }
+
+  quotidianReblog = (post) => {
+    let innaneComments = [...links,"caw!!!","so true bestie!","!!!","i feel so attacked right now","i'm in this picture and i don't like it"];
+    if (post.suggested_reblogs && rand.nextDouble() > 0.5) {    
+      let t = [];
+      if(post.suggested_tags){
+        t.push(this.quirk.apply(rand.pickFrom(post.suggested_tags)));
+      }
+
+      if(post.root && post.root.suggested_tags){
+        t.push(this.quirk.apply(rand.pickFrom(post.root.suggested_tags)));
+      }
+      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(post.suggested_reblogs)), t, ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], ["link", "sexy"]);
+    }else{
+      return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(innaneComments)), [this.quirk.apply(rand.pickFrom(innaneComments))], ["message me for a good time!","that's so sexy!","wow! so interesting!","tell me more!","what a great idea!"], ["link", "sexy"]);
+    }
+  }
+
+  tick = async (parentToRenderTo) => {
+    console.log("JR NOTE: quotidian tick");
+    let target = this.findAPostEvenIfYouHaveInteractedWithIt();
+
+    if (target) {
+      if (rand.nextDouble() > 0.5) {
+        this.likePost(target);
+      } else {
+        let post = this.quotidianReblog(target);
+        if (post && parentToRenderTo) {
+          post.renderToScreen(parentToRenderTo);
+        }
+      }
+    }
+  }
 }
 
 //you should be allowed to follow people
@@ -152,7 +205,7 @@ class Wanderer extends Character {
 
         return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
       } catch (e) {
-        console.error(e);
+        //console.error(e);
         try {
 
           this.tags.push("i got turned around. have to go back.")
