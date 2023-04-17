@@ -151,9 +151,7 @@ class Post {
 
   }
 
-  createPostBody = () => {
-
-  }
+ 
 
   //looking at this, you really can get the feeling for why react and other frameworks were invented
   //this is *miserable* to read

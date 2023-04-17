@@ -96,7 +96,7 @@ class PornBot extends Character {
   }
 
   quotidianPost = () => {
-    let innaneComments = ["caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    let innaneComments = ["caw!!!", "so true bestie!", "!!!","i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     let possiblePosts = [
       "20h:14m:36s",
       "5d:23h:17:04s",
@@ -166,6 +166,7 @@ class Observer extends Character {
 //32, 40, 41, 59  posts secrets and shit (future JR i know you wanna know where i got those numbers from but i'd rather an Unmarked tell you)
 class Wanda extends Character {
 
+//wanda likes youtube better https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
 
 
 
@@ -283,7 +284,7 @@ class Wodin extends Character {
 //sometimes does an Offical Post for Eyedol Games (he runs their social media account)
 //occasionally says something that ALMOST could be taken for being in the loop which wanda always thinks is so hilarious
 class Intern1 extends Character {
-
+  //https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
 
 }
 
@@ -334,6 +335,7 @@ ESPECIALLY The memes (hey there cool kid is this you)
 class FlowerChick extends Character {
 
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
+  //ats the eye killer about this https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
 
 }
 
@@ -380,6 +382,8 @@ class Devona extends Character {
 
 
 //ria is contstantly rambling, long winded original posts, long reblog comments, plus more things in the tags (though she TRIES to use the tags as actual search terms)
+//rias Tumblr is full of peewee theories and her obvious parasocial crush
+//(this predates the heartbreak in West)
 class Ria extends Character {
 
 
@@ -405,11 +409,18 @@ class Yongki extends Character {
 
 }
 
+class LeeHunter extends Character{
+  //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
+
+}
+
 
 //reblogs memes and self care tips for yongki (always ats him)
 //complains constantly the autism tips are useless because they are so broad because "everyone is like this"
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
 class Captain extends Character {
+  //https://www.tumblr.com/monitorkernelaccess/714419723994021889?source=share
+
   //https://www.tumblr.com/roach-works/714309361512611840/xteacupx-i-decided-to-create-something-that-i?source=share
 }
 
