@@ -113,7 +113,7 @@ class PornBot extends Character {
       possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
       possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
       possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: go${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
 
 
 
@@ -177,7 +177,7 @@ class Observer extends Character {
 //32, 40, 41, 59  posts secrets and shit (future JR i know you wanna know where i got those numbers from but i'd rather an Unmarked tell you)
 class Wanda extends Character {
 
-//wanda likes youtube better https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
+//wanda likes youtube better , have a porn bot post this: https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
 
 
 
@@ -215,12 +215,12 @@ class Wanderer extends Character {
     for (let i = 0; i < amount; i++) {
       t.push(rand.pickFrom(this.tags));
     }
+    let responses = ["the end is never the end", "the maze has you", "the maze is within and the maze is without", "the truth is layered", "there is nothing worth finding here", "we wait", "friday beckons", "when will you wake up"];
 
     t = uniq(t)
     if (this.posts.length === 0) {
       console.warn("JR NOTE: The Wanderer has entered the maze!")
       let content = await turnGopherContentIntoHTML(base_gopher_url);
-      let responses = ["the end is never the end", "the maze has you", "the maze is within and the maze is without", "the truth is layered", "there is nothing worth finding here", "we wait", "friday beckons", "when will you wake up"];
       return this.createNewPost(content, t, [rand.pickFrom(responses)], [rand.pickFrom(responses)]);
     } else {
       /*
@@ -244,7 +244,7 @@ class Wanderer extends Character {
         let content = await turnGopherContentIntoHTML(chosenExit);
 
 
-        return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
+        return this.reblogAPost(post, content, t,  [rand.pickFrom(responses)],  [rand.pickFrom(responses)]);
       } catch (e) {
         //console.error(e);
         try {
@@ -259,7 +259,7 @@ class Wanderer extends Character {
           content = `<p>I think I got turned around...</p>` + content;
 
 
-          return this.reblogAPost(post, content, t, ["goodbye world"], ["goodbye", "world"]);
+          return this.reblogAPost(post, content, t,  [rand.pickFrom(responses)],  [rand.pickFrom(responses)]);
         } catch (e) {
           //console.error(e);
         }
@@ -295,7 +295,7 @@ class Wodin extends Character {
 //sometimes does an Offical Post for Eyedol Games (he runs their social media account)
 //occasionally says something that ALMOST could be taken for being in the loop which wanda always thinks is so hilarious
 class Intern1 extends Character {
-  //https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
+  //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
 
 }
 
@@ -344,9 +344,9 @@ ESPECIALLY The memes (hey there cool kid is this you)
 //and other video game stuff
 //plus links to her favorite burger places on zampanini (with plenty of warnings to make sure you don't get a fee)
 class FlowerChick extends Character {
-
+  //should respond to porn bot posts with 'scaredofthunder.png' in them (ats ria and devona)
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
-  //ats the eye killer about this https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
+  //ats the eye killer about this after a porn bot posts it https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
 
 }
 
@@ -386,7 +386,7 @@ class Neville extends Character {
 //she is VERY chatty in tags
 //v much likes reblogging adhd and anxiety tips, both for herself and neville
 class Devona extends Character {
-  //https://www.tumblr.com/foone/713863322485850112?source=share
+  // porn bot posts this, devona should reblog and ramble about it https://www.tumblr.com/foone/713863322485850112?source=share
 
 
 }
@@ -425,6 +425,7 @@ class Yongki extends Character {
 //K and lee hunter are such good friends because they have the exact same kind of thirst for drama
 
 class LeeHunter extends Character{
+  //porn bot posts this, lee hunter reacts to it
   //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
 
 }
@@ -434,6 +435,9 @@ class LeeHunter extends Character{
 //complains constantly the autism tips are useless because they are so broad because "everyone is like this"
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
 class Captain extends Character {
+  /*
+    porn bots should post these links and captain should respond to them with bewilderment about yongki
+  */  
   //https://www.tumblr.com/monitorkernelaccess/714419723994021889?source=share
 
   //https://www.tumblr.com/roach-works/714309361512611840/xteacupx-i-decided-to-create-something-that-i?source=share
