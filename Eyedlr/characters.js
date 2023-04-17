@@ -103,6 +103,13 @@ class PornBot extends Character {
       "4d:15h:21m:33s",
       `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
     ]
+
+    const wibbyPosts = [
+      `<h2>God is a ballerina</h2><br> <a target='blank' href ="https://www.tumblr.com/imissthembutitwasntadisaster/685176700624060416/god-isnt-softening-my-heart-hes-wacking-it?source=share"><img src ='images/Secrets/tumblr_screenshots/god_ballet.PNG'></a>`
+  
+    ]
+    possiblePosts = possiblePosts.concat(wibbyPosts);
+
     if (zampanioEyes.length > 0) {
       let zEye = rand.pickFrom(zampanioEyes);
       possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
@@ -411,6 +418,9 @@ class Camille extends Character {
 //he logs into tumblr exactly once per day, at set office hours and otherwise treats it like a job
 //people confess the most deranged shit into his ask box, and he forgives them
 class Witherby extends Character {
+  //when you post from here, remove
+  //      `<a target='blank' href ="tumblrurl"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
+
 
 }
 
