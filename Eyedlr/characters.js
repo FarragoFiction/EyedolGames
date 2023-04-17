@@ -97,7 +97,7 @@ class PornBot extends Character {
 
   quotidianPost = () => {
     let innaneComments = ["caw!!!", "so true bestie!", "!!!","i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
-    let possiblePosts = [
+    let possiblePosts = [...links,
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
@@ -105,7 +105,18 @@ class PornBot extends Character {
     ]
     if (zampanioEyes.length > 0) {
       let zEye = rand.pickFrom(zampanioEyes);
-      possiblePosts.push(`I spy with my little eye: <img src='${zEye}'>`,)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+
+
+
     }
 
     return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments.concat(links), innaneComments);
@@ -409,6 +420,10 @@ class Yongki extends Character {
 
 }
 
+//sharing an account, vague post about each other and various other people
+//K reblogs them constantly saying "did you know i heard so and so talking shit about you?"
+//K and lee hunter are such good friends because they have the exact same kind of thirst for drama
+
 class LeeHunter extends Character{
   //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
 
@@ -467,13 +482,7 @@ class K extends Character {
 }
 
 
-//sharing an account, vague post about each other and various other people
-//K reblogs them constantly saying "did you know i heard so and so talking shit about you?"
-//K and lee hunter are such good friends because they have the exact same kind of thirst for drama
-class LeeHunter extends Character {
 
-
-}
 
 
 //do you love the color of the sky
