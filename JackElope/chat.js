@@ -176,7 +176,7 @@ const renderChat = (name, icon) => {
 
     } else if (c.includes("Them")) {
       if (prev && prev.className.includes("chat-bubble-left")) {
-        prev.innerHTML += "<div style='padding-top: 10px;'>" + currentPage.y(c.replaceAll("Them:", "")) + "</div>";
+        prev.innerHTML += "<div style='padding-top: 10px;'>" + currentPage.quirk.apply(c.replaceAll("Them:", "")) + "</div>";
       } else {
         let cEle = createElementWithClassAndParent("div", content, "chat-bubble-left");
         cEle.innerHTML = "<div>" + currentPage.quirk.apply(c.replaceAll("Them:", "")) + "</div>";

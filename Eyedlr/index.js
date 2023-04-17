@@ -25,48 +25,63 @@ window.onload = () => {
   let image = urlParams.get('image');
   let matchPercent = parseInt(urlParams.get('matchPercent'));
   let seed = parseInt(urlParams.get('seed'));
-  if(!seed){
+  if (!seed) {
     seed = 13;
   }
   rand = new SeededRandom(seed);
 
   let loc = urlParams.get('loc');
+
   init();
   handleScrolling();
 
 }
 
-const init = async()=>{
-   wanderer = new Wanderer();
+const init = async () => {
+  wanderer = new Wanderer();
   observer = new Observer();
   k = new K();
   characters.push(wanderer);
   characters.push(k);
+  await grabNormalImages();
+  await grabWeirdImages();
   characters.push(randomPornBot())
   characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
 
-  for(let i = 0; i<10; i++){
+  for (let i = 0; i < 10; i++) {
     await tick();
   }
   collatePremadePosts();
 }
 
-const collatePremadePosts = ()=>{
-  let posts = characters.map((c)=>c.posts).flat();
+const collatePremadePosts = () => {
+  let posts = characters.map((c) => c.posts).flat();
   //chronological order, newest posts are down (opposite of tumblr) (needed for infinite procedural scroll)
-  posts = posts.sort((a,b)=>a.timestamp-b.timestamp)
-  for(let post of posts){
+  posts = posts.sort((a, b) => a.timestamp - b.timestamp)
+  for (let post of posts) {
     post.renderToScreen(document.querySelector("#container"))
   }
 }
 
-const tick = async(parentToRenderTo)=>{
-  for(let c of characters){
+const tick = async (parentToRenderTo) => {
+  for (let c of characters) {
     await c.tick(parentToRenderTo);
   }
 }
 
-const test = async()=>{
+const test = async () => {
   //eventually decide whether we have wodin, wanderer or wanda. 
   await wanderer.tick();
   await wanderer.tick();
@@ -80,15 +95,15 @@ const test = async()=>{
 
 const grabNormalImages = async () => {
   const loc = 'BigNormalPile/'
-  let tmp = await getImages(baseURL+loc);
-  normalImageList = tmp.map((item) => loc  + item);
+  let tmp = await getImages(baseURL + loc);
+  normalImageList = tmp.map((item) => loc + item);
 }
 
 
 const grabWeirdImages = async () => {
-  const loc =   'BigWeirdPile/';
-  let tmp = await getImages(baseURL+loc);
-  weirdImageList = tmp.map((item) => loc  + item);
+  const loc = 'BigWeirdPile/';
+  let tmp = await getImages(baseURL + loc);
+  weirdImageList = tmp.map((item) => loc + item);
 }
 
 
@@ -98,15 +113,15 @@ const handleScrolling = (rand, container) => {
   let lastScrollTime = 0; //not to spam events
   let parent = document.querySelector("#container");
   window.onscroll = () => {
-      const newTime = new Date().getTime();
-      if (((newTime - lastScrollTime)) < 500) {
-          return;
-      }
-      lastScrollTime = newTime;
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 500) {
+      return;
+    }
+    lastScrollTime = newTime;
 
-      window.requestAnimationFrame(() => {
-          tick(parent);
-      });
+    window.requestAnimationFrame(() => {
+      tick(parent);
+    });
 
   };
 }
