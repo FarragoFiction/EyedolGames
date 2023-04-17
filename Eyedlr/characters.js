@@ -97,10 +97,13 @@ class PornBot extends Character {
 
   quotidianPost = () => {
     let innaneComments = ["caw!!!", "so true bestie!", "!!!","i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    //      `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
+
     let possiblePosts = [...links,
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
+      `<a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
       `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
     ]
 
