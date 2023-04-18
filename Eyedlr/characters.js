@@ -101,7 +101,7 @@ class PornBot extends Character {
   //and the fact that the rot takes all in the end will be emphasized
   //we'll see if the links die first or this site does
   quotidianPost = () => {
-    let innaneComments = ["caw!!!", "so true bestie!", "!!!","i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    let innaneComments = ["caw!!!", "so true bestie!", "!!!", "i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     /*
          `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 */
@@ -117,16 +117,17 @@ class PornBot extends Character {
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
 
-        /*
-         `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.png'></a>`,
+    /*
+     `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.png'></a>`,
 */
     //the blorbos and ogs respond based on tumblr url title, such as he-lets-me-hit-because-i-propose
 
     //witherby won't respond to all the posts for him. thats okay. he can be lonely. WE know, in the sanctity of this code
+    //or maybe flower chick can at him. 'hey there coolkid, is this you'
     const wibbyPosts = [
       `<a target='blank' href ="https://writing-prompt-s.tumblr.com/post/691778925035175936/youre-the-last-follower-of-a-long-forgotten-god"><img src ='images/Secrets/tumblr_screenshots/forgotten_god.png'></a>`,
 
-      `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/introvert.png'></a>`,
+      `<a target='blank' href ="https://twitter.com/LaurenCoker99/status/1606093480945598465?lang=en"><img src ='images/Secrets/tumblr_screenshots/introvert.png'></a>`,
       `<a target='blank' href ="https://www.reddit.com/r/WritingPrompts/comments/92qhz8/wp_youre_allowed_to_steal_shit_from_the_mall_the/"><img src ='images/Secrets/tumblr_screenshots/mannequins.png'></a>`,
 
       `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/lonely_love.png'></a>`,
@@ -142,7 +143,7 @@ class PornBot extends Character {
       `<a target='blank' href ="https://www.tumblr.com/just-wublrful/709771241242886144/he-lets-me-hit-because-i-propose-complicated?source=share"><img src ='images/Secrets/tumblr_screenshots/hit_god.png'></a>`,
       ,
       `<a target='blank' href ="https://www.tumblr.com/imissthembutitwasntadisaster/685176700624060416/god-isnt-softening-my-heart-hes-wacking-it?source=share"><img src ='images/Secrets/tumblr_screenshots/god_ballet.PNG'></a>`
-    ] 
+    ]
 
 
     //doc mostly likes self care tips for her reblogs
@@ -150,21 +151,50 @@ class PornBot extends Character {
       `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
     ]
 
+    //neville almost never posts. he likes content free tho
+    //when he does post its Important
+    /*
+     `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.png'></a>`,
+*/
+    const nevillePosts = [
+      `<a target='blank' href ="https://awkwardthings6.tumblr.com/post/696679053579698176/people-complain-about-how-confusing-assembling"><img src ='images/Secrets/tumblr_screenshots/ikea.png'></a>`,
+
+      `<a target='blank' href ="www.farragofiction.com/Void"><img src ='images/Secrets/tumblr_screenshots/signals.png'></a>`,
+
+      `<a target='blank' href ="www.farragofiction.com/Void"><img src ='images/Secrets/tumblr_screenshots/void.png'></a>`,
+
+      `<a target='blank' href ="https://twitter.com/moutheaters/status/928541879234416641?lang=en"><img src ='images/Secrets/tumblr_screenshots/tacobell.png'></a>`,
+
+      `<a target='blank' href ="https://jonnywaistcoat.tumblr.com/post/710557649321738240/erasing-the-past"><img src ='images/Secrets/tumblr_screenshots/erase.png'></a>`,
+
+      `<a target='blank' href ="https://www.tumblr.com/thedankmemes/691366205222797312"><img src ='images/Secrets/tumblr_screenshots/movie.png'></a>`,
+
+      `<a target='blank' href ="https://www.tumblr.com/climbdraws/188884205046/teaboot-teaboot-im-a-bag-of-anxiety-but-also"><img src ='images/Secrets/tumblr_screenshots/anxiety.png'></a>`,
+
+      `<a target='blank' href ="https://twitter.com/NigelGrinstead/status/1611140469781569539?lang=en"><img src ='images/Secrets/tumblr_screenshots/soup.png'></a>`,
+
+      `<a target='blank' href ="https://mrfandomwars.tumblr.com/post/714479586144092160"><img src ='images/Secrets/tumblr_screenshots/gaslight.png'></a>`,
+
+      `<a target='blank' href ="https://www.tumblr.com/orteil42/703752515671490560/we-regret-to-inform-you-our-sincerest-apologies"><img src ='images/Secrets/tumblr_screenshots/regret.png'></a>`
+
+    ]
+
     possiblePosts = possiblePosts.concat(wibbyPosts);
     possiblePosts = possiblePosts.concat(docPosts);
+    possiblePosts = possiblePosts.concat(nevillePosts);
 
 
     if (zampanioEyes.length > 0) {
       let zEye = rand.pickFrom(zampanioEyes);
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
-      possiblePosts.push(`I spy with my little eye: go${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/",'')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I spy with my little eye: go${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
 
 
 
@@ -228,7 +258,7 @@ class Observer extends Character {
 //32, 40, 41, 59  posts secrets and shit (future JR i know you wanna know where i got those numbers from but i'd rather an Unmarked tell you)
 class Wanda extends Character {
 
-//wanda likes youtube better , have a porn bot post this: https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
+  //wanda likes youtube better , have a porn bot post this: https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
 
 
 
@@ -295,7 +325,7 @@ class Wanderer extends Character {
         let content = await turnGopherContentIntoHTML(chosenExit);
 
 
-        return this.reblogAPost(post, content, t,  [rand.pickFrom(responses)],  [rand.pickFrom(responses)]);
+        return this.reblogAPost(post, content, t, [rand.pickFrom(responses)], [rand.pickFrom(responses)]);
       } catch (e) {
         //console.error(e);
         try {
@@ -310,7 +340,7 @@ class Wanderer extends Character {
           content = `<p>I think I got turned around...</p>` + content;
 
 
-          return this.reblogAPost(post, content, t,  [rand.pickFrom(responses)],  [rand.pickFrom(responses)]);
+          return this.reblogAPost(post, content, t, [rand.pickFrom(responses)], [rand.pickFrom(responses)]);
         } catch (e) {
           //console.error(e);
         }
@@ -481,7 +511,7 @@ class Yongki extends Character {
 //K reblogs them constantly saying "did you know i heard so and so talking shit about you?"
 //K and lee hunter are such good friends because they have the exact same kind of thirst for drama
 
-class LeeHunter extends Character{
+class LeeHunter extends Character {
   //porn bot posts this, lee hunter reacts to it
   //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
 
@@ -494,7 +524,7 @@ class LeeHunter extends Character{
 class Captain extends Character {
   /*
     porn bots should post these links and captain should respond to them with bewilderment about yongki
-  */  
+  */
   //https://www.tumblr.com/monitorkernelaccess/714419723994021889?source=share
 
   //https://www.tumblr.com/roach-works/714309361512611840/xteacupx-i-decided-to-create-something-that-i?source=share
