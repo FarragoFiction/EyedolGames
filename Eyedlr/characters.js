@@ -97,21 +97,48 @@ class PornBot extends Character {
 
   quotidianPost = () => {
     let innaneComments = ["caw!!!", "so true bestie!", "!!!","i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
-    //      `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
-
+    /*
+         `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
+*/
     let possiblePosts = [...links,
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
-      `<a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
+      '<iframe width="460" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/814252129&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/openai_audio" title="OpenAI" target="_blank" style="color: #cccccc; text-decoration: none;">OpenAI</a> · <a href="https://soundcloud.com/openai_audio/classic-pop-in-the-style-of-frank-sinatra" title="Classic Pop, in the style of Frank Sinatra" target="_blank" style="color: #cccccc; text-decoration: none;">Classic Pop, in the style of Frank Sinatra</a></div>',
+      '<iframe width="460" height="315" src="https://www.youtube.com/embed/16WNvL8Gtt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+      '<iframe width="460" height="315" src="https://www.youtube.com/embed/1WAlkyxz2mU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+      '<iframe width="460" height="315" src="https://www.youtube.com/embed/t9HUyHmLFzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+      '<iframe width="460" height="315" src="https://www.youtube.com/embed/R2kovI6tpRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+      `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
+    ]
+
+        /*
+         `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
+*/
+    //the blorbos and ogs respond based on tumblr url title, such as he-lets-me-hit-because-i-propose
+
+    //witherby won't respond to all the posts for him. thats okay. he can be lonely. WE know, in the sanctity of this code
+    const wibbyPosts = [
+      `<a target='blank' href ="https://www.reddit.com/r/AskReddit/comments/121joyd/people_who_dont_reply_until_days_later_why/"><img src ='images/Secrets/tumblr_screenshots/reply.png'></a>`
+
+      `<a target='blank' href ="https://www.tumblr.com/ooppo/713110444794118144?source=share"><img src ='images/Secrets/tumblr_screenshots/mean.png'></a>`
+
+      `<a target='blank' href ="https://www.tumblr.com/petitetimidgay/84172523249/do-you-ever-have-a-conversation-and-think-i-am"><img src ='images/Secrets/tumblr_screenshots/hetero.png'></a>`
+
+      `<a target='blank' href ="https://www.tumblr.com/just-wublrful/709771241242886144/he-lets-me-hit-because-i-propose-complicated?source=share"><img src ='images/Secrets/tumblr_screenshots/hit_god.png'></a>`
+      ,
+      `<a target='blank' href ="https://www.tumblr.com/imissthembutitwasntadisaster/685176700624060416/god-isnt-softening-my-heart-hes-wacking-it?source=share"><img src ='images/Secrets/tumblr_screenshots/god_ballet.PNG'></a>`
+    ] 
+
+
+    //doc mostly likes self care tips for her reblogs
+    const docPosts = [
       `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
     ]
 
-    const wibbyPosts = [
-      `<h2>God is a ballerina</h2><br> <a target='blank' href ="https://www.tumblr.com/imissthembutitwasntadisaster/685176700624060416/god-isnt-softening-my-heart-hes-wacking-it?source=share"><img src ='images/Secrets/tumblr_screenshots/god_ballet.PNG'></a>`
-  
-    ]
     possiblePosts = possiblePosts.concat(wibbyPosts);
+    possiblePosts = possiblePosts.concat(docPosts);
+
 
     if (zampanioEyes.length > 0) {
       let zEye = rand.pickFrom(zampanioEyes);
@@ -304,6 +331,7 @@ class Wodin extends Character {
 //sometimes reblogs something wanda posted and goes "dude, not cool" and other moirail tasks 
 //sometimes does an Offical Post for Eyedol Games (he runs their social media account)
 //occasionally says something that ALMOST could be taken for being in the loop which wanda always thinks is so hilarious
+//very good fanfic by the wisp: https://archiveofourown.org/works/46552111/chapters/117224734?show_comments=true&view_full_work=false#comment_642382519
 class Intern1 extends Character {
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
 
@@ -316,6 +344,8 @@ class Intern2 extends Character {
 }
 
 //dealing with the grief of losing Wodin. only one or two posts ever, both commentless pictures of ugly baby animals
+//https://archiveofourown.org/works/35075182 his origin
+
 class Intern3 extends Character {
 
 }
