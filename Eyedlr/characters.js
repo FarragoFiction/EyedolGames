@@ -95,6 +95,11 @@ class PornBot extends Character {
     this.quirk = randomQuirk(rand);
   }
 
+  //partly i am doing my best to credit every tumblr post i reference because thats just a nice thing to do
+  //partly its to send yall spiralling in new directions
+  //and partly because as time goes on these links will fall, one by one
+  //and the fact that the rot takes all in the end will be emphasized
+  //we'll see if the links die first or this site does
   quotidianPost = () => {
     let innaneComments = ["caw!!!", "so true bestie!", "!!!","i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     /*
@@ -113,19 +118,28 @@ class PornBot extends Character {
     ]
 
         /*
-         `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
+         `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.png'></a>`,
 */
     //the blorbos and ogs respond based on tumblr url title, such as he-lets-me-hit-because-i-propose
 
     //witherby won't respond to all the posts for him. thats okay. he can be lonely. WE know, in the sanctity of this code
     const wibbyPosts = [
-      `<a target='blank' href ="https://www.reddit.com/r/AskReddit/comments/121joyd/people_who_dont_reply_until_days_later_why/"><img src ='images/Secrets/tumblr_screenshots/reply.png'></a>`
+      `<a target='blank' href ="https://writing-prompt-s.tumblr.com/post/691778925035175936/youre-the-last-follower-of-a-long-forgotten-god"><img src ='images/Secrets/tumblr_screenshots/forgotten_god.png'></a>`,
 
-      `<a target='blank' href ="https://www.tumblr.com/ooppo/713110444794118144?source=share"><img src ='images/Secrets/tumblr_screenshots/mean.png'></a>`
+      `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/introvert.png'></a>`,
+      `<a target='blank' href ="https://www.reddit.com/r/WritingPrompts/comments/92qhz8/wp_youre_allowed_to_steal_shit_from_the_mall_the/"><img src ='images/Secrets/tumblr_screenshots/mannequins.png'></a>`,
 
-      `<a target='blank' href ="https://www.tumblr.com/petitetimidgay/84172523249/do-you-ever-have-a-conversation-and-think-i-am"><img src ='images/Secrets/tumblr_screenshots/hetero.png'></a>`
+      `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/lonely_love.png'></a>`,
 
-      `<a target='blank' href ="https://www.tumblr.com/just-wublrful/709771241242886144/he-lets-me-hit-because-i-propose-complicated?source=share"><img src ='images/Secrets/tumblr_screenshots/hit_god.png'></a>`
+      `<a target='blank' href ="https://twitter.com/soloaswstory/status/1640441591189102593?lang=en"><img src ='images/Secrets/tumblr_screenshots/taxes.png'></a>`,
+
+      `<a target='blank' href ="https://www.reddit.com/r/AskReddit/comments/121joyd/people_who_dont_reply_until_days_later_why/"><img src ='images/Secrets/tumblr_screenshots/reply.png'></a>`,
+
+      `<a target='blank' href ="https://www.tumblr.com/ooppo/713110444794118144?source=share"><img src ='images/Secrets/tumblr_screenshots/mean.png'></a>`,
+
+      `<a target='blank' href ="https://www.tumblr.com/petitetimidgay/84172523249/do-you-ever-have-a-conversation-and-think-i-am"><img src ='images/Secrets/tumblr_screenshots/hetero.png'></a>`,
+
+      `<a target='blank' href ="https://www.tumblr.com/just-wublrful/709771241242886144/he-lets-me-hit-because-i-propose-complicated?source=share"><img src ='images/Secrets/tumblr_screenshots/hit_god.png'></a>`,
       ,
       `<a target='blank' href ="https://www.tumblr.com/imissthembutitwasntadisaster/685176700624060416/god-isnt-softening-my-heart-hes-wacking-it?source=share"><img src ='images/Secrets/tumblr_screenshots/god_ballet.PNG'></a>`
     ] 
