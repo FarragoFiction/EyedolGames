@@ -124,7 +124,7 @@ const handleScrolling = (rand, container) => {
   let parent = document.querySelector("#container");
   window.onscroll = () => {
     const newTime = new Date().getTime();
-    if (((newTime - lastScrollTime)) < 500) {
+    if (((newTime - lastScrollTime)) < 5000) {
       return;
     }
     lastScrollTime = newTime;
