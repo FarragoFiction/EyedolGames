@@ -86,7 +86,6 @@ class PornBot extends Character {
   //4d:15h:21m:33s
   //http://knucklessux.com/PuzzleBox/Secrets/Watcher/shambling_yes_no_presentation_by_the_watcher_of_threads.ppsx 
   //https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share   porn bots should post
-
   //the names and icons vary but at the end of the day they're all pornbots
   constructor(name, icon) {
     super();
@@ -94,6 +93,12 @@ class PornBot extends Character {
     this.icon = icon;
     this.quirk = randomQuirk(rand);
   }
+
+  //originally i was going to manually set these up, complete with click throughs to original credit
+  //but then i realized that the screenshots HAD the credit and also omg it is impossibly
+  //hard to track some of these down
+  //tumblr really is a hell site
+
 
   //partly i am doing my best to credit every tumblr post i reference because thats just a nice thing to do
   //partly its to send yall spiralling in new directions
@@ -105,7 +110,7 @@ class PornBot extends Character {
     /*
          `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 */
-    let possiblePosts = [...links,
+    let possiblePosts = [...links,...blorboPosts,
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
@@ -117,71 +122,8 @@ class PornBot extends Character {
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
 
-    /*
-     `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.png'></a>`,
-*/
-    //the blorbos and ogs respond based on tumblr url title, such as he-lets-me-hit-because-i-propose
+   
 
-    //witherby won't respond to all the posts for him. thats okay. he can be lonely. WE know, in the sanctity of this code
-    //or maybe flower chick can at him. 'hey there coolkid, is this you'
-    const wibbyPosts = [
-      `<a target='blank' href ="https://writing-prompt-s.tumblr.com/post/691778925035175936/youre-the-last-follower-of-a-long-forgotten-god"><img src ='images/Secrets/tumblr_screenshots/forgotten_god.png'></a>`,
-
-      `<a target='blank' href ="https://twitter.com/LaurenCoker99/status/1606093480945598465?lang=en"><img src ='images/Secrets/tumblr_screenshots/introvert.png'></a>`,
-      `<a target='blank' href ="https://www.reddit.com/r/WritingPrompts/comments/92qhz8/wp_youre_allowed_to_steal_shit_from_the_mall_the/"><img src ='images/Secrets/tumblr_screenshots/mannequins.png'></a>`,
-
-      `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/lonely_love.png'></a>`,
-
-      `<a target='blank' href ="https://twitter.com/soloaswstory/status/1640441591189102593?lang=en"><img src ='images/Secrets/tumblr_screenshots/taxes.png'></a>`,
-
-      `<a target='blank' href ="https://www.reddit.com/r/AskReddit/comments/121joyd/people_who_dont_reply_until_days_later_why/"><img src ='images/Secrets/tumblr_screenshots/reply.png'></a>`,
-
-      `<a target='blank' href ="https://www.tumblr.com/ooppo/713110444794118144?source=share"><img src ='images/Secrets/tumblr_screenshots/mean.png'></a>`,
-
-      `<a target='blank' href ="https://www.tumblr.com/petitetimidgay/84172523249/do-you-ever-have-a-conversation-and-think-i-am"><img src ='images/Secrets/tumblr_screenshots/hetero.png'></a>`,
-
-      `<a target='blank' href ="https://www.tumblr.com/just-wublrful/709771241242886144/he-lets-me-hit-because-i-propose-complicated?source=share"><img src ='images/Secrets/tumblr_screenshots/hit_god.png'></a>`,
-      ,
-      `<a target='blank' href ="https://www.tumblr.com/imissthembutitwasntadisaster/685176700624060416/god-isnt-softening-my-heart-hes-wacking-it?source=share"><img src ='images/Secrets/tumblr_screenshots/god_ballet.PNG'></a>`
-    ]
-
-
-    //doc mostly likes self care tips for her reblogs
-    const docPosts = [
-      `<a target='blank' href ="https://www.tumblr.com/majimjam/714607788559679488/are-you-trapped-on-tumblr-right-now?source=share"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
-    ]
-
-    //neville almost never posts. he likes content free tho
-    //when he does post its Important
-    /*
-     `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.png'></a>`,
-*/
-    const nevillePosts = [
-      `<a target='blank' href ="https://awkwardthings6.tumblr.com/post/696679053579698176/people-complain-about-how-confusing-assembling"><img src ='images/Secrets/tumblr_screenshots/ikea.png'></a>`,
-
-      `<a target='blank' href ="www.farragofiction.com/Void"><img src ='images/Secrets/tumblr_screenshots/signals.png'></a>`,
-
-      `<a target='blank' href ="www.farragofiction.com/Void"><img src ='images/Secrets/tumblr_screenshots/void.png'></a>`,
-
-      `<a target='blank' href ="https://twitter.com/moutheaters/status/928541879234416641?lang=en"><img src ='images/Secrets/tumblr_screenshots/tacobell.png'></a>`,
-
-      `<a target='blank' href ="https://jonnywaistcoat.tumblr.com/post/710557649321738240/erasing-the-past"><img src ='images/Secrets/tumblr_screenshots/erase.png'></a>`,
-
-      `<a target='blank' href ="https://www.tumblr.com/thedankmemes/691366205222797312"><img src ='images/Secrets/tumblr_screenshots/movie.png'></a>`,
-
-      `<a target='blank' href ="https://www.tumblr.com/climbdraws/188884205046/teaboot-teaboot-im-a-bag-of-anxiety-but-also"><img src ='images/Secrets/tumblr_screenshots/anxiety.png'></a>`,
-
-      `<a target='blank' href ="https://twitter.com/NigelGrinstead/status/1611140469781569539?lang=en"><img src ='images/Secrets/tumblr_screenshots/soup.png'></a>`,
-
-      `<a target='blank' href ="https://mrfandomwars.tumblr.com/post/714479586144092160"><img src ='images/Secrets/tumblr_screenshots/gaslight.png'></a>`,
-
-      `<a target='blank' href ="https://www.tumblr.com/orteil42/703752515671490560/we-regret-to-inform-you-our-sincerest-apologies"><img src ='images/Secrets/tumblr_screenshots/regret.png'></a>`
-
-    ]
-
-    possiblePosts = possiblePosts.concat(wibbyPosts);
-    possiblePosts = possiblePosts.concat(docPosts);
-    possiblePosts = possiblePosts.concat(nevillePosts);
 
 
     if (zampanioEyes.length > 0) {

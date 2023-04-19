@@ -9,6 +9,8 @@ let zampanioEyes = [];
 
 let characters = [];
 
+let blorboPosts = [];
+
 
 //pure string, convert to numerical seed later.
 let seedSource = "seed="
@@ -35,6 +37,8 @@ window.onload = () => {
   let loc = urlParams.get('loc');
   //not awaited, it either loads or it doesn't, its slow
   grabZampanioEyes();
+  //same
+  grabBlorboPosts();
   init();
   handleScrolling();
 
@@ -114,6 +118,15 @@ const grabZampanioEyes = async () => {
   const loc = 'http://www.farragofiction.com/ZampanioEyes2/';
   let tmp = await getImages(loc);
   zampanioEyes = tmp.map((item) => loc + item);
+}
+
+const grabBlorboPosts = async ()=>{
+  let loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Neville/';
+  let tmp = await getImages(loc);
+  console.log("JR NOTE: tmp is",tmp)
+
+  blorboPosts =blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
 }
 
 
