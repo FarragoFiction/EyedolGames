@@ -76,6 +76,7 @@ const randomPornBot = () => {
   return new PornBot(randomPornBotName(), "http://eyedolgames.com/JackElope/images/SexySingles/" + randomPornBotIcon());
 }
 
+//https://drive.google.com/drive/folders/1LCxnK5HMkSXscfXtzzv46ysaPRpa4p4u i don't want to forget the guide of hunters
 
 
 //want at least three of these for every real character. 
@@ -114,11 +115,15 @@ class PornBot extends Character {
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
+      `<h2>What Is ZampanioSim?</h2> <img src ='images/Secrets/tumblr_screenshots/what_is_zampaniosim.PNG'></a>`,
+
       '<iframe width="460" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/814252129&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/openai_audio" title="OpenAI" target="_blank" style="color: #cccccc; text-decoration: none;">OpenAI</a> · <a href="https://soundcloud.com/openai_audio/classic-pop-in-the-style-of-frank-sinatra" title="Classic Pop, in the style of Frank Sinatra" target="_blank" style="color: #cccccc; text-decoration: none;">Classic Pop, in the style of Frank Sinatra</a></div>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/16WNvL8Gtt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/1WAlkyxz2mU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/t9HUyHmLFzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/R2kovI6tpRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+      `why does this seem so familiar? <br><a target='blank' href ="https://www.tumblr.com/the-phoenix-heart/704082336094076928/dies-first-salticid-youre-amazing-and-i-love"><img src ='images/Secrets/tumblr_screenshots/porn_bot.png'></a>`,
+
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
 
