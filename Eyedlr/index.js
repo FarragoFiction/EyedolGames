@@ -69,6 +69,21 @@ const init = async () => {
   characters.push(wanderer);
   characters.push(k);
   characters.push(neville);
+  
+  let ele = document.querySelector("#container");
+
+  let first = wanderer.createNewPost("first",["first1"],["first2"],["first3"]);
+  let second = k.reblogAPost(first,"second",["secondo1"],["secondo2"],["secondo3"]);
+  let third = neville.reblogAPost(second,"third",["third1"],["third2"],["third3"]);
+  let fourth = observer.reblogAPost(third,"fourth",["fourth1"],["fourth2"],["fourth3"]);
+
+  first.renderToScreen(ele);
+  second.renderToScreen(ele);
+  third.renderToScreen(ele);
+  fourth.renderToScreen(ele);
+
+
+  
 
   for (let i = 0; i < 10; i++) {
     await tick();
@@ -77,11 +92,12 @@ const init = async () => {
 }
 
 const collatePremadePosts = () => {
+  let ele = document.querySelector("#container");
   let posts = characters.map((c) => c.posts).flat();
   //chronological order, newest posts are down (opposite of tumblr) (needed for infinite procedural scroll)
   posts = posts.sort((a, b) => a.timestamp - b.timestamp)
   for (let post of posts) {
-    post.renderToScreen(document.querySelector("#container"))
+    post.renderToScreen(ele)
   }
 }
 
