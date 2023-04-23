@@ -530,6 +530,29 @@ class Neville extends Character {
   constructor() {
     super();
     this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    
+    this.readied_reblogs['Neville/beast'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/bird'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/burger'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/godzilla'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/guy'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/idea'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    //he never has much to say, but when he does, it matters
+    this.readied_reblogs['Neville/movie'] = new Post(this, "@robitussinCombatant we up for movie night tonight?<br><Br>", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/overstimulated'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/regret'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/scrutes'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/sheets'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/signals'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/soup'] = new Post(this, "soup :)", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/stew'] = new Post(this, "stew :)", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/void'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+
+    this.readied_reblogs['Neville/cry'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/dudes'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    //he never has much to say, but when he does, it matters
+    this.readied_reblogs['Neville/excel'] = new Post(this, "dude ngl<Br><br>when excel first came out i hated it<br><Br>why you doin all those numbers for me<br><br>why cant i do the math<br><Br>but man<br><br>its nice<br><br>when you have a lot of numbers to feed it<br><br>lil creature that eats up my numbers and gives me new ones", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+
     this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
   }
 
@@ -565,6 +588,8 @@ class Ria extends Character {
 //she reblogs with comments and tags of :3 and other emoji, and she reblogs  *their spelling corrections (its like work!)
 class Camille extends Character {
 
+  //she fights that which would stop the coffin
+  name = "robitussinCombatant";
 
 }
 
