@@ -26,6 +26,10 @@ class Character {
     //so artifical?
     //no. this is yet another layer of illusion.
     //and that illusion is DESIGNED to crack along specific seams
+    //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
+
+    this.readied_reblogs['first'] = new Post(this, "Actually, I am first.", null, ["tags for original readied reblog"], ["response to readied reblog"], ["tags for the response to the readied reblog"])
+
     this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio","game","free-to-play","fun,","friday"], ["I'm not so sure... I heard people disappear when they play that.","Are you sure?","So true, bestie!","It seems spooky...","OP has a virus, do not reblog.","OP has been hacked, do not reblog.","OP did you get hacked? This doesn't sound like you?","My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta","unreality","zampanio","don't play it","maybe you should play it","don't trust it","it is not what it is","an eye for an eye"])
   }
 
@@ -51,14 +55,12 @@ class Character {
         //if the target post has the key phrase anywhere in it, attack
         if(target.text.toLowerCase().includes(key.toLowerCase())){
           let post = this.readied_reblogs[key];
-          post.owner = this;
-          post.parent = target;
-          post.setRoot();
-          post.createElement(); //recreate it manually now thats its a reblog
+          console.log("JR NOTE: target acquire for readied reblog", target, key,post)
+
           //no spam
-          delete(this.readied_reblogs[key]);
+          //delete(this.readied_reblogs[key]);
           // /parent, text, tags, suggested_reblogs, suggested_tags)
-          return this.reblogAPost(target, post.text, post.tags, post.suggested_reblogs, post.suggested_tags);
+          return this.reblogAPost(target, post.text + " JR NOTE: parent was"+target.text, post.tags, post.suggested_reblogs, post.suggested_tags);
 
         }
       }
@@ -229,8 +231,8 @@ class PornBot extends Character {
     //quotidians prefer to do preprogrammed actions if possible
     if(rand.nextDouble()>0.5){
       let post = this.handleReadiedReblog();
+      console.log("JR NOTE: i found a post to ready reblog i am", this)
       if(post && parentToRenderTo){
-
         post.renderToScreen(parentToRenderTo);
         return;
       }
@@ -261,7 +263,8 @@ class PornBot extends Character {
 //you can get asks (if you reply, posts), do you traverse mazes clockwise or counterclockwise
 //you should get to post, and your posts are treated just like any other (aka they can be reblogged and commented on and etc)
 class Observer extends Character {
-
+  name = "puzzledObserver"
+  icon = "http://farragofiction.com/PaldemicSim/images/chatSymbols/probablyYou.png"
 
 }
 
