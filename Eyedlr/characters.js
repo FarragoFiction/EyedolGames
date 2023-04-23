@@ -14,11 +14,11 @@ class Character {
   //just a list of posts
   readied_posts = [];
 
-  constructor(){
+  constructor() {
     this.createCommonReadiedReblogs();
   }
 
-  createCommonReadiedReblogs = ()=>{
+  createCommonReadiedReblogs = () => {
     //these aren't the characters you think they are
     //they are quotidians mimicking them. 
     //same as was east
@@ -26,15 +26,15 @@ class Character {
     //so artifical?
     //no. this is yet another layer of illusion.
     //and that illusion is DESIGNED to crack along specific seams
-    //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
+    //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual) {
+    //ALWAYS mark as virtual so you can't reblog a post before its deployed
+    this.readied_reblogs['first'] = new Post(this, "Actually, I am first.", null, ["tags for original readied reblog"], ["response to readied reblog"], ["tags for the response to the readied reblog"],true)
 
-    this.readied_reblogs['first'] = new Post(this, "Actually, I am first.", null, ["tags for original readied reblog"], ["response to readied reblog"], ["tags for the response to the readied reblog"])
-
-    this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio","game","free-to-play","fun,","friday"], ["I'm not so sure... I heard people disappear when they play that.","Are you sure?","So true, bestie!","It seems spooky...","OP has a virus, do not reblog.","OP has been hacked, do not reblog.","OP did you get hacked? This doesn't sound like you?","My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta","unreality","zampanio","don't play it","maybe you should play it","don't trust it","it is not what it is","an eye for an eye"])
+    this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["I'm not so sure... I heard people disappear when they play that.", "Are you sure?", "So true, bestie!", "It seems spooky...", "OP has a virus, do not reblog.", "OP has been hacked, do not reblog.", "OP did you get hacked? This doesn't sound like you?", "My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"],true)
   }
 
-  handleReadiedPost = ()=>{
-    if(this.readied_posts && this.readied_posts.length && this.readied_posts.length >0){
+  handleReadiedPost = () => {
+    if (this.readied_posts && this.readied_posts.length && this.readied_posts.length > 0) {
       let post = rand.pickFrom(this.readied_posts);
       post.owner = this;
       post.createElement();
@@ -48,19 +48,16 @@ class Character {
   //looks through all posts for one that matches a key
   //if it finds it, reblogs it with the modified post
   //then removes it from readied reblogs (so no spam)
-  handleReadiedReblog = ()=>{
-    for(let key of Object.keys(this.readied_reblogs)){
-      for(let target of all_posts){
-
+  handleReadiedReblog = () => {
+    for (let key of Object.keys(this.readied_reblogs)) {
+      for (let target of all_posts) {
         //if the target post has the key phrase anywhere in it, attack
-        if(target.text.toLowerCase().includes(key.toLowerCase())){
-          let post = this.readied_reblogs[key];
-          console.log("JR NOTE: target acquire for readied reblog", target, key,post)
-
+        if (target.text.toLowerCase().includes(key.toLowerCase())) {
+          let response = this.readied_reblogs[key];
           //no spam
           //delete(this.readied_reblogs[key]);
           // /parent, text, tags, suggested_reblogs, suggested_tags)
-          return this.reblogAPost(target, post.text + " JR NOTE: parent was"+target.text, post.tags, post.suggested_reblogs, post.suggested_tags);
+          return this.reblogAPost(target, response.text, response.tags, response.suggested_reblogs, response.suggested_tags);
 
         }
       }
@@ -169,7 +166,7 @@ class PornBot extends Character {
     /*
          `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 */
-    let possiblePosts = [...links,...blorboPosts,
+    let possiblePosts = [...links, ...blorboPosts,
       "20h:14m:36s",
       "5d:23h:17:04s",
       "4d:15h:21m:33s",
@@ -185,7 +182,7 @@ class PornBot extends Character {
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
 
-   
+
 
 
 
@@ -229,11 +226,12 @@ class PornBot extends Character {
 
   tick = async (parentToRenderTo) => {
     //quotidians prefer to do preprogrammed actions if possible
-    if(rand.nextDouble()>0.5){
+    if (rand.nextDouble() > 0.5) {
       let post = this.handleReadiedReblog();
-      console.log("JR NOTE: i found a post to ready reblog i am", this)
-      if(post && parentToRenderTo){
+      if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
+      }
+      if (post) {
         return;
       }
     }
@@ -481,10 +479,10 @@ class Neville extends Character {
   name = "void_soup";
 
   icon = "images/icons/Neville.png";
-  constructor(){
+  constructor() {
     super();
-    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol","yeah thats you","you okay there buddy?"], ["autism"])
-    this.readied_posts.push(new Post(this, "",null,[],["content free"],["content-free"]));
+    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"],true)
+    this.readied_posts.push(new Post(this, "", null, [], ["content free"], ["content-free"]),true);
   }
 
 }

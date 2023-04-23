@@ -34,8 +34,8 @@ class Post {
   suggested_tags = [];
   element;
 
-  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
-    all_posts.push(this);
+  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual=false) {
+    !virtual && all_posts.push(this);
     this.owner = owner;
     this.text = text;
     this.parent = parent;

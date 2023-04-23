@@ -70,7 +70,7 @@ const init = async () => {
   characters.push(k);
   characters.push(neville);
   
-  let ele = document.querySelector("#container");
+ /* let ele = document.querySelector("#container");
 
   let first = wanderer.createNewPost("first",["first1"],["first2"],["first3"]);
   let second = k.reblogAPost(first,"second",["secondo1"],["secondo2"],["secondo3"]);
@@ -81,7 +81,7 @@ const init = async () => {
   second.renderToScreen(ele);
   third.renderToScreen(ele);
   fourth.renderToScreen(ele);
-
+*/
 
   
 
