@@ -901,6 +901,7 @@ all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
 //////////////////////////////////////////////////////////////////////////////////////////
 //                   Farragnarok    (Farrago Fiction's Not!SBURB Session)               //
 //////////////////////////////////////////////////////////////////////////////////////////
+//https://archiveofourown.org/works/46657027/chapters/117503854 the wisp is busy
 
 
 const ffCharRaw = `Zawhei,Eirikr,Volour,Okarin,Peewee,Hagala,Despap,Othala,Nidhogg`;

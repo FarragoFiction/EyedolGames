@@ -16,6 +16,7 @@ all_posts = [];
 
 
 
+
 class Post {
   text; //can be html
   tags;
@@ -38,16 +39,20 @@ class Post {
     this.owner = owner;
     this.text = text;
     this.parent = parent;
-    //this isn't expected to change.
-    if (this.parent) {
-      this.root = this.getParent();
-      this.root.internal_numreblogs++;
-    }
+    this.setRoot();
     this.tags = tags;
     this.timestamp = Date.now();
     this.suggested_reblogs = suggested_reblogs;
     this.suggested_tags = suggested_tags;
     this.createElement();
+  }
+
+  //this isn't expected to change but readied reblogs needs to call it AFTER post creation (becasue we don't know the parent yet)
+  setRoot = ()=>{
+    if (this.parent) {
+      this.root = this.getParent();
+      this.root.internal_numreblogs++;
+    }
   }
 
   //used for queing likes, rebogs, replies, etc. 
