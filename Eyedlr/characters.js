@@ -11,11 +11,14 @@ class Character {
   //key, post pairs
   readied_reblogs = {};
 
+  //just a list of posts
+  readied_posts = [];
+
   constructor(){
-    this.createReadiedReblogs();
+    this.createCommonReadiedReblogs();
   }
 
-  createReadiedReblogs = ()=>{
+  createCommonReadiedReblogs = ()=>{
     //these aren't the characters you think they are
     //they are quotidians mimicking them. 
     //same as was east
@@ -24,6 +27,17 @@ class Character {
     //no. this is yet another layer of illusion.
     //and that illusion is DESIGNED to crack along specific seams
     this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio","game","free-to-play","fun,","friday"], ["I'm not so sure... I heard people disappear when they play that.","Are you sure?","So true, bestie!","It seems spooky...","OP has a virus, do not reblog.","OP has been hacked, do not reblog.","OP did you get hacked? This doesn't sound like you?","My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta","unreality","zampanio","don't play it","maybe you should play it","don't trust it","it is not what it is","an eye for an eye"])
+  }
+
+  handleReadiedPost = ()=>{
+    if(this.readied_posts && this.readied_posts.length && this.readied_posts.length >0){
+      let post = rand.pickFrom(this.readied_posts);
+      post.owner = this;
+      post.createElement();
+      removeItemOnce(this.readied_posts, post);
+      //  createNewPost(text, tags, suggested_reblogs, suggested_tags) {
+      this.createNewPost(post.text, post.tags, post.suggested_reblogs, post.suggested_tags);
+    }
   }
 
   //each character decides when to do this, but its standardized what happens when they do
@@ -214,10 +228,8 @@ class PornBot extends Character {
   tick = async (parentToRenderTo) => {
     //quotidians prefer to do preprogrammed actions if possible
     if(rand.nextDouble()>0.5){
-      console.log("JR NOTE: porn bot looking for a readied reblog")
       let post = this.handleReadiedReblog();
       if(post && parentToRenderTo){
-        console.log("JR NOTE: porn bot found a readied reblog")
 
         post.renderToScreen(parentToRenderTo);
         return;
@@ -463,7 +475,14 @@ class Closer extends Character {
 
 //almost never posts, when he does its either a reblog of content free content or a succinct original post that sheds so much light on things via cutting away the irrelevancies
 class Neville extends Character {
+  name = "void_soup";
 
+  icon = "images/icons/Neville.png";
+  constructor(){
+    super();
+    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol","yeah thats you","you okay there buddy?"], ["autism"])
+    this.readied_posts.push(new Post(this, "",null,[],["content free"],["content-free"]));
+  }
 
 }
 
@@ -544,7 +563,7 @@ class Ambrose extends Character {
 //also reblogs popular posts with takes on top and eggs lee/hunter on 
 class K extends Character {
   name = "K";//proud he got such an early name
-  icon = 'http://farragofiction.com/TwoGayJokes/Stories/MurderGameIcons/k.png';
+  icon = 'images/icons/Khana_by_theShadow.png';
 
   //k wants to be seen on EVERY post in the entire system
   //and also if a subsequent reblog goes viral, he does too
