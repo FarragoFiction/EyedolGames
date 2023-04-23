@@ -48,6 +48,7 @@ const init = async () => {
   wanderer = new Wanderer();
   observer = new Observer();
   k = new K();
+  neville = new Neville();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -67,6 +68,7 @@ const init = async () => {
   characters.push(randomPornBot());
   characters.push(wanderer);
   characters.push(k);
+  characters.push(neville);
 
   for (let i = 0; i < 10; i++) {
     await tick();
