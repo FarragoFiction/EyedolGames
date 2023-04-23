@@ -8,9 +8,51 @@ class Character {
   posts = [];
   reblogged_posts = [];
 
-  //responds to keyphrases
-  readied_reblogs;
+  //key, post pairs
+  readied_reblogs = {};
 
+  constructor(){
+    this.createReadiedReblogs();
+  }
+
+  createReadiedReblogs = ()=>{
+    //these aren't the characters you think they are
+    //they are quotidians mimicking them. 
+    //same as was east
+    //do you REALLY think our favorite blorobs would be so stiled
+    //so artifical?
+    //no. this is yet another layer of illusion.
+    //and that illusion is DESIGNED to crack along specific seams
+    this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio","game","free-to-play","fun,","friday"], ["I'm not so sure... I heard people disappear when they play that.","Are you sure?","So true, bestie!","It seems spooky...","OP has a virus, do not reblog.","OP has been hacked, do not reblog.","OP did you get hacked? This doesn't sound like you?","My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta","unreality","zampanio","don't play it","maybe you should play it","don't trust it","it is not what it is","an eye for an eye"])
+  }
+
+  //each character decides when to do this, but its standardized what happens when they do
+  //looks through all posts for one that matches a key
+  //if it finds it, reblogs it with the modified post
+  //then removes it from readied reblogs (so no spam)
+  handleReadiedReblog = ()=>{
+    for(let key of Object.keys(this.readied_reblogs)){
+      for(let target of all_posts){
+
+        //if the target post has the key phrase anywhere in it, attack
+        if(target.text.toLowerCase().includes(key.toLowerCase())){
+          let post = this.readied_reblogs[key];
+          post.owner = this;
+          post.parent = target;
+          post.setRoot();
+          post.createElement(); //recreate it manually now thats its a reblog
+          //no spam
+          delete(this.readied_reblogs[key]);
+          // /parent, text, tags, suggested_reblogs, suggested_tags)
+          return this.reblogAPost(target, post.text, post.tags, post.suggested_reblogs, post.suggested_tags);
+
+        }
+      }
+    }
+    return null;
+  }
+
+  //EVERY child of this should overwrite. this does nothing by design (no not even handle readied reblogs)
   tick = async (parentToRenderTo) => {
     //some make posts, some like or reblog other posts, some reply in posts, some send asks, some do nothing
   }
@@ -168,8 +210,21 @@ class PornBot extends Character {
     }
   }
 
+
   tick = async (parentToRenderTo) => {
-    console.log("JR NOTE: quotidian tick");
+    //quotidians prefer to do preprogrammed actions if possible
+    if(rand.nextDouble()>0.5){
+      console.log("JR NOTE: porn bot looking for a readied reblog")
+      let post = this.handleReadiedReblog();
+      if(post && parentToRenderTo){
+        console.log("JR NOTE: porn bot found a readied reblog")
+
+        post.renderToScreen(parentToRenderTo);
+        return;
+      }
+    }
+
+
     let target = this.findAPostEvenIfYouHaveInteractedWithIt();
 
     if (target && rand.nextDouble() > 0.75) {
