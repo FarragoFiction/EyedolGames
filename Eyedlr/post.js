@@ -34,7 +34,7 @@ class Post {
   suggested_tags = [];
   element;
 
-  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual=false) {
+  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual = false) {
     !virtual && all_posts.push(this);
     this.owner = owner;
     this.text = text;
@@ -48,7 +48,7 @@ class Post {
   }
 
   //this isn't expected to change but readied reblogs needs to call it AFTER post creation (becasue we don't know the parent yet)
-  setRoot = ()=>{
+  setRoot = () => {
     if (this.parent) {
       this.root = this.getParent();
       this.root.internal_numreblogs++;
@@ -156,7 +156,7 @@ class Post {
 
   }
 
- 
+
 
   //looking at this, you really can get the feeling for why react and other frameworks were invented
   //this is *miserable* to read
@@ -209,8 +209,10 @@ class Post {
 
     const tags = createElementWithClassAndParent("div", container, "post-tags");
     for (let tag of this.tags) {
-      const ele = createElementWithClassAndParent("span", tags, "tag");
-      ele.innerText = "#" + tag;
+      if (tag.trim()) { //blank tags dont count
+        const ele = createElementWithClassAndParent("span", tags, "tag");
+        ele.innerText = "#" + tag;
+      }
     }
 
     const footer = createElementWithClassAndParent("div", container, "post-footer");

@@ -28,9 +28,57 @@ class Character {
     //and that illusion is DESIGNED to crack along specific seams
     //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual) {
     //ALWAYS mark as virtual so you can't reblog a post before its deployed
-    this.readied_reblogs['first'] = new Post(this, "Actually, I am first.", null, ["tags for original readied reblog"], ["response to readied reblog"], ["tags for the response to the readied reblog"],true)
+    //this.readied_reblogs['first'] = new Post(this, "Actually, I am first.", null, ["tags for original readied reblog"], ["response to readied reblog"], ["tags for the response to the readied reblog"], true)
 
-    this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["I'm not so sure... I heard people disappear when they play that.", "Are you sure?", "So true, bestie!", "It seems spooky...", "OP has a virus, do not reblog.", "OP has been hacked, do not reblog.", "OP did you get hacked? This doesn't sound like you?", "My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"],true)
+    this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["I'm not so sure... I heard people disappear when they play that.", "Are you sure?", "So true, bestie!", "It seems spooky...", "OP has a virus, do not reblog.", "OP has been hacked, do not reblog.", "OP did you get hacked? This doesn't sound like you?", "My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"], true)
+  }
+
+  checkBlorboReblog = (parentToRenderTo, odds)=>{
+    if (rand.nextDouble() > odds) {
+      let post = this.handleReadiedReblog();
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+      if (post) {
+        return;
+      }
+    }
+  }
+
+  checkBlorboPost = (parentToRenderTo, odds)=>{
+    if (rand.nextDouble() > odds) {
+      let post = this.handleReadiedPost();
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+      if (post) {
+        return;
+      }
+    }
+  }
+
+  //there is no rhyme or reason to what anyone likes, just like random shit
+  //not worth putting more effort in i wanna get to the meat
+  checkBlorboLike = (odds)=>{
+    if(rand.nextDouble() <odds){
+      return;
+    }
+    const post = this.findAPostEvenIfYouHaveInteractedWithIt();
+    if(post){
+      this.likePost(post);
+    }
+  }
+
+  blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
+    let post = this.checkBlorboReblog(parentToRenderTo, oddsReblog);
+    if(post){
+      return;
+    }
+    post = this.checkBlorboPost(parentToRenderTo, oddsPost);
+    if(post){
+      return
+    }
+    this.checkBlorboLike(oddsLike);
   }
 
   handleReadiedPost = () => {
@@ -55,7 +103,7 @@ class Character {
         if (target.text.toLowerCase().includes(key.toLowerCase())) {
           let response = this.readied_reblogs[key];
           //no spam
-          //delete(this.readied_reblogs[key]);
+          delete (this.readied_reblogs[key]);
           // /parent, text, tags, suggested_reblogs, suggested_tags)
           return this.reblogAPost(target, response.text, response.tags, response.suggested_reblogs, response.suggested_tags);
 
@@ -481,8 +529,16 @@ class Neville extends Character {
   icon = "images/icons/Neville.png";
   constructor() {
     super();
-    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"],true)
-    this.readied_posts.push(new Post(this, "", null, [], ["content free"], ["content-free"]),true);
+    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
+  }
+
+  
+
+  tick = async (parentToRenderTo) => {
+    //neville is equally likely to do everything, you learn nothing from him
+    //hes just vibin
+    this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
   }
 
 }
