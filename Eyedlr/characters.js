@@ -319,6 +319,10 @@ class Observer extends Character {
 //will NEVER reblog anything Wodin did OR intern2. (v much not interested in her past self)
 //WILL NOT LEAVE INTERN3 ALONE (let the man grieve! stop trying to recruit him! he'll join you when he's ready!)
 //32, 40, 41, 59  posts secrets and shit (future JR i know you wanna know where i got those numbers from but i'd rather an Unmarked tell you)
+//if i never get to her, then you will be forced to carry this knowledge
+//this wistful might have beens of my notes
+//of the thing that COULD have existed if my attention wasn't called in a new direction
+//and the spiral continued
 class Wanda extends Character {
 
   //wanda likes youtube better , have a porn bot post this: https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
@@ -522,6 +526,15 @@ class Closer extends Character {
 }
 
 
+/*
+styleguide from IC: 
+how about we define the blorbos in contrast
+and that way we can go as we go along
+i do think this makes sense
+mulling it over
+neville cares just enough that his text is legible, but has no qualms about syntax
+*/
+
 //almost never posts, when he does its either a reblog of content free content or a succinct original post that sheds so much light on things via cutting away the irrelevancies
 class Neville extends Character {
   name = "void_soup";
@@ -566,6 +579,10 @@ class Neville extends Character {
 
 }
 
+/*
+JR style guide:
+i figure devona keeps up her all caps and is rambly but always in the tags, never the main post
+*/
 //if you try to view her profile, its set to private
 //she doesn't realize, if she puts tags in a reblog (she does ALL THE TIME) she can be seen
 //she is VERY chatty in tags
@@ -576,12 +593,28 @@ class Devona extends Character {
 
 }
 
+/*
+JR suggestion for style
+ria i think starts out perfect syntax and punctuation but rapidly devolves as she gets going
+
+IC response: 
+
+add more exclamation marks
+one she's gone she's having some fun with it
+*/
 
 //ria is contstantly rambling, long winded original posts, long reblog comments, plus more things in the tags (though she TRIES to use the tags as actual search terms)
 //rias Tumblr is full of peewee theories and her obvious parasocial crush
 //(this predates the heartbreak in West)
 class Ria extends Character {
+  name ="ria"
+  icon = "asdfsf"
 
+  constructor(){
+    super();
+    this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!","you cant out bugs bunny","the man himself","but you CAN","get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
 
 }
 
@@ -621,6 +654,15 @@ class LeeHunter extends Character {
 }
 
 
+/*
+style guide from IC: in comparison for example, captain does not have a hair out of place
+and uses (these types of tone indicators, but as full sentences)
+as well as.
+you know
+the boomer droll
+...
+the poor man's pause
+*/
 //reblogs memes and self care tips for yongki (always ats him)
 //complains constantly the autism tips are useless because they are so broad because "everyone is like this"
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
@@ -699,6 +741,15 @@ class DocSlaughter extends Character {
 //very popular, ocassionaly advertises his work with the PTA and his bid to run into politics
 //reblogs "everyone has a doppelganger" and secret twin type posts all the time
 class TheNeighbor extends Character {
+
+  name ="statefarmOfficial" //like a good neighbor, statefarm is there
+  icon ="";
+  constructor(){
+    super();
+    //gofounditwatcher
+    this.readied_reblogs['gofounditwatcher'] = new Post(this, "delete this", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], [""], true);
+
+  }
 
 }
 
