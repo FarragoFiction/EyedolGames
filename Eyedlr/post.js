@@ -158,6 +158,8 @@ class Post {
 
 
 
+
+
   //looking at this, you really can get the feeling for why react and other frameworks were invented
   //this is *miserable* to read
   //future me is gonna HATE this.
@@ -172,17 +174,27 @@ class Post {
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
     postIconImg.src = this.owner.icon;
+    postIconImg.onclick = ()=>{
+      showProfile(this.owner);
+    }
 
 
     const container = createElementWithClassAndParent("div", post, "post-container");
     const header = createElementWithClassAndParent("div", container, "post-header");
     const myName = createElementWithClassAndParent("span", header);
     myName.innerText = this.owner.name;
+    myName.onclick=()=>{
+      showProfile(this.owner);
+    }
+
     if (this.parent) {
       const reblogArrow = createElementWithClassAndParent("span", header, "reblog-arrow");
       reblogArrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="12px" viewBox="0 0 24 24" width="12px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="18,12 22,8 18,4 18,7 3,7 3,9 18,9"/><polygon points="6,12 2,16 6,20 6,17 21,17 21,15 6,15"/></g></g></svg>`;
       const theirName = createElementWithClassAndParent("span", header);
       theirName.innerText = this.parent.owner.name;
+      theirName.onclick=()=>{
+        showProfile(this.parent.owner);
+      }
     }
 
     const body = createElementWithClassAndParent("div", container, "post-body");
@@ -200,6 +212,14 @@ class Post {
         const reblog_name = createElementWithClassAndParent("div", reblog_header, "reblog-name");
         reblog_name.innerText = p.owner.name;
         reblogIcon.src = p.owner.icon;
+
+        reblog_name.onclick=()=>{
+          showProfile(p.owner);
+        }
+
+        reblogIcon.onclick=()=>{
+          showProfile(p.owner);
+        }
         const reblog_text = createElementWithClassAndParent("div", reblog_ele, "reblog-text");
         reblog_text.innerHTML = p.text;
       }

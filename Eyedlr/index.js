@@ -49,6 +49,9 @@ const init = async () => {
   observer = new Observer();
   k = new K();
   neville = new Neville();
+  neighbor = new TheNeighbor();
+  kr = new KarmicRetribution();
+  ria = new Ria();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -69,7 +72,10 @@ const init = async () => {
   characters.push(wanderer);
   characters.push(k);
   characters.push(neville);
-  
+  characters.push(kr);
+  characters.push(neighbor);
+  characters.push(ria);
+
  /* let ele = document.querySelector("#container");
 
   let first = wanderer.createNewPost("first",["first1"],["first2"],["first3"]);
@@ -89,6 +95,10 @@ const init = async () => {
     await tick();
   }
   collatePremadePosts();
+}
+
+showProfile = (character)=>{
+  window.alert("!!! " + character.name)
 }
 
 const collatePremadePosts = () => {
