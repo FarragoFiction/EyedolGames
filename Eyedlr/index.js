@@ -51,6 +51,7 @@ const init = async () => {
   neville = new Neville();
   neighbor = new TheNeighbor();
   kr = new KarmicRetribution();
+  tyrfing = new Tyrfing();
   ria = new Ria();
 
   await grabNormalImages();
@@ -75,6 +76,8 @@ const init = async () => {
   characters.push(kr);
   characters.push(neighbor);
   characters.push(ria);
+  characters.push(tyrfing);
+
 
  /* let ele = document.querySelector("#container");
 

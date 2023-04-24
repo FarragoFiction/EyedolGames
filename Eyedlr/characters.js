@@ -46,6 +46,7 @@ class Character {
   }
 
   checkBlorboPost = (parentToRenderTo, odds)=>{
+
     if (rand.nextDouble() > odds) {
       let post = this.handleReadiedPost();
       if (post && parentToRenderTo) {
@@ -703,6 +704,10 @@ class K extends Character {
 
   tick = async (parentToRenderTo) => {
     //you are GOING to see more of K than anyone else.
+
+    if(rand.nextDouble()>0.5){
+      this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+    }
     for (let i = 0; i < 3; i++) {
       let target = this.findAPostEvenIfYouHaveInteractedWithIt();
 
@@ -758,7 +763,20 @@ class TheNeighbor extends Character {
 //occasionally reblogs things like ominous picutres of something unsettling barely out of focus and ats TheNeighbor
 //vague post complaints about "someone" being unmasked at midnight and drinking milk directly out of the cartoon
 class Tyrfing extends Character {
+  name="allFatherNumberOneFan";
+  icon="http://farragofiction.com/LOHAE/images/BGs/nidhoggTrue.png";
+  constructor(){
+    super();
 
+    this.readied_reblogs["nidhogg"] =(new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
+  }
+
+  tick =(parentToRenderTo)=>{
+    this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+    //he can not be stopped.
+    this.readied_reblogs["nidhogg"] =(new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
+
+  }
 
 }
 
@@ -856,20 +874,33 @@ class JR extends Character {
 
 //TODO: make sure that images inside posts are centered all nice
 class KarmicRetribution extends Character {
-  posts = [
+  name="karmicRetribution";
+  icon="images/icons/kr_icon.png";
+  x = [
     `<img src='http://eyedolgames.com/Eyedlr/images/Secrets/Despap-1-troll.png'>
     <p>
-    "You must choose."
+    "You must choose."<br><br>
 The great wyrm Nidhogg looms over the slight young troll. Its dark scales gleam even in the dim light. Despap's eyes are green-rimmed and wide; their face has a look of crazed joy.
-
-"No."
+<br><br>
+"No."<br><Br>
 They float up to Nidhogg's eye level with barely a flick of their wings. Despap reaches up and pulls the crown of roses from their hair, then places it atop the wyrm's great head. 
-"Instead I give the Choice to you." 
+<br><Br>"Instead I give the Choice to you." <br><Br>
 They lean forward to press a kiss to Nidhogg's forehead, below the garland. Vines or roots can be seen beginning to grow down, the tendrils latching into the serpent's flesh. As Despap pulls back, a rose buds, then blooms from where their lips were. The flower opens wide, and an eyeball can be seen in its center, rolling wildly.
-"*Open your eyes,*" murmurs Despap.
-
+<br><Br>"*Open your eyes,*" murmurs Despap.<br><Br>
+<br><Br><br><Br>
 Everything begins to shake and break up as the great wyrm thrashes and screams in the throes of its transformation.
     </p>
       `,
   ]
+
+  constructor(){
+    super();
+    this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
+
+    this.readied_posts.push(new Post(this, this.x[0], null, [""], [""], [""], true));
+  }
+
+  tick =(parentToRenderTo)=>{
+    this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+  }
 }
