@@ -6,6 +6,8 @@ let weirdImageList = [];
 //quotidians post from here, because i feel like the uninitiated deserve confusion
 //as a treat
 let zampanioEyes = [];
+//in case we lose the server, i do not want to forget
+let fadedMemories = [];
 
 let characters = [];
 
@@ -36,6 +38,7 @@ window.onload = () => {
 
   let loc = urlParams.get('loc');
   //not awaited, it either loads or it doesn't, its slow
+  grabFadedMemories();
   grabZampanioEyes();
   //same
   grabBlorboPosts();
@@ -149,6 +152,14 @@ const grabZampanioEyes = async () => {
   const loc = 'http://www.farragofiction.com/ZampanioEyes2/';
   let tmp = await getImages(loc);
   zampanioEyes = tmp.map((item) => loc + item);
+}
+
+const grabFadedMemories = async () => {
+  console.log("JR NOTE: grabbing faded memoreis")
+  const loc = 'http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/';
+  let tmp = await getImages(loc);
+  console.log("JR NOTE: tmp for memories was", tmp)
+  fadedMemories = tmp.map((item) => loc + item);
 }
 
 const grabBlorboPosts = async ()=>{
