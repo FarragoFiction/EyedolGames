@@ -235,6 +235,8 @@ class Post {
       }
     }
 
+    handlePings(bodyContent);
+
     const footer = createElementWithClassAndParent("div", container, "post-footer");
     this.notesEle = createElementWithClassAndParent("div", footer, "notes-count");
     this.notesEle.innerText = this.getLikes() + this.getNumberReplies() + this.getNumberReblogs() + " notes";
@@ -295,5 +297,23 @@ class Post {
 
 
 
+  }
+}
+
+
+//takes in an element.
+//looks inside it for things that look like @blorbo
+//does this inefficiently, which is okay because we have relatively few blorbos (much less than a thousand)
+//loops on blorbos, trying to replace their names.
+const handlePings = (ele)=>{
+  for(let char of characters){
+    if(ele.innerHTML.includes("@"+char.name)){
+      ele.innerHTML = ele.innerHTML.replaceAll("@"+char.name, `<span class='ping'>@${char.name}</span>`);
+      //only care about first ping
+      let ping = ele.querySelector(".ping");
+      ping.onclick=()=>{
+        showProfile(char);
+      }
+    }
   }
 }

@@ -216,9 +216,10 @@ class PornBot extends Character {
          `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 */
     let possiblePosts = [...links, ...blorboPosts,
-      "20h:14m:36s",
-      "5d:23h:17:04s",
-      "4d:15h:21m:33s",
+      "@wanderer 20h:14m:36s",
+      "@wanderer 5d:23h:17:04s",
+      "@wanderer 4d:15h:21m:33s",
+      "<img src='http://www.farragofiction.com/ZampanioEyes2/tiktanio_glitchy.gif'>",
       `<h2>What Is ZampanioSim?</h2> <img src ='images/Secrets/tumblr_screenshots/what_is_zampaniosim.PNG'></a>`,
 
       '<iframe width="460" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/814252129&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/openai_audio" title="OpenAI" target="_blank" style="color: #cccccc; text-decoration: none;">OpenAI</a> · <a href="https://soundcloud.com/openai_audio/classic-pop-in-the-style-of-frank-sinatra" title="Classic Pop, in the style of Frank Sinatra" target="_blank" style="color: #cccccc; text-decoration: none;">Classic Pop, in the style of Frank Sinatra</a></div>',
@@ -559,7 +560,7 @@ class Neville extends Character {
     this.readied_reblogs['Neville/guy'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/idea'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     //he never has much to say, but when he does, it matters
-    this.readied_reblogs['Neville/movie'] = new Post(this, "@robitussinCombatant we up for movie night tonight?<br><Br>", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['Neville/movie'] = new Post(this, "@robitussin-warrior we up for movie night tonight?<br><Br>", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/overstimulated'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/regret'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/scrutes'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
@@ -630,7 +631,7 @@ class Ria extends Character {
 class Camille extends Character {
 
   //she fights that which would stop the coffin
-  name = "robitussinCombatant";
+  name = "robitussin-warrior";
 
 }
 
