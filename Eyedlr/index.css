@@ -129,6 +129,11 @@ body {
 
 }
 
+.ping{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .reblog-post {
   border-top: 1px solid #c4c4c4;
   padding: 20px;
