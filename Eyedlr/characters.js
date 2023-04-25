@@ -246,9 +246,16 @@ class PornBot extends Character {
       possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
       possiblePosts.push(`I spy with my little eye: ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
       possiblePosts.push(`I spy with my little eye: go${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/", '')} <img src='${zEye}'>`)
+    }
 
-
-
+    if (fadedMemories.length > 0) {
+      let zEye = rand.pickFrom(fadedMemories);
+      possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
+      possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
     }
 
     return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments.concat(links), innaneComments);

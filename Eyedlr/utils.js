@@ -100,6 +100,7 @@ const cachedImages = {}
 
 const imageExtendsions = [
   "png",
+  "PNG",
   "gif",
   "jpg",
   "jpeg"
