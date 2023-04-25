@@ -174,7 +174,7 @@ class Post {
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
     postIconImg.src = this.owner.icon;
-    postIconImg.onclick = ()=>{
+    postIconImg.onclick = () => {
       showProfile(this.owner);
     }
 
@@ -183,7 +183,7 @@ class Post {
     const header = createElementWithClassAndParent("div", container, "post-header");
     const myName = createElementWithClassAndParent("span", header);
     myName.innerText = this.owner.name;
-    myName.onclick=()=>{
+    myName.onclick = () => {
       showProfile(this.owner);
     }
 
@@ -192,7 +192,7 @@ class Post {
       reblogArrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="12px" viewBox="0 0 24 24" width="12px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="18,12 22,8 18,4 18,7 3,7 3,9 18,9"/><polygon points="6,12 2,16 6,20 6,17 21,17 21,15 6,15"/></g></g></svg>`;
       const theirName = createElementWithClassAndParent("span", header);
       theirName.innerText = this.parent.owner.name;
-      theirName.onclick=()=>{
+      theirName.onclick = () => {
         showProfile(this.parent.owner);
       }
     }
@@ -213,11 +213,11 @@ class Post {
         reblog_name.innerText = p.owner.name;
         reblogIcon.src = p.owner.icon;
 
-        reblog_name.onclick=()=>{
+        reblog_name.onclick = () => {
           showProfile(p.owner);
         }
 
-        reblogIcon.onclick=()=>{
+        reblogIcon.onclick = () => {
           showProfile(p.owner);
         }
         const reblog_text = createElementWithClassAndParent("div", reblog_ele, "reblog-text");
@@ -236,6 +236,7 @@ class Post {
     }
 
     handlePings(bodyContent);
+    handleImages(bodyContent);
 
     const footer = createElementWithClassAndParent("div", container, "post-footer");
     this.notesEle = createElementWithClassAndParent("div", footer, "notes-count");
@@ -300,18 +301,60 @@ class Post {
   }
 }
 
+//takes all images inside that are not icons and lets you click them to see their full version in a popup
+//im not the only one in this fandom with shit eyes so lets help ourselves out, shall we
+const handleImages = (ele) => {
+  let images = ele.querySelectorAll("img:not(.reblog-icon)");
+  for (let i of images) {
+    i.onclick = () => {
+      createPopup(i);
+    }
+  }
+
+}
+
+const createPopup = (ele) => {
+  console.log("JR NOTE: creating popup for ", ele)
+  const body = document.querySelector("body");
+  const container = createElementWithClassAndParent("div", body, "popup-container");
+  container.onclick = (ele) => {
+
+  }
+
+
+  const content = createElementWithClassAndParent("div", container, "popup");
+  let clone = ele.cloneNode();
+  clone.className="popup-clone"
+
+  const closeIcon = createElementWithClassAndParent("div", content, "popup-close");
+  closeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>';
+
+  const cloneContainer = createElementWithClassAndParent("div", content, "popup-clone-container");
+
+  cloneContainer.append(clone);
+
+
+  container.onclick = (event) => {
+    console.log("JR NOTE: ",event)
+    if (event.target != clone) {
+      container.remove();
+    }
+  }
+}
+
+
 
 //takes in an element.
 //looks inside it for things that look like @blorbo
 //does this inefficiently, which is okay because we have relatively few blorbos (much less than a thousand)
 //loops on blorbos, trying to replace their names.
-const handlePings = (ele)=>{
-  for(let char of characters){
-    if(ele.innerHTML.includes("@"+char.name)){
-      ele.innerHTML = ele.innerHTML.replaceAll("@"+char.name, `<span class='ping'>@${char.name}</span>`);
+const handlePings = (ele) => {
+  for (let char of characters) {
+    if (ele.innerHTML.includes("@" + char.name)) {
+      ele.innerHTML = ele.innerHTML.replaceAll("@" + char.name, `<span class='ping'>@${char.name}</span>`);
       //only care about first ping
       let ping = ele.querySelector(".ping");
-      ping.onclick=()=>{
+      ping.onclick = () => {
         showProfile(char);
       }
     }
