@@ -771,7 +771,7 @@ class TheNeighbor extends Character {
 //occasionally reblogs things like ominous picutres of something unsettling barely out of focus and ats TheNeighbor
 //vague post complaints about "someone" being unmasked at midnight and drinking milk directly out of the cartoon
 class Tyrfing extends Character {
-  name="allFatherNumberOneFan";
+  name="nidhogg--worshipper-all-father--devotee--85";
   icon="http://farragofiction.com/LOHAE/images/BGs/nidhoggTrue.png";
   constructor(){
     super();
