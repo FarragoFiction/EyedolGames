@@ -234,7 +234,6 @@ body {
   width: 100%;
   height: 75%;
   z-index: -1;
-  background-size: cover;
   filter: blur(66px) saturate(5.5) sepia(0.5) invert(1);
   overflow: hidden;
 }
@@ -282,6 +281,10 @@ body {
   justify-content: flex-start;
   gap: 30px;
   margin-bottom: 50px;
+}
+
+.tabs-holder div{
+  cursor: pointer;
 }
 
 .tabs-holder .active{

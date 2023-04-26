@@ -178,6 +178,9 @@ showProfile = (character) => {
   postsTab.innerText = "Posts";
   const likesTab = createElementWithClassAndParent("div", tabsHolder);
   likesTab.innerText = "Likes"
+
+
+
   const askTab = createElementWithClassAndParent("div", tabsHolder);
   askTab.innerText = "Ask Me Anything"
 
@@ -187,6 +190,20 @@ showProfile = (character) => {
   for (let post of posts) {
     const clone = post.element.cloneNode(true);
     mainContent.append(clone);
+  }
+
+  likesTab.onclick = ()=>{
+    console.log("JR NOTE: likes tab click")
+    likesTab.classList.add("active");
+    postsTab.classList.remove("active");
+    askTab.classList.remove("active");
+    mainContent.remove();
+    const posts = character.liked_posts.reverse();
+    for (let post of posts) {
+      const clone = post.element.cloneNode(true);
+      mainContent.append(clone);
+    }
+
   }
 
 
