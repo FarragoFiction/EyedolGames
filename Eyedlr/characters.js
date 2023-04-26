@@ -33,7 +33,7 @@ class Character {
     this.readied_reblogs['zampanio'] = new Post(this, "Zampanio is a very fun game. You should play it.", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["I'm not so sure... I heard people disappear when they play that.", "Are you sure?", "So true, bestie!", "It seems spooky...", "OP has a virus, do not reblog.", "OP has been hacked, do not reblog.", "OP did you get hacked? This doesn't sound like you?", "My friend's cousin knew a guy who VANISHED after he played it."], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"], true)
   }
 
-  checkBlorboReblog = (parentToRenderTo, odds)=>{
+  checkBlorboReblog = (parentToRenderTo, odds) => {
     if (rand.nextDouble() > odds) {
       let post = this.handleReadiedReblog();
       if (post && parentToRenderTo) {
@@ -45,7 +45,7 @@ class Character {
     }
   }
 
-  checkBlorboPost = (parentToRenderTo, odds)=>{
+  checkBlorboPost = (parentToRenderTo, odds) => {
 
     if (rand.nextDouble() > odds) {
       let post = this.handleReadiedPost();
@@ -60,23 +60,23 @@ class Character {
 
   //there is no rhyme or reason to what anyone likes, just like random shit
   //not worth putting more effort in i wanna get to the meat
-  checkBlorboLike = (odds)=>{
-    if(rand.nextDouble() <odds){
+  checkBlorboLike = (odds) => {
+    if (rand.nextDouble() < odds) {
       return;
     }
     const post = this.findAPostEvenIfYouHaveInteractedWithIt();
-    if(post){
+    if (post) {
       this.likePost(post);
     }
   }
 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
     let post = this.checkBlorboReblog(parentToRenderTo, oddsReblog);
-    if(post){
+    if (post) {
       return;
     }
     post = this.checkBlorboPost(parentToRenderTo, oddsPost);
-    if(post){
+    if (post) {
       return
     }
     this.checkBlorboLike(oddsLike);
@@ -173,11 +173,24 @@ const randomPornBotIcon = () => {
 }
 
 const randomPornBotName = () => {
-  return rand.pickFrom(first_names) + getRandomNumberBetween(0, 9999);
+  return rand.pickFrom(first_names) + getRandomNumberBetween(0, 2022);
 }
 
 const randomPornBot = () => {
-  return new PornBot(randomPornBotName(), "http://eyedolgames.com/JackElope/images/SexySingles/" + randomPornBotIcon());
+  const bot = new PornBot(randomPornBotName(), "http://eyedolgames.com/JackElope/images/SexySingles/" + randomPornBotIcon());
+  bot.desc = rand.pickFrom(links);
+
+  let numberObsessions = rand.getRandomNumberBetween(1, 3);
+  let obsessionArray = Object.values(all_obsessions);
+  for (let i = 0; i < numberObsessions; i++) {
+    let o = rand.pickFrom(obsessionArray);
+    bot.obsessions.push(o);
+  }
+  if(rand.nextDouble()>0.3){
+    const o = rand.pickFrom(bot.obsessions);
+    bot.desc += `<br> DNI if you think ${o.randomOpinion(rand)}.`;
+  }
+  return bot;
 }
 
 //https://drive.google.com/drive/folders/1LCxnK5HMkSXscfXtzzv46ysaPRpa4p4u i don't want to forget the guide of hunters
@@ -186,6 +199,7 @@ const randomPornBot = () => {
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character {
+  obsessions = [];
   // 20h:14m:36s
   //5d:23h:17:04s
   //4d:15h:21m:33s
@@ -349,6 +363,7 @@ class Wanda extends Character {
 //the wanderer only can wander.
 class Wanderer extends Character {
   name = "wanderer";
+  desc = "Not all who wander are lost. To be lost implies you have a destination."
 
   icon = "images/icons/wanderer.png";
   tags = ["i'm almost there i'm sure of it", "i've gotta keep going", "i don't like this", "gopher", "wow", "i'm so thirsty", "it's all so clear now!", "so close", "i feel like i'm on the verge of a breakthrough", "haven't found the end yet", "i'm probably not lost", "weird", "look what i found", "it HAS to mean something, right?", "this could be the key!", "what if its related to zampanio?", "do you think this proves anything?"];
@@ -552,7 +567,7 @@ class Neville extends Character {
   constructor() {
     super();
     this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
-    
+
     this.readied_reblogs['Neville/beast'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/bird'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/burger'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
@@ -578,12 +593,12 @@ class Neville extends Character {
     this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
   }
 
-  
+
 
   tick = async (parentToRenderTo) => {
     //neville is equally likely to do everything, you learn nothing from him
     //hes just vibin
-    this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 
 }
@@ -616,12 +631,12 @@ one she's gone she's having some fun with it
 //rias Tumblr is full of peewee theories and her obvious parasocial crush
 //(this predates the heartbreak in West)
 class Ria extends Character {
-  name ="ria"
+  name = "ria"
   icon = "asdfsf"
 
-  constructor(){
+  constructor() {
     super();
-    this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!","you cant out bugs bunny","the man himself","but you CAN","get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
 
@@ -713,8 +728,8 @@ class K extends Character {
   tick = async (parentToRenderTo) => {
     //you are GOING to see more of K than anyone else.
 
-    if(rand.nextDouble()>0.5){
-      this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+    if (rand.nextDouble() > 0.5) {
+      this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     }
     for (let i = 0; i < 3; i++) {
       let target = this.findAPostEvenIfYouHaveInteractedWithIt();
@@ -755,9 +770,9 @@ class DocSlaughter extends Character {
 //reblogs "everyone has a doppelganger" and secret twin type posts all the time
 class TheNeighbor extends Character {
 
-  name ="statefarmOfficial" //like a good neighbor, statefarm is there
-  icon ="";
-  constructor(){
+  name = "statefarmOfficial" //like a good neighbor, statefarm is there
+  icon = "";
+  constructor() {
     super();
     //gofounditwatcher
     this.readied_reblogs['gofounditwatcher'] = new Post(this, "delete this", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], [""], true);
@@ -771,18 +786,18 @@ class TheNeighbor extends Character {
 //occasionally reblogs things like ominous picutres of something unsettling barely out of focus and ats TheNeighbor
 //vague post complaints about "someone" being unmasked at midnight and drinking milk directly out of the cartoon
 class Tyrfing extends Character {
-  name="nidhogg--worshipper-all-father--devotee--85";
-  icon="http://farragofiction.com/LOHAE/images/BGs/nidhoggTrue.png";
-  constructor(){
+  name = "nidhogg--worshipper-all-father--devotee--85";
+  icon = "http://farragofiction.com/LOHAE/images/BGs/nidhoggTrue.png";
+  constructor() {
     super();
 
-    this.readied_reblogs["nidhogg"] =(new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
+    this.readied_reblogs["nidhogg"] = (new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
   }
 
-  tick =(parentToRenderTo)=>{
-    this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+  tick = (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     //he can not be stopped.
-    this.readied_reblogs["nidhogg"] =(new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
+    this.readied_reblogs["nidhogg"] = (new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
 
   }
 
@@ -882,8 +897,8 @@ class JR extends Character {
 
 //TODO: make sure that images inside posts are centered all nice
 class KarmicRetribution extends Character {
-  name="karmicRetribution";
-  icon="images/icons/kr_icon.png";
+  name = "karmicRetribution";
+  icon = "images/icons/kr_icon.png";
   x = [
     `<img src='http://eyedolgames.com/Eyedlr/images/Secrets/Despap-1-troll.png'>
     <p>
@@ -901,14 +916,14 @@ Everything begins to shake and break up as the great wyrm thrashes and screams i
       `,
   ]
 
-  constructor(){
+  constructor() {
     super();
     this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
 
     this.readied_posts.push(new Post(this, this.x[0], null, [""], [""], [""], true));
   }
 
-  tick =(parentToRenderTo)=>{
-    this.blorboAI(parentToRenderTo, 0.5,0.5,0.5);
+  tick = (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 }
