@@ -235,7 +235,7 @@ body {
   height: 75%;
   z-index: -1;
   background-size: cover;
-  filter: blur(66px) saturate(5.5) sepia(0.5);
+  filter: blur(66px) saturate(5.5) sepia(0.5) invert(1);
   overflow: hidden;
 }
 
@@ -243,7 +243,7 @@ body {
   width: 128px;
   height: 128px;
   left: 42%;
-  border: 3px solid white;
+  border: 5px solid white;
   border-radius: 50%;
   object-fit: cover;
   position: absolute;
@@ -269,6 +269,11 @@ body {
 
 }
 
+.profile-content{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .tabs-holder{
   width: 100%;
   margin-left: 30px;
@@ -276,6 +281,11 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   gap: 30px;
+  margin-bottom: 50px;
+}
+
+.tabs-holder .active{
+  text-decoration: underline;
 }
 
 .profile-container{

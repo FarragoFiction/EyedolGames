@@ -121,7 +121,7 @@ const createPopup = (ele) => {
 
 
   container.onclick = (event) => {
-    if (event.target != clone) {
+    if (event.target == container || event.target == closeIcon) {
       container.remove();
     }
   }
@@ -171,10 +171,10 @@ showProfile = (character) => {
   nameEle.innerText=character.name;
 
   const descEle = createElementWithClassAndParent("div", container, "profile-desc");
-  descEle.innerHTML=character.desc;
+  descEle.innerHTML=character.desc? character.desc: "";
 
   const tabsHolder = createElementWithClassAndParent("div", container, "tabs-holder");
-  const postsTab = createElementWithClassAndParent("div", tabsHolder);
+  const postsTab = createElementWithClassAndParent("div", tabsHolder, "active");
   postsTab.innerText = "Posts";
   const likesTab = createElementWithClassAndParent("div", tabsHolder);
   likesTab.innerText = "Likes"
@@ -185,7 +185,7 @@ showProfile = (character) => {
   const mainContent = createElementWithClassAndParent("div", container, "profile-content");
   const posts = character.posts.reverse();
   for (let post of posts) {
-    const clone = post.element.cloneNode();
+    const clone = post.element.cloneNode(true);
     mainContent.append(clone);
   }
 
