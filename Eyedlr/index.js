@@ -82,20 +82,20 @@ const init = async () => {
   characters.push(tyrfing);
 
 
- /* let ele = document.querySelector("#container");
+  /* let ele = document.querySelector("#container");
+ 
+   let first = wanderer.createNewPost("first",["first1"],["first2"],["first3"]);
+   let second = k.reblogAPost(first,"second",["secondo1"],["secondo2"],["secondo3"]);
+   let third = neville.reblogAPost(second,"third",["third1"],["third2"],["third3"]);
+   let fourth = observer.reblogAPost(third,"fourth",["fourth1"],["fourth2"],["fourth3"]);
+ 
+   first.renderToScreen(ele);
+   second.renderToScreen(ele);
+   third.renderToScreen(ele);
+   fourth.renderToScreen(ele);
+ */
 
-  let first = wanderer.createNewPost("first",["first1"],["first2"],["first3"]);
-  let second = k.reblogAPost(first,"second",["secondo1"],["secondo2"],["secondo3"]);
-  let third = neville.reblogAPost(second,"third",["third1"],["third2"],["third3"]);
-  let fourth = observer.reblogAPost(third,"fourth",["fourth1"],["fourth2"],["fourth3"]);
 
-  first.renderToScreen(ele);
-  second.renderToScreen(ele);
-  third.renderToScreen(ele);
-  fourth.renderToScreen(ele);
-*/
-
-  
 
   for (let i = 0; i < 10; i++) {
     await tick();
@@ -103,8 +103,95 @@ const init = async () => {
   collatePremadePosts();
 }
 
-showProfile = (character)=>{
-  window.alert("!!! " + character.name)
+const createPopup = (ele) => {
+  const body = document.querySelector("body");
+  const container = createElementWithClassAndParent("div", body, "popup-container");
+
+
+  const content = createElementWithClassAndParent("div", container, "popup");
+  let clone = ele.cloneNode(true);
+  clone.classList.add("popup-clone");
+
+  const closeIcon = createElementWithClassAndParent("div", content, "popup-close");
+  closeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>';
+
+  const cloneContainer = createElementWithClassAndParent("div", content, "popup-clone-container");
+
+  cloneContainer.append(clone);
+
+
+  container.onclick = (event) => {
+    if (event.target != clone) {
+      container.remove();
+    }
+  }
+}
+
+const createImageViewer= (ele) => {
+  const body = document.querySelector("body");
+  const container = createElementWithClassAndParent("div", body, "popup-container");
+
+
+  const content = createElementWithClassAndParent("div", container, "popup");
+  let clone = ele.cloneNode(true);
+  clone.classList.add("popup-clone");
+
+  const closeIcon = createElementWithClassAndParent("div", content, "popup-close");
+  closeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>';
+
+  const cloneContainer = createElementWithClassAndParent("div", content, "popup-clone-container");
+
+  cloneContainer.append(clone);
+
+
+  container.onclick = (event) => {
+    if (event.target != clone) {
+      container.remove();
+    }
+  }
+}
+
+//theres something so cathartic in writing stinky html like this
+//not elegant at all
+showProfile = (character) => {
+  let container = document.createElement("div");
+  container.className = "profile-container";
+
+  const profileIcon = createElementWithClassAndParent("div", container, "profile-icon");
+  const profileIconBGC = createElementWithClassAndParent("div", profileIcon, "profile-icon-bg-container");
+
+  const profileIconBG = createElementWithClassAndParent("div", profileIconBGC, "profile-icon-bg");
+  profileIconBG.style.backgroundImage = `url(${character.icon})`;
+
+  const profileIconImage = createElementWithClassAndParent("img", profileIcon);
+  profileIconImage.src = character.icon
+
+
+  const nameEle = createElementWithClassAndParent("div", container, "profile-name");
+  nameEle.innerText=character.name;
+
+  const descEle = createElementWithClassAndParent("div", container, "profile-desc");
+  descEle.innerHTML=character.desc;
+
+  const tabsHolder = createElementWithClassAndParent("div", container, "tabs-holder");
+  const postsTab = createElementWithClassAndParent("div", tabsHolder);
+  postsTab.innerText = "Posts";
+  const likesTab = createElementWithClassAndParent("div", tabsHolder);
+  likesTab.innerText = "Likes"
+  const askTab = createElementWithClassAndParent("div", tabsHolder);
+  askTab.innerText = "Ask Me Anything"
+
+
+  const mainContent = createElementWithClassAndParent("div", container, "profile-content");
+  const posts = character.posts.reverse();
+  for (let post of posts) {
+    const clone = post.element.cloneNode();
+    mainContent.append(clone);
+  }
+
+
+
+  createPopup(container);
 }
 
 const collatePremadePosts = () => {
@@ -162,12 +249,12 @@ const grabFadedMemories = async () => {
   fadedMemories = tmp.map((item) => loc + item);
 }
 
-const grabBlorboPosts = async ()=>{
+const grabBlorboPosts = async () => {
   let loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Neville/';
   let tmp = await getImages(loc);
-  console.log("JR NOTE: tmp is",tmp)
+  console.log("JR NOTE: tmp is", tmp)
 
-  blorboPosts =blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
 }
 

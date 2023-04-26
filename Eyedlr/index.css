@@ -202,6 +202,60 @@ body {
   margin-right: 20px;
 }
 
+.profile-icon{
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  height: 300px;
+}
+
+.profile-icon-bg-container{
+  overflow: hidden;
+  height: 75%;
+}
+
+.profile-name{
+  font-size: 24px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 18px;
+  margin-top: 18px;
+}
+
+.profile-desc{
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 18px;
+  margin-top: 9px;
+  opacity: 40%;
+}
+
+.profile-icon-bg{
+  width: 100%;
+  height: 75%;
+  z-index: -1;
+  background-size: cover;
+  filter: blur(66px) saturate(5.5) sepia(0.5);
+  overflow: hidden;
+}
+
+.profile-icon img {
+  width: 128px;
+  height: 128px;
+  left: 42%;
+  border: 3px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  cursor: pointer;
+  bottom: 0px;
+  display: block;
+  align-self: flex-start;
+  margin-left: auto; 
+  margin-right: auto;
+
+}
+
 .post-icon img {
   width: 64px;
   height: 64px;
@@ -213,6 +267,25 @@ body {
   display: block;
   align-self: flex-start;
 
+}
+
+.tabs-holder{
+  width: 100%;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.profile-container{
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  width: 800px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
 }
 
 .post-container {
