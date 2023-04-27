@@ -519,6 +519,7 @@ class Italian extends Character {
 because she is wasted she gets into all sort of things i've hidden and shows everyone.
 even the memes
 ESPECIALLY The memes (hey there cool kid is this you)
+scrapes TwoGayJokes
 */
 //posts about her skyrim mods
 //and other video game stuff

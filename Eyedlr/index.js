@@ -130,9 +130,13 @@ const createPopup = (ele) => {
       container.remove();
     }
   }
+
+  closeIcon.onclick = (event) => {
+    container.remove();
+  }
 }
 
-const createImageViewer= (ele) => {
+const createImageViewer = (ele) => {
   const body = document.querySelector("body");
   const container = createElementWithClassAndParent("div", body, "popup-container");
 
@@ -174,10 +178,10 @@ showProfile = (character) => {
 
 
   const nameEle = createElementWithClassAndParent("div", container, "profile-name");
-  nameEle.innerText=character.name;
+  nameEle.innerText = character.name;
 
   const descEle = createElementWithClassAndParent("div", container, "profile-desc");
-  descEle.innerHTML=character.desc? character.desc: "";
+  descEle.innerHTML = character.desc ? character.desc : "";
 
   const tabsHolder = createElementWithClassAndParent("div", container, "tabs-holder");
   const postsTab = createElementWithClassAndParent("div", tabsHolder, "active");
@@ -198,18 +202,34 @@ showProfile = (character) => {
     mainContent.append(postElement);
   }
 
-  likesTab.onclick = ()=>{
+  postsTab.onclick = () => {
+    mainContent.innerHTML = "";
+    const posts = character.posts.reverse();
+    for (let post of posts) {
+      let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
+      mainContent.append(postElement);
+    }
+    postsTab.classList.add("active");
+    likesTab.classList.remove("active");
+
+  }
+
+  likesTab.onclick = () => {
     console.log("JR NOTE: likes tab click")
     likesTab.classList.add("active");
     postsTab.classList.remove("active");
     askTab.classList.remove("active");
-    mainContent.remove();
+    mainContent.innerHTML = "";
     const posts = character.liked_posts.reverse();
-    for (let post of posts) {
-      //const clone = post.element.cloneNode(true);
-      let clone = $(post.element).clone(true)[0];
+    if (posts && posts.length) {
+      for (let post of posts) {
+        let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
+        mainContent.append(postElement);
+      }
+    } else {
+      const haters = createElementWithClassAndParent("div", mainContent);
+      haters.innerText = "Haters gonna hate: looks like this user has never liked anything.";
 
-      mainContent.append(clone);
     }
 
   }
