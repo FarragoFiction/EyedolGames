@@ -103,21 +103,24 @@ const init = async () => {
   collatePremadePosts();
 }
 
+//warning does NOT clone element so make sure you don't care if its not attached to parent
+//(doesn't clone cuz that wouldn't keep events)
 const createPopup = (ele) => {
   const body = document.querySelector("body");
   const container = createElementWithClassAndParent("div", body, "popup-container");
 
 
   const content = createElementWithClassAndParent("div", container, "popup");
-  let clone = ele.cloneNode(true);
-  clone.classList.add("popup-clone");
+  const popupClone = createElementWithClassAndParent("div", content, "popup-clone");
+
 
   const closeIcon = createElementWithClassAndParent("div", content, "popup-close");
   closeIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#ffffff"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>';
 
   const cloneContainer = createElementWithClassAndParent("div", content, "popup-clone-container");
+  cloneContainer.append(ele);
 
-  cloneContainer.append(clone);
+  cloneContainer.append(popupClone);
 
 
   container.onclick = (event) => {
@@ -133,7 +136,8 @@ const createImageViewer= (ele) => {
 
 
   const content = createElementWithClassAndParent("div", container, "popup");
-  let clone = ele.cloneNode(true);
+  let clone = ele.cloneNode(true); //safe to clone images, no click events
+
   clone.classList.add("popup-clone");
 
   const closeIcon = createElementWithClassAndParent("div", content, "popup-close");
@@ -188,8 +192,8 @@ showProfile = (character) => {
   const mainContent = createElementWithClassAndParent("div", container, "profile-content");
   const posts = character.posts.reverse();
   for (let post of posts) {
-    const clone = post.element.cloneNode(true);
-    mainContent.append(clone);
+    let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
+    mainContent.append(postElement);
   }
 
   likesTab.onclick = ()=>{
@@ -200,7 +204,9 @@ showProfile = (character) => {
     mainContent.remove();
     const posts = character.liked_posts.reverse();
     for (let post of posts) {
-      const clone = post.element.cloneNode(true);
+      //const clone = post.element.cloneNode(true);
+      let clone = $(post.element).clone(true)[0];
+
       mainContent.append(clone);
     }
 

@@ -16,6 +16,9 @@ class Character {
 
   constructor() {
     this.createCommonReadiedReblogs();
+    if(this.name){
+    this.name = this.name.toLowerCase(); //i keep forgetting
+    }
   }
 
   createCommonReadiedReblogs = () => {
@@ -188,7 +191,9 @@ const randomPornBot = () => {
   }
   if(rand.nextDouble()>0.3){
     const o = rand.pickFrom(bot.obsessions);
-    bot.desc += `<br> DNI if you think ${o.randomOpinion(rand)}.`;
+    bot.desc += `<br> I'm totally obsessed with ${o.name}.`;
+
+    bot.desc += ` DNI if you think ${o.randomOpinion(rand)}.`;
   }
   return bot;
 }

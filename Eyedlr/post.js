@@ -167,10 +167,12 @@ class Post {
   //you can refactor it to make it more readable if you like
   //but im basically half dead from moving
   //and am allowed to be lazy
-  createElement = () => {
+  createElement = (clone = false) => {
     const post = document.createElement("div");
     post.className = "post";
-    this.element = post;
+    if (!clone) {
+      this.element = post;
+    }
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
     postIconImg.src = this.owner.icon;
@@ -297,7 +299,7 @@ class Post {
 
 
 
-
+    return post;
   }
 }
 
