@@ -56,6 +56,7 @@ const init = async () => {
   kr = new KarmicRetribution();
   tyrfing = new Tyrfing();
   ria = new Ria();
+  fakeJR = new JRFake();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -80,6 +81,7 @@ const init = async () => {
   characters.push(neighbor);
   characters.push(ria);
   characters.push(tyrfing);
+  characters.push(fakeJR);
 
 
   /* let ele = document.querySelector("#container");
