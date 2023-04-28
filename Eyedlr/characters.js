@@ -65,15 +65,46 @@ class Character {
   //not worth putting more effort in i wanna get to the meat
   checkBlorboLike = (odds) => {
     if (rand.nextDouble() < odds) {
-      return;
+      return false;
     }
     const post = this.findAPostEvenIfYouHaveInteractedWithIt();
     if (post && this.decideIfShouldLike(post)) {
       this.likePost(post);
+      return true;
     }
   }
 
+  //hmm.  i should probably do the highest odd action first. 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
+
+    //check your highest priority thing first
+    if(oddsLike > oddsPost && oddsLike >oddsReblog){
+      let post = this.checkBlorboLike(oddsLike);
+      if (post) {
+        return;
+      }
+    }
+
+    if(oddsPost > oddsLike && oddsPost >oddsReblog){
+      let post = this.checkBlorboPost(oddsLike);
+      if (post) {
+        return;
+      }
+    }
+
+
+    if(oddsReblog > oddsLike && oddsReblog >oddsPost){
+      let post = this.checkBlorboReblog(oddsLike);
+      if (post) {
+        return;
+      }
+    }
+    //
+
+
+
+    //now just do whatever i don't even care (yes even if this means it repeats a shot)
+
     let post = this.checkBlorboReblog(parentToRenderTo, oddsReblog);
     if (post) {
       return;
@@ -121,8 +152,6 @@ class Character {
     if(!this.secret_name){
       return true;
     }
-    console.log(`JR NOTE: ${this.secret_name} is considering liking a post.`,post.text)
-
     //blorbos only like posts from their own source (or that mention them by name)
     //(so non wastes can get their vibes)
     if(post.text.toLowerCase().includes(this.secret_name.toLowerCase())){
@@ -681,19 +710,64 @@ class Ria extends Character {
 
   }
 
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.7, 0.7, 0.3);
+  }
+
 }
 
 //she reblogs with comments and tags of :3 and other emoji, and she reblogs  *their spelling corrections (its like work!)
 class Camille extends Character {
   secret_name = "camille";
+  dead = false; //she dies if she posts something other than :3 or a spelling correction
   icon = "images/icons/Camille.png"; //she reassures the Armor this isn't a SOCIAL network, its all business baby. No attachments!
   //she fights that which would stop the coffin
   name = "robitussin-warrior";
 
   constructor() {
     super();
-    this.readied_reblogs['Camille/andevenmoredeath'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], true);
+    this.readied_reblogs['Camille/relentless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: horrors"], true);
+    this.readied_reblogs['Camille/relentless_training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: horrors"], true);
+    this.readied_reblogs['Camille/tall'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: gaslighting"], true);
+    this.readied_reblogs['Camille/training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: monologue"], true);
+    this.readied_reblogs['Camille/watches2'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: watching"], true);
+    this.readied_reblogs['Camille/watching'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: watching"], true);
 
+    this.readied_reblogs['Camille/andevenmoredeath'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], true);
+    this.readied_reblogs['Camille/bit'] = new Post(this, ":3", null, [":3"], ["lol", ":/ people need to take things seriously"],["lol", ":/ people need to take things seriously"], true);
+    this.readied_reblogs['Camille/collar'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","thats so scary!"], ["wow", "you okay, op?","trigger warning heads falling off"], true);
+    this.readied_reblogs['Camille/cold'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","thats so scary!"], ["wow", "you okay, op?","trigger warning ghosts"], true);
+    this.readied_reblogs['Camille/death'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","acab!"], ["wow", "you okay, op?","trigger warning death penalty"], true);
+    this.readied_reblogs['Camille/gomez'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","hot!"], ["wow", "you okay, op?","trigger warning gomez addams"], true);
+    this.readied_reblogs['Camille/headless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","ew"], ["wow", "you okay, op?","trigger warning heads falling off"], true);
+    this.readied_reblogs['Camille/practice'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","acab!"], ["wow", "you okay, op?","trigger warning death penalty"], true);
+    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['recieve'] = new Post(this, "*recieve :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['zampanio is a very'] = new Post(this, "Zampanio is a very fun game. You should play it...................................../ads,fasdfsa", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["Whoa, did they DIE writing that?"], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"], true)
+    delete (this.readied_reblogs["zampanio"]);//camille dies if she does this, so special post, rare post
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    if(this.dead){
+      return;
+    }
+    this.blorboAI(parentToRenderTo, 0.5, 0.75, 0.5);
+    for(let post of this.posts){
+      if(post.text.includes("Zampanio")){
+        this.dead = true; //she will never post again
+      }
+    }
+    
   }
 
 }
