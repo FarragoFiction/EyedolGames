@@ -60,6 +60,7 @@ const init = async () => {
 
   await grabNormalImages();
   await grabWeirdImages();
+  characters.push(observer)
   characters.push(randomPornBot())
   characters.push(randomPornBot());
   characters.push(randomPornBot());
@@ -201,6 +202,12 @@ showProfile = (character) => {
     let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
     mainContent.append(postElement);
   }
+  if(!posts || posts.length == 0){
+    const haters = createElementWithClassAndParent("div", mainContent);
+    haters.style.paddingBottom="100px";
+    haters.innerText = "Lurker warning: This user has never posted anything. Are you sure they aren't a bot?";
+
+  }
 
   postsTab.onclick = () => {
     mainContent.innerHTML = "";
@@ -208,6 +215,13 @@ showProfile = (character) => {
     for (let post of posts) {
       let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
       mainContent.append(postElement);
+    }
+    if(!posts || posts.length == 0){
+      const haters = createElementWithClassAndParent("div", mainContent);
+      haters.style.paddingBottom="100px";
+
+      haters.innerText = "Lurker warning: This user has never posted anything. Are you sure they aren't a bot?";
+
     }
     postsTab.classList.add("active");
     likesTab.classList.remove("active");
@@ -228,6 +242,8 @@ showProfile = (character) => {
       }
     } else {
       const haters = createElementWithClassAndParent("div", mainContent);
+      haters.style.paddingBottom="100px";
+
       haters.innerText = "Haters gonna hate: looks like this user has never liked anything.";
 
     }

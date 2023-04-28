@@ -124,12 +124,12 @@ class Character {
 
   likePost = (post) => {
     this.liked_posts.push(post);
-    post.likePost();
+    post.likePost(this);
   }
 
   unlikePost = (post) => {
     removeItemOnce(this.liked_posts, post);
-    post.unlikePost();
+    post.unlikePost(this);
   }
 
 
@@ -151,6 +151,7 @@ class Character {
     this.posts.push(post);
     this.reblogged_posts.push(post);
     parent.addChild(post);
+    parent.chronologicalNotes.push({post: post});
     return post;
   }
 
