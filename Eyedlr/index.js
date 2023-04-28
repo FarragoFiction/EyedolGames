@@ -57,6 +57,7 @@ const init = async () => {
   tyrfing = new Tyrfing();
   ria = new Ria();
   fakeJR = new JRFake();
+  camille = new Camille();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -83,6 +84,7 @@ const init = async () => {
   characters.push(ria);
   characters.push(tyrfing);
   characters.push(fakeJR);
+  characters.push(camille);
 
 
   /* let ele = document.querySelector("#container");
@@ -202,9 +204,9 @@ showProfile = (character) => {
     let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
     mainContent.append(postElement);
   }
-  if(!posts || posts.length == 0){
+  if (!posts || posts.length == 0) {
     const haters = createElementWithClassAndParent("div", mainContent);
-    haters.style.paddingBottom="100px";
+    haters.style.paddingBottom = "100px";
     haters.innerText = "Lurker warning: This user has never posted anything. Are you sure they aren't a bot?";
 
   }
@@ -216,9 +218,9 @@ showProfile = (character) => {
       let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
       mainContent.append(postElement);
     }
-    if(!posts || posts.length == 0){
+    if (!posts || posts.length == 0) {
       const haters = createElementWithClassAndParent("div", mainContent);
-      haters.style.paddingBottom="100px";
+      haters.style.paddingBottom = "100px";
 
       haters.innerText = "Lurker warning: This user has never posted anything. Are you sure they aren't a bot?";
 
@@ -242,7 +244,7 @@ showProfile = (character) => {
       }
     } else {
       const haters = createElementWithClassAndParent("div", mainContent);
-      haters.style.paddingBottom="100px";
+      haters.style.paddingBottom = "100px";
 
       haters.innerText = "Haters gonna hate: looks like this user has never liked anything.";
 
@@ -313,7 +315,11 @@ const grabFadedMemories = async () => {
 const grabBlorboPosts = async () => {
   let loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Neville/';
   let tmp = await getImages(loc);
-  console.log("JR NOTE: tmp is", tmp)
+
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/camille/';
+  tmp = await getImages(loc);
 
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 

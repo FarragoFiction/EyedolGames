@@ -68,7 +68,7 @@ class Character {
       return;
     }
     const post = this.findAPostEvenIfYouHaveInteractedWithIt();
-    if (post) {
+    if (post && this.decideIfShouldLike(post)) {
       this.likePost(post);
     }
   }
@@ -115,6 +115,20 @@ class Character {
       }
     }
     return null;
+  }
+
+  decideIfShouldLike = (post)=>{
+    if(!this.secret_name){
+      return true;
+    }
+    console.log(`JR NOTE: ${this.secret_name} is considering liking a post.`,post.text)
+
+    //blorbos only like posts from their own source (or that mention them by name)
+    //(so non wastes can get their vibes)
+    if(post.text.toLowerCase().includes(this.secret_name.toLowerCase())){
+      return true;
+    }
+    return false;
   }
 
   //EVERY child of this should overwrite. this does nothing by design (no not even handle readied reblogs)
@@ -340,6 +354,15 @@ class PornBot extends Character {
 class Observer extends Character {
   name = "puzzledObserver"
   icon = "http://farragofiction.com/PaldemicSim/images/chatSymbols/probablyYou.png"
+  desc = `<p>JR: It's you.<p>
+  <p>JR: You just can't stop digging, can you?</p>
+  <p>JR: Can't stop following in the Wanderer's footsteps.</p>
+  <p>JR: Well, look where it lead you.</p>
+  <p>JR: I suppose I should give you something for looking inward.</p>
+  <p>JR: <a target='_blank' href = 'http://farragofiction.com/TheInternOpensHisEyes/'>here</a></p>
+  <p>JR: If it doesn't have meaning for you, perhaps I was too hasty in accusing you of digging :) :) :)</p>
+  
+  `;
 
 }
 
@@ -494,6 +517,7 @@ class Intern3 extends Character {
 //only reblogs, never posts, reblogs can include a gif or image with text in it, or a link that is the reply
 //mix of violence and yugioh that she reblogs
 class EyeKiller extends Character {
+  secret_name = "eyekiller";
 
 }
 
@@ -526,6 +550,8 @@ scrapes TwoGayJokes
 //and other video game stuff
 //plus links to her favorite burger places on zampanini (with plenty of warnings to make sure you don't get a fee)
 class FlowerChick extends Character {
+  secret_name = "cfo";
+
   //should respond to porn bot posts with 'scaredofthunder.png' in them (ats ria and devona)
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
   //ats the eye killer about this after a porn bot posts it https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
@@ -535,6 +561,7 @@ class FlowerChick extends Character {
 //chats with everyone she can and directs people to jackElope
 //runs the porn bot net so other characters @ her to complain about their spam occasionally
 class Alt extends Character {
+  secret_name = "alt";
 
 }
 
@@ -552,6 +579,7 @@ class Truth extends Character {
 //mostly plugs her various consulting services and gets in absolutely stupid petty feuds with witherby. 
 //(her type of Lonely does NOT play nice with his.)
 class Closer extends Character {
+  secret_name = "closer";
 
 
 }
@@ -569,6 +597,7 @@ neville cares just enough that his text is legible, but has no qualms about synt
 //almost never posts, when he does its either a reblog of content free content or a succinct original post that sheds so much light on things via cutting away the irrelevancies
 class Neville extends Character {
   name = "void_soup";
+  secret_name = "neville";
 
   icon = "images/icons/Neville.png";
   constructor() {
@@ -619,6 +648,8 @@ i figure devona keeps up her all caps and is rambly but always in the tags, neve
 //she is VERY chatty in tags
 //v much likes reblogging adhd and anxiety tips, both for herself and neville
 class Devona extends Character {
+  secret_name = "devona";
+
   // porn bot posts this, devona should reblog and ramble about it https://www.tumblr.com/foone/713863322485850112?source=share
 
 
@@ -638,7 +669,10 @@ one she's gone she's having some fun with it
 //rias Tumblr is full of peewee theories and her obvious parasocial crush
 //(this predates the heartbreak in West)
 class Ria extends Character {
-  name = "ria"
+  name = "we-didnt-start-the-fire"
+  secret_name = "ria";
+  icon = "images/icons/Ria.png";
+
   icon = "asdfsf"
 
   constructor() {
@@ -651,9 +685,16 @@ class Ria extends Character {
 
 //she reblogs with comments and tags of :3 and other emoji, and she reblogs  *their spelling corrections (its like work!)
 class Camille extends Character {
-
+  secret_name = "camille";
+  icon = "images/icons/Camille.png"; //she reassures the Armor this isn't a SOCIAL network, its all business baby. No attachments!
   //she fights that which would stop the coffin
   name = "robitussin-warrior";
+
+  constructor() {
+    super();
+    this.readied_reblogs['Camille/andevenmoredeath'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], true);
+
+  }
 
 }
 
@@ -662,6 +703,8 @@ class Camille extends Character {
 //he logs into tumblr exactly once per day, at set office hours and otherwise treats it like a job
 //people confess the most deranged shit into his ask box, and he forgives them
 class Witherby extends Character {
+  secret_name = "witherby";
+
   //when you post from here, remove
   //      `<a target='blank' href ="tumblrurl"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 
@@ -670,6 +713,7 @@ class Witherby extends Character {
 
 //snail posts constantly, anything cute or friendshaped as well
 class Yongki extends Character {
+  secret_name = "yongki";
 
 
 }
@@ -679,6 +723,8 @@ class Yongki extends Character {
 //K and lee hunter are such good friends because they have the exact same kind of thirst for drama
 
 class LeeHunter extends Character {
+  secret_name = "leehunter";
+
   //porn bot posts this, lee hunter reacts to it
   //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
 
@@ -698,6 +744,8 @@ the poor man's pause
 //complains constantly the autism tips are useless because they are so broad because "everyone is like this"
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
 class Captain extends Character {
+  secret_name = "captain";
+
   /*
     porn bots should post these links and captain should respond to them with bewilderment about yongki
   */
@@ -717,6 +765,8 @@ class Ambrose extends Character {
 //reblogs EVEYR single post he sees with "get reblogged, idiot" in an attempt to go viral
 //also reblogs popular posts with takes on top and eggs lee/hunter on 
 class K extends Character {
+  secret_name = "k"; //the boy just likes and reblogs everything so you will SEE HIM DAMMIT
+
   name = "K";//proud he got such an early name
   icon = 'images/icons/Khana_by_theShadow.png';
 
@@ -760,6 +810,7 @@ class K extends Character {
 //history posts, insignifance of man posts
 //she has a lot of accounts and keeps forgetting which one is hers (so alt usernames?)
 class River extends Character {
+  secret_name = "river";
 
 
 }
@@ -767,6 +818,7 @@ class River extends Character {
 //live blogs her day (down to what time she ate and how much it cost and what she got )
 //and self care tips
 class DocSlaughter extends Character {
+  secret_name = "doc";
 
 
 }
@@ -815,6 +867,7 @@ class Tyrfing extends Character {
 // lots of call out and cancel posts on people they don't like (usually people who insulted parker)
 //occasionally @s parker pictures of hatsune miku and hydration memes
 class Vik extends Character {
+  secret_name = "vik";
 
 
 }
@@ -826,6 +879,7 @@ class Vik extends Character {
 //posts and reblogs pictures of holes
 //deranged anime takes (people reblog his deranged takes and say mean things, then vik attacks them)
 class Parker extends Character {
+  secret_name = "parker";
 
 
 }
@@ -836,12 +890,14 @@ class Parker extends Character {
 //gun safety tips
 //will NEVER reblog Vik (she can sense the danger in them)
 class Hoon extends Character {
+  secret_name = "hoon";
 
 }
 
 //random ass philosophy posts in between posts asking how tumblr works and if he's been an asshole or not
 //never reblogs. likes everything.
 class NAM extends Character {
+  secret_name = "nam";
 
   /*"To the NORTH is ThisIsNotAGame. In it's endless hallways you see countless variations on players and screens and the wistful Might-Have-Beens of a game you wish you could have played. 
 To the SOUTH is JustTruth.  In it's endless corridors lurk the bitter ThisIsNotASpiral that has been watching and trying in vain to keep from tormenting you. Only truths are here, no more masks, no more pretence. 
@@ -862,6 +918,7 @@ class Ronin extends Character {
 //reblogs everything camille does with an awkward attempt to call her out on her badness
 //(his spades crush is so obvious)
 class Peewee extends Character {
+  secret_name = "peewee";
 
 
 }
