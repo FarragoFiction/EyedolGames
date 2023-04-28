@@ -172,7 +172,7 @@ class Post {
   //you can refactor it to make it more readable if you like
   //but im basically half dead from moving
   //and am allowed to be lazy
-  createElement = (clone = false) => {
+  createElement = (clone = false, no_notes = false) => {
     const post = document.createElement("div");
     post.className = "post";
     if (!clone) {
@@ -244,6 +244,9 @@ class Post {
 
     handlePings(bodyContent);
     handleImages(bodyContent);
+    if (no_notes) { //if you're embedded in a notes thing don't render your own notes
+      return post;
+    }
 
     const footer = createElementWithClassAndParent("div", container, "post-footer");
     this.notesEle = createElementWithClassAndParent("div", footer, "notes-count");
@@ -284,15 +287,15 @@ class Post {
       d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
   </svg>`;
 
-  //god this is a nightmare of my own creation, a labyrinth i have trapepd future me in
-  //trying to maintain this will lead me to be lost forever
+    //god this is a nightmare of my own creation, a labyrinth i have trapepd future me in
+    //trying to maintain this will lead me to be lost forever
     const viewNotesEle = createElementWithClassAndParent("div", container, "post-view-notes");
-    viewNotesEle.style.display="none";
+    viewNotesEle.style.display = "none";
     this.notesEle.onclick = () => {
       if (viewNotesEle.style.display == "none") {
         viewNotesEle.style.display = "block";
         //always up to date so recreated each click
-        let reversed_posts = this.chronologicalNotes.reverse();
+        let reversed_posts = this.root ? this.root.chronologicalNotes.reverse() : this.chronologicalNotes.reverse();
         for (let note of reversed_posts) {
           const noteEle = createElementWithClassAndParent("div", viewNotesEle, "note-preview");
           if (note.like) {
@@ -304,7 +307,7 @@ class Post {
             handlePings(likedthis);
 
           } else if (note.post) {
-            let postElement = note.post.createElement(true);//passing true creates a clone instead of replacing the internal element
+            let postElement = note.post.createElement(true, true);//passing true creates a clone instead of replacing the internal element
             noteEle.append(postElement);
           }
 
