@@ -291,6 +291,8 @@ class PornBot extends Character {
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/t9HUyHmLFzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/R2kovI6tpRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       `why does this seem so familiar? <br><a target='blank' href ="https://www.tumblr.com/the-phoenix-heart/704082336094076928/dies-first-salticid-youre-amazing-and-i-love"><img src ='images/Secrets/tumblr_screenshots/porn_bot.png'></a>`,
+      `${rand.pickFrom(links)} <br><a target='blank' href ="https://www.tumblr.com/nostalgebraist-autoresponder/715946813015932929/hey-frank-what-do-you-think-of-the-new-pornbots?source=share"><img src ='images/Secrets/tumblr_screenshots/no_porn_only_sus_links.PNG'></a>`,
+      `eyedlrl sure is a site <br><a target='blank' href ="https://www.tumblr.com/were--ralph/714800413465100288/tumblr-is-unique-bc-like-its-collaborative"><img src ='images/Secrets/tumblr_screenshots/tumblr.PNG'></a>`,
 
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
@@ -732,6 +734,7 @@ class Camille extends Character {
     this.readied_reblogs['Camille/training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: monologue"], true);
     this.readied_reblogs['Camille/watches2'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: watching"], true);
     this.readied_reblogs['Camille/watching'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: watching"], true);
+    this.readied_reblogs["mario kart"] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","mario!!"], ["wow", "you okay, op?","trigger warning mario kart"], true);
 
     this.readied_reblogs['Camille/andevenmoredeath'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], true);
     this.readied_reblogs['Camille/bit'] = new Post(this, ":3", null, [":3"], ["lol", ":/ people need to take things seriously"],["lol", ":/ people need to take things seriously"], true);
@@ -743,14 +746,12 @@ class Camille extends Character {
     this.readied_reblogs['Camille/practice'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","acab!"], ["wow", "you okay, op?","trigger warning death penalty"], true);
     this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
     this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs[' rite '] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs[' rite '] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
     this.readied_reblogs['recieve'] = new Post(this, "*recieve :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
     this.readied_reblogs['zampanio is a very'] = new Post(this, "Zampanio is a very fun game. You should play it...................................../ads,fasdfsa", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["Whoa, did they DIE writing that?"], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"], true)
     delete (this.readied_reblogs["zampanio"]);//camille dies if she does this, so special post, rare post
@@ -884,8 +885,21 @@ class K extends Character {
 //history posts, insignifance of man posts
 //she has a lot of accounts and keeps forgetting which one is hers (so alt usernames?)
 class River extends Character {
+  name="has-a-bed-and-never-sleeps";
+  //river riddles becuase the horseshoes amuses me. shes v tired and quiet.
+  names = ['has-a-bed-and-never-sleeps','always-runs-and-never-walks','always-murmurs-never-talks','has-a-mouth-and-never-eats']
+  icon = 'images/icons/Nowitna_river.jpg';
   secret_name = "river";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.name = rand.pickFrom(this.names);
+    this.blorboAI(parentToRenderTo, 0.1, 0.1, 1.0);
+  }
 
 }
 
