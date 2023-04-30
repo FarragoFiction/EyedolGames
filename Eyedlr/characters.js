@@ -965,21 +965,24 @@ class Witherby extends Character {
 
   }
 
-  handleAsks = (parentToRenderTo) =>{
+  handleAsks = (parentToRenderTo, premadeAsk) =>{
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
     const starts = ["Forgive me father","Forgive me daddy","One time","When i was a kid","Last week",`About a ${rand.pickFrom(["year","month","day","decade"])} ago`,`Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
     const sins = [`I murdered someone.`,'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy","girl"])}`,`I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`,"I left my little brother to die",`I shopliffted ${rand.pickFrom(pettyTheftTargets)}`,`I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
     const endings = ["Was I wrong?","Was I an asshole?", "Do you think that's fucked up?","Can I ever be forgiven?","Am I going to be punished?"];
-    const question = `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
+    let question = premadeAsk? premadeAsk:`${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
-    //JR NOTE: TODO flesh out witherby's responses. he shouldn't be flippant
-    //but instead an illusion of companionship and friendliness
-    //his soul is a hare
+    if(!premadeAsk){
+      question = randomQuirk(rand).apply(question);
+    }
+ 
     let responses = ["Wow, sounds rough,buddy!","I forgive you.","You are forgiven.","It's okay."];
     if(question.includes("shoplift") || question.includes("steal")  || question.includes("stole")){
       responses = ["It is always morally correct to steal from shops.","You did what you had to do.", "I understand why you had to do that. It's okay."]
     }else if (question.includes("murder") || question.includes("kill") || question.includes("die")){
       responses = ["..."]; //one sin doesn't forgive EVERY sin
+    }else if(question.includes("bad")){
+      responses = ["For the last time, I am not interested."]
     }
 
     const tags = ["confession"];
