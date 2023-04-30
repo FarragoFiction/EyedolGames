@@ -3,6 +3,7 @@
 class Character {
   name;
   //you don't have to ever acknowledge these but you CAN if you like
+  //characterName, text pairs
   pending_asks = [];
   liked_posts = []; //can view a profiles likes
   icon; //could be an absolute or relative url
@@ -22,6 +23,10 @@ class Character {
     if (this.name) {
       this.name = this.name.toLowerCase(); //i keep forgetting
     }
+  }
+
+  submitAsk = (characterName,text)=>{
+    this.pending_asks.push({characterName, text});
   }
 
   createCommonReadiedReblogs = () => {
@@ -955,6 +960,7 @@ class Witherby extends Character {
   name = "confess-your-sins"; //its a LOT easier to feed one sin once the internet exists
   icon = "images/icons/witherby.jpg";
   secret_name = "Witherby";
+  block_list = []; //lonely boy blocks an awful lot of people. he is NOT willing to put up with bullshit
 
 
   //when you post from here, remove
@@ -962,15 +968,19 @@ class Witherby extends Character {
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
-
+    this.submitAsk("K","What kind of creepy shit are you doing, Witherby? You get off on this shit? Knowing everyones secrets? You think it makes it better that you do it out in the open instead of in your shitty little box?  Stupid Witherby. Stupid little creepy Witherby. You don't even get what this place is for! I feel SORRY for you, really. Get a life!")
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) =>{
+    //just generate an ask rather than deal with a blocked char.
+    if(premadeAsk && this.block_list.includes(premadeAsk.characterName)){
+      premadeAsk = null;
+    }
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
     const starts = ["Forgive me father","Forgive me daddy","One time","When i was a kid","Last week",`About a ${rand.pickFrom(["year","month","day","decade"])} ago`,`Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
-    const sins = [`I murdered someone.`,'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy","girl"])}`,`I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`,"I left my little brother to die",`I shopliffted ${rand.pickFrom(pettyTheftTargets)}`,`I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const sins = ["I killed them all.",`I murdered someone.`,'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy","girl"])}`,`I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`,"I left my little brother to die",`I shopliffted ${rand.pickFrom(pettyTheftTargets)}`,`I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
     const endings = ["Was I wrong?","Was I an asshole?", "Do you think that's fucked up?","Can I ever be forgiven?","Am I going to be punished?"];
-    let question = premadeAsk? premadeAsk:`${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
+    let question = premadeAsk? premadeAsk.text:`${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
     if(!premadeAsk){
       question = randomQuirk(rand).apply(question);
@@ -985,11 +995,16 @@ class Witherby extends Character {
       responses = ["For the last time, I am not interested."]
     }
 
+    if(premadeAsk && premadeAsk.characterName === "K"){
+      responses = ["Blocked."];
+      this.block_list.push(premadeAsk.characterName);
+    }
+
     const tags = ["confession"];
     //witherby doesn't judge but his followers sure do
     const suggested_reblogs = ["wow","what the hell", "who DOES that","you should feel ashamed"]
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), question, "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    const post = this.answerAnAsk(rand.pickFrom(responses), question, premadeAsk?premadeAsk.characterName:"Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -1001,7 +1016,10 @@ class Witherby extends Character {
     //the thing about witherby is, he is never going to interact with this site on anything but a business level
     //he just also doesn't know you can see his likes
     //but ALSO he should have weird fucking asks.
-    this.handleAsks(parentToRenderTo);
+    //if its empty thats okay
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    removeItemOnce(this.pending_asks, premadeAsk);
+    this.handleAsks(parentToRenderTo,premadeAsk);
   }
 
 }
