@@ -250,7 +250,7 @@ const randomPornBotIcon = () => {
 }
 
 const randomPornBotName = () => {
-  return rand.pickFrom(first_names) + getRandomNumberBetween(0, 2022);
+  return rand.pickFrom(first_names).toLowerCase() + getRandomNumberBetween(0, 2022);
 }
 
 const randomPornBot = () => {
@@ -355,6 +355,13 @@ class PornBot extends Character {
       possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
     }
 
+    //JR NOTE: TODO flesh this out
+    for(let obsession of this.obsessions){
+      possiblePosts.push(`<span data-obession="${obsession.name}">Wow can you believe SOME people think ${obsession.randomOpinion(rand)}?</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} is cute!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Should I go to ${obsession.randomLocation(rand)} in my next</span>`);
+    }
+
     return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments.concat(links), innaneComments);
 
   }
@@ -376,6 +383,11 @@ class PornBot extends Character {
     }
   }
 
+  randomAsk = ()=>{
+    const ret = [...links,`Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`,"Have you played Zampanio yet?","Did you know I can see you?","Are you still there?","Are you in the rabbit hole yet?","Are you stuck?","Are you lost?"];
+    return rand.pickFrom(ret)
+  }
+
 
   tick = async (parentToRenderTo) => {
     //quotidians prefer to do preprogrammed actions if possible
@@ -390,11 +402,14 @@ class PornBot extends Character {
     }
 
 
+
     let target = this.findAPostEvenIfYouHaveInteractedWithIt();
 
     if (target && rand.nextDouble() > 0.75) {
       if (rand.nextDouble() > 0.5) {
         this.likePost(target);
+        //when they like a post also pester the owner with a random ask
+        target.owner.submitAsk(this.name, this.randomAsk());
       } else {
         let post = this.quotidianReblog(target);
         if (post && parentToRenderTo) {
@@ -960,6 +975,7 @@ class Witherby extends Character {
   name = "confess-your-sins"; //its a LOT easier to feed one sin once the internet exists
   icon = "images/icons/witherby.jpg";
   secret_name = "Witherby";
+  desc = "Submit your confessions to me and when its my office hours I may forgive you for them. No, I will not post my office hours. No, I will not explain why I answer certain asks and not others. No, I will not unblock you."
   block_list = []; //lonely boy blocks an awful lot of people. he is NOT willing to put up with bullshit
 
 
@@ -968,7 +984,6 @@ class Witherby extends Character {
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
-    this.submitAsk("K","What kind of creepy shit are you doing, Witherby? You get off on this shit? Knowing everyones secrets? You think it makes it better that you do it out in the open instead of in your shitty little box?  Stupid Witherby. Stupid little creepy Witherby. You don't even get what this place is for! I feel SORRY for you, really. Get a life!")
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) =>{
@@ -987,15 +1002,16 @@ class Witherby extends Character {
     }
  
     let responses = ["Wow, sounds rough,buddy!","I forgive you.","You are forgiven.","It's okay."];
-    if(question.includes("shoplift") || question.includes("steal")  || question.includes("stole")){
+    if(question.toLowerCase().includes("shoplift") || question.toLowerCase().includes("steal")  || question.toLowerCase().includes("stole")){
       responses = ["It is always morally correct to steal from shops.","You did what you had to do.", "I understand why you had to do that. It's okay."]
-    }else if (question.includes("murder") || question.includes("kill") || question.includes("die")){
+    }else if (question.toLowerCase().includes("murder") || question.toLowerCase().includes("kill") || question.toLowerCase().includes("die")){
       responses = ["..."]; //one sin doesn't forgive EVERY sin
-    }else if(question.includes("bad")){
+    }else if(question.toLowerCase().includes("bad")){
       responses = ["For the last time, I am not interested."]
     }
 
-    if(premadeAsk && premadeAsk.characterName === "K"){
+    //he auto blocks K and anyone with numbers in their url (it makes you look like a pornbot)
+    if(premadeAsk && (premadeAsk.characterName === "K" || /\d/.test(premadeAsk.characterName))){
       responses = ["Blocked."];
       this.block_list.push(premadeAsk.characterName);
     }
@@ -1020,6 +1036,9 @@ class Witherby extends Character {
     let premadeAsk = rand.pickFrom(this.pending_asks)
     removeItemOnce(this.pending_asks, premadeAsk);
     this.handleAsks(parentToRenderTo,premadeAsk);
+    if(this.posts.length === 10){
+      this.submitAsk("K","What kind of creepy shit are you doing, Witherby? You get off on this shit? Knowing everyones secrets? You think it makes it better that you do it out in the open instead of in your shitty little box?  Stupid Witherby. Stupid little creepy Witherby. You don't even get what this place is for! I feel SORRY for you, really. Get a life!")
+    }
   }
 
 }
@@ -1266,6 +1285,10 @@ class Tyrfing extends Character {
 
   tick = (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    if(rand.nextDouble()>0.75){
+      rand.pickFrom(characters).submitAsk(this.name, "HAVE YOU SUBMITTED YOURSELF TO NIDHOGG'S DIVINE WILL?");
+
+    }
     //he can not be stopped.
     this.readied_reblogs["nidhogg"] = (new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
 
