@@ -59,6 +59,7 @@ const init = async () => {
   fakeJR = new JRFake();
   camille = new Camille();
   river = new River();
+  killer = new EyeKiller();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -87,6 +88,7 @@ const init = async () => {
   characters.push(fakeJR);
   characters.push(camille);
   characters.push(river);
+  characters.push(killer);
 
 
   /* let ele = document.querySelector("#container");
@@ -327,6 +329,11 @@ const grabBlorboPosts = async () => {
 
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/River/';
+  tmp = await getImages(loc);
+
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/eyekiller/';
   tmp = await getImages(loc);
 
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
