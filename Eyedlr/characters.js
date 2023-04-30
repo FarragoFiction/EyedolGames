@@ -38,7 +38,7 @@ class Character {
   }
 
   checkBlorboReblog = (parentToRenderTo, odds) => {
-    if (rand.nextDouble() > odds) {
+    if (rand.nextDouble() < odds) {
       let post = this.handleReadiedReblog();
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
@@ -51,7 +51,7 @@ class Character {
 
   checkBlorboPost = (parentToRenderTo, odds) => {
 
-    if (rand.nextDouble() > odds) {
+    if (rand.nextDouble() < odds) {
       let post = this.handleReadiedPost();
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
@@ -65,7 +65,7 @@ class Character {
   //there is no rhyme or reason to what anyone likes, just like random shit
   //not worth putting more effort in i wanna get to the meat
   checkBlorboLike = (odds) => {
-    if (rand.nextDouble() < odds) {
+    if (rand.nextDouble() > odds) {
       return false;
     }
     const post = this.findAPostEvenIfYouHaveInteractedWithIt();
@@ -77,9 +77,13 @@ class Character {
 
   //hmm.  i should probably do the highest odd action first. 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
-
+    if(this.secret_name ==="River"){
+      console.log("JR NOTE: what are the odds river will like?", oddsLike)
+    }
     //check your highest priority thing first
     if(oddsLike > oddsPost && oddsLike >oddsReblog){
+      console.log("JR NOTE: like is the highest odds")
+
       let post = this.checkBlorboLike(oddsLike);
       if (post) {
         return;
