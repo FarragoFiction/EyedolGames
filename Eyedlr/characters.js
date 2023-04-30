@@ -187,8 +187,22 @@ class Character {
   }
 
 
+  //just appends the ask to the text
+  answerAnAsk(text, question, askerName, tags, suggested_reblogs, suggested_tags) {
+    const ask = `<div class="ask">
+    <div class="who-asked">
+    <span class='asker'>@${askerName}</span> asked: </div>
+    <div class ="question-asked">${question}</div>
+    </div>`;
+
+
+    const post = new Post(this, ask+text, null, tags.concat(askerName), suggested_reblogs, suggested_tags,false);
+    this.posts.push(post);
+    return post;
+  }
+
   createNewPost(text, tags, suggested_reblogs, suggested_tags) {
-    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags);
+    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags,false);
     this.posts.push(post);
     return post;
   }
@@ -600,7 +614,7 @@ class Intern3 extends Character {
 //only reblogs, never posts, reblogs can include a gif or image with text in it, or a link that is the reply
 //mix of violence and yugioh that she reblogs
 class EyeKiller extends Character {
-  name="kGL%55Wgyon2$T4V" //no she does not want you to know who she is or generate a user name that has meaning to her. thats how you FIND her.
+  name="kGL%55Wgyon2$T4V_23497" //no she does not want you to know who she is or generate a user name that has meaning to her. thats how you FIND her.
   secret_name = "eyekiller";
   icon = "images/icons/killer.png";
   desc = `"Never say "who's there?" Don't you watch scary movies? It's a death wish. You might as well come out to investigate a strange noise or something." - Scream(1996)`;
@@ -622,11 +636,11 @@ class EyeKiller extends Character {
 
 //reblogs eye killer posts and also yugioh posts
 class Himbo extends Character {
-  name = "???";
-  icon = "images/icons/Neville.png";
+  name = "maxxcchallenge";
+  icon = "images/icons/himbo_right_hand.png";
   constructor() {
     super();
-    this.readied_reblogs['cards'] = new Post(this, "lol", null, ["lol","so true","thats why you should find a girl","who already plays"], [], [], true);
+    this.readied_reblogs['cards'] = new Post(this, "LOL!", null, ["lol","so true","thats why you should find a girl","who already plays"], [], [], true);
 
   }
 
@@ -638,8 +652,8 @@ class Himbo extends Character {
 
 //posted like twice, both attempts at engaging, then just bounced off eyedlr
 class Hostage extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "railTaser";
+  icon = "images/icons/hostage_boss.png";
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
@@ -938,9 +952,10 @@ class Camille extends Character {
 //he logs into tumblr exactly once per day, at set office hours and otherwise treats it like a job
 //people confess the most deranged shit into his ask box, and he forgives them
 class Witherby extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
-  secret_name = "witherby";
+  name = "confess-your-sins"; //its a LOT easier to feed one sin once the internet exists
+  icon = "images/icons/witherby.jpg";
+  secret_name = "Witherby";
+
 
   //when you post from here, remove
   //      `<a target='blank' href ="tumblrurl"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
@@ -950,8 +965,40 @@ class Witherby extends Character {
 
   }
 
+  handleAsks = (parentToRenderTo) =>{
+    const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
+    const starts = ["Forgive me father","Forgive me daddy","One time","When i was a kid","Last week",`About a ${rand.pickFrom(["year","month","day","decade"])} ago`,`Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
+    const sins = [`I murdered someone.`,'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy","girl"])}`,`I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`,"I left my little brother to die",`I shopliffted ${rand.pickFrom(pettyTheftTargets)}`,`I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const endings = ["Was I wrong?","Was I an asshole?", "Do you think that's fucked up?","Can I ever be forgiven?","Am I going to be punished?"];
+    const question = `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
+
+    //JR NOTE: TODO flesh out witherby's responses. he shouldn't be flippant
+    //but instead an illusion of companionship and friendliness
+    //his soul is a hare
+    let responses = ["Wow, sounds rough,buddy!","I forgive you.","You are forgiven.","It's okay."];
+    if(question.includes("shoplift") || question.includes("steal")  || question.includes("stole")){
+      responses = ["It is always morally correct to steal from shops.","You did what you had to do.", "I understand why you had to do that. It's okay."]
+    }else if (question.includes("murder") || question.includes("kill") || question.includes("die")){
+      responses = ["..."]; //one sin doesn't forgive EVERY sin
+    }
+
+    const tags = ["confession"];
+    //witherby doesn't judge but his followers sure do
+    const suggested_reblogs = ["wow","what the hell", "who DOES that","you should feel ashamed"]
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), question, "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
   tick = async (parentToRenderTo) => {
-    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    this.blorboAI(parentToRenderTo, 0.0, 0.0, 1.0);
+    //the thing about witherby is, he is never going to interact with this site on anything but a business level
+    //he just also doesn't know you can see his likes
+    //but ALSO he should have weird fucking asks.
+    this.handleAsks(parentToRenderTo);
   }
 
 }

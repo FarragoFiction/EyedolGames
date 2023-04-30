@@ -60,6 +60,8 @@ const init = async () => {
   camille = new Camille();
   river = new River();
   killer = new EyeKiller();
+  himbo = new Himbo();
+  witherby = new Witherby();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -89,6 +91,8 @@ const init = async () => {
   characters.push(camille);
   characters.push(river);
   characters.push(killer);
+  characters.push(himbo);
+  characters.push(witherby);
 
 
   /* let ele = document.querySelector("#container");
@@ -337,6 +341,12 @@ const grabBlorboPosts = async () => {
   tmp = await getImages(loc);
 
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Witherby/';
+  tmp = await getImages(loc);
+
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
 
 }
 
