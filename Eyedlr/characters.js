@@ -2,6 +2,8 @@
 
 class Character {
   name;
+  //you don't have to ever acknowledge these but you CAN if you like
+  pending_asks = [];
   liked_posts = []; //can view a profiles likes
   icon; //could be an absolute or relative url
   pinned_post;//each char has up to one of these
@@ -77,11 +79,11 @@ class Character {
 
   //hmm.  i should probably do the highest odd action first. 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
-    if(this.secret_name ==="River"){
+    if (this.secret_name === "River") {
       console.log("JR NOTE: what are the odds river will like?", oddsLike)
     }
     //check your highest priority thing first
-    if(oddsLike > oddsPost && oddsLike >oddsReblog){
+    if (oddsLike > oddsPost && oddsLike > oddsReblog) {
       console.log("JR NOTE: like is the highest odds")
 
       let post = this.checkBlorboLike(oddsLike);
@@ -90,7 +92,7 @@ class Character {
       }
     }
 
-    if(oddsPost > oddsLike && oddsPost >oddsReblog){
+    if (oddsPost > oddsLike && oddsPost > oddsReblog) {
       let post = this.checkBlorboPost(oddsLike);
       if (post) {
         return;
@@ -98,7 +100,7 @@ class Character {
     }
 
 
-    if(oddsReblog > oddsLike && oddsReblog >oddsPost){
+    if (oddsReblog > oddsLike && oddsReblog > oddsPost) {
       let post = this.checkBlorboReblog(oddsLike);
       if (post) {
         return;
@@ -145,8 +147,8 @@ class Character {
         if (target.text.toLowerCase().includes(key.toLowerCase())) {
           let response = this.readied_reblogs[key];
           //no spam
-          if(this.delete_readied_reblogs){
-          delete (this.readied_reblogs[key]);
+          if (this.delete_readied_reblogs) {
+            delete (this.readied_reblogs[key]);
           }
           // /parent, text, tags, suggested_reblogs, suggested_tags)
           return this.reblogAPost(target, response.text, response.tags, response.suggested_reblogs, response.suggested_tags);
@@ -157,13 +159,13 @@ class Character {
     return null;
   }
 
-  decideIfShouldLike = (post)=>{
-    if(!this.secret_name){
+  decideIfShouldLike = (post) => {
+    if (!this.secret_name) {
       return true;
     }
     //blorbos only like posts from their own source (or that mention them by name)
     //(so non wastes can get their vibes)
-    if(post.text.toLowerCase().includes(this.secret_name.toLowerCase())){
+    if (post.text.toLowerCase().includes(this.secret_name.toLowerCase())) {
       return true;
     }
     return false;
@@ -203,7 +205,7 @@ class Character {
     this.posts.push(post);
     this.reblogged_posts.push(post);
     parent.addChild(post);
-    parent.chronologicalNotes.push({post: post});
+    parent.chronologicalNotes.push({ post: post });
     return post;
   }
 
@@ -300,7 +302,7 @@ class PornBot extends Character {
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/t9HUyHmLFzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/R2kovI6tpRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
       `why does this seem so familiar? <br><a target='blank' href ="https://www.tumblr.com/the-phoenix-heart/704082336094076928/dies-first-salticid-youre-amazing-and-i-love"><img src ='images/Secrets/tumblr_screenshots/porn_bot.png'></a>`,
-      `${rand.pickFrom(links)} <br><a target='blank' href ="https://www.tumblr.com/nostalgebraist-autoresponder/715946813015932929/hey-frank-what-do-you-think-of-the-new-pornbots?source=share"><img src ='images/Secrets/tumblr_screenshots/no_porn_only_sus_links.PNG'></a>`,
+    `${rand.pickFrom(links)} <br><a target='blank' href ="https://www.tumblr.com/nostalgebraist-autoresponder/715946813015932929/hey-frank-what-do-you-think-of-the-new-pornbots?source=share"><img src ='images/Secrets/tumblr_screenshots/no_porn_only_sus_links.PNG'></a>`,
       `eyedlrl sure is a site <br><a target='blank' href ="https://www.tumblr.com/were--ralph/714800413465100288/tumblr-is-unique-bc-like-its-collaborative"><img src ='images/Secrets/tumblr_screenshots/tumblr.PNG'></a>`,
       `what a terrible plague... <br><a target='blank' href ="https://www.tumblr.com/k25ff/715776552318664704/a-warning-to-new-tumblr-users"><img src ='images/Secrets/tumblr_screenshots/porn_bots.png'></a>`,
 
@@ -339,7 +341,7 @@ class PornBot extends Character {
   }
 
   quotidianReblog = (post) => {
-    let innaneComments = ["Am I a real boy now?","look what i found!!!!","did i do good?","caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    let innaneComments = ["Am I a real boy now?", "look what i found!!!!", "did i do good?", "caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     if (post.suggested_reblogs && rand.nextDouble() > 0.5) {
       let t = [];
       if (post.suggested_tags) {
@@ -420,7 +422,15 @@ class Wanda extends Character {
 
   //wanda likes youtube better , have a porn bot post this: https://www.tumblr.com/batastrophe7/714415053266436096/yea-and-it-fucking-kicked-ass-and-it-fucking?source=share
 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -525,7 +535,15 @@ class Wanderer extends Character {
 //if they post "i think i'm close to figuring out where the eye killer will strike next" they never post again
 class Wodin extends Character {
 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
@@ -539,12 +557,28 @@ class Wodin extends Character {
 //very good fanfic by the wisp: https://archiveofourown.org/works/46552111/chapters/117224734?show_comments=true&view_full_work=false#comment_642382519
 class Intern1 extends Character {
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //interacts with Wodin, reblogging memes and @ing them constantly 
 class Intern2 extends Character {
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -552,31 +586,85 @@ class Intern2 extends Character {
 //https://archiveofourown.org/works/35075182 his origin
 
 class Intern3 extends Character {
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //only reblogs, never posts, reblogs can include a gif or image with text in it, or a link that is the reply
 //mix of violence and yugioh that she reblogs
 class EyeKiller extends Character {
+  name="kGL%55Wgyon2$T4V" //no she does not want you to know who she is or generate a user name that has meaning to her. thats how you FIND her.
   secret_name = "eyekiller";
+  icon = "images/icons/killer.png";
+  desc = `"Never say "who's there?" Don't you watch scary movies? It's a death wish. You might as well come out to investigate a strange noise or something." - Scream(1996)`;
+  constructor() {
+    super();
+    //she is broad AI like river, but responds to the first thing that gets her attention then hides
+    this.readied_reblogs['eyekiller/dontknowsource_butitmightliterallybeherbackstory'] = new Post(this, "X", null, ["X"], [], [], true);
+    this.readied_reblogs['meow'] = new Post(this, "!", null, ["!"], [], [], true);
+    this.readied_reblogs['cards'] = new Post(this, "!", null, ["!"], [], [], true);
+    this.readied_reblogs['innocent'] = new Post(this, "?", null, ["?"], [], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
 //reblogs eye killer posts and also yugioh posts
 class Himbo extends Character {
+  name = "???";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    this.readied_reblogs['cards'] = new Post(this, "lol", null, ["lol","so true","thats why you should find a girl","who already plays"], [], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
 //posted like twice, both attempts at engaging, then just bounced off eyedlr
 class Hostage extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
 //flat out posts spoilers, fandom blog
 class Italian extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -592,27 +680,58 @@ scrapes TwoGayJokes
 //and other video game stuff
 //plus links to her favorite burger places on zampanini (with plenty of warnings to make sure you don't get a fee)
 class FlowerChick extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "cfo";
 
   //should respond to porn bot posts with 'scaredofthunder.png' in them (ats ria and devona)
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
   //ats the eye killer about this after a porn bot posts it https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //chats with everyone she can and directs people to jackElope
 //runs the porn bot net so other characters @ her to complain about their spam occasionally
 class Alt extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "alt";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //reblogs the things alt posts
 //whenever it does reblog, only speaks in the tags
 class Truth extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   /*
     posts screenshots of north/south/east secrets and how to get them 
   */
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -621,8 +740,18 @@ class Truth extends Character {
 //mostly plugs her various consulting services and gets in absolutely stupid petty feuds with witherby. 
 //(her type of Lonely does NOT play nice with his.)
 class Closer extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "closer";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -639,9 +768,10 @@ neville cares just enough that his text is legible, but has no qualms about synt
 //almost never posts, when he does its either a reblog of content free content or a succinct original post that sheds so much light on things via cutting away the irrelevancies
 class Neville extends Character {
   name = "void_soup";
+  icon = "images/icons/Neville.png";
+
   secret_name = "neville";
 
-  icon = "images/icons/Neville.png";
   constructor() {
     super();
     this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
@@ -690,11 +820,21 @@ i figure devona keeps up her all caps and is rambly but always in the tags, neve
 //she is VERY chatty in tags
 //v much likes reblogging adhd and anxiety tips, both for herself and neville
 class Devona extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "devona";
 
   // porn bot posts this, devona should reblog and ramble about it https://www.tumblr.com/foone/713863322485850112?source=share
 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 /*
@@ -748,47 +888,47 @@ class Camille extends Character {
     this.readied_reblogs['corpse'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['headless'] = new Post(this, ":3", null, [":3"], [""], [""], true);
 
-    this.readied_reblogs['Camille/relentless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: horrors"], true);
-    this.readied_reblogs['Camille/relentless_training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: horrors"], true);
-    this.readied_reblogs['Camille/tall'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: gaslighting"], true);
-    this.readied_reblogs['Camille/training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: monologue"], true);
-    this.readied_reblogs['Camille/watches2'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: watching"], true);
-    this.readied_reblogs['Camille/watching'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: watching"], true);
-    this.readied_reblogs["mario kart"] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","mario!!"], ["wow", "you okay, op?","trigger warning mario kart"], true);
+    this.readied_reblogs['Camille/relentless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: horrors"], true);
+    this.readied_reblogs['Camille/relentless_training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: horrors"], true);
+    this.readied_reblogs['Camille/tall'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: gaslighting"], true);
+    this.readied_reblogs['Camille/training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: monologue"], true);
+    this.readied_reblogs['Camille/watches2'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: watching"], true);
+    this.readied_reblogs['Camille/watching'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: watching"], true);
+    this.readied_reblogs["mario kart"] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "mario!!"], ["wow", "you okay, op?", "trigger warning mario kart"], true);
 
-    this.readied_reblogs['Camille/andevenmoredeath'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], ["wow", "you okay, op?","i dunno i'm pretty afraid of death"], true);
-    this.readied_reblogs['Camille/bit'] = new Post(this, ":3", null, [":3"], ["lol", ":/ people need to take things seriously"],["lol", ":/ people need to take things seriously"], true);
-    this.readied_reblogs['Camille/collar'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","thats so scary!"], ["wow", "you okay, op?","trigger warning heads falling off"], true);
-    this.readied_reblogs['Camille/cold'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","thats so scary!"], ["wow", "you okay, op?","trigger warning ghosts"], true);
-    this.readied_reblogs['Camille/death'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","acab!"], ["wow", "you okay, op?","trigger warning death penalty"], true);
-    this.readied_reblogs['Camille/gomez'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","hot!"], ["wow", "you okay, op?","trigger warning gomez addams"], true);
-    this.readied_reblogs['Camille/headless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","ew"], ["wow", "you okay, op?","trigger warning heads falling off"], true);
-    this.readied_reblogs['Camille/practice'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","acab!"], ["wow", "you okay, op?","trigger warning death penalty"], true);
-    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs[' rite '] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs[' rite '] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
-    this.readied_reblogs['recieve'] = new Post(this, "*recieve :3", null, [":3"], [], ["wow", "did you really have to correct that?","trigger warning typo correction"], true);
+    this.readied_reblogs['Camille/andevenmoredeath'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "i dunno i'm pretty afraid of death"], ["wow", "you okay, op?", "i dunno i'm pretty afraid of death"], true);
+    this.readied_reblogs['Camille/bit'] = new Post(this, ":3", null, [":3"], ["lol", ":/ people need to take things seriously"], ["lol", ":/ people need to take things seriously"], true);
+    this.readied_reblogs['Camille/collar'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "thats so scary!"], ["wow", "you okay, op?", "trigger warning heads falling off"], true);
+    this.readied_reblogs['Camille/cold'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "thats so scary!"], ["wow", "you okay, op?", "trigger warning ghosts"], true);
+    this.readied_reblogs['Camille/death'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "acab!"], ["wow", "you okay, op?", "trigger warning death penalty"], true);
+    this.readied_reblogs['Camille/gomez'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "hot!"], ["wow", "you okay, op?", "trigger warning gomez addams"], true);
+    this.readied_reblogs['Camille/headless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "ew"], ["wow", "you okay, op?", "trigger warning heads falling off"], true);
+    this.readied_reblogs['Camille/practice'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "acab!"], ["wow", "you okay, op?", "trigger warning death penalty"], true);
+    this.readied_reblogs['teh'] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs['rite'] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs[' teh '] = new Post(this, "*the :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs[' rite '] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs[' rite '] = new Post(this, "*right :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
+    this.readied_reblogs['recieve'] = new Post(this, "*recieve :3", null, [":3"], [], ["wow", "did you really have to correct that?", "trigger warning typo correction"], true);
     this.readied_reblogs['zampanio is a very'] = new Post(this, "Zampanio is a very fun game. You should play it...................................../ads,fasdfsa", null, ["zampanio", "game", "free-to-play", "fun,", "friday"], ["Whoa, did they DIE writing that?"], ["creepypasta", "unreality", "zampanio", "don't play it", "maybe you should play it", "don't trust it", "it is not what it is", "an eye for an eye"], true)
     delete (this.readied_reblogs["zampanio"]);//camille dies if she does this, so special post, rare post
 
   }
 
   tick = async (parentToRenderTo) => {
-    if(this.dead){
+    if (this.dead) {
       return;
     }
     this.blorboAI(parentToRenderTo, 0.5, 0.75, 0.5);
-    for(let post of this.posts){
-      if(post.text.includes("Zampanio")){
+    for (let post of this.posts) {
+      if (post.text.includes("Zampanio")) {
         this.dead = true; //she will never post again
       }
     }
-    
+
   }
 
 }
@@ -798,11 +938,21 @@ class Camille extends Character {
 //he logs into tumblr exactly once per day, at set office hours and otherwise treats it like a job
 //people confess the most deranged shit into his ask box, and he forgives them
 class Witherby extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "witherby";
 
   //when you post from here, remove
   //      `<a target='blank' href ="tumblrurl"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -810,7 +960,15 @@ class Witherby extends Character {
 class Yongki extends Character {
   secret_name = "yongki";
 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //sharing an account, vague post about each other and various other people
@@ -818,11 +976,21 @@ class Yongki extends Character {
 //K and lee hunter are such good friends because they have the exact same kind of thirst for drama
 
 class LeeHunter extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "leehunter";
 
   //porn bot posts this, lee hunter reacts to it
   //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
@@ -839,7 +1007,18 @@ the poor man's pause
 //complains constantly the autism tips are useless because they are so broad because "everyone is like this"
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
 class Captain extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "captain";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
   /*
     porn bots should post these links and captain should respond to them with bewilderment about yongki
@@ -852,8 +1031,17 @@ class Captain extends Character {
 //train facts, train memes, train pictures, all day every day. occasionally a rat pick for Jose living in her brain
 //that video of the darkness taking the train
 class Ambrose extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
 
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
@@ -873,6 +1061,11 @@ class K extends Character {
     if (target.text.toLowerCase().includes("k")) {
       return this.reblogAPost(target, "get reblogged idiot", ["get reblogged", "idiot", "k", "k post", "check out my profile for more quality content"], ["k", "kek", "k spam", "spam", "meme", "lol", "why would you do this", "so annoying", "trigger warning: annoying"]);
     }
+
+  }
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
 
@@ -905,9 +1098,9 @@ class K extends Character {
 //history posts, insignifance of man posts
 //she has a lot of accounts and keeps forgetting which one is hers (so alt usernames?)
 class River extends Character {
-  name="has-a-bed-and-never-sleeps";
+  name = "has-a-bed-and-never-sleeps";
   //river riddles becuase the horseshoes amuses me. shes v tired and quiet.
-  names = ['has-a-bed-and-never-sleeps','always-runs-and-never-walks','always-murmurs-never-talks','has-a-mouth-and-never-eats']
+  names = ['has-a-bed-and-never-sleeps', 'always-runs-and-never-walks', 'always-murmurs-never-talks', 'has-a-mouth-and-never-eats']
   icon = 'images/icons/Nowitna_river.jpg';
   secret_name = "River";
   delete_readied_reblogs = false; //an unending torrent of river reblogs
@@ -926,10 +1119,10 @@ class River extends Character {
     this.readied_reblogs['depressed'] = new Post(this, "", null, ["depressed"], [""], [""], true);
     this.readied_reblogs['love'] = new Post(this, "", null, ["love"], [""], [""], true);
     this.readied_reblogs['pulsates'] = new Post(this, "", null, ["pulsates"], [""], [""], true);
-    this.readied_reblogs['copies'] = new Post(this, "", null, ["copies"],[""], [""], true);
+    this.readied_reblogs['copies'] = new Post(this, "", null, ["copies"], [""], [""], true);
     this.readied_reblogs['want'] = new Post(this, "", null, ["want"], [""], [""], true);
     this.readied_reblogs['calculated'] = new Post(this, "", null, ["calculated"], [""], [""], true);
-    this.readied_reblogs['big'] = new Post(this, "", null, ["big"],[""], [""], true);
+    this.readied_reblogs['big'] = new Post(this, "", null, ["big"], [""], [""], true);
     this.readied_reblogs['small'] = new Post(this, "", null, ["small"], [""], [""], true);
     this.readied_reblogs['back'] = new Post(this, "", null, ["back"], [""], [""], true);
     this.readied_reblogs['eon'] = new Post(this, "", null, ["eon"], [""], [""], true);
@@ -951,7 +1144,19 @@ class River extends Character {
 //live blogs her day (down to what time she ate and how much it cost and what she got )
 //and self care tips
 class DocSlaughter extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "doc";
+
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 
 }
@@ -961,7 +1166,8 @@ class DocSlaughter extends Character {
 //very popular, ocassionaly advertises his work with the PTA and his bid to run into politics
 //reblogs "everyone has a doppelganger" and secret twin type posts all the time
 class TheNeighbor extends Character {
-
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   name = "statefarmOfficial" //like a good neighbor, statefarm is there
   icon = "";
   constructor() {
@@ -969,6 +1175,10 @@ class TheNeighbor extends Character {
     //gofounditwatcher
     this.readied_reblogs['gofounditwatcher'] = new Post(this, "delete this", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], [""], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 
 }
@@ -1000,9 +1210,19 @@ class Tyrfing extends Character {
 // lots of call out and cancel posts on people they don't like (usually people who insulted parker)
 //occasionally @s parker pictures of hatsune miku and hydration memes
 class Vik extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "vik";
 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
@@ -1012,9 +1232,19 @@ class Vik extends Character {
 //posts and reblogs pictures of holes
 //deranged anime takes (people reblog his deranged takes and say mean things, then vik attacks them)
 class Parker extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "parker";
 
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
@@ -1023,25 +1253,57 @@ class Parker extends Character {
 //gun safety tips
 //will NEVER reblog Vik (she can sense the danger in them)
 class Hoon extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "hoon";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //random ass philosophy posts in between posts asking how tumblr works and if he's been an asshole or not
 //never reblogs. likes everything.
 class NAM extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "nam";
 
   /*"To the NORTH is ThisIsNotAGame. In it's endless hallways you see countless variations on players and screens and the wistful Might-Have-Beens of a game you wish you could have played. 
 To the SOUTH is JustTruth.  In it's endless corridors lurk the bitter ThisIsNotASpiral that has been watching and trying in vain to keep from tormenting you. Only truths are here, no more masks, no more pretence. 
 To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You have brought us here and it is your fault. This was never a game. This STILL isn't a game, no matter how much you insist otherwise. How long will you trap us in these endless corridors?"
 */
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 
 //occasionally jumps in with Vik/Parker on putting "the bad guys" on blast, other times tries to defend them
 //reblogs legal advice and adds his own take as well
 class Ronin extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
@@ -1051,39 +1313,100 @@ class Ronin extends Character {
 //reblogs everything camille does with an awkward attempt to call her out on her badness
 //(his spades crush is so obvious)
 class Peewee extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   secret_name = "peewee";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 
 }
 
 //reblogs anything peewee says without comment but the tag is just a <3
 class RobertBobert extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 
 }
 
 //reblogs anything peewee says without comment but the tag is just a <3<
 //reblogs anything camille says with a :( (jealous that peewee likes her spades)
 class Eggman extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //gets upset any time peewee reblogs his stuff
 //reblogs shitsposts mostly
 class Rebel extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //ecoterrorism hours baby
 //rarely blogs anything because their generator only runs an hour a day
 class Melon extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //reblogs standard memes and self care bits and bobs
 //occasionally reblogs rebels bristling at Peewee to try to defuse the situation
 class Rod extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 class JRFake extends Character {
@@ -1436,8 +1759,19 @@ class JRFake extends Character {
 
 //don't actually create JR, isntead store important things here
 class JR extends Character {
+  name = "void_soup";
+  icon = "images/icons/Neville.png";
   //https://www.tumblr.com/hazyscrounger/714681029142691840/i-want-to-like-zampanio-so-bad-i-feel-like-an?source=share
   //https://www.tumblr.com/jadedresearcher/714684745826566144/wait-wait-wait-sorry-to-send-a-second-ask-but?source=share
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
 }
 
 //TODO: make sure that images inside posts are centered all nice
