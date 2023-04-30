@@ -13,6 +13,7 @@ class Character {
 
   //just a list of posts
   readied_posts = [];
+  delete_readied_reblogs = true;
 
   constructor() {
     this.createCommonReadiedReblogs();
@@ -132,13 +133,17 @@ class Character {
   //if it finds it, reblogs it with the modified post
   //then removes it from readied reblogs (so no spam)
   handleReadiedReblog = () => {
+
+    let possiblities = rand.shuffle(all_posts);
     for (let key of Object.keys(this.readied_reblogs)) {
-      for (let target of all_posts) {
+      for (let target of possiblities) {
         //if the target post has the key phrase anywhere in it, attack
         if (target.text.toLowerCase().includes(key.toLowerCase())) {
           let response = this.readied_reblogs[key];
           //no spam
+          if(this.delete_readied_reblogs){
           delete (this.readied_reblogs[key]);
+          }
           // /parent, text, tags, suggested_reblogs, suggested_tags)
           return this.reblogAPost(target, response.text, response.tags, response.suggested_reblogs, response.suggested_tags);
 
@@ -293,6 +298,7 @@ class PornBot extends Character {
       `why does this seem so familiar? <br><a target='blank' href ="https://www.tumblr.com/the-phoenix-heart/704082336094076928/dies-first-salticid-youre-amazing-and-i-love"><img src ='images/Secrets/tumblr_screenshots/porn_bot.png'></a>`,
       `${rand.pickFrom(links)} <br><a target='blank' href ="https://www.tumblr.com/nostalgebraist-autoresponder/715946813015932929/hey-frank-what-do-you-think-of-the-new-pornbots?source=share"><img src ='images/Secrets/tumblr_screenshots/no_porn_only_sus_links.PNG'></a>`,
       `eyedlrl sure is a site <br><a target='blank' href ="https://www.tumblr.com/were--ralph/714800413465100288/tumblr-is-unique-bc-like-its-collaborative"><img src ='images/Secrets/tumblr_screenshots/tumblr.PNG'></a>`,
+      `what a terrible plague... <br><a target='blank' href ="https://www.tumblr.com/k25ff/715776552318664704/a-warning-to-new-tumblr-users"><img src ='images/Secrets/tumblr_screenshots/porn_bots.png'></a>`,
 
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
@@ -329,7 +335,7 @@ class PornBot extends Character {
   }
 
   quotidianReblog = (post) => {
-    let innaneComments = ["caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    let innaneComments = ["Am I a real boy now?","look what i found!!!!","did i do good?","caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     if (post.suggested_reblogs && rand.nextDouble() > 0.5) {
       let t = [];
       if (post.suggested_tags) {
@@ -576,6 +582,7 @@ because she is wasted she gets into all sort of things i've hidden and shows eve
 even the memes
 ESPECIALLY The memes (hey there cool kid is this you)
 scrapes TwoGayJokes
+//http://farragofiction.com/TwoGayJokes/Stories/LookWhatIFoundGusy/
 */
 //posts about her skyrim mods
 //and other video game stuff
@@ -728,6 +735,15 @@ class Camille extends Character {
 
   constructor() {
     super();
+    this.readied_reblogs['dead'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['fate'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['death'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['doom'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['die'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['killed'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['corpse'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['headless'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+
     this.readied_reblogs['Camille/relentless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: horrors"], true);
     this.readied_reblogs['Camille/relentless_training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: horrors"], true);
     this.readied_reblogs['Camille/tall'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?","lol"], ["wow", "you okay, op?","trigger warning: gaslighting"], true);
@@ -889,16 +905,41 @@ class River extends Character {
   //river riddles becuase the horseshoes amuses me. shes v tired and quiet.
   names = ['has-a-bed-and-never-sleeps','always-runs-and-never-walks','always-murmurs-never-talks','has-a-mouth-and-never-eats']
   icon = 'images/icons/Nowitna_river.jpg';
-  secret_name = "river";
+  secret_name = "River";
+  delete_readied_reblogs = false; //an unending torrent of river reblogs
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    //her keyphrases are incredibly broad because she is too big to see the little picture
+    this.readied_reblogs['human'] = new Post(this, "", null, ["human"], [""], [""], true);
+    this.readied_reblogs['river'] = new Post(this, "", null, ["river"], [""], [""], true);
+    this.readied_reblogs['morale'] = new Post(this, "", null, ["morale"], [""], [""], true);
+    this.readied_reblogs['music'] = new Post(this, "", null, ["music"], [""], [""], true);
+    this.readied_reblogs['nihlism'] = new Post(this, "", null, ["nihlism"], [""], [""], true);
+    this.readied_reblogs['history'] = new Post(this, "", null, ["history"], [""], [""], true);
+    this.readied_reblogs['vast'] = new Post(this, "", null, ["vast"], [""], [""], true);
+    this.readied_reblogs['body'] = new Post(this, "", null, ["body"], [""], [""], true);
+    this.readied_reblogs['find'] = new Post(this, "", null, ["find"], [""], [""], true);
+    this.readied_reblogs['depressed'] = new Post(this, "", null, ["depressed"], [""], [""], true);
+    this.readied_reblogs['love'] = new Post(this, "", null, ["love"], [""], [""], true);
+    this.readied_reblogs['pulsates'] = new Post(this, "", null, ["pulsates"], [""], [""], true);
+    this.readied_reblogs['copies'] = new Post(this, "", null, ["copies"],[""], [""], true);
+    this.readied_reblogs['want'] = new Post(this, "", null, ["want"], [""], [""], true);
+    this.readied_reblogs['calculated'] = new Post(this, "", null, ["calculated"], [""], [""], true);
+    this.readied_reblogs['big'] = new Post(this, "", null, ["big"],[""], [""], true);
+    this.readied_reblogs['small'] = new Post(this, "", null, ["small"], [""], [""], true);
+    this.readied_reblogs['back'] = new Post(this, "", null, ["back"], [""], [""], true);
+    this.readied_reblogs['eon'] = new Post(this, "", null, ["eon"], [""], [""], true);
+    this.readied_reblogs['year'] = new Post(this, "", null, ["year"], [""], [""], true);
+    this.readied_reblogs['huge'] = new Post(this, "", null, ["huge"], [""], [""], true);
+    this.readied_reblogs['giant'] = new Post(this, "", null, ["giant"], [""], [""], true);
+    this.readied_reblogs['goo'] = new Post(this, "", null, ["go"], [""], [""], true);
+    delete (this.readied_reblogs["zampanio"]); //she gets too spammy if i allow this
 
   }
 
   tick = async (parentToRenderTo) => {
     this.name = rand.pickFrom(this.names);
-    this.blorboAI(parentToRenderTo, 0.1, 0.1, 1.0);
+    this.blorboAI(parentToRenderTo, 0.5, 0.1, 1.0);
   }
 
 }
