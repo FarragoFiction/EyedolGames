@@ -62,7 +62,10 @@ const init = async () => {
   killer = new EyeKiller();
   himbo = new Himbo();
   witherby = new Witherby();
-
+  vik = new Vik();
+  parker = new Parker();
+  captain = new Captain();
+  yongki = new Yongki();
   await grabNormalImages();
   await grabWeirdImages();
   characters.push(observer)
@@ -93,6 +96,10 @@ const init = async () => {
   characters.push(killer);
   characters.push(himbo);
   characters.push(witherby);
+  characters.push(vik);
+  characters.push(parker);
+  characters.push(captain);
+  characters.push(yongki);
 
 
   /* let ele = document.querySelector("#container");
@@ -350,6 +357,22 @@ const grabBlorboPosts = async () => {
   tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Parker/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Vik/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Captain/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Yongki/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
 
 
