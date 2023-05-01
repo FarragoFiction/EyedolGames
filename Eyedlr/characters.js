@@ -264,10 +264,17 @@ const randomPornBot = () => {
     bot.obsessions.push(o);
   }
   if (rand.nextDouble() > 0.3) {
-    const o = rand.pickFrom(bot.obsessions);
+    let o = (bot.obsessions[0]);
     bot.desc += `<br> I'm totally obsessed with ${o.name}.`;
 
     bot.desc += ` DNI if you think ${o.randomOpinion(rand)}.`;
+
+    if(bot.obsessions[1]){
+     o = (bot.obsessions[1]);
+    bot.desc += `<br> I also like ${o.name}!`;
+
+    bot.desc += ` I really think ${o.randomOpinion(rand)}.`;
+    }
   }
   return bot;
 }
@@ -358,8 +365,8 @@ class PornBot extends Character {
     //JR NOTE: TODO flesh this out
     for(let obsession of this.obsessions){
       possiblePosts.push(`<span data-obession="${obsession.name}">Wow can you believe SOME people think ${obsession.randomOpinion(rand)}?</span>`);
-      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} is cute!</span>`);
-      possiblePosts.push(`<span data-obession="${obsession.name}">Should I go to ${obsession.randomLocation(rand)} in my next</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} from ${obsession.name} is cute!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Should I go to ${obsession.randomLocation(rand)} in my next dream?</span>`);
     }
 
     return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments.concat(links), innaneComments);
@@ -1045,6 +1052,9 @@ class Witherby extends Character {
 
 //snail posts constantly, anything cute or friendshaped as well
 class Yongki extends Character {
+  name="snails-enthusiast";
+  icon = "images/icons/Yongki.png";
+  desc="An enthusiast is someone who likes something. I like snails a lot. They are very viscious."
   secret_name = "yongki";
 
   constructor() {
@@ -1094,17 +1104,36 @@ the poor man's pause
 //complains constantly the autism tips are useless because they are so broad because "everyone is like this"
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
 class Captain extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "former-captain-of-the-info-team";
+  icon = "images/icons/Captain.png";
   secret_name = "captain";
+  desc="Hello, I am the former Captain of the Info Team. I am still learning the rules of this place and hope you will all be kind."
+  //JR NOTE: TODO if you send captain an ask with teh word "duck" he will tell you all about his duck wrangling.
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    //he doens't know what tags are. Letters don't have tags, why should this?
+    this.readied_reblogs['Captain/like_goo'] = new Post(this, "Dear @snails-enthusiast, please let me know if you run out of goo. I have some ideas for future scents.  <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/sun_and_moon'] = new Post(this, "Dear @doctor-fiona, please clarify this post. I believe it to contain misinformation. Everyone behaves this way, not just those with autism. <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/the_rules_exist'] = new Post(this, "Haha! So true!  <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
 
+    this.readied_reblogs['Captain/alittleconfused'] = new Post(this, "This is so true. I will defend anyone's right to enjoy nouns. <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    //this.readied_reblogs['Captain/alittleconfused'] = new Post(this, "Haha! So true!  <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/all_round'] = new Post(this, "Haha! So true!  <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/captain_and_neville'] = new Post(this, "Haha! So true!  Please do ask me if you need something assembled. I would be more than happy to help!<br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/captain_cares'] = new Post(this, "Dear @snails-enthusiast,  This reminds me so much of you!  <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/captain_feels_most'] = new Post(this, "It is true! Ducks can be disciplined to reach great heights. I have had great success in the park. Please message me for more details. <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/captain_had_a_harsh'] = new Post(this, "I do not understand why this Universe coddles children so much. If you are treated as an adult you will behave as an adult. <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/captain_would_crush'] = new Post(this, "Haha! So true!  <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
+    this.readied_reblogs['Captain/healthy'] = new Post(this, "Dear @doctor-fiona, thank you very much for giving @snails-enthusiast a similar print out during therapy. I am glad that it can help so many people. You are truly a remarkable woman.   <br><br>Sincerely, The Former Captain of the Info Team.", null, [""], [""], [""], true);
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    if(this.posts.length == 3){
+      //i love how insistent captain is that this is basically snail mail
+      witherby.submitAsk(this.name, "Dear Witherby, I did not mean to crush Yongki's pen. Please tell him I am sorry. <br><br>Sincerely, The Former Captain of the Info Team. <p>p.s. I hope you are well.</p> ");
+
+    }
   }
 
   /*
@@ -1231,8 +1260,8 @@ class River extends Character {
 //live blogs her day (down to what time she ate and how much it cost and what she got )
 //and self care tips
 class DocSlaughter extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "doctor-fiona";
+  icon = "images/icons/DocSlaughter.png";
   secret_name = "doc";
 
   constructor() {
@@ -1301,18 +1330,23 @@ class Tyrfing extends Character {
 // lots of call out and cancel posts on people they don't like (usually people who insulted parker)
 //occasionally @s parker pictures of hatsune miku and hydration memes
 class Vik extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "censored-for-your-protection";
+  icon = "images/icons/Vik.png"; //404 on purpose
   secret_name = "vik";
 
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_reblogs['is this true? bestie, plz'] = new Post(this, "Don't worry @hatsune_miku_fan. It is a joke. We both know Hatsune Miku merchandise will be created at least till 2022. Nothing to worry about. ", null, [""], [""], [""], true);
+    this.readied_reblogs['you wanna get a milkeshake later?'] = new Post(this, "@hatsune_miku_fan  where would we even get a milkshake? ", null, [""], [""], [""], true);
+    this.readied_reblogs["what should I do? Shit! Restaurant's boned!"] = new Post(this, "@hatsune_miku_fan don't worry, we haven't opened it this loop yet. ", null, ["stop panicking"], [""], [""], true);
+    this.readied_reblogs["lets meet up here later bestie"] = new Post(this, "@hatsune_miku_fan sounds good ", null, ["it wil take me a while"], ["so give me warning"], [""], true);
 
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+
   }
 }
 
@@ -1323,18 +1357,41 @@ class Vik extends Character {
 //posts and reblogs pictures of holes
 //deranged anime takes (people reblog his deranged takes and say mean things, then vik attacks them)
 class Parker extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "hatsune_miku_fan";
+  icon = "images/icons/Parker.png";
   secret_name = "parker";
 
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    vik.submitAsk(this.name, "bestie! I got you layds! You want them now?");
+
+    this.readied_reblogs['Parker/mine'] = new Post(this, "slander", null, ["this mine is great!"], [""], [""], true);
+    this.readied_reblogs['Parker/parker'] = new Post(this, "@censored-for-your-protection you wanna get a milkeshake later?", null, ["this"], [""], [""], true);
+    this.readied_reblogs['Where would we even get a milkshake?'] = new Post(this, "I could probably dig under a McZonald's?", null, ["actually","nevermind","i just remembered I need to rewatch Tenchi Muyo"], [""], [""], true);
+    this.readied_reblogs['Parker/piggy'] = new Post(this, "Oh shit I forgot I owned a restaurant!", null, ["shit"], [""], [""], true);
+    this.readied_reblogs['Oh shit I forgot I owned a restaurant!'] = new Post(this, "@censored-for-your-protection what should I do? Shit! Restaurant's boned!", null, ["shit"], [""], [""], true);
+
+    this.readied_reblogs['Parker/adhd'] = new Post(this, "", null, ["this"], [""], [""], true);
+    this.readied_reblogs['Parker/beast'] = new Post(this, "", null, ["this"], [""], [""], true);
+    this.readied_reblogs['Parker/bucket'] = new Post(this, "", null, ["bucket-wheel-excavator tan!!"], [""], [""], true);
+    this.readied_reblogs['Parker/do not'] = new Post(this, "", null, ["yum"], [""], [""], true);
+    this.readied_reblogs['Parker/gai'] = new Post(this, "", null, ["i have never","actually","eaten at a japanese retaurant","are they any good?"], [""], [""], true);
+    this.readied_reblogs['Parker/grow'] = new Post(this, ":)", null, ["i have never","actually","eaten at a japanese retaurant","are they any good?"], [""], [""], true);
+    this.readied_reblogs['Parker/hereally'] = new Post(this, "", null, ["love my blorbos","so much"], [""], [""], true);
+    this.readied_reblogs['Parker/hole'] = new Post(this, ":)", null, ["hole for you!"], [""], [""], true);
+    this.readied_reblogs['Parker/important'] = new Post(this, "@censored-for-your-protection is this true? bestie, plz ", null, ["why would communism stop making my waifu","vik","vik tell me","tell me its a lie"], [""], [""], true);
+    this.readied_reblogs['Parker/thisisinsidethemall'] = new Post(this, "@censored-for-your-protection lets meet up here later bestie ", null, ["mall","underground",":)",""], [""], [""], true);
 
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    this.readied_reblogs['hatsune'] = new Post(this, "", null, ["best girl","waifu","always reblog"], [""], [""], true);
+
+    if(this.posts.length == 3){
+      witherby.submitAsk(this.name, "I think I might have killed them. I didn't mean to. I. Does that make me a bad person? Tell me it doens't make me a bad person. Wait. Shit I'm not supposed to influence the story. Forget you saw me.");
+
+    }
   }
 }
 
