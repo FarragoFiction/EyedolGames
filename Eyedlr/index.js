@@ -12,6 +12,10 @@ let fadedMemories = [];
 let characters = [];
 
 let blorboPosts = [];
+let breakfast = [];
+let lunch = [];
+let dinner = [];
+let dessert = [];
 
 
 //pure string, convert to numerical seed later.
@@ -66,6 +70,8 @@ const init = async () => {
   parker = new Parker();
   captain = new Captain();
   yongki = new Yongki();
+  doc = new DocSlaughter();
+
   await grabNormalImages();
   await grabWeirdImages();
   characters.push(observer)
@@ -100,6 +106,7 @@ const init = async () => {
   characters.push(parker);
   characters.push(captain);
   characters.push(yongki);
+  characters.push(doc);
 
 
   /* let ele = document.querySelector("#container");
@@ -268,13 +275,13 @@ showProfile = (character) => {
   }
 
   //god this is so nested, future me is going to HATE reading this
-  askTab.onclick = ()=>{
-    const post = createElementWithClassAndParent("div", mainContent,"post");
+  askTab.onclick = () => {
+    const post = createElementWithClassAndParent("div", mainContent, "post");
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
     postIconImg.src = observer.icon;
 
-    const container = createElementWithClassAndParent("div", post,'post-container');
+    const container = createElementWithClassAndParent("div", post, 'post-container');
 
     const header = createElementWithClassAndParent("div", container, "post-header");
     const myName = createElementWithClassAndParent("span", header);
@@ -283,22 +290,22 @@ showProfile = (character) => {
     const body = createElementWithClassAndParent("div", container, "post-body");
 
     const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
-    bodyContent.style.height="60vh";
+    bodyContent.style.height = "60vh";
     bodyContent.style.width = "600px";
 
     bodyContent.innerHTML = `Start typing to ${character.name} a question!`;
     bodyContent.setAttribute("contenteditable", "true");
     let ask = bodyContent.innerHTML;
-    bodyContent.oninput=(()=>{
+    bodyContent.oninput = (() => {
       ask = bodyContent.innerHTML;
     })
 
     const footer = createElementWithClassAndParent("div", container, "post-footer");
     const submit = createElementWithClassAndParent("button", footer, "submit-button");
-    submit.innerText="Ask";
+    submit.innerText = "Ask";
     let popup = createPopup(post);
 
-    submit.onclick = ()=>{
+    submit.onclick = () => {
       popup.remove();
       character.submitAsk(observer.name, ask);
     }
@@ -357,6 +364,24 @@ const grabZampanioEyes = async () => {
   zampanioEyes = tmp.map((item) => loc + item);
 }
 
+const grabFoodPosts = async () => {
+  loc = 'http://eyedolgames.com/Zampanini/images/Breakfast/';
+  let tmp = await getImages(loc);
+  breakfast = tmp.map((item) => loc + item);
+
+  loc = 'http://eyedolgames.com/Zampanini/images/Diner/';
+  tmp = await getImages(loc);
+  lunch = tmp.map((item) => loc + item);
+
+  loc = 'http://eyedolgames.com/Zampanini/images/Premium/';
+  tmp = await getImages(loc);
+  dinner = tmp.map((item) => loc + item);
+
+  loc = 'http://eyedolgames.com/Zampanini/images/Desserts/';
+  tmp = await getImages(loc);
+  dessert = tmp.map((item) => loc + item);
+}
+
 const grabFadedMemories = async () => {
   console.log("JR NOTE: grabbing faded memoreis")
   const loc = 'http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/';
@@ -409,6 +434,10 @@ const grabBlorboPosts = async () => {
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Yongki/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/DOC/';
   tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }

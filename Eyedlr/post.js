@@ -308,6 +308,8 @@ class Post {
 
           } else if (note.post) {
             let postElement = note.post.createElement(true, true);//passing true creates a clone instead of replacing the internal element
+            //don't keep repeating the original post, condense it
+            postElement.innerHTML.replaceAll(this.text,"")
             noteEle.append(postElement);
           }
 
