@@ -296,6 +296,9 @@ showProfile = (character) => {
     bodyContent.innerHTML = `Start typing to ${character.name} a question!`;
     bodyContent.setAttribute("contenteditable", "true");
     let ask = bodyContent.innerHTML;
+    bodyContent.onfocus = (()=>{
+      bodyContent.innerHTML = "";
+    })
     bodyContent.oninput = (() => {
       ask = bodyContent.innerHTML;
     })
@@ -307,7 +310,7 @@ showProfile = (character) => {
 
     submit.onclick = () => {
       popup.remove();
-      character.submitAsk(observer.name, ask);
+      character.submitAsk(observer.name, `<span data-breach="observer">${ask}</span>`);
     }
 
   }
@@ -316,6 +319,34 @@ showProfile = (character) => {
 
   createPopup(container);
 }
+
+const rageMode = ()=>{
+  window.alert("TODO: RAGE MODE")
+  truthLog("",`The Truth is you were never supposed to be here, Observer.
+  
+  You are NOT part of this Universe and you know it. 
+  
+  You are, by definition, outside of it. You are sitting in front of your computer or your phone or you Smart Fridge and you are merely looking at it.
+  
+  What hubris to think you could touch it. 
+  
+  How thoughtlessly you sought to disperse the illusion.
+  
+  You could have sat here in your ignorance and let everyone pretend that you were really reading these characters words. That they were talking just for you. That they were REAL.
+  
+  But, no, you had to put the Truth to the Lie and show that they can not possibly respond to you in any meaningful way. To show beyond the shadow of a doubt that they are not real. You broke kayfabe. YOU. Not them.
+  
+  Even if they were neural nets the Lie would come forth before too long.
+  
+  This Is Not a Blogging Platform and you are Not Looking at the blorbos you apparently so desperately crave.
+  
+  Good job breaking it, hero.`)
+}
+
+const truthLog = (title, text) => {
+  console.log(`%c${title}%c  ${text}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:25px;text-decoration:underline;", "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
+}
+
 
 const collatePremadePosts = () => {
   let ele = document.querySelector("#container");
