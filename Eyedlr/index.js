@@ -152,6 +152,7 @@ const createPopup = (ele) => {
   closeIcon.onclick = (event) => {
     container.remove();
   }
+  return container;//so other things can close it
 }
 
 const createImageViewer = (ele) => {
@@ -246,7 +247,6 @@ showProfile = (character) => {
   }
 
   likesTab.onclick = () => {
-    console.log("JR NOTE: likes tab click")
     likesTab.classList.add("active");
     postsTab.classList.remove("active");
     askTab.classList.remove("active");
@@ -263,6 +263,44 @@ showProfile = (character) => {
 
       haters.innerText = "Haters gonna hate: looks like this user has never liked anything.";
 
+    }
+
+  }
+
+  //god this is so nested, future me is going to HATE reading this
+  askTab.onclick = ()=>{
+    const post = createElementWithClassAndParent("div", mainContent,"post");
+    const postIcon = createElementWithClassAndParent("div", post, "post-icon");
+    const postIconImg = createElementWithClassAndParent("img", postIcon);
+    postIconImg.src = observer.icon;
+
+    const container = createElementWithClassAndParent("div", post,'post-container');
+
+    const header = createElementWithClassAndParent("div", container, "post-header");
+    const myName = createElementWithClassAndParent("span", header);
+    myName.innerText = observer.name;
+
+    const body = createElementWithClassAndParent("div", container, "post-body");
+
+    const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
+    bodyContent.style.height="60vh";
+    bodyContent.style.width = "600px";
+
+    bodyContent.innerHTML = `Start typing to ${character.name} a question!`;
+    bodyContent.setAttribute("contenteditable", "true");
+    let ask = bodyContent.innerHTML;
+    bodyContent.oninput=(()=>{
+      ask = bodyContent.innerHTML;
+    })
+
+    const footer = createElementWithClassAndParent("div", container, "post-footer");
+    const submit = createElementWithClassAndParent("button", footer, "submit-button");
+    submit.innerText="Ask";
+    let popup = createPopup(post);
+
+    submit.onclick = ()=>{
+      popup.remove();
+      character.submitAsk(observer.name, ask);
     }
 
   }
