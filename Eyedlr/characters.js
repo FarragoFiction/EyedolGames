@@ -371,12 +371,26 @@ class PornBot extends Character {
 
     //JR NOTE: TODO flesh this out
     for (let obsession of this.obsessions) {
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think I should craft a homemade ${obsession.randomObject(rand)} from ${obsession.name}!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} from ${obsession.name} is problematic!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think I should cosplay a good ${obsession.randomJob(rand)} from ${obsession.name}!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomEvent(rand)} from ${obsession.name} was the coolest thing ever!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you know what ${obsession.randomCommonPhrases(rand)} REALLY means!</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">How can I motivate myself to ${obsession.randomGoal(rand)}???</span>`);
+
       possiblePosts.push(`<span data-obession="${obsession.name}">Wow can you believe SOME people think ${obsession.randomOpinion(rand)}?</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} from ${obsession.name} is cute!</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Should I go to ${obsession.randomLocation(rand)} in my next dream?</span>`);
     }
 
-    return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments)], innaneComments.concat(links), innaneComments);
+    let chosen = rand.pickFrom(possiblePosts);
+    let obsession_tag ="";
+    for (let obsession of this.obsessions) {
+      if(chosen.includes(obsession.name)){
+        obsession_tag = obsession.name;
+      }
+    }
+      return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments),obsession_tag], innaneComments.concat(links), innaneComments);
 
   }
 
@@ -422,6 +436,39 @@ class PornBot extends Character {
 
   }
 
+  //looks for a post to start fandom shit about
+  //
+  doStupidDiscourse = ()=>{
+    let posts = rand.shuffle(all_posts);
+    let obsessions = rand.shuffle(this.obsessions);
+    for(let obsession of this.obsessions){
+      for(let post of posts){
+        if (post.text.toLowerCase().includes(obsession.name.toLowerCase())) {
+          let responses = [
+            `Wow! You know about ${obsession.name}, too?`,
+            `Wow. Talk about a rancid take.`,
+            `Tell us what you think about ${obsession.randomBlorbo(rand)}!`,
+            `Can you make me an OC that looks like ${obsession.randomBlorbo(rand)}?`,
+            `Okay, but what did you think about ${obsession.randomEvent(rand)}?`,
+            `I can't believe you think that!!!`,
+            `Toxic fandom.`,
+            `Which is better, ${obsession.randomObject(rand)} or ${obsession.randomObject(rand)}?`,
+            `What about '${obsession.randomCommonPhrases(rand)}'?`,
+            `Are we really all going to just forget about ${obsession.randomMinorBlorbo(rand)}?`,
+            `I am just sitting here microwaving ${obsession.randomMinorBlorbo(rand)}. `,
+            `I love ${obsession.randomMinorBlorbo(rand)} so much!`,
+            `Yeah and you probably want to be a ${obsession.randomJob(rand)} too!`,
+            `lol and i have a bridge to sell you in ${obsession.randomLocation(rand)}`,
+            `How could you think that about ${obsession.name}?`]
+          // /parent, text, tags, suggested_reblogs, suggested_tags)
+          return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>", [obsession.name,"drama","disc horse","discourse"], [""], ["drama",obsession.name]);
+
+        }
+      }
+      //look for a post that has this tag. start stupid drama about it
+    }
+  }
+
 
   tick = async (parentToRenderTo) => {
 
@@ -429,7 +476,21 @@ class PornBot extends Character {
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
       this.handleAsks(parentToRenderTo, premadeAsk);
+      return;
     }
+
+  //quotidians prefer to do stupid drama
+  if (rand.nextDouble() > 0.5) {
+    let post = this.doStupidDiscourse();
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+    if (post) {
+      return;
+    }
+  }
+
+
     //quotidians prefer to do preprogrammed actions if possible
     if (rand.nextDouble() > 0.5) {
       let post = this.handleReadiedReblog();
