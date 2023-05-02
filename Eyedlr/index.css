@@ -11,21 +11,36 @@ body {
 
 }
 
-.asker{
+.asker {
   font-weight: bolder;
   color: black;
 }
 
-.ask{
+.submit-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #0084ff;
+}
+
+.ask {
   padding: 20px;
   background-color: #e4e4e4;
   margin-bottom: 40px;
 }
 
-.who-asked{
+.who-asked {
   margin-bottom: 40px;
   font-weight: lighter;
-  color: rgba(0,0,0,0.65);
+  color: rgba(0, 0, 0, 0.65);
 }
 
 #header-container {
@@ -58,7 +73,7 @@ body {
 
 }
 
-.note-preview{
+.note-preview {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
@@ -82,34 +97,35 @@ body {
   justify-content: space-between;
 }
 
-.post-body-content img{
+.post-body-content img {
   width: 100%;
   object-fit: cover;
 
-  
+
 }
 
-.post-body{
+.post-body {
   max-height: 600px;
- overflow-y: auto;
+  overflow-y: auto;
 }
 
-.liked{
-  cursor:pointer;
+.liked {
+  cursor: pointer;
 }
 
-.unliked{
-  cursor:pointer;
+.unliked {
+  cursor: pointer;
 }
 
 
-.preview-note-icon{
+.preview-note-icon {
   width: 64px;
   height: auto;
   object-fit: cover;
   border-radius: 5px;
   margin-right: 20px;
 }
+
 .notes-icons {
   display: flex;
   gap: 20px;
@@ -162,19 +178,19 @@ body {
 
 }
 
-.post-body-content img:not(.reblog-icon){
-  cursor: pointer;
-} 
-
-.popup-close{
+.post-body-content img:not(.reblog-icon) {
   cursor: pointer;
 }
 
-.popup-clone{
+.popup-close {
+  cursor: pointer;
+}
+
+.popup-clone {
   width: 90%;
 }
 
-.popup{
+.popup {
   width: 1000px;
   max-height: 90vh;
   margin-left: auto;
@@ -185,18 +201,18 @@ body {
   overflow: auto;
 }
 
-.popup-container{
+.popup-container {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: rgba(0,0,0,0.65);
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
 
 
-.ping{
+.ping {
   cursor: pointer;
   text-decoration: underline;
 }
@@ -235,23 +251,23 @@ body {
   margin-right: 20px;
 }
 
-.profile-icon{
+.profile-icon {
   position: relative;
   z-index: 1;
   overflow: hidden;
   height: 300px;
 }
 
-.post-view-notes{
+.post-view-notes {
   display: none;
 }
 
-.profile-icon-bg-container{
+.profile-icon-bg-container {
   overflow: hidden;
   height: 75%;
 }
 
-.profile-name{
+.profile-name {
   font-size: 24px;
   font-weight: bolder;
   text-align: center;
@@ -259,7 +275,7 @@ body {
   margin-top: 18px;
 }
 
-.profile-desc{
+.profile-desc {
   font-size: 18px;
   text-align: center;
   margin-bottom: 18px;
@@ -269,7 +285,7 @@ body {
   padding-right: 100px;
 }
 
-.profile-icon-bg{
+.profile-icon-bg {
   width: 100%;
   height: 75%;
   z-index: -1;
@@ -289,7 +305,7 @@ body {
   bottom: 0px;
   display: block;
   align-self: flex-start;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: auto;
 
 }
@@ -307,12 +323,12 @@ body {
 
 }
 
-.profile-content{
+.profile-content {
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.tabs-holder{
+.tabs-holder {
   width: 100%;
   margin-left: 30px;
   display: flex;
@@ -322,15 +338,15 @@ body {
   margin-bottom: 50px;
 }
 
-.tabs-holder div{
+.tabs-holder div {
   cursor: pointer;
 }
 
-.tabs-holder .active{
+.tabs-holder .active {
   text-decoration: underline;
 }
 
-.profile-container{
+.profile-container {
   background-color: white;
   color: black;
   border-radius: 5px;

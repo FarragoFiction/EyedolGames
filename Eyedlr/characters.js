@@ -143,10 +143,12 @@ class Character {
   handleReadiedReblog = () => {
 
     let possiblities = rand.shuffle(all_posts);
-    for (let key of Object.keys(this.readied_reblogs)) {
+    //IF you have a respnse to the observer breaching or being pinged, do that first
+    let keys = ['data-breach="observer"', `@${this.name}`, ...Object.keys(this.readied_reblogs)]
+    for (let key of keys) {
       for (let target of possiblities) {
         //if the target post has the key phrase anywhere in it, attack
-        if (target.text.toLowerCase().includes(key.toLowerCase())) {
+        if (this.readied_reblogs[key] && target.text.toLowerCase().includes(key.toLowerCase())) {
           let response = this.readied_reblogs[key];
           //no spam
           if (this.delete_readied_reblogs) {
@@ -445,6 +447,22 @@ class Observer extends Character {
   
   `;
 
+  tick = async(parentToRenderTo)=>{
+    //of course camille cannot kill you.
+    //you are in an entirely different universe
+    //she is merely words on screen
+    //but she CAN destroy the tendril you have pushed into her Universe
+    //she CAN prevent you from continuing to interact.
+    //you cannot be their friend, Observer.
+    //you are something wholly different from them.
+    //you exist in more dimensions compared to their flat fictionality.
+    //and you are horrific to them for it.
+    if (this.dead) {
+      rageMode();
+      return;
+    }
+  }
+
 }
 
 //literally created Eyedlr, constantly reblogging memes and occasionally @ing the intern1, 
@@ -467,6 +485,7 @@ class Wanda extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 
@@ -917,6 +936,8 @@ class Camille extends Character {
 
   constructor() {
     super();
+    this.readied_reblogs['data-breach="observer"'] = new Post(this, "!", null, ["breach in progress", "training team containment protocols activated"], [""], [""], true);
+
     this.readied_reblogs['dead'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['fate'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['death'] = new Post(this, ":3", null, [":3"], [""], [""], true);
@@ -959,15 +980,61 @@ class Camille extends Character {
 
   }
 
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let tags = [":3"];
+    //witherby doesn't judge but his followers sure do
+    let responses = [":3"]
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it...................................../ads,fasdfsa"] //you can kill her before she kills you, you monster
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = ["<span data-breach='observer'>!</span>"]
+      tags = ["breach in progress", "training team containment protocols activated"]
+    }
+
+    const suggested_reblogs = ["oh shit"]
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
   tick = async (parentToRenderTo) => {
     if (this.dead) {
+      console.log("JR NOTE: camille is dead")
       return;
+    }
+
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
+
+    if (!this.readied_reblogs[`@${this.name}`]) {
+      //she will always respond to her name with a :3
+      this.readied_reblogs[`@${this.name}`] = new Post(this, ":3", null, [":3"], [""], [""], true);
+
     }
     this.blorboAI(parentToRenderTo, 0.5, 0.75, 0.5);
     for (let post of this.posts) {
       if (post.text.includes("Zampanio")) {
         this.dead = true; //she will never post again
         this.name += "-deactivated";
+        return;
+      }
+
+      /*
+      I like this idea that came up, accidentally, about the SCP ish organization itself being the primary monster in the universe
+      the creepy pasta monster that kills you if you read to much is just
+      the scp foundation
+      */
+      if (post.tags.includes(`breach in progress`)) {
+        post.element.scrollIntoView();
+        observer.dead = true;
+        observer.name += "-deactivated";
       }
     }
 
@@ -1018,9 +1085,9 @@ class Witherby extends Character {
       responses = ["For the last time, I am not interested."]
     }
 
-    if(premadeAsk && premadeAsk.characterName === observer.name){
-      responses = [`Above my paygrade. @${camille.name} we have a breach. Appears semi-verbal. Speech is garbled. I can not do attachment work. It's all yours.`]
-    } 
+    if (premadeAsk && premadeAsk.characterName === observer.name) {
+      responses = [`<span data-breach="observer">Above my paygrade. @${camille.name} we have a breach. Appears semi-verbal. Speech is garbled. I can not do attachment work. It's all yours.</span>`]
+    }
 
     //he auto blocks K and anyone with numbers in their url (it makes you look like a pornbot)
     if (premadeAsk && (premadeAsk.characterName === "K" || /\d/.test(premadeAsk.characterName))) {
@@ -1305,7 +1372,6 @@ class DocSlaughter extends Character {
     for (let post of potential_posts) {
       this.readied_posts.push(new Post(this, post, null, [""], [""], [""], true));
     }
-    console.log("JR NOTE: dr fiona slaughter has this many readied posts", this.readied_posts)
   }
 
   collateFoodPosts = async () => {
@@ -1314,7 +1380,6 @@ class DocSlaughter extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
 
-    console.log("JR NOTE: fiona is handling asks")
     const tags = ["Answered Ask"];
     //witherby doesn't judge but his followers sure do
     let responses = ["I am So Flattered you wished to be Seen by me!", "What a Connundrum, perhaps the Eyes wish to weigh in?", "So Thoughtful!", "Fascinating!", "Please, do go on!", "What makes you think that?"];
@@ -1322,9 +1387,9 @@ class DocSlaughter extends Character {
       responses = ["I Respect Your Religion, but can not say I practice it myself.", "What makes you like Nidhogg so much?"]
     } else if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a really fun game, you should play it!", "I can't say I know very much about it. Ms. Closer has instructed me that digging into it may harm me in some fashion. My apologies!"]
-    }else if(premadeAsk.characterName === observer.name){
-      responses = ["Oh! What an Honor! It appears we have an Observer here!<br><br>I am Afraid I cannot quite understand your Horror Tongue, but please do not take this as a sign of disrespect!<br><Br>I am Immensely Grateful for the Eyes you turn my way!<br><br>Please do not stop Looking!"]
-    } 
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = ["<span data-breach='observer'>Oh! What an Honor! It appears we have an Observer here!<br><br>I am Afraid I cannot quite understand your Horror Tongue, but please do not take this as a sign of disrespect!<br><Br>I am Immensely Grateful for the Eyes you turn my way!<br><br>Please do not stop Looking!</span>"]
+    }
 
     const suggested_reblogs = ["seen"]
 
