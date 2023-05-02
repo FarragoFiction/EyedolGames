@@ -1018,6 +1018,10 @@ class Witherby extends Character {
       responses = ["For the last time, I am not interested."]
     }
 
+    if(premadeAsk && premadeAsk.characterName === observer.name){
+      responses = [`Above my paygrade. @${camille.name} we have a breach. Appears semi-verbal. Speech is garbled. I can not do attachment work. It's all yours.`]
+    } 
+
     //he auto blocks K and anyone with numbers in their url (it makes you look like a pornbot)
     if (premadeAsk && (premadeAsk.characterName === "K" || /\d/.test(premadeAsk.characterName))) {
       responses = ["Blocked."];
@@ -1276,16 +1280,117 @@ class River extends Character {
 class DocSlaughter extends Character {
   name = "doctor-fiona";
   icon = "images/icons/DocSlaughter.png";
-  secret_name = "doc";
+  secret_name = "DOC";
 
   constructor() {
     super();
+    this.collateFoodPosts();//async, just fire it off for now
+    this.readied_reblogs['DOC/bad'] = new Post(this, "This is So Important, my Darling Eyes! We Cannot Seek Forgiveness from Others!  We can only seek to Forgive Ourselves!<Br><Br>The facts Cut Both Ways:<br>We cannot rely our Personal Growth to be acknowlege by Those We Have Harmed, but Equally we are not obligated to monitor Those Who Have Hurt Us to see if they have truly changed!", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
+    this.readied_reblogs['DOC/fact'] = new Post(this, "My Darling Eyes, we must Always Be Vigilant, both for Ourselves and Those Around Us!<br><br>You do not need to be a Bad Person to be harmful, and so we must be Ever Watchful!<br><br>You never can tell when someone nearby will need to be Shown the Light :)", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
+    this.readied_reblogs['DOC/linear'] = new Post(this, "Perhaps a tad Crude, my Darling Eyes, but an Important Lesson. <br><br>Merely being aware that Healing Is a Journey is not the same thing as being Immune to It's Difficulties.", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
+    this.readied_reblogs['DOC/mental'] = new Post(this, "This is So Important, my Darling Eyes!<br><br>One cannot be expected to navigate to New Shores without a Map and Compass!<br><Br>Regular Mental Checkups, whether Self Directed or with a Licensed Therapist or even a Trusted Friend, are useful to make sure you are Headed The Right Direction!", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
+    this.readied_reblogs['DOC/savepoint'] = new Post(this, "What a Good Idea! <Br><br>I think I will log off for now. There is certainly Many Important Things that I need doing.<br><br>Goodnight, Darling Observers, I will See you in the Morning!", null, ["goodnight", "make sure to get a good nights sleep!"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
+
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    //she doesn't care if there are notes, she assumes she is Being Watched
+    const potential_posts = [
+      "Oh, my Captain, if you are reading this, you are certainly very welcome for Yongki's print out! <br><br>I am so glad it could be of use!",//seriously. she's just as stubborn as captain, but at least HE ackownledged what @s  are for. Though, lets be honest. if she DID use  @s she would try to @ everyone on the planet every time. EVERY post she makes should be seen by everyone. So you can scour it for wrong-think and correct her as needed! Just like any Good Citizen should desire!
+      `Oh my goodness, can you Believe waffles cost $4.99 this morning? What a Deal!`,
+      "My Darling Eyes, I am going to the Salon in a few minutes!  Wish me luck!",
+      "On my morning commute, I made sure to Traverse Mazes clockwise, as is Only Proper! <Br><br>Wanda, if you're reading this, Darling, I simply LOVE what you have done with the place!", //she doesnt @ people , she just assumes she's always observed
+      "Morgan did the most Darling thing this morning! I wish I had thought to record it!",
+      "I truly wish there was a Department of Safety to report these Reckless Drivers to! I was almost hit crossing this intersection!"
+    ]
+
+    for (let post of potential_posts) {
+      this.readied_posts.push(new Post(this, post, null, [""], [""], [""], true));
+    }
+    console.log("JR NOTE: dr fiona slaughter has this many readied posts", this.readied_posts)
+  }
+
+  collateFoodPosts = async () => {
+    grabFoodPosts();
+  }
+
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    console.log("JR NOTE: fiona is handling asks")
+    const tags = ["Answered Ask"];
+    //witherby doesn't judge but his followers sure do
+    let responses = ["I am So Flattered you wished to be Seen by me!", "What a Connundrum, perhaps the Eyes wish to weigh in?", "So Thoughtful!", "Fascinating!", "Please, do go on!", "What makes you think that?"];
+    if (premadeAsk.text.toLowerCase().includes("nidhogg")) {
+      responses = ["I Respect Your Religion, but can not say I practice it myself.", "What makes you like Nidhogg so much?"]
+    } else if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a really fun game, you should play it!", "I can't say I know very much about it. Ms. Closer has instructed me that digging into it may harm me in some fashion. My apologies!"]
+    }else if(premadeAsk.characterName === observer.name){
+      responses = ["Oh! What an Honor! It appears we have an Observer here!<br><br>I am Afraid I cannot quite understand your Horror Tongue, but please do not take this as a sign of disrespect!<br><Br>I am Immensely Grateful for the Eyes you turn my way!<br><br>Please do not stop Looking!"]
+    } 
+
+    const suggested_reblogs = ["seen"]
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
 
   }
 
   tick = async (parentToRenderTo) => {
-    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
+    this.blorboAI(parentToRenderTo, 0.9, 0.75, 0.5);
+    let potential_posts = [];
+    //look i need  you to understand that doc slaughter treats eyedlr like an unholy mix of twitter and instagram and no one can stop her
+    if (this.readied_posts.length === 0 && breakfast.length > 0) {
+      potential_posts = potential_posts.concat([
+        `Breakfast was simply Delicious!<br><img src='${rand.pickFrom(breakfast)}'>`,
+        `Oh, what a wonderful breakfast this morning! <br><img src='${rand.pickFrom(breakfast)}'>`,
+        `Have you ever seen such a Darling breakfast? <br><img src='${rand.pickFrom(breakfast)}'>`,
+        `What a great start to the day! <br><img src ='${rand.pickFrom(breakfast)}'>`,
+        `They do say Breakfast Is The Most Important Meal Of The Day!<br><img src='${rand.pickFrom(breakfast)}'>`,
+      ]);
+    }
+
+    if (this.readied_posts.length === 0 && lunch.length > 0) {
+      potential_posts = potential_posts.concat([
+        `I only had a few minutes to grab Lunch, but it was Delicious! <br><img src ='${rand.pickFrom(lunch)}'>`,
+        `I found the Most Charming little shop on my lunch break today, Eyes! <br><img src='${rand.pickFrom(lunch)}'>`,
+        `Have you ever seen such a Darling lunch? <br><img src='${rand.pickFrom(lunch)}'>`,
+        `It's Important to Do Self Care, so I splurged on my lunch break today! <br><img src='${rand.pickFrom(lunch)}'>`,
+        `My lunch looks almost too cute to eat!<br><img src='${rand.pickFrom(lunch)}'>`,
+      ]);
+    }
+
+    if (this.readied_posts.length === 0 && dinner.length > 0) {
+      potential_posts = potential_posts.concat([
+        `On a date with you know who, Eyes, and he really went all out! <br><img src='${rand.pickFrom(dinner)}'>`,
+        `Dinner is simply delicious! <br><img src='${rand.pickFrom(dinner)}'>`,
+        `Have you ever seen such a Darling dinner? <br><img src='${rand.pickFrom(dinner)}'>`,
+        `It's Important to feel pampered! <br><img src='${rand.pickFrom(dinner)}'>`,
+        `Such a delicious dinner!<br><img src='${rand.pickFrom(dinner)}'>`,
+      ]);
+    }
+
+    if (this.readied_posts.length === 0 && dessert.length > 0) {
+      potential_posts = potential_posts.concat([
+        `Captain never has much of a Sweet Tooth but even he agreed this was Delicious! <br><img src='${rand.pickFrom(dessert)}'>`,
+        `Dessert is simply delicious! <br><img src='${rand.pickFrom(dessert)}'>`,
+        `Have you ever seen such a Darling dessert? <br><img src='${rand.pickFrom(dessert)}'>`,
+        `What a great ending to the day! <br><img src='${rand.pickFrom(dessert)}'>`,
+        `So tasty!<br><img src='${rand.pickFrom(dessert)}'>`,
+      ]);
+    }
+
+
+
+
+    for (let post of potential_posts) {
+      this.readied_posts.push(new Post(this, post, null, [""], [""], [""], true));
+    }
+
   }
 
 
