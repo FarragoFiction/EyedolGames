@@ -390,12 +390,38 @@ class PornBot extends Character {
   }
 
   randomAsk = () => {
-    const ret = [...links, `Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?"];
+    const ret = [...links, `Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?","Do you see me?"];
     return rand.pickFrom(ret)
+  }
+
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let innaneComments = ["Am I a real boy now?", "look what i found!!!!", "did i do good?", "caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "look look look i found a thing","look!","look i found something!"];
+    //witherby doesn't judge but his followers sure do
+    let responses = [...innaneComments, ...links];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"] 
+    }
+    //they are not smart enough to realize the observer is gibberish
+    if(responses.length == 0){
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)]);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
   }
 
 
   tick = async (parentToRenderTo) => {
+
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
     //quotidians prefer to do preprogrammed actions if possible
     if (rand.nextDouble() > 0.5) {
       let post = this.handleReadiedReblog();
@@ -883,7 +909,7 @@ i figure devona keeps up her all caps and is rambly but always in the tags, neve
 class Devona extends Character {
   name = "anode_daven_devon_doven_novae_vaned"; //hiding through data spam
   icon = "images/icons/Devona.png";
-  secret_name = "Devona";
+  secret_name = "devona";
 
   secret_readied_reblogs = {};
 
