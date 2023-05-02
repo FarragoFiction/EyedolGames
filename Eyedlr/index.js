@@ -72,7 +72,7 @@ const init = async () => {
   yongki = new Yongki();
   doc = new DocSlaughter();
   devona = new Devona();
-  
+
   await grabNormalImages();
   await grabWeirdImages();
   characters.push(observer)
@@ -474,6 +474,10 @@ const grabBlorboPosts = async () => {
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/DOC/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Wanda/';
   tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
