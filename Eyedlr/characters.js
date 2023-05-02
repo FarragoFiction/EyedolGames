@@ -877,14 +877,17 @@ i figure devona keeps up her all caps and is rambly but always in the tags, neve
 //she is VERY chatty in tags
 //v much likes reblogging adhd and anxiety tips, both for herself and neville
 class Devona extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
-  secret_name = "devona";
+  name = "anode_daven_devon_doven_novae_vaned"; //hiding through data spam
+  icon = "images/icons/Devona.png";
+  secret_name = "Devona";
 
   // porn bot posts this, devona should reblog and ramble about it https://www.tumblr.com/foone/713863322485850112?source=share
 
   constructor() {
     super();
+    this.readied_reblogs['hey does anyone know how to get stains off of a rug? like a LOT of stains. i tried rubbing alcohol on them but it just made the stains bigger'] = new Post(this, "<span data-ai='devona-posting-about-soap'></span>", null, ["You Need Dish Soap For That", "I Don't Think Using Rubbing Alcohol Does Anything For Area Or Oriental Rugs..."], [""], ["lifetips"], true);
+    this.readied_reblogs["SHIT it's rubbing alcohol??"] = new Post(this, "", null, ["I'm Heading Over With The Supplies!!"], [""], ["lifetips"], true);
+
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
@@ -909,13 +912,19 @@ one she's gone she's having some fun with it
 //(this predates the heartbreak in West)
 class Ria extends Character {
   name = "we-didnt-start-the-fire"
-  secret_name = "ria";
+  secret_name = "Ria";
   icon = "images/icons/Ria.png";
-
-  icon = "asdfsf"
 
   constructor() {
     super();
+    this.readied_posts.push(new Post(this, "hey does anyone know how to get stains off of a rug? like a LOT of stains. i tried rubbing alcohol on them but it just made the stains bigger", null, ["i'd like them to at least be KIND of clean","sheesh the climb is hard isn't it"], [""], [""], true));
+    this.readied_reblogs['devona-posting-about-soap'] = new Post(this,"SHIT it's rubbing alcohol??",null, ["WHOOPS","lol","well i was definitely not sober when i read the instructions"], [""], ["lifetips"], true);
+    this.readied_reblogs['Ria/act'] = new Post(this,"",null, ["mood","its hard","its hard and no one understands"], [""], ["lol"], true);
+    this.readied_reblogs['Ria/addictio'] = new Post(this,"Don't you SEE!? THIS is why we have no choice but to burn it all down! The rot has gotten all the way to the center, and the center cnanot hold!",null, ["no one has any compassion left in them","because just EXISTING in this terrible universe","is so exhausting!","better to start over from scratch"], [""], ["wut"], true);
+    this.readied_reblogs['Ria/awake'] = new Post(this,"",null, ["i do not recommend this","sure youre awake","but you cant think with all the buzzing"], [""], ["op, you okay?"], true);
+    this.readied_reblogs['Ria/collapse'] = new Post(this,"Can we GET any more clear that this Universe is on its last legs??????",null, ["burn it down","its the only merciful thing we can do"], [""], ["op you okay?"], true);
+    this.readied_reblogs['Ria/overlap'] = new Post(this,"",null, ["mood","its hard","and thats why we should blow it all up!"], [""], ["lol"], true);
+
     this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
@@ -1003,7 +1012,6 @@ class Camille extends Character {
 
   tick = async (parentToRenderTo) => {
     if (this.dead) {
-      console.log("JR NOTE: camille is dead")
       return;
     }
 
@@ -1033,6 +1041,7 @@ class Camille extends Character {
       */
       if (post.tags.includes(`breach in progress`)) {
         post.element.scrollIntoView();
+        //the immune system has destroyed the invader
         observer.dead = true;
         observer.name += "-deactivated";
       }

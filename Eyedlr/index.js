@@ -71,7 +71,8 @@ const init = async () => {
   captain = new Captain();
   yongki = new Yongki();
   doc = new DocSlaughter();
-
+  devona = new Devona();
+  
   await grabNormalImages();
   await grabWeirdImages();
   characters.push(observer)
@@ -107,6 +108,7 @@ const init = async () => {
   characters.push(captain);
   characters.push(yongki);
   characters.push(doc);
+  characters.push(devona);
 
 
   /* let ele = document.querySelector("#container");
@@ -296,7 +298,7 @@ showProfile = (character) => {
     bodyContent.innerHTML = `Start typing to ${character.name} a question!`;
     bodyContent.setAttribute("contenteditable", "true");
     let ask = bodyContent.innerHTML;
-    bodyContent.onfocus = (()=>{
+    bodyContent.onfocus = (() => {
       bodyContent.innerHTML = "";
     })
     bodyContent.oninput = (() => {
@@ -320,9 +322,9 @@ showProfile = (character) => {
   createPopup(container);
 }
 
-const rageMode = ()=>{
+const rageMode = () => {
   window.alert("TODO: RAGE MODE")
-  truthLog("",`The Truth is you were never supposed to be here, Observer.
+  truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
   
@@ -424,7 +426,10 @@ const grabFadedMemories = async () => {
 const grabBlorboPosts = async () => {
   let loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Neville/';
   let tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Devona/';
+  tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/camille/';
