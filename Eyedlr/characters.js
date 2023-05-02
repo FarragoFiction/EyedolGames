@@ -314,10 +314,13 @@ class PornBot extends Character {
     /*
          `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 */
+
+
     let possiblePosts = [...links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
       "@wanderer 5d:23h:17:04s",
       "@wanderer 4d:15h:21m:33s",
+
       "<img src='http://www.farragofiction.com/ZampanioEyes2/tiktanio_glitchy.gif'>",
       `<h2>What Is ZampanioSim?</h2> <img src ='images/Secrets/tumblr_screenshots/what_is_zampaniosim.PNG'></a>`,
 
@@ -335,8 +338,13 @@ class PornBot extends Character {
     ]
 
 
-
-
+    const date = new Date();
+    //my friend surlyqueen sent me this amazing birthday otter so now i must share it with all of you
+    if(date.getMonth() === 4 && date.getDay() ===2){
+      for(let i = 0; i<113; i++){
+      possiblePosts.push("Happy Birthday!!!<br><Br><img src ='images/Secrets/tumblr_screenshots/Birthday_Otter.jpg'>");
+      }
+    }
 
     if (zampanioEyes.length > 0) {
       let zEye = rand.pickFrom(zampanioEyes);
