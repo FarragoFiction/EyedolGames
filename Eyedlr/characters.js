@@ -340,6 +340,11 @@ class PornBot extends Character {
 
     const date = new Date();
     //my friend surlyqueen sent me this amazing birthday otter so now i must share it with all of you
+    //also apparently i am the champion of horseshoes
+    //because that welcome home creator is ALSO born today
+    //and i'd suggest you've never seen us both in the same place
+    //but its p obvious we have entirely different skillsets
+    //and are workign too hard to be running two simulatenous projects
     if(date.getMonth() === 4 && date.getDay() ===2){
       for(let i = 0; i<113; i++){
       possiblePosts.push("Happy Birthday!!!<br><Br><img src ='images/Secrets/tumblr_screenshots/Birthday_Otter.jpg'>");
@@ -454,6 +459,7 @@ class PornBot extends Character {
             `Toxic fandom.`,
             `Which is better, ${obsession.randomObject(rand)} or ${obsession.randomObject(rand)}?`,
             `What about '${obsession.randomCommonPhrases(rand)}'?`,
+            "NOOOOOOOOOOOOOOOOO!",
             `Are we really all going to just forget about ${obsession.randomMinorBlorbo(rand)}?`,
             `I am just sitting here microwaving ${obsession.randomMinorBlorbo(rand)}. `,
             `I love ${obsession.randomMinorBlorbo(rand)} so much!`,
@@ -1455,9 +1461,39 @@ class K extends Character {
 
   }
 
+  
+  //the fucker steals any asks you sends in
+  //just copies and pastes them into a new post and doesn't credit the asker
+  //after all, who can PROVE anyone but him ever said these words?
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let tags = ["original post","do not steal","K", "check my profile for more quality content"];
+    //witherby doesn't judge but his followers sure do
+    let responses = [premadeAsk.text];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"] 
+    }
+    //k does not give a fuck if you're breaching. not his problem.
+    //which means sometiems training will identify him as breahcing (but their fix does still deactivate you)
+
+
+    const post = this.createNewPost(rand.pickFrom(responses), tags, [""], ["k post","trigger warning: annoying"]);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
 
   tick = async (parentToRenderTo) => {
     //you are GOING to see more of K than anyone else.
+
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+      return;
+    }
 
     if (rand.nextDouble() > 0.5) {
       this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
