@@ -25,8 +25,8 @@ class Character {
     }
   }
 
-  submitAsk = (characterName,text)=>{
-    this.pending_asks.push({characterName, text});
+  submitAsk = (characterName, text) => {
+    this.pending_asks.push({ characterName, text });
   }
 
   createCommonReadiedReblogs = () => {
@@ -84,12 +84,9 @@ class Character {
 
   //hmm.  i should probably do the highest odd action first. 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
-    if (this.secret_name === "River") {
-      console.log("JR NOTE: what are the odds river will like?", oddsLike)
-    }
+
     //check your highest priority thing first
     if (oddsLike > oddsPost && oddsLike > oddsReblog) {
-      console.log("JR NOTE: like is the highest odds")
 
       let post = this.checkBlorboLike(oddsLike);
       if (post) {
@@ -201,13 +198,13 @@ class Character {
     </div>`;
 
 
-    const post = new Post(this, ask+text, null, tags.concat(askerName), suggested_reblogs, suggested_tags,false);
+    const post = new Post(this, ask + text, null, tags.concat(askerName), suggested_reblogs, suggested_tags, false);
     this.posts.push(post);
     return post;
   }
 
   createNewPost(text, tags, suggested_reblogs, suggested_tags) {
-    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags,false);
+    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags, false);
     this.posts.push(post);
     return post;
   }
@@ -269,11 +266,11 @@ const randomPornBot = () => {
 
     bot.desc += ` DNI if you think ${o.randomOpinion(rand)}.`;
 
-    if(bot.obsessions[1]){
-     o = (bot.obsessions[1]);
-    bot.desc += `<br> I also like ${o.name}!`;
+    if (bot.obsessions[1]) {
+      o = (bot.obsessions[1]);
+      bot.desc += `<br> I also like ${o.name}!`;
 
-    bot.desc += ` I really think ${o.randomOpinion(rand)}.`;
+      bot.desc += ` I really think ${o.randomOpinion(rand)}.`;
     }
   }
   return bot;
@@ -363,7 +360,7 @@ class PornBot extends Character {
     }
 
     //JR NOTE: TODO flesh this out
-    for(let obsession of this.obsessions){
+    for (let obsession of this.obsessions) {
       possiblePosts.push(`<span data-obession="${obsession.name}">Wow can you believe SOME people think ${obsession.randomOpinion(rand)}?</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} from ${obsession.name} is cute!</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Should I go to ${obsession.randomLocation(rand)} in my next dream?</span>`);
@@ -390,8 +387,8 @@ class PornBot extends Character {
     }
   }
 
-  randomAsk = ()=>{
-    const ret = [...links,`Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`,"Have you played Zampanio yet?","Did you know I can see you?","Are you still there?","Are you in the rabbit hole yet?","Are you stuck?","Are you lost?"];
+  randomAsk = () => {
+    const ret = [...links, `Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?"];
     return rand.pickFrom(ret)
   }
 
@@ -641,7 +638,7 @@ class Intern3 extends Character {
 //only reblogs, never posts, reblogs can include a gif or image with text in it, or a link that is the reply
 //mix of violence and yugioh that she reblogs
 class EyeKiller extends Character {
-  name="kGL%55Wgyon2$T4V_23497" //no she does not want you to know who she is or generate a user name that has meaning to her. thats how you FIND her.
+  name = "kGL%55Wgyon2$T4V_23497" //no she does not want you to know who she is or generate a user name that has meaning to her. thats how you FIND her.
   secret_name = "eyekiller";
   icon = "images/icons/killer.png";
   desc = `"Never say "who's there?" Don't you watch scary movies? It's a death wish. You might as well come out to investigate a strange noise or something." - Scream(1996)`;
@@ -667,7 +664,7 @@ class Himbo extends Character {
   icon = "images/icons/himbo_right_hand.png";
   constructor() {
     super();
-    this.readied_reblogs['cards'] = new Post(this, "LOL!", null, ["lol","so true","thats why you should find a girl","who already plays"], [], [], true);
+    this.readied_reblogs['cards'] = new Post(this, "LOL!", null, ["lol", "so true", "thats why you should find a girl", "who already plays"], [], [], true);
 
   }
 
@@ -926,8 +923,11 @@ class Camille extends Character {
     this.readied_reblogs['doom'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['die'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['killed'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['murder'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['corpse'] = new Post(this, ":3", null, [":3"], [""], [""], true);
     this.readied_reblogs['headless'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['kill'] = new Post(this, ":3", null, [":3"], [""], [""], true);
+    this.readied_reblogs['blood'] = new Post(this, ":3", null, [":3"], [""], [""], true);
 
     this.readied_reblogs['Camille/relentless'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: horrors"], true);
     this.readied_reblogs['Camille/relentless_training'] = new Post(this, ":3", null, [":3"], ["wow", "you okay, op?", "lol"], ["wow", "you okay, op?", "trigger warning: horrors"], true);
@@ -967,6 +967,7 @@ class Camille extends Character {
     for (let post of this.posts) {
       if (post.text.includes("Zampanio")) {
         this.dead = true; //she will never post again
+        this.name += "-deactivated";
       }
     }
 
@@ -993,41 +994,41 @@ class Witherby extends Character {
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
   }
 
-  handleAsks = (parentToRenderTo, premadeAsk) =>{
+  handleAsks = (parentToRenderTo, premadeAsk) => {
     //just generate an ask rather than deal with a blocked char.
-    if(premadeAsk && this.block_list.includes(premadeAsk.characterName)){
+    if (premadeAsk && this.block_list.includes(premadeAsk.characterName)) {
       premadeAsk = null;
     }
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
-    const starts = ["Forgive me father","Forgive me daddy","One time","When i was a kid","Last week",`About a ${rand.pickFrom(["year","month","day","decade"])} ago`,`Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
-    const sins = ["I killed them all.",`I murdered someone.`,'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy","girl"])}`,`I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`,"I left my little brother to die",`I shopliffted ${rand.pickFrom(pettyTheftTargets)}`,`I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
-    const endings = ["Was I wrong?","Was I an asshole?", "Do you think that's fucked up?","Can I ever be forgiven?","Am I going to be punished?"];
-    let question = premadeAsk? premadeAsk.text:`${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
+    const starts = ["Forgive me father", "Forgive me daddy", "One time", "When i was a kid", "Last week", `About a ${rand.pickFrom(["year", "month", "day", "decade"])} ago`, `Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
+    const sins = ["I killed them all.", `I murdered someone.`, 'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const endings = ["Was I wrong?", "Was I an asshole?", "Do you think that's fucked up?", "Can I ever be forgiven?", "Am I going to be punished?"];
+    let question = premadeAsk ? premadeAsk.text : `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
-    if(!premadeAsk){
+    if (!premadeAsk) {
       question = randomQuirk(rand).apply(question);
     }
- 
-    let responses = ["Wow, sounds rough,buddy!","I forgive you.","You are forgiven.","It's okay."];
-    if(question.toLowerCase().includes("shoplift") || question.toLowerCase().includes("steal")  || question.toLowerCase().includes("stole")){
-      responses = ["It is always morally correct to steal from shops.","You did what you had to do.", "I understand why you had to do that. It's okay."]
-    }else if (question.toLowerCase().includes("murder") || question.toLowerCase().includes("kill") || question.toLowerCase().includes("die")){
+
+    let responses = ["Wow, sounds rough,buddy!", "I forgive you.", "You are forgiven.", "It's okay."];
+    if (question.toLowerCase().includes("shoplift") || question.toLowerCase().includes("steal") || question.toLowerCase().includes("stole")) {
+      responses = ["It is always morally correct to steal from shops.", "You did what you had to do.", "I understand why you had to do that. It's okay."]
+    } else if (question.toLowerCase().includes("murder") || question.toLowerCase().includes("kill") || question.toLowerCase().includes("die")) {
       responses = ["..."]; //one sin doesn't forgive EVERY sin
-    }else if(question.toLowerCase().includes("bad")){
+    } else if (question.toLowerCase().includes("bad")) {
       responses = ["For the last time, I am not interested."]
     }
 
     //he auto blocks K and anyone with numbers in their url (it makes you look like a pornbot)
-    if(premadeAsk && (premadeAsk.characterName === "K" || /\d/.test(premadeAsk.characterName))){
+    if (premadeAsk && (premadeAsk.characterName === "K" || /\d/.test(premadeAsk.characterName))) {
       responses = ["Blocked."];
       this.block_list.push(premadeAsk.characterName);
     }
 
     const tags = ["confession"];
     //witherby doesn't judge but his followers sure do
-    const suggested_reblogs = ["wow","what the hell", "who DOES that","you should feel ashamed"]
+    const suggested_reblogs = ["wow", "what the hell", "who DOES that", "you should feel ashamed"]
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), question, premadeAsk?premadeAsk.characterName:"Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    const post = this.answerAnAsk(rand.pickFrom(responses), question, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -1042,9 +1043,9 @@ class Witherby extends Character {
     //if its empty thats okay
     let premadeAsk = rand.pickFrom(this.pending_asks)
     removeItemOnce(this.pending_asks, premadeAsk);
-    this.handleAsks(parentToRenderTo,premadeAsk);
-    if(this.posts.length === 10){
-      this.submitAsk("K","What kind of creepy shit are you doing, Witherby? You get off on this shit? Knowing everyones secrets? You think it makes it better that you do it out in the open instead of in your shitty little box?  Stupid Witherby. Stupid little creepy Witherby. You don't even get what this place is for! I feel SORRY for you, really. Get a life!")
+    this.handleAsks(parentToRenderTo, premadeAsk);
+    if (this.posts.length === 10) {
+      this.submitAsk("K", "What kind of creepy shit are you doing, Witherby? You get off on this shit? Knowing everyones secrets? You think it makes it better that you do it out in the open instead of in your shitty little box?  Stupid Witherby. Stupid little creepy Witherby. You don't even get what this place is for! I feel SORRY for you, really. Get a life!")
     }
   }
 
@@ -1052,9 +1053,9 @@ class Witherby extends Character {
 
 //snail posts constantly, anything cute or friendshaped as well
 class Yongki extends Character {
-  name="snails-enthusiast";
+  name = "snails-enthusiast";
   icon = "images/icons/Yongki.png";
-  desc="An enthusiast is someone who likes something. I like snails a lot. They are very viscious."
+  desc = "An enthusiast is someone who likes something. I like snails a lot. They are very viscious."
   secret_name = "yongki";
 
   constructor() {
@@ -1105,9 +1106,21 @@ the poor man's pause
 //(oh captain, you'll never understand you're just as much on the spectrum as yongki)
 class Captain extends Character {
   name = "former-captain-of-the-info-team";
+  /*captain doesn't know WHO he is now
+why else would he still call himself captain
+he's scrambling for an identity
+he can't just be
+"some unemployed guy squatting in a mall"
+he would DIE
+poor heart aligned Stranger
+he's always destined to feel out of place
+contrast that with yongki being mind aligned Stranger
+he doesn't CARE what his identity is, he's just vibinng in a situation
+  */
   icon = "images/icons/Captain.png";
   secret_name = "captain";
-  desc="Hello, I am the former Captain of the Info Team. I am still learning the rules of this place and hope you will all be kind."
+  asked = false;
+  desc = "Hello, I am the former Captain of the Info Team. I am still learning the rules of this place and hope you will all be kind."
   //JR NOTE: TODO if you send captain an ask with teh word "duck" he will tell you all about his duck wrangling.
   constructor() {
     super();
@@ -1129,9 +1142,10 @@ class Captain extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-    if(this.posts.length == 3){
+    if (this.posts.length == 3 && !this.asked) {
+      this.asked = true;
       //i love how insistent captain is that this is basically snail mail
-      witherby.submitAsk(this.name, "Dear Witherby, I did not mean to crush Yongki's pen. Please tell him I am sorry. <br><br>Sincerely, The Former Captain of the Info Team. <p>p.s. I hope you are well.</p> ");
+      witherby.submitAsk(this.name, "Dear Witherby,<br><br> I did not mean to crush Yongki's pen. Please tell him I am sorry. <br><br>Sincerely, The Former Captain of the Info Team. <p>p.s. I hope you are well.</p> ");
 
     }
   }
@@ -1314,7 +1328,7 @@ class Tyrfing extends Character {
 
   tick = (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-    if(rand.nextDouble()>0.75){
+    if (rand.nextDouble() > 0.75) {
       rand.pickFrom(characters).submitAsk(this.name, "HAVE YOU SUBMITTED YOURSELF TO NIDHOGG'S DIVINE WILL?");
 
     }
@@ -1332,7 +1346,7 @@ class Tyrfing extends Character {
 class Vik extends Character {
   name = "censored-for-your-protection";
   icon = "images/icons/Vik.png"; //404 on purpose
-  secret_name = "vik";
+  secret_name = "Vik";
 
   constructor() {
     super();
@@ -1346,7 +1360,6 @@ class Vik extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-
   }
 }
 
@@ -1360,6 +1373,7 @@ class Parker extends Character {
   name = "hatsune_miku_fan";
   icon = "images/icons/Parker.png";
   secret_name = "parker";
+  asked = false;
 
   constructor() {
     super();
@@ -1367,7 +1381,7 @@ class Parker extends Character {
 
     this.readied_reblogs['Parker/mine'] = new Post(this, "slander", null, ["this mine is great!"], [""], [""], true);
     this.readied_reblogs['Parker/parker'] = new Post(this, "@censored-for-your-protection you wanna get a milkeshake later?", null, ["this"], [""], [""], true);
-    this.readied_reblogs['Where would we even get a milkshake?'] = new Post(this, "I could probably dig under a McZonald's?", null, ["actually","nevermind","i just remembered I need to rewatch Tenchi Muyo"], [""], [""], true);
+    this.readied_reblogs['Where would we even get a milkshake?'] = new Post(this, "I could probably dig under a McZonald's?", null, ["actually", "nevermind", "i just remembered I need to rewatch Tenchi Muyo"], [""], [""], true);
     this.readied_reblogs['Parker/piggy'] = new Post(this, "Oh shit I forgot I owned a restaurant!", null, ["shit"], [""], [""], true);
     this.readied_reblogs['Oh shit I forgot I owned a restaurant!'] = new Post(this, "@censored-for-your-protection what should I do? Shit! Restaurant's boned!", null, ["shit"], [""], [""], true);
 
@@ -1375,20 +1389,21 @@ class Parker extends Character {
     this.readied_reblogs['Parker/beast'] = new Post(this, "", null, ["this"], [""], [""], true);
     this.readied_reblogs['Parker/bucket'] = new Post(this, "", null, ["bucket-wheel-excavator tan!!"], [""], [""], true);
     this.readied_reblogs['Parker/do not'] = new Post(this, "", null, ["yum"], [""], [""], true);
-    this.readied_reblogs['Parker/gai'] = new Post(this, "", null, ["i have never","actually","eaten at a japanese retaurant","are they any good?"], [""], [""], true);
-    this.readied_reblogs['Parker/grow'] = new Post(this, ":)", null, ["i have never","actually","eaten at a japanese retaurant","are they any good?"], [""], [""], true);
-    this.readied_reblogs['Parker/hereally'] = new Post(this, "", null, ["love my blorbos","so much"], [""], [""], true);
+    this.readied_reblogs['Parker/gai'] = new Post(this, "", null, ["i have never", "actually", "eaten at a japanese retaurant", "are they any good?"], [""], [""], true);
+    this.readied_reblogs['Parker/grow'] = new Post(this, ":)", null, ["i have never", "actually", "eaten at a japanese retaurant", "are they any good?"], [""], [""], true);
+    this.readied_reblogs['Parker/hereally'] = new Post(this, "", null, ["love my blorbos", "so much"], [""], [""], true);
     this.readied_reblogs['Parker/hole'] = new Post(this, ":)", null, ["hole for you!"], [""], [""], true);
-    this.readied_reblogs['Parker/important'] = new Post(this, "@censored-for-your-protection is this true? bestie, plz ", null, ["why would communism stop making my waifu","vik","vik tell me","tell me its a lie"], [""], [""], true);
-    this.readied_reblogs['Parker/thisisinsidethemall'] = new Post(this, "@censored-for-your-protection lets meet up here later bestie ", null, ["mall","underground",":)",""], [""], [""], true);
+    this.readied_reblogs['Parker/important'] = new Post(this, "@censored-for-your-protection is this true? bestie, plz ", null, ["why would communism stop making my waifu", "vik", "vik tell me", "tell me its a lie"], [""], [""], true);
+    this.readied_reblogs['Parker/thisisinsidethemall'] = new Post(this, "@censored-for-your-protection lets meet up here later bestie ", null, ["mall", "underground", ":)", ""], [""], [""], true);
 
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-    this.readied_reblogs['hatsune'] = new Post(this, "", null, ["best girl","waifu","always reblog"], [""], [""], true);
+    this.readied_reblogs['hatsune'] = new Post(this, "", null, ["best girl", "waifu", "always reblog"], [""], [""], true);
 
-    if(this.posts.length == 3){
+    if (this.posts.length == 3 && this.asked) {
+      this.asked = true;
       witherby.submitAsk(this.name, "I think I might have killed them. I didn't mean to. I. Does that make me a bad person? Tell me it doens't make me a bad person. Wait. Shit I'm not supposed to influence the story. Forget you saw me.");
 
     }
