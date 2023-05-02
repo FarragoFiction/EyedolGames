@@ -831,8 +831,12 @@ class Neville extends Character {
 
   constructor() {
     super();
-    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
+    this.readied_reblogs['devona is worried she has a diagnosis'] = new Post(this, "whoa, devy,  you're right, you might have it! i wonder what the next steps are?", null, [""], [""], [""], true);
+    
+    this.readied_reblogs['devona is worried about treatment'] = new Post(this, "i bet you can get both meds and therapy from the doc :)", null, [""], [""], [""], true);
+    this.readied_reblogs['devona responds opposite to caffeine'] = new Post(this, "didn't you tell me once that adhd reacts opposite to stimulants?", null, [""], [""], [""], true);
 
+    this.readied_reblogs['Neville/autism.png'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/beast'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/bird'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
     this.readied_reblogs['Neville/burger'] = new Post(this, "", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
@@ -881,19 +885,93 @@ class Devona extends Character {
   icon = "images/icons/Devona.png";
   secret_name = "Devona";
 
+  secret_readied_reblogs = {};
+
   // porn bot posts this, devona should reblog and ramble about it https://www.tumblr.com/foone/713863322485850112?source=share
 
   constructor() {
     super();
     this.readied_reblogs['hey does anyone know how to get stains off of a rug? like a LOT of stains. i tried rubbing alcohol on them but it just made the stains bigger'] = new Post(this, "<span data-ai='devona-posting-about-soap'></span>", null, ["You Need Dish Soap For That", "I Don't Think Using Rubbing Alcohol Does Anything For Area Or Oriental Rugs..."], [""], ["lifetips"], true);
     this.readied_reblogs["SHIT it's rubbing alcohol??"] = new Post(this, "", null, ["I'm Heading Over With The Supplies!!"], [""], ["lifetips"], true);
+    this.readied_reblogs["whoa, devy,  you're right, you might have it! i wonder what the next steps are?"] = new Post(this, "<span data-ai='devona is worried about treatment'></span>", null, ["My Research Says Medication","And Behavior Modification", "I Don't HAVE Medication!","What Behavior Should I Modify???????"], [""], ["lifetips"], true);
+    this.readied_reblogs["i bet you can get both meds and therapy from the doc :)"] = new Post(this, "<span data-ai='devona has a plan></span>", null, ["Oh","Good Point!", "I'll Bring It Up In My Next Session"], [""], ["lifetips"], true);
+    this.readied_reblogs["didn't you tell me once that adhd reacts opposite to stimulants?"] = new Post(this, "!<span data-ai='devona has a plan></span>", null, ["Oh","Good Point!", "I'll Bring It Up In My Next Session"], [""], ["lifetips"], true);
 
+    
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.secret_readied_reblogs['Devona/adhd'] = new Post(this,`@void_soup <span data-ai='devona is worried she has a diagnosis'></span>`,null, ["Oh No","What If I Have This","How Could I TelL?","Neville","Do I Have This?"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['Devona/anxiety.png'] = new Post(this,`@void_soup <span data-ai='devona is worried she has a diagnosis'></span>`,null, ["Oh No","What If I Have This","How Could I TelL?","Neville","Do I Have This?"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['Devona/anxiety_ace'] = new Post(this,``,null, ["Its So True","How Does Everyone Take So Many Risks Every Day?","Do They Not Know How Dangerous Social Media Is?"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['Devona/anxiety_plus_adhd'] = new Post(this,`@void_soup <span data-ai='devona responds opposite to caffeine'></span>`,null, ["Actually","Caffeine Makes Me","Calm Down?","Neville","Is This Normal??"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['Devona/do_not_p'] = new Post(this,``,null, ["Its So True","How Does Everyone Take So Many Risks Every Day?","Do They Not Know How Dangerous Social Media Is?"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['Devona/faking'] = new Post(this,`@we-didnt-start-the-fire <span data-ai='devona is worried she is secretly faking her various syndromes'></span>`,null, ["Oh God","What If I Am Secretly Faking!?","Ria","How Would I Know???????"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['Devona/scared'] = new Post(this,`@void_soup <span data-ai='devona is worried she has has a diagnosis'></span>`,null, ["Oh No","What If I Have This","How Could I TelL?","Neville","Do I Have This?"], [""], ["op, you okay?"], true);
+    this.secret_readied_reblogs['data-breach="observer"'] = new Post(this,` ! @robitussin-warrior @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'></span>`,null, ["Oh God","Breach In Progress","We Need to Act Quickly","Do We Contain?"], [""], ["wut"], true);
 
+  }
+
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let tags = ["Zampanio","Zampanio","Zampanio Is the Secret To The Universe","The Fragment"];
+    //witherby doesn't judge but his followers sure do
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"] 
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = ["<span data-breach='observer'> ! @robitussin-warrior @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'</span>"]
+      tags = ["Oh God","Breach In Progress","We Need to Act Quickly","Do We Contain?"]
+    }
+
+    const suggested_reblogs = ["oh shit"]
+    if(responses.length == 0){
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
+  //devona refuses to reblog unless she's talking to someone directly
+  //instead she REPOSTS to cut the thread leading back to her on the more popular post
+  //because she is so so scared of being seen
+  //but also just cannot shut up
+  handleSecretReadiedReblog = () => {
+    let possiblities = rand.shuffle(all_posts);
+    //IF you have a respnse to the observer breaching or being pinged, do that first
+    let keys = ['data-breach="observer"', `@${this.name}`, ...Object.keys(this.secret_readied_reblogs)]
+    for (let key of keys) {
+      for (let target of possiblities) {
+        //if the target post has the key phrase anywhere in it, attack
+        if (this.secret_readied_reblogs[key] && target.text.toLowerCase().includes(key.toLowerCase())) {
+          let response = this.secret_readied_reblogs[key];
+          //no spam
+          if (this.delete_readied_reblogs) {
+            delete (this.secret_readied_reblogs[key]);
+          }
+          //she's not a theif but she steals it anyways
+          return this.createNewPost(target.text + response.text, response.tags, response.suggested_reblogs, response.suggested_tags);
+
+        }
+      }
+    }
+    return null;
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    const post =this.handleSecretReadiedReblog();
+    if(post && parentToRenderTo){
+      post.renderToScreen(parentToRenderTo);
+    }
+
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
   }
 }
 
@@ -924,6 +1002,8 @@ class Ria extends Character {
     this.readied_reblogs['Ria/awake'] = new Post(this,"",null, ["i do not recommend this","sure youre awake","but you cant think with all the buzzing"], [""], ["op, you okay?"], true);
     this.readied_reblogs['Ria/collapse'] = new Post(this,"Can we GET any more clear that this Universe is on its last legs??????",null, ["burn it down","its the only merciful thing we can do"], [""], ["op you okay?"], true);
     this.readied_reblogs['Ria/overlap'] = new Post(this,"",null, ["mood","its hard","and thats why we should blow it all up!"], [""], ["lol"], true);
+    
+    this.readied_reblogs['devona is worried she is secretly faking her various syndromes'] = new Post(this,"Devy, the meme you found says it right there!",null, ["no one would fake having as many annoyances as you do!","don't worry!","you're not faking it!"], [""], ["lifetips"], true);
 
     this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
@@ -1262,6 +1342,7 @@ class K extends Character {
 
   name = "K";//proud he got such an early name
   icon = 'images/icons/Khana_by_theShadow.png';
+  desc = "YEAH, that's right, look over here!";
 
   //k wants to be seen on EVERY post in the entire system
   //and also if a subsequent reblog goes viral, he does too
