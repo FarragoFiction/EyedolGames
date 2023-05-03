@@ -122,7 +122,11 @@ class Character {
     if (post) {
       return
     }
-    this.checkBlorboLike(oddsLike);
+    let like = this.checkBlorboLike(oddsLike);
+    //well do SOMETHING, gotta collate those likes somehow
+    if(!like){
+      this.activelyLookForThingsToLike();
+    }
   }
 
   handleReadiedPost = () => {
@@ -163,12 +167,26 @@ class Character {
     return null;
   }
 
+  activelyLookForThingsToLike = ()=>{
+    if (!this.secret_name) {
+      return;
+    }
+    let posts = rand.shuffle(all_posts);
+    for(let post of posts){
+      if (post.text.toLowerCase().includes(this.secret_name.toLowerCase())) {
+        this.likePost(post);
+        return;
+      }
+    }
+  }
+
   decideIfShouldLike = (post) => {
     if (!this.secret_name) {
       return true;
     }
     //blorbos only like posts from their own source (or that mention them by name)
     //(so non wastes can get their vibes)
+
     if (post.text.toLowerCase().includes(this.secret_name.toLowerCase())) {
       return true;
     }
@@ -1719,7 +1737,7 @@ class TheNeighbor extends Character {
 
 
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", ["ask"], [], []);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -1772,6 +1790,8 @@ class Tyrfing extends Character {
   constructor() {
     super();
 
+    //
+    this.readied_posts.push(new Post(this, "@state-farm-official IT IS YOUR TURN TO PICK THE TINY WARRIORS UP FROM THEIR AFTER SCHOOL COMBAT TRAINING!", null, [""], [""], [""], true));
     this.readied_reblogs["nidhogg"] = (new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
   }
 
@@ -1882,9 +1902,10 @@ class Hoon extends Character {
 //random ass philosophy posts in between posts asking how tumblr works and if he's been an asshole or not
 //never reblogs. likes everything.
 class NAM extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "watt-is-a-man-exe";
+  icon = "images/icons/watt.png";
   secret_name = "nam";
+  desc="Uh. Controlling the Philosophy. Is. Uh. Not exactly easy. <br><br>Sorry."
 
   /*"To the NORTH is ThisIsNotAGame. In it's endless hallways you see countless variations on players and screens and the wistful Might-Have-Beens of a game you wish you could have played. 
 To the SOUTH is JustTruth.  In it's endless corridors lurk the bitter ThisIsNotASpiral that has been watching and trying in vain to keep from tormenting you. Only truths are here, no more masks, no more pretence. 
@@ -1892,12 +1913,18 @@ To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You h
 */
   constructor() {
     super();
+
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
 
   tick = async (parentToRenderTo) => {
-    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    if(rand.nextDouble()>0.5 && this.readied_posts.length ==0){
+      let theme = rand.pickFrom(Object.values(all_themes));
+      this.readied_posts.push(new Post(this, rand.pickFrom(theme.getPossibilitiesFor(PHILOSOPHY)), null, ["philosophy","sorry","i can't help it","how do i delete posts"], [""], [""], true));
+    }
+
+    this.blorboAI(parentToRenderTo, 0.6, 0.5, 0.75);
   }
 }
 
@@ -1905,8 +1932,9 @@ To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You h
 //occasionally jumps in with Vik/Parker on putting "the bad guys" on blast, other times tries to defend them
 //reblogs legal advice and adds his own take as well
 class Ronin extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "robo-cop";
+  icon = "images/icons/Ronin.png";
+  secret_name="ronin";
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);

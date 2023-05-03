@@ -72,6 +72,8 @@ const init = async () => {
   yongki = new Yongki();
   doc = new DocSlaughter();
   devona = new Devona();
+  nam = new NAM();
+  ronin = new Ronin();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -109,6 +111,8 @@ const init = async () => {
   characters.push(yongki);
   characters.push(doc);
   characters.push(devona);
+  characters.push(nam);
+  characters.push(ronin);
 
 
   /* let ele = document.querySelector("#container");
@@ -478,6 +482,14 @@ const grabBlorboPosts = async () => {
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Wanda/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/nam/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/ronin/';
   tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
