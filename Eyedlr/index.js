@@ -52,7 +52,6 @@ window.onload = () => {
 }
 
 const init = async () => {
-  wanderer = new Wanderer();
   observer = new Observer();
   k = new K();
   neville = new Neville();
@@ -74,6 +73,16 @@ const init = async () => {
   devona = new Devona();
   nam = new NAM();
   ronin = new Ronin();
+
+  //there is only a single Intern, and the three variations indicate where in the timeline we are. Does the intern know wodin? does the intern know wanda but not know who she REALLY is? does the intern know wanda is his childhood bestie?
+  intern1 = new Intern1();
+  intern2 = new Intern2();
+  intern3 = new Intern3();
+
+  //all three versions of the Lord of Space exist at the same time
+  wodin = new Wodin();
+  wanderer = new Wanderer();
+  wanda = new Wanda();
 
   await grabNormalImages();
   await grabWeirdImages();
@@ -105,6 +114,7 @@ const init = async () => {
   characters.push(killer);
   characters.push(himbo);
   characters.push(witherby);
+  characters.push(wodin);
   characters.push(vik);
   characters.push(parker);
   characters.push(captain);
@@ -113,7 +123,9 @@ const init = async () => {
   characters.push(devona);
   characters.push(nam);
   characters.push(ronin);
+  characters.push(wanda);
 
+  characters.push(rand.pickFrom([intern1, intern2, intern3]));
 
   /* let ele = document.querySelector("#container");
  
@@ -350,7 +362,13 @@ const rageMode = () => {
 }
 
 const truthLog = (title, text) => {
-  console.log(`%c${title}%c  ${text}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:25px;text-decoration:underline;", "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
+  console.log(`%c${title}%c  ${text}`, "font-weight: bold;font-family: 'Courier New', monospace;color:${color}; font-size:25px;text-decoration:underline;", "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
+}
+
+const chatLog = (text) => {
+  const color = text.includes("CFO")?"red":"black";
+
+  console.log(`%c  ${text}`,  `font-weight: bold;font-family: 'Courier New', monospace;color:${color}; font-size:13px;`);
 }
 
 
