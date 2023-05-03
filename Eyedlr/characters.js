@@ -1933,7 +1933,7 @@ To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You h
 //reblogs legal advice and adds his own take as well
 class Ronin extends Character {
   name = "robo-cop";
-  icon = "images/icons/Ronin.png";
+  icon = "images/icons/ronin.png";
   secret_name="ronin";
   constructor() {
     super();
