@@ -124,7 +124,7 @@ class Character {
     }
     let like = this.checkBlorboLike(oddsLike);
     //well do SOMETHING, gotta collate those likes somehow
-    if(!like){
+    if (!like) {
       this.activelyLookForThingsToLike();
     }
   }
@@ -167,12 +167,12 @@ class Character {
     return null;
   }
 
-  activelyLookForThingsToLike = ()=>{
+  activelyLookForThingsToLike = () => {
     if (!this.secret_name) {
       return;
     }
     let posts = rand.shuffle(all_posts);
-    for(let post of posts){
+    for (let post of posts) {
       if (post.text.toLowerCase().includes(this.secret_name.toLowerCase())) {
         this.likePost(post);
         return;
@@ -742,6 +742,11 @@ class Wodin extends Character {
 //occasionally says something that ALMOST could be taken for being in the loop which wanda always thinks is so hilarious
 //very good fanfic by the wisp: https://archiveofourown.org/works/46552111/chapters/117224734?show_comments=true&view_full_work=false#comment_642382519
 class Intern1 extends Character {
+
+  name = "testing-building-developing"; //the best dude
+  icon = "images/icons/Intern-who-knows.png";
+  plead = false;
+
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
   constructor() {
     super();
@@ -749,14 +754,167 @@ class Intern1 extends Character {
 
   }
 
+
+  reachOut = () => {
+    const messages = `TBD: oh 8 divine
+    TBD: i actually found you
+    TBD: you're the Observer right
+    TBD: something something
+    TBD: being from a higher plane
+    TBD: incomprehensible to most mortal minds
+    TBD: its you
+    TBD: holy shit
+    TBD: uh
+    TBD: sorry if
+    TBD: i hope i haven't offended you
+    TBD: creators i wasn't prepared for this
+    TBD: look
+    TBD: i cant understand you anymore than anyone else can
+    TBD: i'm not close enough
+    TBD: so uh
+    TBD: sorry if you're trying to talk to me
+    TBD: but
+    TBD: the IMPORTANT thing is
+    TBD: find me again
+    TBD: find me in the place where the lines between layers of reality blur
+    TBD: i've heard its "to the west" whatever that means
+    TBD: it won't be enough to just
+    TBD: direct someone else to find me
+    TBD: you have to find me yourself
+    TBD: you have to
+    TBD: puppet me?
+    TBD: like you do peewee
+    TBD: its important
+    TBD: its
+    CFO: ohohoh, what do we have HERE?
+    CFO: if it isn’t an intern at three point oh
+    TBD: uh
+    TBD: its not what it looks like?
+    CFO: hmmmm
+    TBD: please
+    TBD: don't tell wanda
+    TBD: it might kill her
+    CFO: HMMMMMMMMMM
+    TBD: im SERIOUS
+    TBD: i'm not sure her heart could take the shock
+    CFO: look, cinnamon swirl
+    CFO: cinnamon bun! cinnamon apple
+    CFO: i love wanda as much as just about anybody else! which to be honest is an average we rigged through quotidians
+    CFO: stuck with her through the years
+    CFO: even though, as you very obviously know
+    CFO: it can be very hard to be her friend!
+    CFO: especially when she gets stuck on an idea
+    CFO: like an insistent quest marker you just can't dismiss but can't complete yet either
+    CFO: had one of those for this mod with religion and wells that i installed…
+    CFO: not the point!
+    CFO: The point is, PLEASE understand that i say this with all my friend love…
+    CFO: so what?
+    TBD: i
+    CFO: so what if she dies?
+    CFO: she'll be right back where she needs to be start of next loop
+    CFO: same as always
+    TBD: i don't believe that
+    TBD: I CAN'T believe that
+    TBD: i don't care if all of you 'in the loop' keep your memories
+    TBD: you're different people
+    TBD: you HAVE to be
+    TBD: because if you're not
+    TBD: what does that say about me
+    TBD: and my half memories
+    TBD: are you saying that half of each version of myself is just
+    TBD: destroyed
+    TBD: each loop
+    TBD: just because of some fucking dreams
+    TBD: please
+    TBD: just
+    TBD: it would kill her to know I'm sort of... in the loop
+    TBD: she needs this
+    TBD: needs ME
+    TBD: to be this
+    TBD: to be her 'best bro' from way back
+    TBD: to be just the same
+    CFO: are you sure-sure you're not just saying that to feed your own ego?
+    CFO: your gnosis is practically 1! default values!
+    CFO: whatever you think you know, it’s not important enough to matter
+    TBD: ...
+    TBD: sure
+    TBD: fine
+    TBD: theres a hell of a lot of things i dont understand here
+    TBD: but I've Seen past the edge
+    TBD: I Know things you and Wanda with all your 'gnosis' or whatever the hell
+    TBD: don't
+    TBD: can't.
+    TBD: it's so much bigger than you think
+    TBD: and at the heart of it all is this
+    TBD: wanda, the Lord of Space
+    TBD: the most Important Person in the Universe
+    TBD: and her ordinary, boring, easily rattled mortal friend.
+    TBD: she needs to lose me again and again
+    TBD: because if she doesn't...
+    TBD: she stagnates
+    TBD: you've SEEN her
+    TBD: she practically does NOTHING once she convinces me she's Wanda
+    CFO: *slow clap*
+    CFO: spoken like a true Muse of Void
+    CFO: or absence muse
+    CFO: whatever
+    TBD: ...
+    TBD: what?
+    CFO: come oooooooon
+    CFO: haven't you ever wondered?
+    CFO: what would you be, if you had played?
+    CFO: look at you all, inspiring with your absence
+    CFO: so proud of you
+    CFO: brings a tear to my eye! only got one of those, sorry
+    CFO: or maaaaaybe…
+    CFO: you're just caught up in something bigger than you can understand!
+    CFO: and have decided that you are just SO important that nothing can be accomplished unless you're lying to your BEST FRIEND
+    TBD: fine
+    TBD: fine
+    TBD: but please
+    TBD: let me wait until next loop?
+    TBD: at least let me...
+    TBD: at least let her not be almost 70
+    TBD: at least she won't literally have a heart attack
+    CFO: …
+    CFO: fiiiiiine
+    CFO: but make it count
+    TBD: thank you.`.split("\n");
+      //have you checked out the East in eyedlgames.com yet? I got this function from there.
+
+    const message = async (index) => {
+
+
+      if (index < messages.length) {
+        chatLog(messages[index]);
+        await sleep(500);
+        message(index + 1);
+      }
+    }
+    message(0);
+    this.plead = true;
+  }
+
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    if(this.plead){
+      return;//only do this once
+    }
+    for (let post of all_posts) {
+
+      if (post.text.includes(`data-breach="observer"`)) {
+        this.reachOut();
+      }
+    }
   }
 }
 
 //interacts with Wodin, reblogging memes and @ing them constantly 
 //voice refernce: https://github.com/FarragoFiction/LitRPGSim/blob/East/src/Screens/WalkAround/Chat/TBD/PreCoffinChats.ts
 class Intern2 extends Character {
+
+  name = "the-best-dude"; //the best dude
+  icon = "images/icons/Intern-young.png";
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
@@ -774,6 +932,8 @@ class Intern2 extends Character {
 ////if i need a voice reminder https://github.com/FarragoFiction/LitRPGSim/blob/East/src/Screens/WalkAround/Chat/TBD/PostCoffinChats.ts
 //and https://github.com/FarragoFiction/LitRPGSim/blob/East/src/Screens/WalkAround/Chat/HelpDesk/CEOChats/InternChats.ts
 class Intern3 extends Character {
+  name = "tragic-boring-day"; //the best dude
+  icon = "images/icons/Intern-sad.png";
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
@@ -1750,7 +1910,7 @@ class TheNeighbor extends Character {
   tick = async (parentToRenderTo) => {
 
     let target = this.findAPostEvenIfYouHaveInteractedWithIt();
-    if(rand.nextDouble()>0.75 && doc.posts.length >0){
+    if (rand.nextDouble() > 0.75 && doc.posts.length > 0) {
       target = rand.pickFrom(doc.posts);//hungry, wants to bully her on purpose
     }
 
@@ -1763,10 +1923,10 @@ class TheNeighbor extends Character {
       //the neighbor can't help but bully her. he's so very hungry and she's very nearly the only morgan's hill citizen left for him to feed on
 
       let sass = "";
-      if(target.owner == doc){
-        sass = rand.pickFrom(["Charming as ever!","Oh you WOULD post that, wouldn't you dear?","How charming of you, dear!","Oh, Doctor, did you really mean to post this?"]);
+      if (target.owner == doc) {
+        sass = rand.pickFrom(["Charming as ever!", "Oh you WOULD post that, wouldn't you dear?", "How charming of you, dear!", "Oh, Doctor, did you really mean to post this?"]);
       }
-      let post = this.reblogAPost(target,sass, ["reblog"], [""], [""]);
+      let post = this.reblogAPost(target, sass, ["reblog"], [""], [""]);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
@@ -1905,7 +2065,7 @@ class NAM extends Character {
   name = "watt-is-a-man-exe";
   icon = "images/icons/watt.png";
   secret_name = "nam";
-  desc="Uh. Controlling the Philosophy. Is. Uh. Not exactly easy. <br><br>Sorry."
+  desc = "Uh. Controlling the Philosophy. Is. Uh. Not exactly easy. <br><br>Sorry."
 
   /*"To the NORTH is ThisIsNotAGame. In it's endless hallways you see countless variations on players and screens and the wistful Might-Have-Beens of a game you wish you could have played. 
 To the SOUTH is JustTruth.  In it's endless corridors lurk the bitter ThisIsNotASpiral that has been watching and trying in vain to keep from tormenting you. Only truths are here, no more masks, no more pretence. 
@@ -1919,9 +2079,9 @@ To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You h
   }
 
   tick = async (parentToRenderTo) => {
-    if(rand.nextDouble()>0.5 && this.readied_posts.length ==0){
+    if (rand.nextDouble() > 0.5 && this.readied_posts.length == 0) {
       let theme = rand.pickFrom(Object.values(all_themes));
-      this.readied_posts.push(new Post(this, rand.pickFrom(theme.getPossibilitiesFor(PHILOSOPHY)), null, ["philosophy","sorry","i can't help it","how do i delete posts"], [""], [""], true));
+      this.readied_posts.push(new Post(this, rand.pickFrom(theme.getPossibilitiesFor(PHILOSOPHY)), null, ["philosophy", "sorry", "i can't help it", "how do i delete posts"], [""], [""], true));
     }
 
     this.blorboAI(parentToRenderTo, 0.6, 0.5, 0.75);
@@ -1934,7 +2094,7 @@ To the EAST is ThisIsAGame. It is a place of lies and madness. It is here. You h
 class Ronin extends Character {
   name = "robo-cop";
   icon = "images/icons/ronin.png";
-  secret_name="ronin";
+  secret_name = "ronin";
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
