@@ -47,7 +47,7 @@ const fetchAllTextFromGopherHoleLocation = async(url)=>{
 
 const findAllContentFromGopherHoleLocation = async(url)=>{
   const data = await getGopherData(url);
-  console.log("JR NOTE: findAllContentFromGopherHoleLocation  data is", data, "base_location is", base_location)
+  //console.log("JR NOTE: findAllContentFromGopherHoleLocation  data is", data, "base_location is", base_location)
   let ret = [];
   for(let d of data){
     if(d.size && d.size.trim() !="-"){
