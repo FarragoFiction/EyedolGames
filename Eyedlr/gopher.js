@@ -12,7 +12,7 @@ Also, given a link like http://farragofiction.com/Gopher/NORTH/ it knows how to 
 const base_gopher_url = "http://farragofiction.com/Gopher/NORTH/";
 
 
-const base_location = window.location.href.split("index.html")[0];
+let base_location = window.location.href.includes("index")? window.location.href.split("index.html")[0] : window.location.href.split("?")[0];
 
 const getFileNameFromPath =(nameString)=>{
   return nameString.split("/").pop();
@@ -31,9 +31,9 @@ const turnGopherContentIntoHTML = async (url)=>{
 }
 
 const fetchAllTextFromGopherHoleLocation = async(url)=>{
-  console.log("JR NOTE: url for fetchAllTextFromGopherHoleLocation is",url)
+  //console.log("JR NOTE: url for fetchAllTextFromGopherHoleLocation is",url)
   const content = await findAllContentFromGopherHoleLocation(url);
-  console.log("JR NOTE: content retrieved is: ", content)
+  //console.log("JR NOTE: content retrieved is: ", content)
 
   let ret = [];
   for(let c of content){
