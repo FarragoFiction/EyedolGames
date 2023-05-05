@@ -608,9 +608,19 @@ class Wanda extends Character {
 
   }
 
-  tick = async (parentToRenderTo) => {
+  prepareShitPosts = ()=>{
+    for(let post of blorboPosts){
+      let tags = ["MEME","LOL",'FUNNY', 'I FOUND THIS',"INTERN LOOK AT THIS BRO"]
+      this.readied_posts.push(new Post(this, post +`@${intern.name}`, null, [rand.pickFrom(tags)], [], ["lol"], true));
+    }
+  }
 
-    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  tick = async (parentToRenderTo) => {
+    if(blorboPosts.length >0 && this.readied_posts.length <10){
+      this.prepareShitPosts();
+    }
+
+    this.blorboAI(parentToRenderTo, 0.75, 0.5, 0.5);
   }
 
 }
@@ -710,6 +720,10 @@ class Wanderer extends Character {
 
 }
 
+
+//JR NOTE: wodin and his intern aren't here because this is a a site that exists before the intenret is widely accepted
+//it WILL go public in the early 2000s (well before real tumblr did)
+//but for now its eyedol employees only and quotidians and those in the loop
 
 //@s intern 2, reblogs and posts memes and shitposts, especially about baby animals
 //occasionally reposts things about the eye killer or other conspiracies
@@ -908,6 +922,11 @@ class Intern1 extends Character {
     }
   }
 }
+
+
+//JR NOTE: wodin and his intern aren't here because this is a a site that exists before the intenret is widely accepted
+//it WILL go public in the early 2000s (well before real tumblr did)
+//but for now its eyedol employees only and quotidians and those in the loop
 
 //interacts with Wodin, reblogging memes and @ing them constantly 
 //voice refernce: https://github.com/FarragoFiction/LitRPGSim/blob/East/src/Screens/WalkAround/Chat/TBD/PreCoffinChats.ts
@@ -1449,7 +1468,7 @@ class Witherby extends Character {
     }
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
     const starts = ["Forgive me father", "Forgive me daddy", "One time", "When i was a kid", "Last week", `About a ${rand.pickFrom(["year", "month", "day", "decade"])} ago`, `Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
-    const sins = ["I killed them all.", `I murdered someone.`, 'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const sins = ["I ate my roomies snacks he was saving.","I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others.","I killed them all.", `I murdered someone.`, 'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
     const endings = ["Was I wrong?", "Was I an asshole?", "Do you think that's fucked up?", "Can I ever be forgiven?", "Am I going to be punished?"];
     let question = premadeAsk ? premadeAsk.text : `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 

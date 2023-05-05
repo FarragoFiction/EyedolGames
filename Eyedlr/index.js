@@ -74,13 +74,16 @@ const init = async () => {
   nam = new NAM();
   ronin = new Ronin();
 
-  //there is only a single Intern, and the three variations indicate where in the timeline we are. Does the intern know wodin? does the intern know wanda but not know who she REALLY is? does the intern know wanda is his childhood bestie?
-  intern1 = new Intern1();
-  intern2 = new Intern2();
-  intern3 = new Intern3();
+  //wanda can't have both interns at once or she wouldn't have a need for the first intern
+  veteranIntern = new Intern1();
+  newbieIntern = new Intern3();
 
-  //all three versions of the Lord of Space exist at the same time
-  wodin = new Wodin();
+  //regardless of which intern SEEMS to spawn, they will try to contact you if they notice you
+  //needed to be stored to a single variable to wanda can pester them no matter who they are
+  intern = rand.nextDouble()>0.5? newbieIntern: veteranIntern;
+
+  //wodin doenst find eyedlr before dying, and wanderer isn't entirely aware anything outside the maze exists
+  //(really its just a quotidian live blogging what they are doing)
   wanderer = new Wanderer();
   wanda = new Wanda();
 
@@ -114,7 +117,6 @@ const init = async () => {
   characters.push(killer);
   characters.push(himbo);
   characters.push(witherby);
-  characters.push(wodin);
   characters.push(vik);
   characters.push(parker);
   characters.push(captain);
@@ -125,7 +127,7 @@ const init = async () => {
   characters.push(ronin);
   characters.push(wanda);
 
-  characters.push(rand.pickFrom([intern1, intern2, intern3]));
+  characters.push(intern);
 
   /* let ele = document.querySelector("#container");
  
