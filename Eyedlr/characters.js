@@ -608,19 +608,32 @@ class Wanda extends Character {
 
   }
 
-  prepareShitPosts = ()=>{
-    for(let post of blorboPosts){
-      let tags = ["MEME","LOL",'FUNNY', 'I FOUND THIS',"INTERN LOOK AT THIS BRO"]
-      this.readied_posts.push(new Post(this, post +`@${intern.name}`, null, [rand.pickFrom(tags)], [], ["lol"], true));
+  prepareShitPosts = () => {
+    for (let post of blorboPosts) {
+      let tags = ["MEME", "LOL", 'FUNNY', 'I FOUND THIS', "INTERN LOOK AT THIS BRO"]
+      this.readied_posts.push(new Post(this, post + `@${intern.name}`, null, [rand.pickFrom(tags)], [], ["lol"], true));
     }
   }
 
   tick = async (parentToRenderTo) => {
-    if(blorboPosts.length >0 && this.readied_posts.length <10){
+    if (blorboPosts.length > 0 && this.readied_posts.length < 10) {
       this.prepareShitPosts();
     }
 
-    this.blorboAI(parentToRenderTo, 0.75, 0.5, 0.5);
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+
+    //p much only the veteran intern will do this, but if the newbie intern does it wanda will be on it so hard
+    //and also
+    //with inappropriate familiarity
+    //given the newbie intern thinks wanda is a stranger
+    let internPosts = rand.shuffle(intern.posts);
+    if (internPosts[0] && internPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
+      let tags = ["LOL","BRO","YOU SLAY ME","MAN","YES","SO GREAT","YOU GET IT"]
+      let post = this.reblogAPost(internPosts[0], `${rand.pickFrom(blorboPosts)} @${intern.name}`, [rand.pickFrom(tags)], [""],["lol"]);
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+    }
   }
 
 }
@@ -894,7 +907,7 @@ class Intern1 extends Character {
     CFO: fiiiiiine
     CFO: but make it count
     TBD: thank you.`.split("\n");
-      //have you checked out the East in eyedlgames.com yet? I got this function from there.
+    //have you checked out the East in eyedlgames.com yet? I got this function from there.
 
     const message = async (index) => {
 
@@ -911,9 +924,20 @@ class Intern1 extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-    if(this.plead){
+    if (this.plead) {
       return;//only do this once
     }
+
+    //the intenrn only reacts, never starts up a meme spiral
+    let wandaPosts = rand.shuffle(wanda.posts);
+    if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
+      let tags = ["lol","wow","uhhhhhh","really?","okay yeah that is funny","i cant even"]
+      let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(blorboPosts)} @${wanda.name}`, [rand.pickFrom(tags)], [""],["lol"]);
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+    }
+
     for (let post of all_posts) {
 
       if (post.text.includes(`data-breach="observer"`)) {
@@ -1468,7 +1492,7 @@ class Witherby extends Character {
     }
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
     const starts = ["Forgive me father", "Forgive me daddy", "One time", "When i was a kid", "Last week", `About a ${rand.pickFrom(["year", "month", "day", "decade"])} ago`, `Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
-    const sins = ["I ate my roomies snacks he was saving.","I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others.","I killed them all.", `I murdered someone.`, 'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const sins = ["I ate my roomies snacks he was saving.", "I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others.", "I killed them all.", `I murdered someone.`, 'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
     const endings = ["Was I wrong?", "Was I an asshole?", "Do you think that's fucked up?", "Can I ever be forgiven?", "Am I going to be punished?"];
     let question = premadeAsk ? premadeAsk.text : `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
