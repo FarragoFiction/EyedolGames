@@ -386,6 +386,7 @@ const collatePremadePosts = () => {
 
 const tick = async (parentToRenderTo) => {
   for (let c of characters) {
+    console.log("JR NOTE: ticking:", c.name)
     await c.tick(parentToRenderTo);
   }
 }
