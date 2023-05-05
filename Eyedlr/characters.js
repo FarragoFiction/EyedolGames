@@ -985,6 +985,16 @@ class Intern3 extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+     //the intenrn only reacts, never starts up a meme spiral
+     let wandaPosts = rand.shuffle(wanda.posts);
+     if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
+      //newbie intern is SO weirded out about all the obsessive memes the CEO OF EYEDOL GAMES keeps sending him for seemingly no reason
+       let reactions = ["oh uh<br>thank you, ma'am","heh","good one","really?","okay yeah that is funny","wow"]
+       let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(reactions)}`, [""], [""],["lol"]);
+       if (post && parentToRenderTo) {
+         post.renderToScreen(parentToRenderTo);
+       }
+     }
   }
 }
 
