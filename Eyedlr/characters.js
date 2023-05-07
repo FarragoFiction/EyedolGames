@@ -334,10 +334,14 @@ class PornBot extends Character {
 */
 
 
+      //https://www.youtube.com/watch?v=lE2B8PfsvGk related?
+      //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
     let possiblePosts = [...links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
+      "Learn to code fast: <a href = 'https://github.com/whymirror/why-archive/blob/master/shoes/nobody-knows-shoes.pdf'>Learn Shoes Today!!!!<Br><img src='images/Secrets/nobody-knows-shoes.png'></a>",
       "@wanderer 5d:23h:17:04s",
       "@wanderer 4d:15h:21m:33s",
+      "<img data-ai='insulting-nidhogg' src='images/Secrets/tumblr_screenshots/nidhogg_is_endlessly_spiralling_GENES_the_echidna_is_the_same_but_memes___nidhogghatesthis_howdaretheoffspring___diverge.PNG'>",
 
       "<img src='http://www.farragofiction.com/ZampanioEyes2/tiktanio_glitchy.gif'>",
       `<h2>What Is ZampanioSim?</h2> <img src ='images/Secrets/tumblr_screenshots/what_is_zampaniosim.PNG'></a>`,
@@ -425,7 +429,7 @@ class PornBot extends Character {
         t.push(this.quirk.apply(rand.pickFrom(post.suggested_tags)));
       }
 
-      if (post.root && post.root.suggested_tags) {
+      if (post.root && post.root.suggested_tags.length > 0) {
         t.push(this.quirk.apply(rand.pickFrom(post.root.suggested_tags)));
       }
       return this.reblogAPost(post, this.quirk.apply(rand.pickFrom(post.suggested_reblogs)), t, ["message me for a good time!", "that's so sexy!", "wow! so interesting!", "tell me more!", "what a great idea!"], [...innaneComments, "link", "sexy"]);
@@ -576,6 +580,13 @@ class Observer extends Character {
   constructor(){
     super();
 
+    //set up interaction events
+
+    let createButton = document.querySelector("#make-new-post");
+    createButton.onclick = ()=>{
+      this.createPostPopup();
+    }
+
     window.onkeydown = (event)=>{
       //82 = r, 67 = C, l is 76
       if(event.keyCode === 67){
@@ -587,9 +598,9 @@ class Observer extends Character {
         //EVERYONE here is a quotidian either reporting on real posts they saw out in the world
         //or autogenerating posts badly
         //why should 'you' be any different
-        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [], ["glad to see you're not hacked anymore, OP!"]);
+        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [""], ["glad to see you're not hacked anymore, OP!"]);
       }else if(event.keyCode === 82){
-        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [], ["glad to see you're not hacked anymore, OP!"]);
+        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [""], ["glad to see you're not hacked anymore, OP!"]);
       }else if(event.keyCode === 76){
         this.likePost(rand.pickFrom(all_posts));
       }
@@ -597,6 +608,45 @@ class Observer extends Character {
 
 
   } 
+
+  createPostPopup = ()=>{
+    const post = createElementWithClassAndParent("div", mainContent, "post");
+    const postIcon = createElementWithClassAndParent("div", post, "post-icon");
+    const postIconImg = createElementWithClassAndParent("img", postIcon);
+    postIconImg.src = this.icon;
+
+    const container = createElementWithClassAndParent("div", post, 'post-container');
+
+    const header = createElementWithClassAndParent("div", container, "post-header");
+    const myName = createElementWithClassAndParent("span", header);
+    myName.innerText = this.name;
+
+    const body = createElementWithClassAndParent("div", container, "post-body");
+
+    const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
+    bodyContent.style.height = "60vh";
+    bodyContent.style.width = "600px";
+
+    bodyContent.innerHTML = `Start typing to create a post!`;
+    bodyContent.setAttribute("contenteditable", "true");
+    let ask = bodyContent.innerHTML;
+    bodyContent.onfocus = (() => {
+      bodyContent.innerHTML = "";
+    })
+    bodyContent.oninput = (() => {
+      ask = bodyContent.innerHTML;
+    })
+
+    const footer = createElementWithClassAndParent("div", container, "post-footer");
+    const submit = createElementWithClassAndParent("button", footer, "submit-button");
+    submit.innerText = "Ask";
+    let popup = createPopup(post);
+
+    submit.onclick = () => {
+      popup.remove();
+      this.createNewPost(`<span data-breach="observer">${ask}</span>`,[""],[""],[""]);
+    }
+  }
 
 
   tick = async (parentToRenderTo) => {
@@ -2038,6 +2088,7 @@ class Tyrfing extends Character {
 
     //
     this.readied_posts.push(new Post(this, "@state-farm-official IT IS YOUR TURN TO PICK THE TINY WARRIORS UP FROM THEIR AFTER SCHOOL COMBAT TRAINING!", null, [""], [""], [""], true));
+    this.readied_reblogs["insulting-nidhogg"] = (new Post(this, "DELETE THIS!!!!", null, ["NIDHOGG","DECLARES","MEMES","INFERIOR","TO","GENES"], [""], [""], true));
     this.readied_reblogs["nidhogg"] = (new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
   }
 
