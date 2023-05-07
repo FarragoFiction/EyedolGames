@@ -566,6 +566,39 @@ class Observer extends Character {
   
   `;
 
+  //if i REALLY wanted to be fucked up, i would pay attention to anything the observer wrote themself and try to learn their quirk
+  //but thats not feeding me so i wont
+  //https://www.tumblr.com/the-awkward-goldfish/716653523419447296?source=share
+  //apparently the REAL shortcuts require you to hold down alt. Well. Alt is already held down here. This is her branch.
+  //c is post, r is reblog. 
+  autoPosts = [`I am going to play Zampanio. I hear it's a ${rand.pickFrom(["really","very","awfully"])} fun game. `,"Am I already playing Zampanio?","How could I tell if I am playing Zampanio?","Where would I find Zampanio?","Have I already found Zampanio?","Where is Zampanio?","What is Zampanio?","How is Zampanio?"]
+
+  constructor(){
+    super();
+
+    window.onkeydown = (event)=>{
+      //82 = r, 67 = C, l is 76
+      if(event.keyCode === 67){
+        //its not like you have their password
+        //you just found the page logged in as them
+        //you're the interloper here
+        //you do not belong
+        //THEIR posts don't get tagged as breaching
+        //EVERYONE here is a quotidian either reporting on real posts they saw out in the world
+        //or autogenerating posts badly
+        //why should 'you' be any different
+        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [], ["glad to see you're not hacked anymore, OP!"]);
+      }else if(event.keyCode === 82){
+        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [], ["glad to see you're not hacked anymore, OP!"]);
+      }else if(event.keyCode === 76){
+        this.likePost(rand.pickFrom(all_posts));
+      }
+    }
+
+
+  } 
+
+
   tick = async (parentToRenderTo) => {
     //of course camille cannot kill you.
     //you are in an entirely different universe
