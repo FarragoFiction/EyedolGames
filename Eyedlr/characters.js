@@ -610,7 +610,7 @@ class Observer extends Character {
   } 
 
   createPostPopup = ()=>{
-    const post = createElementWithClassAndParent("div", mainContent, "post");
+    const post = createElementWithClassAndParent("div", document.querySelector("body"), "post");
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
     postIconImg.src = this.icon;
