@@ -47,6 +47,11 @@ body {
   width: 100%;
   height: 50px;
   border-bottom: 1px solid #344583;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10000;
+  background-color: #001972;
 }
 
 #search-bar {
