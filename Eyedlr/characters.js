@@ -242,6 +242,8 @@ class Character {
     this.reblogged_posts.push(post);
     parent.addChild(post);
     parent.chronologicalNotes.push({ post: post });
+    parent.syncNotes();
+
     return post;
   }
 
@@ -575,7 +577,7 @@ class Observer extends Character {
   //https://www.tumblr.com/the-awkward-goldfish/716653523419447296?source=share
   //apparently the REAL shortcuts require you to hold down alt. Well. Alt is already held down here. This is her branch.
   //c is post, r is reblog. 
-  autoPosts = [`I am going to play Zampanio. I hear it's a ${rand.pickFrom(["really","very","awfully"])} fun game. `,"Am I already playing Zampanio?","How could I tell if I am playing Zampanio?","Where would I find Zampanio?","Have I already found Zampanio?","Where is Zampanio?","What is Zampanio?","How is Zampanio?"]
+  autoPosts = ["Lol, I finally rememebered my password!","Hey guys, back from vacation, what did I miss?",`I am going to play Zampanio. I hear it's a ${rand.pickFrom(["really","very","awfully"])} fun game. `,"Am I already playing Zampanio?","How could I tell if I am playing Zampanio?","Where would I find Zampanio?","Have I already found Zampanio?","Where is Zampanio?","What is Zampanio?","How is Zampanio?"]
 
   constructor(){
     super();
@@ -598,9 +600,9 @@ class Observer extends Character {
         //EVERYONE here is a quotidian either reporting on real posts they saw out in the world
         //or autogenerating posts badly
         //why should 'you' be any different
-        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [""], ["glad to see you're not hacked anymore, OP!"]);
+        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Is someone else in my account?"], [""], ["glad to see you're not hacked anymore, OP!"]);
       }else if(event.keyCode === 82){
-        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Are you sure puzzledObserver is who you think they are?"], [""], ["glad to see you're not hacked anymore, OP!"]);
+        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Is someone else in my account?"], [""], ["glad to see you're not hacked anymore, OP!"]);
       }else if(event.keyCode === 76){
         this.likePost(rand.pickFrom(all_posts));
       }
@@ -609,7 +611,8 @@ class Observer extends Character {
 
   } 
 
-  createPostPopup = ()=>{
+  //handles reblogs too
+  createPostPopup = (post_to_reblog)=>{
     const post = createElementWithClassAndParent("div", document.querySelector("body"), "post");
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
@@ -623,6 +626,11 @@ class Observer extends Character {
 
     const body = createElementWithClassAndParent("div", container, "post-body");
 
+    if(post_to_reblog){
+      const repostContent = createElementWithClassAndParent("div", body, "post-body-content");
+      let content = post_to_reblog.createElement(true,true);
+      repostContent.append(content)
+    }
     const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
     bodyContent.style.height = "60vh";
     bodyContent.style.width = "600px";
@@ -644,7 +652,11 @@ class Observer extends Character {
 
     submit.onclick = () => {
       popup.remove();
-      this.createNewPost(`<span data-breach="observer">${ask}</span>`,[""],[""],[""]);
+      if(!post_to_reblog){
+        this.createNewPost(`<span data-breach="observer">${ask}</span>`,[""],[""],["OP are you okay","did you get hacked OP","guys I think OP got hacked","who is this?"]);
+      }else{
+        this.reblogAPost(post_to_reblog,`<span data-breach="observer">${ask}</span>`,[""],[""],["OP are you okay","did you get hacked OP","guys I think OP got hacked","who is this?"]);
+      }
     }
   }
 
