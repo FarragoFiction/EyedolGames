@@ -705,11 +705,12 @@ class Wanda extends Character {
   constructor() {
     super();
 
-    this.readied_reblogs["so are you trying to say you're a TOM too?"] = new Post(this, `@${veteranIntern.name} OH. <br>HUH.<BR> YEAH. <BR>THE TOMS ARE KINDA. <BR>HOT SHIT<BR><bR>SOMETHING ABOUT BEING A FULL SET?<BR><BR>THEY SEE SO MUCH WEIRD BIRD ACTION.<BR><BR>ITS EASIER TO GATHER INFO ON THEM<BR><bR>WHICH IN BIRD TERMS MEANS THEY'RE LIKE<BR><bR>SUPER EASY.`, null, ["I WISH I DIDN'T KNOW SO MUCH", "ABOUT QUOTIDIAN REPRODUCTION BRO"], [""], [""], true);
+    this.readied_reblogs["so are you trying to say you're a TOM too?"] = new Post(this, `@${intern.name} OH. <br>HUH.<BR> YEAH. <BR>THE TOMS ARE KINDA. <BR>HOT SHIT<BR><bR>SOMETHING ABOUT BEING A FULL SET?<BR><BR>THEY SEE SO MUCH WEIRD BIRD ACTION.<BR><BR>ITS EASIER TO GATHER INFO ON THEM<BR><bR>WHICH IN BIRD TERMS MEANS THEY'RE LIKE<BR><bR>SUPER EASY.`, null, ["I WISH I DIDN'T KNOW SO MUCH", "ABOUT QUOTIDIAN REPRODUCTION BRO"], [""], [""], true);
 
-    this.readied_reblogs['you know how hard my job gets when the toms get anxious'] = new Post(this, `@${veteranIntern.name} PROMISE.`, null, [""], [""], [""], true);
+    this.readied_reblogs['you know how hard my job gets when the toms get anxious'] = new Post(this, `@${intern.name} PROMISE.`, null, [""], [""], [""], true);
 
-    this.readied_reblogs['sqwawking idiots'] = new Post(this, `@${veteranIntern.name} DON'T WORRY ABOUT IT, BRO!<BR><bR>JUST A LITTLE BIT MORE. <bR><BR>GOTTA WAIT FOR THE VIBES TO BE RIGHT.`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
+    this.readied_reblogs['sqwawking idiots'] = new Post(this, `@${intern.name} DON'T WORRY ABOUT IT, BRO!<BR><bR>JUST A LITTLE BIT MORE. <bR><BR>GOTTA WAIT FOR THE VIBES TO BE RIGHT.`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
+    this.readied_reblogs["why isn't this one of Eyedol's products?"] = new Post(this, `@${intern.name} LOL, THANKS BRO<BR><bR>DON'T WORRY ABOUT IT, THO!<BR><bR>ALL IN DUE TIME<BR><BR>THE AWESOMENESS OF THIS SITE IS NOT YET READY FOR PUBLIC RELEASE`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
 
   }
 
@@ -1087,6 +1088,9 @@ class Intern3 extends Character {
   icon = "images/icons/Intern-sad.png";
   constructor() {
     super();
+    //newbie intern is in the mid 90s, well before the internet was ready for this bullshit. css hasn't even been invented yet. this site (even without my simulation) would probably just set those computers on fire
+    this.readied_posts.push(new Post(this, `@eyedol_games_official uh, forgive me if i'm out of line but...<br><br>this site is amazing<br><Br>ive never seen anything so complex!<br><Br>it completely blows away anything https://coolsiteoftheday.com/ has ever shown<br><br>why isn't this one of Eyedol's products?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
+
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
@@ -1097,7 +1101,7 @@ class Intern3 extends Character {
     let wandaPosts = rand.shuffle(wanda.posts);
     if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
       //newbie intern is SO weirded out about all the obsessive memes the CEO OF EYEDOL GAMES keeps sending him for seemingly no reason
-      let reactions = ["oh uh<br>thank you, ma'am", "heh", "good one", "really?", "okay yeah that is funny", "wow"]
+      let reactions = ["oh uh<br>thank you, ma'am", "heh", "good one, ma'am", "really?", "okay yeah that is funny", "wow"]
       let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(reactions)}`, [""], [""], ["lol"]);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
