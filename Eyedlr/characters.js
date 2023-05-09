@@ -336,8 +336,8 @@ class PornBot extends Character {
 */
 
 
-      //https://www.youtube.com/watch?v=lE2B8PfsvGk related?
-      //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
+    //https://www.youtube.com/watch?v=lE2B8PfsvGk related?
+    //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
     let possiblePosts = [...links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
       "Learn to code fast: <a href = 'https://github.com/whymirror/why-archive/blob/master/shoes/nobody-knows-shoes.pdf'>Learn Shoes Today!!!!<Br><img src='images/Secrets/nobody-knows-shoes.png'></a>",
@@ -534,7 +534,12 @@ class PornBot extends Character {
 
 
 
-    let target = this.findAPostEvenIfYouHaveInteractedWithIt();
+    let target;
+    if (rand.nextDouble() > 0.5) {
+      target = this.findAPostEvenIfYouHaveInteractedWithIt();
+    } else {
+      target = rand.shuffle(all_posts).find((i) => i.text.includes("toms"));
+    }
 
     if (target && rand.nextDouble() > 0.75) {
       if (rand.nextDouble() > 0.5) {
@@ -577,21 +582,21 @@ class Observer extends Character {
   //https://www.tumblr.com/the-awkward-goldfish/716653523419447296?source=share
   //apparently the REAL shortcuts require you to hold down alt. Well. Alt is already held down here. This is her branch.
   //c is post, r is reblog. 
-  autoPosts = ["Lol, I finally rememebered my password!","Hey guys, back from vacation, what did I miss?",`I am going to play Zampanio. I hear it's a ${rand.pickFrom(["really","very","awfully"])} fun game. `,"Am I already playing Zampanio?","How could I tell if I am playing Zampanio?","Where would I find Zampanio?","Have I already found Zampanio?","Where is Zampanio?","What is Zampanio?","How is Zampanio?"]
+  autoPosts = ["Lol, I finally rememebered my password!", "Hey guys, back from vacation, what did I miss?", `I am going to play Zampanio. I hear it's a ${rand.pickFrom(["really", "very", "awfully"])} fun game. `, "Am I already playing Zampanio?", "How could I tell if I am playing Zampanio?", "Where would I find Zampanio?", "Have I already found Zampanio?", "Where is Zampanio?", "What is Zampanio?", "How is Zampanio?"]
 
-  constructor(){
+  constructor() {
     super();
 
     //set up interaction events
 
     let createButton = document.querySelector("#make-new-post");
-    createButton.onclick = ()=>{
+    createButton.onclick = () => {
       this.createPostPopup();
     }
 
-    window.onkeydown = (event)=>{
+    window.onkeydown = (event) => {
       //82 = r, 67 = C, l is 76
-      if(event.keyCode === 67){
+      if (event.keyCode === 67) {
         //its not like you have their password
         //you just found the page logged in as them
         //you're the interloper here
@@ -600,19 +605,19 @@ class Observer extends Character {
         //EVERYONE here is a quotidian either reporting on real posts they saw out in the world
         //or autogenerating posts badly
         //why should 'you' be any different
-        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Is someone else in my account?"], [""], ["glad to see you're not hacked anymore, OP!"]);
-      }else if(event.keyCode === 82){
-        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio","I am saying this of my own free will","Nothing is compelling me to say this.","Is someone else in my account?"], [""], ["glad to see you're not hacked anymore, OP!"]);
-      }else if(event.keyCode === 76){
+        this.createNewPost(rand.pickFrom(this.autoPosts), ["Zampanio", "I am saying this of my own free will", "Nothing is compelling me to say this.", "Is someone else in my account?"], [""], ["glad to see you're not hacked anymore, OP!"]);
+      } else if (event.keyCode === 82) {
+        this.reblogAPost(rand.pickFrom(all_posts), rand.pickFrom(this.autoPosts), ["Zampanio", "I am saying this of my own free will", "Nothing is compelling me to say this.", "Is someone else in my account?"], [""], ["glad to see you're not hacked anymore, OP!"]);
+      } else if (event.keyCode === 76) {
         this.likePost(rand.pickFrom(all_posts));
       }
     }
 
 
-  } 
+  }
 
   //handles reblogs too
-  createPostPopup = (post_to_reblog)=>{
+  createPostPopup = (post_to_reblog) => {
     const post = createElementWithClassAndParent("div", document.querySelector("body"), "post");
     const postIcon = createElementWithClassAndParent("div", post, "post-icon");
     const postIconImg = createElementWithClassAndParent("img", postIcon);
@@ -626,9 +631,9 @@ class Observer extends Character {
 
     const body = createElementWithClassAndParent("div", container, "post-body");
 
-    if(post_to_reblog){
+    if (post_to_reblog) {
       const repostContent = createElementWithClassAndParent("div", body, "post-body-content");
-      let content = post_to_reblog.createElement(true,true);
+      let content = post_to_reblog.createElement(true, true);
       repostContent.append(content)
     }
     const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
@@ -652,10 +657,10 @@ class Observer extends Character {
 
     submit.onclick = () => {
       popup.remove();
-      if(!post_to_reblog){
-        this.createNewPost(`<span data-breach="observer">${ask}</span>`,[""],[""],["OP are you okay","did you get hacked OP","guys I think OP got hacked","who is this?"]);
-      }else{
-        this.reblogAPost(post_to_reblog,`<span data-breach="observer">${ask}</span>`,[""],[""],["OP are you okay","did you get hacked OP","guys I think OP got hacked","who is this?"]);
+      if (!post_to_reblog) {
+        this.createNewPost(`<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
+      } else {
+        this.reblogAPost(post_to_reblog, `<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
       }
     }
   }
@@ -699,7 +704,12 @@ class Wanda extends Character {
 
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+    this.readied_reblogs["so are you trying to say you're a TOM too?"] = new Post(this, `@${veteranIntern.name} OH. <br>HUH.<BR> YEAH. <BR>THE TOMS ARE KINDA. <BR>HOT SHIT<BR><bR>SOMETHING ABOUT BEING A FULL SET?<BR><BR>THEY SEE SO MUCH WEIRD BIRD ACTION.<BR><BR>ITS EASIER TO GATHER INFO ON THEM<BR><bR>WHICH IN BIRD TERMS MEANS THEY'RE LIKE<BR><bR>SUPER EASY.`, null, ["I WISH I DIDN'T KNOW SO MUCH", "ABOUT QUOTIDIAN REPRODUCTION BRO"], [""], [""], true);
+
+    this.readied_reblogs['you know how hard my job gets when the toms get anxious'] = new Post(this, `@${veteranIntern.name} PROMISE.`, null, [""], [""], [""], true);
+
+    this.readied_reblogs['sqwawking idiots'] = new Post(this, `@${veteranIntern.name} DON'T WORRY ABOUT IT, BRO!<BR><bR>JUST A LITTLE BIT MORE. <bR><BR>GOTTA WAIT FOR THE VIBES TO BE RIGHT.`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
 
   }
 
@@ -723,8 +733,8 @@ class Wanda extends Character {
     //given the newbie intern thinks wanda is a stranger
     let internPosts = rand.shuffle(intern.posts);
     if (internPosts[0] && internPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
-      let tags = ["LOL","BRO","YOU SLAY ME","MAN","YES","SO GREAT","YOU GET IT"]
-      let post = this.reblogAPost(internPosts[0], `${rand.pickFrom(blorboPosts)} @${intern.name}`, [rand.pickFrom(tags)], [""],["lol"]);
+      let tags = ["LOL", "BRO", "YOU SLAY ME", "MAN", "YES", "SO GREAT", "YOU GET IT"]
+      let post = this.reblogAPost(internPosts[0], `${rand.pickFrom(blorboPosts)} @${intern.name}`, [rand.pickFrom(tags)], [""], ["lol"]);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
@@ -865,14 +875,17 @@ class Wodin extends Character {
 //very good fanfic by the wisp: https://archiveofourown.org/works/46552111/chapters/117224734?show_comments=true&view_full_work=false#comment_642382519
 class Intern1 extends Character {
 
-  name = "testing-building-developing"; //the best dude
+  name = "test-beta-dev"; //the best dude
   icon = "images/icons/Intern-who-knows.png";
   plead = false;
 
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_posts.push(new Post(this, `@eyedol_games_official what action items are left before we go live with this to something OTHER than sqwawking idiots?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
+    this.readied_reblogs['GOTTA WAIT FOR THE VIBES TO BE RIGHT'] = new Post(this, "dude, thats cool and all but the toms are getting anxious<Br><br>and you know how hard my job gets when the toms get anxious", null, ["please just tell me it'll release soon"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremacy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremacy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
+    this.readied_reblogs['tom supremacy'] = new Post(this, `:/ <br><Br>so are you trying to say you're a tom too? <br><Br>i thought alt's quotidians were like<br><Br>completely different<br><br>or shit<br><Br>are there more than 19 toms?<br>or did some go rogue?<br><Br>or wait<br><br>is this like an idol thing?<br><Br>are you just...<br><Br>a fan of the toms?`, null, ["i still have no idea how the", "birbs", "work"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
+    this.readied_reblogs['THEY SEE SO MUCH WEIRD BIRD ACTION.'] = new Post(this, `:/ <br>@staff kudos to figuring out a way to make quotidians thots i guess?`, null, ["sentences i never thought i'd say"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
 
   }
 
@@ -1026,8 +1039,8 @@ class Intern1 extends Character {
     //the intenrn only reacts, never starts up a meme spiral
     let wandaPosts = rand.shuffle(wanda.posts);
     if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
-      let tags = ["lol","wow","uhhhhhh","really?","okay yeah that is funny","i cant even"]
-      let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(blorboPosts)} @${wanda.name}`, [rand.pickFrom(tags)], [""],["lol"]);
+      let tags = ["heh", "lol", "lol", "wow", "uhhhhhh", "really?", "okay yeah that is funny", "i cant even"]
+      let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(blorboPosts)} @${wanda.name}`, [rand.pickFrom(tags)], [""], ["lol"]);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
@@ -1080,16 +1093,16 @@ class Intern3 extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-     //the intenrn only reacts, never starts up a meme spiral
-     let wandaPosts = rand.shuffle(wanda.posts);
-     if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
+    //the intenrn only reacts, never starts up a meme spiral
+    let wandaPosts = rand.shuffle(wanda.posts);
+    if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
       //newbie intern is SO weirded out about all the obsessive memes the CEO OF EYEDOL GAMES keeps sending him for seemingly no reason
-       let reactions = ["oh uh<br>thank you, ma'am","heh","good one","really?","okay yeah that is funny","wow"]
-       let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(reactions)}`, [""], [""],["lol"]);
-       if (post && parentToRenderTo) {
-         post.renderToScreen(parentToRenderTo);
-       }
-     }
+      let reactions = ["oh uh<br>thank you, ma'am", "heh", "good one", "really?", "okay yeah that is funny", "wow"]
+      let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(reactions)}`, [""], [""], ["lol"]);
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+    }
   }
 }
 
@@ -2100,7 +2113,7 @@ class Tyrfing extends Character {
 
     //
     this.readied_posts.push(new Post(this, "@state-farm-official IT IS YOUR TURN TO PICK THE TINY WARRIORS UP FROM THEIR AFTER SCHOOL COMBAT TRAINING!", null, [""], [""], [""], true));
-    this.readied_reblogs["insulting-nidhogg"] = (new Post(this, "DELETE THIS!!!!", null, ["NIDHOGG","DECLARES","MEMES","INFERIOR","TO","GENES"], [""], [""], true));
+    this.readied_reblogs["insulting-nidhogg"] = (new Post(this, "DELETE THIS!!!!", null, ["NIDHOGG", "DECLARES", "MEMES", "INFERIOR", "TO", "GENES"], [""], [""], true));
     this.readied_reblogs["nidhogg"] = (new Post(this, "THE ALL FATHER APPROVES!!!", null, ["NIDHOGG"], [""], [""], true));
   }
 
@@ -2279,6 +2292,7 @@ class Peewee extends Character {
 }
 
 //reblogs anything peewee says without comment but the tag is just a <3
+//not included because belongs to wanda not alt
 class RobertBobert extends Character {
   name = "void_soup";
   icon = "images/icons/Neville.png";
@@ -2296,6 +2310,8 @@ class RobertBobert extends Character {
 
 //reblogs anything peewee says without comment but the tag is just a <3<
 //reblogs anything camille says with a :( (jealous that peewee likes her spades)
+//not included because belongs to wanda not alt
+
 class Eggman extends Character {
   name = "void_soup";
   icon = "images/icons/Neville.png";
