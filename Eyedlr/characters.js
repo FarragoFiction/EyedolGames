@@ -338,7 +338,7 @@ class PornBot extends Character {
 
     //https://www.youtube.com/watch?v=lE2B8PfsvGk related?
     //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
-    let possiblePosts = [...links, ...blorboPosts,
+    let possiblePosts = [...links,...links,...links,...links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
       "Learn to code fast: <a href = 'https://github.com/whymirror/why-archive/blob/master/shoes/nobody-knows-shoes.pdf'>Learn Shoes Today!!!!<Br><img src='images/Secrets/nobody-knows-shoes.png'></a>",
       "@wanderer 5d:23h:17:04s",
@@ -369,6 +369,10 @@ class PornBot extends Character {
     //and i'd suggest you've never seen us both in the same place
     //but its p obvious we have entirely different skillsets
     //and are workign too hard to be running two simulatenous projects
+    //NOTE: i was TRYING TO MAKE IT BE MAY 2ND
+    //INSTEAD ITS EVERY TUESDAY IN MAY
+    //THIS IS FINE 
+    //FOUR BIRTHDAYS FOR EVERYONE.
     if (date.getMonth() === 4 && date.getDay() === 2) {
       for (let i = 0; i < 113; i++) {
         possiblePosts.push("Happy Birthday!!!<br><Br><img src ='images/Secrets/tumblr_screenshots/Birthday_Otter.jpg'>");
@@ -695,7 +699,7 @@ class Observer extends Character {
 //and the spiral continued
 //voice reminder: https://github.com/FarragoFiction/LitRPGSim/blob/East/src/Screens/WalkAround/Chat/HelpDesk/CEOChats/InternChats.ts
 class Wanda extends Character {
-  name = "eyedol_games_official" //just blogging personal shit from the corporate account
+  name = "eyedolgames" //just blogging personal shit from the corporate account, made sure it had the same name as the watchers tiktanio gif
   secret_name = "Wanda";
   icon = "images/icons/Wanda.png";
   desc = "LOL BRO YES I REALLY AM THE CEBRO OF EYEDOL GAMES <br><Br>MAKE SURE TO PLAY ZAMPANIO<br><Br>OR SEND ME MEMES<br><br>MEMES ARE COOL"
@@ -883,7 +887,7 @@ class Intern1 extends Character {
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
   constructor() {
     super();
-    this.readied_posts.push(new Post(this, `@eyedol_games_official what action items are left before we go live with this to something OTHER than sqwawking idiots?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
+    this.readied_posts.push(new Post(this, `@eyedolgames what action items are left before we go live with this to something OTHER than sqwawking idiots?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
     this.readied_reblogs['GOTTA WAIT FOR THE VIBES TO BE RIGHT'] = new Post(this, "dude, thats cool and all but the toms are getting anxious<Br><br>and you know how hard my job gets when the toms get anxious", null, ["please just tell me it'll release soon"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremacy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremacy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
     this.readied_reblogs['tom supremacy'] = new Post(this, `:/ <br><Br>so are you trying to say you're a tom too? <br><Br>i thought alt's quotidians were like<br><Br>completely different<br><br>or shit<br><Br>are there more than 19 toms?<br>or did some go rogue?<br><Br>or wait<br><br>is this like an idol thing?<br><Br>are you just...<br><Br>a fan of the toms?`, null, ["i still have no idea how the", "birbs", "work"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
     this.readied_reblogs['THEY SEE SO MUCH WEIRD BIRD ACTION.'] = new Post(this, `:/ <br>@staff kudos to figuring out a way to make quotidians thots i guess?`, null, ["sentences i never thought i'd say"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
@@ -1089,7 +1093,7 @@ class Intern3 extends Character {
   constructor() {
     super();
     //newbie intern is in the mid 90s, well before the internet was ready for this bullshit. css hasn't even been invented yet. this site (even without my simulation) would probably just set those computers on fire
-    this.readied_posts.push(new Post(this, `@eyedol_games_official uh, forgive me if i'm out of line but...<br><br>this site is amazing<br><Br>ive never seen anything so complex!<br><Br>it completely blows away anything https://coolsiteoftheday.com/ has ever shown<br><br>why isn't this one of Eyedol's products?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
+    this.readied_posts.push(new Post(this, `@eyedolgames uh, forgive me if i'm out of line but...<br><br>this site is amazing<br><Br>ive never seen anything so complex!<br><Br>it completely blows away anything https://coolsiteoftheday.com/ has ever shown<br><br>why isn't this one of Eyedol's products?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
 
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
@@ -1214,13 +1218,17 @@ class FlowerChick extends Character {
 
 //chats with everyone she can and directs people to jackElope
 //runs the porn bot net so other characters @ her to complain about their spam occasionally
+/*
+alt is @staff, founded eyedlr to train her quotidians, wanda ended up buying it from her.  since it's run outta the maze, it exists everywhen, including before widespread personal computers.  hence it being all blorbos or loopists, or occasional friends of loopists (ronin and closer)  , wanda wants it so the quotidians can feed her memes to pester the intern with. alt tolerates wanda because wabda can popularize tge site when the internet gets big AND anything wanda focuses on starts mazing ppl (aka sending them to alt)
+*/
 class Alt extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "staff";
+  icon = "images/pathos/Zamblr_logo.png";
   secret_name = "alt";
+  desc="pending, IC knows her voice and i keep getting scammed by her so TODO, maybe mention how she sold the site to wanda in exchange for getting it in front of more eyeballs";
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_reblogs['@staff kudos'] = new Post(this, "thank you", null, [""], [""], [""], true);
 
   }
 

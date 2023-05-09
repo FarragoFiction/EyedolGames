@@ -52,6 +52,7 @@ window.onload = () => {
 }
 
 const init = async () => {
+  alt = new Alt();
   observer = new Observer();
   k = new K();
   neville = new Neville();
@@ -90,6 +91,7 @@ const init = async () => {
   await grabNormalImages();
   await grabWeirdImages();
   characters.push(observer)
+  characters.push(alt);//user number 1
   characters.push(randomPornBot())
   characters.push(randomPornBot());
   characters.push(randomPornBot());
