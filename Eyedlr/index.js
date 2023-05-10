@@ -25,6 +25,12 @@ let seed = 0;
 let rand;
 let observer, wanderer, k;
 window.onload = () => {
+  let date = new Date();
+  //april fools
+  if(date.getMonth() === 3 && date.getDate()===1){
+    let body = document.querySelector("body");
+    body.innerText = "sayonara you weeaboo shits" //the personality of prophetic secrets is so correct
+  }
 
   initThemes();
   const queryString = window.location.search;
