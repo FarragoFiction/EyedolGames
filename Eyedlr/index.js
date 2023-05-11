@@ -27,7 +27,7 @@ let observer, wanderer, k;
 window.onload = () => {
   let date = new Date();
   //april fools
-  if(date.getMonth() === 3 && date.getDate()===1){
+  if (date.getMonth() === 3 && date.getDate() === 1) {
     let body = document.querySelector("body");
     body.innerText = "sayonara you weeaboo shits" //the personality of prophetic secrets is so correct
   }
@@ -87,7 +87,7 @@ const init = async () => {
 
   //regardless of which intern SEEMS to spawn, they will try to contact you if they notice you
   //needed to be stored to a single variable to wanda can pester them no matter who they are
-  intern = rand.nextDouble()>0.5? newbieIntern: veteranIntern;
+  intern = rand.nextDouble() > 0.5 ? newbieIntern : veteranIntern;
 
   //wodin doenst find eyedlr before dying, and wanderer isn't entirely aware anything outside the maze exists
   //(really its just a quotidian live blogging what they are doing)
@@ -338,6 +338,7 @@ showProfile = (character) => {
 
     submit.onclick = () => {
       popup.remove();
+      youAreTheImposterAndYouAreSus();
       character.submitAsk(observer.name, `<span data-breach="observer">${ask}</span>`);
     }
 
@@ -349,7 +350,7 @@ showProfile = (character) => {
 }
 
 const rageMode = () => {
-  window.alert("TODO: RAGE MODE")
+  window.alert("RAGE TODO")
   truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
@@ -376,9 +377,9 @@ const truthLog = (title, text) => {
 }
 
 const chatLog = (text) => {
-  const color = text.includes("CFO")?"red":"black";
+  const color = text.includes("CFO") ? "red" : "black";
 
-  console.log(`%c  ${text}`,  `font-weight: bold;font-family: 'Courier New', monospace;color:${color}; font-size:13px;`);
+  console.log(`%c  ${text}`, `font-weight: bold;font-family: 'Courier New', monospace;color:${color}; font-size:13px;`);
 }
 
 
@@ -526,22 +527,63 @@ const grabBlorboPosts = async () => {
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
 
+//so we stop crashing the browser, only add things you're currently looking at
+const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
+  const { top, left, bottom, right } = el.getBoundingClientRect();
+  const { innerHeight, innerWidth } = window;
+  return partiallyVisible
+    ? ((top > 0 && top < innerHeight) ||
+      (bottom > 0 && bottom < innerHeight)) &&
+    ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+    : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+};
 
+let susCount = 1;
+const youAreTheImposterAndYouAreSus = () => {
+  susCount += 2;
+  truthLog("Imposter Detected.", "Deploying verification procedures.");
+  let veryImportantCheckMarksThatShowEveryoneButYouIsValid = `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="18px" viewBox="0 0 24 24" width="18px" fill="#0084ff"><g><rect fill="none" height="24" width="24"/></g><g><path d="M23,12l-2.44-2.79l0.34-3.69l-3.61-0.82L15.4,1.5L12,2.96L8.6,1.5L6.71,4.69L3.1,5.5L3.44,9.2L1,12l2.44,2.79l-0.34,3.7 l3.61,0.82L8.6,22.5l3.4-1.47l3.4,1.46l1.89-3.19l3.61-0.82l-0.34-3.69L23,12z M10.09,16.72l-3.8-3.81l1.48-1.48l2.32,2.33 l5.85-5.87l1.48,1.48L10.09,16.72z"/></g></svg>`;
+  //this might be very slow! there may be MANY posts its trying to hack! we live our lives.
+  let names = document.querySelectorAll(".name");
+  for (let name of names) {
+    //you are the only one left out Observer, no matter how special you tried to feel by joining in.
+    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true)) {
+      // having them have name class makes them grow exponentially
+      for (let i = 0; i < susCount; i++) {
+        let span = createElementWithClassAndParent("span", name, 'name');
+        span.innerHTML = veryImportantCheckMarksThatShowEveryoneButYouIsValid;
+      }
+    }
+  }
+
+  names = document.querySelectorAll(".reblog-name");
+  for (let name of names) {
+    //you are the only one left out Observer, no matter how special you tried to feel by joining in.
+    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true)) {
+      for (let i = 0; i < susCount; i++) {
+        let span = createElementWithClassAndParent("span", name, 'name');
+        span.innerHTML = veryImportantCheckMarksThatShowEveryoneButYouIsValid;
+      }
+    }
+  }
+}
 
 const handleScrolling = (rand, container) => {
   //throw("JR NOTE: turn scrolling back on later.")
   let lastScrollTime = 0; //not to spam events
   let parent = document.querySelector("#container");
   window.onscroll = () => {
-    const newTime = new Date().getTime();
-    if (((newTime - lastScrollTime)) < 5000) {
-      return;
-    }
-    lastScrollTime = newTime;
+    if (observer && !observer.dead) {
+      const newTime = new Date().getTime();
+      if (((newTime - lastScrollTime)) < 5000) {
+        return;
+      }
+      lastScrollTime = newTime;
 
-    window.requestAnimationFrame(() => {
-      tick(parent);
-    });
+      window.requestAnimationFrame(() => {
+        tick(parent);
+      });
+    }
 
   };
 }

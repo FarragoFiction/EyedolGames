@@ -338,7 +338,7 @@ class PornBot extends Character {
 
     //https://www.youtube.com/watch?v=lE2B8PfsvGk related?
     //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
-    let possiblePosts = [...links,...links,...links,...links, ...blorboPosts,
+    let possiblePosts = [...links, ...links, ...links, ...links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
       "Learn to code fast: <a href = 'https://github.com/whymirror/why-archive/blob/master/shoes/nobody-knows-shoes.pdf'>Learn Shoes Today!!!!<Br><img src='images/Secrets/nobody-knows-shoes.png'></a>",
       "@wanderer 5d:23h:17:04s",
@@ -656,14 +656,16 @@ class Observer extends Character {
 
     const footer = createElementWithClassAndParent("div", container, "post-footer");
     const submit = createElementWithClassAndParent("button", footer, "submit-button");
-    submit.innerText = "Ask";
+    submit.innerText = "Post";
     let popup = createPopup(post);
 
     submit.onclick = () => {
       popup.remove();
       if (!post_to_reblog) {
+        youAreTheImposterAndYouAreSus();
         this.createNewPost(`<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
       } else {
+        youAreTheImposterAndYouAreSus();
         this.reblogAPost(post_to_reblog, `<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
       }
     }
@@ -681,6 +683,7 @@ class Observer extends Character {
     //you exist in more dimensions compared to their flat fictionality.
     //and you are horrific to them for it.
     if (this.dead) {
+      console.log("JR NOTE: You died. :(")
       rageMode();
       return;
     }
@@ -1225,7 +1228,7 @@ class Alt extends Character {
   name = "staff";
   icon = "images/pathos/Zamblr_logo.png";
   secret_name = "alt";
-  desc="pending, IC knows her voice and i keep getting scammed by her so TODO, maybe mention how she sold the site to wanda in exchange for getting it in front of more eyeballs";
+  desc = "pending, IC knows her voice and i keep getting scammed by her so TODO, maybe mention how she sold the site to wanda in exchange for getting it in front of more eyeballs";
   constructor() {
     super();
     this.readied_reblogs['@staff kudos'] = new Post(this, "thank you", null, [""], [""], [""], true);
@@ -1576,6 +1579,7 @@ class Camille extends Character {
   icon = "images/icons/Camille.png"; //she reassures the Armor this isn't a SOCIAL network, its all business baby. No attachments!
   //she fights that which would stop the coffin
   name = "robitussin-warrior";
+  verified = 5; //she's doom. She'll get you in the end.
 
   constructor() {
     super();
@@ -1674,10 +1678,18 @@ class Camille extends Character {
       the scp foundation
       */
       if (post.tags.includes(`breach in progress`)) {
-        post.element.scrollIntoView();
-        //the immune system has destroyed the invader
-        observer.dead = true;
-        observer.name += "-deactivated";
+        if (this.verified <=0) {
+          post.element.scrollIntoView();
+          //the immune system has destroyed the invader
+          observer.dead = true;
+          observer.name += "-deactivated";
+          observer.tick();
+        } else {
+          post.element.scrollIntoView();
+          post.element.innerHTML += `<p class="doom-count">${this.verified}</p>`;
+          youAreTheImposterAndYouAreSus();
+          this.verified += -1;
+        }
       }
     }
 
@@ -1721,7 +1733,7 @@ class Witherby extends Character {
     }
 
     //here's the important thing. Witherby does not have AI to handle this. Even though this is (hopefully clearly) a Ria confession, he'll respond just like he does to any stranger. With forgiveness. And somehow that is colder than if he had denied her that. If he had reacted '...' or "blocked" like he does for the extremes.
-    if(this.posts.length ==6){
+    if (this.posts.length == 6) {
       //fun fact, at first she said she felt "bad" 
       //which made witherby interpret her as a thot
       //so his response was to say "for the last time, I am not interested". 

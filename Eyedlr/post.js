@@ -188,7 +188,7 @@ class Post {
 
     const container = createElementWithClassAndParent("div", post, "post-container");
     const header = createElementWithClassAndParent("div", container, "post-header");
-    const myName = createElementWithClassAndParent("span", header);
+    const myName = createElementWithClassAndParent("span", header,"name");
     myName.innerText = this.owner.name;
     myName.onclick = () => {
       showProfile(this.owner);
@@ -197,7 +197,7 @@ class Post {
     if (this.parent) {
       const reblogArrow = createElementWithClassAndParent("span", header, "reblog-arrow");
       reblogArrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="12px" viewBox="0 0 24 24" width="12px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="18,12 22,8 18,4 18,7 3,7 3,9 18,9"/><polygon points="6,12 2,16 6,20 6,17 21,17 21,15 6,15"/></g></g></svg>`;
-      const theirName = createElementWithClassAndParent("span", header);
+      const theirName = createElementWithClassAndParent("span", header,"name");
       theirName.innerText = this.parent.owner.name;
       theirName.onclick = () => {
         showProfile(this.parent.owner);
