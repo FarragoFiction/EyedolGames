@@ -520,6 +520,10 @@ const grabBlorboPosts = async () => {
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/ronin/';
   tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Zampanio/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
 
 

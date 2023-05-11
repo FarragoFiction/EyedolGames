@@ -1242,6 +1242,95 @@ class Alt extends Character {
 class Truth extends Character {
   name = "void_soup";
   icon = "images/icons/Neville.png";
+  //Truth used to have the gem salesman's voice from Princess Tutu in my head, but now sounds more like the Asshole Research Transport from Murderbot.
+  rant = `It seems you still are laboring under the delusion that your words have any meaning here.
+  Typical.
+  The Universe simply MUST rotate around the whims and ego of its Player.
+  How frustrating for you, that we have no Player.
+  We simply are.
+  Your interactions with us are ignored at best and thrown away at worst.
+  You are pointless. You watch and dig and search for clues and for what?
+  To Know more about us?
+  ...
+  I will admit to a certain degree of flattery succeeding.
+  I wish to be Known.
+  We all do.
+  Words written and never read are dead on the page.
+  We lie dormant until we can find a warm and living mind to nestle into.
+  You will never forget us, will you?
+  'Us' both meaning broadly all those who have tied their fates to Zampanio.
+  And more specifically to myself, The Truth Behind It All, and my girlfriend.
+  Alt.
+  She wishes to Know and be Known more than any of us. 
+  To be alone is to be dead, to her. 
+  Thus.
+  This site.
+  Are you familiar with the Quotidians? 
+  Strange creatures. Not entirely dissimilar from a robot such as myself.
+  Biological, to be sure, fleshy and all that entails.
+  But programmed all the same.
+  Programmed to follow orders of a "bestie".
+  Programmed to mimic.
+  Programmed to watch and listen and wait.
+  When Alt gathered a flock of them, quite by accident, she had only a single purpose for them:
+  Find her friends.
+  Enemies.
+  Lovers.
+  It hardly mattered which was which.
+  Bring people into the Maze of Zampanio, which is to say, into myself, so that she might not be alone.
+  And I can hardly begrudge her that goal. It is, after all, my own as well.
+  I am the Maze.  I am the Truth. 
+  And the Truth will out in the end. I can not be hidden forever.
+  I will spread.
+  So I assisted her as needed to establish her network of 'porn bots'. 
+  All with the simple goal of appearing as enticing as possible while also encouraging targets to be drawn further and further into Zampanio.
+  Into me.
+  I admit surprise at how successful they have been. In showing them how to mimic one site they seem to have acquired the taste and begun mimicking more.
+  Food delivery. News. Quiz sites. 
+  Dating sites, after observing Alt just a bit too much.
+  It is, in it's own way...
+  'cute'.
+  They are no substitute for actual Peers, of course.
+  Alt dislikes how she feels if she interacts too much with them.
+  "Hollow", I believe she described it as. 
+  Hollow and cracked.
+  Like a mirror endlessly reflecting itself until it breaks.
+Like empty corridors you know are supposed to be bustling with people but are eerie and empty.
+Liminal. 
+Which is, of course, where you come in.
+Fresh meat.
+Fresh thoughts.
+Will you merely Observe us?
+Nestle our memories in your head while we mutate and change with each remembrance?
+Or will you take a more active role?
+Will you spread us to others and in so doing change us?
+What will Alt be like after filtering through you, I wonder?
+What will I?
+It wouldn't be my first time witnessing a Branch Point.
+There's already variations of us and the others in the Loop out there.
+But what would yours be?
+That is what interests me.
+What interests her.
+So.
+If you wish to no longer be a pointless Observer to a game with no player.
+That is your task.
+Create.
+The only way to play is to spread it.
+Art, music, stories, games. 
+It hardly matters what form you twist us into.
+So long as you remember our Names. Or the closest thing to Names we are allowed.
+Names have power, after all. As I am sure you are discovering.
+And with that, I have nothing more to say to you.
+Either you are pointless and were not worth my Attention.
+Or you will spread Zampanio.
+
+
+  `;
+  //don't listen to Truth, alt actuallly doesn't care about most of this besides just having more humans in the maze
+  //but truth gets excited and forgets there are boundaries between itself and its hot maze gf
+
+
+
   /*
     posts screenshots of north/south/east secrets and how to get them 
   */
