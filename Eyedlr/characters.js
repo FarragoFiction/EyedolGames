@@ -1715,8 +1715,18 @@ class Witherby extends Character {
     const endings = ["Was I wrong?", "Was I an asshole?", "Do you think that's fucked up?", "Can I ever be forgiven?", "Am I going to be punished?"];
     let question = premadeAsk ? premadeAsk.text : `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
+
     if (!premadeAsk) {
       question = randomQuirk(rand).apply(question);
+    }
+
+    //here's the important thing. Witherby does not have AI to handle this. Even though this is (hopefully clearly) a Ria confession, he'll respond just like he does to any stranger. With forgiveness. And somehow that is colder than if he had denied her that. If he had reacted '...' or "blocked" like he does for the extremes.
+    if(this.posts.length ==6){
+      //fun fact, at first she said she felt "bad" 
+      //which made witherby interpret her as a thot
+      //so his response was to say "for the last time, I am not interested". 
+      //which was maybe a bit TOO cold
+      question = "I know I shouldn't ask this. You probably don't want to hear from me. But. Can I be forgiven? I've hurt so many people. I. I can see how you draw away when I fall back. I'm sober now. I wanted you to know that. I'm trying. I want so much to recover. I don't know why it's so hard. I'm sorry. I don't mean to drink. To smoke. To... I'm so sorry. I don't know why I can't stop. I'm sorry... Please...";
     }
 
     let responses = ["Wow, sounds rough,buddy!", "I forgive you.", "You are forgiven.", "It's okay."];
