@@ -350,7 +350,7 @@ showProfile = (character) => {
 }
 
 const rageMode = () => {
-  window.alert("I am afraid I must inform you that your account has been 'killed', as it were. Thems the breaks.")
+  window.alert("I am afraid I must inform you that your account has been 'killed', as it were. Thems the breaks. Perhaps next time you won't draw attention to yourself, Observer. Your role is to watch. Not to interact.")
   truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
