@@ -43,13 +43,48 @@ body {
   color: rgba(0, 0, 0, 0.65);
 }
 
-.doom-count{
+.doom-count {
   font-size: 24px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-left: 10px;
 }
 
-.reblog-icon{
+.dead {
+  animation: fade-to-black 10s infinite ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes fade-to-black {
+  100% {
+    background: black;
+    backdrop-filter: brightness(0.0);
+    opacity: 0%;
+  }
+}
+
+.fade-to-tord-toward {
+  width: 100%;
+  opacity: 0.0;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  animation: fade-to-tordtoward 30s infinite ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-to-tordtoward {
+  100% {
+    opacity: 100%;
+  }
+
+
+}
+
+.reblog-icon {
   cursor: pointer;
 }
 
@@ -117,6 +152,15 @@ body {
   object-fit: cover;
 
 
+}
+
+.post-body-content{
+  outline: none;
+}
+
+.post-body-content :focus-visible {
+  outline: none;
+  border: none;
 }
 
 .post-body {

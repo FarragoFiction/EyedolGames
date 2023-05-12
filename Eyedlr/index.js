@@ -350,7 +350,7 @@ showProfile = (character) => {
 }
 
 const rageMode = () => {
-  window.alert("RAGE TODO")
+  window.alert("I am afraid I must inform you that your account has been 'killed', as it were. Thems the breaks.")
   truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
@@ -528,9 +528,12 @@ const grabBlorboPosts = async () => {
 }
 
 //so we stop crashing the browser, only add things you're currently looking at
-const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
+const elementIsVisibleInViewport = (el, partiallyVisible = false, wiggle=1) => {
   const { top, left, bottom, right } = el.getBoundingClientRect();
-  const { innerHeight, innerWidth } = window;
+  let { innerHeight, innerWidth } = window;
+  innerHeight = innerHeight * wiggle;
+  innerWidth = innerWidth * wiggle;
+
   return partiallyVisible
     ? ((top > 0 && top < innerHeight) ||
       (bottom > 0 && bottom < innerHeight)) &&
@@ -547,7 +550,7 @@ const youAreTheImposterAndYouAreSus = () => {
   let names = document.querySelectorAll(".name");
   for (let name of names) {
     //you are the only one left out Observer, no matter how special you tried to feel by joining in.
-    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true)) {
+    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true,3)) {
       // having them have name class makes them grow exponentially
       for (let i = 0; i < susCount; i++) {
         let span = createElementWithClassAndParent("span", name, 'name');
@@ -559,7 +562,7 @@ const youAreTheImposterAndYouAreSus = () => {
   names = document.querySelectorAll(".reblog-name");
   for (let name of names) {
     //you are the only one left out Observer, no matter how special you tried to feel by joining in.
-    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true)) {
+    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true,3)) {
       for (let i = 0; i < susCount; i++) {
         let span = createElementWithClassAndParent("span", name, 'name');
         span.innerHTML = veryImportantCheckMarksThatShowEveryoneButYouIsValid;
