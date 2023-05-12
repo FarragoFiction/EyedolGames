@@ -157,8 +157,7 @@ class Post {
   renderToScreen = (parent) => {
     parent.append(this.element);
     let bodyContent = this.element.querySelector(".post-body");
-    bodyContent.scrollTop = bodyContent.scrollHeight
-
+    bodyContent.scrollTop = bodyContent.scrollHeight;
   }
 
 

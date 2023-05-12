@@ -661,12 +661,21 @@ class Observer extends Character {
 
     submit.onclick = () => {
       popup.remove();
+      let parent = document.querySelector("#container");
+
       if (!post_to_reblog) {
         youAreTheImposterAndYouAreSus();
-        this.createNewPost(`<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
+        let post = this.createNewPost(`<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
+        post.renderToScreen(parent);
+        post.element.scrollIntoView();
+
       } else {
         youAreTheImposterAndYouAreSus();
-        this.reblogAPost(post_to_reblog, `<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
+        let post = this.reblogAPost(post_to_reblog, `<span data-breach="observer">${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
+        post.renderToScreen(parent);
+        post.element.scrollIntoView();
+
+
       }
     }
   }
@@ -683,7 +692,15 @@ class Observer extends Character {
     //you exist in more dimensions compared to their flat fictionality.
     //and you are horrific to them for it.
     if (this.dead) {
-      console.log("JR NOTE: You died. :(")
+      console.log("JR NOTE: You died. :(");
+      let body = document.querySelector("body");
+      body.className = "dead";
+      setTimeout(()=>{
+        //everyone knows when you die in tumblr you go to skyrim
+        body.style.background ="black";
+        body.className = "";
+        body.innerHTML = `<img class='fade-to-tord-toward' src ='images/tordtoward.png'>`;
+      },10*1000);
       rageMode();
       return;
     }
@@ -1579,7 +1596,7 @@ class Camille extends Character {
   icon = "images/icons/Camille.png"; //she reassures the Armor this isn't a SOCIAL network, its all business baby. No attachments!
   //she fights that which would stop the coffin
   name = "robitussin-warrior";
-  verified = 5; //she's doom. She'll get you in the end.
+  verified = 3; //she's doom. She'll get you in the end.
 
   constructor() {
     super();
@@ -1678,7 +1695,7 @@ class Camille extends Character {
       the scp foundation
       */
       if (post.tags.includes(`breach in progress`)) {
-        if (this.verified <=0) {
+        if (this.verified <= 0) {
           post.element.scrollIntoView();
           //the immune system has destroyed the invader
           observer.dead = true;
