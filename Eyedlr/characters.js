@@ -1259,7 +1259,7 @@ class FlowerChick extends Character {
         "the_goal_is_to_be_wrong_in_interesting_ways": `@${ria.name}!!!!`, 
         "the_solemn_by_the_herald.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
         "theendlikeshim": `@${camille.name} and @${vik.name}!!!`, 
-        "the_end.png": `@${camille.name} and ${killer.name}!!!!!!`, 
+        "the_end.png": `@${camille.name} and @${killer.name}!!!!!!`, 
         "what_you_have_done_has_made_god_very_unhappy": `hey there cool kid, @${witherby.name} is this you`, 
         "we_cant_expect_god_to_do_all_the_work": `@${parker.name}`, 
         "wandasmug2": `lol @${wanda.name}!!!!! its you!!!`, 
@@ -1539,12 +1539,43 @@ class Neville extends Character {
     this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
   }
 
+  
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+    //witherby doesn't judge but his followers sure do
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"]
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = [`<span data-breach='observer'>  @${camille.name} @${devona.name} @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'</span>`]
+      tags = ["breach in progress"]//calm and proffesional, but only notices a breach if it literally is happening to him
+    }
+
+    const suggested_reblogs = ["oh shit"]
+    if (responses.length == 0) {
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
+
 
 
   tick = async (parentToRenderTo) => {
     //neville is equally likely to do everything, you learn nothing from him
     //hes just vibin
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
   }
 
 }
@@ -1583,7 +1614,7 @@ class Devona extends Character {
     this.secret_readied_reblogs['Devona/do_not_p'] = new Post(this, ``, null, ["Its So True", "How Does Everyone Take So Many Risks Every Day?", "Do They Not Know How Dangerous Social Media Is?"], [""], ["op, you okay?"], true);
     this.secret_readied_reblogs['Devona/faking'] = new Post(this, `@we-didnt-start-the-fire <span data-ai='devona is worried she is secretly faking her various syndromes'></span>`, null, ["Oh God", "What If I Am Secretly Faking!?", "Ria", "How Would I Know???????"], [""], ["op, you okay?"], true);
     this.secret_readied_reblogs['Devona/scared'] = new Post(this, `@void_soup <span data-ai='devona is worried she has has a diagnosis'></span>`, null, ["Oh No", "What If I Have This", "How Could I TelL?", "Neville", "Do I Have This?"], [""], ["op, you okay?"], true);
-    this.secret_readied_reblogs['data-breach="observer"'] = new Post(this, ` ! @${camille.name} @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'></span>`, null, ["Oh God", "Breach In Progress", "We Need to Act Quickly", "Do We Contain?"], [""], ["wut"], true);
+    this.secret_readied_reblogs['data-breach="observer"'] = new Post(this, ` ! @${camille.name} @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'></span>`, null, ["Oh God", "Breach In Progress", "We Need to Act Quickly", "Do We Contain?"], [""], ["wut"], true); //always looking for breaches
     this.secret_readied_reblogs['@robitussin-warrior-deactivated @void_soup'] = new Post(this, ` !  @void_soup @we-didnt-start-the-fire @confess-your-sins  Oh god, Camille's Dead!!!!<span data-ai='devona saw a breach'></span>`, null, ["Oh God", "What Do We Do", "How Do We Stop The Breach!?"], [""], ["wut"], true);
 
   }
