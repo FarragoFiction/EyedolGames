@@ -18,7 +18,7 @@ let breakfast = [];
 let lunch = [];
 let dinner = [];
 let dessert = [];
-
+gnosisList = [];
 
 //pure string, convert to numerical seed later.
 let seedSource = "seed="
@@ -35,7 +35,7 @@ window.onload = () => {
   }
 
   initThemes();
- 
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   //updateURLParams(`name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc}`);
@@ -58,14 +58,18 @@ window.onload = () => {
   globalObsessions.push(rand.pickFrom(o))
 
   let loc = urlParams.get('loc');
+
+  init();
   //not awaited, it either loads or it doesn't, its slow
+
+  handleScrolling();
+  grabGnosisPosts();
   grabFadedMemories();
   grabZampanioEyes();
   //same
   grabBlorboPosts();
-  init();
-  handleScrolling();
-  
+
+
 
 }
 
@@ -76,7 +80,7 @@ const init = async () => {
   observer = new Observer();
   cfo = new FlowerChick();
   k = new K();
-  
+
   neville = new Neville();
   neighbor = new TheNeighbor();
   kr = new KarmicRetribution();
@@ -95,6 +99,7 @@ const init = async () => {
   devona = new Devona();
   nam = new NAM();
   ronin = new Ronin();
+  closer = new Closer();
 
   //wanda can't have both interns at once or she wouldn't have a need for the first intern
   veteranIntern = new Intern1();
@@ -448,6 +453,12 @@ const grabWeirdImages = async () => {
   const loc = 'BigWeirdPile/';
   let tmp = await getImages(baseURL + loc);
   weirdImageList = tmp.map((item) => loc + item);
+}
+
+const grabGnosisPosts = async () => {
+  const loc = 'http://farragofiction.com/TwoGayJokes/Stories/LookWhatIFoundGusy/';
+  let tmp = await getImages(loc);
+  gnosisList = tmp.map((item) => loc + item);
 }
 
 const grabZampanioEyes = async () => {
