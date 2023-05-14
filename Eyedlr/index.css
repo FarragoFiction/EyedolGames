@@ -64,6 +64,15 @@ body {
   }
 }
 
+.final-popup{
+  z-index: 1000;
+  background-color: white;
+  color: red;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 100px;
+  font-weight: bolder;
+}
+
 .fade-to-tord-toward {
   width: 100%;
   opacity: 0.0;
