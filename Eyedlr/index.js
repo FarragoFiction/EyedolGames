@@ -11,6 +11,8 @@ let fadedMemories = [];
 
 let characters = [];
 
+let globalObsessions = [];
+
 let blorboPosts = [];
 let breakfast = [];
 let lunch = [];
@@ -33,6 +35,7 @@ window.onload = () => {
   }
 
   initThemes();
+ 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   //updateURLParams(`name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc}`);
@@ -46,6 +49,14 @@ window.onload = () => {
   }
   rand = new SeededRandom(seed);
 
+  for (let theme of Object.values(all_themes)) {
+    createObessionFromTheme(theme, rand);
+  }
+  let o = Object.values(all_obsessions)
+  globalObsessions.push(rand.pickFrom(o))
+  globalObsessions.push(rand.pickFrom(o))
+  globalObsessions.push(rand.pickFrom(o))
+
   let loc = urlParams.get('loc');
   //not awaited, it either loads or it doesn't, its slow
   grabFadedMemories();
@@ -54,6 +65,7 @@ window.onload = () => {
   grabBlorboPosts();
   init();
   handleScrolling();
+  
 
 }
 
