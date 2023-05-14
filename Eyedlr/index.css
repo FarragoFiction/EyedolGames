@@ -64,6 +64,11 @@ body {
   }
 }
 
+.censored{
+  filter: brightness(0.0);
+  border: 3px solid red;
+}
+
 .final-popup{
   z-index: 1000;
   background-color: white;

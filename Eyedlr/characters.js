@@ -1241,10 +1241,98 @@ class FlowerChick extends Character {
     //links look like http://eyedolgames.com/Zampanini/?name=Baker%27s+Restaurant&themes=Bakery&feeUnder=21
 
     //she's hungry, she loves modern societies hedonism. she loves hacking. she wants to warn you not to fall to obsession
-    if (rand.nextDouble() > 0.5) {
-      //but tehe quotidians don't want her to spoil things
-      //return this.createNewPost(`hey yall, PSA, if yous burgers...`, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"]);
+    if (rand.nextDouble() > 0.5 && gnosisList.length > 0) {
+      let img = rand.pickFrom(gnosisList);
+      //TODO: react to specific images
+      let comment = "";
+      let image_class = "";
 
+      //she's feeling a bit unrestrained since this is 'only' memes
+      //normally she tries not to waste too hard on purpose
+      //honestly its probably better for everyone to NOT know how fucked up it is that they're memed on by their own creators and Observers
+      let comments = {
+        "underscore.png":"whoops, probably shouldn't have posted that! sorry @${vik.name}!!!!!",
+        "awake_devona_asleep_neville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
+        "wizardparker": `@${parker.name}`, 
+        "IMG_7050": `@${wanda} babe, it's us!!!!!!}`, 
+        "a_lot_of_shit_at_once": `oh wowwww!!!!<Br>@${camille.name} @${devona.name} @void_soup @we-didnt-start-the-fire @confess-your-sins  `, 
+        "the_goal_is_to_be_wrong_in_interesting_ways": `@${ria.name}!!!!`, 
+        "the_solemn_by_the_herald.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
+        "theendlikeshim": `@${camille.name} and @${vik.name}!!!`, 
+        "the_end.png": `@${camille.name} and ${killer.name}!!!!!!`, 
+        "what_you_have_done_has_made_god_very_unhappy": `hey there cool kid, @${witherby.name} is this you`, 
+        "we_cant_expect_god_to_do_all_the_work": `@${parker.name}`, 
+        "wandasmug2": `lol @${wanda.name}!!!!! its you!!!`, 
+        "twinsies": `@${parker.name}`, 
+        "twinsies": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
+        "truecaring": `@${parker.name} and @${vik.name}`, 
+        "toxic": `@${ria.name}`, 
+        "thebois": `@${neville.name} and @${witherby.name} mlm and wlw solidarity!!!!`, 
+        "storm": `@${vik.name} and @${yongki.name}`, 
+        "sized": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
+        "shot.png": `@${parker.name}`, 
+        "scaredofthunder": `@${ria.name} and @${devona.name}!!!!!`, 
+        "sammich": `@${yongki.name}`, 
+        "propaganda": `@${ria.name}`, 
+        "pickleneville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
+        "parkersfriends": `@${parker.name} and @${vik.name}!!!!!!!!!!!!!!!!!!!!!!`, 
+        "parker.png": `@${parker.name}`, 
+        "loop2_infoteamandother": `@${yongki.name} and ${vik.name} and @${k.name} and @${parker.name}`, 
+        "loom.png": `@${k.name} and @${camille.name} and @${vik.name} @${yongki.name}`, 
+        "looks_over": `@${devona.name}`, 
+        "k.png": `@${k.name}`, 
+        "IMG_7051": ``, //she is uncomfrotable with the idea of her destroying things, so no comment 
+        "IMG_7048": `@${nam.name} look!!! it's us!!!!!`, 
+        "hot_topic_k_part_2_herald": `@${k.name}`, 
+        "hot_topic_k_part_1_herald": `@${k.name}`, 
+        "gun.png": `@${camille.name} and ${witherby.name}!!!!!<br><Br>witherby lol git gud`, 
+        "goofy.png": `@${neville.name} and @${witherby}!!!!`, 
+        "gaze_ego_do_you_see_this_shit": `@${k.name}`, 
+        "curious": `@${camille.name} and @${vik.name}!!!`, 
+        "closertea": `@${closer.name}!!!!!!!!!!`, 
+        "canceledapocalypsesaretheworst": `@${ria.name} and @${camille.name}`, //not comfortable with the apocalypse but still feels a moral obligation to show the targets of what she found what she found 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "placeholder": `@${parker.name}`, 
+        "peewee_fucking_loses_it.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
+
+
+        "doodle_page": `@${nam.name}, @${ronin.name}, @${neighbor.name},@${tyrfing.name}, @${killer.name}, @${closer.name}, @${alt.name}, @${wanda.name}`, 
+
+        "skip.png": `@${camille.name}!!!`, 
+        "censor.png": `@${k.name} and @${vik.name}!!!`, 
+
+        "flowerequisde": `look how cute i am!`,//she's made peace with the fact that the layers outside reality are watching her and her friends and memeing them 
+
+        "gremlin": `@${camille.name} and @${k.name} you never tol me you guys were friends???????????`, 
+
+        "who_the_fuck_are_you.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
+        "zoomies.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
+      }
+      if(img.includes("underscore.png")){
+        image_class = "censored";
+      }
+
+      const commentKeys = Object.keys(comments);
+      for(let key of commentKeys){
+        if(img.includes(key)){
+          comment = comments[key];
+        }
+      }
+
+      
+      let post = this.createNewPost(`look what iiiii found in JR's computer!!!!! <img src ='${img}'><br>${comment}`, ["safe gnosis","probably","who ever heard of the world ending","because you stole memes from another layer of reality??????"], ["!"], ["!", "", "", ""]);
+      if(post && parentToRenderTo){
+        post.renderToScreen(parentToRenderTo);
+      }
     }
 
 
@@ -1386,7 +1474,7 @@ Or you will spread Zampanio.
 //mostly plugs her various consulting services and gets in absolutely stupid petty feuds with witherby. 
 //(her type of Lonely does NOT play nice with his.)
 class Closer extends Character {
-  name = "void_soup";
+  name = "eyedol-customer-support";
   icon = "images/icons/Neville.png";
   secret_name = "closer";
   constructor() {
