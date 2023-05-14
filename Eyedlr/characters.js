@@ -1246,7 +1246,7 @@ class FlowerChick extends Character {
       //normally she tries not to waste too hard on purpose
       //honestly its probably better for everyone to NOT know how fucked up it is that they're memed on by their own creators and Observers
       let comments = {
-        "underscore.png":"whoops, probably shouldn't have posted that! sorry @${vik.name}!!!!!",
+        "underscore.png":"whoops, probably shouldn't have posted that! sorry @$̸̠͍̒̏̈́̏̂{̶͔̠͍̓̊͊̽͂ͅv̷̧̲̞͝ͅi̶̘̬̪̮̓́k̶̟͗̉͠.̷̼͙̬̊͑ň̷̞̮̳̭̓́̐a̷͖̐͒͘m̵̛̟̫̌̉̚͜e̷̜̙̊̊̏͝}̸̜̖̓̎͆̄́!!!!!",
         "awake_devona_asleep_neville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
         "wizardparker": `@${parker.name}`, 
         "IMG_7050": `@${wanda} babe, it's us!!!!!!}`, 
@@ -1324,7 +1324,7 @@ class FlowerChick extends Character {
       }
 
       
-      let post = this.createNewPost(`look what iiiii found in JR's computer!!!!! <img src ='${img}'><br>${comment}`, ["safe gnosis","probably","who ever heard of the world ending","because you stole memes from another layer of reality??????"], ["!"], ["!", "", "", ""]);
+      let post = this.createNewPost(`look what iiiii found in JR's computer!!!!! <img title='${image_class}' class='${image_class}' src ='${img}'><br>${comment}`, ["safe gnosis","probably","who ever heard of the world ending","because you stole memes from another layer of reality??????"], ["!"], ["!", "", "", ""]);
       if(post && parentToRenderTo){
         post.renderToScreen(parentToRenderTo);
       }
