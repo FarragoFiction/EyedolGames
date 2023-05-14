@@ -58,6 +58,8 @@ window.onload = () => {
 }
 
 const init = async () => {
+  camille = new Camille(); //since she can deactivate have her first
+
   alt = new Alt();
   observer = new Observer();
   k = new K();
@@ -67,7 +69,6 @@ const init = async () => {
   tyrfing = new Tyrfing();
   ria = new Ria();
   fakeJR = new JRFake();
-  camille = new Camille();
   river = new River();
   killer = new EyeKiller();
   himbo = new Himbo();
@@ -157,6 +158,7 @@ const init = async () => {
   }
   collatePremadePosts();
 }
+
 
 //warning does NOT clone element so make sure you don't care if its not attached to parent
 //(doesn't clone cuz that wouldn't keep events)
@@ -350,7 +352,16 @@ showProfile = (character) => {
 }
 
 const rageMode = () => {
-  window.alert("I am afraid I must inform you that your account has been 'killed', as it were. Thems the breaks. Perhaps next time you won't draw attention to yourself, Observer. Your role is to watch. Not to interact.")
+  window.alert(`I am afraid I must inform you that your account has been 'killed', as it were. Thems the breaks. Perhaps next time you won't draw attention to yourself, Observer. Your role is to watch. Not to interact.`);
+
+  let body = document.querySelector("body");
+  body.className = "dead";
+  setTimeout(() => {
+    //everyone knows when you die in tumblr you go to skyrimg
+    body.style.background = "black";
+    body.className = "";
+    body.innerHTML = `<img class='fade-to-tord-toward' src ='images/tordtoward.png'>`;
+  }, 10 * 1000);
   truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
@@ -528,7 +539,7 @@ const grabBlorboPosts = async () => {
 }
 
 //so we stop crashing the browser, only add things you're currently looking at
-const elementIsVisibleInViewport = (el, partiallyVisible = false, wiggle=1) => {
+const elementIsVisibleInViewport = (el, partiallyVisible = false, wiggle = 1) => {
   const { top, left, bottom, right } = el.getBoundingClientRect();
   let { innerHeight, innerWidth } = window;
   innerHeight = innerHeight * wiggle;
@@ -550,7 +561,7 @@ const youAreTheImposterAndYouAreSus = () => {
   let names = document.querySelectorAll(".name");
   for (let name of names) {
     //you are the only one left out Observer, no matter how special you tried to feel by joining in.
-    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true,3)) {
+    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true, 3)) {
       // having them have name class makes them grow exponentially
       for (let i = 0; i < susCount; i++) {
         let span = createElementWithClassAndParent("span", name, 'name');
@@ -562,7 +573,7 @@ const youAreTheImposterAndYouAreSus = () => {
   names = document.querySelectorAll(".reblog-name");
   for (let name of names) {
     //you are the only one left out Observer, no matter how special you tried to feel by joining in.
-    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true,3)) {
+    if (!name.innerText.includes("puzzledObserver") && elementIsVisibleInViewport(name, true, 3)) {
       for (let i = 0; i < susCount; i++) {
         let span = createElementWithClassAndParent("span", name, 'name');
         span.innerHTML = veryImportantCheckMarksThatShowEveryoneButYouIsValid;

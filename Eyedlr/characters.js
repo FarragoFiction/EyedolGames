@@ -693,14 +693,7 @@ class Observer extends Character {
     //and you are horrific to them for it.
     if (this.dead) {
       console.log("JR NOTE: You died. :(");
-      let body = document.querySelector("body");
-      body.className = "dead";
-      setTimeout(()=>{
-        //everyone knows when you die in tumblr you go to skyrim
-        body.style.background ="black";
-        body.className = "";
-        body.innerHTML = `<img class='fade-to-tord-toward' src ='images/tordtoward.png'>`;
-      },10*1000);
+
       rageMode();
       return;
     }
@@ -1480,7 +1473,8 @@ class Devona extends Character {
     this.secret_readied_reblogs['Devona/do_not_p'] = new Post(this, ``, null, ["Its So True", "How Does Everyone Take So Many Risks Every Day?", "Do They Not Know How Dangerous Social Media Is?"], [""], ["op, you okay?"], true);
     this.secret_readied_reblogs['Devona/faking'] = new Post(this, `@we-didnt-start-the-fire <span data-ai='devona is worried she is secretly faking her various syndromes'></span>`, null, ["Oh God", "What If I Am Secretly Faking!?", "Ria", "How Would I Know???????"], [""], ["op, you okay?"], true);
     this.secret_readied_reblogs['Devona/scared'] = new Post(this, `@void_soup <span data-ai='devona is worried she has has a diagnosis'></span>`, null, ["Oh No", "What If I Have This", "How Could I TelL?", "Neville", "Do I Have This?"], [""], ["op, you okay?"], true);
-    this.secret_readied_reblogs['data-breach="observer"'] = new Post(this, ` ! @robitussin-warrior @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'></span>`, null, ["Oh God", "Breach In Progress", "We Need to Act Quickly", "Do We Contain?"], [""], ["wut"], true);
+    this.secret_readied_reblogs['data-breach="observer"'] = new Post(this, ` ! @${camille.name} @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'></span>`, null, ["Oh God", "Breach In Progress", "We Need to Act Quickly", "Do We Contain?"], [""], ["wut"], true);
+    this.secret_readied_reblogs['@robitussin-warrior-deactivated @void_soup'] = new Post(this, ` !  @void_soup @we-didnt-start-the-fire @confess-your-sins  Oh god, Camille's Dead!!!!<span data-ai='devona saw a breach'></span>`, null, ["Oh God", "What Do We Do", "How Do We Stop The Breach!?"], [""], ["wut"], true);
 
   }
 
@@ -2070,6 +2064,7 @@ class DocSlaughter extends Character {
     this.readied_reblogs['DOC/linear'] = new Post(this, "Perhaps a tad Crude, my Darling Eyes, but an Important Lesson. <br><br>Merely being aware that Healing Is a Journey is not the same thing as being Immune to It's Difficulties.", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
     this.readied_reblogs['DOC/mental'] = new Post(this, "This is So Important, my Darling Eyes!<br><br>One cannot be expected to navigate to New Shores without a Map and Compass!<br><Br>Regular Mental Checkups, whether Self Directed or with a Licensed Therapist or even a Trusted Friend, are useful to make sure you are Headed The Right Direction!", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
     this.readied_reblogs['DOC/savepoint'] = new Post(this, "What a Good Idea! <Br><br>I think I will log off for now. There is certainly Many Important Things that I need doing.<br><br>Goodnight, Darling Observers, I will See you in the Morning!", null, ["goodnight", "make sure to get a good nights sleep!"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
+    this.readied_reblogs['DOC/slowtigers'] = new Post(this, "What a Delightful way to phrase that!<br><br>", null, ["the doctor is in!", "not medical advice", "this is my off hours", "so please do see a Licensed Therapist", "and do not just trust things Read Online :)"], ["wholesome", "good advice", "i needed this"], ["pure", "wholesome", "i needed this", "good advice"], true);
 
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
     //she doesn't care if there are notes, she assumes she is Being Watched

@@ -36,7 +36,7 @@ class Quirk {
   }
 
   apply = (phrase) => {
-    if(phrase.toLowerCase().includes("http")){//even more warning not the click the links, they're out of char
+    if(phrase && phrase.toLowerCase().includes("http")){//even more warning not the click the links, they're out of char
       return phrase;
     }
     let ret = phrase;
