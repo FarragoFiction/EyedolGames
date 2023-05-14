@@ -280,7 +280,7 @@ const randomPornBot = () => {
   let obsessionArray = Object.values(all_obsessions);
   for (let i = 0; i < numberObsessions; i++) {
     //MOSTLY they have obesssions in common, but they CAN be weird
-    let o = rand.nextDouble() > 0.5? rand.pickFrom(obsessionArray): rand.pickFrom(globalObsessions);
+    let o = rand.nextDouble() > 0.5 ? rand.pickFrom(obsessionArray) : rand.pickFrom(globalObsessions);
     bot.obsessions.push(o);
   }
   if (rand.nextDouble() > 0.3) {
@@ -331,7 +331,7 @@ class PornBot extends Character {
   //and the fact that the rot takes all in the end will be emphasized
   //we'll see if the links die first or this site does
   quotidianPost = () => {
-    let innaneComments = ["caw!!!", "so true bestie!", "!!!", "i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
+    let innaneComments = ["caw!!!", "i am so for this", "so true bestie!", "!!!", "i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
     /*
          `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
 */
@@ -411,6 +411,11 @@ class PornBot extends Character {
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomEvent(rand)} from ${obsession.name} was the coolest thing ever!</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you know what ${obsession.randomCommonPhrases(rand)} REALLY means!</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">How can I motivate myself to ${obsession.randomGoal(rand)}???</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">:/ SOME people think '${obsession.randomOpinion(rand)}'</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}"> '${obsession.randomOpinion(rand)}' is just an unhinged take and you will not convince me otherwise</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">Wow can you believe SOME people think ${obsession.randomOpinion(rand)}?</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">let &#128079; &#x1F44F;  ${obsession.randomBlorbo(rand)} &#128079; &#x1F44F; do &#128079; &#x1F44F; crimes &#128079; &#x1F44F;</span>`);
+      possiblePosts.push(`<span data-obession="${obsession.name}">let &#128079; &#x1F44F;  ${obsession.randomBlorbo(rand)} &#128079; &#x1F44F; be &#128079; &#x1F44F; ${rand.pickFrom(["gay", "ace", "aro", "bi"])} &#128079; &#x1F44F;</span>`);
 
       possiblePosts.push(`<span data-obession="${obsession.name}">Wow can you believe SOME people think ${obsession.randomOpinion(rand)}?</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} from ${obsession.name} is cute!</span>`);
@@ -420,11 +425,11 @@ class PornBot extends Character {
     let chosen = rand.pickFrom(possiblePosts);
     let obsession_tag = "";
     for (let obsession of this.obsessions) {
-      if (chosen.includes(obsession.name)) {
-        obsession_tag = obsession.name;
+      if (chosen.toLowerCase().includes(obsession.name.toLowerCase())) {
+        obsession_tag = obsession.name + " fandom";
       }
     }
-    return this.createNewPost(rand.pickFrom(possiblePosts), [rand.pickFrom(innaneComments), obsession_tag], innaneComments.concat(links), innaneComments);
+    return this.createNewPost(chosen, [rand.pickFrom(innaneComments), obsession_tag], innaneComments.concat(links), innaneComments);
 
   }
 
@@ -730,6 +735,7 @@ class Wanda extends Character {
 
     this.readied_reblogs['sqwawking idiots'] = new Post(this, `@${intern.name} DON'T WORRY ABOUT IT, BRO!<BR><bR>JUST A LITTLE BIT MORE. <bR><BR>GOTTA WAIT FOR THE VIBES TO BE RIGHT.`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
     this.readied_reblogs["why isn't this one of Eyedol's products?"] = new Post(this, `@${intern.name} LOL, THANKS BRO<BR><bR>DON'T WORRY ABOUT IT, THO!<BR><bR>ALL IN DUE TIME<BR><BR>THE AWESOMENESS OF THIS SITE IS NOT YET READY FOR PUBLIC RELEASE`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
+    this.readied_reblogs["how could a link be 'sus' if it comes from our domain"] = new Post(this, `@${intern.name} GOOD CATCH, BRO<BR><bR>DON'T WORRY ABOUT IT, THO!<BR><bR>WE HAVE A LOT OF IRONS IN THE FIRE<BR><bR>CANT KEEP TRACK OF THEM ALL<BR><bR>SOMETIMES YOU LOOK BACK AND THEY'VE GROWN<BR><bR>PERFECTLY NORMAL PART OF DOING BUSINESS`, null, ["THINGS JUST SPREAD LIKE THAT", "WHEN YOU AREN'T LOOKING","AND YOU PROBABLY SHOULDN'T LOOK TOO HARD","INTO WEIRD STUFF LIKE THAT"], [""], [""], true);
 
   }
 
@@ -906,6 +912,7 @@ class Intern1 extends Character {
     this.readied_reblogs['GOTTA WAIT FOR THE VIBES TO BE RIGHT'] = new Post(this, "dude, thats cool and all but the toms are getting anxious<Br><br>and you know how hard my job gets when the toms get anxious", null, ["please just tell me it'll release soon"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremacy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremacy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
     this.readied_reblogs['tom supremacy'] = new Post(this, `:/ <br><Br>so are you trying to say you're a tom too? <br><Br>i thought alt's quotidians were like<br><Br>completely different<br><br>or shit<br><Br>are there more than 19 toms?<br>or did some go rogue?<br><Br>or wait<br><br>is this like an idol thing?<br><Br>are you just...<br><Br>a fan of the toms?`, null, ["i still have no idea how the", "birbs", "work"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
     this.readied_reblogs['THEY SEE SO MUCH WEIRD BIRD ACTION.'] = new Post(this, `:/ <br>@staff kudos to figuring out a way to make quotidians thots i guess?`, null, ["sentences i never thought i'd say"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
+    this.readied_reblogs['hey yall, PSA, if you see a link that looks like'] = new Post(this, `@${cfo.name} sorry 'bout that!<br><Br>jepe PROMISED to keep them under control<br><Br>i don't know why they keep letting @staff 's birds into the office?<br><Br>they're only supposed to run THIS site and not touch any of our others...`, null, ["i'll see if i can't get that leak patched", "by friday"], ["lol", "you okay there buddy?"], [""], true);
 
   }
 
@@ -1059,7 +1066,7 @@ class Intern1 extends Character {
     //the intenrn only reacts, never starts up a meme spiral
     let wandaPosts = rand.shuffle(wanda.posts);
     if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
-      let tags = ["heh", "lol", "lol", "wow", "uhhhhhh", "really?", "okay yeah that is funny", "i cant even"]
+      let tags = ["okay but what abou this","superb","classic wanda","this is great","heh", "lol", "lol", "wow", "uhhhhhh", "really?", "okay yeah that is funny", "i cant even"]
       let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(blorboPosts)} @${wanda.name}`, [rand.pickFrom(tags)], [""], ["lol"]);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
@@ -1110,7 +1117,7 @@ class Intern3 extends Character {
     //newbie intern is in the mid 90s, well before the internet was ready for this bullshit. css hasn't even been invented yet. this site (even without my simulation) would probably just set those computers on fire
     this.readied_posts.push(new Post(this, `@eyedolgames uh, forgive me if i'm out of line but...<br><br>this site is amazing<br><Br>ive never seen anything so complex!<br><Br>it completely blows away anything https://coolsiteoftheday.com/ has ever shown<br><br>why isn't this one of Eyedol's products?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
 
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_reblogs['hey yall, PSA, if you see a link that looks like'] = new Post(this, "oh um....<br><br>i know i'm new and all but...<br><br>how could a link be 'sus' if it comes from our domain, ma'am? ", null, ["", ""], ["lol", "you okay there buddy?"], [""], true);
 
   }
 
@@ -1215,7 +1222,8 @@ scrapes TwoGayJokes
 class FlowerChick extends Character {
   name = "trove-textravaganza"; //she still loves all those bootleg skyrims JR got her
   icon = "images/icons/CFO.png";
-  secret_name = "cfo";
+  secret_name = "CFO";
+  desc = "yes i work for eyedol games<br>no i won't hook you up with sweet cheats<br><br>figure them out yourself<br><Br>also: PSA stop clicking scammy links!!!!!!"
 
   //should respond to porn bot posts with 'scaredofthunder.png' in them (ats ria and devona)
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
@@ -1223,11 +1231,23 @@ class FlowerChick extends Character {
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_posts.push(new Post(this,"hey yall, PSA, if you see a link that looks like ' http://eyedolgames.com/Zampanini/?name=noooooo%20i%20will%20not%20be%20giving%20you%20a%20real%20restaurant%20name&themes=Burger&feeUnder=0&victim=you%20if%20you%20click%20this%20link%20you%20idiot ' do NOT click it, it's sus.<br><Br>actually just don't click anything at all on this site. <br><Br>even if it promises you delicious burgers...", null, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"], true));
 
   }
 
   tick = async (parentToRenderTo) => {
+    //JR NOTE TODO: she needs to zampanini post with hacked links and also find blorbo posts in my own file server
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    //links look like http://eyedolgames.com/Zampanini/?name=Baker%27s+Restaurant&themes=Bakery&feeUnder=21
+
+    //she's hungry, she loves modern societies hedonism. she loves hacking. she wants to warn you not to fall to obsession
+    if (rand.nextDouble() > 0.5) {
+      //but tehe quotidians don't want her to spoil things
+      //return this.createNewPost(`hey yall, PSA, if yous burgers...`, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"]);
+
+    }
+
+
   }
 }
 
@@ -2512,7 +2532,7 @@ class Rod extends Character {
 }
 
 class JRFake extends Character {
-  desc ='Collates actual lost media I found.'
+  desc = 'Collates actual lost media I found.'
   name = 'joystickreassembly'; //a friend thought they lost their essays on video games
   //but it turned out i had copies sent to my email from wordpress because i was subscribed
   //they don't want to have credit ( :/ ) but did think they were fine for me to sacrifice to zampanio

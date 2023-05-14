@@ -74,7 +74,9 @@ const init = async () => {
 
   alt = new Alt();
   observer = new Observer();
+  cfo = new FlowerChick();
   k = new K();
+  
   neville = new Neville();
   neighbor = new TheNeighbor();
   kr = new KarmicRetribution();
@@ -146,6 +148,7 @@ const init = async () => {
   characters.push(devona);
   characters.push(nam);
   characters.push(ronin);
+  characters.push(cfo);
   characters.push(wanda);
 
   characters.push(intern);
@@ -542,6 +545,10 @@ const grabBlorboPosts = async () => {
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/ronin/';
+  tmp = await getImages(loc);
+  blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+
+  loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/CFO/';
   tmp = await getImages(loc);
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 
