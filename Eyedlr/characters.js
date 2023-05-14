@@ -279,7 +279,8 @@ const randomPornBot = () => {
   let numberObsessions = rand.getRandomNumberBetween(1, 3);
   let obsessionArray = Object.values(all_obsessions);
   for (let i = 0; i < numberObsessions; i++) {
-    let o = rand.pickFrom(obsessionArray);
+    //MOSTLY they have obesssions in common, but they CAN be weird
+    let o = rand.nextDouble() > 0.5? rand.pickFrom(obsessionArray): rand.pickFrom(globalObsessions);
     bot.obsessions.push(o);
   }
   if (rand.nextDouble() > 0.3) {
@@ -474,12 +475,13 @@ class PornBot extends Character {
   doStupidDiscourse = () => {
     let posts = rand.shuffle(all_posts);
     let obsessions = rand.shuffle(this.obsessions);
-    for (let obsession of this.obsessions) {
+    for (let obsession of obsessions) {
       for (let post of posts) {
         if (post.text.toLowerCase().includes(obsession.name.toLowerCase())) {
           let responses = [
             `Wow! You know about ${obsession.name}, too?`,
             `Wow. Talk about a rancid take.`,
+            "Wow, really?",
             `Tell us what you think about ${obsession.randomBlorbo(rand)}!`,
             `Can you make me an OC that looks like ${obsession.randomBlorbo(rand)}?`,
             `Okay, but what did you think about ${obsession.randomEvent(rand)}?`,
@@ -514,7 +516,7 @@ class PornBot extends Character {
     }
 
     //quotidians prefer to do stupid drama
-    if (rand.nextDouble() > 0.5) {
+    if (rand.nextDouble() > 0.3) {
       let post = this.doStupidDiscourse();
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
@@ -2510,6 +2512,7 @@ class Rod extends Character {
 }
 
 class JRFake extends Character {
+  desc ='Collates actual lost media I found.'
   name = 'joystickreassembly'; //a friend thought they lost their essays on video games
   //but it turned out i had copies sent to my email from wordpress because i was subscribed
   //they don't want to have credit ( :/ ) but did think they were fine for me to sacrifice to zampanio
