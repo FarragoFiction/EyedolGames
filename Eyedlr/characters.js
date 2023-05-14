@@ -517,7 +517,6 @@ class PornBot extends Character {
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
       this.handleAsks(parentToRenderTo, premadeAsk);
-      return;
     }
 
     //quotidians prefer to do stupid drama
@@ -526,9 +525,7 @@ class PornBot extends Character {
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
-      if (post) {
-        return;
-      }
+
     }
 
 
@@ -538,9 +535,7 @@ class PornBot extends Character {
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
-      if (post) {
-        return;
-      }
+
     }
 
 
@@ -553,7 +548,7 @@ class PornBot extends Character {
     }
 
     if (target && rand.nextDouble() > 0.75) {
-      if (rand.nextDouble() > 0.5) {
+      if (rand.nextDouble() > 0.75) {
         this.likePost(target);
         //when they like a post also pester the owner with a random ask
         target.owner.submitAsk(this.name, this.randomAsk());
@@ -1702,6 +1697,43 @@ class Ria extends Character {
   secret_name = "Ria";
   icon = "images/icons/Ria.png";
 
+
+  //ria is quiet unless you get her going and then she can't stop
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+    console.log("JR NOTE: trying to answer an ask as ria", premadeAsk)
+    let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"]
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = [`<span data-breach='observer'>  @${camille.name} @${devona.name} @we-didnt-start-the-fire @confess-your-sins oh my gosh are you seeing this? is this a breach? is it finally happening?<span data-ai='devona saw a breach'</span>`]
+      tags = ["Breach in progress!","do you think this means peewee is near?","if the observers are here","i mean","or do you think they can separate from him?","are they not symbiotic then?","oh i'll need to update my charts!!"]
+    }else{
+      const first_parts = ["Oh! I am so glad you asked that!","What a fascinating question!","That reminds me!"];
+      const stutterings = ["you see", "when it all comes down to it", "what REALLY matters","in the end","at the end of the day","you get it right","i believe"];
+      const rambles = ["this universe was not meant to be like this and there is a better one waiting for us","peewee is the chosen scion of the end who will free us all from our burdens","peewee is the only one who understands me","we need to burn this universe to the ground and start over from scratch","the universe could be better than this if only we let it","there is no hope left at all for this universe","we need to burn it all"];
+      const connectors = ["and another thing is", "but then how do you relate it to", "and of course that all connects to","and i haven't even MENTIONED"];
+
+      responses = [
+        `${rand.pickFrom(first_parts)} ${sentenceCase(rand.pickFrom(stutterings))}! ${rand.pickFrom(rambles)}!! ${rand.pickFrom(connectors)}!!! ${rand.pickFrom(stutterings)} ${rand.pickFrom(rambles)}!!!!!!!!!!`,
+        `${rand.pickFrom(first_parts)} ${sentenceCase(rand.pickFrom(stutterings))} ${rand.pickFrom(stutterings)}  ${rand.pickFrom(rambles)} ${rand.pickFrom(stutterings)} ${rand.pickFrom(connectors)} ${rand.pickFrom(rambles)}!!!!`,
+        `${rand.pickFrom(first_parts)} ${sentenceCase(rand.pickFrom(stutterings))} ${rand.pickFrom(stutterings)} ${rand.pickFrom(stutterings)} ${rand.pickFrom(rambles)} ${rand.pickFrom(connectors)} ${rand.pickFrom(stutterings)} ${rand.pickFrom(rambles)}!`,
+      ];
+      tags = [rand.pickFrom(rambles)];
+    }
+
+    const suggested_reblogs = ["oh shit"]
+    if (responses.length == 0) {
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
   constructor() {
     super();
     this.readied_posts.push(new Post(this, "hey does anyone know how to get stains off of a rug? like a LOT of stains. i tried rubbing alcohol on them but it just made the stains bigger", null, ["i'd like them to at least be KIND of clean", "sheesh the climb is hard isn't it"], [""], [""], true));
@@ -1715,11 +1747,16 @@ class Ria extends Character {
     this.readied_reblogs['devona is worried she is secretly faking her various syndromes'] = new Post(this, "Devy, the meme you found says it right there!", null, ["no one would fake having as many annoyances as you do!", "don't worry!", "you're not faking it!"], [""], ["lifetips"], true);
 
     this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
-
+    this.pending_asks.push({text:"do you think the Observers and Peewee are the same thing?"});
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.7, 0.7, 0.3);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
   }
 
 }
