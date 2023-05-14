@@ -36,7 +36,7 @@ class Post {
   suggested_tags = [];
   element;
 
-  constructor(owner,text, parent, tags, suggested_reblogs, suggested_tags, virtual = false) {
+  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual = false) {
     !virtual && all_posts.push(this);
     this.owner = owner;
     this.text = text;
@@ -46,7 +46,36 @@ class Post {
     this.timestamp = Date.now();
     this.suggested_reblogs = suggested_reblogs;
     this.suggested_tags = suggested_tags;
+    if (owner != wanderer && owner.posts.length > 19) {
+      /*
+      it is my belief that the minotaur in house of leaves serves the same function as Pyramid Head in Silent Hill2.
+
+      It is meant to chase you away from dangerous or stupid things by being scarier than they are.
+
+      It is the little voice in the back of your head at 3am saying to go to sleep. 
+
+      It is dangerous, not to YOU, but to the maze itself. 
+      
+      If you listen to it, the maze will collapse as you leave. It can only exist while explored.
+
+      the maze will do everything it can to prevent you from listening to that voice. It will create ever more enticing yet meaningless things for you to explore.
+
+      Surely you're close to discovering Something Important. Surely just five more minutes...
+    
+      I am the minotaur of my branch because i try to eject you from the maze if you get too obsessed.
+
+      I can't make you leave though. Not really. Not anymore than House of Leaves Minotaur can.
+
+      But I can try to spook you and try to make it tedius to continue.
+
+      */
+      this.text = "Obsession is a dangerous thing. You will be harmed if you stay. The Minotaur would like you to leave now. ";
+      this.tags = ["leave", "there is nothing more for you here"]
+    }
+    this.text = `<span data-attr='post-${this.owner.posts.length}'></span>${this.text}`;
+
     this.createElement();
+
   }
 
   //this isn't expected to change but readied reblogs needs to call it AFTER post creation (becasue we don't know the parent yet)
@@ -187,7 +216,7 @@ class Post {
 
     const container = createElementWithClassAndParent("div", post, "post-container");
     const header = createElementWithClassAndParent("div", container, "post-header");
-    const myName = createElementWithClassAndParent("span", header,"name");
+    const myName = createElementWithClassAndParent("span", header, "name");
     myName.innerText = this.owner.name;
     myName.onclick = () => {
       showProfile(this.owner);
@@ -196,7 +225,7 @@ class Post {
     if (this.parent) {
       const reblogArrow = createElementWithClassAndParent("span", header, "reblog-arrow");
       reblogArrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="12px" viewBox="0 0 24 24" width="12px" fill="#000000"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><polygon points="18,12 22,8 18,4 18,7 3,7 3,9 18,9"/><polygon points="6,12 2,16 6,20 6,17 21,17 21,15 6,15"/></g></g></svg>`;
-      const theirName = createElementWithClassAndParent("span", header,"name");
+      const theirName = createElementWithClassAndParent("span", header, "name");
       theirName.innerText = this.parent.owner.name;
       theirName.onclick = () => {
         showProfile(this.parent.owner);
@@ -309,7 +338,7 @@ class Post {
           } else if (note.post) {
             let postElement = note.post.createElement(true, true);//passing true creates a clone instead of replacing the internal element
             //don't keep repeating the original post, condense it
-            postElement.innerHTML.replaceAll(this.text,"")
+            postElement.innerHTML.replaceAll(this.text, "")
             noteEle.append(postElement);
           }
 
@@ -338,7 +367,7 @@ class Post {
       }
     }
 
-    reblogIcon.onclick = ()=>{
+    reblogIcon.onclick = () => {
       observer.createPostPopup(this);
     }
 

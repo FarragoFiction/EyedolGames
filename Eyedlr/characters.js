@@ -1286,7 +1286,7 @@ class FlowerChick extends Character {
         "curious": `@${camille.name} and @${vik.name}!!!`, 
         "closertea": `@${closer.name}!!!!!!!!!!`, 
         "canceledapocalypsesaretheworst": `@${ria.name} and @${camille.name}`, //not comfortable with the apocalypse but still feels a moral obligation to show the targets of what she found what she found 
-        "placeholder": `@${parker.name}`, 
+        "camillesfriend": `@${parker.name} and @${camille.name}`, 
         "placeholder": `@${parker.name}`, 
         "placeholder": `@${parker.name}`, 
         "placeholder": `@${parker.name}`, 
