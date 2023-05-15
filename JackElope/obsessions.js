@@ -28,6 +28,7 @@ const THEWAYAHEAD = 'THEWAYAHEAD'; //Daedalus
 const FORWANTOFKNOWLEDGE = 'FORWANTOFKNOWLEDGE'; //Daedalus
 const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
 const LTE = 'LTE'; //jr but as eon337
+const ANIMORPHS = 'ANIMORPHS' //how did i forget this
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -966,6 +967,31 @@ all_obsessions[LTE] = new Obsession(
   lteLocationsRaw.split(","),
   lteObjectsRaw.split(","),
   lteJobsRaw.split(",")  
+);
+
+
+const aniCharRaw = `Jake, Rachel, Tobias, Marco, Cassie, Ax`;
+const aniChar2Raw = `David,Aftran 942, Visser 3, Visser 1, Elfangor, Drode, Ellimist, Krayak, Erek, Esplin 9466, Alloran`;
+const aniImportantEventsRaw = `when the Animorphs discovered Atlantis was real, when Aftran 942 took over Cassie's body, when Jake found out his brother was a Controller, when Rachel realized why Vice Principal Chapman became a controller, when Elfangor died, when you realize that Ax is technically Tobias' uncle, when Jake and Cassie finally kiss, when Marco frees Visser 1, when Cassie quits the animorphs, when Tobias wiped out the dinosaurs, when Tobias killed Hitler`;
+const aniOpinionsRaw = `Tobias is trans, Marco is Bi, Cassie gave David a fate worse than death and called it compassion, Rachel probably killed David in secret, David did nothing wrong, Visser 3 did nothing wrong, the Howlers are evil, the Ellmist did nothing wrong, Jake did nothing wrong, Rachel deserved to live, Rachel deserved to die, Ax became the borg, Ax was problematic`;
+const aniMemesRaw = `Let's do this!, My name is ___`;
+const aniGoalsRaw = `learn everything I can about thermals, research red-tailed hawks, check all my friends for signs of being Controllers`;
+const aniLocationsRaw = `McDonald's, The Mall, The Gardens, Cassie's Barn, the Yeerk Pool, the Pool Ship, The Dome Ship, the Blade Ship`;
+const aniObjectsRaw = `bug fighters, morphing cube, kandrona ray, dracon beam, shredder, instant maple ginger oatmeal`;
+const aniJobsRaw = `guerilla warrior, Hork Bajir, Taxxon, Gedd`;
+
+
+all_obsessions[ANIMORPHS] = new Obsession(
+  "Animorphs",
+  aniCharRaw.split("\n"),
+  aniChar2Raw.split("\n"),
+  aniImportantEventsRaw.split("\n"),
+  aniOpinionsRaw.split("\n"),
+  aniMemesRaw.split("\n"),
+  aniGoalsRaw.split("\n"),
+  aniLocationsRaw.split("\n"),
+  aniObjectsRaw.split("\n"),
+  aniJobsRaw.split("\n")  
 );
 
 /*
