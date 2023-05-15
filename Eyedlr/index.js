@@ -100,6 +100,7 @@ const init = async () => {
   nam = new NAM();
   ronin = new Ronin();
   closer = new Closer();
+  jr = new JR();//shambling horror jr is here to post donut and refuse to explain anything
 
   //wanda can't have both interns at once or she wouldn't have a need for the first intern
   veteranIntern = new Intern1();
@@ -157,6 +158,7 @@ const init = async () => {
   characters.push(wanda);
 
   characters.push(intern);
+  characters.push(jr);
 
   /* let ele = document.querySelector("#container");
  

@@ -16,7 +16,7 @@ themes from zampanios should go into the obsession engine and build themselves f
 const GLITCH = 'GLITCH'; //jr
 const HOMESTUCK = 'HOMESTUCK'; //jr
 const ZAMPANIO = 'ZAMPANIO'; //jr
-const FARRAGNAROK = 'FARRAGNAROK'; //jr
+const FARRAGNAROK = 'FARRAGNAROK'; //jr  //https://archiveofourown.org/works/46657027?view_full_work=true
 const THEECHIDNAUNIVERSE = 'THEECHIDNAUNIVERSE'; //jr
 const THE_MAGNUS_ARCHIVES = 'THE_MAGNUS_ARCHIVES'; //jr  http://farragofiction.com/MagnusArchivesSim/#  hey i forgot i made this for classpectanon. they wanted to pay me in money but instead i asked to be paid in "exposure", when they hosted it for reals it'd keep my "Zampanio awaits" console spam.
 const HENCH = 'HENCH'; //kr

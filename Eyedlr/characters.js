@@ -1281,22 +1281,12 @@ class FlowerChick extends Character {
         "hot_topic_k_part_2_herald": `@${k.name}`, 
         "hot_topic_k_part_1_herald": `@${k.name}`, 
         "gun.png": `@${camille.name} and ${witherby.name}!!!!!<br><Br>witherby lol git gud`, 
-        "goofy.png": `@${neville.name} and @${witherby}!!!!`, 
+        "goofy.png": `@${neville.name} and @${witherby.name}!!!!`, 
         "gaze_ego_do_you_see_this_shit": `@${k.name}`, 
         "curious": `@${camille.name} and @${vik.name}!!!`, 
         "closertea": `@${closer.name}!!!!!!!!!!`, 
         "canceledapocalypsesaretheworst": `@${ria.name} and @${camille.name}`, //not comfortable with the apocalypse but still feels a moral obligation to show the targets of what she found what she found 
         "camillesfriend": `@${parker.name} and @${camille.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
-        "placeholder": `@${parker.name}`, 
         "peewee_fucking_loses_it.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
 
 
@@ -3037,14 +3027,17 @@ class JRFake extends Character {
 }
 
 //don't actually create JR, isntead store important things here
+//wait no it would be too funny if the only think jr ever does is post donut
+//((not so fun fact: donut is dying. i love him very much. he is already immortal through the actions of the seeker and the cultist and countless others, but now he will be just that bit more immortal, you will remember him.))
 class JR extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
+  name = "justifiedRecursion";
+  icon = "https://cdn.discordapp.com/attachments/931398056727953448/946949742863208448/garbage_horror_2.gif"; //which is the real me anymore. the one with the spiral or the one without?  either way, jr shouldnt be here. its wrong to be animated
   //https://www.tumblr.com/hazyscrounger/714681029142691840/i-want-to-like-zampanio-so-bad-i-feel-like-an?source=share
   //https://www.tumblr.com/jadedresearcher/714684745826566144/wait-wait-wait-sorry-to-send-a-second-ask-but?source=share
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_posts.push(new Post(this, "Donut... <img data-jr-note='do you know what this means?  why i blazed it on tumblr?' src='images/Secrets/blazeIt.PNG'>", null, [""], [""], [""], true));
 
   }
 
