@@ -29,6 +29,7 @@ const FORWANTOFKNOWLEDGE = 'FORWANTOFKNOWLEDGE'; //Daedalus
 const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
 const LTE = 'LTE'; //jr but as eon337
 const ANIMORPHS = 'ANIMORPHS'; //how did i forget this before
+const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -987,16 +988,74 @@ const aniJobsRaw = `guerilla warrior, Hork Bajir, Taxxon, Gedd`;
 
 all_obsessions[ANIMORPHS] = new Obsession(
   "Animorphs",
-  aniCharRaw.split("\n"),
-  aniChar2Raw.split("\n"),
-  aniImportantEventsRaw.split("\n"),
-  aniOpinionsRaw.split("\n"),
-  aniMemesRaw.split("\n"),
-  aniGoalsRaw.split("\n"),
-  aniLocationsRaw.split("\n"),
-  aniObjectsRaw.split("\n"),
-  aniJobsRaw.split("\n")  
+  aniCharRaw.split(","),
+  aniChar2Raw.split(","),
+  aniImportantEventsRaw.split(","),
+  aniOpinionsRaw.split(","),
+  aniMemesRaw.split(","),
+  aniGoalsRaw.split(","),
+  aniLocationsRaw.split(","),
+  aniObjectsRaw.split(","),
+  aniJobsRaw.split(",")  
 );
+
+
+const holCharRaw = `Zampanò
+Johnny Truant
+Will Navidson`;
+const holChar2Raw = `Karen Green
+Pelafina H. Lièvre
+Tom Navidson
+Billy Reston`;
+const holImportantEventsRaw = `When Navidson began burning the very book you were reading for light so he could keep reading it.
+When Tom died.
+When you realize Johnny is more than just an unreliable narrator.
+When you read the footnote that makes you realize just how deep the lies go.
+When you realize what the House is.
+When you realize that it is a story about a book about a documentary that isn't real about a house that isn't real.`;
+const holOpinionsRaw = `The Minotaur was an actual monster.
+The Minotaur was a threat.
+The Minotaur was a metaphor.
+The Minotaur was Navidson's own survival instinct trying to get him to leave.
+The House was a real place.
+The House was a metaphor.
+The House was the book you are reading.
+The House is a cognito hazard that makes anyone encountering it spread it.
+Zampanio is a branch of the House of Leaves.`;
+const holMemesRaw = `I've wandered as far west as I can go.
+Sitting now on the sand, I watch the sun blur into an aftermath.
+Reds finally marrying blues.
+Soon night will enfold us all.
+But the light is still not gone, not yet.
+By it I can dimly see here my own dark hallway, or maybe it was just a foyer and maybe not dark at all, not in fact brightly lit, an afternoon sun blazing through the lead panes, now detected amidst what amounts to a long column of my yesterdays, towards the end, though not the very end of course, where I had stood at the age of seven, gripping my mother's wrists, trying as hard as I could to keep her from going.
+This is why classical thought concerning structure could say that the center is, paradoxically, within the structure and outside it.
+The center is at the center of the totality, and yet, since the center does not belong to the totality (is not part of the totality), the totality has its center elsewhere.
+The center is not the center."
+"If one invests some interest in, for example, a tree and begins to form some thoughts about this tree then writes these thoughts down, further examining the meanings that surface, allowing for unconscious associations to take place, writing all this down as well, until the subject of the tree branches off into the subject of the shelf, that person will enjoy immense psychological benefits."
+`; //chose the things i quoted in East
+const holGoalsRaw = `Get lost in an endless maze.
+Write a book about a book about a book about a movie about a house.
+Write a 700 page thesis on House of Leaves.`;
+const holLocationsRaw = `The House
+The Five and a Half Minute Hallway`;
+const holObjectsRaw = `Book
+Movie
+House`;
+const holJobsRaw = `Minotaur`;
+
+
+all_obsessions[HOUSEOFLEAVES] = new Obsession(
+  "House of Leaves",
+  holCharRaw.split("\n"),
+  holChar2Raw.split("\n"),
+  holImportantEventsRaw.split("\n"),
+  holOpinionsRaw.split("\n"),
+  holMemesRaw.split("\n"),
+  holGoalsRaw.split("\n"),
+  holLocationsRaw.split("\n"),
+  holObjectsRaw.split("\n"),
+  holJobsRaw.split("\n")  
+)
 
 /*
 

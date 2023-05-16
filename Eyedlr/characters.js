@@ -1906,9 +1906,15 @@ class Witherby extends Character {
     if (premadeAsk && this.block_list.includes(premadeAsk.characterName)) {
       premadeAsk = null;
     }
+    const obssession = rand.pickFrom(Object.values(all_obsessions));
+    const blorbo = obssession.randomBlorbo(rand);
+    const job = obssession.randomJob(rand);
+    const opinion = obssession.randomOpinion(rand);
+
+
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
     const starts = ["Forgive me father", "Forgive me daddy", "One time", "When i was a kid", "Last week", `About a ${rand.pickFrom(["year", "month", "day", "decade"])} ago`, `Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
-    const sins = ["I ate my roomies snacks he was saving.", "I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others.", "I killed them all.", `I murdered someone.`, 'I killed an animal.', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const sins = [`I punched someone on the street just for saying '${opinion}'`, `I lied on my resume. I said I trained as a ${job}`,`I convinced my best friend that I was secretly ${blorbo} from ${obssession.name}`,"I got my friend lost in a never ending maze. As a prank","I replaced all the shoes in my friends house with 3D printed replicas","I lived inside a kings walls and wrote him love letters.","I ate my roomies snacks he was saving","I refused to let the other kids on the playground until they guessed a password","I convinced my little brother that he had vanished from reality for thirty straight minutes","I didn't tip my Zampanini driver", "I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others", "I killed them all", `I murdered someone`, 'I killed an animal', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
     const endings = ["Was I wrong?", "Was I an asshole?", "Do you think that's fucked up?", "Can I ever be forgiven?", "Am I going to be punished?"];
     let question = premadeAsk ? premadeAsk.text : `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
