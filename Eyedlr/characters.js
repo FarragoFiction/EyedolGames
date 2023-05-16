@@ -300,7 +300,7 @@ const randomPornBot = () => {
 }
 
 //https://drive.google.com/drive/folders/1LCxnK5HMkSXscfXtzzv46ysaPRpa4p4u i don't want to forget the guide of hunters
-
+//https://www.tumblr.com/crimsondestroyer/717373385220423680/jv-petermorwood-lordoftherazzles-the-lord-of?source=share
 
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
@@ -451,7 +451,7 @@ class PornBot extends Character {
   }
 
   randomAsk = () => {
-    const ret = [...links, `Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
+    const ret = [...links, `Don't you just want to squish ${rand.pickFrom(this.obsessions).randomMinorBlorbo(rand)}?`,`Do you think ${rand.pickFrom(this.obsessions).randomBlorbo(rand)} is overrated?`,`What do you think about ${rand.pickFrom(this.obsessions).randomOpinion(rand)}?`,`Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
     return rand.pickFrom(ret)
   }
 
@@ -563,6 +563,12 @@ class PornBot extends Character {
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
+    }
+
+    //we need more asks, full on porn bot apocalypse
+    if(rand.nextDouble()>.75){
+      rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
+
     }
   }
 }
@@ -3036,8 +3042,9 @@ class JR extends Character {
   //https://www.tumblr.com/jadedresearcher/714684745826566144/wait-wait-wait-sorry-to-send-a-second-ask-but?source=share
   constructor() {
     super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    //https://www.tumblr.com/jadedresearcher/717211105792081921?source=share
     this.readied_posts.push(new Post(this, "Donut... <img data-jr-note='do you know what this means?  why i blazed it on tumblr?' src='images/Secrets/blazeIt.PNG'>", null, [""], [""], [""], true));
+    this.readied_posts.push(new Post(this, "<img data-jr-note='such as a waste of twisted blood ;) ;) ;)' src='images/Secrets/okay_fine_jr_can_have_two_posts____as_a_treat.PNG'>", null, [""], [""], [""], true));
 
   }
 
