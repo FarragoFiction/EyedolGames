@@ -1,4 +1,35 @@
 
+/*
+hi yes hello
+
+you're either future JR or a waste (which is to say, someone who gets into places they 'shouldn't except that is literally the intended path for some of this)
+
+i am so so sorry this file is so insanely big
+
+i mean, i know better than to do this NORMALLY
+
+but theres something cathartic about breaking the rules when there are no consequences
+
+except i guarantee you that even CURRENT me is pissed at past me for doing this because its 
+
+INSANELY hard to find specific blorbos in here as i'm wiring them up .
+
+but instead of taking the time to refactor it out and get everything in place
+
+im just
+
+not.
+
+so you know.
+
+sorry not sorry
+
+*/
+
+
+//display when a blorbo gets a link to one of their mini sims
+const ominousAskPreambles =["They are Observing you.","They know you.","You are being Observed.","Your private life is not as private as you think."]
+
 
 class Character {
   name;
@@ -1156,6 +1187,8 @@ class EyeKiller extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    //http://farragofiction.com/ATranscript/
+    //http://farragofiction.com/SecurityLog/cctv.html
   }
 
 }
@@ -1182,6 +1215,8 @@ class Hostage extends Character {
   icon = "images/icons/hostage_boss.png";
   constructor() {
     super();
+    //http://farragofiction.com/ATranscript/
+    //http://farragofiction.com/SecurityLog/cctv.html he is helping her on her coms
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
@@ -1347,6 +1382,7 @@ class Alt extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+    //http://www.farragofiction.com/TheTruthAboutAlt/
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 }
@@ -1455,6 +1491,7 @@ Or you will spread Zampanio.
   }
 
   tick = async (parentToRenderTo) => {
+    //http://www.farragofiction.com/TheTruthAboutAlt/
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 
@@ -1475,6 +1512,8 @@ class Closer extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+    //https://farragofiction.com/FruitSim/
+
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 
@@ -1533,14 +1572,19 @@ class Neville extends Character {
   
   handleAsks = (parentToRenderTo, premadeAsk) => {
 
-    let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+    let tags = [""];
     //witherby doesn't judge but his followers sure do
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+     tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+
       responses = ["Zampanio is a very fun game. You should play it!"]
     } else if (premadeAsk.characterName === observer.name) {
       responses = [`<span data-breach='observer'>  @${camille.name} @${devona.name} @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'</span>`]
       tags = ["breach in progress"]//calm and proffesional, but only notices a breach if it literally is happening to him
+    }else{
+      //head empty, no fear at all of being seen
+      responses = ["nice"];
     }
 
     const suggested_reblogs = ["oh shit"]
@@ -1561,6 +1605,14 @@ class Neville extends Character {
   tick = async (parentToRenderTo) => {
     //neville is equally likely to do everything, you learn nothing from him
     //hes just vibin
+    //http://farragofiction.com/TwoGayJokes/
+    //http://farragofiction.com/LightAndVoid/
+    //http://farragofiction.com/LightAndVoid/dearWitherby=true
+    if (this.posts.length == 2) {
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/dearWitherby=true'>___</a>`);
+    }
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
@@ -1621,6 +1673,7 @@ class Devona extends Character {
       responses = ["<span data-breach='observer'> ! @robitussin-warrior @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'</span>"]
       tags = ["Oh God", "Breach In Progress", "We Need to Act Quickly", "Do We Contain?"]
     }
+    //she simply will not respond to most asks because she does not wish to be seen
 
     const suggested_reblogs = ["oh shit"]
     if (responses.length == 0) {
@@ -1662,6 +1715,18 @@ class Devona extends Character {
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    //http://farragofiction.com/APersonalTranscript/
+    
+    //http://farragofiction.com/LightAndVoid/
+    //http://farragofiction.com/LightAndVoid/seerOfVoidy=true //if you shine light on what the bard of void has deemed irrelevant, you actually understand less.
+
+    if (this.posts.length == 2) {
+      //she is so so scared to be seen and absolutely is gonna ghost you on this. you'll never see shit from her. hacking or nothing.
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>___</a>`);
+
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/http://farragofiction.com/LightAndVoid/seerOfVoidy=true'>___</a>`);
+    }
     const post = this.handleSecretReadiedReblog();
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -1696,7 +1761,6 @@ class Ria extends Character {
 
   //ria is quiet unless you get her going and then she can't stop
   handleAsks = (parentToRenderTo, premadeAsk) => {
-    console.log("JR NOTE: trying to answer an ask as ria", premadeAsk)
     let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -1747,11 +1811,39 @@ class Ria extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+    //http://farragofiction.com/APersonalTranscript/
+    //http://farragofiction.com/GhoulishThing/
+    //http://farragofiction.com/ASecondPersonalTranscript/
+    //http://farragofiction.com/UnifiedTheory/
+    //http://farragofiction.com/AnUnSentLetter/
+
+    if (this.posts.length == 3) {
+      //she rambles as normal in response to these
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondPersonalTranscript/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/UnifiedTheory/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>___</a>`);
+    }
+
     this.blorboAI(parentToRenderTo, 0.7, 0.7, 0.3);
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
       this.handleAsks(parentToRenderTo, premadeAsk);
+    }
+
+    
+    if (this.posts.length == 1 && !this.asked) {
+      this.asked = true;
+              //here's the important thing. Witherby does not have AI to handle this. Even though this is (hopefully clearly) a Ria confession, he'll respond just like he does to any stranger. With forgiveness. And somehow that is colder than if he had denied her that. If he had reacted '...' or "blocked" like he does for the extremes.
+
+      witherby.submitAsk(null, "I know I shouldn't ask this. You probably don't want to hear from me. But. Can I be forgiven? I've hurt so many people. I. I can see how you draw away when I fall back. I'm sober now. I wanted you to know that. I'm trying. I want so much to recover. I don't know why it's so hard. I'm sorry. I don't mean to drink. To smoke. To... I'm so sorry. I don't know why I can't stop. I'm sorry... Please...");
+          //fun fact, at first she said she felt "bad" 
+          //which made witherby interpret her as a thot
+          //so his response was to say "for the last time, I am not interested". 
+          //which was maybe a bit TOO cold
+
     }
   }
 
@@ -1815,7 +1907,6 @@ class Camille extends Character {
   handleAsks = (parentToRenderTo, premadeAsk) => {
 
     let tags = [":3"];
-    //witherby doesn't judge but his followers sure do
     let responses = [":3"]
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it...................................../ads,fasdfsa"] //you can kill her before she kills you, you monster
@@ -1836,6 +1927,19 @@ class Camille extends Character {
   tick = async (parentToRenderTo) => {
     if (this.dead) {
       return;
+    }
+
+    //http://farragofiction.com/ASecondTranscript/
+    //http://farragofiction.com/AnUnSentLetter/
+    //http://farragofiction.com/GhoulishThing/
+    //http://farragofiction.com/MurderOnTheScorpiusExpressSim/ in the console
+
+    if (this.posts.length == 3) {
+      //she rambles as normal in response to these
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondTranscript/'>___</a>`);
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>___</a>`);
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>___</a>`);
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/MurderOnTheScorpiusExpressSim/'>___</a>`);
     }
 
     let premadeAsk = rand.pickFrom(this.pending_asks)
@@ -1923,14 +2027,7 @@ class Witherby extends Character {
       question = randomQuirk(rand).apply(question);
     }
 
-    //here's the important thing. Witherby does not have AI to handle this. Even though this is (hopefully clearly) a Ria confession, he'll respond just like he does to any stranger. With forgiveness. And somehow that is colder than if he had denied her that. If he had reacted '...' or "blocked" like he does for the extremes.
-    if (this.posts.length == 6) {
-      //fun fact, at first she said she felt "bad" 
-      //which made witherby interpret her as a thot
-      //so his response was to say "for the last time, I am not interested". 
-      //which was maybe a bit TOO cold
-      question = "I know I shouldn't ask this. You probably don't want to hear from me. But. Can I be forgiven? I've hurt so many people. I. I can see how you draw away when I fall back. I'm sober now. I wanted you to know that. I'm trying. I want so much to recover. I don't know why it's so hard. I'm sorry. I don't mean to drink. To smoke. To... I'm so sorry. I don't know why I can't stop. I'm sorry... Please...";
-    }
+
 
     let responses = ["Wow, sounds rough,buddy!", "I forgive you.", "You are forgiven.", "It's okay."];
     if (question.toLowerCase().includes("shoplift") || question.toLowerCase().includes("steal") || question.toLowerCase().includes("stole")) {
@@ -1969,6 +2066,17 @@ class Witherby extends Character {
     //but ALSO he should have weird fucking asks.
     //if its empty thats okay
     let premadeAsk = rand.pickFrom(this.pending_asks)
+    //http://farragofiction.com/DearDiary/
+    //http://farragofiction.com/DearDiary/?truth=here //freebie for yall since i haven't seen anyone find it
+    //http://farragofiction.com/TwoGayJokes/
+
+    if (this.posts.length == 3) {
+      //she rambles as normal in response to these
+
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/?truth=here'>___</a>`);
+         this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>___</a>`);
+    }
     removeItemOnce(this.pending_asks, premadeAsk);
     this.handleAsks(parentToRenderTo, premadeAsk);
     if (this.posts.length === 10) {
@@ -1987,6 +2095,10 @@ class Yongki extends Character {
 
   constructor() {
     super();
+    //http://farragofiction.com/DearDiary/?truth=here
+    //http://farragofiction.com/ClownDiarySim/?truth=here
+    //http://farragofiction.com/ClownDiarySim
+
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
@@ -2009,11 +2121,13 @@ class LeeHunter extends Character {
   //https://www.tumblr.com/deadcellsman/713665846445228032?source=share
   constructor() {
     super();
+    //
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
 
   tick = async (parentToRenderTo) => {
+    //http://farragofiction.com/ASecondPersonalTranscript/
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 }
@@ -2289,6 +2403,12 @@ class DocSlaughter extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+    //http://farragofiction.com/DocSlaughterFileServer/
+
+    if (this.posts.length == 3) {
+      //she is THRILLED her server is found but doesn't wnat to show it because to Be A Good Citizen in this Universe you Must Keep Secrets
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DocSlaughterFileServer/'>___</a>`);
+    }
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
@@ -2465,6 +2585,19 @@ class Vik extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+    //does not answer asks (censored)
+    /*  
+    So here's some censored vik aligned mini sims.
+    http://farragofiction.com/ACensoredTranscript/
+    http://farragofiction.com/ACensoredTranscript/?seerOfVoid=true
+    http://www.farragofiction.com/ThisHumanDiseaseCalledFriendship/
+    http://farragofiction.com/CodexOfRuin/viewer.html?name=_&data=N4IgdghgtgpiBcID6IA0IAmMDOBLA5pAC64D2YCIaIATrtgNaUAEAggDICiACgBLVEAFjFjZK1bEQhExiajAAeEAMZEANgE8kQmjBjbcAB1kh2AWgAMZgEoBGZsohhmAIxgAzOjDAZmTjcxSNPgwRAB0qMzmVnbMAO64amrMYKREzCHp0lLKwhgRzAAipClpzGqhUZY29rhgRDA0KukJQlUA6pYWAMxh1HWSdari6AMEgkQjINkqgrD1U7qGuth45FOSEC6JuERaFQBuMGqLMBhIWO7e2HBy6HGCu-qX17dU6C5qKgwXHq9ThggFV+VzANymuCg+CQ2Boyg2RFINC0WCkiRMADUAPIASUKqFstm6AB1nABhLHWawAVW4ABUcViAHIE7ok5xFVjWADSqAArHzScxhWTOEyAMqUzj4wns4XC3jUpkAcU41kibKF8uYgAjSPX6nWRABMRq12t1BoNkUJpNJDO4zFs8GF7WEzk4UEMalIGj02D8PlK7s93t9OGYAFcfI1mHTcDGACzMbAQOLMJDMdxIwLCTO4GiSQKQmCRXbxUgRtS+RwRm45mDJiMuABWMFU-sRzEUhka8bAygbTUMuAwmmYQ10EDwYHw5RgRzU-tI7mY8ykyWUSJoEcMJHIYVtYHtzCNzo9Xp9fsj0Zosfjt6TbkcsGYK3oUnqgRKGfIjZcNwARwjbx0gOeMEhnbAwmYJlyDMc9QyvRwwFSdIMBKbBSAPMA7RxB1umdDNLX1ZgwNUSEOxKYi9QtajDQcCBazqWc6OIgNfDcZjaOo8d6hKXZ-WI7DSVdbxmA0CtXDbUgXwgUicBuZIs1vTDYCELjjhuSIJIjZMVDodxcAHPxMxgNN1Mg6CACEIxaN1xMk-BcCOSNDHiQRpFXCAGHDHTmAAch0-zIgeTypB8-0vRUBtyGM0KiH8-0KncdJ6AycgYAAfkPCYiEMeAAHoCvcCAaCafBlyMvcwDCTcoAK1gyWuJEzjpJowWUOhdwKw9ilKdIiGRL9kz0dzPLUeN-TcMAYGkQRoLpXMBzBJFsEeNy0uUhyI1vZY0jbaq+nQEhDFsFgBCMI1zuOoxunOgBfIA
+    http://farragofiction.com/ASecondTranscript/
+    http://farragofiction.com/BulletproofTheory/
+    http://farragofiction.com/UnifiedTheory/
+
+
+    */
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
   }
 }
@@ -2504,14 +2637,46 @@ class Parker extends Character {
 
   }
 
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"]
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = [`<span data-breach='observer'> haha wow<Br><Br>you're fked my guy<br><Br>don't u know u aren't supposed to affect the story?</span>`]
+    }else{
+      responses =["wow","neat","neat","neat","neat","heh","there is respite beneath the earth","dig"]
+    }
+
+    if (responses.length == 0) {
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [""], [""], ["classic parker"]);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
   tick = async (parentToRenderTo) => {
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     this.readied_reblogs['hatsune'] = new Post(this, "", null, ["best girl", "waifu", "always reblog"], [""], [""], true);
 
-    if (this.posts.length == 3 && this.asked) {
+    if (this.posts.length == 3 && !this.asked) {
       this.asked = true;
-      witherby.submitAsk(this.name, "I think I might have killed them. I didn't mean to. I. Does that make me a bad person? Tell me it doens't make me a bad person. Wait. Shit I'm not supposed to influence the story. Forget you saw me.");
-
+      witherby.submitAsk(this.name, "i think.... i think i might have killed them.... i didn't mean to. i. does that make me a bad person? tell me it doens't make me a bad person. wibby...precious cinnamon bun.... wait. shit.... i'm not supposed to influence the story. forget you saw me.");
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ACensoredTranscript/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://www.farragofiction.com/ThisHumanDiseaseCalledFriendship/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ParkerLotLost/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DehydrationSim/'>___</a>`);
+      this.submitAsk(null, `${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/CodexOfRuin/viewer.html?name=The%20Shot&data=N4IgdghgtgpiBcIAqALGACAyig9gFxABoQATGAZwEsBzSPSnMBEAGQFoAGNgJgEYiQAJ0rkA1swASAUQF40scswBCAVQBKASSkARQul68AzHswsAgioDiEpFLV6ALA73apSpJkIA2L4VUsWKQ9CA2MAdSk3EKM9DUwpAGkzDUJubkIkCS0AMT1QwkwABTMAYSlo40K7MsKkDQB5ADlogXI8CDxFRA1G2zVGsxYKwmK6qV7hjVdBuLqSwgd00pq6xstvXxZ6gE1BwjZjEsGAWUIATkMBGAAPCABjPAAbAE8AfTlBGBh3ygAHLpAYTQYHQEHQ5AArgAjABWMAe6DwOAhdzQ5ERaHQdxwADMcZQQRiYM9QZ90DjkWASOgAO6UOREyiCdBoCDU8iPSh3GDUu6PGAQEG4nEAOkIGhx6HYXF4AHZ0DAwNQINQKOgCegzHh2qjYGA8LScIJRESSRAyRSIVTafSUIzmaz2Zzubz+YL0MKxdK2HL1eiSIIIDSQUiFZyoASOgTqFiYIJ2hr2oJVZ1QQb3RAAG5xlUYQN4DC4j1gDC-OPoKCMOQigQEtoEh7MEo4KCVsCEZutxgdlttwgSGgofuD2tgKjUFAERCdvsz7tz9sLntdpjEDo6lB6qesHA0vQsXf7w9S48HmkCT6-T7kKiMZgANTjJLPhEfgmfh4HE+H36-KFa7RQpQnJ4G8-LZo8zAcBePKvGQOKKuQcCILwIrQcQNIoPS3zwYhyEgKhACsAhQo89yiHBMAIWO+GoehIC-BA-KUdRSHMHRtZQNQrzkIIdzMJOeC-PAAD0Ik4uagbULiXL0IwIrYlAIlIDSOCWBAzwAFI4KIFAiZgSLCHpvxGgWzIABS8AAlCKvxKgBRpvGQCaPACGhIaIECUAA5NSYD4MW3LoFCEIGngdLciK6AADpgLFGgGiQOBquQLYwHI0aIjg6DPMiIqxbFmCCtSuUQugSXBvlcVgMcEC6eipXoL8EKfFVsVSNmIKUJK9Llcl5BgN5BpITAUDoJyunqngbVgIJwliRJghSTJDwMGACktiJJSPLuYDaJQ5rPJglBKQVYCoHGMDeeiqWwBlSoYjgSG0rg5UCo86oghAUKpY8oVqncGa-Fe8IHQWoJQsiYWYs1wigTNc2ieJkkqitcnrYpImlIhRo8kggZjncwi-HgIlnYU5q6cySUUINYXvll404DpWXZWQMC-HojUjVFMXVUgdUYIDZKNUlRLgtAMBVbIfz8Ig3p8NdWJVl5YBbligr+QaUIYPc3I3jywUkpWbToNeAp8WggjkFFGj6jmq2MDaDJyLr-lQExJIiIzOt9SWCrXHyEJUBBJJQiSkKwvCqaA4xpGFpKNJMaImUfMiE60kxrk1sQ9C-NwzBqDAACOEIUPQD1edSOKCC2UqcDwvCfR6ghkMyobYvqqugu7TGUGq3tloIEbajyUUSLuMDZoI+4N3wNqPB9jAvKCdzciTPcnRg+LUC1BJqhA6KMc8W45yAeeXIg9RgEFYIkBps9cPPdKL+STK68FEKL+lzdggTSVjRIO-R2610AXU-t-A0L8Po4hXgSeCBJsIrytPQD6vUUCHw1sHQ2kI8Rcn7vqFk5ooA1gAL5AA'>___</a>`);
     }
   }
 }
