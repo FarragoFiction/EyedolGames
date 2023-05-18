@@ -905,7 +905,8 @@ all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
 //                   Farragnarok    (Farrago Fiction's Not!SBURB Session)               //
 //////////////////////////////////////////////////////////////////////////////////////////
 //https://archiveofourown.org/works/46657027/chapters/117503854 the wisp is busy
-
+//http://www.farragofiction.com/AudioLogs/?passPhrase=grace_hollowed_out_the_tree
+//http://www.farragofiction.com/AudioLogs/?passPhrase=wastetree
 
 const ffCharRaw = `Zawhei,Eirikr,Volour,Okarin,Peewee,Hagala,Despap,Othala,Nidhogg`;
 const ffChar2Raw = `the Eagle, Loki, the consorts, Butler Bot, YN, Big Honkers`;

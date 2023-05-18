@@ -11,6 +11,26 @@ body {
 
 }
 
+#asks {
+  position: relative;
+}
+
+#ask-count {
+  width: 18px;
+  height: 18px;
+  background: #0084ff;
+  position: absolute;
+  top: 0px;
+  display: none;
+  right: 0px;
+  border-radius: 3px;
+  color: #c4c4c4;
+  line-height: 18px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .asker {
   font-weight: bolder;
   color: black;
@@ -64,12 +84,14 @@ body {
   }
 }
 
-.censored{
+
+
+.censored {
   filter: brightness(0.0);
   border: 3px solid red;
 }
 
-.final-popup{
+.final-popup {
   z-index: 1000;
   background-color: white;
   color: red;
@@ -168,7 +190,7 @@ body {
 
 }
 
-.post-body-content{
+.post-body-content {
   outline: none;
 }
 
