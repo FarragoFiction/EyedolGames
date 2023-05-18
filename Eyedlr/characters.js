@@ -30,7 +30,7 @@ sorry not sorry
 //display when a blorbo gets a link to one of their mini sims
 //this is GENUINELY an attempt on my part to expose secrets to those who do not dig
 //FRIEND is here to tell provide rewards
-const ominousAskPreambles =["THEY ARE OBSERVING YOU.","THEY KNOW YOU","YOU ARE BEING OBSERVED.","YOU ARE WATCHED."]
+const ominousAskPreambles = ["THEY ARE OBSERVING YOU.", "THEY KNOW YOU", "YOU ARE BEING OBSERVED.", "YOU ARE WATCHED."]
 
 
 class Character {
@@ -484,7 +484,7 @@ class PornBot extends Character {
   }
 
   randomAsk = () => {
-    const ret = [...links, `Don't you just want to squish ${rand.pickFrom(this.obsessions).randomMinorBlorbo(rand)}?`,`Do you think ${rand.pickFrom(this.obsessions).randomBlorbo(rand)} is overrated?`,`What do you think about ${rand.pickFrom(this.obsessions).randomOpinion(rand)}?`,`Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
+    const ret = [...links, `Don't you just want to squish ${rand.pickFrom(this.obsessions).randomMinorBlorbo(rand)}?`, `Do you think ${rand.pickFrom(this.obsessions).randomBlorbo(rand)} is overrated?`, `What do you think about ${rand.pickFrom(this.obsessions).randomOpinion(rand)}?`, `Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
     return rand.pickFrom(ret)
   }
 
@@ -546,6 +546,11 @@ class PornBot extends Character {
 
   tick = async (parentToRenderTo) => {
 
+    if (this.posts.length > 19) {
+      observer.submitAsk(this.name, "Obsession is a dangerous thing. You are obsessed. You are a dangerous thing. You will harm us if you try to touch us.");
+
+    }
+
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
@@ -599,7 +604,7 @@ class PornBot extends Character {
     }
 
     //we need more asks, full on porn bot apocalypse
-    if(rand.nextDouble()>.75){
+    if (rand.nextDouble() > .75) {
       rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
 
     }
@@ -610,6 +615,7 @@ class PornBot extends Character {
 //you can get asks (if you reply, posts), do you traverse mazes clockwise or counterclockwise
 //you should get to post, and your posts are treated just like any other (aka they can be reblogged and commented on and etc)
 class Observer extends Character {
+  askCount = document.querySelector("#ask-count")
   name = "puzzledObserver"
   icon = "http://farragofiction.com/PaldemicSim/images/chatSymbols/probablyYou.png"
   desc = `<p>JR: It's you.<p>
@@ -639,6 +645,13 @@ class Observer extends Character {
       this.createPostPopup();
     }
 
+    let askButton = document.querySelector("#asks");
+
+    askButton.onclick = () => {
+      this.createAsksPopup();
+    }
+
+
     window.onkeydown = (event) => {
       //82 = r, 67 = C, l is 76
       if (event.keyCode === 67) {
@@ -658,6 +671,71 @@ class Observer extends Character {
       }
     }
 
+
+  }
+
+  //handles reblogs too
+  createAsksPopup = () => {
+
+    const askContainer = createElementWithClassAndParent("div", document.querySelector("body"));
+
+    for (let a of this.pending_asks) {
+      console.log("JR NOTE: pending asks is", this.pending_asks, a)
+      const post = createElementWithClassAndParent("div", askContainer, "post");
+      const postIcon = createElementWithClassAndParent("div", post, "post-icon");
+      const postIconImg = createElementWithClassAndParent("img", postIcon);
+      postIconImg.src = this.icon;
+
+      const container = createElementWithClassAndParent("div", post, 'post-container');
+
+      const header = createElementWithClassAndParent("div", container, "post-header");
+      const myName = createElementWithClassAndParent("span", header);
+      myName.innerText = this.name;
+
+      const body = createElementWithClassAndParent("div", container, "post-body");
+
+
+      const repostContent = createElementWithClassAndParent("div", body,);
+      repostContent.innerHTML = `<div class="ask">
+    <div class="who-asked">
+    <span class='asker'>@${a.characterName}</span> asked: </div>
+    <div class ="question-asked">${a.text}</div>
+    </div>`;
+
+
+      const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
+      bodyContent.style.height = "150px";
+      bodyContent.style.width = "600px";
+
+      bodyContent.innerHTML = `Start typing to create a post!`;
+      bodyContent.setAttribute("contenteditable", "true");
+      let ask = bodyContent.innerHTML;
+      bodyContent.onfocus = (() => {
+        bodyContent.innerHTML = "";
+      })
+      bodyContent.oninput = (() => {
+        ask = bodyContent.innerHTML;
+      })
+
+      const footer = createElementWithClassAndParent("div", container, "post-footer");
+      const submit = createElementWithClassAndParent("button", footer, "submit-button");
+      submit.innerText = "Answer";
+
+      submit.onclick = () => {
+        popup.remove();
+        removeItemOnce(this.pending_asks, a);
+        let parent = document.querySelector("#container");
+
+        youAreTheImposterAndYouAreSus();
+        let post = this.createNewPost(`<span data-breach="observer">${repostContent.innerHTML}${ask}</span>`, [""], [""], ["OP are you okay", "did you get hacked OP", "guys I think OP got hacked", "who is this?"]);
+        post.renderToScreen(parent);
+        post.element.scrollIntoView();
+
+
+      }
+    }
+
+    let popup = createPopup(askContainer);
 
   }
 
@@ -732,6 +810,14 @@ class Observer extends Character {
     //you are something wholly different from them.
     //you exist in more dimensions compared to their flat fictionality.
     //and you are horrific to them for it.
+
+    this.askCount.innerText = this.pending_asks.length;
+    if (this.pending_asks.length === 0) {
+      this.askCount.style.display = "none";
+    } else {
+      this.askCount.style.display = "block";
+    }
+
     if (this.dead) {
       console.log("JR NOTE: You died. :(");
 
@@ -769,7 +855,36 @@ class Wanda extends Character {
 
     this.readied_reblogs['sqwawking idiots'] = new Post(this, `@${intern.name} DON'T WORRY ABOUT IT, BRO!<BR><bR>JUST A LITTLE BIT MORE. <bR><BR>GOTTA WAIT FOR THE VIBES TO BE RIGHT.`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
     this.readied_reblogs["why isn't this one of Eyedol's products?"] = new Post(this, `@${intern.name} LOL, THANKS BRO<BR><bR>DON'T WORRY ABOUT IT, THO!<BR><bR>ALL IN DUE TIME<BR><BR>THE AWESOMENESS OF THIS SITE IS NOT YET READY FOR PUBLIC RELEASE`, null, ["GOTTA MAKE SURE", "MEME CULTURE IS AT ITS PEAK"], [""], [""], true);
-    this.readied_reblogs["how could a link be 'sus' if it comes from our domain"] = new Post(this, `@${intern.name} GOOD CATCH, BRO<BR><bR>DON'T WORRY ABOUT IT, THO!<BR><bR>WE HAVE A LOT OF IRONS IN THE FIRE<BR><bR>CANT KEEP TRACK OF THEM ALL<BR><bR>SOMETIMES YOU LOOK BACK AND THEY'VE GROWN<BR><bR>PERFECTLY NORMAL PART OF DOING BUSINESS`, null, ["THINGS JUST SPREAD LIKE THAT", "WHEN YOU AREN'T LOOKING","AND YOU PROBABLY SHOULDN'T LOOK TOO HARD","INTO WEIRD STUFF LIKE THAT"], [""], [""], true);
+    this.readied_reblogs["how could a link be 'sus' if it comes from our domain"] = new Post(this, `@${intern.name} GOOD CATCH, BRO<BR><bR>DON'T WORRY ABOUT IT, THO!<BR><bR>WE HAVE A LOT OF IRONS IN THE FIRE<BR><bR>CANT KEEP TRACK OF THEM ALL<BR><bR>SOMETIMES YOU LOOK BACK AND THEY'VE GROWN<BR><bR>PERFECTLY NORMAL PART OF DOING BUSINESS`, null, ["THINGS JUST SPREAD LIKE THAT", "WHEN YOU AREN'T LOOKING", "AND YOU PROBABLY SHOULDN'T LOOK TOO HARD", "INTO WEIRD STUFF LIKE THAT"], [""], [""], true);
+
+  }
+
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let tags = [""];
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+
+      responses = ["Zampanio is a very fun game. You should play it!"]
+    } else if (premadeAsk.characterName === observer.name) {
+      //west is the only way to interact with the blorbos without breaching, because its the fourth wall. they don't break it. you do.
+      responses = [`<span data-breach='observer'>  BRO<BR><BR>I AM SO HAPPY YOU ARE HERE<BR><bR>I HOPE YOU HAVE A GOOD TIME<BR><bR>BUT UH<BR><BR>MAYBE YOU SHOULD STAY IN THE WEST<BR><bR>WHERE YOU CANT BE SEEN<BR><bR>YOU'LL LAST LONGER THAT WAY</span>`]
+      tags = ["OBSERVERS", "ENTERTAINMENT"]//wanda is delighted you are here
+    } else if (premadeAsk.text.includes("I AM FRIEND. FRIEND IS HERE TO TELL YOU")) {
+      //im not the only one alt scammed
+      responses = ["NOT COOL, BRO<BR><BR> @staff WHAT DID YOU DO TO MY OLD SITE?<br><br>WHY IS IT CLONED ONTO THIS WEIRD DOMAIN?"];
+    }
+
+    const suggested_reblogs = ["oh shit"]
+    if (responses.length == 0) {
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
 
   }
 
@@ -783,6 +898,15 @@ class Wanda extends Character {
   tick = async (parentToRenderTo) => {
     if (blorboPosts.length > 0 && this.readied_posts.length < 10) {
       this.prepareShitPosts();
+    }
+    if (this.posts.length == 2) {
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://knucklessux.com/Blog'>___</a>`);
+    }
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
     }
 
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
@@ -1100,7 +1224,7 @@ class Intern1 extends Character {
     //the intenrn only reacts, never starts up a meme spiral
     let wandaPosts = rand.shuffle(wanda.posts);
     if (wandaPosts[0] && wandaPosts[0].text.includes("http://eyedolgames.com/Eyedlr/images/Secrets/")) {
-      let tags = ["okay but what abou this","superb","classic wanda","this is great","heh", "lol", "lol", "wow", "uhhhhhh", "really?", "okay yeah that is funny", "i cant even"]
+      let tags = ["okay but what abou this", "superb", "classic wanda", "this is great", "heh", "lol", "lol", "wow", "uhhhhhh", "really?", "okay yeah that is funny", "i cant even"]
       let post = this.reblogAPost(wandaPosts[0], `${rand.pickFrom(blorboPosts)} @${wanda.name}`, [rand.pickFrom(tags)], [""], ["lol"]);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
@@ -1269,7 +1393,7 @@ class FlowerChick extends Character {
   constructor() {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
-    this.readied_posts.push(new Post(this,"hey yall, PSA, if you see a link that looks like ' http://eyedolgames.com/Zampanini/?name=noooooo%20i%20will%20not%20be%20giving%20you%20a%20real%20restaurant%20name&themes=Burger&feeUnder=0&victim=you%20if%20you%20click%20this%20link%20you%20idiot ' do NOT click it, it's sus.<br><Br>actually just don't click anything at all on this site. <br><Br>even if it promises you delicious burgers...", null, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"], true));
+    this.readied_posts.push(new Post(this, "hey yall, PSA, if you see a link that looks like ' http://eyedolgames.com/Zampanini/?name=noooooo%20i%20will%20not%20be%20giving%20you%20a%20real%20restaurant%20name&themes=Burger&feeUnder=0&victim=you%20if%20you%20click%20this%20link%20you%20idiot ' do NOT click it, it's sus.<br><Br>actually just don't click anything at all on this site. <br><Br>even if it promises you delicious burgers...", null, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"], true));
 
   }
 
@@ -1289,76 +1413,76 @@ class FlowerChick extends Character {
       //normally she tries not to waste too hard on purpose
       //honestly its probably better for everyone to NOT know how fucked up it is that they're memed on by their own creators and Observers
       let comments = {
-        "underscore.png":"whoops, probably shouldn't have posted that! sorry @$̸̠͍̒̏̈́̏̂{̶͔̠͍̓̊͊̽͂ͅv̷̧̲̞͝ͅi̶̘̬̪̮̓́k̶̟͗̉͠.̷̼͙̬̊͑ň̷̞̮̳̭̓́̐a̷͖̐͒͘m̵̛̟̫̌̉̚͜e̷̜̙̊̊̏͝}̸̜̖̓̎͆̄́!!!!!",
-        "awake_devona_asleep_neville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
-        "wizardparker": `@${parker.name}`, 
-        "IMG_7050": `@${wanda} babe, it's us!!!!!!}`, 
-        "a_lot_of_shit_at_once": `oh wowwww!!!!<Br>@${camille.name} @${devona.name} @void_soup @we-didnt-start-the-fire @confess-your-sins  `, 
-        "the_goal_is_to_be_wrong_in_interesting_ways": `@${ria.name}!!!!`, 
+        "underscore.png": "whoops, probably shouldn't have posted that! sorry @$̸̠͍̒̏̈́̏̂{̶͔̠͍̓̊͊̽͂ͅv̷̧̲̞͝ͅi̶̘̬̪̮̓́k̶̟͗̉͠.̷̼͙̬̊͑ň̷̞̮̳̭̓́̐a̷͖̐͒͘m̵̛̟̫̌̉̚͜e̷̜̙̊̊̏͝}̸̜̖̓̎͆̄́!!!!!",
+        "awake_devona_asleep_neville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`,
+        "wizardparker": `@${parker.name}`,
+        "IMG_7050": `@${wanda} babe, it's us!!!!!!}`,
+        "a_lot_of_shit_at_once": `oh wowwww!!!!<Br>@${camille.name} @${devona.name} @void_soup @we-didnt-start-the-fire @confess-your-sins  `,
+        "the_goal_is_to_be_wrong_in_interesting_ways": `@${ria.name}!!!!`,
         "the_solemn_by_the_herald.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
-        "theendlikeshim": `@${camille.name} and @${vik.name}!!!`, 
-        "the_end.png": `@${camille.name} and @${killer.name}!!!!!!`, 
-        "what_you_have_done_has_made_god_very_unhappy": `hey there cool kid, @${witherby.name} is this you`, 
-        "we_cant_expect_god_to_do_all_the_work": `@${parker.name}`, 
-        "wandasmug2": `lol @${wanda.name}!!!!! its you!!!`, 
-        "twinsies": `@${parker.name}`, 
-        "twinsies": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
-        "truecaring": `@${parker.name} and @${vik.name}`, 
-        "toxic": `@${ria.name}`, 
-        "thebois": `@${neville.name} and @${witherby.name} mlm and wlw solidarity!!!!`, 
-        "storm": `@${vik.name} and @${yongki.name}`, 
-        "sized": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
-        "shot.png": `@${parker.name}`, 
-        "scaredofthunder": `@${ria.name} and @${devona.name}!!!!!`, 
-        "sammich": `@${yongki.name}`, 
-        "propaganda": `@${ria.name}`, 
-        "pickleneville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`, 
-        "parkersfriends": `@${parker.name} and @${vik.name}!!!!!!!!!!!!!!!!!!!!!!`, 
-        "parker.png": `@${parker.name}`, 
-        "loop2_infoteamandother": `@${yongki.name} and ${vik.name} and @${k.name} and @${parker.name}`, 
-        "loom.png": `@${k.name} and @${camille.name} and @${vik.name} @${yongki.name}`, 
-        "looks_over": `@${devona.name}`, 
-        "k.png": `@${k.name}`, 
+        "theendlikeshim": `@${camille.name} and @${vik.name}!!!`,
+        "the_end.png": `@${camille.name} and @${killer.name}!!!!!!`,
+        "what_you_have_done_has_made_god_very_unhappy": `hey there cool kid, @${witherby.name} is this you`,
+        "we_cant_expect_god_to_do_all_the_work": `@${parker.name}`,
+        "wandasmug2": `lol @${wanda.name}!!!!! its you!!!`,
+        "twinsies": `@${parker.name}`,
+        "twinsies": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`,
+        "truecaring": `@${parker.name} and @${vik.name}`,
+        "toxic": `@${ria.name}`,
+        "thebois": `@${neville.name} and @${witherby.name} mlm and wlw solidarity!!!!`,
+        "storm": `@${vik.name} and @${yongki.name}`,
+        "sized": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`,
+        "shot.png": `@${parker.name}`,
+        "scaredofthunder": `@${ria.name} and @${devona.name}!!!!!`,
+        "sammich": `@${yongki.name}`,
+        "propaganda": `@${ria.name}`,
+        "pickleneville": ` @${neville.name} and @${devona.name}!!!!!<br><Br>look at this cute drawing of you guys!!!!!!`,
+        "parkersfriends": `@${parker.name} and @${vik.name}!!!!!!!!!!!!!!!!!!!!!!`,
+        "parker.png": `@${parker.name}`,
+        "loop2_infoteamandother": `@${yongki.name} and ${vik.name} and @${k.name} and @${parker.name}`,
+        "loom.png": `@${k.name} and @${camille.name} and @${vik.name} @${yongki.name}`,
+        "looks_over": `@${devona.name}`,
+        "k.png": `@${k.name}`,
         "IMG_7051": ``, //she is uncomfrotable with the idea of her destroying things, so no comment 
-        "IMG_7048": `@${nam.name} look!!! it's us!!!!!`, 
-        "hot_topic_k_part_2_herald": `@${k.name}`, 
-        "hot_topic_k_part_1_herald": `@${k.name}`, 
-        "gun.png": `@${camille.name} and ${witherby.name}!!!!!<br><Br>witherby lol git gud`, 
-        "goofy.png": `@${neville.name} and @${witherby.name}!!!!`, 
-        "gaze_ego_do_you_see_this_shit": `@${k.name}`, 
-        "curious": `@${camille.name} and @${vik.name}!!!`, 
-        "closertea": `@${closer.name}!!!!!!!!!!`, 
+        "IMG_7048": `@${nam.name} look!!! it's us!!!!!`,
+        "hot_topic_k_part_2_herald": `@${k.name}`,
+        "hot_topic_k_part_1_herald": `@${k.name}`,
+        "gun.png": `@${camille.name} and @${witherby.name}!!!!!<br><Br>witherby lol git gud`,
+        "goofy.png": `@${neville.name} and @${witherby.name}!!!!`,
+        "gaze_ego_do_you_see_this_shit": `@${k.name}`,
+        "curious": `@${camille.name} and @${vik.name}!!!`,
+        "closertea": `@${closer.name}!!!!!!!!!!`,
         "canceledapocalypsesaretheworst": `@${ria.name} and @${camille.name}`, //not comfortable with the apocalypse but still feels a moral obligation to show the targets of what she found what she found 
-        "camillesfriend": `@${parker.name} and @${camille.name}`, 
+        "camillesfriend": `@${parker.name} and @${camille.name}`,
         "peewee_fucking_loses_it.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
 
 
-        "doodle_page": `@${nam.name}, @${ronin.name}, @${neighbor.name},@${tyrfing.name}, @${killer.name}, @${closer.name}, @${alt.name}, @${wanda.name}`, 
+        "doodle_page": `@${nam.name}, @${ronin.name}, @${neighbor.name},@${tyrfing.name}, @${killer.name}, @${closer.name}, @${alt.name}, @${wanda.name}`,
 
-        "skip.png": `@${camille.name}!!!`, 
-        "censor.png": `@${k.name} and @${vik.name}!!!`, 
+        "skip.png": `@${camille.name}!!!`,
+        "censor.png": `@${k.name} and @${vik.name}!!!`,
 
         "flowerequisde": `look how cute i am!`,//she's made peace with the fact that the layers outside reality are watching her and her friends and memeing them 
 
-        "gremlin": `@${camille.name} and @${k.name} you never tol me you guys were friends???????????`, 
+        "gremlin": `@${camille.name} and @${k.name} you never tol me you guys were friends???????????`,
 
         "who_the_fuck_are_you.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
         "zoomies.gif": `lol hey there cool kid, @${witherby.name} is this you and peewee??????`, //her wife is mad at witherby so she likes mildly bullying him on tumblr
       }
-      if(img.includes("underscore.png")){
+      if (img.includes("underscore.png")) {
         image_class = "censored";
       }
 
       const commentKeys = Object.keys(comments);
-      for(let key of commentKeys){
-        if(img.includes(key)){
+      for (let key of commentKeys) {
+        if (img.includes(key)) {
           comment = comments[key];
         }
       }
 
-      
-      let post = this.createNewPost(`look what iiiii found in JR's computer!!!!! <img title='${image_class}' class='${image_class}' src ='${img}'><br>${comment}`, ["safe gnosis","probably","who ever heard of the world ending","because you stole memes from another layer of reality??????"], ["!"], ["!", "", "", ""]);
-      if(post && parentToRenderTo){
+
+      let post = this.createNewPost(`look what iiiii found in JR's computer!!!!! <img title='${image_class}' class='${image_class}' src ='${img}'><br>${comment}`, ["safe gnosis", "probably", "who ever heard of the world ending", "because you stole memes from another layer of reality??????"], ["!"], ["!", "", "", ""]);
+      if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
     }
@@ -1571,20 +1695,20 @@ class Neville extends Character {
     this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
   }
 
-  
+
   handleAsks = (parentToRenderTo, premadeAsk) => {
 
     let tags = [""];
     //witherby doesn't judge but his followers sure do
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
-     tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+      tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
 
       responses = ["Zampanio is a very fun game. You should play it!"]
     } else if (premadeAsk.characterName === observer.name) {
       responses = [`<span data-breach='observer'>  @${camille.name} @${devona.name} @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'</span>`]
       tags = ["breach in progress"]//calm and proffesional, but only notices a breach if it literally is happening to him
-    }else{
+    } else {
       //head empty, no fear at all of being seen
       responses = ["nice"];
     }
@@ -1718,7 +1842,7 @@ class Devona extends Character {
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     //http://farragofiction.com/APersonalTranscript/
-    
+
     //http://farragofiction.com/LightAndVoid/
     //http://farragofiction.com/LightAndVoid/seerOfVoidy=true //if you shine light on what the bard of void has deemed irrelevant, you actually understand less.
 
@@ -1769,12 +1893,12 @@ class Ria extends Character {
       responses = ["Zampanio is a very fun game. You should play it!"]
     } else if (premadeAsk.characterName === observer.name) {
       responses = [`<span data-breach='observer'>  @${camille.name} @${devona.name} @we-didnt-start-the-fire @confess-your-sins oh my gosh are you seeing this? is this a breach? is it finally happening?<span data-ai='devona saw a breach'</span>`]
-      tags = ["Breach in progress!","do you think this means peewee is near?","if the observers are here","i mean","or do you think they can separate from him?","are they not symbiotic then?","oh i'll need to update my charts!!"]
-    }else{
-      const first_parts = ["Oh! I am so glad you asked that!","What a fascinating question!","That reminds me!"];
-      const stutterings = ["you see", "when it all comes down to it", "what REALLY matters","in the end","at the end of the day","you get it right","i believe"];
-      const rambles = ["this universe was not meant to be like this and there is a better one waiting for us","peewee is the chosen scion of the end who will free us all from our burdens","peewee is the only one who understands me","we need to burn this universe to the ground and start over from scratch","the universe could be better than this if only we let it","there is no hope left at all for this universe","we need to burn it all"];
-      const connectors = ["and another thing is", "but then how do you relate it to", "and of course that all connects to","and i haven't even MENTIONED"];
+      tags = ["Breach in progress!", "do you think this means peewee is near?", "if the observers are here", "i mean", "or do you think they can separate from him?", "are they not symbiotic then?", "oh i'll need to update my charts!!"]
+    } else {
+      const first_parts = ["Oh! I am so glad you asked that!", "What a fascinating question!", "That reminds me!"];
+      const stutterings = ["you see", "when it all comes down to it", "what REALLY matters", "in the end", "at the end of the day", "you get it right", "i believe"];
+      const rambles = ["this universe was not meant to be like this and there is a better one waiting for us", "peewee is the chosen scion of the end who will free us all from our burdens", "peewee is the only one who understands me", "we need to burn this universe to the ground and start over from scratch", "the universe could be better than this if only we let it", "there is no hope left at all for this universe", "we need to burn it all"];
+      const connectors = ["and another thing is", "but then how do you relate it to", "and of course that all connects to", "and i haven't even MENTIONED"];
 
       responses = [
         `${rand.pickFrom(first_parts)} ${sentenceCase(rand.pickFrom(stutterings))}! ${rand.pickFrom(rambles)}!! ${rand.pickFrom(connectors)}!!! ${rand.pickFrom(stutterings)} ${rand.pickFrom(rambles)}!!!!!!!!!!`,
@@ -1809,7 +1933,7 @@ class Ria extends Character {
     this.readied_reblogs['devona is worried she is secretly faking her various syndromes'] = new Post(this, "Devy, the meme you found says it right there!", null, ["no one would fake having as many annoyances as you do!", "don't worry!", "you're not faking it!"], [""], ["lifetips"], true);
 
     this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
-    this.pending_asks.push({text:"do you think the Observers and Peewee are the same thing?"});
+    this.pending_asks.push({ text: "do you think the Observers and Peewee are the same thing?" });
   }
 
   tick = async (parentToRenderTo) => {
@@ -1835,16 +1959,16 @@ class Ria extends Character {
       this.handleAsks(parentToRenderTo, premadeAsk);
     }
 
-    
+
     if (this.posts.length == 1 && !this.asked) {
       this.asked = true;
-              //here's the important thing. Witherby does not have AI to handle this. Even though this is (hopefully clearly) a Ria confession, he'll respond just like he does to any stranger. With forgiveness. And somehow that is colder than if he had denied her that. If he had reacted '...' or "blocked" like he does for the extremes.
+      //here's the important thing. Witherby does not have AI to handle this. Even though this is (hopefully clearly) a Ria confession, he'll respond just like he does to any stranger. With forgiveness. And somehow that is colder than if he had denied her that. If he had reacted '...' or "blocked" like he does for the extremes.
 
       witherby.submitAsk(null, "I know I shouldn't ask this. You probably don't want to hear from me. But. Can I be forgiven? I've hurt so many people. I. I can see how you draw away when I fall back. I'm sober now. I wanted you to know that. I'm trying. I want so much to recover. I don't know why it's so hard. I'm sorry. I don't mean to drink. To smoke. To... I'm so sorry. I don't know why I can't stop. I'm sorry... Please...");
-          //fun fact, at first she said she felt "bad" 
-          //which made witherby interpret her as a thot
-          //so his response was to say "for the last time, I am not interested". 
-          //which was maybe a bit TOO cold
+      //fun fact, at first she said she felt "bad" 
+      //which made witherby interpret her as a thot
+      //so his response was to say "for the last time, I am not interested". 
+      //which was maybe a bit TOO cold
 
     }
   }
@@ -1938,10 +2062,10 @@ class Camille extends Character {
 
     if (this.posts.length == 3) {
       //she rambles as normal in response to these
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondTranscript/'>___</a>`);
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>___</a>`);
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>___</a>`);
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/MurderOnTheScorpiusExpressSim/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondTranscript/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/MurderOnTheScorpiusExpressSim/'>___</a>`);
     }
 
     let premadeAsk = rand.pickFrom(this.pending_asks)
@@ -2020,7 +2144,7 @@ class Witherby extends Character {
 
     const pettyTheftTargets = "a shirt, some chips, some meat, some batteries, a peppermint candy, a bag of chips, some ice, candy, meat, bread, potatoes, vegetables, fruit, an apple, a banana".split(",");
     const starts = ["Forgive me father", "Forgive me daddy", "One time", "When i was a kid", "Last week", `About a ${rand.pickFrom(["year", "month", "day", "decade"])} ago`, `Last ${rand.pickFrom("Monday, Tuesday, Wednesday, Thursday, Saturday, Sunday, month, week, year".split(","))}`];
-    const sins = [`I punched someone on the street just for saying '${opinion}'`, `I lied on my resume. I said I trained as a ${job}`,`I convinced my best friend that I was secretly ${blorbo} from ${obssession.name}`,"I got my friend lost in a never ending maze. As a prank","I replaced all the shoes in my friends house with 3D printed replicas","I lived inside a kings walls and wrote him love letters.","I ate my roomies snacks he was saving","I refused to let the other kids on the playground until they guessed a password","I convinced my little brother that he had vanished from reality for thirty straight minutes","I didn't tip my Zampanini driver", "I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others", "I killed them all", `I murdered someone`, 'I killed an animal', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
+    const sins = [`I punched someone on the street just for saying '${opinion}'`, `I lied on my resume. I said I trained as a ${job}`, `I convinced my best friend that I was secretly ${blorbo} from ${obssession.name}`, "I got my friend lost in a never ending maze. As a prank", "I replaced all the shoes in my friends house with 3D printed replicas", "I lived inside a kings walls and wrote him love letters.", "I ate my roomies snacks he was saving", "I refused to let the other kids on the playground until they guessed a password", "I convinced my little brother that he had vanished from reality for thirty straight minutes", "I didn't tip my Zampanini driver", "I turned one of the rats living in my walls into a Cannibal King Rat and taught it to hunt the others", "I killed them all", `I murdered someone`, 'I killed an animal', `I've been a bad bad ${rand.pickFrom(["boy", "girl"])}`, `I stole ${rand.pickFrom(pettyTheftTargets)} from the grocery store`, "I left my little brother to die", `I shopliffted ${rand.pickFrom(pettyTheftTargets)}`, `I stole ${rand.pickFrom(pettyTheftTargets)} to feed my family`];
     const endings = ["Was I wrong?", "Was I an asshole?", "Do you think that's fucked up?", "Can I ever be forgiven?", "Am I going to be punished?"];
     let question = premadeAsk ? premadeAsk.text : `${rand.pickFrom(starts)}, ${rand.pickFrom(sins)}.  ${rand.pickFrom(endings)}`;
 
@@ -2075,9 +2199,9 @@ class Witherby extends Character {
     if (this.posts.length == 3) {
       //she rambles as normal in response to these
 
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/?truth=here'>___</a>`);
-         this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/?truth=here'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>___</a>`);
     }
     removeItemOnce(this.pending_asks, premadeAsk);
     this.handleAsks(parentToRenderTo, premadeAsk);
@@ -2369,7 +2493,7 @@ class DocSlaughter extends Character {
       `Oh my goodness, can you Believe waffles cost $4.99 this morning? What a Deal!`,
       "My Darling Eyes, I am going to the Salon in a few minutes!  Wish me luck!",
       "On my morning commute, I made sure to Traverse Mazes clockwise, as is Only Proper! <Br><br>Wanda, if you're reading this, Darling, I simply LOVE what you have done with the place!", //she doesnt @ people , she just assumes she's always observed
-      "Morgan did the most Darling thing this morning! I wish I had thought to record it!",
+      "Morgan did the most Darling thing this morning! I wish I had thought to record it so you could all See!",
       "I truly wish there was a Department of Safety to report these Reckless Drivers to! I was almost hit crossing this intersection!"
     ]
 
@@ -2646,8 +2770,8 @@ class Parker extends Character {
       responses = ["Zampanio is a very fun game. You should play it!"]
     } else if (premadeAsk.characterName === observer.name) {
       responses = [`<span data-breach='observer'> haha wow<Br><Br>you're fked my guy<br><Br>don't u know u aren't supposed to affect the story?</span>`]
-    }else{
-      responses =["wow","neat","neat","neat","neat","heh","there is respite beneath the earth","dig"]
+    } else {
+      responses = ["wow", "neat", "neat", "neat", "neat", "heh", "there is respite beneath the earth", "dig"]
     }
 
     if (responses.length == 0) {
