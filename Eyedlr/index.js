@@ -384,6 +384,7 @@ const rageMode = () => {
     body.className = "";
     body.innerHTML = `<img class='fade-to-tord-toward' src ='images/tordtoward.png'>`;
   }, 10 * 1000);
+  truthLog("",new Truth().rant)
   truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
