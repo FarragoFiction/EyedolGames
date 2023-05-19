@@ -2178,7 +2178,7 @@ class Witherby extends Character {
     //witherby doesn't judge but his followers sure do
     const suggested_reblogs = ["wow", "what the hell", "who DOES that", "you should feel ashamed"]
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), question, premadeAsk ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    const post = this.answerAnAsk(rand.pickFrom(responses), question, (premadeAsk && premadeAsk.characterName) ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -3342,11 +3342,14 @@ class JR extends Character {
     //https://www.tumblr.com/jadedresearcher/717211105792081921?source=share
     this.readied_posts.push(new Post(this, "Donut... <img data-jr-note='do you know what this means?  why i blazed it on tumblr?' src='images/Secrets/blazeIt.PNG'>", null, [""], [""], [""], true));
     this.readied_posts.push(new Post(this, "<img data-jr-note='such as a waste of twisted blood ;) ;) ;)' src='images/Secrets/okay_fine_jr_can_have_two_posts____as_a_treat.PNG'>", null, [""], [""], [""], true));
-
   }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    if(jrComments){
+      this.readied_posts.push(new Post(this, rand.pickFrom(jrComments), null, ["EastEast","DevLog","JR NOTE"], [""], [""], true));
+
+    }
   }
 }
 
