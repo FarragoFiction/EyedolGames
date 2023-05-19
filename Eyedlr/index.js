@@ -10,6 +10,7 @@ let zampanioEyes = [];
 let fadedMemories = [];
 
 let characters = [];
+let jrComments = [];
 
 let globalObsessions = [];
 
@@ -68,6 +69,7 @@ window.onload = () => {
   grabZampanioEyes();
   //same
   grabBlorboPosts();
+  harvestComments();
 
 
 
@@ -633,4 +635,9 @@ const handleScrolling = (rand, container) => {
     }
 
   };
+}
+
+const harvestComments =()=>{
+  //only easteast has both webpack and comments that survive
+  jrComments = parseComments('http://farragofiction.com/ZampanioSimEastEast/dist/bundle.js'); //gets around CORS problems for serverless files
 }

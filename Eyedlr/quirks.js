@@ -83,6 +83,9 @@ class Quirk {
   }
 
   handleCapitilization = (input) => {
+    if(!input){
+      return input;
+    }
     let ret = input;
     if (this.caps == NOCAPS) {
       ret = ret.toLowerCase();
