@@ -3343,9 +3343,39 @@ class JR extends Character {
     this.readied_posts.push(new Post(this, "Donut... <img data-jr-note='do you know what this means?  why i blazed it on tumblr?' src='images/Secrets/blazeIt.PNG'>", null, [""], [""], [""], true));
     this.readied_posts.push(new Post(this, "<img data-jr-note='such as a waste of twisted blood ;) ;) ;)' src='images/Secrets/okay_fine_jr_can_have_two_posts____as_a_treat.PNG'>", null, [""], [""], [""], true));
   }
+  
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let tags = [""];
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
+
+      responses = ["Zampanio is a very fun game. You should play it!"]
+    } else if (premadeAsk.characterName === observer.name) {
+      responses = [`<span data-breach='observer'>  :) :) :)<br><br>i hope you enjoy your trip to skerim <br><Br>:) :) ;)</span>`]
+      tags = ["did you really think", "it would be this easy"]
+    }
+
+    const suggested_reblogs = ["oh shit"]
+    if (responses.length == 0) {
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
 
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+    }
     if(jrComments){
       this.readied_posts.push(new Post(this, rand.pickFrom(jrComments), null, ["EastEast","DevLog","JR NOTE"], [""], [""], true));
 
