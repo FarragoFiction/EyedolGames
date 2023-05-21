@@ -628,7 +628,7 @@ const handleScrolling = (rand, container) => {
   window.onscroll = () => {
     if (observer && !observer.dead) {
       const newTime = new Date().getTime();
-      if (((newTime - lastScrollTime)) < 5000) {
+      if (((newTime - lastScrollTime)) < 3000) {
         return;
       }
       lastScrollTime = newTime;

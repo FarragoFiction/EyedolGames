@@ -265,7 +265,7 @@ class Character {
 
   createNewPost(text, tags, suggested_reblogs, suggested_tags) {
     //wungle will always be from the wungle list
-    const chosen_wungle = this.wungles.length > 0 && this.wungles[this.wungles_index % this.wungles.length];
+    const chosen_wungle = this.wungles.length > 0 && this.wungles_index + ": " + this.wungles[this.wungles_index % this.wungles.length];
     this.wungles_index++;
 
     const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags, false, chosen_wungle);
@@ -284,16 +284,15 @@ class Character {
     //wungle MAY be specific to the wungle of the post we're reblogging from (god wungle isnt even a word anymore)
     let chosen_wungle;
     if (parent.wungle) {
-      Object.values(this.readied_wungles).length && console.log("JR NOTE: i have readied wungles", this.readied_wungles)
       for (let w of Object.keys(this.readied_wungles)) {
-        console.log("JR NOTE: key is", w, "is it in ", parent.wungle);
+        !parent.wungle.includes("hog") && console.log("JR NOTE: key is", w, "is it in ", parent.wungle);
         if (parent.wungle.toLowerCase().includes(w.toLowerCase())) {
           chosen_wungle = this.readied_wungles[w];
         }
       }
     }
     if (!chosen_wungle) {
-      chosen_wungle = this.wungles.length > 0 && this.wungles[this.wungles_index % this.wungles.length];
+      chosen_wungle = this.wungles.length > 0 && this.wungles_index + ": " + this.wungles[this.wungles_index % this.wungles.length];
       this.wungles_index++;
     }
 
@@ -1095,12 +1094,18 @@ class Intern1 extends Character {
   and its not like im LYING to you<br>i really don't know most things<br>but the dreams<br>the dreams ...<br>remind?<br>me of things?<br>things i never knew
   and i guess i just<br>thought it would be too awkward to act like these clearly fictional dreams were real<br>back when you were wodin<br> or back when i first met you as wanda
   and by the time i started to really believe<br>deep down<br>that all this spooky magic bullshit was real<br>it would have been even more awkward to admit id been hiding things from you
-  sorry`.split("\n");
-  readied_wungles = { "hog": 'readied wungles work' };
+  so, uh, sorry<br>for waiting so long`.split("\n");
+
+  //they gotta be in readied reblogs as well
+  readied_wungles = {
+    "you KNOW she refuses to look too hard at you": "i know.but maybe if i go slowly<br>she'll actually see me<br>just<br>give me a few loops<br>if it doesn't work<br>i'll tell her directly<br><span data-jr=note='note for the quotidian pretending to be flower chick: this is intern wungleposting'>no matter how awkward</span>",
+    "you KNOW wanda isn't looking here": "look<br>i only said i'd tell her next loop<br>not that it'd be face to face<br>and besides doesn't she 'know everything'<br>she could see into here<br>if she wanted to<br>let me ease into this<br>i'll just<br>i don't know<br>keep escalating<br><span data-jr=note='poor void boi'>till she notices...</span>"
+  };
 
   name = "test-beta-dev"; //the best dude
   icon = "images/icons/Intern-who-knows.png";
   plead = false;
+  desc = "Wanda, I think we're almost ready to go live.";
 
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
   constructor() {
@@ -1110,6 +1115,8 @@ class Intern1 extends Character {
     this.readied_reblogs['tom supremacy'] = new Post(this, `:/ <br><Br>so are you trying to say you're a tom too? <br><Br>i thought alt's quotidians were like<br><Br>completely different<br><br>or shit<br><Br>are there more than 19 toms?<br>or did some go rogue?<br><Br>or wait<br><br>is this like an idol thing?<br><Br>are you just...<br><Br>a fan of the toms?`, null, ["i still have no idea how the", "birbs", "work"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
     this.readied_reblogs['THEY SEE SO MUCH WEIRD BIRD ACTION.'] = new Post(this, `:/ <br>@staff kudos to figuring out a way to make quotidians thots i guess?`, null, ["sentences i never thought i'd say"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], ["release!!!", "sqwawk!", "let it out!", "give us fruit!", "tom supremecy!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"], true);
     this.readied_reblogs['hey yall, PSA, if you see a link that looks like'] = new Post(this, `@${cfo.name} sorry 'bout that!<br><Br>jepe PROMISED to keep them under control<br><Br>i don't know why they keep letting @staff 's birds into the office?<br><Br>they're only supposed to run THIS site and not touch any of our others...`, null, ["i'll see if i can't get that leak patched", "by friday"], ["lol", "you okay there buddy?"], [""], true);
+    this.readied_reblogs['you KNOW she refuses to look too hard at you'] = new Post(this, ``, null, ["", ""], ["", ""], [""], true);
+    this.readied_reblogs["you KNOW wanda isn't looking here"] = new Post(this, ``, null, ["", ""], ["", ""], [""], true);
 
   }
 
@@ -1302,6 +1309,15 @@ class Intern2 extends Character {
 
 }
 
+/*
+witherby knows the sins ppl commit even in other arms (and how lonely must that be, to know the worst about everyone)
+parker just isseikais himself to each new arm in that blip that wanda can't stop him
+doc slaughter physically can not forget anything and thats good enough for the echidna to shrug and sync all her memories together
+but the intern just
+isn't and is
+all at once
+*/
+
 //dealing with the grief of losing Wodin. only one or two posts ever, both commentless pictures of ugly baby animals
 //https://archiveofourown.org/works/35075182 his origin
 ////if i need a voice reminder https://github.com/FarragoFiction/LitRPGSim/blob/East/src/Screens/WalkAround/Chat/TBD/PostCoffinChats.ts
@@ -1309,6 +1325,7 @@ class Intern2 extends Character {
 class Intern3 extends Character {
   name = "tragic-boring-day"; //the best dude
   icon = "images/icons/Intern-sad.png";
+  desc = "Intern at EyedolGames";
   wungles = [`right
   uh
   okay
@@ -1347,7 +1364,7 @@ class Intern3 extends Character {
   just
   had a bad dream
   and didn't want to ignore it`.replace(/(?:\r\n|\r|\n)/g, '<br>')]
-  readied_wungles = { "hog": 'readied wungles work' };
+  readied_wungles = { "a;ksjdf": 'readied wungles work' };
 
   constructor() {
     super();
@@ -1465,7 +1482,12 @@ class FlowerChick extends Character {
   icon = "images/icons/CFO.png";
   secret_name = "CFO";
   desc = "yes i work for eyedol games<br>no i won't hook you up with sweet cheats<br><br>figure them out yourself<br><Br>also: PSA stop clicking scammy links!!!!!!"
-  readied_wungles={"and i GOTTA assume that the CEBro of eyedol games can read these":"proud of you cinnamon apple<br><br>you posted really early this loop<br><br>you're actuuuuaaaly trying to improve<Br><Br>hope you crazy kids figure yourselves out"};
+  readied_wungles = {
+    "<span data-jr=note='note for the quotidian pretending to be flower chick: this is intern wungleposting'>no matter how awkward</span>": "fiiiiiine",
+    "<span data-jr=note='poor void boi'>till she notices...</span>": "smdh, the two of you are really something!!!!<br><br>can't have a straight conversation to save your lives <r><br>you KNOW she refuses to look too hard at you",
+    "so, uh, sorry<br>for waiting so long": "reaaaaaaly?<br>sugar apple<br>do you really think that's good enough?<br>you KNOW wanda isn't looking here",
+    "and i GOTTA assume that the CEBro of eyedol games can read these": "proud of you cinnamon apple<br><br>you posted really early this loop<br><br>you're actuuuuaaaly trying to improve<Br><Br>hope you crazy kids figure yourselves out"
+  };
   //should respond to porn bot posts with 'scaredofthunder.png' in them (ats ria and devona)
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
   //ats the eye killer about this after a porn bot posts it https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
@@ -1474,7 +1496,10 @@ class FlowerChick extends Character {
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
     this.readied_posts.push(new Post(this, "hey yall, PSA, if you see a link that looks like ' http://eyedolgames.com/Zampanini/?name=noooooo%20i%20will%20not%20be%20giving%20you%20a%20real%20restaurant%20name&themes=Burger&feeUnder=0&victim=you%20if%20you%20click%20this%20link%20you%20idiot ' do NOT click it, it's sus.<br><Br>actually just don't click anything at all on this site. <br><Br>even if it promises you delicious burgers...", null, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"], true));
     //respond to a wungle post
-   this.readied_reblogs['and i GOTTA assume that the CEBro of eyedol games can read these'] = new Post(this, "lol", null, [""], [""], [""], true);
+    this.readied_reblogs['and i GOTTA assume that the CEBro of eyedol games can read these'] = new Post(this, "lol", null, [""], [""], [""], true);
+    this.readied_reblogs['so, uh, sorry<br>for waiting so long'] = new Post(this, "lol", null, [""], [""], [""], true);
+    this.readied_reblogs["<span data-jr=note='poor void boi'>till she notices...</span>"] = new Post(this, "lol", null, [""], [""], [""], true);
+    this.readied_reblogs["<span data-jr=note='note for the quotidian pretending to be flower chick: this is intern wungleposting'>no matter how awkward</span>"] = new Post(this, "lol", null, [""], [""], [""], true);
 
   }
 
