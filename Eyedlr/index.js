@@ -183,10 +183,71 @@ const init = async () => {
 
 
 
-  for (let i = 0; i < 3; i++) {
-    await tick();
-  }
+  await tick();
+  initialTicks();
   collatePremadePosts();
+}
+
+
+//is this pretty? no.
+//does this get around the fact that for loops aren't asyncronous and i feel lazy?
+//also yes
+const initialTicks = async ()=>{
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
+  await sleep(1000);
+  await tick();
+
 }
 
 
