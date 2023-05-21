@@ -19,6 +19,15 @@ body {
   display: block;
 }
 
+.wungle .reblog-text{
+  display: none;
+}
+
+.wungle .non-wungle{
+  display: none;
+}
+
+
 .visible-only-if-wungle{
   display: none;
   transform: scaleX(-1);
