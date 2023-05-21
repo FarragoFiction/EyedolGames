@@ -35,6 +35,7 @@ const ominousAskPreambles = ["THEY ARE OBSERVING YOU.", "THEY KNOW YOU", "YOU AR
 
 class Character {
   name;
+  //https://morphimus.tumblr.com/post/710837261845037056/it-looked-kinda-like-this-the-post-would-be-the
   wungles = []; //most have none
   wungles_index = 0;
   //you don't have to ever acknowledge these but you CAN if you like

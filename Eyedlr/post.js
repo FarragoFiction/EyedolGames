@@ -237,6 +237,7 @@ class Post {
     const body = createElementWithClassAndParent("div", container, "post-body");
 
     const bodyContent = createElementWithClassAndParent("div", body, "post-body-content");
+    const nonWungle = createElementWithClassAndParent("div", bodyContent, "non-wungle");
 
     if (this.parent) {
       let postData = this.grabReblogChain([]);
@@ -263,7 +264,7 @@ class Post {
         wungle.innerHTML = p.wungle;
       }
     } else {
-      bodyContent.innerHTML = this.text;
+      nonWungle.innerHTML = this.text;
       const wungle = createElementWithClassAndParent("div",bodyContent,"visible-only-if-wungle");
       wungle.innerHTML = this.wungle? this.wungle: "who up wunglin' they hog?";
   
