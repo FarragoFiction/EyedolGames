@@ -1007,12 +1007,16 @@ Will Navidson`;
 const holChar2Raw = `Karen Green
 Pelafina H. Lièvre
 Tom Navidson
-Billy Reston`;
+Billy Reston
+Holloway Roberts
+Thumper
+Jed Leeder`;
 const holImportantEventsRaw = `When Navidson began burning the very book you were reading for light so he could keep reading it.
 When Tom died.
 When you realize Johnny is more than just an unreliable narrator.
 When you read the footnote that makes you realize just how deep the lies go.
 When you realize what the House is.
+When Holloway Roberts was eaten by the house.
 When you realize that it is a story about a book about a documentary that isn't real about a house that isn't real.`;
 const holOpinionsRaw = `The Minotaur was an actual monster.
 The Minotaur was a threat.
