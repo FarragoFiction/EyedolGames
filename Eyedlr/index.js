@@ -12,6 +12,8 @@ let fadedMemories = [];
 let characters = [];
 let jrComments = [];
 
+let global_wungle = false;
+
 let globalObsessions = [];
 
 let blorboPosts = [];
@@ -43,6 +45,8 @@ window.onload = () => {
 
   let name = urlParams.get('name');
   let image = urlParams.get('image');
+  global_wungle = urlParams.get('wungle');
+
   let matchPercent = parseInt(urlParams.get('matchPercent'));
   let seed = parseInt(urlParams.get('seed'));
   if (!seed) {

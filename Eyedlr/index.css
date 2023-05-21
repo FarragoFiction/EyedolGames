@@ -15,6 +15,20 @@ body {
   position: relative;
 }
 
+.wungle .visible-only-if-wungle{
+  display: block;
+}
+
+.visible-only-if-wungle{
+  display: none;
+  transform: scaleX(-1);
+}
+
+.wungle{
+  transform: scaleX(-1);
+  source: "https://morphimus.tumblr.com/post/710837261845037056/it-looked-kinda-like-this-the-post-would-be-the"
+}
+
 #ask-count {
   width: 18px;
   height: 18px;

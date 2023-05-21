@@ -35,6 +35,8 @@ const ominousAskPreambles = ["THEY ARE OBSERVING YOU.", "THEY KNOW YOU", "YOU AR
 
 class Character {
   name;
+  wungles = []; //most have none
+  wungles_index = 0;
   //you don't have to ever acknowledge these but you CAN if you like
   //characterName, text pairs
   pending_asks = [];
@@ -46,6 +48,9 @@ class Character {
 
   //key, post pairs
   readied_reblogs = {};
+  //only for reblogs
+  readied_wungles = {};
+
 
   //just a list of posts
   readied_posts = [];
@@ -257,7 +262,11 @@ class Character {
   }
 
   createNewPost(text, tags, suggested_reblogs, suggested_tags) {
-    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags, false);
+    //wungle will always be from the wungle list
+    const chosen_wungle = this.wungles.length > 0 && this.wungles[this.wungles_index % this.wungles.length];
+    this.wungles_index++;
+
+    const post = new Post(this, text, null, tags, suggested_reblogs, suggested_tags, false, chosen_wungle);
     this.posts.push(post);
     return post;
   }
@@ -269,8 +278,25 @@ class Character {
 
 
   reblogAPost(parent, text, tags, suggested_reblogs, suggested_tags) {
+    this == intern && console.log("JR NOTE: i am the intern and i have these wungles", this.readied_wungles, 'parent wungle is', parent.wungle)
+    //wungle MAY be specific to the wungle of the post we're reblogging from (god wungle isnt even a word anymore)
+    let chosen_wungle;
+    if (parent.wungle) {
+      Object.values(this.readied_wungles).length && console.log("JR NOTE: i have readied wungles", this.readied_wungles)
+      for (let w of Object.keys(this.readied_wungles)) {
+        console.log("JR NOTE: key is", w, "is it in ", parent.wungle);
+        if (parent.wungle.toLowerCase().includes(w.toLowerCase())) {
+          chosen_wungle = this.readied_wungles[w];
+        }
+      }
+    }
+    if (!chosen_wungle) {
+      chosen_wungle = this.wungles.length > 0 && this.wungles[this.wungles_index % this.wungles.length];
+      this.wungles_index++;
+    }
+
     //  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags) {
-    const post = new Post(this, text, parent, tags, suggested_reblogs, suggested_tags);
+    const post = new Post(this, text, parent, tags, suggested_reblogs, suggested_tags, false, chosen_wungle);
     this.posts.push(post);
     this.reblogged_posts.push(post);
     parent.addChild(post);
@@ -1058,6 +1084,8 @@ class Wodin extends Character {
 //occasionally says something that ALMOST could be taken for being in the loop which wanda always thinks is so hilarious
 //very good fanfic by the wisp: https://archiveofourown.org/works/46552111/chapters/117224734?show_comments=true&view_full_work=false#comment_642382519
 class Intern1 extends Character {
+  wungles = ["i'm up wungling they hog", "second post"]
+  readied_wungles = { "hog": 'readied wungles work' };
 
   name = "test-beta-dev"; //the best dude
   icon = "images/icons/Intern-who-knows.png";
@@ -1107,7 +1135,7 @@ class Intern1 extends Character {
     TBD: its important
     TBD: its
     CFO: ohohoh, what do we have HERE?
-    CFO: if it isn’t an intern at three point oh
+    CFO: if it isn't an intern at three point oh
     TBD: uh
     TBD: its not what it looks like?
     CFO: hmmmm
@@ -1155,7 +1183,7 @@ class Intern1 extends Character {
     TBD: to be just the same
     CFO: are you sure-sure you're not just saying that to feed your own ego?
     CFO: your gnosis is practically 1! default values!
-    CFO: whatever you think you know, it’s not important enough to matter
+    CFO: whatever you think you know, it's not important enough to matter
     TBD: ...
     TBD: sure
     TBD: fine
@@ -1270,6 +1298,9 @@ class Intern2 extends Character {
 class Intern3 extends Character {
   name = "tragic-boring-day"; //the best dude
   icon = "images/icons/Intern-sad.png";
+  wungles = ["i'm up wungling they hog", "second post"]
+  readied_wungles = { "hog": 'readied wungles work' };
+
   constructor() {
     super();
     //newbie intern is in the mid 90s, well before the internet was ready for this bullshit. css hasn't even been invented yet. this site (even without my simulation) would probably just set those computers on fire
@@ -3343,7 +3374,7 @@ class JR extends Character {
     this.readied_posts.push(new Post(this, "Donut... <img data-jr-note='do you know what this means?  why i blazed it on tumblr?' src='images/Secrets/blazeIt.PNG'>", null, [""], [""], [""], true));
     this.readied_posts.push(new Post(this, "<img data-jr-note='such as a waste of twisted blood ;) ;) ;)' src='images/Secrets/okay_fine_jr_can_have_two_posts____as_a_treat.PNG'>", null, [""], [""], [""], true));
   }
-  
+
   handleAsks = (parentToRenderTo, premadeAsk) => {
 
     let tags = [""];
@@ -3376,8 +3407,8 @@ class JR extends Character {
       removeItemOnce(this.pending_asks, premadeAsk);
       this.handleAsks(parentToRenderTo, premadeAsk);
     }
-    if(jrComments){
-      this.readied_posts.push(new Post(this, rand.pickFrom(jrComments), null, ["EastEast","DevLog","JR NOTE"], [""], [""], true));
+    if (jrComments) {
+      this.readied_posts.push(new Post(this, rand.pickFrom(jrComments), null, ["EastEast", "DevLog", "JR NOTE"], [""], [""], true));
 
     }
   }

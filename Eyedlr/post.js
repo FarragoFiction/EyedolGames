@@ -19,6 +19,7 @@ all_posts = [];
 
 class Post {
   text; //can be html
+  wungle; //can be html
   tags;
   notesEle;
   //owner, lik3/post pairs.
@@ -36,9 +37,10 @@ class Post {
   suggested_tags = [];
   element;
 
-  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual = false) {
+  constructor(owner, text, parent, tags, suggested_reblogs, suggested_tags, virtual = false, wungle) {
     !virtual && all_posts.push(this);
     this.owner = owner;
+    this.wungle = wungle?wungle: "who up wunglin' they hog?";//default wungle
     this.text = text;
     this.parent = parent;
     this.setRoot();
@@ -165,7 +167,7 @@ class Post {
   //then reverses the order so root goes first
   //needs to return owner, text pairs. (so i can grab name and etc)
   grabReblogChain = (so_far = []) => {
-    so_far.push({ owner: this.owner, text: this.text });
+    so_far.push({ owner: this.owner, text: this.text, wungle: this.wungle });
     if (this.parent) {
       return this.parent.grabReblogChain(so_far);
     } else {
@@ -202,7 +204,7 @@ class Post {
   //and am allowed to be lazy
   createElement = (clone = false, no_notes = false) => {
     const post = document.createElement("div");
-    post.className = "post";
+    post.className = `post${global_wungle?' wungle':''}`;
     if (!clone) {
       this.element = post;
     }
@@ -257,9 +259,14 @@ class Post {
         }
         const reblog_text = createElementWithClassAndParent("div", reblog_ele, "reblog-text");
         reblog_text.innerHTML = p.text;
+        const wungle = createElementWithClassAndParent("div",reblog_ele,"visible-only-if-wungle");
+        wungle.innerHTML = p.wungle;
       }
     } else {
       bodyContent.innerHTML = this.text;
+      const wungle = createElementWithClassAndParent("div",bodyContent,"visible-only-if-wungle");
+      wungle.innerHTML = this.wungle? this.wungle: "who up wunglin' they hog?";
+  
     }
 
     const tags = createElementWithClassAndParent("div", container, "post-tags");
