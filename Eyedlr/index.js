@@ -8,6 +8,8 @@ let weirdImageList = [];
 let zampanioEyes = [];
 //in case we lose the server, i do not want to forget
 let fadedMemories = [];
+//i am trying so hard to find a single quote, going through all past me's notes, taking current pics
+let houseOfLeaves = [];
 
 let characters = [];
 let jrComments = [];
@@ -437,6 +439,12 @@ const tick = async (parentToRenderTo) => {
   for (let c of characters) {
     await c.tick(parentToRenderTo);
   }
+
+  //407 is the closest page to the quote i want i've found so far
+  if(all_posts.length > 407 && houseOfLeaves.length === 0){
+    characters.push(new JRHOL());
+    grabHouseOfLeavesLiveblogging();
+  }
 }
 
 const test = async () => {
@@ -495,11 +503,16 @@ const grabFoodPosts = async () => {
 }
 
 const grabFadedMemories = async () => {
-  console.log("JR NOTE: grabbing faded memoreis")
   const loc = 'http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/';
   let tmp = await getImages(loc);
   console.log("JR NOTE: tmp for memories was", tmp)
   fadedMemories = tmp.map((item) => loc + item);
+}
+
+const grabHouseOfLeavesLiveblogging = async () => {
+  const loc = 'http://knucklessux.com/PuzzleBox/Secrets/misc/HouseOfLeaves/';
+  let tmp = await getImages(loc);
+  houseOfLeaves = houseOfLeaves.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
 
 const grabBlorboPosts = async () => {

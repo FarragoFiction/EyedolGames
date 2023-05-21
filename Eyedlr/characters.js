@@ -1353,6 +1353,13 @@ class Intern3 extends Character {
   besides if it were TRUE
   dude, why wouldn't you tell me?
   why would you let me think you DIED?
+  why did you leave me in the first place
+  why was i so unimportant to you that you THREW YOUR LIFE AWAY WITHOUT A SECOND THOUGHT FOR SOME STUPID CONSPIRACY THEORY
+  and only then remembered i existed??
+  after i GRIEVED?
+  after i...
+  i. 
+  yeah
   so maybe its just dreams
   i don't know
   ...
@@ -1364,7 +1371,8 @@ class Intern3 extends Character {
   so sorry about being weird
   just
   had a bad dream
-  and didn't want to ignore it`.replace(/(?:\r\n|\r|\n)/g, '<br>')]
+  and didn't want to ignore it
+  i'll probalby delete this in the morning`.replace(/(?:\r\n|\r|\n)/g, '<br>')]
   readied_wungles = { "a;ksjdf": 'readied wungles work' };
 
   constructor() {
@@ -3433,6 +3441,22 @@ class JRFake extends Character {
 
   tick = (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
+}
+
+class JRHOL extends Character{
+  name = "jadedResearcher";
+  desc = "I read <color = 'blue'>House</color> of Leaves in 2016. These are my notes from then, and some from now too as I try to find a specfic quote from it that apparently only I ever read?<br><Br>Sorry if I don't respond to asks, I'm kind of hyper focusing for now.";
+  icon = "http://farragofiction.com/Staging/images/Credits/jadedResearcher_icon.png";
+
+  tick  = async(parentToRenderTo)=>{
+    if(houseOfLeaves.length === 0){
+      return;
+    }
+    const post = this.createNewPost(rand.pickFrom(houseOfLeaves), ["house of leaves","non-linear live blog","i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
+    if(post && parentToRenderTo){
+      post.renderToScreen(parentToRenderTo);
+    }
   }
 }
 
