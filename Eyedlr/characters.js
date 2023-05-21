@@ -190,7 +190,9 @@ class Character {
     for (let key of keys) {
       for (let target of possiblities) {
         //if the target post has the key phrase anywhere in it, attack
-        if (this.readied_reblogs[key] && target.text.toLowerCase().includes(key.toLowerCase())) {
+        const keyInText = this.readied_reblogs[key] && target.text.toLowerCase().includes(key.toLowerCase());
+        const keyInWungle = this.readied_reblogs[key] && target.wungle.toLowerCase().includes(key.toLowerCase())
+        if (keyInText || keyInWungle) {
           let response = this.readied_reblogs[key];
           //no spam
           if (this.delete_readied_reblogs) {
@@ -1084,7 +1086,16 @@ class Wodin extends Character {
 //occasionally says something that ALMOST could be taken for being in the loop which wanda always thinks is so hilarious
 //very good fanfic by the wisp: https://archiveofourown.org/works/46552111/chapters/117224734?show_comments=true&view_full_work=false#comment_642382519
 class Intern1 extends Character {
-  wungles = ["i'm up wungling they hog", "second post"]
+  wungles = `so<br>uh<br> hi wanda
+  if you're reading these<br>i hope you are<br>or maybe i hope you aren't
+  i promised someone i'd tell you<br>that uh<br>maybe<br>im <br>not<br>uh<br>as<br>ignorant<br>as maybe you hope i am
+  surprise?
+  i didn't know how to tell you
+  in my defense <Br>you pull the same shit with me<br>never knowing how to confess to me that you used to be wodin
+  and its not like im LYING to you<br>i really don't know most things<br>but the dreams<br>the dreams ...<br>remind?<br>me of things?<br>things i never knew
+  and i guess i just<br>thought it would be too awkward to act like these clearly fictional dreams were real<br>back when you were wodin<br> or back when i first met you as wanda
+  and by the time i started to really believe<br>deep down<br>that all this spooky magic bullshit was real<br>it would have been even more awkward to admit id been hiding things from you
+  sorry`.split("\n");
   readied_wungles = { "hog": 'readied wungles work' };
 
   name = "test-beta-dev"; //the best dude
@@ -1298,7 +1309,44 @@ class Intern2 extends Character {
 class Intern3 extends Character {
   name = "tragic-boring-day"; //the best dude
   icon = "images/icons/Intern-sad.png";
-  wungles = ["i'm up wungling they hog", "second post"]
+  wungles = [`right
+  uh
+  okay
+  so 
+  there are these dreams
+  except maybe they're not dreams?
+  in them the Chief Financial Officer has too many eyes and too many teeth
+  and too many dimensions
+  and tells me i have to let you know about my dreams
+  uh
+  you being the CEBro of Eyedol games, ma'am
+  so
+  here i am
+  except i don't actually know if these ARE dreams
+  you know?
+  its insane
+  but then working for eyedol games is insane
+  in my dreams i know that you are the ...
+  the reincarnation of my best friend?
+  or SOMETHING??
+  which is
+  fucked up
+  you do NOT tell your boss that you think they are secretly born a dude and also born just twenty years ago
+  besides if it were TRUE
+  dude, why wouldn't you tell me?
+  why would you let me think you DIED?
+  so maybe its just dreams
+  i don't know
+  ...
+  but the dreams did lead me here
+  to find the backdoor that lets you...
+  'wungle post'
+  whatever that means
+  and i GOTTA assume that the CEBro of eyedol games can read these
+  so sorry about being weird
+  just
+  had a bad dream
+  and didn't want to ignore it`.replace(/(?:\r\n|\r|\n)/g, '<br>')]
   readied_wungles = { "hog": 'readied wungles work' };
 
   constructor() {
@@ -1417,7 +1465,7 @@ class FlowerChick extends Character {
   icon = "images/icons/CFO.png";
   secret_name = "CFO";
   desc = "yes i work for eyedol games<br>no i won't hook you up with sweet cheats<br><br>figure them out yourself<br><Br>also: PSA stop clicking scammy links!!!!!!"
-
+  readied_wungles={"and i GOTTA assume that the CEBro of eyedol games can read these":"proud of you cinnamon apple<br><br>you posted really early this loop<br><br>you're actuuuuaaaly trying to improve<Br><Br>hope you crazy kids figure yourselves out"};
   //should respond to porn bot posts with 'scaredofthunder.png' in them (ats ria and devona)
   //http://knucklessux.com/PuzzleBox/Secrets/Wanda%20Resume.pdf
   //ats the eye killer about this after a porn bot posts it https://www.tumblr.com/mumblesplash/714417492141998081/thank-u-everyone-who-tagged-this-kaz-brekker?source=share 
@@ -1425,6 +1473,8 @@ class FlowerChick extends Character {
     super();
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
     this.readied_posts.push(new Post(this, "hey yall, PSA, if you see a link that looks like ' http://eyedolgames.com/Zampanini/?name=noooooo%20i%20will%20not%20be%20giving%20you%20a%20real%20restaurant%20name&themes=Burger&feeUnder=0&victim=you%20if%20you%20click%20this%20link%20you%20idiot ' do NOT click it, it's sus.<br><Br>actually just don't click anything at all on this site. <br><Br>even if it promises you delicious burgers...", null, ["waaaaarning", "not that yall ever listen to me anyways .)"], ["looks so tasty!", "I cant wait to eat that!", "wow so cool!"], ["tasty food", "eat the food", "click the link", "go to the home page", "eat the food"], true));
+    //respond to a wungle post
+   this.readied_reblogs['and i GOTTA assume that the CEBro of eyedol games can read these'] = new Post(this, "lol", null, [""], [""], [""], true);
 
   }
 
