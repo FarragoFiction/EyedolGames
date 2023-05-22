@@ -281,12 +281,10 @@ class Character {
 
 
   reblogAPost(parent, text, tags, suggested_reblogs, suggested_tags) {
-    this == intern && console.log("JR NOTE: i am the intern and i have these wungles", this.readied_wungles, 'parent wungle is', parent.wungle)
     //wungle MAY be specific to the wungle of the post we're reblogging from (god wungle isnt even a word anymore)
     let chosen_wungle;
     if (parent.wungle) {
       for (let w of Object.keys(this.readied_wungles)) {
-        !parent.wungle.includes("hog") && console.log("JR NOTE: key is", w, "is it in ", parent.wungle);
         if (parent.wungle.toLowerCase().includes(w.toLowerCase())) {
           chosen_wungle = this.readied_wungles[w];
         }
@@ -919,7 +917,7 @@ class Wanda extends Character {
   prepareShitPosts = () => {
     for (let post of blorboPosts) {
       let tags = ["MEME", "LOL", 'FUNNY', 'I FOUND THIS', "INTERN LOOK AT THIS BRO"]
-      this.readied_posts.push(new Post(this, post + `@${intern.name}`, null, [rand.pickFrom(tags)], [], ["lol"], true));
+      this.readied_posts.push(new Post(this, post + `@${intern.name}`, null, [rand.pickFrom(tags)], [""], ["lol"], true));
     }
   }
 
@@ -1409,10 +1407,10 @@ class EyeKiller extends Character {
   constructor() {
     super();
     //she is broad AI like river, but responds to the first thing that gets her attention then hides
-    this.readied_reblogs['eyekiller/dontknowsource_butitmightliterallybeherbackstory'] = new Post(this, "X", null, ["X"], [], [], true);
-    this.readied_reblogs['meow'] = new Post(this, "!", null, ["!"], [], [], true);
-    this.readied_reblogs['cards'] = new Post(this, "!", null, ["!"], [], [], true);
-    this.readied_reblogs['innocent'] = new Post(this, "?", null, ["?"], [], [], true);
+    this.readied_reblogs['eyekiller/dontknowsource_butitmightliterallybeherbackstory'] = new Post(this, "X", null, ["X"], [""], [""], true);
+    this.readied_reblogs['meow'] = new Post(this, "!", null, ["!"], [""], [""], true);
+    this.readied_reblogs['cards'] = new Post(this, "!", null, ["!"], [""], [""], true);
+    this.readied_reblogs['innocent'] = new Post(this, "?", null, ["?"], [""], [""], true);
 
   }
 
@@ -1430,7 +1428,7 @@ class Himbo extends Character {
   icon = "images/icons/himbo_right_hand.png";
   constructor() {
     super();
-    this.readied_reblogs['cards'] = new Post(this, "LOL!", null, ["lol", "so true", "thats why you should find a girl", "who already plays"], [], [], true);
+    this.readied_reblogs['cards'] = new Post(this, "LOL!", null, ["lol", "so true", "thats why you should find a girl", "who already plays"], [""], [""], true);
 
   }
 
@@ -2047,7 +2045,7 @@ class Ria extends Character {
 
     this.readied_reblogs['devona is worried she is secretly faking her various syndromes'] = new Post(this, "Devy, the meme you found says it right there!", null, ["no one would fake having as many annoyances as you do!", "don't worry!", "you're not faking it!"], [""], ["lifetips"], true);
 
-    this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [""], true);
     this.pending_asks.push({ text: "do you think the Observers and Peewee are the same thing?" });
   }
 
