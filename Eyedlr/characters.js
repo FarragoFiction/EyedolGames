@@ -400,6 +400,8 @@ class PornBot extends Character {
     //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
     let possiblePosts = [...links, ...links, ...links, ...links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
+      "There are 19 of us here that are at this tier. The rhyme does not say what to do with 19. But this site is a toy.",
+      "Count the blackbirds in a tree: they will tell you what is to be. One for sadness, two for joy, three for a tool, and four for a toy. Five for circuits, six for gold and seven for a secret that's never been told.",
       "Learn to code fast: <a href = 'https://github.com/whymirror/why-archive/blob/master/shoes/nobody-knows-shoes.pdf'>Learn Shoes Today!!!!<Br><img src='images/Secrets/nobody-knows-shoes.png'></a>",
       "@wanderer 5d:23h:17:04s",
       "@wanderer 4d:15h:21m:33s",
