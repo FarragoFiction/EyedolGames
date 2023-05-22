@@ -142,6 +142,11 @@ const init = async () => {
   characters.push(randomPornBot());
   characters.push(randomPornBot());
   characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
+  characters.push(randomPornBot());
   characters.push(wanderer);
   characters.push(k);
   characters.push(neville);
