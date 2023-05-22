@@ -131,7 +131,7 @@ class QuirkMap {
   //only replace WHOLE words
   //https://onecompiler.com/javascript/3x8rumubz
   replace(phrase, rand) {
-    if(phrase.trim() == ""){
+    if(phrase && phrase.trim() == ""){
       return phrase;
     }
     if (!this.choosenValue) {

@@ -33,10 +33,11 @@ let rand;
 let observer, wanderer, k;
 window.onload = () => {
   let date = new Date();
+  isItWungleTime();
   //april fools
   if (date.getMonth() === 3 && date.getDate() === 1) {
     let body = document.querySelector("body");
-    body.innerText = "sayonara you weeaboo shits" //the personality of prophetic secrets is so correct
+    body.innerText = "sayonara you weeaboo shits" //the personality of prophetic secrets is so correct, we should do the classic tumblr staff april fools
   }
 
   initThemes();
@@ -247,6 +248,22 @@ const initialTicks = async ()=>{
 
   await sleep(1000);
   await tick();
+
+}
+const isItWungleTime = async () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const hackedGiggles = urlParams.get('wungle');
+
+  //midnight and fridays are wungle time
+  const date = new Date();
+  if (hackedGiggles || date.getHours() == 0 || date.getDay() === 5 ) {
+    global_wungle = true;
+    const posts = document.querySelectorAll(".post");
+    for(let p of posts){
+      p.classList.add("wungle");
+    }
+  }
 
 }
 
@@ -497,6 +514,9 @@ const collatePremadePosts = () => {
 }
 
 const tick = async (parentToRenderTo) => {
+  if(!global_wungle){
+    isItWungleTime();
+  }
   for (let c of characters) {
     await c.tick(parentToRenderTo);
   }
