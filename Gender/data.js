@@ -38,6 +38,7 @@ Prefer to not answer`
 const lameGenders = lameGenderRaw.split("\n");
 
 
+//https://www.tumblr.com/foone/718042328831557632/ive-got-a-website-where-i-recreate-some-of-these?source=share
 //i think my very favorite gander is cisgender/non-binary because.... WHAT?
 //also "declined" gender makes me feel lik you'rue in gender debt so your gender card was declined
 const rawGender = `Male

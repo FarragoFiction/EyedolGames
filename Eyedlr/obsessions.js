@@ -31,6 +31,7 @@ const LTE = 'LTE'; //jr but as eon337
 const ANIMORPHS = 'ANIMORPHS'; //how did i forget this before
 const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
 const HALLOWEEN = 'Lavinraca '; //this one intentionally is not in jackelope
+const MIKU = 'Hatsune Miku '; //this one is for parker
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -1089,6 +1090,30 @@ all_obsessions[HALLOWEEN] = new Obsession(
   lLocationsRaw.split(","),
   lObjectsRaw.split(","),
   lJobsRaw.split(",")  
+);
+
+const mikuCharRaw = `Hatsune Miku`;
+const mikuChar2Raw = `Hatsune Miku`;
+const mikuImportantEventsRaw = `when Hatsune Miku first began to sing, when Hatsune Miku was voted best waifu 1972-2022, when you found out the terrible injustice that caused Hatsune Miku to no longer be a Vocaloid`;
+const mikuOpinionsRaw = `Hatsune Miku is best girl, Hatsune Miku can forgive anything, Hatsune Miku is the best waifu, anyone who says 'Hatesune Meanku' should be shot`;
+const mikuMemesRaw = `Miku Miku Nurse!,  Leek spin!, Hatsune Miku`;
+const mikuGoalsRaw = `always be nice to Hatsune Miku, be worthy of Hatsune Miku's forgiveness, drink plenty of water, take care of myself for hatsune miku`;
+const mikuLocationsRaw = `Hatsune Miku's house`;
+const mikuObjectsRaw = `leek, microphone, cute outfit`;
+const mikuJobsRaw = `idol,vocaloid`;
+
+
+all_obsessions[MIKU] = new Obsession(
+  "Hatsune Miku",
+  mikuCharRaw.split(","),
+  mikuChar2Raw.split(","),
+  mikuImportantEventsRaw.split(","),
+  mikuOpinionsRaw.split(","),
+  mikuMemesRaw.split(","),
+  mikuGoalsRaw.split(","),
+  mikuLocationsRaw.split(","),
+  mikuObjectsRaw.split(","),
+  mikuJobsRaw.split(",")  
 );
 
 /*
