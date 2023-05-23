@@ -177,7 +177,6 @@ class Character {
   findPostToDoStupidDiscourseAbout = (target_obsession) => {
     let posts = rand.shuffle(all_posts);
     let obsessions = target_obsession ? [target_obsession]: rand.shuffle(this.obsessions);
-    console.log("JR NOTE: obsessions i am looking at are", obsessions)
     for (let obsession of obsessions) {
       for (let post of posts) {
         if (post.text.toLowerCase().includes(obsession.name.toLowerCase())) {
@@ -195,7 +194,8 @@ class Character {
     if(!post){
       return;
     }
-    let responses = [
+    //camille won't die if she has discourse to :3 at
+    let responses = this === camille? [":3"]: [
       `Wow! You know about ${obsession.name}, too?`,
       `Wow. Talk about a rancid take.`,
       "Wow, really?",
