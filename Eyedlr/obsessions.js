@@ -30,6 +30,7 @@ const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
 const LTE = 'LTE'; //jr but as eon337
 const ANIMORPHS = 'ANIMORPHS'; //how did i forget this before
 const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
+const HALLOWEEN = 'Lavinraca '; //this one intentionally is not in jackelope
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -1062,6 +1063,34 @@ all_obsessions[HOUSEOFLEAVES] = new Obsession(
   holJobsRaw.split("\n")  
 )
 
+
+
+//clown friend
+
+const lCharRaw = `Maccus ,The Scarecrow`;
+const lChar2Raw = `Butler, Grounds Keeper, Bell Hop`;
+const lImportantEventsRaw = `when the clone saga happened, when the murder mystery happened, when the Maccus hunt happened, when the ritual sacrifice happened, when the wedding happened, when everything burned down, when everything burned down a second time, when the power outages happened, when the hotel shifted into the past`;
+const lOpinionsRaw = ` the Scarecrow is nice, the Macci are one person, Orange Drink is not healthy, you should be able to beat the shit out of each other,  the butler is evil`;
+const lMemesRaw = `Orange Drink!!!, The Muppet Haunted Mansion Special`;
+const lGoalsRaw = ``;
+const lLocationsRaw = `West Hall, East Hall, South Hall, Fairgrounds, Big Top, Maze Entrance`;
+const lObjectsRaw = `Candy, Pile of Meat`;
+const lJobsRaw = `Butler, Scarecrow, Maccus, Grounds Keeper, Bellhop`;
+
+
+all_obsessions[HALLOWEEN] = new Obsession(
+  "Lavinraca",
+  lCharRaw.split(","),
+  lChar2Raw.split(","),
+  lImportantEventsRaw.split(","),
+  lOpinionsRaw.split(","),
+  lMemesRaw.split(","),
+  lGoalsRaw.split(","),
+  lLocationsRaw.split(","),
+  lObjectsRaw.split(","),
+  lJobsRaw.split(",")  
+);
+
 /*
 
 const CharRaw = ``;
@@ -1086,4 +1115,5 @@ all_obsessions[TOGITHINGY] = new Obsession(
   LocationsRaw.split("\n"),
   ObjectsRaw.split("\n"),
   JobsRaw.split("\n")  
-);*/
+);
+*/

@@ -11,6 +11,8 @@ let fadedMemories = [];
 //i am trying so hard to find a single quote, going through all past me's notes, taking current pics
 let houseOfLeaves = [];
 
+let halloweenpics = [];
+
 let characters = [];
 let jrComments = [];
 
@@ -51,18 +53,28 @@ window.onload = () => {
   global_wungle = urlParams.get('wungle');
 
   let matchPercent = parseInt(urlParams.get('matchPercent'));
+  let halloween = parseInt(urlParams.get('halloween')) ||  date.getMonth() === 9 ;
+
   let seed = parseInt(urlParams.get('seed'));
   if (!seed) {
     seed = 13;
   }
   rand = new SeededRandom(seed);
 
+
+  let o = Object.values(all_obsessions)
+  globalObsessions.push(rand.pickFrom(o))
+  if(halloween){
+    globalObsessions.push(all_obsessions[HALLOWEEN])
+
+  }else{
+    globalObsessions.push(rand.pickFrom(o))
+
+  }  //last one can be REALLY random
   for (let theme of Object.values(all_themes)) {
     createObessionFromTheme(theme, rand);
   }
-  let o = Object.values(all_obsessions)
-  globalObsessions.push(rand.pickFrom(o))
-  globalObsessions.push(rand.pickFrom(o))
+ 
   globalObsessions.push(rand.pickFrom(o))
 
   let loc = urlParams.get('loc');
@@ -202,6 +214,8 @@ const initialTicks = async ()=>{
 
   await sleep(1000);
   await tick();
+
+  grabHalloween();
 
   await sleep(1000);
   await tick();
@@ -599,6 +613,12 @@ const grabHouseOfLeavesLiveblogging = async () => {
   const loc = 'http://knucklessux.com/PuzzleBox/Secrets/misc/HouseOfLeaves/';
   let tmp = await getImages(loc);
   houseOfLeaves = houseOfLeaves.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+}
+
+const grabHalloween = async () => {
+  const loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Lavinraca/';
+  let tmp = await getImages(loc);
+  halloweenpics = halloweenpics.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
 
 const grabBlorboPosts = async () => {
