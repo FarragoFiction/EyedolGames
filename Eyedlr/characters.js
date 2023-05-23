@@ -2334,6 +2334,8 @@ class Yongki extends Character {
   desc = "An enthusiast is someone who likes something. I like snails a lot. They are very viscious."
   secret_name = "yongki";
 
+
+
   constructor() {
     super();
     //http://farragofiction.com/DearDiary/?truth=here
@@ -2344,8 +2346,49 @@ class Yongki extends Character {
 
   }
 
+
+  handleAsks = (parentToRenderTo, premadeAsk) => {
+
+    let responses = [];
+    if (premadeAsk.text.toLowerCase().includes("zampanio")) {
+      responses = ["Zampanio is a very fun game. You should play it!"]
+    } else if (premadeAsk.characterName === observer.name) {
+      //yongki is not even on the gnosis spectrum, more or less, he doesn't understand fourth wall breaks
+      //he's so strange he just thinks the horrorterrors are viscous and moves on with his day
+      responses = ["wow", "cool!", "neat"]
+
+    } else {
+      responses = ["wow", "cool!", "neat"]
+    }
+
+    if (responses.length == 0) {
+      return;
+    }
+
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [""], [""], ["classic parker"]);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+  }
+
   tick = async (parentToRenderTo) => {
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
+      return;
+    }
+    this.readied_reblogs['snail-'] = new Post(this, "", null, ["snail", "viscous ", "that means wet or slimey"], [""], ["snail-posting"], true);
+
+
+    if (this.posts.length == 3) {
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/NotebookSimulator/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
+    }
   }
 }
 
@@ -2429,6 +2472,11 @@ he doesn't CARE what his identity is, he's just vibinng in a situation
       //i love how insistent captain is that this is basically snail mail
       witherby.submitAsk(this.name, "Dear Witherby,<br><br> I did not mean to crush Yongki's pen. Please tell him I am sorry. <br><br>Sincerely, The Former Captain of the Info Team. <p>p.s. I hope you are well.</p> ");
 
+    }
+    if (this.posts.length == 3) {
+      //sadly he has no clue he even HAS an inbox, thus never answeres these
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/NotebookSimulator/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>___</a>`);
     }
   }
 
@@ -3444,17 +3492,17 @@ class JRFake extends Character {
   }
 }
 
-class JRHOL extends Character{
+class JRHOL extends Character {
   name = "jadedResearcher";
   desc = "I read <color = 'blue'>House</color> of Leaves in 2016. These are my notes from then, and some from now too as I try to find a specfic quote from it that apparently only I ever read?<br><Br>Sorry if I don't respond to asks, I'm kind of hyper focusing for now.";
   icon = "http://farragofiction.com/Staging/images/Credits/jadedResearcher_icon.png";
 
-  tick  = async(parentToRenderTo)=>{
-    if(houseOfLeaves.length === 0){
+  tick = async (parentToRenderTo) => {
+    if (houseOfLeaves.length === 0) {
       return;
     }
-    const post = this.createNewPost(rand.pickFrom(houseOfLeaves), ["house of leaves","non-linear live blog","i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
-    if(post && parentToRenderTo){
+    const post = this.createNewPost(rand.pickFrom(houseOfLeaves), ["house of leaves", "non-linear live blog", "i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
+    if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
   }
