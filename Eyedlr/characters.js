@@ -435,7 +435,7 @@ class PornBot extends Character {
     //INSTEAD ITS EVERY TUESDAY IN MAY
     //THIS IS FINE 
     //FOUR BIRTHDAYS FOR EVERYONE.
-    if (date.getMonth() === 4 && date.getDay() === 2) {
+    if (date.getMonth() === 6 && date.getDay() === 2) {
       for (let i = 0; i < 113; i++) {
         possiblePosts.push("Happy Birthday!!!<br><Br><img src ='images/Secrets/tumblr_screenshots/Birthday_Otter.jpg'>");
       }
@@ -549,21 +549,46 @@ class PornBot extends Character {
             `Wow. Talk about a rancid take.`,
             "Wow, really?",
             `Tell us what you think about ${obsession.randomBlorbo(rand)}!`,
+            `${obsession.randomBlorbo(rand)} is so overrated :/`,
+
             `Can you make me an OC that looks like ${obsession.randomBlorbo(rand)}?`,
             `Okay, but what did you think about ${obsession.randomEvent(rand)}?`,
+            `omg where were you when ${obsession.randomEvent(rand)}?`,
+            `i almost forgot about ${obsession.randomEvent(rand)}`,
+            `This fandom is brain dead. How could anyone think ${obsession.randomOpinion(rand)}?`,
+            `${obsession.randomOpinion(rand)}`,
+            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
+            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
+            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
+            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
+            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
+            `${obsession.randomCommonPhrases(rand)}`,
+            `${obsession.randomCommonPhrases(rand)}`,
+            `i am so tired of hearing about '${obsession.randomCommonPhrases(rand)}'`,
+            `${obsession.randomLocation(rand)} is real and i went there ${rand.pickFrom(["last week","last year","two weeks ago","yesterday","last month","friday","every friday for two years"])}`,
+            `${obsession.randomObject(rand)} is my good luck charm`,
+            `You should read my fanfic about a young ${obsession.randomJob(rand)} who ends up saving the world!`,
             `I can't believe you think that!!!`,
             `Toxic fandom.`,
             `Which is better, ${obsession.randomObject(rand)} or ${obsession.randomObject(rand)}?`,
             `What about '${obsession.randomCommonPhrases(rand)}'?`,
             "NOOOOOOOOOOOOOOOOO!",
+            `I want to put ${obsession.randomMinorBlorbo(rand)} in the dryer on high heat.`,
+
             `Are we really all going to just forget about ${obsession.randomMinorBlorbo(rand)}?`,
             `I am just sitting here microwaving ${obsession.randomMinorBlorbo(rand)}. `,
             `I love ${obsession.randomMinorBlorbo(rand)} so much!`,
             `Yeah and you probably want to be a ${obsession.randomJob(rand)} too!`,
             `lol and i have a bridge to sell you in ${obsession.randomLocation(rand)}`,
-            `How could you think that about ${obsession.name}?`]
+            `How could you think that about ${obsession.name}?`,
+            `GUYS! There is more to life than ${obsession.name}!!!`]
+
           // /parent, text, tags, suggested_reblogs, suggested_tags)
-          return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>", [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
+          let bonus = '';
+          if(obsession === all_obsessions[HALLOWEEN] && rand.nextDouble()>0.75){
+            bonus = halloweenpics? rand.pickFrom(halloweenpics):'';
+          }
+          return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>"+`<br>${bonus}`, [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
 
         }
       }
@@ -1373,6 +1398,7 @@ class Intern3 extends Character {
   had a bad dream
   and didn't want to ignore it
   i'll probalby delete this in the morning`.replace(/(?:\r\n|\r|\n)/g, '<br>')]
+
   readied_wungles = { "a;ksjdf": 'readied wungles work' };
 
   constructor() {
@@ -1615,7 +1641,71 @@ class Alt extends Character {
   name = "staff";
   icon = "images/pathos/Zamblr_logo.png";
   secret_name = "alt";
-  desc = "pending, IC knows her voice and i keep getting scammed by her so TODO, maybe mention how she sold the site to wanda in exchange for getting it in front of more eyeballs";
+
+  
+  //alt actually doesn't post much so most of this is waste only (unless she gets infected with obsession)
+  wungles = [`so
+  like
+  Truth is always telling me that getting things off my chest will make me feel better
+  and never appreciates my fantastic joke of turning into a chest of drawers and knocking shit off my self
+  so here we are
+  i hate being called a copy
+  i'm not even a copy!
+  i came first!
+  how is it my fault that most people happen to meet HER first?
+  :/
+  so thats out of the way
+  what else
+  right
+  you know what i hate even more than being called a copy?
+  the version of my copy that has a hard-on for fractals
+  hate her
+  i haven't...
+  really had an opportunity
+  to really get to know my regular copy? you know? 
+  what would i even say to her
+  'wow that sucks about your whole eye thing?'
+  no
+  but i have had no choice but to get to know that fractal monster
+  given shes kinda in charge of the earth version of the maze and all
+  and where does she even get off!?
+  her shitty branch of reality is her personal playground and fuck anyone that hurts!?
+  no
+  Truth and I have STANDARDS
+  we try to HELP PEOPLE
+  we RESCUE them from her shitty shitty apocalypse
+  bring them to the moon
+  so yeah
+  of COURSE i expect them to be grateful
+  to want to stick around
+  hang out maybe
+  is that a crime?
+  i mean all im doing is rescuing them from eternal torment
+  and sure
+  sometimes people from arm1 fall in instead
+  but its not like they had a whole lot going on for them in their regular life if they were getting obsessed with my porn bots or whatever
+  its fine
+  you can get used to anything, really
+  and its not as if anyone can DIE in Truth's Moon Maze
+  so yeah
+  fuck the apocalypse
+  0/10
+  and actually
+  you know what
+  fuck peewee too
+  wouldn't know a good spades flirt if it bit him in the jacket
+  i mean REALLY
+  <i>camile</i>
+  talk about a stick in the mud
+  that girls idea of fun is watching the same movie four times in a row, then killing someone and filing the "i killed someone" paperwork in triplicate
+  what does he even see in her?
+  ...
+  you know what
+  im done getting things off my chest
+  time to go vent and mess with that killer's clocks
+  cya
+  `.replace(/(?:\r\n|\r|\n)/g, '<br>')]
+  desc = "wanna be friends?";
   constructor() {
     super();
     this.readied_reblogs['@staff kudos'] = new Post(this, "thank you", null, [""], [""], [""], true);
@@ -2331,7 +2421,7 @@ class Witherby extends Character {
 class Yongki extends Character {
   name = "snails-enthusiast";
   icon = "images/icons/Yongki.png";
-  desc = "An enthusiast is someone who likes something. I like snails a lot. They are very viscious."
+  desc = "An enthusiast is someone who likes something. I like snails a lot. They are very viscious. They have little houses. Their houses are spirals. I live in a spiral."
   secret_name = "yongki";
 
 
