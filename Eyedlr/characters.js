@@ -2055,6 +2055,7 @@ class Devona extends Character {
       //she is so so scared to be seen and absolutely is gonna ghost you on this. you'll never see shit from her. hacking or nothing.
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>___</a>`);
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
 
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/http://farragofiction.com/LightAndVoid/seerOfVoidy=true'>___</a>`);
     }
@@ -2478,6 +2479,8 @@ class Yongki extends Character {
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>___</a>`);
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>___</a>`);
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+
     }
   }
 }
@@ -2647,6 +2650,11 @@ class K extends Character {
   tick = async (parentToRenderTo) => {
     //you are GOING to see more of K than anyone else.
 
+
+   if (this.posts.length == 2) {
+    //he will steal this too
+    this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+  }
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
@@ -3055,6 +3063,8 @@ class Parker extends Character {
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://www.farragofiction.com/ThisHumanDiseaseCalledFriendship/'>___</a>`);
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ParkerLotLost/'>___</a>`);
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DehydrationSim/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+
       this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/CodexOfRuin/viewer.html?name=The%20Shot&data=N4IgdghgtgpiBcIAqALGACAyig9gFxABoQATGAZwEsBzSPSnMBEAGQFoAGNgJgEYiQAJ0rkA1swASAUQF40scswBCAVQBKASSkARQul68AzHswsAgioDiEpFLV6ALA73apSpJkIA2L4VUsWKQ9CA2MAdSk3EKM9DUwpAGkzDUJubkIkCS0AMT1QwkwABTMAYSlo40K7MsKkDQB5ADlogXI8CDxFRA1G2zVGsxYKwmK6qV7hjVdBuLqSwgd00pq6xstvXxZ6gE1BwjZjEsGAWUIATkMBGAAPCABjPAAbAE8AfTlBGBh3ygAHLpAYTQYHQEHQ5AArgAjABWMAe6DwOAhdzQ5ERaHQdxwADMcZQQRiYM9QZ90DjkWASOgAO6UOREyiCdBoCDU8iPSh3GDUu6PGAQEG4nEAOkIGhx6HYXF4AHZ0DAwNQINQKOgCegzHh2qjYGA8LScIJRESSRAyRSIVTafSUIzmaz2Zzubz+YL0MKxdK2HL1eiSIIIDSQUiFZyoASOgTqFiYIJ2hr2oJVZ1QQb3RAAG5xlUYQN4DC4j1gDC-OPoKCMOQigQEtoEh7MEo4KCVsCEZutxgdlttwgSGgofuD2tgKjUFAERCdvsz7tz9sLntdpjEDo6lB6qesHA0vQsXf7w9S48HmkCT6-T7kKiMZgANTjJLPhEfgmfh4HE+H36-KFa7RQpQnJ4G8-LZo8zAcBePKvGQOKKuQcCILwIrQcQNIoPS3zwYhyEgKhACsAhQo89yiHBMAIWO+GoehIC-BA-KUdRSHMHRtZQNQrzkIIdzMJOeC-PAAD0Ik4uagbULiXL0IwIrYlAIlIDSOCWBAzwAFI4KIFAiZgSLCHpvxGgWzIABS8AAlCKvxKgBRpvGQCaPACGhIaIECUAA5NSYD4MW3LoFCEIGngdLciK6AADpgLFGgGiQOBquQLYwHI0aIjg6DPMiIqxbFmCCtSuUQugSXBvlcVgMcEC6eipXoL8EKfFVsVSNmIKUJK9Llcl5BgN5BpITAUDoJyunqngbVgIJwliRJghSTJDwMGACktiJJSPLuYDaJQ5rPJglBKQVYCoHGMDeeiqWwBlSoYjgSG0rg5UCo86oghAUKpY8oVqncGa-Fe8IHQWoJQsiYWYs1wigTNc2ieJkkqitcnrYpImlIhRo8kggZjncwi-HgIlnYU5q6cySUUINYXvll404DpWXZWQMC-HojUjVFMXVUgdUYIDZKNUlRLgtAMBVbIfz8Ig3p8NdWJVl5YBbligr+QaUIYPc3I3jywUkpWbToNeAp8WggjkFFGj6jmq2MDaDJyLr-lQExJIiIzOt9SWCrXHyEJUBBJJQiSkKwvCqaA4xpGFpKNJMaImUfMiE60kxrk1sQ9C-NwzBqDAACOEIUPQD1edSOKCC2UqcDwvCfR6ghkMyobYvqqugu7TGUGq3tloIEbajyUUSLuMDZoI+4N3wNqPB9jAvKCdzciTPcnRg+LUC1BJqhA6KMc8W45yAeeXIg9RgEFYIkBps9cPPdKL+STK68FEKL+lzdggTSVjRIO-R2610AXU-t-A0L8Po4hXgSeCBJsIrytPQD6vUUCHw1sHQ2kI8Rcn7vqFk5ooA1gAL5AA'>___</a>`);
     }
   }
