@@ -34,6 +34,8 @@ const ominousAskPreambles = ["THEY ARE OBSERVING YOU.", "THEY KNOW YOU", "YOU AR
 
 
 class Character {
+  obsessions = [];
+
   name;
   //https://morphimus.tumblr.com/post/710837261845037056/it-looked-kinda-like-this-the-post-would-be-the
   wungles = []; //most have none
@@ -121,8 +123,131 @@ class Character {
     }
   }
 
+  handleObsessions = (parentToRenderTo) => {
+    if (this.obsessions.length === 0) {
+      return;
+    }
+
+    //look for a post to start shit in
+
+    //if you cannot find one, create one.
+
+    const ominous_tags = ["have i always liked this?", "for some reason i'm obsessed with this", "i cant stop thinking of this", "does anyone else dream of this?", "why do i suddenly like this?", "what even is this", "im scared", "why can't i stop posting about this?"]
+    let target_obsession = rand.pickFrom(this.obsessions);
+
+    let {target, obsession}  = this.findPostToDoStupidDiscourseAbout(target_obsession);
+    let post;
+    console.log("JR NOTE: i am obsessed", target, obsession)
+
+    if(target){
+      post = this.doStupidDiscourse(target, obsession);
+
+    }else{//start the discourse yourself.
+      obsession = target_obsession;
+      if(this == camille){
+        //she is literally allergic to obsession.
+        /*
+        it makes her forget herself
+        want to ramble
+        to talk
+        just like that day in the courtroom with peewee dissing her report she worked so hard on
+        camille loves so much and so hard, she gets so so attached to things
+        her curse is cruel
+        */
+        post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}... God it feels so good to finally say it! Just get it off my chest. I love ${obsession.name}! I a;lsdkjfas;ljdfas</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [], []);
+        this.dead = true;
+        this.name += "-deactivated";
+
+      }else{
+        post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}...</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [], []);
+
+      }
+
+    }
+
+    
+
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
+    }
+
+
+  }
+
+  findPostToDoStupidDiscourseAbout = (target_obsession) => {
+    let posts = rand.shuffle(all_posts);
+    let obsessions = target_obsession ? [target_obsession]: rand.shuffle(this.obsessions);
+    console.log("JR NOTE: obsessions i am looking at are", obsessions)
+    for (let obsession of obsessions) {
+      for (let post of posts) {
+        if (post.text.toLowerCase().includes(obsession.name.toLowerCase())) {
+          return {target: post,obsession};
+        }
+      }
+    }
+    return{target: null, obsession: null}
+  }
+
+  
+  //looks for a post to start fandom shit about
+  //
+  doStupidDiscourse = (post, obsession) => {
+    if(!post){
+      return;
+    }
+    let responses = [
+      `Wow! You know about ${obsession.name}, too?`,
+      `Wow. Talk about a rancid take.`,
+      "Wow, really?",
+      `Tell us what you think about ${obsession.randomBlorbo(rand)}!`,
+      `${obsession.randomBlorbo(rand)} is so overrated :/`,
+
+      `Can you make me an OC that looks like ${obsession.randomBlorbo(rand)}?`,
+      `Okay, but what did you think about ${obsession.randomEvent(rand)}?`,
+      `omg where were you when ${obsession.randomEvent(rand)}?`,
+      `i almost forgot about ${obsession.randomEvent(rand)}`,
+      `This fandom is brain dead. How could anyone think ${obsession.randomOpinion(rand)}?`,
+      `${obsession.randomOpinion(rand)}`,
+      `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.", "I will fight anyone who says otherwise.", "If you believe that go ahead and block me.", "DNI if you can't accept it."])}`,
+      `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.", "I will fight anyone who says otherwise.", "If you believe that go ahead and block me.", "DNI if you can't accept it."])}`,
+      `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.", "I will fight anyone who says otherwise.", "If you believe that go ahead and block me.", "DNI if you can't accept it."])}`,
+      `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.", "I will fight anyone who says otherwise.", "If you believe that go ahead and block me.", "DNI if you can't accept it."])}`,
+      `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.", "I will fight anyone who says otherwise.", "If you believe that go ahead and block me.", "DNI if you can't accept it."])}`,
+      `${obsession.randomCommonPhrases(rand)}`,
+      `${obsession.randomCommonPhrases(rand)}`,
+      `i am so tired of hearing about '${obsession.randomCommonPhrases(rand)}'`,
+      `${obsession.randomLocation(rand)} is real and i went there ${rand.pickFrom(["last week", "last year", "two weeks ago", "yesterday", "last month", "friday", "every friday for two years"])}`,
+      `${obsession.randomObject(rand)} is my good luck charm`,
+      `You should read my fanfic about a young ${obsession.randomJob(rand)} who ends up saving the world!`,
+      `I can't believe you think that!!!`,
+      `Toxic fandom.`,
+      `Which is better, ${obsession.randomObject(rand)} or ${obsession.randomObject(rand)}?`,
+      `What about '${obsession.randomCommonPhrases(rand)}'?`,
+      "NOOOOOOOOOOOOOOOOO!",
+      `I want to put ${obsession.randomMinorBlorbo(rand)} in the dryer on high heat.`,
+
+      `Are we really all going to just forget about ${obsession.randomMinorBlorbo(rand)}?`,
+      `I am just sitting here microwaving ${obsession.randomMinorBlorbo(rand)}. `,
+      `I love ${obsession.randomMinorBlorbo(rand)} so much!`,
+      `Yeah and you probably want to be a ${obsession.randomJob(rand)} too!`,
+      `lol and i have a bridge to sell you in ${obsession.randomLocation(rand)}`,
+      `How could you think that about ${obsession.name}?`,
+      `GUYS! There is more to life than ${obsession.name}!!!`]
+
+    // /parent, text, tags, suggested_reblogs, suggested_tags)
+    let bonus = '';
+    if (obsession === all_obsessions[HALLOWEEN] && rand.nextDouble() > 0.75) {
+      bonus = halloweenpics ? rand.pickFrom(halloweenpics) : '';
+    }
+    return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>" + `<br>${bonus}`, [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
+    //look for a post that has this tag. start stupid drama about it
+}
+
   //hmm.  i should probably do the highest odd action first. 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
+    //if you have an obsession. well. do i have news for you, buddy.
+    //you're gonna be on tumblr TWICE as long
+    this.handleObsessions(parentToRenderTo);
 
     //check your highest priority thing first
     if (oddsLike > oddsPost && oddsLike > oddsReblog) {
@@ -364,7 +489,6 @@ const randomPornBot = () => {
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character {
-  obsessions = [];
   // 20h:14m:36s
   //5d:23h:17:04s
   //4d:15h:21m:33s
@@ -464,7 +588,6 @@ class PornBot extends Character {
       possiblePosts.push(`I hope I never will forget this... ${zEye.replaceAll("http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/", '')} <img src='${zEye}'>`)
     }
 
-    //JR NOTE: TODO flesh this out
     for (let obsession of this.obsessions) {
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think I should craft a homemade ${obsession.randomObject(rand)} from ${obsession.name}!</span>`);
       possiblePosts.push(`<span data-obession="${obsession.name}">Reblog if you think ${obsession.randomBlorbo(rand)} from ${obsession.name} is problematic!</span>`);
@@ -536,132 +659,76 @@ class PornBot extends Character {
 
   }
 
-  //looks for a post to start fandom shit about
-  //
-  doStupidDiscourse = () => {
-    let posts = rand.shuffle(all_posts);
-    let obsessions = rand.shuffle(this.obsessions);
-    for (let obsession of obsessions) {
-      for (let post of posts) {
-        if (post.text.toLowerCase().includes(obsession.name.toLowerCase())) {
-          let responses = [
-            `Wow! You know about ${obsession.name}, too?`,
-            `Wow. Talk about a rancid take.`,
-            "Wow, really?",
-            `Tell us what you think about ${obsession.randomBlorbo(rand)}!`,
-            `${obsession.randomBlorbo(rand)} is so overrated :/`,
 
-            `Can you make me an OC that looks like ${obsession.randomBlorbo(rand)}?`,
-            `Okay, but what did you think about ${obsession.randomEvent(rand)}?`,
-            `omg where were you when ${obsession.randomEvent(rand)}?`,
-            `i almost forgot about ${obsession.randomEvent(rand)}`,
-            `This fandom is brain dead. How could anyone think ${obsession.randomOpinion(rand)}?`,
-            `${obsession.randomOpinion(rand)}`,
-            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
-            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
-            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
-            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
-            `${obsession.randomOpinion(rand)} ${rand.pickFrom(["You might not like it, but its true.","I will fight anyone who says otherwise.","If you believe that go ahead and block me.","DNI if you can't accept it."])}`,
-            `${obsession.randomCommonPhrases(rand)}`,
-            `${obsession.randomCommonPhrases(rand)}`,
-            `i am so tired of hearing about '${obsession.randomCommonPhrases(rand)}'`,
-            `${obsession.randomLocation(rand)} is real and i went there ${rand.pickFrom(["last week","last year","two weeks ago","yesterday","last month","friday","every friday for two years"])}`,
-            `${obsession.randomObject(rand)} is my good luck charm`,
-            `You should read my fanfic about a young ${obsession.randomJob(rand)} who ends up saving the world!`,
-            `I can't believe you think that!!!`,
-            `Toxic fandom.`,
-            `Which is better, ${obsession.randomObject(rand)} or ${obsession.randomObject(rand)}?`,
-            `What about '${obsession.randomCommonPhrases(rand)}'?`,
-            "NOOOOOOOOOOOOOOOOO!",
-            `I want to put ${obsession.randomMinorBlorbo(rand)} in the dryer on high heat.`,
 
-            `Are we really all going to just forget about ${obsession.randomMinorBlorbo(rand)}?`,
-            `I am just sitting here microwaving ${obsession.randomMinorBlorbo(rand)}. `,
-            `I love ${obsession.randomMinorBlorbo(rand)} so much!`,
-            `Yeah and you probably want to be a ${obsession.randomJob(rand)} too!`,
-            `lol and i have a bridge to sell you in ${obsession.randomLocation(rand)}`,
-            `How could you think that about ${obsession.name}?`,
-            `GUYS! There is more to life than ${obsession.name}!!!`]
 
-          // /parent, text, tags, suggested_reblogs, suggested_tags)
-          let bonus = '';
-          if(obsession === all_obsessions[HALLOWEEN] && rand.nextDouble()>0.75){
-            bonus = halloweenpics? rand.pickFrom(halloweenpics):'';
-          }
-          return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>"+`<br>${bonus}`, [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
 
-        }
-      }
-      //look for a post that has this tag. start stupid drama about it
+tick = async (parentToRenderTo) => {
+
+  if (this.posts.length > 19) {
+    observer.submitAsk(this.name, "Obsession is a dangerous thing. You are obsessed. You are a dangerous thing. You will harm us if you try to touch us.");
+
+  }
+
+  let premadeAsk = rand.pickFrom(this.pending_asks)
+  if (premadeAsk) {
+    removeItemOnce(this.pending_asks, premadeAsk);
+    this.handleAsks(parentToRenderTo, premadeAsk);
+  }
+
+  //quotidians prefer to do stupid drama
+  if (rand.nextDouble() > 0.3) {
+    let {target,obsession} = this.findPostToDoStupidDiscourseAbout();
+    let post = this.doStupidDiscourse(target, obsession);
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
     }
+
   }
 
 
-  tick = async (parentToRenderTo) => {
-
-    if (this.posts.length > 19) {
-      observer.submitAsk(this.name, "Obsession is a dangerous thing. You are obsessed. You are a dangerous thing. You will harm us if you try to touch us.");
-
+  //quotidians prefer to do preprogrammed actions if possible
+  if (rand.nextDouble() > 0.5) {
+    let post = this.handleReadiedReblog();
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
     }
 
-    let premadeAsk = rand.pickFrom(this.pending_asks)
-    if (premadeAsk) {
-      removeItemOnce(this.pending_asks, premadeAsk);
-      this.handleAsks(parentToRenderTo, premadeAsk);
-    }
-
-    //quotidians prefer to do stupid drama
-    if (rand.nextDouble() > 0.3) {
-      let post = this.doStupidDiscourse();
-      if (post && parentToRenderTo) {
-        post.renderToScreen(parentToRenderTo);
-      }
-
-    }
-
-
-    //quotidians prefer to do preprogrammed actions if possible
-    if (rand.nextDouble() > 0.5) {
-      let post = this.handleReadiedReblog();
-      if (post && parentToRenderTo) {
-        post.renderToScreen(parentToRenderTo);
-      }
-
-    }
+  }
 
 
 
-    let target;
-    if (rand.nextDouble() > 0.5) {
-      target = this.findAPostEvenIfYouHaveInteractedWithIt();
+  let target;
+  if (rand.nextDouble() > 0.5) {
+    target = this.findAPostEvenIfYouHaveInteractedWithIt();
+  } else {
+    target = rand.shuffle(all_posts).find((i) => i.text.includes("toms"));
+  }
+
+  if (target && rand.nextDouble() > 0.5) {
+    if (rand.nextDouble() > 0.75) {
+      this.likePost(target);
+      //when they like a post also pester the owner with a random ask
+      target.owner.submitAsk(this.name, this.randomAsk());
     } else {
-      target = rand.shuffle(all_posts).find((i) => i.text.includes("toms"));
-    }
-
-    if (target && rand.nextDouble() > 0.75) {
-      if (rand.nextDouble() > 0.75) {
-        this.likePost(target);
-        //when they like a post also pester the owner with a random ask
-        target.owner.submitAsk(this.name, this.randomAsk());
-      } else {
-        let post = this.quotidianReblog(target);
-        if (post && parentToRenderTo) {
-          post.renderToScreen(parentToRenderTo);
-        }
-      }
-    } else {
-      let post = this.quotidianPost();
+      let post = this.quotidianReblog(target);
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
     }
-
-    //we need more asks, full on porn bot apocalypse
-    if (rand.nextDouble() > .75) {
-      rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
-
+  } else {
+    let post = this.quotidianPost();
+    if (post && parentToRenderTo) {
+      post.renderToScreen(parentToRenderTo);
     }
   }
+
+  //we need more asks, full on porn bot apocalypse
+  if (rand.nextDouble() > .75) {
+    rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
+
+  }
+}
 }
 
 //you should be allowed to follow people
@@ -1642,7 +1709,7 @@ class Alt extends Character {
   icon = "images/pathos/Zamblr_logo.png";
   secret_name = "alt";
 
-  
+
   //alt actually doesn't post much so most of this is waste only (unless she gets infected with obsession)
   wungles = [`so
   like
@@ -2651,10 +2718,10 @@ class K extends Character {
     //you are GOING to see more of K than anyone else.
 
 
-   if (this.posts.length == 2) {
-    //he will steal this too
-    this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
-  }
+    if (this.posts.length == 2) {
+      //he will steal this too
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+    }
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
@@ -3000,6 +3067,8 @@ class Parker extends Character {
   icon = "images/icons/Parker.png";
   secret_name = "parker";
   asked = false;
+  obsessions = [all_obsessions[MIKU]];
+
 
   constructor() {
     super();
