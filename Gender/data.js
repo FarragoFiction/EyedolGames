@@ -42,6 +42,8 @@ const lameGenders = lameGenderRaw.split("\n");
 //also "declined" gender makes me feel lik you'rue in gender debt so your gender card was declined
 const rawGender = `Male
 Female
+Woman - Woman
+3 women
 Other
 Unknown
 Ambiguous
