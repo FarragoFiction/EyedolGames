@@ -1539,7 +1539,14 @@ class EyeKiller extends Character {
   }
 
   tick = async (parentToRenderTo) => {
+  
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+    //FRIEND does not DARE message her. 
+    /*
+    this is because FRIEND does not dare bully her
+    she would rip through reality to kill it
+    because how else could she possibly feel safe
+    */
     //http://farragofiction.com/ATranscript/
     //http://farragofiction.com/SecurityLog/cctv.html
   }

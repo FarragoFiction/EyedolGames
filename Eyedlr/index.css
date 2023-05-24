@@ -274,6 +274,7 @@ body {
 
 #header-left {
   display: flex;
+  max-width: 50%;
 }
 
 #header-right {
