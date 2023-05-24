@@ -3,6 +3,7 @@
 
 let normalImageList = [];
 let weirdImageList = [];
+let halloween = false;
 //quotidians post from here, because i feel like the uninitiated deserve confusion
 //as a treat
 let zampanioEyes = [];
@@ -53,7 +54,7 @@ window.onload = () => {
   global_wungle = urlParams.get('wungle');
 
   let matchPercent = parseInt(urlParams.get('matchPercent'));
-  let halloween = parseInt(urlParams.get('halloween')) ||  date.getMonth() === 9 ;
+  halloween = (urlParams.get('halloween')) ||  date.getMonth() === 9 ;
 
   let seed = parseInt(urlParams.get('seed'));
   if (!seed) {
@@ -383,7 +384,7 @@ showProfile = (character) => {
 
 
   const mainContent = createElementWithClassAndParent("div", container, "profile-content");
-  const posts = character.posts.reverse();
+  const posts = character.posts;
   for (let post of posts) {
     let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
     mainContent.append(postElement);
@@ -397,7 +398,7 @@ showProfile = (character) => {
 
   postsTab.onclick = () => {
     mainContent.innerHTML = "";
-    const posts = character.posts.reverse();
+    const posts = character;
     for (let post of posts) {
       let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
       mainContent.append(postElement);
@@ -419,7 +420,7 @@ showProfile = (character) => {
     postsTab.classList.remove("active");
     askTab.classList.remove("active");
     mainContent.innerHTML = "";
-    const posts = character.liked_posts.reverse();
+    const posts = character.liked_posts;;
     if (posts && posts.length) {
       for (let post of posts) {
         let postElement = post.createElement(true);//passing true creates a clone instead of replacing the internal element
@@ -609,7 +610,6 @@ const grabFoodPosts = async () => {
 const grabFadedMemories = async () => {
   const loc = 'http://www.farragofiction.com/ZampanioEyes2/MemoriesOfThePast/';
   let tmp = await getImages(loc);
-  console.log("JR NOTE: tmp for memories was", tmp)
   fadedMemories = tmp.map((item) => loc + item);
 }
 

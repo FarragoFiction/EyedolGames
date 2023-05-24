@@ -114,21 +114,16 @@ class Character {
     if(!ask){
       return;//witherby doesnt have asks
     }
-    console.log("JR NOTE: checkAskForContamination ask is",ask)
     let tmp = document.createElement("div");
     tmp.innerHTML = ask.text;
     const span = tmp.querySelector("span");
     if(!span){
       return;
     }
-    console.log("JR NOTE: tmp is", span, "and dataset is", tmp.dataset)
     let obsession_key = span.dataset && span.dataset.obession;//yes i know its spelled wrong. past me is an fucker.
-    console.log("JR NOTE: obsession_key is",obsession_key)
     if(obsession_key){
       const o = all_obsessions[obsession_key];
-      console.log("JR NOTE: it's obsessed with", all_obsessions[obsession_key])
       this.obsessions.push(o);
-      console.log("JR NOTE: adding obsession to", this.name)
       return o;
     }
   }
@@ -259,8 +254,8 @@ class Character {
 
     // /parent, text, tags, suggested_reblogs, suggested_tags)
     let bonus = '';
-    if (obsession === all_obsessions[HALLOWEEN] && rand.nextDouble() > 0.75) {
-      bonus = halloweenpics ? rand.pickFrom(halloweenpics) : '';
+    if (halloweenpics && halloweenpics.length > 0 && obsession === all_obsessions[HALLOWEEN] && rand.nextDouble() > 0.75) {
+      bonus =  rand.pickFrom(halloweenpics);
     }
     return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>" + `<br>${bonus}`, [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
     //look for a post that has this tag. start stupid drama about it
@@ -484,6 +479,7 @@ const randomPornBot = () => {
   bot.desc = rand.pickFrom(links);
 
   let numberObsessions = rand.getRandomNumberBetween(1, 3);
+  halloween && bot.obsessions.push(all_obsessions[HALLOWEEN])
   let obsessionArray = Object.values(all_obsessions);
   for (let i = 0; i < numberObsessions; i++) {
     //MOSTLY they have obesssions in common, but they CAN be weird
@@ -692,7 +688,7 @@ class PornBot extends Character {
 
 tick = async (parentToRenderTo) => {
 
-  if (this.posts.length > 19) {
+  if (this.posts.length === 19) {
     observer.submitAsk(this.name, "Obsession is a dangerous thing. You are obsessed. You are a dangerous thing. You will harm us if you try to touch us.");
 
   }
@@ -750,9 +746,11 @@ tick = async (parentToRenderTo) => {
     }
   }
 
-  //we need more asks, full on porn bot apocalypse
-  if (rand.nextDouble() > .75) {
+  //we need more asks, full on porn bot apocalypse (but don't spam your too far thing)
+  
+  if (this.posts.length < 21 && rand.nextDouble() > .75) {
     rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
+    rand.nextDouble() > .75 && observer.submitAsk(this.name, this.randomAsk());
 
   }
 }
@@ -827,7 +825,6 @@ class Observer extends Character {
     const askContainer = createElementWithClassAndParent("div", document.querySelector("body"));
 
     for (let a of this.pending_asks) {
-      console.log("JR NOTE: pending asks is", this.pending_asks, a)
       const post = createElementWithClassAndParent("div", askContainer, "post");
       const postIcon = createElementWithClassAndParent("div", post, "post-icon");
       const postIconImg = createElementWithClassAndParent("img", postIcon);
@@ -1227,7 +1224,7 @@ class Intern1 extends Character {
   name = "test-beta-dev"; //the best dude
   icon = "images/icons/Intern-who-knows.png";
   plead = false;
-  desc = "Wanda, I think we're almost ready to go live.";
+  desc = "Wanda, I think we're almost ready to go live. The bots are posting pretty frequently and things seem stable. We even have asks working.";
 
   //porn bot posts this, intern reblogs with gigglesnort https://www.tumblr.com/phantomrose96/710087799520509952?source=branch
   constructor() {

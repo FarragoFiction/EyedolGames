@@ -1089,14 +1089,16 @@ all_obsessions[HOUSEOFLEAVES] = new Obsession(
 
 //clown friend
 
+
+
 const lCharRaw = `Maccus ,The Scarecrow`;
-const lChar2Raw = `Butler, Grounds Keeper, Bell Hop`;
-const lImportantEventsRaw = `when the clone saga happened, when the murder mystery happened, when the Maccus hunt happened, when the ritual sacrifice happened, when the wedding happened, when everything burned down, when everything burned down a second time, when the power outages happened, when the hotel shifted into the past`;
-const lOpinionsRaw = ` the Scarecrow is nice, the Macci are one person, Orange Drink is not healthy, you should be able to beat the shit out of each other,  the butler is evil`;
-const lMemesRaw = `Orange Drink!!!, The Muppet Haunted Mansion Special`;
-const lGoalsRaw = ``;
+const lChar2Raw = `Butler, Grounds Keeper, Bell Hop,The Vampire, The Cyborg, The Dark Ones, Bobo, Limes, the Mask, Josh, Flicker, Shadow, Warden, Ghost`;
+const lImportantEventsRaw = `when the first Maccus removed their flesh to become free, when there was juggling of the corpses of angels, when it crossed into our world, when it escaped the maze, when The Ascension happened, when an angel was destroyed with a party cannon, when you escaped the maze, when the clone saga happened, when the murder mystery happened, when the Maccus hunt happened, when the ritual sacrifice happened, when the wedding happened, when everything burned down, when everything burned down a second time, when the power outages happened, when the hotel shifted into the past`;
+const lOpinionsRaw = `there's more than just one Maccus, the candy isn't real candy, the cats hold a secret, Maccus is still alive, Maccus is dead, the hotel has nice food, the hotel is a pleasant stay, I never want to leave the hotel, they won't let us out of the hotel, the Scarecrow is nice, the Macci are one person, Orange Drink is not healthy, you should be able to beat the shit out of each other,  the butler is evil`;
+const lMemesRaw = `Orange Drink!!!, The Muppet Haunted Mansion Special,im so hungry, Be safe and don't get lost, Candy, Meat`;
+const lGoalsRaw = `start Map making, trycreating or collecting the mask, try splitting my consciousness, start becoming part of the collective, do pumpkin carving, try wearing a Halloween costume`;
 const lLocationsRaw = `West Hall, East Hall, South Hall, Fairgrounds, Big Top, Maze Entrance`;
-const lObjectsRaw = `Candy, Pile of Meat`;
+const lObjectsRaw = `Mask, Key, Candy, Orange Drink, Water Balloon, Old Key, Invitation, Clown Horn, Candy, Pile of Meat`;
 const lJobsRaw = `Butler, Scarecrow, Maccus, Grounds Keeper, Bellhop`;
 
 
