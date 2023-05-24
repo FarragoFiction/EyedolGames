@@ -110,6 +110,29 @@ class Character {
     }
   }
 
+  checkAskForContamination =(ask)=>{
+    if(!ask){
+      return;//witherby doesnt have asks
+    }
+    console.log("JR NOTE: checkAskForContamination ask is",ask)
+    let tmp = document.createElement("div");
+    tmp.innerHTML = ask.text;
+    const span = tmp.querySelector("span");
+    if(!span){
+      return;
+    }
+    console.log("JR NOTE: tmp is", span, "and dataset is", tmp.dataset)
+    let obsession_key = span.dataset && span.dataset.obession;//yes i know its spelled wrong. past me is an fucker.
+    console.log("JR NOTE: obsession_key is",obsession_key)
+    if(obsession_key){
+      const o = all_obsessions[obsession_key];
+      console.log("JR NOTE: it's obsessed with", all_obsessions[obsession_key])
+      this.obsessions.push(o);
+      console.log("JR NOTE: adding obsession to", this.name)
+      return o;
+    }
+  }
+
   //there is no rhyme or reason to what anyone likes, just like random shit
   //not worth putting more effort in i wanna get to the meat
   checkBlorboLike = (odds) => {
@@ -137,7 +160,6 @@ class Character {
 
     let {target, obsession}  = this.findPostToDoStupidDiscourseAbout(target_obsession);
     let post;
-    console.log("JR NOTE: i am obsessed", target, obsession)
 
     if(target){
       post = this.doStupidDiscourse(target, obsession);
@@ -154,12 +176,12 @@ class Character {
         camille loves so much and so hard, she gets so so attached to things
         her curse is cruel
         */
-        post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}... God it feels so good to finally say it! Just get it off my chest. I love ${obsession.name}! I a;lsdkjfas;ljdfas</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [], []);
+        post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}... God it feels so good to finally say it! Just get it off my chest. I love ${obsession.name}! I a;lsdkjfas;ljdfas</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [""], [""]);
         this.dead = true;
         this.name += "-deactivated";
 
       }else{
-        post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}...</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [], []);
+        post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}...</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [""], [""]);
 
       }
 
@@ -636,11 +658,15 @@ class PornBot extends Character {
   }
 
   randomAsk = () => {
-    const ret = [...links, `Don't you just want to squish ${rand.pickFrom(this.obsessions).randomMinorBlorbo(rand)}?`, `Do you think ${rand.pickFrom(this.obsessions).randomBlorbo(rand)} is overrated?`, `What do you think about ${rand.pickFrom(this.obsessions).randomOpinion(rand)}?`, `Have you ever consumed ${rand.pickFrom(this.obsessions).name}? You should. It's great!`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
+    const obsession = rand.pickFrom(this.obsessions);
+    //uses key and not obsession because i don't want accidental mentions to kick this off (plus easier to recover obsession)
+    const ret = [...links, `<span data-obession="${obsession.key}">Don't you just want to squish ${obsession.randomMinorBlorbo(rand)}?</span>`, `<span data-obession="${obsession.key}">Do you think ${obsession.randomBlorbo(rand)} is overrated?</span>`, `<span data-obession="${obsession.key}">What do you think about ${obsession.randomOpinion(rand)}?</span>`, `<span data-obession="${obsession.key}">Have you ever consumed ${obsession.name}? You should. It's great!</span>`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
     return rand.pickFrom(ret)
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
 
     let innaneComments = ["Am I a real boy now?", "look what i found!!!!", "did i do good?", "caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "look look look i found a thing", "look!", "look i found something!"];
     //witherby doesn't judge but his followers sure do
@@ -653,7 +679,7 @@ class PornBot extends Character {
       return;
     }
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)]);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [rand.pickFrom(innaneComments),bonus], [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -981,7 +1007,8 @@ class Wanda extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = [""];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -1001,6 +1028,7 @@ class Wanda extends Character {
     if (responses.length == 0) {
       return;
     }
+    tags.push(bonus);
 
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
@@ -1970,7 +1998,8 @@ class Neville extends Character {
 
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = [""];
     //witherby doesn't judge but his followers sure do
     let responses = [];
@@ -1990,7 +2019,7 @@ class Neville extends Character {
     if (responses.length == 0) {
       return;
     }
-
+    tags.push(bonus);
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -2062,7 +2091,8 @@ class Devona extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
     //witherby doesn't judge but his followers sure do
     let responses = [];
@@ -2078,7 +2108,7 @@ class Devona extends Character {
     if (responses.length == 0) {
       return;
     }
-
+    tags.push(bonus)
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -2163,6 +2193,8 @@ class Ria extends Character {
 
   //ria is quiet unless you get her going and then she can't stop
   handleAsks = (parentToRenderTo, premadeAsk) => {
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -2188,7 +2220,7 @@ class Ria extends Character {
     if (responses.length == 0) {
       return;
     }
-
+    tags.push(bonus)
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -2307,7 +2339,8 @@ class Camille extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = [":3"];
     let responses = [":3"]
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -2318,7 +2351,7 @@ class Camille extends Character {
     }
 
     const suggested_reblogs = ["oh shit"]
-
+    tags.push(bonus)
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -2408,6 +2441,8 @@ class Witherby extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     //just generate an ask rather than deal with a blocked char.
     if (premadeAsk && this.block_list.includes(premadeAsk.characterName)) {
       premadeAsk = null;
@@ -2453,7 +2488,7 @@ class Witherby extends Character {
     const tags = ["confession"];
     //witherby doesn't judge but his followers sure do
     const suggested_reblogs = ["wow", "what the hell", "who DOES that", "you should feel ashamed"]
-
+    tags.push(bonus)
     const post = this.answerAnAsk(rand.pickFrom(responses), question, (premadeAsk && premadeAsk.characterName) ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -2509,7 +2544,8 @@ class Yongki extends Character {
 
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
@@ -2525,8 +2561,7 @@ class Yongki extends Character {
     if (responses.length == 0) {
       return;
     }
-
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [""], [""], ["classic parker"]);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [bonus], [""], ["classic parker"]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -2698,7 +2733,8 @@ class K extends Character {
   //just copies and pastes them into a new post and doesn't credit the asker
   //after all, who can PROVE anyone but him ever said these words?
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = ["original post", "do not steal", "K", "check my profile for more quality content"];
     //witherby doesn't judge but his followers sure do
     let responses = [premadeAsk.text];
@@ -2709,7 +2745,7 @@ class K extends Character {
     //which means sometiems training will identify him as breahcing (but their fix does still deactivate you)
 
 
-    const post = this.createNewPost(rand.pickFrom(responses), tags, [""], ["k post", "trigger warning: annoying"]);
+    const post = this.createNewPost(rand.pickFrom(responses), tags, [bonus], ["k post", "trigger warning: annoying"]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -2838,7 +2874,8 @@ class DocSlaughter extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     const tags = ["Answered Ask"];
     //witherby doesn't judge but his followers sure do
     let responses = ["I am So Flattered you wished to be Seen by me!", "What a Connundrum, perhaps the Eyes wish to weigh in?", "So Thoughtful!", "Fascinating!", "Please, do go on!", "What makes you think that?"];
@@ -2851,7 +2888,7 @@ class DocSlaughter extends Character {
     }
 
     const suggested_reblogs = ["seen"]
-
+    tags.push(bonus)
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -2942,7 +2979,8 @@ class TheNeighbor extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let responses = ["I am so glad you asked that :)", "What a fascinating question!", "How wonderful that you asked that!"];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
@@ -2950,7 +2988,7 @@ class TheNeighbor extends Character {
 
 
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", ["ask"], [], []);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", ["ask",bonus], [""], [""]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -3097,7 +3135,8 @@ class Parker extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
@@ -3111,7 +3150,7 @@ class Parker extends Character {
       return;
     }
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [""], [""], ["classic parker"]);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [bonus], [""], ["classic parker"]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -3696,7 +3735,8 @@ class JR extends Character {
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
-
+    const obsession = this.checkAskForContamination(premadeAsk);
+    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
     let tags = [""];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -3712,7 +3752,7 @@ class JR extends Character {
     if (responses.length == 0) {
       return;
     }
-
+    tags.push(bonus);
     const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", tags, suggested_reblogs, suggested_reblogs);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
