@@ -57,11 +57,13 @@ class Obsession {
   locations = []
   objects = []
   jobs = []
+  key = "???"
 
-  constructor(name, blorbos, minorBlorbos,importantEvents, opinions, commonPhrases, fanGoals, locations,objects,jobs) {
+  constructor(name, blorbos, minorBlorbos,importantEvents, opinions, commonPhrases, fanGoals, locations,objects,jobs,key) {
     this.name = name;
     this.blorbos = blorbos;
     this.minorBlorbos = minorBlorbos;
+    this.key = key;
 
     this.importantEvents = importantEvents
     this.commonPhrases = commonPhrases;
@@ -203,7 +205,7 @@ const createObessionFromTheme = (theme,rand)=>{
     [...theme.getPossibilitiesFor(LOCATION)],
     [...theme.getPossibilitiesFor(LOCATION)],
     [...theme.getPossibilitiesFor(PERSON).map((i)=>`The ${theme.pickPossibilityFor(COMPLIMENT,rand)} ${titleCase(i)}`)],
-  
+    theme.key
   );
 }
 
@@ -218,7 +220,8 @@ all_obsessions[GLITCH] = new Obsession(
   ["GOAL1","GOAL2","GOAL2"],
   ["LOCATION1","LOCATION2","LOCATION3"],
   ["OBJECT1","OBJECT2","OBJECT3"],
-  ["JOB1","JOB2","JOB3"]
+  ["JOB1","JOB2","JOB3"],
+  GLITCH
 
 );
 
@@ -232,7 +235,8 @@ all_obsessions[ZAMPANIO] = new Obsession(
   ["GOAL1","GOAL2","GOAL2"],
   ["LOCATION1","LOCATION2","LOCATION3"],
   ["OBJECT1","OBJECT2","OBJECT3"],
-  ["JOB1","JOB2","JOB3"]
+  ["JOB1","JOB2","JOB3"],
+  ZAMPANIO
 
 );
 
@@ -246,7 +250,8 @@ all_obsessions[HOMESTUCK] = new Obsession(
   ["learn how to draw in the symbolic style","write a fan-fiction about that time on the meteor","write a fan comic where everyone lives","rewrite the epilogues to be less depressing","write a story about characters from another series playing sburb","code an elaborate simulation of sburb complete with glitches"],
   ["Incipisphere","Paradox Space","Frog Temple","Ectobiology Lab","Dream Bubble","Brooding Caverns","Skaia","Furthest Ring","Alternia","Beforus","The Meteor","Prospit","Derse","The Battlefield","The Land of Wind and Shade","The Land of Little Cubes and Tea","The Land of Caves and Silence","The Land of Maps and Treasure","The Land of Clockwork and Heat","The Land of Pulse and Haze","The Land of Light and Rain","The Green Sun","The Land of Frost and Frogs"],
   ["juju","tumor","grist","special stardust","squiddle","fenestrated plane","codpiece","pumpkin","painting of a horse attacking a football player","matriorb","lil cal","boondollar","perfectly generic cube","kernel sprite","ring of orbs x fold","cake","shitty sword","bunny","frog"],
-  ["ectobiologist","godtier","kernal sprite","carapacian","consort","denizen","player","knight","maid","mage","page","rogue","sylph","seer","thief","prince","bard","heir","witch","grimdark","grimbark","trickster"]
+  ["ectobiologist","godtier","kernal sprite","carapacian","consort","denizen","player","knight","maid","mage","page","rogue","sylph","seer","thief","prince","bard","heir","witch","grimdark","grimbark","trickster"],
+  HOMESTUCK
   );
 
 all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
@@ -260,6 +265,7 @@ all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
   ["Sannikov Land","Ny-Ålesund","Millbank Prison","Hilltop Road","The Archives","London","The Panopticon","The Distortion's Hallways"],
   ["web table","'The Seven Lamps of Architecture'","'Ex Altiora'","web lighter","'Catalogue of the Trapped Dead'","'The Boneturner's Tale'","'A Guest For Mister Spider'","Leitner Book","tape recorder","eye"],
   ["archival assistant","avatar","Archivist","entity","Avatar of the Eye","Avatar of the Buried","Avatar of the Spiral","Avatar of the Stranger","Avatar of the Dark","Avatar of the Hunt","Avatar of the Slaughter","Avatar of the Web","Avatar of the Vast","Avatar of the Lonely","Avatar of the End","Avatar of the Desolation","Avatar of the Corruption"]
+  ,THE_MAGNUS_ARCHIVES
   );
 
 
@@ -321,7 +327,8 @@ all_obsessions[THE_MAGNUS_ARCHIVES] =new Obsession(
     henchGoalsRaw.split("\n"),
     henchLocationsRaw.split("\n"),
     henchObjectsRaw.split("\n"),
-    henchJobsRaw.split("\n")  
+    henchJobsRaw.split("\n"),
+    HENCH
   );
 
 
@@ -349,7 +356,8 @@ all_obsessions[FIVEDARPS] = new Obsession(
   darpsGoalsRaw.split(","),
   darpsLocationsRaw.split(","),
   darpsObjectsRaw.split(","),
-  darpsJobsRaw.split(",")  
+  darpsJobsRaw.split(",") ,
+  FIVEDARPS 
 );
 
 
@@ -438,7 +446,8 @@ all_obsessions[TOGITHINGY] = new Obsession(
   togiGoalsRaw.split("\n"),
   togiLocationsRaw.split("\n"),
   togiObjectsRaw.split("\n"),
-  togiJobsRaw.split("\n")  
+  togiJobsRaw.split("\n")  ,
+  TOGITHINGY
 );
 
 
@@ -650,7 +659,8 @@ all_obsessions[SUBTLEWARS] = new Obsession(
   swGoalsRaw.split("\n"),
   swLocationsRaw.split("\n"),
   swObjectsRaw.split("\n"),
-  swJobsRaw.split("\n")  
+  swJobsRaw.split("\n"),
+  SUBTLEWARS  
 );
 
 
@@ -747,7 +757,8 @@ all_obsessions[CNC] = new Obsession(
   cncGoalsRaw.split("\n"),
   cncLocationsRaw.split("\n"),
   cncObjectsRaw.split("\n"),
-  cncJobsRaw.split("\n")  
+  cncJobsRaw.split("\n")  ,
+  CNC
 );
 
 
@@ -778,7 +789,8 @@ all_obsessions[THEWAYAHEAD] = new Obsession(
   twaGoalsRaw.split(","),
   twaLocationsRaw.split(","),
   twaObjectsRaw.split(","),
-  twaJobsRaw.split(",")  
+  twaJobsRaw.split(","),
+  THEWAYAHEAD  
 );
 
 
@@ -808,7 +820,8 @@ all_obsessions[FORWANTOFKNOWLEDGE] = new Obsession(
   fwokGoalsRaw.split(","),
   fwokLocationsRaw.split(","),
   fwokObjectsRaw.split(","),
-  fwokJobsRaw.split(",")  
+  fwokJobsRaw.split(",")  ,
+  FORWANTOFKNOWLEDGE
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -837,7 +850,8 @@ all_obsessions[OFANDTHEYSHALL] = new Obsession(
   oatsGoalsRaw.split(","),
   oatsLocationsRaw.split(","),
   oatsObjectsRaw.split(","),
-  oatsJobsRaw.split(",")  
+  oatsJobsRaw.split(",")  ,
+  OFANDTHEYSHALL
 );
 
 
@@ -870,7 +884,8 @@ all_obsessions[ZAMPANIO] = new Obsession(
   zGoalsRaw.split(","),
   zLocationsRaw.split(","),
   zObjectsRaw.split(","),
-  zJobsRaw.split(",")  
+  zJobsRaw.split(",")  ,
+  ZAMPANIO
 );
 
 
@@ -901,7 +916,8 @@ all_obsessions[THEECHIDNAUNIVERSE] = new Obsession(
   teuGoalsRaw.split(","),
   teuLocationsRaw.split(","),
   teuObjectsRaw.split(","),
-  teuJobsRaw.split(",")  
+  teuJobsRaw.split(",")  ,
+  THEECHIDNAUNIVERSE
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -932,7 +948,8 @@ all_obsessions[FARRAGNAROK] = new Obsession(
   ffGoalsRaw.split(","),
   ffLocationsRaw.split(","),
   ffObjectsRaw.split(","),
-  ffJobsRaw.split(",")  
+  ffJobsRaw.split(","),
+  FARRAGNAROK  
 );
 
 
@@ -973,7 +990,8 @@ all_obsessions[LTE] = new Obsession(
   lteGoalsRaw.split(","),
   lteLocationsRaw.split(","),
   lteObjectsRaw.split(","),
-  lteJobsRaw.split(",")  
+  lteJobsRaw.split(",")  ,
+  LTE
 );
 
 
@@ -1000,7 +1018,8 @@ all_obsessions[ANIMORPHS] = new Obsession(
   aniGoalsRaw.split(","),
   aniLocationsRaw.split(","),
   aniObjectsRaw.split(","),
-  aniJobsRaw.split(",")  
+  aniJobsRaw.split(",") ,
+  ANIMORPHS 
 );
 
 
@@ -1062,7 +1081,8 @@ all_obsessions[HOUSEOFLEAVES] = new Obsession(
   holGoalsRaw.split("\n"),
   holLocationsRaw.split("\n"),
   holObjectsRaw.split("\n"),
-  holJobsRaw.split("\n")  
+  holJobsRaw.split("\n")  ,
+  HOUSEOFLEAVES
 )
 
 
@@ -1090,7 +1110,8 @@ all_obsessions[HALLOWEEN] = new Obsession(
   lGoalsRaw.split(","),
   lLocationsRaw.split(","),
   lObjectsRaw.split(","),
-  lJobsRaw.split(",")  
+  lJobsRaw.split(","),
+  HALLOWEEN  
 );
 
 const mikuCharRaw = `Hatsune Miku`;
@@ -1114,7 +1135,8 @@ all_obsessions[MIKU] = new Obsession(
   mikuGoalsRaw.split(","),
   mikuLocationsRaw.split(","),
   mikuObjectsRaw.split(","),
-  mikuJobsRaw.split(",")  
+  mikuJobsRaw.split(",")  ,
+  MIKU
 );
 
 const peeweeCharRaw = `Peewee`;
@@ -1144,7 +1166,8 @@ all_obsessions[PEEWEE] = new Obsession(
   peeweeGoalsRaw.split(","),
   peeweeLocationsRaw.split(","),
   peeweeObjectsRaw.split(","),
-  peeweeJobsRaw.split(",")  
+  peeweeJobsRaw.split(",") ,
+  PEEWEE 
 );
 
 /*
@@ -1170,6 +1193,7 @@ all_obsessions[TOGITHINGY] = new Obsession(
   GoalsRaw.split("\n"),
   LocationsRaw.split("\n"),
   ObjectsRaw.split("\n"),
-  JobsRaw.split("\n")  
+  JobsRaw.split("\n")  ,
+  TOGITHINGY
 );
 */
