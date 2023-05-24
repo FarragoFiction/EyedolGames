@@ -365,6 +365,10 @@ showProfile = (character) => {
 
   const descEle = createElementWithClassAndParent("div", container, "profile-desc");
   descEle.innerHTML = character.desc ? character.desc : "";
+  
+  const obessions = createElementWithClassAndParent("div", descEle);
+  obessions.innerHTML = "Fandoms: "+ uniq(character.obsessions).map((o)=>`<span>${o.name}</span>`).join(", ")
+
 
   const tabsHolder = createElementWithClassAndParent("div", container, "tabs-holder");
   const postsTab = createElementWithClassAndParent("div", tabsHolder, "active");
