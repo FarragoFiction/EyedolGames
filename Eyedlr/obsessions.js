@@ -32,6 +32,7 @@ const ANIMORPHS = 'ANIMORPHS'; //how did i forget this before
 const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
 const HALLOWEEN = 'Lavinraca '; //this one intentionally is not in jackelope
 const MIKU = 'Hatsune Miku '; //this one is for parker
+const PEEWEE = 'PEEWEE '; //this one is for ria
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -1114,6 +1115,36 @@ all_obsessions[MIKU] = new Obsession(
   mikuLocationsRaw.split(","),
   mikuObjectsRaw.split(","),
   mikuJobsRaw.split(",")  
+);
+
+const peeweeCharRaw = `Peewee`;
+const peeweeChar2Raw = `Peewee`;
+//ria has been watching him. whole team has really, but it's affected ria the most. Like Camille, she has basically no Temperence. She attaches so easily...and became obsessed with him. Even got a little parasocial crush on him. Never meet your heroes. 
+//this quotidian is mimicking ria before her heart broke and she started the healing process.
+//it interests me that you guys accidentally missed out on seeing all the build up to her explosion
+//so many times you could have encountered it
+//but then 
+//bam
+const peeweeImportantEventsRaw = `when peewee gave out those gamer subs, when peewee got into deep debt, when peewees unconscious body was lost at sea for several years--eventually washing up near florida, when peewee found the bermuda triangle, when peewee masterfully ended the world after making just two games, when peewee explained that this universe was a mistake, when peewee had a gun, when peewee adopted those three TIMEHOLE clones, when peewee threatened the intern, when peewee defended the killer in that court case, when peewee got camille out of her shell, when witherby did attachment work on peewe, when devona managed to keep avoiding being caught by peewee, when i left peewee all those stickers, when peewee said my name, when peewee loved me, when peewee ended the universe, when peewee spoke a Prophecy, when peewee loved me `;
+const peeweeOpinionsRaw = `peewee is completely justified in leaving Eggman to die in his own piss, peewee needs GFuel because he is a god, GFuel is a celestial object, peewee doesn't have a crush on robert bobert, peewee has such a tragic backstory, peewee is a god, peewee created this universe, peewee will end this universe, peewee is such a good gamer, peewee is so smart, peewee is so handsome, peewee is going to end the universe, peewee understands that the universe was not meant to be this way, peewee understands that the universe is an echidna, peewee loves me, peewee is the Devil of Spirals, peewee will lead us all to a new univese, peewee is the culmination of all our hopes, peewee likes me`;
+const peeweeMemesRaw = `sweet gamer subs`;
+const peeweeGoalsRaw = `end the universe with peewee, confess my love to peewee, keep watching peewee forever, help the training team keep watching peewee`;
+const peeweeLocationsRaw = `the echidna, eyedol hq, the tunnels under Disney, Rod's House, Westerville Cafe, Northstar Grill , Westerville Ohio`;
+const peeweeObjectsRaw = `gamer goggles, gun, GFuel, Egg`;
+const peeweeJobsRaw = `gamer`;
+
+
+all_obsessions[PEEWEE] = new Obsession(
+  "Peewee",
+  peeweeCharRaw.split(","),
+  peeweeChar2Raw.split(","),
+  peeweeImportantEventsRaw.split(","),
+  peeweeOpinionsRaw.split(","),
+  peeweeMemesRaw.split(","),
+  peeweeGoalsRaw.split(","),
+  peeweeLocationsRaw.split(","),
+  peeweeObjectsRaw.split(","),
+  peeweeJobsRaw.split(",")  
 );
 
 /*

@@ -225,6 +225,7 @@ class Character {
       `What about '${obsession.randomCommonPhrases(rand)}'?`,
       "NOOOOOOOOOOOOOOOOO!",
       `I want to put ${obsession.randomMinorBlorbo(rand)} in the dryer on high heat.`,
+      `One day, I am going to ${obsession.randomGoal(rand)}!`,
 
       `Are we really all going to just forget about ${obsession.randomMinorBlorbo(rand)}?`,
       `I am just sitting here microwaving ${obsession.randomMinorBlorbo(rand)}. `,
@@ -2156,6 +2157,8 @@ class Ria extends Character {
   name = "we-didnt-start-the-fire"
   secret_name = "Ria";
   icon = "images/icons/Ria.png";
+  obsessions = [all_obsessions[PEEWEE]];
+
 
 
   //ria is quiet unless you get her going and then she can't stop
