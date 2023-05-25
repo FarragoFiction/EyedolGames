@@ -37,7 +37,7 @@
               <path
                 d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
             </svg></div>
-          <input placeholder="Search Eyedlr" type="text">
+          <input id="search-box" placeholder="Search Eyedlr" type="text">
         </div>
       </div>
       <div id="header-right">
@@ -53,8 +53,8 @@
               d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
           </svg>
           <span id="ask-count">0</span>
-        
-        
+
+
         </div>
         <div id="chat"><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
             viewBox="0 0 24 24" width="24px" fill="#c4c4c4">
@@ -90,6 +90,23 @@
 
   </div>
   </div>
+
+  <div id="search-container">
+    <h1 id="search-term">SEARCH TERM</h1>
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div id="search-content">
+      <div id="search-container-content1"></div>
+      <div id="search-container-content2"></div>
+      <div id="search-container-content3"></div>
+    </div>
+
+  </div>
+
   <div id="container">
 
     <div class="post">
@@ -97,6 +114,9 @@
         <img src="http://eyedolgames.com/JackElope/images/SexySingles/Creepy/00008-img.png">
 
       </div>
+
+
+
       <div class="post-container">
 
         <div class="post-header">enemyJeff<div class='reblog-arrow'><svg xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +134,6 @@
         <div class="post-body">
           <div>TODO:</div>
           <ul>
-            <li>trying to search for anything gets you 19 random posts (we all know the tumblr search doesn't work)
-            </li>
 
             <li>if came from nowhere, load up the wanderer's profile (you have to choose to close it to see the full
               thing) (the truth is layered)</li>
