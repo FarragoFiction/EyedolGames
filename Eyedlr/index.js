@@ -54,7 +54,7 @@ window.onload = () => {
   global_wungle = urlParams.get('wungle');
 
   let matchPercent = parseInt(urlParams.get('matchPercent'));
-  halloween = (urlParams.get('halloween')) ||  date.getMonth() === 9 ;
+  halloween = (urlParams.get('halloween')) || date.getMonth() === 9;
 
   let seed = parseInt(urlParams.get('seed'));
   if (!seed) {
@@ -65,21 +65,21 @@ window.onload = () => {
 
   let o = Object.values(all_obsessions)
   globalObsessions.push(rand.pickFrom(o))
-  if(halloween){
+  if (halloween) {
     globalObsessions.push(all_obsessions[HALLOWEEN])
 
-  }else{
+  } else {
     globalObsessions.push(rand.pickFrom(o))
 
   }  //last one can be REALLY random
   for (let theme of Object.values(all_themes)) {
     createObessionFromTheme(theme, rand);
   }
- 
+
   globalObsessions.push(rand.pickFrom(o))
 
   let loc = urlParams.get('loc');
-
+  setupSearch();
   init();
   //not awaited, it either loads or it doesn't, its slow
 
@@ -93,6 +93,19 @@ window.onload = () => {
 
 
 
+}
+
+const setupSearch = () => {
+  let input = document.querySelector("#search-box");
+  let searchTerm = document.querySelector("#search-term")
+  input.oninput = () => {
+    if (input.value) {
+      searchTerm.innerText = input.value;
+      showSearch(input.value);
+    } else {
+      showPosts();
+    }
+  }
 }
 
 const init = async () => {
@@ -211,7 +224,7 @@ const init = async () => {
 //is this pretty? no.
 //does this get around the fact that for loops aren't asyncronous and i feel lazy?
 //also yes
-const initialTicks = async ()=>{
+const initialTicks = async () => {
 
   await sleep(1000);
   await tick();
@@ -277,10 +290,10 @@ const isItWungleTime = async () => {
 
   //midnight and fridays are wungle time
   const date = new Date();
-  if (hackedGiggles || date.getHours() == 0 || date.getDay() === 5 ) {
+  if (hackedGiggles || date.getHours() == 0 || date.getDay() === 5) {
     global_wungle = true;
     const posts = document.querySelectorAll(".post");
-    for(let p of posts){
+    for (let p of posts) {
       p.classList.add("wungle");
     }
   }
@@ -345,9 +358,82 @@ const createImageViewer = (ele) => {
   }
 }
 
+//every time you show it, it randomizes. 
+//we all know tumblr search is shit. 
+//this is just an exageration of it
+const showSearch = async (searchTerm) => {
+  let searchRand = new SeededRandom(stringtoseed(searchTerm));
+  //this actually does nothing other than avoid polluting the main rand
+  //because its always growing we cant be consistent
+  //i guess unless its now growing
+  const search = document.querySelector("#search-container");
+  search.style.display = "block";
+  const normalPosts = document.querySelector("#container");
+  normalPosts.style.display = "none";
+
+  const loader = document.querySelector(".lds-ellipsis");
+  loader.style.display = "block";
+
+  const content1 = document.querySelector("#search-container-content1");
+  content1.style.display = "none";
+  content1.innerHTML = "";
+
+
+  const content2 = document.querySelector("#search-container-content2");
+  content2.style.display = "none";
+  content2.innerHTML = "";
+
+
+  const content3 = document.querySelector("#search-container-content3");
+  content3.style.display = "none";
+  content3.innerHTML = "";
+
+  //purely for showmanship
+  await sleep(1000);
+
+
+  content1.style.display = "flex";
+  content2.style.display = "flex";
+  content3.style.display = "flex";
+
+
+  let posts = searchRand.shuffle([...all_posts]);
+  loader.style.display = "none";
+  //tumblrs weird format
+  for (let i = 0; i < 19 * 3; i += 3) {
+    if (posts.length > i+3) {
+      let postElement = posts[i].createElement(true);//passing true creates a clone instead of replacing the internal element
+      content1.append(postElement);
+
+      postElement = posts[i + 1].createElement(true);//passing true creates a clone instead of replacing the internal element
+      content2.append(postElement);
+
+      postElement = posts[i + 2].createElement(true);//passing true creates a clone instead of replacing the internal element
+      content3.append(postElement);
+    }
+  }
+
+  //TODO grab 19 posts. 
+  //create elements for all of them that are copies
+  //attach each one to content. 
+  //sleep, if necesasry for showmanship
+  //hide loader
+  //show content
+
+
+
+}
+
+const showPosts = () => {
+  const search = document.querySelector("#search-container");
+  search.style.display = "none"
+  const normalPosts = document.querySelector("#container");
+  normalPosts.style.display = "block"
+}
+
 //theres something so cathartic in writing stinky html like this
 //not elegant at all
-showProfile = (character) => {
+const showProfile = (character) => {
   let container = document.createElement("div");
   container.className = "profile-container";
 
@@ -366,9 +452,9 @@ showProfile = (character) => {
 
   const descEle = createElementWithClassAndParent("div", container, "profile-desc");
   descEle.innerHTML = character.desc ? character.desc : "";
-  
+
   const obessions = createElementWithClassAndParent("div", descEle);
-  obessions.innerHTML = "Fandoms: "+ uniq(character.obsessions).map((o)=>`<span>${o.name}</span>`).join(", ")
+  obessions.innerHTML = "Fandoms: " + uniq(character.obsessions).map((o) => `<span>${o.name}</span>`).join(", ")
 
 
   const tabsHolder = createElementWithClassAndParent("div", container, "tabs-holder");
@@ -494,7 +580,7 @@ const rageMode = () => {
     body.className = "";
     body.innerHTML = `<img class='fade-to-tord-toward' src ='images/tordtoward.png'>`;
   }, 10 * 1000);
-  truthLog("",new Truth().rant)
+  truthLog("", new Truth().rant)
   truthLog("", `The Truth is you were never supposed to be here, Observer.
   
   You are NOT part of this Universe and you know it. 
@@ -538,7 +624,7 @@ const collatePremadePosts = () => {
 }
 
 const tick = async (parentToRenderTo) => {
-  if(!global_wungle){
+  if (!global_wungle) {
     isItWungleTime();
   }
   for (let c of characters) {
@@ -546,7 +632,7 @@ const tick = async (parentToRenderTo) => {
   }
 
   //407 is the closest page to the quote i want i've found so far
-  if(all_posts.length > 407 && houseOfLeaves.length === 0){
+  if (all_posts.length > 407 && houseOfLeaves.length === 0) {
     characters.push(new JRHOL());
     grabHouseOfLeavesLiveblogging();
   }
@@ -764,7 +850,7 @@ const handleScrolling = (rand, container) => {
   };
 }
 
-const harvestComments =()=>{
+const harvestComments = () => {
   //only easteast has both webpack and comments that survive
   jrComments = parseComments('http://farragofiction.com/ZampanioSimEastEast/dist/bundle.js'); //gets around CORS problems for serverless files
 }
