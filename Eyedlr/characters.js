@@ -35,6 +35,7 @@ const ominousAskPreambles = ["THEY ARE OBSERVING YOU.", "THEY KNOW YOU", "YOU AR
 
 class Character {
   obsessions = [];
+  postLimit = 38; //after this they break down.
 
   name;
   //https://morphimus.tumblr.com/post/710837261845037056/it-looked-kinda-like-this-the-post-would-be-the
@@ -508,6 +509,7 @@ const randomPornBot = () => {
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character {
+  postLimit = 19;
   // 20h:14m:36s
   //5d:23h:17:04s
   //4d:15h:21m:33s
