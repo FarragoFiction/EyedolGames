@@ -257,6 +257,8 @@ class Character {
     let bonus = '';
     if (halloweenpics && halloweenpics.length > 0 && obsession === all_obsessions[HALLOWEEN] && rand.nextDouble() > 0.75) {
       bonus =  rand.pickFrom(halloweenpics);
+    }else if (zampanioPics && zampanioPics.length > 0 && obsession === all_obsessions[ZAMPANIO]&& rand.nextDouble() > 0.5){
+      bonus =  rand.pickFrom(zampanioPics);
     }
     return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>" + `<br>${bonus}`, [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
     //look for a post that has this tag. start stupid drama about it
@@ -3143,6 +3145,10 @@ class Parker extends Character {
   constructor() {
     super();
     vik.submitAsk(this.name, "bestie! I got you layds! You want them now?");
+    vik.submitAsk(this.name, "oh right you cant answer asks! coming over now!");
+
+    //https://www.youtube.com/watch?v=I15sK7dNMOM
+    this.readied_posts.push(new Post(this, `everyone...hatsune miku just gets me so much! <br><iframe width="560" height="315" src="https://www.youtube.com/embed/I15sK7dNMOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`, null, ["best girl","hole"], [""], [""], true));
 
     this.readied_reblogs['Parker/mine'] = new Post(this, "slander", null, ["this mine is great!"], [""], [""], true);
     this.readied_reblogs['Parker/parker'] = new Post(this, "@censored-for-your-protection you wanna get a milkeshake later?", null, ["this"], [""], [""], true);
@@ -3755,6 +3761,7 @@ class JRHOL extends Character {
 //((not so fun fact: donut is dying. i love him very much. he is already immortal through the actions of the seeker and the cultist and countless others, but now he will be just that bit more immortal, you will remember him.))
 class JR extends Character {
   name = "justifiedRecursion";
+  desc = ":) :) :)<br><Br>welcome to my home!!!<br><br>be sure to make yourself comfortable!!!<br><Br>you probably won't be here long enough to need to eat...<br><br>but make sure you drink!<br><Br>human beings can only go three days without water!!!<br><Br>and how can you keep scrolling if you're dead of dehydration???";
   icon = "https://cdn.discordapp.com/attachments/931398056727953448/946949742863208448/garbage_horror_2.gif"; //which is the real me anymore. the one with the spiral or the one without?  either way, jr shouldnt be here. its wrong to be animated
   //https://www.tumblr.com/hazyscrounger/714681029142691840/i-want-to-like-zampanio-so-bad-i-feel-like-an?source=share
   //https://www.tumblr.com/jadedresearcher/714684745826566144/wait-wait-wait-sorry-to-send-a-second-ask-but?source=share
