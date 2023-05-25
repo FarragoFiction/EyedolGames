@@ -1050,7 +1050,8 @@ class Wanda extends Character {
       this.prepareShitPosts();
     }
     if (this.posts.length == 2) {
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://knucklessux.com/Blog'>___</a>`);
+      //its not JUST wodins blog. not anymore
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://knucklessux.com/Blog'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
     }
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     let premadeAsk = rand.pickFrom(this.pending_asks)
@@ -1656,6 +1657,9 @@ class FlowerChick extends Character {
     this.readied_reblogs['so, uh, sorry<br>for waiting so long'] = new Post(this, "lol", null, [""], [""], [""], true);
     this.readied_reblogs["<span data-jr=note='poor void boi'>till she notices...</span>"] = new Post(this, "lol", null, [""], [""], [""], true);
     this.readied_reblogs["<span data-jr=note='note for the quotidian pretending to be flower chick: this is intern wungleposting'>no matter how awkward</span>"] = new Post(this, "lol", null, [""], [""], [""], true);
+    //cfo did this naturally (actually fun fact, the intern was wungle confessing to wanda at the same time) and i decided it was canon
+    this.readied_reblogs['i wonder what show that is from'] = new Post(this, "lol", null, [""], [""], [""], true);
+    this.readied_reblogs['can we talk about this in your office?'] = new Post(this, "gg", null, [""], [""], [""], true);
 
   }
 
@@ -2062,9 +2066,9 @@ class Neville extends Character {
     //http://farragofiction.com/LightAndVoid/
     //http://farragofiction.com/LightAndVoid/dearWitherby=true
     if (this.posts.length == 2) {
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/dearWitherby=true'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/dearWitherby=true'>🐦‍⬛🐦‍⬛</a>`);
     }
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     let premadeAsk = rand.pickFrom(this.pending_asks)
@@ -2176,11 +2180,11 @@ class Devona extends Character {
 
     if (this.posts.length == 2) {
       //she is so so scared to be seen and absolutely is gonna ghost you on this. you'll never see shit from her. hacking or nothing.
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/LightAndVoid/'>🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
 
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/http://farragofiction.com/LightAndVoid/seerOfVoidy=true'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/http://farragofiction.com/LightAndVoid/seerOfVoidy=true'>🐦‍⬛🐦‍⬛</a>`);
     }
     const post = this.handleSecretReadiedReblog();
     if (post && parentToRenderTo) {
@@ -2278,11 +2282,11 @@ class Ria extends Character {
 
     if (this.posts.length == 3) {
       //she rambles as normal in response to these
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondPersonalTranscript/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/UnifiedTheory/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/APersonalTranscript/'>🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondPersonalTranscript/'>🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/UnifiedTheory/'>🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>🐦‍⬛</a>`);
     }
 
     this.blorboAI(parentToRenderTo, 0.7, 0.7, 0.3);
@@ -2395,11 +2399,11 @@ class Camille extends Character {
     //http://farragofiction.com/MurderOnTheScorpiusExpressSim/ in the console
 
     if (this.posts.length == 3) {
-      //she rambles as normal in response to these
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondTranscript/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/MurderOnTheScorpiusExpressSim/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ASecondTranscript/'>🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/AnUnSentLetter/'>🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/GhoulishThing/'>🐦‍⬛</a>`);
+      //camille still does not know she is dead
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/MurderOnTheScorpiusExpressSim/'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
     }
 
     let premadeAsk = rand.pickFrom(this.pending_asks)
@@ -2533,11 +2537,10 @@ class Witherby extends Character {
     //http://farragofiction.com/TwoGayJokes/
 
     if (this.posts.length == 3) {
-      //she rambles as normal in response to these
-
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/?truth=here'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>___</a>`);
+      //no one ever found the secret of DearDiary, so i revealed it
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/?truth=here'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/TwoGayJokes/'>🐦‍⬛🐦‍⬛</a>`);
     }
     removeItemOnce(this.pending_asks, premadeAsk);
     this.handleAsks(parentToRenderTo, premadeAsk);
@@ -2605,11 +2608,12 @@ class Yongki extends Character {
 
 
     if (this.posts.length == 3) {
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/NotebookSimulator/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/NotebookSimulator/'>🐦‍⬛</a>`);
+      //captain still doesn't know the All Round Helper is inside him
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DearDiary/?truth=true'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>🐦‍⬛</a>`);
 
     }
   }
@@ -2698,8 +2702,8 @@ he doesn't CARE what his identity is, he's just vibinng in a situation
     }
     if (this.posts.length == 3) {
       //sadly he has no clue he even HAS an inbox, thus never answeres these
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/NotebookSimulator/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/NotebookSimulator/'>🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/RadioTranscript'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
     }
   }
 
@@ -2784,7 +2788,7 @@ class K extends Character {
 
     if (this.posts.length == 2) {
       //he will steal this too
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>🐦‍⬛</a>`);
     }
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
@@ -2926,7 +2930,7 @@ class DocSlaughter extends Character {
 
     if (this.posts.length == 3) {
       //she is THRILLED her server is found but doesn't wnat to show it because to Be A Good Citizen in this Universe you Must Keep Secrets
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DocSlaughterFileServer/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DocSlaughterFileServer/'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
     }
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
@@ -3194,14 +3198,16 @@ class Parker extends Character {
     if (this.posts.length == 3 && !this.asked) {
       this.asked = true;
       witherby.submitAsk(this.name, "i think.... i think i might have killed them.... i didn't mean to. i. does that make me a bad person? tell me it doens't make me a bad person. wibby...precious cinnamon bun.... wait. shit.... i'm not supposed to influence the story. forget you saw me.");
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ACensoredTranscript/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://www.farragofiction.com/ThisHumanDiseaseCalledFriendship/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ParkerLotLost/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DehydrationSim/'>___</a>`);
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ClownDiarySim/'>🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ACensoredTranscript/'>🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://www.farragofiction.com/ThisHumanDiseaseCalledFriendship/'>🐦‍⬛🐦‍⬛</a>`);
+      //those in the parking lot are the most mysterious
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/ParkerLotLost/'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      //so far it seems i usually have to explicitly tell people to check back after hydrating
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DehydrationSim/'>🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛🐦‍⬛</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/DevonaFears/'>🐦‍⬛</a>`);
 
-      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/CodexOfRuin/viewer.html?name=The%20Shot&data=N4IgdghgtgpiBcIAqALGACAyig9gFxABoQATGAZwEsBzSPSnMBEAGQFoAGNgJgEYiQAJ0rkA1swASAUQF40scswBCAVQBKASSkARQul68AzHswsAgioDiEpFLV6ALA73apSpJkIA2L4VUsWKQ9CA2MAdSk3EKM9DUwpAGkzDUJubkIkCS0AMT1QwkwABTMAYSlo40K7MsKkDQB5ADlogXI8CDxFRA1G2zVGsxYKwmK6qV7hjVdBuLqSwgd00pq6xstvXxZ6gE1BwjZjEsGAWUIATkMBGAAPCABjPAAbAE8AfTlBGBh3ygAHLpAYTQYHQEHQ5AArgAjABWMAe6DwOAhdzQ5ERaHQdxwADMcZQQRiYM9QZ90DjkWASOgAO6UOREyiCdBoCDU8iPSh3GDUu6PGAQEG4nEAOkIGhx6HYXF4AHZ0DAwNQINQKOgCegzHh2qjYGA8LScIJRESSRAyRSIVTafSUIzmaz2Zzubz+YL0MKxdK2HL1eiSIIIDSQUiFZyoASOgTqFiYIJ2hr2oJVZ1QQb3RAAG5xlUYQN4DC4j1gDC-OPoKCMOQigQEtoEh7MEo4KCVsCEZutxgdlttwgSGgofuD2tgKjUFAERCdvsz7tz9sLntdpjEDo6lB6qesHA0vQsXf7w9S48HmkCT6-T7kKiMZgANTjJLPhEfgmfh4HE+H36-KFa7RQpQnJ4G8-LZo8zAcBePKvGQOKKuQcCILwIrQcQNIoPS3zwYhyEgKhACsAhQo89yiHBMAIWO+GoehIC-BA-KUdRSHMHRtZQNQrzkIIdzMJOeC-PAAD0Ik4uagbULiXL0IwIrYlAIlIDSOCWBAzwAFI4KIFAiZgSLCHpvxGgWzIABS8AAlCKvxKgBRpvGQCaPACGhIaIECUAA5NSYD4MW3LoFCEIGngdLciK6AADpgLFGgGiQOBquQLYwHI0aIjg6DPMiIqxbFmCCtSuUQugSXBvlcVgMcEC6eipXoL8EKfFVsVSNmIKUJK9Llcl5BgN5BpITAUDoJyunqngbVgIJwliRJghSTJDwMGACktiJJSPLuYDaJQ5rPJglBKQVYCoHGMDeeiqWwBlSoYjgSG0rg5UCo86oghAUKpY8oVqncGa-Fe8IHQWoJQsiYWYs1wigTNc2ieJkkqitcnrYpImlIhRo8kggZjncwi-HgIlnYU5q6cySUUINYXvll404DpWXZWQMC-HojUjVFMXVUgdUYIDZKNUlRLgtAMBVbIfz8Ig3p8NdWJVl5YBbligr+QaUIYPc3I3jywUkpWbToNeAp8WggjkFFGj6jmq2MDaDJyLr-lQExJIiIzOt9SWCrXHyEJUBBJJQiSkKwvCqaA4xpGFpKNJMaImUfMiE60kxrk1sQ9C-NwzBqDAACOEIUPQD1edSOKCC2UqcDwvCfR6ghkMyobYvqqugu7TGUGq3tloIEbajyUUSLuMDZoI+4N3wNqPB9jAvKCdzciTPcnRg+LUC1BJqhA6KMc8W45yAeeXIg9RgEFYIkBps9cPPdKL+STK68FEKL+lzdggTSVjRIO-R2610AXU-t-A0L8Po4hXgSeCBJsIrytPQD6vUUCHw1sHQ2kI8Rcn7vqFk5ooA1gAL5AA'>___</a>`);
+      this.submitAsk("FRIEND", `I AM FRIEND. FRIEND IS HERE TO TELL YOU ${rand.pickFrom(ominousAskPreambles)} <a target='_blank' href ='http://farragofiction.com/CodexOfRuin/viewer.html?name=The%20Shot&data=N4IgdghgtgpiBcIAqALGACAyig9gFxABoQATGAZwEsBzSPSnMBEAGQFoAGNgJgEYiQAJ0rkA1swASAUQF40scswBCAVQBKASSkARQul68AzHswsAgioDiEpFLV6ALA73apSpJkIA2L4VUsWKQ9CA2MAdSk3EKM9DUwpAGkzDUJubkIkCS0AMT1QwkwABTMAYSlo40K7MsKkDQB5ADlogXI8CDxFRA1G2zVGsxYKwmK6qV7hjVdBuLqSwgd00pq6xstvXxZ6gE1BwjZjEsGAWUIATkMBGAAPCABjPAAbAE8AfTlBGBh3ygAHLpAYTQYHQEHQ5AArgAjABWMAe6DwOAhdzQ5ERaHQdxwADMcZQQRiYM9QZ90DjkWASOgAO6UOREyiCdBoCDU8iPSh3GDUu6PGAQEG4nEAOkIGhx6HYXF4AHZ0DAwNQINQKOgCegzHh2qjYGA8LScIJRESSRAyRSIVTafSUIzmaz2Zzubz+YL0MKxdK2HL1eiSIIIDSQUiFZyoASOgTqFiYIJ2hr2oJVZ1QQb3RAAG5xlUYQN4DC4j1gDC-OPoKCMOQigQEtoEh7MEo4KCVsCEZutxgdlttwgSGgofuD2tgKjUFAERCdvsz7tz9sLntdpjEDo6lB6qesHA0vQsXf7w9S48HmkCT6-T7kKiMZgANTjJLPhEfgmfh4HE+H36-KFa7RQpQnJ4G8-LZo8zAcBePKvGQOKKuQcCILwIrQcQNIoPS3zwYhyEgKhACsAhQo89yiHBMAIWO+GoehIC-BA-KUdRSHMHRtZQNQrzkIIdzMJOeC-PAAD0Ik4uagbULiXL0IwIrYlAIlIDSOCWBAzwAFI4KIFAiZgSLCHpvxGgWzIABS8AAlCKvxKgBRpvGQCaPACGhIaIECUAA5NSYD4MW3LoFCEIGngdLciK6AADpgLFGgGiQOBquQLYwHI0aIjg6DPMiIqxbFmCCtSuUQugSXBvlcVgMcEC6eipXoL8EKfFVsVSNmIKUJK9Llcl5BgN5BpITAUDoJyunqngbVgIJwliRJghSTJDwMGACktiJJSPLuYDaJQ5rPJglBKQVYCoHGMDeeiqWwBlSoYjgSG0rg5UCo86oghAUKpY8oVqncGa-Fe8IHQWoJQsiYWYs1wigTNc2ieJkkqitcnrYpImlIhRo8kggZjncwi-HgIlnYU5q6cySUUINYXvll404DpWXZWQMC-HojUjVFMXVUgdUYIDZKNUlRLgtAMBVbIfz8Ig3p8NdWJVl5YBbligr+QaUIYPc3I3jywUkpWbToNeAp8WggjkFFGj6jmq2MDaDJyLr-lQExJIiIzOt9SWCrXHyEJUBBJJQiSkKwvCqaA4xpGFpKNJMaImUfMiE60kxrk1sQ9C-NwzBqDAACOEIUPQD1edSOKCC2UqcDwvCfR6ghkMyobYvqqugu7TGUGq3tloIEbajyUUSLuMDZoI+4N3wNqPB9jAvKCdzciTPcnRg+LUC1BJqhA6KMc8W45yAeeXIg9RgEFYIkBps9cPPdKL+STK68FEKL+lzdggTSVjRIO-R2610AXU-t-A0L8Po4hXgSeCBJsIrytPQD6vUUCHw1sHQ2kI8Rcn7vqFk5ooA1gAL5AA'>🐦‍⬛</a>`);
     }
   }
 }
