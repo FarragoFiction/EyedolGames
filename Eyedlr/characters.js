@@ -993,7 +993,9 @@ class Wanda extends Character {
   constructor() {
     super();
 
+    
     this.readied_reblogs["so are you trying to say you're a TOM too?"] = new Post(this, `@${intern.name} OH. <br>HUH.<BR> YEAH. <BR>THE TOMS ARE KINDA. <BR>HOT SHIT<BR><bR>SOMETHING ABOUT BEING A FULL SET?<BR><BR>THEY SEE SO MUCH WEIRD BIRD ACTION.<BR><BR>ITS EASIER TO GATHER INFO ON THEM<BR><bR>WHICH IN BIRD TERMS MEANS THEY'RE LIKE<BR><bR>SUPER EASY.`, null, ["I WISH I DIDN'T KNOW SO MUCH", "ABOUT QUOTIDIAN REPRODUCTION BRO"], [""], [""], true);
+    this.readied_reblogs["the Intern is only PRETENDING not to be in the Loop"] = new Post(this, `@${intern.name} <span data-ai='wanda-found-out-the-interns-secret'>BRO?.</span>`, null, ["WHAT DOES THIS MEAN?"], [""], [""], true);
 
     this.readied_reblogs['you know how hard my job gets when the toms get anxious'] = new Post(this, `@${intern.name} PROMISE.`, null, [""], [""], [""], true);
 
@@ -1236,6 +1238,16 @@ class Intern1 extends Character {
     this.readied_reblogs['hey yall, PSA, if you see a link that looks like'] = new Post(this, `@${cfo.name} sorry 'bout that!<br><Br>jepe PROMISED to keep them under control<br><Br>i don't know why they keep letting @staff 's birds into the office?<br><Br>they're only supposed to run THIS site and not touch any of our others...`, null, ["i'll see if i can't get that leak patched", "by friday"], ["lol", "you okay there buddy?"], [""], true);
     this.readied_reblogs['you KNOW she refuses to look too hard at you'] = new Post(this, ``, null, ["", ""], ["", ""], [""], true);
     this.readied_reblogs["you KNOW wanda isn't looking here"] = new Post(this, ``, null, ["", ""], ["", ""], [""], true);
+    //veteran intern is a LOT more in the habit of lying to wanda. mask doesnt slip for a second
+    //he also very much believes in the dreams, especially once wanda confesses that she used to be wodin to him
+    //he's seen some shit once everyone knows he's in on things
+    //so he believes the Witnesses' cumulative loops and loops of fear of what would happen if things changed
+    //it goes to show that even though the Intern is in the Loop, he's also still very much NOT
+    //because he's not the same person as the Witness, and in a very real way, isn't the same kind of thing the other Loopists are.
+    //they don't change much in a single loop anymore, its barely any time
+    //but the Intern changes SO MUCH between being a fresh eyedol hq employee and being basically senior management in all but name
+    //even how seriously he takes his own dream-memories changes over the years
+    this.readied_reblogs['wanda-found-out-the-interns-secret'] = new Post(this, "huh<br>i wonder what show that is from", null, ["think parkers seen it?"], ["lol", "you okay there buddy?"], [""], true);
 
   }
 
@@ -1498,6 +1510,13 @@ class Intern3 extends Character {
     super();
     //newbie intern is in the mid 90s, well before the internet was ready for this bullshit. css hasn't even been invented yet. this site (even without my simulation) would probably just set those computers on fire
     this.readied_posts.push(new Post(this, `@eyedolgames uh, forgive me if i'm out of line but...<br><br>this site is amazing<br><Br>ive never seen anything so complex!<br><Br>it completely blows away anything https://coolsiteoftheday.com/ has ever shown<br><br>why isn't this one of Eyedol's products?`, null, ["eyedol-games", "eyedlr", "beta-release", "we can't keep this alpha forever"], ["CAW!"], ["CAW!"], true));
+    //the newbie intern hates keeping this secret and hasn't had years of practice lying to wanda like he will later
+    //he's RELIEVED it came out
+    //and wants to just get this over with
+    //he doesn't quite fully believe the dreams either
+    //so
+    //can't quite believe in any consequences the Witness might fear would happen
+    this.readied_reblogs['wanda-found-out-the-interns-secret'] = new Post(this, "i<br>shit<br>ma'am?<br><Br>can we talk about this in your office?", null, ["i just", "dont want to do this here"], ["lol", "you okay there buddy?"], [""], true);
 
     this.readied_reblogs['hey yall, PSA, if you see a link that looks like'] = new Post(this, "oh um....<br><br>i know i'm new and all but...<br><br>how could a link be 'sus' if it comes from our domain, ma'am? ", null, ["", ""], ["lol", "you okay there buddy?"], [""], true);
 
