@@ -48,7 +48,7 @@ class Post {
     this.timestamp = Date.now();
     this.suggested_reblogs = suggested_reblogs;
     this.suggested_tags = suggested_tags;
-    if (owner != wanderer && owner.posts.length > 19) {
+    if (owner != wanderer && owner.posts.length > owner.postLimit) {
       /*
       it is my belief that the minotaur in house of leaves serves the same function as Pyramid Head in Silent Hill2.
 
