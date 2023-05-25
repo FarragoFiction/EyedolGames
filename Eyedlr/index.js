@@ -13,6 +13,7 @@ let fadedMemories = [];
 let houseOfLeaves = [];
 
 let halloweenpics = [];
+let zampanioPics = [];
 
 let characters = [];
 let jrComments = [];
@@ -64,7 +65,8 @@ window.onload = () => {
 
 
   let o = Object.values(all_obsessions)
-  globalObsessions.push(rand.pickFrom(o))
+  //we all know why we are here
+  globalObsessions.push(all_obsessions[ZAMPANIO])
   if (halloween) {
     globalObsessions.push(all_obsessions[HALLOWEEN])
 
@@ -783,6 +785,7 @@ const grabBlorboPosts = async () => {
 
   loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Zampanio/';
   tmp = await getImages(loc);
+  zampanioPics = zampanioPics.concat(tmp.map((item) => `<img src='${loc}${item}'>`));;
   blorboPosts = blorboPosts.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
 }
 
