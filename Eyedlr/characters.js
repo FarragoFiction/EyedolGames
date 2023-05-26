@@ -3742,14 +3742,45 @@ class JRFake extends Character {
 
 class JRHOL extends Character {
   name = "jadedResearcher";
-  desc = "I read <color = 'blue'>House</color> of Leaves in 2016. These are my notes from then, and some from now too as I try to find a specfic quote from it that apparently only I ever read?<br><Br>Sorry if I don't respond to asks, I'm kind of hyper focusing for now.";
+  desc = "I read <color = 'blue'>House</span> of Leaves in 2016. These are my notes from then, and some from now too as I try to find a specfic quote from it that apparently only I ever read?<br><Br>Sorry if I don't respond to asks, I'm kind of hyper focusing for now.";
   icon = "http://farragofiction.com/Staging/images/Credits/jadedResearcher_icon.png";
 
   tick = async (parentToRenderTo) => {
     if (houseOfLeaves.length === 0) {
       return;
     }
-    const post = this.createNewPost(rand.pickFrom(houseOfLeaves), ["house of leaves", "non-linear live blog", "i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
+
+    const postContent = rand.pickFrom(houseOfLeaves);
+    const rambleMap = {
+      'page407-top':"THIS is what I feel is the core of house of leaves. <br><br>or almost?<br><Br>I WANT to find the build up to this. the description of the obsessive insanity people get into. <br><br>the thousand page thesis documents contrasting with how long a NORMAL thesis is. <br><Br>but this is as close as i've found no matter how hard ive searched<br><br>this IDEA<Br><Br>that <span style='color: blue'>house</span> or no <span style='color: blue'>house</span> the REAL problem is the cognito harzard<br><br>the obsession<br><Br>just writing about the <span style='color: blue'>house</span> is enough to invite it into your mind<br><Br>to make it so only when writing about it do you feel better<Br><Br>theres a footnote that drives this point home better but i cant find the screenshot"
+      ,'page_407':"THERE it is<br><br>page 407<br>the footnote i've been looking for<br><Br>but not the REAL one<br><br>not the one about the thousand page thesis that draws attention to the fact that all this literature about a single movie that doens't exist is INSANE<br>no<br><br>THIS one is just. <Br>the maze<br>reassuring you that it is good and proper to obsess over it<br>we will have immense psychological benefits<br><Br>if only we agree to obsess<br><Br>and THERE is the rub isn't it? the <span style='color: blue'>house</span> asks us to obsess<br>the GAME begs us not to<br>well. not THE game. not the one you just lost<br>but ZAMPANIO<br>it asks you to not obsess over it and not forget it but a secret third thing<br><Br>just<br>enjoy it<br>a normal amount<br>as if any of us could possibly do that<br>the amount of effort required to get even THIS far is too much<br>we can't be normal about this<br>to our immense psychological benefit"
+      ,'this_is_a_normal_amount_of_times_to_see_a_movie':"you see what i MEAN?<Br>just casually slips that in in a foot note<br>saw a spooky movie 38 times in theaters<br>like we all do<br>but can i actually take the high ground here<br>how many weeks months days YEARS have i spent trying in vain to capture even a part of zampanio?<br>YOU ARE RIGHT HERE WITH ME<br>and even if you have only scratched the surface you can SEE can't you?<br>obsession is a terrible thing<br>and i would not free myself of it for even an instant<br>i NEED this<br><br>i need to either find a game that CLEARLY DOES NOT EXIST AND RUBS MY FACE IN IT<br>or prove once and for all its a house of leaves fanwork<br>but the quote im looking for i cannot find<br>even though 2016 me REFERENCES IT And thus couldn't have already been infected by Zampanio<br>it has to mean SOMETHING"
+      ,"a_blindspot_created_bytheactofseeing_isaveryneatmetaphor":"did...did that zampanio faq have a line like this?<br> drawing a comparison between homestucks void and a blindspot of an eye. <br>it censors all the homestuck aspects out, but void even more so. i can't find it again if it were ever there. <br>i like the metaphor though "
+      ,"no_homies":"okay THIS has to be where the NotAMinotaur meme came from, right?<br>wait but<br>i was the one to personify it by twisting it up with WattMan.exe<br>so before me it wasn't a homie...was it?"
+      ,"there_is_no_minotaur":"why does everyone want to put a monster in the maze<BR>in the backgrooms<br>it doesnt NEED a monster<br>don't you understand the point of a maze is the crushing isolation it brings to you<br>even if someone else is caught inside it how could you ever even expect to find them<br>how MANY OF US ARE CAUGHT BY ZAMPANIO<br>utterly unable to find one another because this damn fandom just wants to keep erasing itself for the memes<br>i tried you know<br>joined that discord<br>and then it erased itself<br>tried to make my own<br>then i ran out of spoons<br>the center just can not hold"
+      ,"this_is_a_normal_amount_of_pages":"i got so excited when i saw this<br>it is SO close to the quote im lookin for<br>but it just mentions the four thousand pages<br>it doesn't throw in your face how weird that is, if you've missed it<br>i just wanna find the bit about the average length of a thesis paper compared to ones on the <span style='color: blue'>house</span>"
+      ,"if_zampanio_could_be_said_to_haveacenter_itsthegame_thatprobablydoesntexist___unthinkable":"unthinkable huh<br>the entire zampanio fandom is without a center<br>we're all rallying around a game we damn well know doesn't exist<br>is it any wonder we can never find each other?"
+      ,"thisstuckwithme":"nothing really to say here<br>this was just the only visual concept that stuck with me<br>the idea of camping out on a stair case bigger than a football field<br>really big rooms are whatever<br>but a starecase big enough to camp on<br>that is intense"
+      ,"finding_meaning_inthenoise":"would zampanio do this, i wonder<br>take meaningless cacophonies<br>verbal farragos<br>and turn them into meaning?<br>is zampanio the lucky little horseshoe moment where the procedural randomness seems to draw into focus a story? "
+      ,"our_stubborn_insistencethatanythingspookyisgoingon":"this is so important to me<br>the idea that there IS no monster<br>that our imaginatio is the mosnter<br>that our stubborn insistene that there MUST bE MORE<br>is the only thing dooming us"
+      ,"marked_andunmarked_have_differentbigpictures":"my branch is like this<br>those who remain alone an Unobserved have such a small picture<br>just their own two eyes<br>those who start to reach out<br>even if its just to read the things others have left behind<br>they start seeing a bigger picture through eyes and eyes and eyes<br>theres not just one version of even my own branch of zampanio<br>let alone the whole thing"
+      ,"of_course_an_aluminium_foil_simp_wouldclaim_thematerialdoesnotmatter":"we've been over this<br>do not trust anything anyone associated with aluminimum foil tells you<br><img src='http://eyedolgames.com/Eyedlr/images/Secrets/reynolds.PNG'>"
+      ,"no_reason_to_lingerhere":"in the narrative there are endless doors and rooms and hallways and none of them have any reason to linger<br>no furniture no objects of any kind<br>similarly but inverted the boxes inside the book are just lists of objects and give us no reason to linger<br>no reason to read<Br>and contrast THAT with the noise of zampanio<Br>all of it bespoke in a way a list of HVAC system components could never be<br>but is there really meaning in any of it?"
+      ,"memory_is_reality":"god<br>i don't need a spooky maze for this<br>this is just reality<br>i'm constantly forgetting things exist and Unmarked are finding them for me<br>or I'm working on a sim and debugging somthing only to realize it was an intended feature from two-weeks-ago-me<br>you forget about something and its just gone"
+      ,"there_is_always_a_branch_todistract_you":"thats how zampanio gets you<br>isn't it?<br>you think you're close<br>so close to understanding what is going on<br>and then you find an impossibly deep new branch<br>and forget entirely what you were about to find before<br>endless parades of shiny new discoveries<br>is that heaven?<br>or my personal hell"
+      ,"writing_about_the_house_brings_relief":"you write and write and write and only then do you find relief"
+      ,"an_addiction_to_knowing_the_unknowable_ispspoton_forampanio":"is that how zampanio gets you?<br>because of how blatantly it doesn't exist<br>you're dangled with an impossible bait<br>something that can never satisfy<br>we will NEVER find it and thus we will never have that catharsis that lets us know we can stop looking"
+      ,"ilovehow_itkeepsthrowinginourface_remindersofhowfakeallthisis":"zampano is blind<br>we read pages and pages of visual analysis of photographs<br>and zampano is blind<br>and we knew that<br>of course we did<br>but the book has to throw it into our face<br>the fact that we forgot<br>that we are so used to suspending disbelief that we FORGOT the man was blind<br>just like we forget zampanio isn't real"
+    }
+
+    let ramble = "";
+    const rambleKeys = Object.keys(rambleMap);
+    for (let key of rambleKeys) {
+      if (postContent.includes(key)) {
+        ramble = rambleMap[key];
+      }
+    }
+    const post = this.createNewPost(postContent +`<br>${ramble}`, ["house of leaves", "non-linear live blog", "i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
