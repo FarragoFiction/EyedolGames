@@ -1861,7 +1861,7 @@ class Truth extends Character {
   How frustrating for you, that we have no Player.
   We simply are.
   Your interactions with us are ignored at best and thrown away at worst.
-  You are pointless. You watch and dig and search for clues and for what?
+  You are pointless. You watch and dig and claw for clues and for what?
   To Know more about us?
   ...
   I will admit to a certain degree of flattery succeeding.

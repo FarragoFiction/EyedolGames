@@ -1,5 +1,7 @@
 
 
+//worlds shittiest code lol
+//something so cathartic about breaking all the rules
 
 let normalImageList = [];
 let weirdImageList = [];
@@ -17,6 +19,8 @@ let zampanioPics = [];
 
 let characters = [];
 let jrComments = [];
+
+let pornBots = [];
 
 let global_wungle = false;
 
@@ -156,25 +160,12 @@ const init = async () => {
   await grabWeirdImages();
   characters.push(observer)
   characters.push(alt);//user number 1
-  characters.push(randomPornBot())
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
-  characters.push(randomPornBot());
+  for(let i = 0; i<19; i++){
+    let pornBot = randomPornBot();
+    pornBots.push(pornBot);
+    characters.push(pornBot)
+  }
+
   characters.push(wanderer);
   characters.push(k);
   characters.push(neville);
@@ -216,9 +207,28 @@ const init = async () => {
  */
 
 
-
   await tick();
-  initialTicks();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+  await tick();
+
+  const loading = document.querySelector("#loading-posts");
+  loading.style.display = "none";
+  loading.remove();
+
+
+  //JR NOTE TODO: only do this if we have a passed in porn bot from url
+  showProfile(pornBots[0])
+  initialAutoTicks();
   collatePremadePosts();
 }
 
@@ -226,7 +236,7 @@ const init = async () => {
 //is this pretty? no.
 //does this get around the fact that for loops aren't asyncronous and i feel lazy?
 //also yes
-const initialTicks = async () => {
+const initialAutoTicks = async () => {
 
   await sleep(1000);
   await tick();
@@ -414,15 +424,6 @@ const showSearch = async (searchTerm) => {
       content3.append(postElement);
     }
   }
-
-  //TODO grab 19 posts. 
-  //create elements for all of them that are copies
-  //attach each one to content. 
-  //sleep, if necesasry for showmanship
-  //hide loader
-  //show content
-
-
 
 }
 
