@@ -113,8 +113,20 @@ const setupSearch = () => {
     }
   }
 }
+//header-container
+const dismissPopups = ()=>{
+    const popups = document.querySelectorAll(".popup-container");
+    for(let p of popups){
+      p.remove();
+    }
+}
 
 const init = async () => {
+  const header = document.querySelector("#header-container");
+  header.onclick = dismissPopups;
+
+  
+
   camille = new Camille(); //since she can deactivate have her first
 
   alt = new Alt();
@@ -207,11 +219,6 @@ const init = async () => {
  */
 
 
-  await tick();
-  await tick();
-  await tick();
-  await tick();
-  await tick();
   await tick();
   await tick();
   await tick();
