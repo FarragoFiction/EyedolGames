@@ -102,6 +102,8 @@ window.onload = () => {
 }
 
 const setupSearch = () => {
+
+
   let input = document.querySelector("#search-box");
   let searchTerm = document.querySelector("#search-term")
   input.oninput = () => {
@@ -112,6 +114,11 @@ const setupSearch = () => {
       showPosts();
     }
   }
+  const home = document.querySelector("#home");
+  home.onclick = ()=>{
+    input.value = "";
+    showPosts();
+  };
 }
 //header-container
 const dismissPopups = ()=>{
