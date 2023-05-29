@@ -32,10 +32,15 @@ let lunch = [];
 let dinner = [];
 let dessert = [];
 gnosisList = [];
+let pornBotName;
+let pornBotImage;
+let pornBotSecrets;
+let pornBotLoc;
+let pornBotMatchPercent;
 
 //pure string, convert to numerical seed later.
 let seedSource = "seed="
-let baseURL = `http://eyedolgames.com/JackElope/images/SexySingles/`
+let basePornBotImageURL = `http://eyedolgames.com/JackElope/images/SexySingles/`
 let seed = 0;
 let rand;
 let observer, wanderer, k;
@@ -54,11 +59,15 @@ window.onload = () => {
   const urlParams = new URLSearchParams(queryString);
   //updateURLParams(`name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc}`);
 
-  let name = urlParams.get('name');
-  let image = urlParams.get('image');
+  pornBotName = urlParams.get('name');
+  pornBotImage = urlParams.get('image');
+  pornBotSecrets = urlParams.get('secrets');
+
   global_wungle = urlParams.get('wungle');
 
-  let matchPercent = parseInt(urlParams.get('matchPercent'));
+  pornBotMatchPercent = parseInt(urlParams.get('matchPercent'));
+  pornBotLoc = parseInt(urlParams.get('loc'));
+
   halloween = (urlParams.get('halloween')) || date.getMonth() === 9;
 
   let seed = parseInt(urlParams.get('seed'));
@@ -239,9 +248,40 @@ const init = async () => {
   loading.style.display = "none";
   loading.remove();
 
+  let profileBot = wanderer;
 
+  if(pornBotName){
+    profileBot = pornBots[0];
+    profileBot.name = pornBotName+ getRandomNumberBetween(0, 2022);
+  }
+
+  if(pornBotMatchPercent){
+    profileBot = pornBots[0];
+    profileBot.matchPercent = pornBotMatchPercent;
+  }
+
+  if(pornBotName){
+    profileBot = pornBots[0];
+    profileBot.icon = basePornBotImageURL+pornBotImage;
+  }
+
+  if(pornBotLoc){
+    profileBot = pornBots[0];
+    profileBot.loc = pornBotLoc;
+  }
+
+  if(pornBotSecrets){ 
+    profileBot = pornBots[0];
+    profileBot.obsessions  = [];
+
+    let secretsArray = JSON.parse(pornBotSecrets);
+
+    for (let s of secretsArray) {
+      profileBot.obsessions.push(Object.values(all_obsessions)[s])
+    }
+  }
   //JR NOTE TODO: only do this if we have a passed in porn bot from url
-  showProfile(pornBots[0])
+  showProfile(profileBot)
   initialAutoTicks();
   collatePremadePosts();
 }
@@ -669,14 +709,14 @@ const test = async () => {
 
 const grabNormalImages = async () => {
   const loc = 'BigNormalPile/'
-  let tmp = await getImages(baseURL + loc);
+  let tmp = await getImages(basePornBotImageURL + loc);
   normalImageList = tmp.map((item) => loc + item);
 }
 
 
 const grabWeirdImages = async () => {
   const loc = 'BigWeirdPile/';
-  let tmp = await getImages(baseURL + loc);
+  let tmp = await getImages(basePornBotImageURL + loc);
   weirdImageList = tmp.map((item) => loc + item);
 }
 
