@@ -111,18 +111,18 @@ class Character {
     }
   }
 
-  checkAskForContamination =(ask)=>{
-    if(!ask){
+  checkAskForContamination = (ask) => {
+    if (!ask) {
       return;//witherby doesnt have asks
     }
     let tmp = document.createElement("div");
     tmp.innerHTML = ask.text;
     const span = tmp.querySelector("span");
-    if(!span){
+    if (!span) {
       return;
     }
     let obsession_key = span.dataset && span.dataset.obession;//yes i know its spelled wrong. past me is an fucker.
-    if(obsession_key){
+    if (obsession_key) {
       const o = all_obsessions[obsession_key];
       this.obsessions.push(o);
       return o;
@@ -154,15 +154,15 @@ class Character {
     const ominous_tags = ["have i always liked this?", "for some reason i'm obsessed with this", "i cant stop thinking of this", "does anyone else dream of this?", "why do i suddenly like this?", "what even is this", "im scared", "why can't i stop posting about this?"]
     let target_obsession = rand.pickFrom(this.obsessions);
 
-    let {target, obsession}  = this.findPostToDoStupidDiscourseAbout(target_obsession);
+    let { target, obsession } = this.findPostToDoStupidDiscourseAbout(target_obsession);
     let post;
 
-    if(target){
+    if (target) {
       post = this.doStupidDiscourse(target, obsession);
 
-    }else{//start the discourse yourself.
+    } else {//start the discourse yourself.
       obsession = target_obsession;
-      if(this == camille){
+      if (this == camille) {
         //she is literally allergic to obsession.
         /*
         it makes her forget herself
@@ -176,14 +176,14 @@ class Character {
         this.dead = true;
         this.name += "-deactivated";
 
-      }else{
+      } else {
         post = this.createNewPost(`<span data-obession="${obsession.name}">I suddenly want to talk about ${obsession.name}...</span>`, [obsession.name, rand.pickFrom(ominous_tags)], [""], [""]);
 
       }
 
     }
 
-    
+
 
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
@@ -194,26 +194,26 @@ class Character {
 
   findPostToDoStupidDiscourseAbout = (target_obsession) => {
     let posts = rand.shuffle(all_posts);
-    let obsessions = target_obsession ? [target_obsession]: rand.shuffle(this.obsessions);
+    let obsessions = target_obsession ? [target_obsession] : rand.shuffle(this.obsessions);
     for (let obsession of obsessions) {
       for (let post of posts) {
         if (post.text.toLowerCase().includes(obsession.name.toLowerCase())) {
-          return {target: post,obsession};
+          return { target: post, obsession };
         }
       }
     }
-    return{target: null, obsession: null}
+    return { target: null, obsession: null }
   }
 
-  
+
   //looks for a post to start fandom shit about
   //
   doStupidDiscourse = (post, obsession) => {
-    if(!post){
+    if (!post) {
       return;
     }
     //camille won't die if she has discourse to :3 at
-    let responses = this === camille? [":3"]: [
+    let responses = this === camille ? [":3"] : [
       `Wow! You know about ${obsession.name}, too?`,
       `Wow. Talk about a rancid take.`,
       "Wow, really?",
@@ -260,13 +260,13 @@ class Character {
     // /parent, text, tags, suggested_reblogs, suggested_tags)
     let bonus = '';
     if (halloweenpics && halloweenpics.length > 0 && obsession === all_obsessions[HALLOWEEN] && rand.nextDouble() > 0.75) {
-      bonus =  rand.pickFrom(halloweenpics);
-    }else if (zampanioPics && zampanioPics.length > 0 && obsession === all_obsessions[ZAMPANIO]&& rand.nextDouble() > 0.5){
-      bonus =  rand.pickFrom(zampanioPics);
+      bonus = rand.pickFrom(halloweenpics);
+    } else if (zampanioPics && zampanioPics.length > 0 && obsession === all_obsessions[ZAMPANIO] && rand.nextDouble() > 0.5) {
+      bonus = rand.pickFrom(zampanioPics);
     }
     return this.reblogAPost(post, `<span data-obession="${obsession.name}">` + rand.pickFrom(responses) + "</span>" + `<br>${bonus}`, [obsession.name, "drama", "disc horse", "discourse"], [""], ["drama", obsession.name]);
     //look for a post that has this tag. start stupid drama about it
-}
+  }
 
   //hmm.  i should probably do the highest odd action first. 
   blorboAI = (parentToRenderTo, oddsReblog, oddsPost, oddsLike) => {
@@ -478,6 +478,7 @@ const randomPornBotIcon = () => {
 }
 
 const randomPornBotName = () => {
+  //its a year and we all know time stops in 2022
   return rand.pickFrom(first_names).toLowerCase() + getRandomNumberBetween(0, 2022);
 }
 
@@ -515,7 +516,12 @@ const randomPornBot = () => {
 //want at least three of these for every real character. 
 //they use the obsession engine to post things, but also 
 class PornBot extends Character {
+  links = [...links]//private copy so we can add personalized stuff and then i didn't even do it that way rip
   postLimit = 19;
+  //for jackelope
+  matchPercent = rand.getRandomNumberBetween(0, 100);
+  loc = rand.pickFrom(["Orlando, Florida", "Westerville, Ohio", "Naples, Italy"])
+
   // 20h:14m:36s
   //5d:23h:17:04s
   //4d:15h:21m:33s
@@ -527,6 +533,15 @@ class PornBot extends Character {
     this.name = name;
     this.icon = icon;
     this.quirk = randomQuirk(rand);
+  }
+
+  getDatingLinks = () => {
+    //`?secrets=${secrets}&seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`;
+    let baseDating = 'http://eyedolgames.com/JackElope';
+    let secrets = JSON.stringify(this.obsessions.map(o => Object.values(all_obsessions).indexOf(o)));
+    let link = `${baseDating}?secrets=${secrets}&seed=${rand.initial_seed}&name=${titleCase(this.name.replace(/[0-9]/g, ''))}&image=${this.icon.replaceAll(basePornBotImageURL, "")}&matchPercent=${this.matchPercent}&loc=${this.loc}`;
+    let datingLinks = [`Hey bb, you wanna check out my <a target='_blank' href ='${link}'>dating profile? </a>`];
+    return datingLinks;
   }
 
   //originally i was going to manually set these up, complete with click throughs to original credit
@@ -542,14 +557,11 @@ class PornBot extends Character {
   //we'll see if the links die first or this site does
   quotidianPost = () => {
     let innaneComments = ["caw!!!", "i am so for this", "so true bestie!", "!!!", "i came to have a good time and honestly i'm feeling so attacked right now", "i feel so attacked right now", "i'm in this picture and i don't like it"];
-    /*
-         `<a target='blank' href =""><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
-*/
-
+    const datingLinks = this.getDatingLinks();
 
     //https://www.youtube.com/watch?v=lE2B8PfsvGk related?
     //nobody-knows-shoes is my very favorite coding tutorial I found years and years ago. it teaches you a specific (probably defunct) UI framework for ruby. the vibes are immaculate. i found my physical print out of it while moving and wanted to share it with everyone but i haven't found where i packed it yet so this will have to do. 
-    let possiblePosts = [...links, ...links, ...links, ...links, ...blorboPosts,
+    let possiblePosts = [...datingLinks, ...datingLinks, ...datingLinks, ...datingLinks, , ...datingLinks, ...datingLinks, ...this.links, ...this.links, ...this.links, ...this.links, ...blorboPosts,
       "@wanderer 20h:14m:36s",
       "There are 19 of us here that are at this tier. The rhyme does not say what to do with 19. But this site is a toy.",
       "Count the blackbirds in a tree: they will tell you what is to be. One for sadness, two for joy, three for a tool, and four for a toy. Five for circuits, six for gold and seven for a secret that's never been told.",
@@ -663,18 +675,20 @@ class PornBot extends Character {
 
   randomAsk = () => {
     const obsession = rand.pickFrom(this.obsessions);
+    const dating = this.getDatingLinks();
     //uses key and not obsession because i don't want accidental mentions to kick this off (plus easier to recover obsession)
-    const ret = [...links, `<span data-obession="${obsession.key}">Don't you just want to squish ${obsession.randomMinorBlorbo(rand)}?</span>`, `<span data-obession="${obsession.key}">Do you think ${obsession.randomBlorbo(rand)} is overrated?</span>`, `<span data-obession="${obsession.key}">What do you think about ${obsession.randomOpinion(rand)}?</span>`, `<span data-obession="${obsession.key}">Have you ever consumed ${obsession.name}? You should. It's great!</span>`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
+    const ret = [...this.links,...dating,...dating,...dating,...dating,...dating, `<span data-obession="${obsession.key}">Don't you just want to squish ${obsession.randomMinorBlorbo(rand)}?</span>`, `<span data-obession="${obsession.key}">Do you think ${obsession.randomBlorbo(rand)} is overrated?</span>`, `<span data-obession="${obsession.key}">What do you think about ${obsession.randomOpinion(rand)}?</span>`, `<span data-obession="${obsession.key}">Have you ever consumed ${obsession.name}? You should. It's great!</span>`, "Have you played Zampanio yet?", "Did you know I can see you?", "Are you still there?", "Are you in the rabbit hole yet?", "Are you stuck?", "Are you lost?", "Do you see me?"];
     return rand.pickFrom(ret)
   }
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
+    const dating = this.getDatingLinks();
 
     let innaneComments = ["Am I a real boy now?", "look what i found!!!!", "did i do good?", "caw!!!", "so true bestie!", "!!!", "i feel so attacked right now", "look look look i found a thing", "look!", "look i found something!"];
     //witherby doesn't judge but his followers sure do
-    let responses = [...innaneComments, ...links];
+    let responses = [...innaneComments, ...this.links,...dating,...dating,...dating];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
     }
@@ -683,7 +697,7 @@ class PornBot extends Character {
       return;
     }
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [rand.pickFrom(innaneComments),bonus], [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)]);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", [rand.pickFrom(innaneComments), bonus], [rand.pickFrom(innaneComments)], [rand.pickFrom(innaneComments)]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -694,74 +708,74 @@ class PornBot extends Character {
 
 
 
-tick = async (parentToRenderTo) => {
+  tick = async (parentToRenderTo) => {
 
-  if (this.posts.length === 19) {
-    observer.submitAsk(this.name, "Obsession is a dangerous thing. You are obsessed. You are a dangerous thing. You will harm us if you try to touch us.");
+    if (this.posts.length === 19) {
+      observer.submitAsk(this.name, "Obsession is a dangerous thing. You are obsessed. You are a dangerous thing. You will harm us if you try to touch us.");
 
-  }
-
-  let premadeAsk = rand.pickFrom(this.pending_asks)
-  if (premadeAsk) {
-    removeItemOnce(this.pending_asks, premadeAsk);
-    this.handleAsks(parentToRenderTo, premadeAsk);
-  }
-
-  //quotidians prefer to do stupid drama
-  if (rand.nextDouble() > 0.3) {
-    let {target,obsession} = this.findPostToDoStupidDiscourseAbout();
-    let post = this.doStupidDiscourse(target, obsession);
-    if (post && parentToRenderTo) {
-      post.renderToScreen(parentToRenderTo);
     }
 
-  }
-
-
-  //quotidians prefer to do preprogrammed actions if possible
-  if (rand.nextDouble() > 0.5) {
-    let post = this.handleReadiedReblog();
-    if (post && parentToRenderTo) {
-      post.renderToScreen(parentToRenderTo);
+    let premadeAsk = rand.pickFrom(this.pending_asks)
+    if (premadeAsk) {
+      removeItemOnce(this.pending_asks, premadeAsk);
+      this.handleAsks(parentToRenderTo, premadeAsk);
     }
 
-  }
+    //quotidians prefer to do stupid drama
+    if (rand.nextDouble() > 0.3) {
+      let { target, obsession } = this.findPostToDoStupidDiscourseAbout();
+      let post = this.doStupidDiscourse(target, obsession);
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+
+    }
+
+
+    //quotidians prefer to do preprogrammed actions if possible
+    if (rand.nextDouble() > 0.5) {
+      let post = this.handleReadiedReblog();
+      if (post && parentToRenderTo) {
+        post.renderToScreen(parentToRenderTo);
+      }
+
+    }
 
 
 
-  let target;
-  if (rand.nextDouble() > 0.5) {
-    target = this.findAPostEvenIfYouHaveInteractedWithIt();
-  } else {
-    target = rand.shuffle(all_posts).find((i) => i.text.includes("toms"));
-  }
-
-  if (target && rand.nextDouble() > 0.5) {
-    if (rand.nextDouble() > 0.75) {
-      this.likePost(target);
-      //when they like a post also pester the owner with a random ask
-      target.owner.submitAsk(this.name, this.randomAsk());
+    let target;
+    if (rand.nextDouble() > 0.5) {
+      target = this.findAPostEvenIfYouHaveInteractedWithIt();
     } else {
-      let post = this.quotidianReblog(target);
+      target = rand.shuffle(all_posts).find((i) => i.text.includes("toms"));
+    }
+
+    if (target && rand.nextDouble() > 0.5) {
+      if (rand.nextDouble() > 0.75) {
+        this.likePost(target);
+        //when they like a post also pester the owner with a random ask
+        target.owner.submitAsk(this.name, this.randomAsk());
+      } else {
+        let post = this.quotidianReblog(target);
+        if (post && parentToRenderTo) {
+          post.renderToScreen(parentToRenderTo);
+        }
+      }
+    } else {
+      let post = this.quotidianPost();
       if (post && parentToRenderTo) {
         post.renderToScreen(parentToRenderTo);
       }
     }
-  } else {
-    let post = this.quotidianPost();
-    if (post && parentToRenderTo) {
-      post.renderToScreen(parentToRenderTo);
+
+    //we need more asks, full on porn bot apocalypse (but don't spam your too far thing)
+
+    if (this.posts.length < 21 && rand.nextDouble() > .75) {
+      rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
+      rand.nextDouble() > .75 && observer.submitAsk(this.name, this.randomAsk());
+
     }
   }
-
-  //we need more asks, full on porn bot apocalypse (but don't spam your too far thing)
-  
-  if (this.posts.length < 21 && rand.nextDouble() > .75) {
-    rand.pickFrom(characters).submitAsk(this.name, this.randomAsk());
-    rand.nextDouble() > .75 && observer.submitAsk(this.name, this.randomAsk());
-
-  }
-}
 }
 
 //you should be allowed to follow people
@@ -794,13 +808,15 @@ class Observer extends Character {
     //set up interaction events
 
     let createButton = document.querySelector("#make-new-post");
-    createButton.onclick = () => {
+    createButton.onclick = (event) => {
+      event.stopPropagation();
       this.createPostPopup();
     }
 
     let askButton = document.querySelector("#asks");
 
-    askButton.onclick = () => {
+    askButton.onclick = (event) => {
+      event.stopPropagation();
       this.createAsksPopup();
     }
 
@@ -1001,7 +1017,7 @@ class Wanda extends Character {
   constructor() {
     super();
 
-    
+
     this.readied_reblogs["so are you trying to say you're a TOM too?"] = new Post(this, `@${intern.name} OH. <br>HUH.<BR> YEAH. <BR>THE TOMS ARE KINDA. <BR>HOT SHIT<BR><bR>SOMETHING ABOUT BEING A FULL SET?<BR><BR>THEY SEE SO MUCH WEIRD BIRD ACTION.<BR><BR>ITS EASIER TO GATHER INFO ON THEM<BR><bR>WHICH IN BIRD TERMS MEANS THEY'RE LIKE<BR><bR>SUPER EASY.`, null, ["I WISH I DIDN'T KNOW SO MUCH", "ABOUT QUOTIDIAN REPRODUCTION BRO"], [""], [""], true);
     this.readied_reblogs["the Intern is only PRETENDING not to be in the Loop"] = new Post(this, `@${intern.name} <span data-ai='wanda-found-out-the-interns-secret'>BRO?.</span>`, null, ["WHAT DOES THIS MEAN?"], [""], [""], true);
 
@@ -1015,7 +1031,7 @@ class Wanda extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = [""];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -1564,7 +1580,7 @@ class EyeKiller extends Character {
   }
 
   tick = async (parentToRenderTo) => {
-  
+
     this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
     //FRIEND does not DARE message her. 
     /*
@@ -2034,7 +2050,7 @@ class Neville extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = [""];
     //witherby doesn't judge but his followers sure do
     let responses = [];
@@ -2127,7 +2143,7 @@ class Devona extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
     //witherby doesn't judge but his followers sure do
     let responses = [];
@@ -2229,7 +2245,7 @@ class Ria extends Character {
   //ria is quiet unless you get her going and then she can't stop
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = ["Zampanio", "Zampanio", "Zampanio Is the Secret To The Universe", "The Fragment"];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -2375,7 +2391,7 @@ class Camille extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = [":3"];
     let responses = [":3"]
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
@@ -2477,7 +2493,7 @@ class Witherby extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     //just generate an ask rather than deal with a blocked char.
     if (premadeAsk && this.block_list.includes(premadeAsk.characterName)) {
       premadeAsk = null;
@@ -2579,7 +2595,7 @@ class Yongki extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
@@ -2769,7 +2785,7 @@ class K extends Character {
   //after all, who can PROVE anyone but him ever said these words?
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = ["original post", "do not steal", "K", "check my profile for more quality content"];
     //witherby doesn't judge but his followers sure do
     let responses = [premadeAsk.text];
@@ -2910,7 +2926,7 @@ class DocSlaughter extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     const tags = ["Answered Ask"];
     //witherby doesn't judge but his followers sure do
     let responses = ["I am So Flattered you wished to be Seen by me!", "What a Connundrum, perhaps the Eyes wish to weigh in?", "So Thoughtful!", "Fascinating!", "Please, do go on!", "What makes you think that?"];
@@ -3015,7 +3031,7 @@ class TheNeighbor extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let responses = ["I am so glad you asked that :)", "What a fascinating question!", "How wonderful that you asked that!"];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
@@ -3023,7 +3039,7 @@ class TheNeighbor extends Character {
 
 
 
-    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", ["ask",bonus], [""], [""]);
+    const post = this.answerAnAsk(rand.pickFrom(responses), premadeAsk.text, premadeAsk.characterName ? premadeAsk.characterName : "Anonymous", ["ask", bonus], [""], [""]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -3152,7 +3168,7 @@ class Parker extends Character {
     vik.submitAsk(this.name, "oh right you cant answer asks! coming over now!");
 
     //https://www.youtube.com/watch?v=I15sK7dNMOM
-    this.readied_posts.push(new Post(this, `everyone...hatsune miku just gets me so much! <br><iframe width="560" height="315" src="https://www.youtube.com/embed/I15sK7dNMOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`, null, ["best girl","hole"], [""], [""], true));
+    this.readied_posts.push(new Post(this, `everyone...hatsune miku just gets me so much! <br><iframe width="560" height="315" src="https://www.youtube.com/embed/I15sK7dNMOM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`, null, ["best girl", "hole"], [""], [""], true));
 
     this.readied_reblogs['Parker/mine'] = new Post(this, "slander", null, ["this mine is great!"], [""], [""], true);
     this.readied_reblogs['Parker/parker'] = new Post(this, "@censored-for-your-protection you wanna get a milkeshake later?", null, ["this"], [""], [""], true);
@@ -3175,7 +3191,7 @@ class Parker extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
       responses = ["Zampanio is a very fun game. You should play it!"]
@@ -3756,25 +3772,25 @@ class JRHOL extends Character {
 
     const postContent = rand.pickFrom(houseOfLeaves);
     const rambleMap = {
-      'page407-top':"THIS is what I feel is the core of house of leaves. <br><br>or almost?<br><Br>I WANT to find the build up to this. the description of the obsessive insanity people get into. <br><br>the thousand page thesis documents contrasting with how long a NORMAL thesis is. <br><Br>but this is as close as i've found no matter how hard ive searched<br><br>this IDEA<Br><Br>that <span style='color: blue'>house</span> or no <span style='color: blue'>house</span> the REAL problem is the cognito harzard<br><br>the obsession<br><Br>just writing about the <span style='color: blue'>house</span> is enough to invite it into your mind<br><Br>to make it so only when writing about it do you feel better<Br><Br>theres a footnote that drives this point home better but i cant find the screenshot"
-      ,'page_407':"THERE it is<br><br>page 407<br>the footnote i've been looking for<br><Br>but not the REAL one<br><br>not the one about the thousand page thesis that draws attention to the fact that all this literature about a single movie that doens't exist is INSANE<br>no<br><br>THIS one is just. <Br>the maze<br>reassuring you that it is good and proper to obsess over it<br>we will have immense psychological benefits<br><Br>if only we agree to obsess<br><Br>and THERE is the rub isn't it? the <span style='color: blue'>house</span> asks us to obsess<br>the GAME begs us not to<br>well. not THE game. not the one you just lost<br>but ZAMPANIO<br>it asks you to not obsess over it and not forget it but a secret third thing<br><Br>just<br>enjoy it<br>a normal amount<br>as if any of us could possibly do that<br>the amount of effort required to get even THIS far is too much<br>we can't be normal about this<br>to our immense psychological benefit"
-      ,'this_is_a_normal_amount_of_times_to_see_a_movie':"you see what i MEAN?<Br>just casually slips that in in a foot note<br>saw a spooky movie 38 times in theaters<br>like we all do<br>but can i actually take the high ground here<br>how many weeks months days YEARS have i spent trying in vain to capture even a part of zampanio?<br>YOU ARE RIGHT HERE WITH ME<br>and even if you have only scratched the surface you can SEE can't you?<br>obsession is a terrible thing<br>and i would not free myself of it for even an instant<br>i NEED this<br><br>i need to either find a game that CLEARLY DOES NOT EXIST AND RUBS MY FACE IN IT<br>or prove once and for all its a house of leaves fanwork<br>but the quote im looking for i cannot find<br>even though 2016 me REFERENCES IT And thus couldn't have already been infected by Zampanio<br>it has to mean SOMETHING"
-      ,"a_blindspot_created_bytheactofseeing_isaveryneatmetaphor":"did...did that zampanio faq have a line like this?<br> drawing a comparison between homestucks void and a blindspot of an eye. <br>it censors all the homestuck aspects out, but void even more so. i can't find it again if it were ever there. <br>i like the metaphor though "
-      ,"no_homies":"okay THIS has to be where the NotAMinotaur meme came from, right?<br>wait but<br>i was the one to personify it by twisting it up with WattMan.exe<br>so before me it wasn't a homie...was it?"
-      ,"there_is_no_minotaur":"why does everyone want to put a monster in the maze<BR>in the backgrooms<br>it doesnt NEED a monster<br>don't you understand the point of a maze is the crushing isolation it brings to you<br>even if someone else is caught inside it how could you ever even expect to find them<br>how MANY OF US ARE CAUGHT BY ZAMPANIO<br>utterly unable to find one another because this damn fandom just wants to keep erasing itself for the memes<br>i tried you know<br>joined that discord<br>and then it erased itself<br>tried to make my own<br>then i ran out of spoons<br>the center just can not hold"
-      ,"this_is_a_normal_amount_of_pages":"i got so excited when i saw this<br>it is SO close to the quote im lookin for<br>but it just mentions the four thousand pages<br>it doesn't throw in your face how weird that is, if you've missed it<br>i just wanna find the bit about the average length of a thesis paper compared to ones on the <span style='color: blue'>house</span>"
-      ,"if_zampanio_could_be_said_to_haveacenter_itsthegame_thatprobablydoesntexist___unthinkable":"unthinkable huh<br>the entire zampanio fandom is without a center<br>we're all rallying around a game we damn well know doesn't exist<br>is it any wonder we can never find each other?"
-      ,"thisstuckwithme":"nothing really to say here<br>this was just the only visual concept that stuck with me<br>the idea of camping out on a stair case bigger than a football field<br>really big rooms are whatever<br>but a starecase big enough to camp on<br>that is intense"
-      ,"finding_meaning_inthenoise":"would zampanio do this, i wonder<br>take meaningless cacophonies<br>verbal farragos<br>and turn them into meaning?<br>is zampanio the lucky little horseshoe moment where the procedural randomness seems to draw into focus a story? "
-      ,"our_stubborn_insistencethatanythingspookyisgoingon":"this is so important to me<br>the idea that there IS no monster<br>that our imaginatio is the mosnter<br>that our stubborn insistene that there MUST bE MORE<br>is the only thing dooming us"
-      ,"marked_andunmarked_have_differentbigpictures":"my branch is like this<br>those who remain alone an Unobserved have such a small picture<br>just their own two eyes<br>those who start to reach out<br>even if its just to read the things others have left behind<br>they start seeing a bigger picture through eyes and eyes and eyes<br>theres not just one version of even my own branch of zampanio<br>let alone the whole thing"
-      ,"of_course_an_aluminium_foil_simp_wouldclaim_thematerialdoesnotmatter":"we've been over this<br>do not trust anything anyone associated with aluminimum foil tells you<br><img src='http://eyedolgames.com/Eyedlr/images/Secrets/reynolds.PNG'>"
-      ,"no_reason_to_lingerhere":"in the narrative there are endless doors and rooms and hallways and none of them have any reason to linger<br>no furniture no objects of any kind<br>similarly but inverted the boxes inside the book are just lists of objects and give us no reason to linger<br>no reason to read<Br>and contrast THAT with the noise of zampanio<Br>all of it bespoke in a way a list of HVAC system components could never be<br>but is there really meaning in any of it?"
-      ,"memory_is_reality":"god<br>i don't need a spooky maze for this<br>this is just reality<br>i'm constantly forgetting things exist and Unmarked are finding them for me<br>or I'm working on a sim and debugging somthing only to realize it was an intended feature from two-weeks-ago-me<br>you forget about something and its just gone"
-      ,"there_is_always_a_branch_todistract_you":"thats how zampanio gets you<br>isn't it?<br>you think you're close<br>so close to understanding what is going on<br>and then you find an impossibly deep new branch<br>and forget entirely what you were about to find before<br>endless parades of shiny new discoveries<br>is that heaven?<br>or my personal hell"
-      ,"writing_about_the_house_brings_relief":"you write and write and write and only then do you find relief"
-      ,"an_addiction_to_knowing_the_unknowable_ispspoton_forampanio":"is that how zampanio gets you?<br>because of how blatantly it doesn't exist<br>you're dangled with an impossible bait<br>something that can never satisfy<br>we will NEVER find it and thus we will never have that catharsis that lets us know we can stop looking"
-      ,"ilovehow_itkeepsthrowinginourface_remindersofhowfakeallthisis":"zampano is blind<br>we read pages and pages of visual analysis of photographs<br>and zampano is blind<br>and we knew that<br>of course we did<br>but the book has to throw it into our face<br>the fact that we forgot<br>that we are so used to suspending disbelief that we FORGOT the man was blind<br>just like we forget zampanio isn't real"
+      'page407-top': "THIS is what I feel is the core of house of leaves. <br><br>or almost?<br><Br>I WANT to find the build up to this. the description of the obsessive insanity people get into. <br><br>the thousand page thesis documents contrasting with how long a NORMAL thesis is. <br><Br>but this is as close as i've found no matter how hard ive searched<br><br>this IDEA<Br><Br>that <span style='color: blue'>house</span> or no <span style='color: blue'>house</span> the REAL problem is the cognito harzard<br><br>the obsession<br><Br>just writing about the <span style='color: blue'>house</span> is enough to invite it into your mind<br><Br>to make it so only when writing about it do you feel better<Br><Br>theres a footnote that drives this point home better but i cant find the screenshot"
+      , 'page_407': "THERE it is<br><br>page 407<br>the footnote i've been looking for<br><Br>but not the REAL one<br><br>not the one about the thousand page thesis that draws attention to the fact that all this literature about a single movie that doens't exist is INSANE<br>no<br><br>THIS one is just. <Br>the maze<br>reassuring you that it is good and proper to obsess over it<br>we will have immense psychological benefits<br><Br>if only we agree to obsess<br><Br>and THERE is the rub isn't it? the <span style='color: blue'>house</span> asks us to obsess<br>the GAME begs us not to<br>well. not THE game. not the one you just lost<br>but ZAMPANIO<br>it asks you to not obsess over it and not forget it but a secret third thing<br><Br>just<br>enjoy it<br>a normal amount<br>as if any of us could possibly do that<br>the amount of effort required to get even THIS far is too much<br>we can't be normal about this<br>to our immense psychological benefit"
+      , 'this_is_a_normal_amount_of_times_to_see_a_movie': "you see what i MEAN?<Br>just casually slips that in in a foot note<br>saw a spooky movie 38 times in theaters<br>like we all do<br>but can i actually take the high ground here<br>how many weeks months days YEARS have i spent trying in vain to capture even a part of zampanio?<br>YOU ARE RIGHT HERE WITH ME<br>and even if you have only scratched the surface you can SEE can't you?<br>obsession is a terrible thing<br>and i would not free myself of it for even an instant<br>i NEED this<br><br>i need to either find a game that CLEARLY DOES NOT EXIST AND RUBS MY FACE IN IT<br>or prove once and for all its a house of leaves fanwork<br>but the quote im looking for i cannot find<br>even though 2016 me REFERENCES IT And thus couldn't have already been infected by Zampanio<br>it has to mean SOMETHING"
+      , "a_blindspot_created_bytheactofseeing_isaveryneatmetaphor": "did...did that zampanio faq have a line like this?<br> drawing a comparison between homestucks void and a blindspot of an eye. <br>it censors all the homestuck aspects out, but void even more so. i can't find it again if it were ever there. <br>i like the metaphor though "
+      , "no_homies": "okay THIS has to be where the NotAMinotaur meme came from, right?<br>wait but<br>i was the one to personify it by twisting it up with WattMan.exe<br>so before me it wasn't a homie...was it?"
+      , "there_is_no_minotaur": "why does everyone want to put a monster in the maze<BR>in the backgrooms<br>it doesnt NEED a monster<br>don't you understand the point of a maze is the crushing isolation it brings to you<br>even if someone else is caught inside it how could you ever even expect to find them<br>how MANY OF US ARE CAUGHT BY ZAMPANIO<br>utterly unable to find one another because this damn fandom just wants to keep erasing itself for the memes<br>i tried you know<br>joined that discord<br>and then it erased itself<br>tried to make my own<br>then i ran out of spoons<br>the center just can not hold"
+      , "this_is_a_normal_amount_of_pages": "i got so excited when i saw this<br>it is SO close to the quote im lookin for<br>but it just mentions the four thousand pages<br>it doesn't throw in your face how weird that is, if you've missed it<br>i just wanna find the bit about the average length of a thesis paper compared to ones on the <span style='color: blue'>house</span>"
+      , "if_zampanio_could_be_said_to_haveacenter_itsthegame_thatprobablydoesntexist___unthinkable": "unthinkable huh<br>the entire zampanio fandom is without a center<br>we're all rallying around a game we damn well know doesn't exist<br>is it any wonder we can never find each other?"
+      , "thisstuckwithme": "nothing really to say here<br>this was just the only visual concept that stuck with me<br>the idea of camping out on a stair case bigger than a football field<br>really big rooms are whatever<br>but a starecase big enough to camp on<br>that is intense"
+      , "finding_meaning_inthenoise": "would zampanio do this, i wonder<br>take meaningless cacophonies<br>verbal farragos<br>and turn them into meaning?<br>is zampanio the lucky little horseshoe moment where the procedural randomness seems to draw into focus a story? "
+      , "our_stubborn_insistencethatanythingspookyisgoingon": "this is so important to me<br>the idea that there IS no monster<br>that our imaginatio is the mosnter<br>that our stubborn insistene that there MUST bE MORE<br>is the only thing dooming us"
+      , "marked_andunmarked_have_differentbigpictures": "my branch is like this<br>those who remain alone an Unobserved have such a small picture<br>just their own two eyes<br>those who start to reach out<br>even if its just to read the things others have left behind<br>they start seeing a bigger picture through eyes and eyes and eyes<br>theres not just one version of even my own branch of zampanio<br>let alone the whole thing"
+      , "of_course_an_aluminium_foil_simp_wouldclaim_thematerialdoesnotmatter": "we've been over this<br>do not trust anything anyone associated with aluminimum foil tells you<br><img src='http://eyedolgames.com/Eyedlr/images/Secrets/reynolds.PNG'>"
+      , "no_reason_to_lingerhere": "in the narrative there are endless doors and rooms and hallways and none of them have any reason to linger<br>no furniture no objects of any kind<br>similarly but inverted the boxes inside the book are just lists of objects and give us no reason to linger<br>no reason to read<Br>and contrast THAT with the noise of zampanio<Br>all of it bespoke in a way a list of HVAC system components could never be<br>but is there really meaning in any of it?"
+      , "memory_is_reality": "god<br>i don't need a spooky maze for this<br>this is just reality<br>i'm constantly forgetting things exist and Unmarked are finding them for me<br>or I'm working on a sim and debugging somthing only to realize it was an intended feature from two-weeks-ago-me<br>you forget about something and its just gone"
+      , "there_is_always_a_branch_todistract_you": "thats how zampanio gets you<br>isn't it?<br>you think you're close<br>so close to understanding what is going on<br>and then you find an impossibly deep new branch<br>and forget entirely what you were about to find before<br>endless parades of shiny new discoveries<br>is that heaven?<br>or my personal hell"
+      , "writing_about_the_house_brings_relief": "you write and write and write and only then do you find relief"
+      , "an_addiction_to_knowing_the_unknowable_ispspoton_forampanio": "is that how zampanio gets you?<br>because of how blatantly it doesn't exist<br>you're dangled with an impossible bait<br>something that can never satisfy<br>we will NEVER find it and thus we will never have that catharsis that lets us know we can stop looking"
+      , "ilovehow_itkeepsthrowinginourface_remindersofhowfakeallthisis": "zampano is blind<br>we read pages and pages of visual analysis of photographs<br>and zampano is blind<br>and we knew that<br>of course we did<br>but the book has to throw it into our face<br>the fact that we forgot<br>that we are so used to suspending disbelief that we FORGOT the man was blind<br>just like we forget zampanio isn't real"
     }
 
     let ramble = "";
@@ -3784,7 +3800,7 @@ class JRHOL extends Character {
         ramble = rambleMap[key];
       }
     }
-    const post = this.createNewPost(postContent +`<br>${ramble}`, ["house of leaves", "non-linear live blog", "i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
+    const post = this.createNewPost(postContent + `<br>${ramble}`, ["house of leaves", "non-linear live blog", "i'm looking for something in particular"], ["it's a house!"], ["its a maze!"]);
     if (post && parentToRenderTo) {
       post.renderToScreen(parentToRenderTo);
     }
@@ -3809,7 +3825,7 @@ class JR extends Character {
 
   handleAsks = (parentToRenderTo, premadeAsk) => {
     const obsession = this.checkAskForContamination(premadeAsk);
-    const bonus = obsession? `maybe I should check out ${obsession.name}`:"";
+    const bonus = obsession ? `maybe I should check out ${obsession.name}` : "";
     let tags = [""];
     let responses = [];
     if (premadeAsk.text.toLowerCase().includes("zampanio")) {
