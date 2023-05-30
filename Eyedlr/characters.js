@@ -539,8 +539,8 @@ class PornBot extends Character {
     //`?secrets=${secrets}&seed=${seed}&name=${name}&image=${image}&matchPercent=${matchPercent}&loc=${loc.replaceAll(baseURL,"")}`;
     let baseDating = 'http://eyedolgames.com/JackElope';
     let secrets = JSON.stringify(this.obsessions.map(o => Object.values(all_obsessions).indexOf(o)));
-    let link = `${baseDating}?secrets=${secrets}&seed=${rand.initial_seed}&name=${titleCase(this.name.replace(/[0-9]/g, ''))}&image=${this.icon.replaceAll(basePornBotImageURL, "")}&matchPercent=${this.matchPercent}&loc=${this.loc}`;
-    let datingLinks = [`Hey bb, you wanna check out my <a target='_blank' href ='${link}'>dating profile? </a>`];
+    let link = `<a target='_blank' href ="${baseDating}?secrets=${secrets}&seed=${rand.initial_seed}&name=${titleCase(this.name.replace(/[0-9]/g, ''))}&image=${this.icon.replaceAll(basePornBotImageURL, "")}&matchPercent=${this.matchPercent}&loc=${this.loc}">`;
+    let datingLinks = [`Are you dating anyone? Do you ${link} want</a> to be?`,`I wish we could talk more... Find me on my ${link} dating profile! </a>`, `Man I sure am lonely. Maybe you can ${link} visit </a> me?`, `Hey bb, you wanna check out my ${link} dating profile? </a>`];
     return datingLinks;
   }
 
