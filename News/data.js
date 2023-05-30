@@ -2326,7 +2326,7 @@ class Theme {
     }
 
     getImages = async ()=>{
-        console.log("JR NOTE: trying to get images for ",this.key)
+        //console.log("JR NOTE: trying to get images for ",this.key)
         if(!food_keys.includes(this.key)){
             return [];
         }

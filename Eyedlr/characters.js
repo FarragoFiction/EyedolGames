@@ -646,6 +646,9 @@ class PornBot extends Character {
     }
 
     let chosen = rand.pickFrom(possiblePosts);
+    if(!chosen){
+      chosen = "lol i am SO obsessed with scrolling forever!";
+    }
     let obsession_tag = "";
     for (let obsession of this.obsessions) {
       if (chosen.toLowerCase().includes(obsession.name.toLowerCase())) {

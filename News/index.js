@@ -43,15 +43,29 @@ restaurant_name: "Master  Fries" */
 let details;
 let reviewer; //first name and last initial
 
+let tumblrphrase;
+
 window.onload = () => {
 
   initThemes();
+  let theme1 = rand.pickFrom(Object.values(all_themes));
+  let theme2 = rand.pickFrom(Object.values(all_themes));
+  let username = `${theme1.pickPossibilityFor(ADJ,rand)}-${theme2.pickPossibilityFor(PERSON,rand)}`.toLowerCase();
+
+  tumblrphrase = `Tumblr user ${username} goes into detail on their popular <a target='_blank' href ='http://eyedolgames.com/Eyedlr/?seed=${rand.internal_seed}&name=${username}&image=Creepy/00008-img.png&matchPercent=${rand.getRandomNumberBetween(-13,100)}'>web log</a>.`;
   const queryString = window.location.search;
   if(!queryString){
     empty_news = true;
   }
   const urlParams = new URLSearchParams(queryString);
   let tmp_ref = urlParams.get('referer');
+
+  if(tmp_ref === "Eyedlr"){
+    theme_keys = [TWISTING, LOVE, DOLLS, ANGER]
+    referer_details="?theend=nevertheend"
+    tumblrArticle();
+    return;
+  }
   if(tmp_ref==="JackElope"){
     theme_keys = [LOVE, DOLLS]
     referer_details="?theend=nevertheend"
@@ -91,6 +105,15 @@ window.onload = () => {
   setupRightAd();
   replaceFirstArticleAndHeader();
 
+}
+
+const tumblrArticle= ()=>{
+  placeHolderDataAsNeeded();
+  setupLeftAd();
+  setupBottomAd();
+  setUpMiddleADInit();
+  setupRightAd();
+  new TumblrArticle().replaceFirstArticleAndHeader();
 }
 
 const datingsiteArticle= ()=>{
