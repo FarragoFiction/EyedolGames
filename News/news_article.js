@@ -265,7 +265,7 @@ const getOutro = () => {
   if(num_articles >max_articles){
     return "Please Stop."
   }
-  let templates= [`The ${restaurant_name} restaurant has been closed indefinitely as a result of the incident, and authorities are advising residents to stay vigilant and report any suspicious activity to the police.`,`Authorities are urging residents to be on the lookout for the monster and to report any sightings to the police immediately. In the meantime, the ${restaurant_name} restaurant has been closed while drivers are retrained and is expected to reopen within the next week.`,`This is the second monster attack to occur in the ${neighborhood} neighborhood in the past month, and residents are understandably on edge. `,`It is unclear at this time what caused ${monster_name} to transform into a monster or how many other potential victims besides ${victim_name} there are. The investigation into the incident is ongoing, and authorities are urging residents to be vigilant and to report any unusual activity to the police.`
+  let templates= [tumblrphrase,`The ${restaurant_name} restaurant has been closed indefinitely as a result of the incident, and authorities are advising residents to stay vigilant and report any suspicious activity to the police.`,`Authorities are urging residents to be on the lookout for the monster and to report any sightings to the police immediately. In the meantime, the ${restaurant_name} restaurant has been closed while drivers are retrained and is expected to reopen within the next week.`,`This is the second monster attack to occur in the ${neighborhood} neighborhood in the past month, and residents are understandably on edge. `,`It is unclear at this time what caused ${monster_name} to transform into a monster or how many other potential victims besides ${victim_name} there are. The investigation into the incident is ongoing, and authorities are urging residents to be vigilant and to report any unusual activity to the police.`
   ];
 
   let templates2= [`Our thoughts and condolences go out to the victims's family and loved ones during this difficult time.`,`Authorities are urging people to be cautious and to report any suspicious activity to the police.`,`The investigation is ongoing.`,`${details?.restaurant_name} have released a statement saying that they bear no responsibility.`,
@@ -360,6 +360,6 @@ const handleSecondSection = (ele) => {
     paragraph.innerText = getMiddle();
   }
   const outro = createElementWithClassAndParent("p",ele);
-  outro.innerText = getOutro();
+  outro.innerHTML = getOutro();
 
 }
