@@ -8,6 +8,7 @@ let feeUnder = 0;
 let current_food = "";
 const handleRestaurantPage = (name, themes, seed, feeUnderExternal) => {
   feeUnder = feeUnderExternal;
+  setupBackButton();
   const theme_keys = themes.split(",")
   const container = document.querySelector("#categories");
   const rand = new SeededRandom(seed);
@@ -40,6 +41,14 @@ const handleRestaurantPage = (name, themes, seed, feeUnderExternal) => {
 
 
   });
+}
+
+const setupBackButton = ()=>{
+  const logo = document.querySelector(".logo");
+  let backButton = createElementWithClassAndParent("a", logo, "back-button");
+  backButton.innerText = "View All Restaurants";
+  backButton.href = '/Zampanini';
+
 }
 
 const setupFeaturedItems = (container, rand, theme_keys) => {
