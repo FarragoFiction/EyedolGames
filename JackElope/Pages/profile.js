@@ -28,11 +28,13 @@ class ProfilePage extends PageObject {
 
   obsessions = [];
   glitched = false;
+  image_original = "";
 
   //  currentPage = profile? new Profile(name,image,matchPercent,loc) : new HomePage();
 
   constructor(seed, name, image, matchPercent, loc) {
     super();
+    this.image_original = image;
     this.seed = seed ? seed : 13;
     this.rand = new SeededRandom(this.seed);
     this.quirk = randomQuirk(this.rand);
