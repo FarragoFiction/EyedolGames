@@ -12,14 +12,21 @@ let initChatMap = () => {
   //you guys KNOW better than to click sus links.
   //in the real world, you get viruses or scams
   //here you get more zampanio. which i GUESS you want. but its not good for you!
-  let secrets = []
-  let obsessionArray = Object.values(all_obsessions);
-  for (let o of currentPage.obsessions) {
-    secrets.push(obsessionArray.indexOf(o))
+  let eyedlrUrl;
+  if (currentPage.obsessions) {
+    let secrets = []
+    let obsessionArray = Object.values(all_obsessions);
+    for (let o of currentPage.obsessions) {
+      secrets.push(obsessionArray.indexOf(o))
+    }
+    eyedlrUrl = `http://eyedolgames.com/Eyedlr/?seed=${currentPage.seed}&name=${currentPage.name}&image=${currentPage.image_original}&secrets=${JSON.stringify(secrets)}`;
   }
-  const eyedlrUrl = `http://eyedolgames.com/Eyedlr/?seed=${currentPage.seed}&name=${currentPage.name}&image=${currentPage.image_original}&secrets=${JSON.stringify(secrets)}`;
-  const links = [`If you REALLY Want to get to know me you'd check out my <a target='_blank' href='${eyedlrUrl}'>Zamblr</a> profile, lol`, `If you REALLY Want to get to know me you'd check out my <a target='_blank' href='${eyedlrUrl}'>Eyedlr</a> profile, lol`, "omg i'm literally addicted to playing this <a target='_blank' href='http://knucklessux.com/PuzzleBox/Secrets/Watcher/shambling_yes_no_presentation_by_the_watcher_of_threads.ppsx'>game</a>.", "Oh, have you seen <a target='_blank' href='http://www.farragofiction.com/TheTruthAboutAlt/'>this?</a>", "<a target='_blank' href ='http://farragofiction.com/?filter=zampanio'>Zampanio</a> awaits", "oh my god you'll never believe what you'll find  <a target='_blank' href ='https://discord.gg/tZmtKwnbac'>here</a>", "I know this good site for ordering food: <a target='_blank' href ='http://eyedolgames.com/Zampanini/'>click here</a>", "wanna see my <a target='_blank' href = 'http://farragofiction.com/SecurityLog/cctv.html'>cam show</a> ;) ;) ;)", `omg did you see this <a target='_blank' href ='http://eyedolgames.com/News/?referer=JackElope&name=${currentPage.name}&loc=${currentPage.loc}'>article</a>? it's so shocking!`];
+  const links = ["omg i'm literally addicted to playing this <a target='_blank' href='http://knucklessux.com/PuzzleBox/Secrets/Watcher/shambling_yes_no_presentation_by_the_watcher_of_threads.ppsx'>game</a>.", "Oh, have you seen <a target='_blank' href='http://www.farragofiction.com/TheTruthAboutAlt/'>this?</a>", "<a target='_blank' href ='http://farragofiction.com/?filter=zampanio'>Zampanio</a> awaits", "oh my god you'll never believe what you'll find  <a target='_blank' href ='https://discord.gg/tZmtKwnbac'>here</a>", "I know this good site for ordering food: <a target='_blank' href ='http://eyedolgames.com/Zampanini/'>click here</a>", "wanna see my <a target='_blank' href = 'http://farragofiction.com/SecurityLog/cctv.html'>cam show</a> ;) ;) ;)", `omg did you see this <a target='_blank' href ='http://eyedolgames.com/News/?referer=JackElope&name=${currentPage.name}&loc=${currentPage.loc}'>article</a>? it's so shocking!`];
 
+  if (eyedlrUrl) {
+    links.push(`If you REALLY Want to get to know me you'd check out my <a target='_blank' href='${eyedlrUrl}'>Zamblr</a> profile, lol`);
+    links.push(`If you REALLY Want to get to know me you'd check out my <a target='_blank' href='${eyedlrUrl}'>Eyedlr</a> profile, lol`);
+  }
   chatMap = {
     "hi": [...links, `hey I'm ${currentPage.name}, I found your number when I checked my cell phone address book. Do we know each other?`, "omg great to hear from you!", "lol, we met the other day and i totally forgot to message you until now", "Hey there sexy, wanna see my <a target='_blank' href = 'http://farragofiction.com/SecurityLog/cctv.html'>cam show</a> ;) ;) ;)"],
     "yes": ["Oh.", "Why?"],
