@@ -94,7 +94,7 @@ class ProfilePage extends PageObject {
   setupBackButton = ()=>{
     const logo = document.querySelector(".logo");
     let backButton = createElementWithClassAndParent("a", logo, "back-button");
-    backButton.innerText = "Home";
+    backButton.innerText = "Search For More Sexy Singles";
     backButton.href = '/JackElope';
 
   }
