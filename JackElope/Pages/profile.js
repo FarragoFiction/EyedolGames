@@ -91,6 +91,14 @@ class ProfilePage extends PageObject {
 
   }
 
+  setupBackButton = ()=>{
+    const logo = document.querySelector(".logo");
+    let backButton = createElementWithClassAndParent("a", logo, "back-button");
+    backButton.innerText = "Home";
+    backButton.href = '/JackElope';
+
+  }
+
   fuckShitUP = async () => {
 
 
@@ -135,6 +143,7 @@ class ProfilePage extends PageObject {
 
     let target = this.basicPageStructure(parent);
 
+    this.setupBackButton();
 
 
 

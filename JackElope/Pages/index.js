@@ -14,7 +14,9 @@ class PageObject {
         let bigbox = createElementWithClassAndParent("div",parent, "fullbox");
         //generous margins
         //logo in upper right corner
-        let logo = createElementWithClassAndParent("img",bigbox, "logo");
+        let logoContainer = createElementWithClassAndParent("div",bigbox, "logo");
+        let logo = createElementWithClassAndParent("img",logoContainer, "logo-img");
+
         if(new Date().getHours() == 0 || new Date().getDay() === 5){
             //midnight and fridays are always special.
             logo.src = "images/pathos/Zamparamour_logo.png"

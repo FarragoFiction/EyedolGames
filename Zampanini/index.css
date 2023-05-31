@@ -436,6 +436,17 @@ input{
   display: inline-block;
 }
 
+.back-button{
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  left: 10px;
+  font-size: 10px;
+  bottom: 0px;
+  letter-spacing: 2px;
+
+}
+
 #resteraunts{
   display: flex;
   margin-top: 50px;
