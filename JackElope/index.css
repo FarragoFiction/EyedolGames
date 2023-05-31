@@ -456,14 +456,14 @@ select {
 .back-button{
   position: absolute;
   left: 5px;
-  top: 10px;
+  top: 70px;
   padding:3px;
   padding-right: 20px;
   padding-left: 20px;
   border-radius: 13px;
-  background: white;
   text-decoration: none;
-  color: black;
+  color: white;
+  font-size: 12px;
 
 }
 
@@ -474,6 +474,7 @@ select {
   height: 72px;
   max-height: 72px;
   min-height: 72px;
+  position: relative;
 
 }
 
