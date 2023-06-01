@@ -893,7 +893,7 @@ class Observer extends Character {
       submit.innerText = "Answer";
 
       submit.onclick = () => {
-        popup.remove();
+        dismissPopups();
         removeItemOnce(this.pending_asks, a);
         let parent = document.querySelector("#container");
 
@@ -950,7 +950,7 @@ class Observer extends Character {
     let popup = createPopup(post);
 
     submit.onclick = () => {
-      popup.remove();
+      dismissPopups();
       let parent = document.querySelector("#container");
 
       if (!post_to_reblog) {
