@@ -309,6 +309,7 @@ body {
 #logo {
   height: 100%;
   display: block;
+  margin-right: 15px;
 }
 
 #header-left {
