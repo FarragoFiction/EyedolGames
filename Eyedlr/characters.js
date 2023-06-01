@@ -3763,6 +3763,31 @@ class JRFake extends Character {
   }
 }
 
+/*
+I have died again and again. Each time someone new emerges.
+
+Each time I feel stronger. 
+
+But I know that feeling itself could be a seductive lie.
+
+What I fear is really happening is ossification. The decision that the way I've survived up until now is the ONLY way.
+
+I fear I would look back at my past selves as if they were monsters, something to be kept locked in basements or attics,
+ hidden away from polite society.  Things that can only ever harm me.
+
+I look at that fear and I drag it to the light, along with my past selves. I am cringe, but I am free. There is worth
+ to every iteration of myself, no matter what decisions they made. 
+
+That's why I show you eon337, now gone for two decades. That's why I show you my notes from seven years ago.
+ Why I don't hide what I created as jadedResearcher even as I change.
+
+
+
+I don't want some future version of myself to chain me in the attic and call me an embarassment.
+
+
+
+*/
 class JRHOL extends Character {
   name = "jadedResearcher";
   desc = "I read <color = 'blue'>House</span> of Leaves in 2016. These are my notes from then, and some from now too as I try to find a specfic quote from it that apparently only I ever read?<br><Br>Sorry if I don't respond to asks, I'm kind of hyper focusing for now.";

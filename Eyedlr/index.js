@@ -72,7 +72,7 @@ window.onload = () => {
 
   let seed = parseInt(urlParams.get('seed'));
   if (!seed) {
-    seed = 13;
+    seed = 216+113+00000;
   }
   rand = new SeededRandom(seed);
 
@@ -241,18 +241,16 @@ const init = async () => {
   await tick();
   await tick();
   await tick();
-  await tick();
-  await tick();
 
   const loading = document.querySelector("#loading-posts");
   loading.style.display = "none";
   loading.remove();
 
-  let profileBot = wanderer;
+  let profileBot = null;
 
   if(pornBotName){
     profileBot = pornBots[0];
-    profileBot.name = pornBotName+ getRandomNumberBetween(0, 2022);
+    profileBot.name = pornBotName.toLowerCase()+ getRandomNumberBetween(0, 2022);
   }
 
   if(pornBotMatchPercent){
@@ -281,7 +279,7 @@ const init = async () => {
     }
   }
   //JR NOTE TODO: only do this if we have a passed in porn bot from url
-  showProfile(profileBot)
+  profileBot && showProfile(profileBot)
   initialAutoTicks();
   collatePremadePosts();
 }
