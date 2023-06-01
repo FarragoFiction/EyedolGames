@@ -247,6 +247,7 @@ const init = async () => {
   loading.remove();
 
   let profileBot = null;
+  pornBots[pornBots.length-1].icon = rand.pickFrom(weirdImageList)
 
   if(pornBotName){
     profileBot = pornBots[0];
