@@ -342,6 +342,8 @@ body {
 
 .popup-close {
   cursor: pointer;
+  position: sticky;
+  align-self: flex-start;
 }
 
 .popup-clone {
