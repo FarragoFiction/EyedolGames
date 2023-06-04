@@ -50,13 +50,13 @@ class Character {
   posts = [];
   reblogged_posts = [];
 
-  //key, post pairs
+  //key, post pairs  
   readied_reblogs = {};
   //only for reblogs
   readied_wungles = {};
 
 
-  //just a list of posts
+  //just a list of posts (either string< OR object that is post + wungle)
   readied_posts = [];
   delete_readied_reblogs = true;
 
@@ -2776,8 +2776,34 @@ class K extends Character {
     }
 
   }
+  //for the more coherent blorbos the quotidians are literally just stealing posts from them in previous loops when eyedol is live
   constructor() {
     super();
+    //this is K at his best. he is feeling powerful and respected.  him being trained by camille really did help him
+    //of course, if you ask him, he tricked her secrets out of her by stealing her head
+    //but really
+    //she had such a great time being carried like a lapdog
+    //and saw potential in him, potential that was festering because no one had actually ever given him a CHANCE
+    
+
+    this.readied_posts.push(new Post(this, `had a WONDERFUL meeting with some of the guys at the turbohio DOJ. i'm telling you that when i say good things are coming it's because good things are COMING. no need to thank me.`, null, ["k post","doj","turbohio","we WILL get damage by spontaneous hole creation down by 10 percent. start kissing at my feet for it"], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `good morning netizens. get blessed with my presence once again.`, null, ["k post","i see you in my ask box and i don't care"], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `to the anons spamming the fuck out of my inbox: no you can't do anything by pestering the T-ODM about your messed up car if it HAPPENED to get hit by a werebird. bring it up with the turbohio department of insurance.`, null, ["k post","this ISN'T legal advice by the way."], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `why the fuck do bananas overripe so quickly? you'd think SOMEONE would've fixed this by now.`, null, ["k post","now i can't eat my fucking banana","thanks god. you snake bastard"], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `@${vik.name} @${yongki.name} are you two gonna show up to game night? or are you just gonna leave me with an xbox controller and a hand up my ass? #k posts, #you should be thankful i cleared my BUSY SCHEDULE for this`, null, ["k post","you should be thankful i cleared my BUSY SCHEDULE for this","i've been waiting all week to beat your asses at wandio kart"], [""], ["K!"], true));
+    //parker's problematic fav is K. he watched K a LOT. (he also likes witherby but witherby is a precious cinnamon bun without a single flaw)
+    this.readied_posts.push(new Post(this, `you know living in my own room is so much nicer. life is infinitely easier when there aren't people crawling inside your fucking walls.`, null, ["k post","having access to clean fucking water is a plus too"], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `it's beyond me why the old man doesn't just crown roman as the ceo already. he's OBVIOUSLY better than the other two.`, null, ["k post","succession","finally a man with some good fucking ideas","kendall doesn't even deserve to get counted","clown with fucking wheels"], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `the attorney general says that vriska did nothing wrong.`, null, ["k post","homestuck","vriska","official standpoint of the world","roll with it or droll with it","","",""], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `AITAs aren't even that funny. it's just a bunch of babies on gazeddit making up fake gay wedding stories or epic ownage posts. grow up.`, null, ["k post","gazeddit","i could come up with one better in minutes","","","","",""], [""], ["K!"], true));
+    //for some reason, witherby creeps ambrose the *hell* out. he just. gets on the train. reads a newspaper.... and then gets off. what the *hell*. she treats him like a cryptid. this is NOT how trains work. you're supposed to stay on them forever, slowly fading away and losing your sense of self. what IS witherby. he even GETS BACK ON AGAIN. that is DOUBLY not supposed to happen!
+    //k of course, takes credit for ambrose avoiding places witherby is
+    this.readied_posts.push(new Post(this, `you know it's on times like this when you can tell who the REAL winners are. we just cut back transdimensional train apparitions down to near zero. now THAT'S what we call putting those tax dollars to work.`, null, ["k post","you don't see this return for your dollar anywhere else boys","read them and weep","","","","",""], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, `opening up a new edutainment attraction next week at your favorite long florida theme park teaching ALL about how to stay safe during void season. big ups to @${wanda.name} for signing off on the project. details soon. be there. there'll be autographs.`, null, ["k post","so sad someone wasn't able to come for it but oh weeell","more for us","","","","",""], [""], ["K!"], true,`@${devona} i'm not gonna complain about getting ALL the attention on your little park rides, but are you ever gonna get the nuts to ACTUALLY show up to openings? or are you just gonna keep sending your brother in drag about it?`));
+    this.readied_posts.push(new Post(this, `hey local warning about that food delivery website. learn to read the fine print for a minute. we don't know what's going on but we sure as hell are looking at it.`, null, ["k post","one thing is for sure though you WILL get your food.","these fries are amazing","","","","","",""], [""], ["K!"], true));
+
+
+
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
 
   }
