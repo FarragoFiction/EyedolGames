@@ -148,7 +148,6 @@ const init = async () => {
   alt = new Alt();
   observer = new Observer();
   cfo = new FlowerChick();
-  k = new K();
 
   neville = new Neville();
   neighbor = new TheNeighbor();
@@ -169,6 +168,7 @@ const init = async () => {
   nam = new NAM();
   ronin = new Ronin();
   closer = new Closer();
+
   jr = new JR();//shambling horror jr is here to post donut and refuse to explain anything
 
   //wanda can't have both interns at once or she wouldn't have a need for the first intern
@@ -183,6 +183,7 @@ const init = async () => {
   //(really its just a quotidian live blogging what they are doing)
   wanderer = new Wanderer();
   wanda = new Wanda();
+  k = new K();
 
   await grabNormalImages();
   await grabWeirdImages();
