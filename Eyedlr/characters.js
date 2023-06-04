@@ -2052,6 +2052,13 @@ class Neville extends Character {
     this.readied_reblogs['Neville/excel'] = new Post(this, "dude ngl<Br><br>when excel first came out i hated it<br><Br>why you doin all those numbers for me<br><br>why cant i do the math<br><Br>but man<br><br>its nice<br><br>when you have a lot of numbers to feed it<br><br>lil creature that eats up my numbers and gives me new ones", null, [""], ["lol", "yeah thats you", "you okay there buddy?"], ["autism"], true);
 
     this.readied_posts.push(new Post(this, "", null, [""], ["content free"], ["content-free"], true));
+    this.readied_posts.push(new Post(this, "well hows everybody today", null, [""], [""], ["content-free"], true));
+    this.readied_posts.push(new Post(this, "debugging vba code might be done later today", null, [""], [""], ["content-free"], true));
+    this.readied_posts.push(new Post(this, "thanks for the soup gonna go up and get leftovers for later thanks", null, [""], [""], ["content-free"], true));
+    this.readied_posts.push(new Post(this, "a squirrel followed me home i named her vlookup <br><img src='images/Secrets/easternfoxsquirrel-HERO.jpg'>", null, [""], [""], ["content-free"], true));
+    this.readied_posts.push(new Post(this, "<img style='background: black; filter: brightness(0.01);' src ='http://farragofiction.com/ZampanioHotlink/neville.png'>", null, ["selfie"], [""], ["content-free"], true));
+
+
   }
 
 
