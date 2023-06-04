@@ -2118,7 +2118,8 @@ class Neville extends Character {
 
 /*
 JR style guide:
-i figure devona keeps up her all caps and is rambly but always in the tags, never the main post
+i figure devona keeps up her all caps (she's never sure what words are Important so she just Capitalizes Everything just to be safe. classic bard of light)
+ and is rambly but always in the tags, never the main post
 */
 //if you try to view her profile, its set to private
 //she doesn't realize, if she puts tags in a reblog (she does ALL THE TIME) she can be seen
@@ -2152,6 +2153,14 @@ class Devona extends Character {
     this.secret_readied_reblogs['Devona/scared'] = new Post(this, `@void_soup <span data-ai='devona is worried she has has a diagnosis'></span>`, null, ["Oh No", "What If I Have This", "How Could I TelL?", "Neville", "Do I Have This?"], [""], ["op, you okay?"], true);
     this.secret_readied_reblogs['data-breach="observer"'] = new Post(this, ` ! @${camille.name} @void_soup @we-didnt-start-the-fire @confess-your-sins <span data-ai='devona saw a breach'></span>`, null, ["Oh God", "Breach In Progress", "We Need to Act Quickly", "Do We Contain?"], [""], ["wut"], true); //always looking for breaches
     this.secret_readied_reblogs['@robitussin-warrior-deactivated @void_soup'] = new Post(this, ` !  @void_soup @we-didnt-start-the-fire @confess-your-sins  Oh god, Camille's Dead!!!!<span data-ai='devona saw a breach'></span>`, null, ["Oh God", "What Do We Do", "How Do We Stop The Breach!?"], [""], ["wut"], true);
+
+
+    this.readied_posts.push(new Post(this, "", null, ["Why Can't I Just Get Sent Correspondence In The Mail Instead Of Having To Show Up In Person?","I Feel Like I'm Gonna Throw Up During Work Pitches..."], [""], ["i see you in the tags"], true));
+    this.readied_posts.push(new Post(this, "", null, ["Neville Told Me I Should Write I Had A Tasty Strawberry Shortcake","And It's True! It Was Very Nice"], [""], ["i see you in the tags"], true));
+    this.readied_posts.push(new Post(this, "", null, ["Thanks For The Soup Nevy! It Was Really Nice!","The Tea From Vik Was Good Too","Be Back Soon"], [""], ["i see you in the tags"], true));
+    this.readied_posts.push(new Post(this, "", null, ["I Hate How Dark It Gets Down Here","I Know We Are Not Exactly Paying Rent...","But Going Out Is A Lot Scarier When It Is All Pitch Dark In Every Direction","Sigh","Mall Problems"], [""], ["i see you in the tags"], true));
+
+
 
   }
 
