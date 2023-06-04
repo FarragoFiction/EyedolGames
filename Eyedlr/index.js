@@ -44,6 +44,8 @@ let basePornBotImageURL = `http://eyedolgames.com/JackElope/images/SexySingles/`
 let seed = 0;
 let rand;
 let observer, wanderer, k;
+
+
 window.onload = () => {
   let date = new Date();
   isItWungleTime();
@@ -72,9 +74,12 @@ window.onload = () => {
 
   let seed = parseInt(urlParams.get('seed'));
   if (!seed) {
-    seed = 216+113+00000;
+    //https://stackoverflow.com/questions/8619879/javascript-calculate-the-day-of-the-year-1-366   harder than i thought to figure out what day of the year it is
+    //good job calendars for being so damn complex
+    seed = 216  + 100000*Math.floor(whatDayOfTheYearIsIt()/7); //changes each week
   }
   rand = new SeededRandom(seed);
+  updateURLParams("?seed=" + rand.initial_seed)
 
 
   let o = Object.values(all_obsessions)
@@ -110,6 +115,15 @@ window.onload = () => {
 
 }
 
+const whatDayOfTheYearIsIt = () => {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 0);
+  const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+  const oneDay = 1000 * 60 * 60 * 24;
+  const day = Math.floor(diff / oneDay);
+  return day;
+}
+
 const setupSearch = () => {
 
 
@@ -124,24 +138,24 @@ const setupSearch = () => {
     }
   }
   const home = document.querySelector("#home");
-  home.onclick = ()=>{
+  home.onclick = () => {
     input.value = "";
     showPosts();
   };
 }
 //header-container
-const dismissPopups = ()=>{
-    const popups = document.querySelectorAll(".popup-container");
-    for(let p of popups){
-      p.remove();
-    }
+const dismissPopups = () => {
+  const popups = document.querySelectorAll(".popup-container");
+  for (let p of popups) {
+    p.remove();
+  }
 }
 
 const init = async () => {
   const header = document.querySelector("#header-container");
   header.onclick = dismissPopups;
 
-  
+
 
   camille = new Camille(); //since she can deactivate have her first
 
@@ -189,7 +203,7 @@ const init = async () => {
   await grabWeirdImages();
   characters.push(observer)
   characters.push(alt);//user number 1
-  for(let i = 0; i<19; i++){
+  for (let i = 0; i < 19; i++) {
     let pornBot = randomPornBot();
     pornBots.push(pornBot);
     characters.push(pornBot)
@@ -248,31 +262,31 @@ const init = async () => {
   loading.remove();
 
   let profileBot = null;
-  pornBots[pornBots.length-1].icon = rand.pickFrom(weirdImageList)
+  pornBots[pornBots.length - 1].icon = rand.pickFrom(weirdImageList)
 
-  if(pornBotName){
+  if (pornBotName) {
     profileBot = pornBots[0];
-    profileBot.name = pornBotName.toLowerCase()+ getRandomNumberBetween(0, 2022);
+    profileBot.name = pornBotName.toLowerCase() + getRandomNumberBetween(0, 2022);
   }
 
-  if(pornBotMatchPercent){
+  if (pornBotMatchPercent) {
     profileBot = pornBots[0];
     profileBot.matchPercent = pornBotMatchPercent;
   }
 
-  if(pornBotName){
+  if (pornBotName) {
     profileBot = pornBots[0];
-    profileBot.icon = basePornBotImageURL+pornBotImage;
+    profileBot.icon = basePornBotImageURL + pornBotImage;
   }
 
-  if(pornBotLoc){
+  if (pornBotLoc) {
     profileBot = pornBots[0];
     profileBot.loc = pornBotLoc;
   }
 
-  if(pornBotSecrets){ 
+  if (pornBotSecrets) {
     profileBot = pornBots[0];
-    profileBot.obsessions  = [];
+    profileBot.obsessions = [];
 
     let secretsArray = JSON.parse(pornBotSecrets);
 
@@ -357,6 +371,8 @@ const isItWungleTime = async () => {
   //midnight and fridays are wungle time
   const date = new Date();
   if (hackedGiggles || date.getHours() == 0 || date.getDay() === 5) {
+    let logo = document.querySelector("#logo");
+    logo.src = "images/pathos/Zamblr_logo.png";
     global_wungle = true;
     const posts = document.querySelectorAll(".post");
     for (let p of posts) {
@@ -467,7 +483,7 @@ const showSearch = async (searchTerm) => {
   loader.style.display = "none";
   //tumblrs weird format
   for (let i = 0; i < 19 * 3; i += 3) {
-    if (posts.length > i+3) {
+    if (posts.length > i + 3) {
       let postElement = posts[i].createElement(true);//passing true creates a clone instead of replacing the internal element
       content1.append(postElement);
 
