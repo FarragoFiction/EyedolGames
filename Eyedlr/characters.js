@@ -321,7 +321,6 @@ class Character {
   handleReadiedPost = () => {
     if (this.readied_posts && this.readied_posts.length && this.readied_posts.length > 0) {
       let post = rand.pickFrom(this.readied_posts);
-      this.name == k.name && console.log("JR NOTE: i have selected a readied post", post)
       post.owner = this;
       post.createElement();
       removeItemOnce(this.readied_posts, post);
@@ -2511,11 +2510,11 @@ class Witherby extends Character {
   //      `<a target='blank' href ="tumblrurl"><img src ='images/Secrets/tumblr_screenshots/savepoint.PNG'></a>`
   constructor() {
     super();
-    this.readied_posts.push(new Post(this, "A friendly reminder that it's tax season. If you haven't filed yours yet, do so now.", null, [""], ["non-testimony"], ["am i forgiven?"], true));
+    this.readied_posts.push(new Post(this, "A friendly reminder that it's tax season. If you haven't filed yours yet, do so now.", null, ["non-testimony"], [""], ["am i forgiven?"], true));
     //ambrose is avoiding him now, so his fast travel options are limited to parkers tunnels, rip
-    this.readied_posts.push(new Post(this, "Apologies for the delay for any anons that I've left waiting. I didn't catch my train home, so I've had to make do. I'll be replying to the rest shortly.", null, [""], ["non-testimony"], ["am i forgiven?"], true,"Parker, *please* make your holes a few meters wider next time you offer to let me travel through them. The rest of us can't breathe in dirt without coughing up our lungs.<br> #I have to stop wearing white suits to these."));
+    this.readied_posts.push(new Post(this, "Apologies for the delay for any anons that I've left waiting. I didn't catch my train home, so I've had to make do. I'll be replying to the rest shortly.", null, ["non-testimony"], [""], ["am i forgiven?"], true,"Parker, *please* make your holes a few meters wider next time you offer to let me travel through them. The rest of us can't breathe in dirt without coughing up our lungs.<br> I have to stop wearing white suits to these."));
     //witherby does not share a religion with anyone in the echidna. 
-    this.readied_posts.push(new Post(this, "Holiday greetings for whoever is observing today's festivities. I cannot say I am acquainted with them myself, but I know there are some Followers who do.", null, [""], ["non-testimony"], ["am i forgiven?"], true,"It'll be a cold, icy day in hell before Eyeblr gets me to call my followers 'Peepers'.<br> #The lack of taste in this website is reprehensible."));
+    this.readied_posts.push(new Post(this, "Holiday greetings for whoever is observing today's festivities. I cannot say I am acquainted with them myself, but I know there are some Followers who do.", null, ["non-testimony"], [""], ["am i forgiven?"], true,"It'll be a cold, icy day in hell before Eyeblr gets me to call my followers 'Peepers'.<br> The lack of taste in this website is reprehensible."));
 
 
     //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
