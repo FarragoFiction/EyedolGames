@@ -34,6 +34,8 @@ const HALLOWEEN = 'Lavinraca '; //this one intentionally is not in jackelope
 const MIKU = 'Hatsune Miku '; //this one is for parker
 const PEEWEE = 'PEEWEE '; //this one is for ria
 const DRACULA = "DRACULA"; //how could i forget tumblrs favorite fandom
+const TRAINS = "TRAINS";
+const BACCANO = "BACCANO"; //JR NOTE todo once it no longer spoils [REDACTED]
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -1199,6 +1201,32 @@ all_obsessions[DRACULA] = new Obsession(
   DraculaObjectsRaw.split(","),
   DraculaJobsRaw.split(",")  ,
   DRACULA
+);
+
+const trainCharRaw = `Trains`;
+const trainChar2Raw = `Trains`;
+const trainImportantEventsRaw = `when the transcontinental railroad was completed, when most steam locomotives were replaced by diesel or electric locomotives, which were cheaper, cleaner, and more reliable., when a steam locomotive built by British inventor Richard Trevithick powered the first ever steam train, when the train arrived at the station EXACTLY on time, when the train arrived at the station five minutes early, when the train ran over that one guy, when the Rail Tracer killed every single passenger`;
+const trainOpinionsRaw = `Some enthusiasts combine their interest in trains with the hobby of monitoring radio communications, specializing in listening to radio communications of railroad operations using a scanner.,A trainspotter may use a data book listing the locomotives or equipment in question, in which locomotives seen are ticked off.,Train photography is a common activity of railfans.,In the United Kingdom, rail enthusiasts are often called trainspotters or anoraks.,Train enthusiasts generally have a positive relationship with the railroad industry, though sometimes cause issues by trespassing.,Railfans are found around the world, along with hobbyists who create model train layouts,Trains have long had a major influence on music, art, and literature.,From the dawn of railroading, trains have had a significant cultural impact worldwide.,Freight trains are dedicated to the transport of cargo (also known as goods), rather than people, and are made up of freight cars or wagons.,A passenger train is used to transport people along a railroad line. ,Electric trains receive their current via overhead lines or through a third rail electric system, which is then used to power traction motors that drive the wheels.,Diesel locomotives are powered with a diesel engine, which generates electricity to drive traction motors.,Steam locomotives work by using a boiler to heat water into steam, which powers the locomotive's pistons which are in turn connected to the wheels.,Around the world, various track gauges are in use for trains. In most cases, trains can only operate on tracks that are of the same gauge; where different gauge trains meet, it is known as a break of gauge. Standard gauge, defined as 1,435 mm (4 ft 8.5 in) between the rails, is the most common gauge worldwide, though both broad-gauge and narrow-gauge trains are also in use.[43] Trains also need to fit within the loading gauge profile to avoid fouling bridges and lineside infrastructure with this being a potential limiting factor on loads such as intermodal container types that may be carried.[44],Steam locomotives require a fireman who is responsible for fueling and regulating the locomotive's fire and boiler., Brakeman, also known as trainmen, were historically responsible for manually applying brakes, though the term is used today to refer to crew members who perform tasks such as operating switches, coupling and uncoupling train cars, and setting handbrakes on equipment.
+Conductors are in charge of trains and their cargo, and help passengers on passenger trains.,Train drivers, also known as engineers, are responsible for operating trains.[,most passenger trains continue to operate based on fixed schedules, though freight trains may instead run on an as-needed basis, or when enough freight cars are available to justify running a train.,Historically, trains operated based on timetables,To prevent collisions or other accidents, trains are often scheduled, and almost always are under the control of train dispatchers.,For safety and communication, trains are equipped with bells, horns, and lights.[,Because trains are heavy, powerful brakes are needed to slow or stop trains, and because steel wheels on steel rails have relatively low friction, brakes must be distributed among as many wheels as possible.,Train vehicles are linked to one another by various systems of coupling.,Outside of coal mines, where fuel was readily available, steam locomotives remained untried until the opening of the Stockton and Darlington Railway in 1825. British engineer George Stephenson ran a steam locomotive named Locomotion No. 1 on this 40-kilometer (25-mile) long line, hauling over 400 passengers at up to 13 kilometers per hour (8 mph). The success of this locomotive, and Stephenson's Rocket in 1829, convinced many of the value in steam locomotive,Trains are an evolution of wheeled wagons running on stone wagonways, the earliest of which were built by Babylon circa 2,200 BCE.,Monorails operate on a single rail, while funiculars and rack railways are uniquely designed to traverse steep slopes.,Since the 1970s, governments, environmentalists, and train advocates have promoted increased use of trains due to their greater fuel efficiency and lower greenhouse gas emissions compared to other modes of land transport. ,A train (from Old French trahiner, from Latin trahere, "to pull, to draw"[1]) is a series of connected vehicles that run along a railway track and transport people or freight.,Jose is a Great Rat Train,Jaimie is a Great Rat Train, Blain The Train Is a Pain, trains are the most efficient means of transport available in modern society, trains are a type of god, if you get onto a train you can't expect to ever get off, people who get on trains are never seen again, the Rail Tracer will kill anyone who harms a train, the Rail Tracer is real`;
+const trainMemesRaw = `Chugga chugga choo choo!`;
+const trainGoalsRaw = `create a Great Machine to unite the continent, build a to scale model of Jaimie the Great Rat Train, ride on a train every single day, always respect trains`;
+const trainLocationsRaw = `Train Track, Train Station`;
+const trainObjectsRaw = `Coal, Steam, Wheel, Track`;
+const trainJobsRaw = `Young Conductor, Conductor, Engineer, Brakeman, Fireman`;
+
+
+all_obsessions[TRAINS] = new Obsession(
+  "Train",
+  trainCharRaw.split(","),
+  trainChar2Raw.split(","),
+  trainImportantEventsRaw.split(","),
+  trainOpinionsRaw.split(","),
+  trainMemesRaw.split(","),
+  trainGoalsRaw.split(","),
+  trainLocationsRaw.split(","),
+  trainObjectsRaw.split(","),
+  trainJobsRaw.split(",")  ,
+  TRAINS
 );
 
 

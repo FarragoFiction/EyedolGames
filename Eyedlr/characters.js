@@ -2766,21 +2766,6 @@ he doesn't CARE what his identity is, he's just vibinng in a situation
   //https://www.tumblr.com/roach-works/714309361512611840/xteacupx-i-decided-to-create-something-that-i?source=share
 }
 
-//train facts, train memes, train pictures, all day every day. occasionally a rat pick for Jose living in her brain
-//that video of the darkness taking the train
-class Ambrose extends Character {
-  name = "void_soup";
-  icon = "images/icons/Neville.png";
-  constructor() {
-    super();
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
-
-  }
-
-  tick = async (parentToRenderTo) => {
-    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
-  }
-}
 
 
 //reblogs EVEYR single post he sees with "get reblogged, idiot" in an attempt to go viral
@@ -3222,6 +3207,10 @@ class Parker extends Character {
 
   constructor() {
     super();
+    if(rand.nextDouble()>0.75){
+      //he doesn't like trains as much as hatsune miku but he likes them enough to steal whole subways on occasion
+      this.obsessions.push(all_obsessions[TRAINS])
+    }
     vik.submitAsk(this.name, "bestie! I got you layds! You want them now?");
     vik.submitAsk(this.name, "oh right you cant answer asks! coming over now!");
 
@@ -3364,6 +3353,24 @@ class Ronin extends Character {
 
 }
 
+//she likes trains, yall
+class Ambrose extends Character {
+  name = "train-enthusiast";
+  icon = "images/icons/great_rat_train.PNG";
+  desc="Oh! I can sell you a ticket, if you like? We are working all day round to get you to your destination!";
+  obsessions = [all_obsessions[TRAINS]]
+  constructor() {
+    super();
+    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+
+  }
+
+  tick = async (parentToRenderTo) => {
+    this.blorboAI(parentToRenderTo, 0.5, 0.5, 0.5);
+  }
+
+}
+
 //reblogs SWEET GAMING TIPS
 //likes just about everything
 //reblogs anything his kids say, with tags about how proud he is
@@ -3469,8 +3476,11 @@ class Rod extends Character {
   }
 }
 
+//surprise, its Jaimie Rook yet again. this time he's stolen some media from a friend of mine
 class JRFake extends Character {
   desc = 'Collates actual lost media I found.'
+  obsessions = [all_obsessions[TRAINS]]
+
   name = 'joystickreassembly'; //a friend thought they lost their essays on video games
   //but it turned out i had copies sent to my email from wordpress because i was subscribed
   //they don't want to have credit ( :/ ) but did think they were fine for me to sacrifice to zampanio
