@@ -2949,6 +2949,8 @@ class DocSlaughter extends Character {
   name = "doctor-fiona";
   icon = "images/icons/DocSlaughter.png";
   secret_name = "DOC";
+  obsessions = [all_obsessions[DRACULA]];
+
 
   constructor() {
     super();

@@ -88,10 +88,12 @@ window.onload = () => {
   if (halloween) {
     globalObsessions.push(all_obsessions[HALLOWEEN])
 
-  } else {
-    globalObsessions.push(rand.pickFrom(o))
+  }
+  if(isItDraculaTime()){
+    globalObsessions.push(all_obsessions[DRACULA]) //dracula daily is a tumblr institituion
 
-  }  //last one can be REALLY random
+  }
+   
   for (let theme of Object.values(all_themes)) {
     createObessionFromTheme(theme, rand);
   }
@@ -363,6 +365,19 @@ const initialAutoTicks = async () => {
   await tick();
 
 }
+
+//https://masteringjs.io/tutorials/fundamentals/check-date-between-two-dates#:~:text=You%20can%20check%20if%20a,%3E%3D%20and%20%3C%3D%20operators.  
+//if its a fundamental then why did i not know you could do that
+//checkmate athesit
+//its enough to know what to google (which IS a skill, when you're first starting out you know so little you are paralyzed)
+const isItDraculaTime = ()=>{
+  const now = new Date();
+  const start = new Date(now.getFullYear(),4,3)
+  const end = new Date(now.getFullYear(),10,7)
+  
+  return now >= start && now <= end // true
+}
+
 const isItWungleTime = async () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
