@@ -184,6 +184,7 @@ const init = async () => {
   nam = new NAM();
   ronin = new Ronin();
   closer = new Closer();
+  ambrose = new Ambrose();
 
   jr = new JR();//shambling horror jr is here to post donut and refuse to explain anything
 
@@ -231,6 +232,8 @@ const init = async () => {
   characters.push(doc);
   characters.push(devona);
   characters.push(nam);
+  characters.push(ambrose);
+
   characters.push(ronin);
   characters.push(cfo);
   characters.push(wanda);
