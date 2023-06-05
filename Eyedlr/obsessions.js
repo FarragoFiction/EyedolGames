@@ -33,6 +33,7 @@ const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
 const HALLOWEEN = 'Lavinraca '; //this one intentionally is not in jackelope
 const MIKU = 'Hatsune Miku '; //this one is for parker
 const PEEWEE = 'PEEWEE '; //this one is for ria
+const DRACULA = "DRACULA"; //how could i forget tumblrs favorite fandom
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
@@ -1171,6 +1172,35 @@ all_obsessions[PEEWEE] = new Obsession(
   peeweeJobsRaw.split(",") ,
   PEEWEE 
 );
+
+
+
+
+const DraculaCharRaw = `Dracula, Abraham Van Helsing, Jonathan Harker, Mina Harker, Mina Murry, Lucy Westerna, Renfield, Quincey P Morris, Dr John Steward, Arthur Holmwood,`;
+const DraculaChar2Raw = `Dracula's Three Weed Smoking Girlfriend, Lucy's Mom, Arthur's Dad, Jonathan's Boss, the local's in Transylvania`;
+const DraculaImportantEventsRaw = `when you realize Quincy P Morris is a Cowboy, when the three weed smoking girlfiends tried to eat Jonathan, when the Count crawled in lizard fasion, when Dracula yeeted the faul bauble of man's vanity, when Lucy died, when Arthur had to stake Lucy, when Mina started spying on Dracula, when all of London wanted to pet Dracula, when Dracula literally yeeted a wolf at a window, when Jonathan Harker discovered paprika`;
+const DraculaOpinionsRaw = `Mina is obsessed with trains, Jonathan Harker had just passed the bar and would do anything to keep his job, Jonathan Harker is a gothic heroine, the suiter squad is a polycule, Jonathan and Mina are the otp, dracula is a stinky bastard man, dracula has terrible straw hat taste, the natives of Dracula's territory betrayed Jonathan, the natives of Dracula's territory tried to help Jonathan and were punished, Dracula is an abuser, Dracula is a Boyar who signs his letter 'D' and cooks all Jonathan's meals thereore he is Chef Boyar D `;
+const DraculaMemesRaw = `Dracula's Three Weed Smoking Girlfriend`;
+const DraculaGoalsRaw = `cosplay as a vampire, cosplay as a cowboy, dress a lizard up `;
+const DraculaLocationsRaw = `Castle Dracula, London, Lucy's House`;
+const DraculaObjectsRaw = `stake, gun, diary kept in shorthand, coffin, train schedules`;
+const DraculaJobsRaw = `vampire, cowboy, doctor, teacher, soliciter`;
+
+
+all_obsessions[DRACULA] = new Obsession(
+  "Dracula Daily",
+  DraculaCharRaw.split(","),
+  DraculaChar2Raw.split(","),
+  DraculaImportantEventsRaw.split(","),
+  DraculaOpinionsRaw.split(","),
+  DraculaMemesRaw.split(","),
+  DraculaGoalsRaw.split(","),
+  DraculaLocationsRaw.split(","),
+  DraculaObjectsRaw.split(","),
+  DraculaJobsRaw.split(",")  ,
+  DRACULA
+);
+
 
 /*
 
