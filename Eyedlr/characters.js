@@ -593,26 +593,26 @@ class PornBot extends Character {
     ]
 
     if(this.favoriteSexyMan){
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
-      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  <span data-sexyman='hot'></span>Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  <span data-sexyman='hot'></span>omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  <span data-sexyman='hot'></span>*tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  <span data-sexyman='hot'></span>Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br> <span data-sexyman='hot'></span> Tom Peyote. No comments needed!` )
     }
 
 
@@ -705,6 +705,29 @@ class PornBot extends Character {
     }
   }
 
+  sexymanDiscourse = (parentToRenderTo)=>{
+    console.log("JR NOTE: trying to do sexyman discourse")
+    //JR NOTE TODO: first find a post with data-sexyman='hot'in it. 
+    //then, see if it includes your own sexyman in it.  (this.favoriteSexyMan.element.outerHTML)
+    //if not, say something inflamatory and post your own
+    const target = rand.shuffle(all_posts).find((i) => i.text.includes("data-sexyman='hot'"));
+    if(!target || target.text.includes(this.favoriteSexyMan.element.outerHTML)){
+      return;
+    }
+    console.log("JR NOTE: trying to do sexyman discourse, found a post")
+
+    const minesBetter = ['try a REAL sexy man','but this is the Ultimate Sexy Man','behold the best'];
+    const inflamatoryShit = [
+      `You might not like it`,
+      'absoluty nothing compared to my boi',
+      `your taste is terrible`,
+      `wow imagine having shit taste`,
+    ];
+    const post =  this.reblogAPost(target, `<span data-sexyman='hot'></span> ${this.quirk.apply(rand.pickFrom(inflamatoryShit))} ${this.quirk.apply(rand.pickFrom(minesBetter))} <br>${this.favoriteSexyMan.element.outerHTML}`, [''], ["message me for a good time!", "that's so sexy!", "wow! so interesting!", "tell me more!", "what a great idea!"], ["tom", "sexy"]);
+
+    parentToRenderTo && post.renderToScreen(parentToRenderTo)
+  }
+
   randomAsk = () => {
     const obsession = rand.pickFrom(this.obsessions);
     const dating = this.getDatingLinks();
@@ -747,6 +770,10 @@ class PornBot extends Character {
 
     }
 
+    if(rand.nextDouble()>0.75){
+      this.sexymanDiscourse(parentToRenderTo);
+    }
+
     let premadeAsk = rand.pickFrom(this.pending_asks)
     if (premadeAsk) {
       removeItemOnce(this.pending_asks, premadeAsk);
@@ -772,6 +799,8 @@ class PornBot extends Character {
       }
 
     }
+
+
 
 
 
