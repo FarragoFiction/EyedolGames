@@ -524,6 +524,8 @@ class PornBot extends Character {
   //for jackelope
   matchPercent = rand.getRandomNumberBetween(0, 100);
   loc = rand.pickFrom(["Orlando, Florida", "Westerville, Ohio", "Naples, Italy"])
+  //each quotidian has a favorite sexyman they'll constantly post about //doll.element.outerHTML
+  favoriteSexyMan;
 
   // 20h:14m:36s
   //5d:23h:17:04s
@@ -575,6 +577,7 @@ class PornBot extends Character {
 
       "<img src='http://www.farragofiction.com/ZampanioEyes2/tiktanio_glitchy.gif'>",
       `<h2>What Is ZampanioSim?</h2> <img src ='images/Secrets/tumblr_screenshots/what_is_zampaniosim.PNG'></a>`,
+      'what if there were more than 99?<br><iframe width="560" height="315" src="https://www.youtube.com/embed/Kam_MEijJzQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
 
       '<iframe width="460" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/814252129&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/openai_audio" title="OpenAI" target="_blank" style="color: #cccccc; text-decoration: none;">OpenAI</a> · <a href="https://soundcloud.com/openai_audio/classic-pop-in-the-style-of-frank-sinatra" title="Classic Pop, in the style of Frank Sinatra" target="_blank" style="color: #cccccc; text-decoration: none;">Classic Pop, in the style of Frank Sinatra</a></div>',
       '<iframe width="460" height="315" src="https://www.youtube.com/embed/16WNvL8Gtt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
@@ -588,6 +591,29 @@ class PornBot extends Character {
 
       `animorphs <a target='blank' href ="https://www.tumblr.com/batastrophe7/714812551793393664/i-wrote-an-essay-about-marco-and-his-dad-in-book?source=share"><img src ='images/Secrets/tumblr_screenshots/animorphs1.PNG'></a>`,
     ]
+
+    if(this.favoriteSexyMan){
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote is so hot!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  omg have you seen anyone hotter than Tom Peyote?` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  *tugs at collar* Tom Peyote is so sexy!` )
+      possiblePosts.push(`${this.favoriteSexyMan.element.outerHTML}<br>  Tom Peyote. No comments needed!` )
+    }
 
 
     const date = new Date();

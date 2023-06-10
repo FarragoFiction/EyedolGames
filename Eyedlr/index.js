@@ -205,9 +205,12 @@ const init = async () => {
   await grabNormalImages();
   await grabWeirdImages();
   characters.push(observer)
+  const sexyManConstructor = new DollConstructor();
   characters.push(alt);//user number 1
   for (let i = 0; i < 19; i++) {
     let pornBot = randomPornBot();
+    pornBot.favoriteSexyMan = sexyManConstructor.randomTomPeyoteDoll(rand);
+    pornBot.favoriteSexyMan.renderSelf();//storing it for later
     pornBots.push(pornBot);
     characters.push(pornBot)
   }
