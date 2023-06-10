@@ -210,7 +210,7 @@ const init = async () => {
   for (let i = 0; i < 19; i++) {
     let pornBot = randomPornBot();
     pornBot.favoriteSexyMan = sexyManConstructor.randomTomPeyoteDoll(rand);
-    pornBot.favoriteSexyMan.renderSelf();//storing it for later
+    pornBot.favoriteSexyMan.renderSelf(null,rand);//storing it for later
     pornBots.push(pornBot);
     characters.push(pornBot)
   }

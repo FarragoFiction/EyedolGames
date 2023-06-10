@@ -1,27 +1,50 @@
 //this should be all in one with no leakage outside this file.
 //actually somewhat do this right
+//you DO need to pass a rand in tho
 
 //takes in layers in order
 class SimpleDoll {
   element;
   dollLayers = []; //in render order
 
-  
+
   //no css since this is meant to be stand alone
-  renderSelf = (parent)=>{
+  renderSelf = (parent, rand) => {
     const height = "400px"
     let container = document.createElement("div");
     container.style.position = "relative";
     container.style.height = height;
-    
 
-    for(let layer of this.dollLayers){
-      let layerContainer = document.createElement("img");
-      layerContainer.src = layer.url;
-      layerContainer.style.position="absolute";
-      layerContainer.style.height=height;
-      layerContainer.style.objectFit="scale-down";
-      container.append(layerContainer);
+    //do it up here so its slightly less tacky
+    let SaturationMin = 0;
+    let SaturationMax = 15;
+    let ValueMin = 0;
+    let ValueMax = 5;
+    let HueMin = 0;
+    let HueMax = 360;
+    const h = rand.getRandomNumberBetween(HueMin, HueMax);
+    const s = rand.getRandomNumberBetween(SaturationMin, SaturationMax)
+    const v = rand.getRandomNumberBetween(ValueMin, ValueMax)
+
+
+
+    for (let layer of this.dollLayers) {
+      if (layer.url.trim() != "") {
+        let layerContainer = document.createElement("img");
+        layerContainer.src = layer.url;
+        layerContainer.style.position = "absolute";
+        layerContainer.style.height = height;
+        layerContainer.style.objectFit = "scale-down";
+        if (layer.canModify && rand) {
+          if (rand.nextDouble() > 0.99) {//you can be tacky, as a treat
+            const h = rand.getRandomNumberBetween(HueMin, HueMax);
+            const s = rand.getRandomNumberBetween(SaturationMin, SaturationMax)
+            const v = rand.getRandomNumberBetween(ValueMin, ValueMax)
+          }
+          layerContainer.style.filter = `saturate(${s}) hue-rotate(${h}deg) brightness(${v})`;
+        }
+        container.append(layerContainer);
+      }
     }
     this.element = container;
     parent && parent.append(this.element)
@@ -39,7 +62,7 @@ class DollLayer {
     this.canModify = canModify;
   }
 
-  randomizeElements = (rand)=>{
+  randomizeElements = (rand) => {
 
   }
 
@@ -53,10 +76,10 @@ class DollLayer {
 class DollConstructor {
 
   baseOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Base/quixotic_nude_tp.png"];
-  shirtOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_1.png"];
-  shoeOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_1.png"];
-  pantOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_1.png"];
-  accesoryOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_1.png"];
+  shirtOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_1.png"];
+  shoeOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_1.png"];
+  pantOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_1.png"];
+  accesoryOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_1.png"];
   bgOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/BG/quixotic_bg.png"];
 
   /*
@@ -99,12 +122,12 @@ class DollConstructor {
   randomTomPeyoteDoll = (rand) => {
     const doll = new SimpleDoll();
     doll.dollLayers = [
-      new DollLayer(rand.pickFrom(this.bgOptions),true),
-      new DollLayer(rand.pickFrom(this.baseOptions),false),
-      new DollLayer(rand.pickFrom(this.shoeOptions),true),
-      new DollLayer(rand.pickFrom(this.pantOptions),true),
-      new DollLayer(rand.pickFrom(this.shirtOptions),true),
-      new DollLayer(rand.pickFrom(this.accesoryOptions),true),
+      new DollLayer(rand.pickFrom(this.bgOptions), true),
+      new DollLayer(rand.pickFrom(this.baseOptions), false),
+      new DollLayer(rand.pickFrom(this.shoeOptions), true),
+      new DollLayer(rand.pickFrom(this.pantOptions), true),
+      new DollLayer(rand.pickFrom(this.shirtOptions), true),
+      new DollLayer(rand.pickFrom(this.accesoryOptions), true),
     ]
     return doll;
   }
