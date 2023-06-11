@@ -35,6 +35,7 @@ const MIKU = 'Hatsune Miku '; //this one is for parker
 const PEEWEE = 'PEEWEE '; //this one is for ria
 const DRACULA = "DRACULA"; //how could i forget tumblrs favorite fandom
 const TRAINS = "TRAINS";
+const ZAM2ANIO = "ZAM2ANIO"; //amazing branch someone made that is a 'sequel' to zampanio
 const BACCANO = "BACCANO"; //JR NOTE todo once it no longer spoils [REDACTED]
 
 //if they have a glitch obsession it fucks up their whole page :) :) :)
@@ -1229,6 +1230,76 @@ all_obsessions[TRAINS] = new Obsession(
   TRAINS
 );
 
+
+
+///https://www.tumblr.com/hydrozoagames/719409893601329152/zam2anio-by-hydrozoa-games?source=share amazing fan branch we found
+
+const z2CharRaw = `Eric
+Mary King
+Doctor Slaughter
+Ernest
+Terence`;
+const z2Char2Raw = `Ryoma
+Brenda
+the Alice
+the Hare
+that thing`;
+const z2ImportantEventsRaw = `when you beat Doctor Slaughter
+when you beat Doc Slaughter
+when you beat Slaughter
+when the horse does the thing
+when you find it`;
+const z2OpinionsRaw = `I love walking to the right
+there are no secrets
+there are secrets
+there are no comments in the code
+there are comments in the code`;
+const z2MemesRaw = `I love walking to the right`;
+const z2GoalsRaw = `find all the secrets
+keep going deeper
+escape from this hell maze
+Find all the secrets in https://hydrozoa-games.itch.io/zam2anio .`;
+const z2LocationsRaw = `the one with grass
+the one in the clouds
+the purple one
+the lava cave`;
+const z2ObjectsRaw = `shovel
+shovel
+shovel
+Hi-Potion
+Cake
+Coffee
+Crimson Axe
+Hand Ax
+Bardiche
+Mithril Axe
+_`;
+const z2JobsRaw = `Soldier
+Monk
+Paladin
+Spellblade
+Samurai
+Archer
+Thief
+Priestess
+helicopter
+horse
+cow`;
+
+
+all_obsessions[ZAM2ANIO] = new Obsession(
+  "Zam2anio",
+  z2CharRaw.split("\n"),
+  z2Char2Raw.split("\n"),
+  z2ImportantEventsRaw.split("\n"),
+  z2OpinionsRaw.split("\n"),
+  z2MemesRaw.split("\n"),
+  z2GoalsRaw.split("\n"),
+  z2LocationsRaw.split("\n"),
+  z2ObjectsRaw.split("\n"),
+  z2JobsRaw.split("\n")  ,
+  ZAM2ANIO
+);
 
 /*
 
