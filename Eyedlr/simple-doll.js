@@ -19,16 +19,17 @@ class SimpleDoll {
     let SaturationMin = 0;
     let SaturationMax = 15;
     let ValueMin = 0;
-    let ValueMax = 5;
+    let ValueMax = 3;
     let HueMin = 0;
     let HueMax = 360;
-    const h = rand.getRandomNumberBetween(HueMin, HueMax);
-    const s = rand.getRandomNumberBetween(SaturationMin, SaturationMax)
-    const v = rand.getRandomNumberBetween(ValueMin, ValueMax)
+    const h = rand.getRandomNumberBetween(HueMin, HueMax)* rand.nextDouble();
+    const s = rand.getRandomNumberBetween(SaturationMin, SaturationMax)* rand.nextDouble()
+    const v = rand.nextDouble() >0.9 ?0:rand.getRandomNumberBetween(ValueMin, ValueMax)* rand.nextDouble()+.3;
 
 
-
+    let index = 0;
     for (let layer of this.dollLayers) {
+      index ++;
       if (layer.url.trim() != "") {
         let layerContainer = document.createElement("img");
         layerContainer.src = layer.url;
@@ -41,7 +42,7 @@ class SimpleDoll {
             const s = rand.getRandomNumberBetween(SaturationMin, SaturationMax)
             const v = rand.getRandomNumberBetween(ValueMin, ValueMax)
           }
-          layerContainer.style.filter = `saturate(${s}) hue-rotate(${h}deg) brightness(${v})`;
+          layerContainer.style.filter = `saturate(${s}) hue-rotate(${h}deg) brightness(${index === 1?rand.pickFrom([0,1,1,1,1,1,1,1,1,1,1,13]):v})`;
         }
         container.append(layerContainer);
       }
@@ -76,10 +77,10 @@ class DollLayer {
 class DollConstructor {
 
   baseOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Base/quixotic_nude_tp.png"];
-  shirtOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_1.png"];
-  shoeOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_1.png"];
-  pantOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_1.png"];
-  accesoryOptions = ["", "http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_1.png"];
+  shirtOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_1.png"];
+  shoeOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_1.png"];
+  pantOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_1.png"];
+  accesoryOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_1.png"];
   bgOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/BG/quixotic_bg.png"];
 
   /*
