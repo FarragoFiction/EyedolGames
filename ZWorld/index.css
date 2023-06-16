@@ -1,0 +1,91 @@
+body {
+  background-color: #abc9de;
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: "GT America", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+#page-content{
+  height: 100px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#header{
+  height: 120px;
+  background-image: linear-gradient(white, #efefef);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #b4b4b4;
+}
+
+.small-text{
+    font-size: 10px;
+    opacity: 85%;
+    margin-top: 0px;
+}
+
+#notification{
+  height: 33px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #b4b4b4;
+
+  padding: 15px;
+  margin-top: 24px;
+  background-image: linear-gradient(white, #efefef);
+  text-align: center;
+  vertical-align: middle;
+}
+
+#header img{
+  height: 100px;
+  padding: 10px;
+}
+
+#content{
+  width: 1000px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #b4b4b4;
+
+  margin-top: 25px;
+  min-height: 1000px;
+
+}
+
+.ride-container{
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-image: linear-gradient(white, #efefef);
+
+}
+
+.ride-title{
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.nearby-attractions{
+  color: #e27e37;
+}
+
+.ride-summary{
+  display: inline-block;
+  height: 200px;
+  vertical-align: top;
+  margin-left: 20px;
+  color: #06253c;
+  font-size: 14px;
+}
+
+.ride-container img{
+  height: 150px;
+  width: 220px;
+  
+  display: inline-block;
+}
