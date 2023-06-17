@@ -71,20 +71,23 @@ const randomCoaster = (rand)=>{
     const restaurantName = getRestaurantName(rand, foodThemes.map((t)=>t.key), true)
     const restaurantUrl = `http://eyedolgames.com/Zampanini/?name=${encodeURI(restaurantName).replace(/'/g, "%27")}&themes=${encodeURI(foodThemes.map((t)=>t.key))}&feeUnder=${rand.getRandomNumberBetween(1,113)}`;
     const nearbyAttractions = `${rand.getRandomNumberBetween(2,13)} ${rand.pickFrom(["Miles","Blocks","Feet","Meters","Kilometers","Jumps","Turns"])} from: <a target='_blank' href='${restaurantUrl}'>${restaurantName}</a>`;
-    return new Ride(titleCase(rand.pickFrom(nameTemplates)), rand.pickFrom(coasterImages),nearbyAttractions)
+    
+    const desc = "lorem ipsum baby"
+    return new Ride(titleCase(rand.pickFrom(nameTemplates)), rand.pickFrom(coasterImages),nearbyAttractions,desc)
 }
 
 class Ride{
   imageSrc;
   name;
   nearbyAttractions; //this is html and has a link
-  teaseDescription;
+  teaserDescription;
   element;
 
-  constructor(name,image, nearbyAttractions){
+  constructor(name,image, nearbyAttractions, teaserDescription){
     this.name = name;
     this.imageSrc = image;
     this.nearbyAttractions = nearbyAttractions;
+    this.teaserDescription = teaserDescription;
     this.generateElement();
   }
 
@@ -98,6 +101,9 @@ class Ride{
 
     const attractions  = createElementWithClassAndParent("div",summary,"nearby-attractions");
     attractions.innerHTML = this.nearbyAttractions;
+
+    const desc  = createElementWithClassAndParent("div",summary,"teaser-desc");
+    desc.innerHTML = this.teaserDescription;
 
     return this.element;
   }

@@ -83,6 +83,10 @@ body {
   font-size: 14px;
 }
 
+.teaser-desc{
+  margin-top: 20px;
+}
+
 .ride-container img{
   height: 150px;
   width: 220px;
