@@ -72,8 +72,24 @@ const randomCoaster = (rand)=>{
     const restaurantUrl = `http://eyedolgames.com/Zampanini/?name=${encodeURI(restaurantName).replace(/'/g, "%27")}&themes=${encodeURI(foodThemes.map((t)=>t.key))}&feeUnder=${rand.getRandomNumberBetween(1,113)}`;
     const nearbyAttractions = `${rand.getRandomNumberBetween(2,13)} ${rand.pickFrom(["Miles","Blocks","Feet","Meters","Kilometers","Jumps","Turns"])} from: <a target='_blank' href='${restaurantUrl}'>${restaurantName}</a>`;
     
-    const desc = "lorem ipsum baby"
-    return new Ride(titleCase(rand.pickFrom(nameTemplates)), rand.pickFrom(coasterImages),nearbyAttractions,desc)
+    const chosenName = titleCase(rand.pickFrom(nameTemplates));
+
+
+    const teaserTemplates = [`Before Eyedol Games' Acquisition, the top manufacturing company Idlev was making coasters at break neck speed. It was no surprise they'd be a leader in innovation for new ways of manufacturing death defying experiences.<br><br>${chosenName} was their first attempt. `,
+    `Abhorrineer Devona Avamund had this to say about her newest masterpiece: ${rand.pickFrom(devonaQuotes)}`,
+    `Fly like a ${noun}, we provide the wings.`,
+    `Looking for some new ${rand.pickFrom(["excitement","thrills","chills","experiences"])}? This track let's you get an immersive experience like never before. Get strapped in on the track and feel the other passengers start to climb inside you. Become the ride.`,
+    `Are you ${rand.pickFrom(["kind","brave","bad","scared","epic"])} enough to ${rand.pickFrom(["placate","murder","battle","kill","fight","survive"])} ${chosenName}?`,
+    `A ${rand.getRandomNumberBetween(2,217)} ${rand.pickFrom(["foot","mile","inch","meter","yard"])} vertical lift is nothing compared to the beyond vertical drop on this ${rand.pickFrom(["wood","steel","metal","plastic","aluminum","tin","lead"])} ${rand.pickFrom(["tyrant","champion","king","lord","mosnter"])}.`,
+    `${rand.pickFrom(["Sleeker","Faster","Smarter","Higher","More Terrifying"])} and ${rand.pickFrom(["Smoother","Wetter","Tastier","More Rigid"])} than ever before! Like a Shark!`,
+    "Join us in celebrating our newly opened House of Notes Experience with a brand new dark ride!  Award winning Abhorrineer Devona Avamund  takes us on a dark descent into obsession and hot tunes!",
+    "Children aged four to one hundred and four will be enchanted as this state of the art coaster showcases death defying loops!",    
+    `If you have a fear of ${rand.pickFrom(["relaxing","heights","heights","falling","drops","gravity","loops","spirals","trains","roller coasters","spiders","teacups",noun+"s"])}, consider yourself warned.`,
+    `${chosenName} is our first attempt at a new process we call 'harvesting'. Essentially, when old coasters are set to retire, whatever is still operational is salvaged and refitted in order to save massively on costs of manufacturing. Our designers take these stray pieces and fit them into new coasters.`];
+
+
+    const desc = rand.pickFrom(teaserTemplates);
+    return new Ride(chosenName, rand.pickFrom(coasterImages),nearbyAttractions,desc)
 }
 
 class Ride{
