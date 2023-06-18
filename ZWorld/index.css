@@ -10,27 +10,27 @@ body {
 
 }
 
-#page-content{
+#page-content {
   height: 100px;
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 
-#header{
+#header {
   height: 120px;
   background-image: linear-gradient(white, #efefef);
   border-radius: 5px;
   box-shadow: 1px 1px 5px #b4b4b4;
 }
 
-.small-text{
-    font-size: 10px;
-    opacity: 85%;
-    margin-top: 0px;
+.small-text {
+  font-size: 10px;
+  opacity: 85%;
+  margin-top: 0px;
 }
 
-#notification{
+#notification {
   height: 33px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #b4b4b4;
@@ -42,12 +42,12 @@ body {
   vertical-align: middle;
 }
 
-#header img{
+#header img {
   height: 100px;
   padding: 10px;
 }
 
-#content{
+#content {
   width: 1000px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #b4b4b4;
@@ -57,7 +57,7 @@ body {
 
 }
 
-.ride-container{
+.ride-container {
   height: 200px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -65,16 +65,16 @@ body {
 
 }
 
-.ride-title{
+.ride-title {
   margin-top: 20px;
   font-size: 20px;
 }
 
-.nearby-attractions{
+.nearby-attractions {
   color: #e27e37;
 }
 
-.ride-summary{
+.ride-summary {
   display: inline-block;
   height: 200px;
   vertical-align: top;
@@ -84,13 +84,45 @@ body {
   width: 741px;
 }
 
-.teaser-desc{
+.teaser-desc {
   margin-top: 20px;
 }
 
-.ride-container img{
+.ride-container img {
   height: 150px;
   width: 220px;
-  
+
   display: inline-block;
+}
+
+
+#truth-box {
+  position: fixed;
+  right: 35px;
+  bottom: 35px;
+  border: 3px solid black;
+  border-radius: 2px;
+  width: 300px;
+  height: 360px;
+  background: white;
+  box-shadow: 1px 1px 5px black;
+
+}
+
+#truths-words {
+  height: 50px;
+  width: 100%;
+  color: red;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  font-weight: bolder;
+  padding: 20px;
+  width: 261px;
+}
+
+#truths-well canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
 }
