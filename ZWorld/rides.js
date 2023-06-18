@@ -80,7 +80,7 @@ const randomCoaster = (rand)=>{
     `Fly like a ${noun}, we provide the wings.`,
     `Scream for ${rand.pickFrom([,"chills and thrills", chosenName,"ice cream","it","this living legend","all who are born die","there is no justice in life"])}.`,
     `Take a ${rand.pickFrom(["Delerious Drop","Frightning Fall","Perilous Plunge"])} into ${rand.pickFrom(["Extreme Exhilaration","Freaky Fun","Panicky Pleasure"])}! (Additional Fee Required)`,
-    `Looking for some new ${rand.pickFrom(["excitement","thrills","chills","experiences"])}? This track let's you get an immersive experience like never before. Get strapped in on the track and feel the other passengers start to climb inside you. Become the ride.`,
+    `Looking for some new ${rand.pickFrom(["excitement","thrills","chills","experiences"])}? This track let's you get an immersive experience like never before. Let your body betray you as your flesh turns to cold metal, your eyes replaced by headlights, your mouth transfixed in horror and engraved in cheap glossy plastic. Let their joyful screams become your prison.`,
     `Are you ${rand.pickFrom(["kind","brave","bad","scared","epic"])} enough to ${rand.pickFrom(["placate","murder","battle","kill","fight","survive"])} ${chosenName}?`,
     `A ${rand.getRandomNumberBetween(2,217)} ${rand.pickFrom(["foot","mile","inch","meter","yard"])} vertical lift is nothing compared to the beyond vertical drop on this ${rand.pickFrom(["wood","steel","metal","plastic","aluminum","tin","lead"])} ${rand.pickFrom(["tyrant","champion","king","lord","mosnter"])}.`,
     `${rand.pickFrom(["Sleeker","Faster","Smarter","Higher","More Terrifying"])} and ${rand.pickFrom(["Smoother","Wetter","Tastier","More Rigid"])} than ever before! Like a Shark!`,
