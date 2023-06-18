@@ -81,7 +81,7 @@ class TextToSimulatedVoice {
         const gainNode = this.audioCtx.createGain();
         osc.connect(gainNode);
         gainNode.connect(this.audioCtx.destination)
-        gainNode.gain.value = 0.1;
+        gainNode.gain.value = 0.5;
 
         gainNode.gain.setValueAtTime(gainNode.gain.value, this.audioCtx.currentTime);
 

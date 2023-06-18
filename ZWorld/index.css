@@ -10,7 +10,19 @@ body {
 
 }
 
+#but-to-what{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  margin-top: 25%;
+  margin-bottom: auto;
+  box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+
+}
+
 #page-content {
+  display: none;
   height: 100px;
   width: 1000px;
   margin-left: auto;
@@ -63,6 +75,7 @@ body {
   margin-bottom: 20px;
   background-image: linear-gradient(white, #efefef);
   cursor: pointer;
+  border: 1px solid white;
 
 }
 
@@ -106,9 +119,25 @@ body {
   width: 300px;
   height: 360px;
   background: white;
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 1.4px 2.7px 2.7px hsl(0deg 0% 0% / 0.46);
+  animation: closer_and_closer 113s 1 linear;
+  animation-fill-mode: forwards;
   cursor: none;
 
+}
+
+@keyframes closer_and_closer {
+  0% {
+    width: 300px;
+    height: 360px;
+    box-shadow: 1.4px 2.7px 2.7px hsl(0deg 0% 0% / 0.46);
+  }
+
+  100% {
+    width: 310;
+    height: 370px;
+    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+  }
 }
 
 #truth-mute{
@@ -119,6 +148,8 @@ body {
   background: white;
   border: 1px solid black;
   color: black;
+  cursor: not-allowed;
+
 }
 
 #truths-words {

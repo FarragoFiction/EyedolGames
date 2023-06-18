@@ -5,8 +5,15 @@ let textVoiceSim;
 const rand = new SeededRandom(13);
 
 window.onload = async () => {
+  let consentButton = document.querySelector("#but-to-what");
+  let page = document.querySelector("#page-content")
 
-  handleTruth();
+  consentButton.onclick = ()=>{
+    handleTruth();
+    page.style.display = "block";
+    consentButton.remove();
+  }
+
 
   initThemes();
   await initCoasters();
