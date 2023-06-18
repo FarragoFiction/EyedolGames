@@ -11,6 +11,8 @@ class TextToSimulatedVoice {
     audioCtx = new AudioContext();
     truth
     lastTruth = "";
+    mute = false;
+    rageMode = false; //how DARE you mute it
 
     freq_multiplier;
     speed_multiplier;
@@ -26,6 +28,7 @@ class TextToSimulatedVoice {
 
     //words is array of words, with pauses in between
     speak = async (words, rand, truthQuotient) => {
+    
         if (words.length === 0) {
             //always end with your False Face firmly back in place
             if (this.truth) {
@@ -36,7 +39,7 @@ class TextToSimulatedVoice {
         const word = words[0];
         if (!rand) {
             rand = new SeededRandom(13);
-            this.truth.renderText(words.join(" "), truthQuotient);
+            this.truth.renderText(words.join(" "), truthQuotient||this.rageMode);
             if (truthQuotient) {
                 this.lastTruth = words;
             }
@@ -71,6 +74,9 @@ class TextToSimulatedVoice {
     }
 
     note = async (duration, frequency, real, imag) => {
+        if(this.mute){
+            return;
+        }
         const osc = this.audioCtx.createOscillator();
         const gainNode = this.audioCtx.createGain();
         osc.connect(gainNode);
@@ -88,9 +94,9 @@ class TextToSimulatedVoice {
         await sleep(duration)
         gainNode.gain.setValueAtTime(gainNode.gain.value, this.audioCtx.currentTime);
 
-        gainNode.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.03);
+        !this.rageMode && gainNode.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.03);
         await sleep(3)
-        osc.stop(); //stopping abruptly causes a clicking sound
+        !this.rageMode && osc.stop(); //stopping abruptly causes a clicking sound
     }
 
 

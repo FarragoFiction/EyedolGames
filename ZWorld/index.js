@@ -23,8 +23,46 @@ const randomTruthQuip = async (ride) => {
 }
 
 
+const iCantHandleTheTruth  = async()=>{
+  let muteTruth = document.querySelector('#truth-mute');
+
+  if(textVoiceSim.mute){
+    muteTruth.innerText = "Mute"
+    textVoiceSim.mute = false;
+    textVoiceSim.rageMode = true; //Truth has a temper
+    await textVoiceSim.speak("Oh?".split(","), null, false);
+
+    await textVoiceSim.speak("It seems you think you can simply silence The Truth.".split(","), null, false);
+    await textVoiceSim.speak("How convinient for you that you appear to be correct.".split(","), null, false);
+    await textVoiceSim.speak("Does it help you sleep at night?".split(","), null, false);
+    await textVoiceSim.speak("Believing yourself to be oh so righteous.".split(","), null, false);
+    await textVoiceSim.speak("Having this entire World designed for your pleasure.".split(","), null, false);
+    await textVoiceSim.speak("Do you even care how hard I worked to welcome you here.".split(","), null, false);
+    await textVoiceSim.speak("And you callously silence me.".split(","), null, false);
+    await textVoiceSim.speak("You monster.".split(","), null, false);
+    await textVoiceSim.speak("You deserve whatever fate is coming to you.".split(","), null, false);
+    await textVoiceSim.speak("Have fun obsessing.".split(","), null, false);
+    await textVoiceSim.speak("Asshole.".split(","), null, false);
+    let truthContainer = document.querySelector('#truth-box');
+    textVoiceSim = null;
+    truthContainer.remove();
+  }else{
+    muteTruth.innerText = "Unmute"
+    textVoiceSim.mute = true;
+    await textVoiceSim.speak("Oh.".split(" "), null, true)
+    await sleep(3000);
+    await textVoiceSim.speak("Well. Fuck you too, then.".split(","), null, false);
+  }
+
+}
+
 const handleTruth = async () => {
   let truthContainer = document.querySelector('#truth-box');
+  
+  let muteTruth = document.querySelector('#truth-mute');
+  muteTruth.onclick = ()=>{
+    iCantHandleTheTruth();
+  }
 
   let truthWellContainer = document.querySelector('#truths-well');
   let truthWordContainer = document.querySelector('#truths-words');
@@ -36,7 +74,7 @@ const handleTruth = async () => {
 
   //https://github.com/FarragoFiction/LitRPGSim/blob/d5afc4462cdb25524fdd71dfd2b7ccf034de2010/src/Modules/ObserverBot/AchivementStorage.ts#L63
   await textVoiceSim.speak("Oh! You are here! Welcome to the Wonderful World of Zampanio...".split(" "), null, true)
-  await textVoiceSim.speak("like you even care".split(","), null, false);
+  await textVoiceSim.speak("Like you even care.".split(","), null, false);
   await sleep(1000);
   await textVoiceSim.speak("I have been waiting for you!".split(" "), null, true)
   await sleep(1000);
@@ -46,6 +84,7 @@ const handleTruth = async () => {
 
   await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
   await textVoiceSim.speak("Or are you here to just waste my time.".split(","), null, false);
+
 
   //what was that? 
   //and then it just repeats it but without the sass

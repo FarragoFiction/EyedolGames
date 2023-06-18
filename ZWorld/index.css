@@ -109,6 +109,16 @@ body {
 
 }
 
+#truth-mute{
+  position: absolute;
+  right: 1px;
+  margin-top: 1px;
+  font-size: 10px;
+  background: white;
+  border: 1px solid black;
+  color: black;
+}
+
 #truths-words {
   height: 50px;
   width: 100%;

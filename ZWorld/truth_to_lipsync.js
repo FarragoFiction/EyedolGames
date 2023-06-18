@@ -40,7 +40,7 @@ class TruthToLipSinc {
         canvas.height = 600;//we'll scale it down later
         buffer.width = canvas.width;
         buffer.height = canvas.height;
-        const size = 14;
+        const size = 15;
         let ratio = 1.0;
         //was 0.8
         const ratio_modifier = (syllable.charCodeAt(0) % 2) == 0 ? 0.8 : 0.78;
