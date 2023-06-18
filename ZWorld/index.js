@@ -2,7 +2,11 @@
 
 let rides = [];
 let textVoiceSim;
-const rand = new SeededRandom(13);
+//truth is NEVER seeded. it is what it is and it refuses to change for you.
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let seed = parseInt(urlParams.get('seed'));
+const rand = new SeededRandom(seed? seed:13);
 
 window.onload = async () => {
   let consentButton = document.querySelector("#but-to-what");
@@ -112,6 +116,18 @@ const generateRandomRides = (num) => {
   for (let i = 0; i < num; i++) {
     const ride = rand.pickFrom(rideGenerators)(rand);
     const ele = ride.generateElement();
+    const links = ele.querySelectorAll("a");
+    for(let link of links){
+      link.onclick = (e)=>{
+        e.stopPropagation();
+      }
+    }
+    ele.onclick = (e)=>{
+      // only seed, name themes and image
+      //image looks like http://eyedolgames.com/ZWorld/images/attractions/Coasters/00034-20230603202918-img.png need to grab out the first bit
+        //updateURLParams(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`);
+        window.open(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`)
+    }
     container.append(ele);
   }
 }

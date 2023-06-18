@@ -33,6 +33,7 @@ const initCoasters = async ()=>{
   coasterImages = tmp.map((item) => loc  + item);
 }
 
+//used for blurbs, no detail section because thats for the next page
 const randomCoaster = (rand)=>{
     const themes = [];
     let number_themes = rand.getRandomNumberBetween(1,3);
@@ -84,26 +85,28 @@ const randomCoaster = (rand)=>{
     `Are you ${rand.pickFrom(["kind","brave","bad","scared","epic"])} enough to ${rand.pickFrom(["placate","murder","battle","kill","fight","survive"])} ${chosenName}?`,
     `A ${rand.getRandomNumberBetween(2,217)} ${rand.pickFrom(["foot","mile","inch","meter","yard"])} vertical lift is nothing compared to the beyond vertical drop on this ${rand.pickFrom(["wood","steel","metal","plastic","aluminum","tin","lead"])} ${rand.pickFrom(["tyrant","champion","king","lord","mosnter"])}.`,
     `${rand.pickFrom(["Sleeker","Faster","Smarter","Higher","More Terrifying"])} and ${rand.pickFrom(["Smoother","Wetter","Tastier","More Rigid"])} than ever before! Like a Shark!`,
-    "Join us in celebrating our newly opened House of Notes Experience with a brand new dark ride!  Award winning Abhorrineer Devona Avamund  takes us on a dark descent into obsession and hot tunes!",
+    "Join us in celebrating our newly opened House of Notes Experience with a brand new coaster!  Award winning Abhorrineer Devona Avamund  takes us on a dark descent into obsession and hot tunes!",
     `Children aged four to one hundred and four will be enchanted as this state of the art coaster showcases ${rand.pickFrom(["space","sanity","death","dad"])} defying loops!`,    
     `If you have a fear of ${rand.pickFrom(["relaxing","heights","heights","falling","drops","gravity","loops","spirals","trains","roller coasters","spiders","teacups",noun+"s"])}, consider yourself warned.`,
     `${chosenName} is our first attempt at a new process we call 'harvesting'. Essentially, when old coasters are set to retire, whatever is still operational is salvaged and refitted in order to save massively on costs of manufacturing. Our designers take these stray pieces and fit them into new coasters.`];
 
 
     const desc = rand.pickFrom(teaserTemplates);
-    return new Ride(chosenName, rand.pickFrom(coasterImages),nearbyAttractions,desc)
+    return new Ride(chosenName, rand.pickFrom(coasterImages),themes,nearbyAttractions,desc)
 }
 
 class Ride{
   imageSrc;
   name;
+  themes;
   nearbyAttractions; //this is html and has a link
   teaserDescription;
   element;
 
-  constructor(name,image, nearbyAttractions, teaserDescription){
+  constructor(name,image, themes, nearbyAttractions, teaserDescription){
     this.name = name;
     this.imageSrc = image;
+    this.themes = themes;
     this.nearbyAttractions = nearbyAttractions;
     this.teaserDescription = teaserDescription;
     this.generateElement();
