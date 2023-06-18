@@ -45,6 +45,8 @@ const iCantHandleTheTruth  = async()=>{
     await textVoiceSim.speak("Asshole.".split(","), null, false);
     let truthContainer = document.querySelector('#truth-box');
     textVoiceSim = null;
+    await sleep(1000);
+
     truthContainer.remove();
   }else{
     muteTruth.innerText = "Unmute"

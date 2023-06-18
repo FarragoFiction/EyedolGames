@@ -62,6 +62,7 @@ body {
   overflow: hidden;
   margin-bottom: 20px;
   background-image: linear-gradient(white, #efefef);
+  cursor: pointer;
 
 }
 
@@ -106,6 +107,7 @@ body {
   height: 360px;
   background: white;
   box-shadow: 1px 1px 5px black;
+  cursor: none;
 
 }
 
