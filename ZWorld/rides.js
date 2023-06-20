@@ -188,6 +188,14 @@ class DetailsRide {
     category.innerText = `${this.rideType}, ${this.themes.map((t)=>titleCase(t.key)).join(", ")}`;
 
 
+    //wanda is EXTREMELY disability friendly
+    //everyone should get to be lost
+    //not just the abled bodied
+    const wheelchairLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
+    wheelchairLabel.innerText = "Wheelchair Accessible:"
+    const wheelchair = createElementWithClassAndParent("div",infoBox, "info-box-content");
+    wheelchair.innerText = `Yes.`;
+
   }
 }
 
