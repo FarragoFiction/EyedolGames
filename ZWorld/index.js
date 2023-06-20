@@ -6,24 +6,48 @@ let textVoiceSim;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let seed = parseInt(urlParams.get('seed'));
-const rand = new SeededRandom(seed? seed:13);
+let paramName = urlParams.get('name');
+let paramRideType = urlParams.get('rideType');
+
+//need to add http://eyedolgames.com/ZWorld/images/attractions to it
+let paramImage = "http://eyedolgames.com/ZWorld/images/attractions"+urlParams.get('image');
+let paramThemeKeys = urlParams.get('themes');
+
+
+const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
 
 window.onload = async () => {
   let consentButton = document.querySelector("#but-to-what");
   let page = document.querySelector("#page-content")
-
-  consentButton.onclick = ()=>{
-    handleTruth();
+  if (paramRideType) {
+    initThemes();
     page.style.display = "block";
     consentButton.remove();
+    const notification = document.querySelector("#notification");
+    notification.innerText = paramName;
+    notification.classList.add("ride-detail-title")
+    const ride = createDetailsRideFromParams(paramRideType, paramName, paramImage, paramThemeKeys.split(",").map((key)=>all_themes[key]));
+    const ele = ride.generateElement();
+    let container = document.querySelector("#content");
+    container.append(ele);
+    handleTruth(ride);
+
+  } else {
+    consentButton.onclick = () => {
+      handleTruth();
+      page.style.display = "block";
+      consentButton.remove();
+    }
+
+    initThemes();
+    await initCoasters();
+    generateRandomRides(10);
+    handleScrolling();
   }
 
+}
 
-  initThemes();
-  await initCoasters();
-  generateRandomRides(10);
-  handleScrolling();
-
+const handleDetailsPage = () => {
 
 }
 
@@ -34,10 +58,10 @@ const randomTruthQuip = async (ride) => {
 }
 
 
-const iCantHandleTheTruth  = async()=>{
+const iCantHandleTheTruth = async () => {
   let muteTruth = document.querySelector('#truth-mute');
 
-  if(textVoiceSim.mute){
+  if (textVoiceSim.mute) {
     muteTruth.innerText = "Mute"
     textVoiceSim.mute = false;
     textVoiceSim.rageMode = true; //Truth has a temper
@@ -59,7 +83,7 @@ const iCantHandleTheTruth  = async()=>{
     await sleep(1000);
 
     truthContainer.remove();
-  }else{
+  } else {
     muteTruth.innerText = "Unmute"
     textVoiceSim.mute = true;
     await textVoiceSim.speak("Oh.".split(" "), null, true)
@@ -69,11 +93,11 @@ const iCantHandleTheTruth  = async()=>{
 
 }
 
-const handleTruth = async () => {
+const handleTruth = async (rideDetails) => {
   let truthContainer = document.querySelector('#truth-box');
-  
+
   let muteTruth = document.querySelector('#truth-mute');
-  muteTruth.onclick = ()=>{
+  muteTruth.onclick = () => {
     iCantHandleTheTruth();
   }
 
@@ -86,18 +110,32 @@ const handleTruth = async () => {
   textVoiceSim = new TextToSimulatedVoice(truth, 0.81, 1.0);
 
   //https://github.com/FarragoFiction/LitRPGSim/blob/d5afc4462cdb25524fdd71dfd2b7ccf034de2010/src/Modules/ObserverBot/AchivementStorage.ts#L63
-  await textVoiceSim.speak("Oh! You are here! Welcome to the Wonderful World of Zampanio...".split(" "), null, true)
-  await textVoiceSim.speak("Like you even care.".split(","), null, false);
-  await sleep(1000);
-  await textVoiceSim.speak("I have been waiting for you!".split(" "), null, true)
-  await sleep(1000);
+  if (!rideDetails) {
+    await textVoiceSim.speak("Oh! You are here! Welcome to the Wonderful World of Zampanio...".split(" "), null, true)
+    await textVoiceSim.speak("Like you even care.".split(","), null, false);
+    await sleep(1000);
+    await textVoiceSim.speak("I have been waiting for you!".split(" "), null, true)
+    await sleep(1000);
 
-  await textVoiceSim.speak("I will help you plan your journey by giving you personalized advice on each ride!".split(" "), null, true)
-  await sleep(1000);
+    await textVoiceSim.speak("I will help you plan your journey by giving you personalized advice on each ride!".split(" "), null, true)
+    await sleep(1000);
 
-  await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
-  await textVoiceSim.speak("Or are you here to just waste my time.".split(","), null, false);
+    await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
+    await textVoiceSim.speak("Or are you here to just waste my time.".split(","), null, false);
+  } else {
+    textVoiceSim.speak("oh".split(" "), null, false)
 
+    let initTruth = async () => {
+
+      window.removeEventListener("click", initTruth)
+      for(let quip of rideDetails.truthQuips){
+        //TODO do i prefer this to be only on hover?
+        await textVoiceSim.speak(quip.split(" "), null, true)
+        await sleep(1000);
+      }
+    }
+    window.addEventListener("click", initTruth)
+  }
 
   //what was that? 
   //and then it just repeats it but without the sass
@@ -117,16 +155,16 @@ const generateRandomRides = (num) => {
     const ride = rand.pickFrom(rideGenerators)(rand);
     const ele = ride.generateElement();
     const links = ele.querySelectorAll("a");
-    for(let link of links){
-      link.onclick = (e)=>{
+    for (let link of links) {
+      link.onclick = (e) => {
         e.stopPropagation();
       }
     }
-    ele.onclick = (e)=>{
+    ele.onclick = (e) => {
       // only seed, name themes and image
       //image looks like http://eyedolgames.com/ZWorld/images/attractions/Coasters/00034-20230603202918-img.png need to grab out the first bit
-        //updateURLParams(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`);
-        window.open(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`)
+      //updateURLParams(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`);
+      window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}`)
     }
     container.append(ele);
   }
