@@ -92,7 +92,7 @@ const randomCoaster = (rand) => {
 
 
   const desc = rand.pickFrom(teaserTemplates);
-  return new TeaserRide("Coaster",chosenName, rand.pickFrom(coasterImages), themes, nearbyAttractions, desc)
+  return new TeaserRide("Coaster", chosenName, rand.pickFrom(coasterImages), themes, nearbyAttractions, desc)
 }
 
 const createDetailsRideFromParams = (rideType, name, image, themes) => {
@@ -143,12 +143,52 @@ class DetailsRide {
     imgEle.src = this.imageSrc;
     const content = createElementWithClassAndParent("div", this.element, "details-content");
     const left = createElementWithClassAndParent("div", content, "details-left");
-    const right = createElementWithClassAndParent("div",content, "details-right");
+    const right = createElementWithClassAndParent("div", content, "details-right");
+
+    this.generateGuestPolicies(left);
+
 
     this.generateInfoBox(right);
+    this.generateQuickTips(right);
+
 
 
     return this.element;
+  }
+
+  //not terriblyprocedural, useful for all rides
+  generateQuickTips = (ele) => {
+    const infoBox = createElementWithClassAndParent("div", ele, "info-box");
+
+    const tip = createElementWithClassAndParent("div", infoBox, "quick-tips");
+    tip.innerText = "Quick Tips";
+
+    const tips = [`Please allocate ${rand.getRandomNumberBetween(2, 217)} hours to navigate the queue for this ride.`,
+      "Water will be provided periodically in queue. No outside food or drink is permitted.","Guests are encouraged to remain in queue.",
+      "Please let Guest Services know if any mobility aids are required."]
+    for (let tip of tips) {
+      const ele = createElementWithClassAndParent("div", infoBox, "info-box-content");
+      ele.innerText = tip;
+    }
+
+  }
+
+  generateGuestPolicies = (ele)=>{
+    const label = createElementWithClassAndParent("div", ele, "info-box-label");
+    label.innerText = "Guest Policies";
+
+    const lossPassExplanations = ["It doesn't matter where you get Lost, so long as you do&#x2122;!","Can you get to the end of the maze before your friends?","CrypticCurrency thrives on YOUR obsessions!","Virtual maze progress can be traded for physical maze progres, reducing your wait times!","Do the things YOU enjoy and in exchange you will earn TOKENS to make progress through our LossPass system to get the content you crave in a fair and timely fashion!","Earn TOKENS through Engagement with main branch Zampanio properties!"];
+    const safetyExplanationsMaze = ["mortality is disabled within the Maze Queuing System.","no one can die within the Maze Queing System ","the Maze Queuing System will maintain absolutely your state upon entry until such a time as you leave","the Eight Divines cannot protect you within the Maze Queuing System","we here at EyedolGames have harvested the latent energy of a Forgotten God to provide you with Neverending Life so long as you walk the halls of the Maze Queuing System!","Nidhogg's Unending Life is kept confined to all Mazes, including our Maze Queing System! Enjoy complementary immortality while in our halls!"]
+
+    const items = [`Eligible for ZWorld Loss Pass System where queue times may be reduced via Proof Of Engagement.  ${rand.pickFrom(lossPassExplanations)}`,
+    `For your safety, ${rand.pickFrom(safetyExplanationsMaze)} ZWorld prides itself on industry leading accessibility. `,`Rides and other attractions may provide a risk of death, mutilation or other damage. ZWorld takes no liability for injuries occurred outside of the Maze Queuing&#x2122; system.`]
+    
+    const container = createElementWithClassAndParent("ul", ele);
+
+    for(let item of items){
+      const doop = createElementWithClassAndParent("li", container);
+      doop.innerHTML = item;
+    }
   }
 
   generateInfoBox = (ele) => {
@@ -157,7 +197,7 @@ class DetailsRide {
     const locationRiddleLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     locationRiddleLabel.innerText = "Location Riddle:"
     const locationRiddle = createElementWithClassAndParent("div", infoBox, "info-box-content");
-   
+
     const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
     const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
     const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
@@ -178,14 +218,14 @@ class DetailsRide {
     const heightLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     heightLabel.innerText = "Height Requirement:"
     const height = createElementWithClassAndParent("div", infoBox, "info-box-content");
-    height.innerText = `${rand.getRandomNumberBetween(3,113)} ${rand.pickFrom(["feet","centimeters","meters","inches","millimeters"])} or ${rand.pickFrom(["taller","bigger","smaller","shorter"])}`;
+    height.innerText = `${rand.getRandomNumberBetween(3, 113)} ${rand.pickFrom(["feet", "centimeters", "meters", "inches", "millimeters"])} or ${rand.pickFrom(["taller", "bigger", "smaller", "shorter"])}`;
 
 
-    
+
     const categoryLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     categoryLabel.innerText = "Category:"
-    const category = createElementWithClassAndParent("div",infoBox, "info-box-content");
-    category.innerText = `${this.rideType}, ${this.themes.map((t)=>titleCase(t.key)).join(", ")}`;
+    const category = createElementWithClassAndParent("div", infoBox, "info-box-content");
+    category.innerText = `${this.rideType}, ${this.themes.map((t) => titleCase(t.key)).join(", ")}`;
 
 
     //wanda is EXTREMELY disability friendly
@@ -193,7 +233,7 @@ class DetailsRide {
     //not just the abled bodied
     const wheelchairLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     wheelchairLabel.innerText = "Wheelchair Accessible:"
-    const wheelchair = createElementWithClassAndParent("div",infoBox, "info-box-content");
+    const wheelchair = createElementWithClassAndParent("div", infoBox, "info-box-content");
     wheelchair.innerText = `Yes.`;
 
   }

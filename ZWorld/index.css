@@ -100,7 +100,22 @@ body {
   padding: 20px;
   background-image: linear-gradient(white, #efefef);
   box-shadow: 1.4px 2.7px 2.7px hsl(0deg 0% 0% / 0.46);
+  margin-bottom: 50px;
 
+}
+
+.details-left{
+  max-width: 600px;
+}
+
+li{
+  margin-bottom: 20px;
+}
+
+.quick-tips{
+  font-size: 22px;
+  font-weight: bolder;
+  margin-bottom: 20px;
 }
 
 .info-box-label{
