@@ -92,10 +92,10 @@ const randomCoaster = (rand) => {
 
 
   const desc = rand.pickFrom(teaserTemplates);
-  return new TeaserRide("Coaster", chosenName, rand.pickFrom(coasterImages), themes, nearbyAttractions, desc)
+  return new TeaserRide("Coaster", chosenName, rand.pickFrom(coasterImages), themes, obsession,nearbyAttractions, desc)
 }
 
-const createDetailsRideFromParams = (rideType, name, image, themes) => {
+const createDetailsRideFromParams = (rideType, name, image, themes,obsession) => {
   const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
   const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
   const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
@@ -114,7 +114,7 @@ const createDetailsRideFromParams = (rideType, name, image, themes) => {
   adj
   const quips = [rand.pickFrom(intros), rand.pickFrom(clarifications)];
 
-  return new DetailsRide(rideType, name, image, themes, desc, quips);
+  return new DetailsRide(rideType, name, image, themes, obsession, desc, quips);
 
 }
 
@@ -124,12 +124,14 @@ class DetailsRide {
   themes;
   description;
   element;
+  obsession;
   truthQuips = [];
   rideType;
 
-  constructor(rideType, name, image, themes, description, truthQuips) {
+  constructor(rideType, name, image, themes, obsession, description, truthQuips) {
     this.name = name;
     this.rideType = rideType;
+    this.obsession  = obsession;
     this.imageSrc = image;
     this.themes = themes;
     this.description = description;
@@ -145,6 +147,8 @@ class DetailsRide {
     const left = createElementWithClassAndParent("div", content, "details-left");
     const right = createElementWithClassAndParent("div", content, "details-right");
 
+    this.generatePostShow(left);
+
     this.generateGuestPolicies(left);
 
 
@@ -155,6 +159,8 @@ class DetailsRide {
 
     return this.element;
   }
+
+
 
   //not terriblyprocedural, useful for all rides
   generateQuickTips = (ele) => {
@@ -173,12 +179,47 @@ class DetailsRide {
 
   }
 
+  generatePostShow = (ele)=>{
+    const label = createElementWithClassAndParent("div", ele, "info-box-label");
+    label.innerText = "Post Show.";
+    const themes = this.themes;
+    const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+    const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+    const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+
+    const adj = rand.pickFrom([chosenAdj, chosenInsult, chosenCompliment])
+
+    const chosenPerson = rand.pickFrom(themes).pickPossibilityFor(PERSON, rand)
+    const chosenObject = rand.pickFrom(themes).pickPossibilityFor(OBJECT, rand)
+    const chosenLocation = rand.pickFrom(themes).pickPossibilityFor(LOCATION, rand)
+
+    const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
+
+    const container = createElementWithClassAndParent("div", ele,"section");
+
+    //JR NOTE: TODO add possibilities for different ride types
+
+    const startStartPossibilities = [`After exiting the ride`,`Upon completion of the experience`,`When you escape`]
+
+    const startPossibilities = [`you will finally understand what it feels like to be ${this.obsession.randomBlorbo(rand)}!`,`you will be given a complementary ${noun}.`, `you will be sent through a decontamination process.`,`you will be given a nice cake.`,`you will be baked and then there will be cake.`]
+    const midPossibilities1 = [`The exit maze`,`The exit queue`,`Your exist path`]
+    const midPossibilities2 = [`will take aproximately ${rand.getRandomNumberBetween(1,13)} ${rand.pickFrom(["hours","minutes"])}.`,`will reveal how ${chosenCompliment} you truly are.`,`will be extremely ${adj}.`]
+
+
+    const endPossibilities = [`It's okay to be scared.`,`A ${chosenPerson} will guide you safely out. Trust them.`,`Once you reach the ${chosenLocation} you will be free.`]
+
+
+    container.innerText = `${rand.pickFrom(startStartPossibilities)}, ${rand.pickFrom(startPossibilities)} ${rand.pickFrom(midPossibilities1)} ${rand.pickFrom(midPossibilities2)} ${rand.pickFrom(endPossibilities)}`;
+
+   
+  }
+
   generateGuestPolicies = (ele)=>{
     const label = createElementWithClassAndParent("div", ele, "info-box-label");
     label.innerText = "Guest Policies";
 
     const lossPassExplanations = ["It doesn't matter where you get Lost, so long as you do&#x2122;!","Can you get to the end of the maze before your friends?","CrypticCurrency thrives on YOUR obsessions!","Virtual maze progress can be traded for physical maze progres, reducing your wait times!","Do the things YOU enjoy and in exchange you will earn TOKENS to make progress through our LossPass system to get the content you crave in a fair and timely fashion!","Earn TOKENS through Engagement with main branch Zampanio properties!"];
-    const safetyExplanationsMaze = ["mortality is disabled within the Maze Queuing System.","no one can die within the Maze Queing System ","the Maze Queuing System will maintain absolutely your state upon entry until such a time as you leave","the Eight Divines cannot protect you within the Maze Queuing System","we here at EyedolGames have harvested the latent energy of a Forgotten God to provide you with Neverending Life so long as you walk the halls of the Maze Queuing System!","Nidhogg's Unending Life is kept confined to all Mazes, including our Maze Queing System! Enjoy complementary immortality while in our halls!"]
+    const safetyExplanationsMaze = ["mortality is disabled within the Maze Queuing System.","no one can die within the Maze Queuing System ","the Maze Queuing System will maintain absolutely your state upon entry until such a time as you leave","the Eight Divines cannot protect you within the Maze Queuing System","we here at EyedolGames have harvested the latent energy of a Forgotten God to provide you with Neverending Life so long as you walk the halls of the Maze Queuing System!","Nidhogg's Unending Life is kept confined to all Mazes, including our Maze Queuing System! Enjoy complementary immortality while in our halls!"]
 
     const items = [`Eligible for ZWorld Loss Pass System where queue times may be reduced via Proof Of Engagement.  ${rand.pickFrom(lossPassExplanations)}`,
     `For your safety, ${rand.pickFrom(safetyExplanationsMaze)} ZWorld prides itself on industry leading accessibility. `,`Rides and other attractions may provide a risk of death, mutilation or other damage. ZWorld takes no liability for injuries occurred outside of the Maze Queuing&#x2122; system.`]
@@ -247,10 +288,12 @@ class TeaserRide {
   nearbyAttractions; //this is html and has a link
   teaserDescription;
   element;
+  obsession;
 
-  constructor(rideType, name, image, themes, nearbyAttractions, teaserDescription, bigDescription) {
+  constructor(rideType, name, image, themes,obsession, nearbyAttractions, teaserDescription, bigDescription) {
     this.name = name;
     this.rideType = rideType;
+    this.obsession = obsession;
     this.imageSrc = image;
     this.themes = themes;
     this.nearbyAttractions = nearbyAttractions;

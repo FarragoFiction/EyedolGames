@@ -12,6 +12,7 @@ let paramRideType = urlParams.get('rideType');
 //need to add http://eyedolgames.com/ZWorld/images/attractions to it
 let paramImage = "http://eyedolgames.com/ZWorld/images/attractions"+urlParams.get('image');
 let paramThemeKeys = urlParams.get('themes');
+let paramObsession = urlParams.get("obsession");
 
 
 const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
@@ -26,7 +27,7 @@ window.onload = async () => {
     const notification = document.querySelector("#notification");
     notification.innerText = paramName;
     notification.classList.add("ride-detail-title")
-    const ride = createDetailsRideFromParams(paramRideType, paramName, paramImage, paramThemeKeys.split(",").map((key)=>all_themes[key]));
+    const ride = createDetailsRideFromParams(paramRideType, paramName, paramImage, paramThemeKeys.split(",").map((key)=>all_themes[key]), findObsessionByName(paramObsession));
     const ele = ride.generateElement();
     let container = document.querySelector("#content");
     container.append(ele);
@@ -164,7 +165,7 @@ const generateRandomRides = (num) => {
       // only seed, name themes and image
       //image looks like http://eyedolgames.com/ZWorld/images/attractions/Coasters/00034-20230603202918-img.png need to grab out the first bit
       //updateURLParams(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`);
-      window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}`)
+      window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
     }
     container.append(ele);
   }

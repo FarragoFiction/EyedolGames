@@ -31,6 +31,15 @@ const LTE = 'LTE'; //jr but as eon337
 const ANIMORPHS = 'ANIMORPHS'; //how did i forget this before
 const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
 
+const findObsessionByName = (name)=>{
+  for(o of Object.values(all_obsessions)){
+    if(o.name === name){
+      return o;
+    }
+  }
+  return all_obsessions[ZAMPANIO];
+}
+
 //if they have a glitch obsession it fucks up their whole page :) :) :)
 const containsGlitchObession = (obsessions)=>{
   for(let o of obsessions){

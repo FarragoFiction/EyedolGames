@@ -104,6 +104,10 @@ body {
 
 }
 
+.section{
+  margin-bottom: 50px;
+}
+
 .details-left{
   max-width: 600px;
 }
