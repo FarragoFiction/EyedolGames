@@ -148,12 +148,13 @@ const handleTruth = async (rideDetails) => {
 }
 
 const generateRandomRides = (num) => {
-  const rideGenerators = [randomCoaster];
+  const rideGenerators = [TeaserCoaster, TeaserTrain];
 
   let container = document.querySelector("#content");
 
   for (let i = 0; i < num; i++) {
-    const ride = rand.pickFrom(rideGenerators)(rand);
+    const chosen = rand.pickFrom(rideGenerators)
+    const ride = new chosen(rand);
     const ele = ride.generateElement();
     const links = ele.querySelectorAll("a");
     for (let link of links) {
