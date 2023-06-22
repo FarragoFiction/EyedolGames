@@ -69,5 +69,45 @@ class TeaserCoaster extends TeaserRide {
 class DetailsCoaster extends DetailsRide{
   rideType = COASTER;
 
+
+  generateDescription = (ele)=>{
+    const container = createElementWithClassAndParent("div", ele,"section");
+
+    const topSpeed = `${rand.getRandomNumberBetween(10,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])} per ${rand.pickFrom(["minute","second","hour","minute","second","hour","hour","hour","minute","second","hour","week"])}`;
+    const maxHeight = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
+    const fearLevel = rand.getRandomNumberBetween(1,5)
+    const confusionLevel = rand.getRandomNumberBetween(1,5)
+    const trackLength = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
+    const numberLoops = rand.getRandomNumberBetween(1,216);
+    let numberGs = rand.getRandomNumberBetween(1,12);
+    if(numberGs === 1 & rand.nextDouble() <0.5){
+      numberGs = rand.nextDouble().toFixed(2);
+    }
+
+
+    container.innerText = "TODO";
+
+    const label = createElementWithClassAndParent("div", ele, "info-box-label");
+    label.innerText = "By the Numbers: ";
+
+    const ul = createElementWithClassAndParent("ul", ele);
+    ul.style.marginBottom="50px";
+
+    const facts = {
+      "Maximum Height": maxHeight,
+      "Top Speed": topSpeed,
+      "Track Length": trackLength,
+      "Number of Loops": numberLoops,
+      "Number G's": numberGs,
+      "Fear Level": fearLevel,
+      "Confusion Level": confusionLevel
+    }
+
+    for(let key of Object.keys(facts)){
+      const doop = createElementWithClassAndParent("li", ul);
+      doop.innerHTML = `${key}: ${facts[key]}`;
+    }
+
+  }
   
 }

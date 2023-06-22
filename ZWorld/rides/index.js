@@ -34,7 +34,6 @@ const createDetailsRideFromParams = (rideType, name, image, themes,obsession) =>
   const clarifications = [`It has so many ${noun}s.`, `It is very ${adj}.`];
   adj
   const quips = [rand.pickFrom(intros), rand.pickFrom(clarifications)];
-  console.log("JR NOTE: ride type is ", rideType, TRAIN)
   if(rideType ===TRAIN ){
     return new DetailsTrain(name, image, themes, obsession, desc, quips);
   }else if (rideType === COASTER){
@@ -113,6 +112,8 @@ class DetailsRide {
     const left = createElementWithClassAndParent("div", content, "details-left");
     const right = createElementWithClassAndParent("div", content, "details-right");
 
+    this.generateDescription(left);
+
     this.generatePostShow(left);
 
     this.generateGuestPolicies(left);
@@ -140,6 +141,12 @@ class DetailsRide {
       const ele = createElementWithClassAndParent("div", infoBox, "info-box-content");
       ele.innerText = tip;
     }
+
+  }
+
+  generateDescription = (ele)=>{
+    const container = createElementWithClassAndParent("div", ele,"section");
+    container.innerText = "TODO";
 
   }
 
