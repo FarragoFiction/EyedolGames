@@ -140,6 +140,30 @@ class DetailsRide {
     for (let tip of tips) {
       const ele = createElementWithClassAndParent("div", infoBox, "info-box-content");
       ele.innerText = tip;
+      if(tip.includes('mobility aids')){
+        ele.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`Eyedol Games prides itself on its accessibility!`.split(" "), null, true)
+        }
+      }else if(tip.includes("Please allocate")){
+        ele.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`In-Queue entertainment will be provided, free of charge!`.split(" "), null, true)
+          await sleep(1000);
+          await textVoiceSim.speak("Assuming you find my horridors entertaining.".split(","), null, false);
+        }
+      }else if(tip.includes("Water will be provided")){
+        ele.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`Humans will die in just three days without water!`.split(" "), null, true)
+          await sleep(1000);
+          await textVoiceSim.speak(`You can go much, much longer without food!`.split(" "), null, true)
+
+        }
+      }else if(tip.includes("Guests are encouraged")){
+        ele.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`Eyedol Games accepts no liability from injuries incurred attempting to leave the queue.`.split(" "), null, true)
+          await sleep(1000);
+          await textVoiceSim.speak("Philistines. You will navigate my maze and you will like it.".split(","), null, false);
+        }
+      }
     }
 
   }
