@@ -210,6 +210,12 @@ class DetailsRide {
     locationRiddleLabel.innerText = "Location Riddle:"
     const locationRiddle = createElementWithClassAndParent("div", infoBox, "info-box-content");
 
+    locationRiddle.onmouseenter = async ()=>{
+      await textVoiceSim.speak("A designated Puzzle Assistant will be assigned to you once you enter the park!".split(" "), null, true)
+      await sleep(1000);
+      await textVoiceSim.speak("If you are too stupid to figure it out on your own.".split(","), null, false);
+    }
+
     const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
     const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
     const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
@@ -223,15 +229,21 @@ class DetailsRide {
     const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
     let shittyRiddleTemplates = [
       `Go just past the ${adj} ${chosenLocation}.  When you see the ${chosenInsult} ${noun} you'll know you're close.`,
-      `First, you need to be carring a ${chosenObject}. A suspicious ${chosenPerson} will approach you. Do what they say. `,
+      `First, you need to be carrying a ${chosenObject}. A suspicious ${chosenPerson} will approach you. Do what they say. `,
       `Believe in the heart of the cards.`];
     locationRiddle.innerText = rand.pickFrom(shittyRiddleTemplates);
 
     const heightLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     heightLabel.innerText = "Height Requirement:"
+
     const height = createElementWithClassAndParent("div", infoBox, "info-box-content");
     height.innerText = `${rand.getRandomNumberBetween(3, 113)} ${rand.pickFrom(["feet", "centimeters", "meters", "inches", "millimeters"])} or ${rand.pickFrom(["taller", "bigger", "smaller", "shorter"])}`;
 
+    height.onmouseenter = async ()=>{
+      await textVoiceSim.speak("Should you wish to meet height requirements, Guest Services can assist you!".split(" "), null, true)
+      await sleep(1000);
+      await textVoiceSim.speak("Who would be stupid enough to agree to let us change their height?".split(","), null, false);
+    }
 
 
     const categoryLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
@@ -239,7 +251,9 @@ class DetailsRide {
     const category = createElementWithClassAndParent("div", infoBox, "info-box-content");
     category.innerText = `${this.rideType}, ${this.themes.map((t) => titleCase(t.key)).join(", ")}`;
 
-
+    category.onmouseenter = async ()=>{
+      await textVoiceSim.speak(`${rand.pickFrom(this.themes).key} has been especially popular this season.`.split(" "), null, true)
+    }
     //wanda is EXTREMELY disability friendly
     //everyone should get to be lost
     //not just the abled bodied
@@ -247,6 +261,10 @@ class DetailsRide {
     wheelchairLabel.innerText = "Wheelchair Accessible:"
     const wheelchair = createElementWithClassAndParent("div", infoBox, "info-box-content");
     wheelchair.innerText = `Yes.`;
+
+    wheelchair.onmouseenter = async ()=>{
+      await textVoiceSim.speak(`Eyedol Games prides itself on its accessibility!`.split(" "), null, true)
+    }
 
   }
 

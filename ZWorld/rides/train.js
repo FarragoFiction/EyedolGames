@@ -68,4 +68,37 @@ class DetailsTrain extends DetailsRide{
   rideType = TRAIN;
 
   
+  generateDescription = (ele)=>{
+    const container = createElementWithClassAndParent("div", ele,"section");
+
+    const topSpeed = `${rand.getRandomNumberBetween(10,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])} per ${rand.pickFrom(["minute","second","hour","minute","second","hour","hour","hour","minute","second","hour","week"])}`;
+    const fearLevel = rand.getRandomNumberBetween(1,5)
+    const confusionLevel = rand.getRandomNumberBetween(1,5)
+    const trackLength = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
+
+
+
+    container.innerText = "TODO";
+
+    const label = createElementWithClassAndParent("div", ele, "info-box-label");
+    label.innerText = "By the Numbers: ";
+
+    const ul = createElementWithClassAndParent("ul", ele);
+    ul.style.marginBottom="50px";
+
+    const facts = {
+      "Top Speed": topSpeed,
+      "Track Length": trackLength,
+      "Fear Level": fearLevel,
+      "Confusion Level": confusionLevel
+    }
+
+    for(let key of Object.keys(facts)){
+      const doop = createElementWithClassAndParent("li", ul);
+      doop.innerHTML = `${key}: ${facts[key]}`;
+    }
+
+  }
+
+  
 }
