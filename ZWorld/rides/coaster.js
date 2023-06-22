@@ -1,4 +1,4 @@
-const COASTER = "COASTER"
+const COASTER = "Coaster"
 
 class TeaserCoaster extends TeaserRide {
   rideType = COASTER;
@@ -67,6 +67,7 @@ class TeaserCoaster extends TeaserRide {
 }
 
 class DetailsCoaster extends DetailsRide{
+  rideType = COASTER;
 
   
 }

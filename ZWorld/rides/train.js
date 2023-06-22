@@ -1,4 +1,4 @@
-const TRAIN = "TRAIN";
+const TRAIN = "Train";
 class TeaserTrain extends TeaserRide {
   rideType = TRAIN;
 
@@ -65,6 +65,7 @@ class TeaserTrain extends TeaserRide {
 }
 
 class DetailsTrain extends DetailsRide{
+  rideType = TRAIN;
 
   
 }

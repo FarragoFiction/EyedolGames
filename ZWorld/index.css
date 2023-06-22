@@ -36,14 +36,17 @@ body {
   box-shadow: 1px 1px 5px #b4b4b4;
 }
 
-.small-text {
+.small-text-notification {
   font-size: 10px;
   opacity: 85%;
   margin-top: 0px;
+  width: 55%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #notification {
-  height: 33px;
+  height: 47px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px #b4b4b4;
 
