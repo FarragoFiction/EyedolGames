@@ -216,7 +216,7 @@ class DetailsRide {
     const lossPassExplanations = ["It doesn't matter where you get Lost, so long as you do&#x2122;!","Can you get to the end of the maze before your friends?","CrypticCurrency thrives on YOUR obsessions!","Virtual maze progress can be traded for physical maze progres, reducing your wait times!","Do the things YOU enjoy and in exchange you will earn TOKENS to make progress through our LossPass system to get the content you crave in a fair and timely fashion!","Earn TOKENS through Engagement with main branch Zampanio properties!"];
     const safetyExplanationsMaze = ["mortality is disabled within the Maze Queuing System.","no one can die within the Maze Queuing System ","the Maze Queuing System will maintain absolutely your state upon entry until such a time as you leave","the Eight Divines cannot protect you within the Maze Queuing System","we here at EyedolGames have harvested the latent energy of a Forgotten God to provide you with Neverending Life so long as you walk the halls of the Maze Queuing System!","Nidhogg's Unending Life is kept confined to all Mazes, including our Maze Queuing System! Enjoy complementary immortality while in our halls!"]
 
-    const items = [`Eligible for ZWorld Loss Pass System where queue times may be reduced via Proof Of Engagement.  ${rand.pickFrom(lossPassExplanations)}`,
+    const items = [`Eligible for ZWorld LossPass System where queue times may be reduced via Proof Of Engagement.  ${rand.pickFrom(lossPassExplanations)}`,
     `For your safety, ${rand.pickFrom(safetyExplanationsMaze)} ZWorld prides itself on industry leading accessibility. `,`Rides and other attractions may provide a risk of death, mutilation or other damage. ZWorld takes no liability for injuries occurred outside of the Maze Queuing&#x2122; system.`]
     
     const container = createElementWithClassAndParent("ul", ele);
@@ -224,6 +224,26 @@ class DetailsRide {
     for(let item of items){
       const doop = createElementWithClassAndParent("li", container);
       doop.innerHTML = item;
+
+      if(item.includes("LossPass")){
+        doop.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`LossPass, for when you just can't wait!`.split(" "), null, true)
+          await sleep(3000);
+          await textVoiceSim.speak("Do not DREAM of skipping my maze.".split(","), null, false);
+        }
+      }else if (item.includes("For your safety")){
+        doop.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`Just try to find such service at our rival park, River Expanse!`.split(" "), null, true)
+        }
+      }else if (item.includes("Rides and other attractions")){
+        doop.onmouseenter = async ()=>{
+          await textVoiceSim.speak(`I would recommend remaining in the Maze Queueing System&#x2122; as long as possible!`.split(" "), null, true)
+          await sleep(1000);
+          await textVoiceSim.speak("You ingrate.".split(","), null, false);
+
+        }
+      }
+      
     }
   }
 

@@ -24,7 +24,7 @@ class TruthToLipSinc {
     }
 
     renderText = (text,truth) => {
-        truth? this.wordContainer.innerText = text :this.truthLog(text);
+        truth? this.wordContainer.innerHTML = text :this.truthLog(text);
     }
 
     renderFrame = (syllable, truth) => {
