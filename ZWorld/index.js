@@ -25,7 +25,8 @@ window.onload = async () => {
     page.style.display = "block";
     consentButton.remove();
     const notification = document.querySelector("#notification");
-    notification.innerText = paramName;
+    notification.innerHTML = paramName +"<p class='small-text-notification'>Click Anywhere to Hear the Truth</p>";
+    
     notification.classList.add("ride-detail-title")
     const ride = createDetailsRideFromParams(paramRideType, paramName, paramImage, paramThemeKeys.split(",").map((key)=>all_themes[key]), findObsessionByName(paramObsession));
     const ele = ride.generateElement();

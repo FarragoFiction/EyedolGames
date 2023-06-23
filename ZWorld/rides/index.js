@@ -105,6 +105,7 @@ class DetailsRide {
   }
 
   generateElement = () => {
+
     this.element = createElementWithClass("div", "details-container");
     const imgEle = createElementWithClassAndParent("img", this.element, "huge-img");
     imgEle.src = this.imageSrc;
@@ -121,9 +122,6 @@ class DetailsRide {
 
     this.generateInfoBox(right);
     this.generateQuickTips(right);
-
-
-
     return this.element;
   }
 
@@ -296,7 +294,7 @@ class DetailsRide {
     category.innerText = `${this.rideType}, ${this.themes.map((t) => titleCase(t.key)).join(", ")}`;
 
     category.onmouseenter = async ()=>{
-      await textVoiceSim.speak(`${rand.pickFrom(this.themes).key} has been especially popular this season.`.split(" "), null, true)
+      await textVoiceSim.speak(`${titleCase(rand.pickFrom(this.themes).key)} has been especially popular this season.`.split(" "), null, true)
     }
     //wanda is EXTREMELY disability friendly
     //everyone should get to be lost

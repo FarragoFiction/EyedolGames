@@ -71,12 +71,12 @@ class DetailsCoaster extends DetailsRide{
 
 
   generateDescription = (ele)=>{
-    const container = createElementWithClassAndParent("div", ele,"section");
+    const intro = createElementWithClassAndParent("div", ele,"section");
 
     const topSpeed = `${rand.getRandomNumberBetween(10,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])} per ${rand.pickFrom(["minute","second","hour","minute","second","hour","hour","hour","minute","second","hour","week"])}`;
     const maxHeight = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
-    const fearLevel = rand.getRandomNumberBetween(1,5)
-    const confusionLevel = rand.getRandomNumberBetween(1,5)
+    const fearLevel = rand.getRandomNumberBetween(1,3)
+    const confusionLevel = rand.getRandomNumberBetween(1,3)
     const trackLength = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
     const numberLoops = rand.getRandomNumberBetween(1,216);
     let numberGs = rand.getRandomNumberBetween(1,12);
@@ -84,8 +84,62 @@ class DetailsCoaster extends DetailsRide{
       numberGs = rand.nextDouble().toFixed(2);
     }
 
+    const introParts = [`${rand.pickFrom(["Standing","Clocking in","Towering"])} at ${maxHeight} tall and with a maximum speed of ${topSpeed}, ${this.name} is THE thrill ride.`]
 
-    container.innerText = "TODO";
+    if(maxHeight.includes("miles") || maxHeight.includes("kilometers")){
+      introParts.push("You can see the entire park from its summit!");
+    }else{
+      introParts.push("No need to worry about heights with this one!");
+    }
+
+    if(topSpeed.includes("week") || topSpeed.includes("day") ){
+      introParts.push("Perfect for children!");
+    }else{
+      introParts.push(`${rand.pickFrom(["Thrill","Marvel","Wonder","Tremble"])} at the speed!`);
+    }
+
+    intro.innerText = introParts.join(" ");
+
+    const intro2 = createElementWithClassAndParent("div", ele,"section");
+    const introParts2 = [`Guests experience the raw force of ${numberGs}Gs over ${trackLength} of track!`]
+    
+    if(numberGs<6){
+      introParts2.push("Perfect for children!");
+    }else{
+      introParts2.push("Acceleration like never before!");
+    }
+
+    if(trackLength.includes("miles") || trackLength.includes("kilometers")){
+      introParts2.push(`You'll have plenty of time to ${rand.pickFrom(["marvel at","gaze at","memorize"])} the countryside!`);
+    }else{
+      introParts2.push("It'll be over before you know it!");
+    }
+
+    intro2.innerText = introParts2.join(" ");
+
+    const container1 = createElementWithClassAndParent("div", ele,"section");
+
+
+    if(fearLevel <=1){
+      container1.innerText = "This experience is suitable for young children or guests with difficulty with terrifying content.";
+    }else if(fearLevel <=2){
+      container1.innerText = `Experience ${rand.pickFrom(["scares","thrills","chills","horror","nightmares"])} like never before!`;
+
+    }else if(fearLevel <=3){
+      container1.innerText = "This ride has been designed personally by our lead Abhorrineer, Devona Avamund! EyedolGames and ZWorld can not be held responsible for long ter negative effects.";
+    }
+
+    const container2 = createElementWithClassAndParent("div", ele,"section");
+
+    if(confusionLevel <=1){
+      container2.innerText = "This experience is suitable for all ages.";
+    }else if(confusionLevel <=2){
+      container2.innerText = "We are legally obliged to state the following: The Surgeon General Warns That Wihout Breaks This Experience May Harm Children, Adolescents And Those With Addictive Personalities. ";
+
+    }else if(confusionLevel <=3){
+      container2.innerText = "We're so glad you've decided to join our Family :)"; //you work here now
+
+    }
 
     const label = createElementWithClassAndParent("div", ele, "info-box-label");
     label.innerText = "By the Numbers: ";
