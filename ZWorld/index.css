@@ -34,6 +34,8 @@ body {
   background-image: linear-gradient(white, #efefef);
   border-radius: 5px;
   box-shadow: 1px 1px 5px #b4b4b4;
+  position: relative;
+  display: block;
 }
 
 .small-text-notification {
@@ -93,12 +95,12 @@ body {
   border: 1px solid white;
 }
 
-.details-right{
+.details-right {
   width: 250px;
   font-size: 14px;
 }
 
-.info-box{
+.info-box {
   border: 2px solid #c4c4c4;
   padding: 20px;
   background-image: linear-gradient(white, #efefef);
@@ -107,35 +109,41 @@ body {
 
 }
 
-.section{
+.section {
   margin-bottom: 50px;
 }
 
-.details-left{
+.details-left {
   max-width: 600px;
 }
 
-li{
+li {
   margin-bottom: 20px;
 }
 
-.quick-tips{
+.quick-tips {
   font-size: 22px;
   font-weight: bolder;
   margin-bottom: 20px;
 }
 
-.info-box-label{
+.info-box-label {
   font-weight: bolder;
   margin-bottom: 10px
 }
 
-.info-box-content{
-  margin-bottom:20px;
+.info-box-content {
+  margin-bottom: 20px;
+}
+
+.back {
+  position: absolute;
+  bottom: 15px;
+  left: 182px;
 }
 
 .huge-img {
-  height: 75vh;
+  height: 55vh;
   display: block;
   margin-left: auto;
   margin-right: auto;

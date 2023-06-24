@@ -20,7 +20,7 @@ class TruthToLipSinc {
     }
 
     truthLog = (text) => {
-        console.log(`%c${text}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
+        console.log(`Truth: %c${text}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
     }
 
     renderText = (text,truth) => {

@@ -47,7 +47,7 @@ class TeaserCoaster extends TeaserRide {
 
 
     const teaserTemplates = [`Before Eyedol Games' Acquisition, the top manufacturing company Idlev was making coasters at break neck speed. It was no surprise they'd be a leader in innovation for new ways of manufacturing death defying experiences.<br><br>${chosenName} was their first attempt. `,
-    `Abhorrineer Devona Avamund had this to say about her newest masterpiece: ${rand.pickFrom(devonaQuotes)}`,
+    `Abhorrineer Devona Avamund had this to say about her newest masterpiece: '${rand.pickFrom(devonaQuotes)}'`,
     `Fly like a ${noun}, we provide the wings.`,
     `Scream for ${rand.pickFrom([, "chills and thrills", chosenName, "ice cream", "it", "this living legend", "all who are born die", "there is no justice in life"])}.`,
     `Take a ${rand.pickFrom(["Delerious Drop", "Frightning Fall", "Perilous Plunge"])} into ${rand.pickFrom(["Extreme Exhilaration", "Freaky Fun", "Panicky Pleasure"])}! (Additional Fee Required)`,
@@ -70,13 +70,19 @@ class DetailsCoaster extends DetailsRide{
   rideType = COASTER;
 
 
-  generateDescription = (ele)=>{
+  generateDescription = (ele)=>{    
+    const fearLevel = rand.getRandomNumberBetween(1,3)
+    const confusionLevel = rand.getRandomNumberBetween(1,3)
+
+    this.generateFlavor(ele, fearLevel, confusionLevel)
+
+
+
     const intro = createElementWithClassAndParent("div", ele,"section");
 
     const topSpeed = `${rand.getRandomNumberBetween(10,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])} per ${rand.pickFrom(["minute","second","hour","minute","second","hour","hour","hour","minute","second","hour","week"])}`;
     const maxHeight = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
-    const fearLevel = rand.getRandomNumberBetween(1,3)
-    const confusionLevel = rand.getRandomNumberBetween(1,3)
+
     const trackLength = `${rand.getRandomNumberBetween(1,100)} ${rand.pickFrom(["inches","meters","miles","yards","kilometers","feet"])}`;
     const numberLoops = rand.getRandomNumberBetween(1,216);
     let numberGs = rand.getRandomNumberBetween(1,12);
@@ -117,29 +123,9 @@ class DetailsCoaster extends DetailsRide{
 
     intro2.innerText = introParts2.join(" ");
 
-    const container1 = createElementWithClassAndParent("div", ele,"section");
 
 
-    if(fearLevel <=1){
-      container1.innerText = "This experience is suitable for young children or guests with difficulty with terrifying content.";
-    }else if(fearLevel <=2){
-      container1.innerText = `Experience ${rand.pickFrom(["scares","thrills","chills","horror","nightmares"])} like never before!`;
-
-    }else if(fearLevel <=3){
-      container1.innerText = "This ride has been designed personally by our lead Abhorrineer, Devona Avamund! EyedolGames and ZWorld can not be held responsible for long ter negative effects.";
-    }
-
-    const container2 = createElementWithClassAndParent("div", ele,"section");
-
-    if(confusionLevel <=1){
-      container2.innerText = "This experience is suitable for all ages.";
-    }else if(confusionLevel <=2){
-      container2.innerText = "We are legally obliged to state the following: The Surgeon General Warns That Wihout Breaks This Experience May Harm Children, Adolescents And Those With Addictive Personalities. ";
-
-    }else if(confusionLevel <=3){
-      container2.innerText = "We're so glad you've decided to join our Family :)"; //you work here now
-
-    }
+   this.generateWarnings(ele, fearLevel, confusionLevel)
 
     const label = createElementWithClassAndParent("div", ele, "info-box-label");
     label.innerText = "By the Numbers: ";

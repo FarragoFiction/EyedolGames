@@ -21,6 +21,9 @@ window.onload = async () => {
   let consentButton = document.querySelector("#but-to-what");
   let page = document.querySelector("#page-content")
   if (paramRideType) {
+    let header = document.querySelector("#header");
+    const tmp = createElementWithClassAndParent("div", header,"back");
+    tmp.innerText = "Click to See All Rides!";
     initThemes();
     page.style.display = "block";
     consentButton.remove();
@@ -34,6 +37,7 @@ window.onload = async () => {
     container.append(ele);
     handleTruth(ride);
 
+
   } else {
     consentButton.onclick = () => {
       handleTruth();
@@ -42,7 +46,7 @@ window.onload = async () => {
     }
 
     initThemes();
-    await initCoasters();
+    await initRides();
     generateRandomRides(10);
     handleScrolling();
   }
@@ -149,7 +153,7 @@ const handleTruth = async (rideDetails) => {
 }
 
 const generateRandomRides = (num) => {
-  const rideGenerators = [TeaserCoaster, TeaserTrain];
+  const rideGenerators = [TeaserCoaster, TeaserTrain, TeaserLiveshow, TeaserSwing, TeaserMerry, TeaserWheel, TeaserZip, TeaserZip, TeaserWater];
 
   let container = document.querySelector("#content");
 

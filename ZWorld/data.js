@@ -694,7 +694,7 @@ const initAdjs = () => {
     adj_possibilities[TECHNOLOGY] = ["technological", "advanced", "smart", "programmatic", "procedural"];
     adj_possibilities[TIME] = ["timely", "measured", "punctual", "clock-work", "steady", "ticking", "beating"];
     adj_possibilities[SPACE] = ["celestial", "otherworldly", "vast", "big", "open", "expansive", "boundless", "immeasurable", "infinite", "limitless", "enormous", "gigantic", "giant", "cosmic", "falling"];
-    adj_possibilities[STEALING] = ["stolen", "taken", "yoinked", "missing", "kleptomania", "expensive"];
+    adj_possibilities[STEALING] = ["stolen", "taken", "missing", "kleptomanic", "expensive"];
     adj_possibilities[FREEDOM] = ["free", "unchained", "unbound", "moving", "flying"];
     adj_possibilities[FIRE] = ["flaming", "blazing", "burning", "ashen", "burnt"];
     adj_possibilities[LONELY] = ["lonely", "isolated", "friendless", "forsaken", "sad"];
