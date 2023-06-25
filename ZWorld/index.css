@@ -30,14 +30,17 @@ body {
   margin-top: 0px;
 }
 
+#planchette{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
 .ouija{
-  width: 413px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   object-fit: contain;
-  cursor: url(images/planchette_cursor.png) 31 31, pointer;
-
 }
 
 #but-to-what {
