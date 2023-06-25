@@ -8,7 +8,7 @@ So, here I am, having, as my new clown friend put it "the world's most interesti
 But it matters that it COULD be seen. Always does.
 
 So, here's current me's thoughts on why I'm so confident.  (Interestingly, optimisticDuelist seems to have a similar source of confidence, as detailed here: https://www.tumblr.com/jadedresearcher/721008181821800448/hey-rd-what-settled-you-in-on-your-god-tier?source=share  and i only found it the day after I wrote this (but I've been avoid adding this to git till i have a lot of other things to post at the same time so the casual glance does not reveal this))
-
+(lol after all that it went right at the top of the commit)
 
 
 The first thing you need to know about me is that my parents favorite passtime is tearing down everyone around them and punishing 'weirdness'. 

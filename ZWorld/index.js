@@ -13,6 +13,7 @@ let paramRideType = urlParams.get('rideType');
 let paramImage = "http://eyedolgames.com/ZWorld/images/attractions"+urlParams.get('image');
 let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
+let speakWithCustomersMode = urlParams.get("obsession");
 
 
 const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
@@ -53,7 +54,21 @@ window.onload = async () => {
 
 }
 
-const handleDetailsPage = () => {
+/*
+access ouiji board via truth asking after five minutes on the clock if you would like to access customer testimonials
+
+the surface joke is "haha everyone who used this is dead" but given youre ACTUALLY talking to other users with the board its literal on a meta level
+
+plus BB can intern under the Closer for enrichment, poor boi has been going kinda crazy alone
+*/
+const ouija = ()=>{
+  window.alert("!!!")
+}
+
+const offerCustomerTestimonials = async() => {
+  await textVoiceSim.speak("It seems hearing Testimonials may help you Choose?<br><br><button onclick='ouija()'>See Customer Testimonials</button>".split(","), null, true);
+  await sleep(1000);
+  await textVoiceSim.speak("Though with a Mind as indecisive as yours, perhaps you are beyond help.".split(","), null, false);
 
 }
 
@@ -128,6 +143,10 @@ const handleTruth = async (rideDetails) => {
 
     await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
     await textVoiceSim.speak("Or are you here to just waste my time.".split(","), null, false);
+
+    await sleep(1000*60*5); //wait five minutes on the clock
+    offerCustomerTestimonials();
+
   } else {
     textVoiceSim.speak("oh".split(" "), null, false)
 
@@ -141,6 +160,7 @@ const handleTruth = async (rideDetails) => {
       }
     }
     window.addEventListener("click", initTruth)
+
   }
 
   //what was that? 
