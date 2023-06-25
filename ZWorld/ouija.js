@@ -56,7 +56,7 @@ class OuijaBoard {
   initBoardObjects = () => {
     //label, left, top, width, height
     this.boardObjects = {
-      "YES": new BoardObject("YES", 63, 63, 50, 30),
+      "YES": new BoardObject("YES", 85, 63, 20, 20),
       "D": new BoardObject("D", 126, 121, 20, 20) //d was the first letter cuz the first place i rendered yes happened to be on the d, so i automaticaly had a valid letter position to save
 
     }
@@ -65,8 +65,8 @@ class OuijaBoard {
 
   //this does not AP
   createPlanchetteToBoardObjectAnimation = (bobj) => {
-    const offsetToCenterOnHoleX = 5;
-    const offsetToCenterOnHoleY = 20;
+    const offsetToCenterOnHoleX = bobj.width;
+    const offsetToCenterOnHoleY = bobj.height;
 
     console.log("JR NOTE: moving to", bobj.label, "TODO need to translate this from 'relative to board' to 'relative to screen's")
     const animation_name = "move" + getRandomNumberBetween(0, 999999); //really shitty
@@ -96,24 +96,22 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const inputs = [this.boardObjects["YES"],this.boardObjects["D"],this.boardObjects["YES"]];
+    const inputs = [this.boardObjects["YES"],this.boardObjects["D"],this.boardObjects["YES"],this.boardObjects["D"]];
     const outputs = [];
 
     for(let input of inputs){
       outputs.push(this.createPlanchetteToBoardObjectAnimation(input));
     }
-    /*
-      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
-    */
-   //`${animation_name} 1s ease-in 1s 1`
-    this.planchetteEle.style.animation = outputs.map((item,index)=>`${item} 1s ease-in ${index}s 1`);
-    this.planchetteEle.style.animationFillMode ='forwards';
-    console.log("JR NOTE: ", outputs,this.planchetteEle.style.animation )
 
-
-
-
+    this.applyAnimations(outputs)
     //this.ghostMode = false;
+  }
+
+  applyAnimations = (keyframes)=>{
+    //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
+    let duration = 3;
+    this.planchetteEle.style.animation = keyframes.map((item,index)=>`${item} ${duration}s ease-in ${index*duration}s 1`);
+    this.planchetteEle.style.animationFillMode ='forwards';
   }
 
   //this will only work, quite obviously, if the ouija board is on screen
