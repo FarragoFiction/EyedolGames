@@ -706,7 +706,6 @@ class PornBot extends Character {
   }
 
   sexymanDiscourse = (parentToRenderTo)=>{
-    console.log("JR NOTE: trying to do sexyman discourse")
     //JR NOTE TODO: first find a post with data-sexyman='hot'in it. 
     //then, see if it includes your own sexyman in it.  (this.favoriteSexyMan.element.outerHTML)
     //if not, say something inflamatory and post your own
@@ -714,7 +713,6 @@ class PornBot extends Character {
     if(!target || target.text.includes(this.favoriteSexyMan.element.outerHTML)){
       return;
     }
-    console.log("JR NOTE: trying to do sexyman discourse, found a post")
 
     const minesBetter = ['try a REAL sexy man','but this is the Ultimate Sexy Man','behold the best'];
     const inflamatoryShit = [
@@ -2866,7 +2864,6 @@ class K extends Character {
     //k of course, takes credit for ambrose avoiding places witherby is
     this.readied_posts.push(new Post(this, `you know it's on times like this when you can tell who the REAL winners are. we just cut back transdimensional train apparitions down to near zero. now THAT'S what we call putting those tax dollars to work.`, null, ["k post","you don't see this return for your dollar anywhere else boys","read them and weep","","","","",""], [""], ["K!"], true));
     this.readied_posts.push(new Post(this, `opening up a new edutainment attraction next week at your favorite long florida theme park teaching ALL about how to stay safe during void season. big ups to @${wanda.name} for signing off on the project. details soon. be there. there'll be autographs.`, null, ["k post","so sad someone wasn't able to come for it but oh weeell","more for us","","","","",""], [""], ["K!"], true,`@${devona.name} i'm not gonna complain about getting ALL the attention on your little park rides, but are you ever gonna get the nuts to ACTUALLY show up to openings? or are you just gonna keep sending your brother in drag about it?`));
-    console.log("JR NOTE: readied post im testing is", this.readied_posts[this.readied_posts.length -1])
     this.readied_posts.push(new Post(this, `hey local warning about that food delivery website. learn to read the fine print for a minute. we don't know what's going on but we sure as hell are looking at it.`, null, ["k post","one thing is for sure though you WILL get your food.","these fries are amazing","","","","","",""], [""], ["K!"], true));
 
 

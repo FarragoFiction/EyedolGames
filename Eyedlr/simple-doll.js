@@ -77,10 +77,10 @@ class DollLayer {
 class DollConstructor {
 
   baseOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/Base/quixotic_nude_tp.png"];
-  shirtOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_1.png"];
-  shoeOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_1.png"];
-  pantOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_1.png"];
-  accesoryOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_1.png"];
+  shirtOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_4.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_3.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shirt/quixotic_shirt_1.png"];
+  shoeOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_4.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_3.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Shoes/quixotic_shoes_1.png"];
+  pantOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_4.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_3.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Pants/quixotic_pants_1.png"];
+  accesoryOptions = ["","http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_4.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_3.png","http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_2.png", "http://eyedolgames.com/Eyedlr/images/SexyMen/Accessory/quixotic_hat_1.png"];
   bgOptions = ["http://eyedolgames.com/Eyedlr/images/SexyMen/BG/quixotic_bg.png"];
 
   /*
@@ -122,13 +122,14 @@ class DollConstructor {
 
   randomTomPeyoteDoll = (rand) => {
     const doll = new SimpleDoll();
+    let broadCanModify = rand.nextDouble()<0.75; //occasionally you get unmodified
     doll.dollLayers = [
-      new DollLayer(rand.pickFrom(this.bgOptions), true),
+      new DollLayer(rand.pickFrom(this.bgOptions), broadCanModify),
       new DollLayer(rand.pickFrom(this.baseOptions), false),
-      new DollLayer(rand.pickFrom(this.shoeOptions), true),
-      new DollLayer(rand.pickFrom(this.pantOptions), true),
-      new DollLayer(rand.pickFrom(this.shirtOptions), true),
-      new DollLayer(rand.pickFrom(this.accesoryOptions), true),
+      new DollLayer(rand.pickFrom(this.shoeOptions), broadCanModify),
+      new DollLayer(rand.pickFrom(this.pantOptions), broadCanModify),
+      new DollLayer(rand.pickFrom(this.shirtOptions), broadCanModify),
+      new DollLayer(rand.pickFrom(this.accesoryOptions), broadCanModify),
     ]
     return doll;
   }

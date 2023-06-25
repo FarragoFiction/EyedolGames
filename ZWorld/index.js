@@ -65,12 +65,14 @@ the surface joke is "haha everyone who used this is dead" but given youre ACTUAL
 
 plus BB can intern under the Closer for enrichment, poor boi has been going kinda crazy alone
 */
-const ouija = ()=>{
+const ouija = async()=>{
   const body = document.querySelector("body");
   body.classList.add("ouija-body");
   body.innerHTML = "";
   const board = new OuijaBoard();
   body.append(board.containerEle);
+  await sleep(1000);
+  board.test();
 
 }
 
