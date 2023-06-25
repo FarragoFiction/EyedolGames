@@ -13,12 +13,16 @@ let paramRideType = urlParams.get('rideType');
 let paramImage = "http://eyedolgames.com/ZWorld/images/attractions"+urlParams.get('image');
 let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
-let speakWithCustomersMode = urlParams.get("obsession");
+let speakWithCustomersMode = urlParams.get("ouija");
 
 
 const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
 
 window.onload = async () => {
+  if(speakWithCustomersMode){
+    ouija();
+    return;
+  }
   let consentButton = document.querySelector("#but-to-what");
   let page = document.querySelector("#page-content")
   if (paramRideType) {
@@ -62,7 +66,16 @@ the surface joke is "haha everyone who used this is dead" but given youre ACTUAL
 plus BB can intern under the Closer for enrichment, poor boi has been going kinda crazy alone
 */
 const ouija = ()=>{
-  window.alert("!!!")
+  const body = document.querySelector("body");
+  body.classList.add("ouija-body");
+  body.innerHTML = "<img class='ouija' src ='images/ouija.jpg'><div id='testimonial'>Hello World</div>";
+  const hum = new Audio("http://www.farragofiction.com/SettlersFromTheWest/this_could_be_useful.mp3"); //the sound of the fourth wall breaking, the sound of Observers seeing each other
+  hum.loop = true;
+  hum.play();
+  body.onclick = ()=>{
+    hum.currentTime = 0; //responds to clicks intentionally
+    hum.play()
+  };
 }
 
 const offerCustomerTestimonials = async() => {
