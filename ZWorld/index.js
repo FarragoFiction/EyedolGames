@@ -68,30 +68,10 @@ plus BB can intern under the Closer for enrichment, poor boi has been going kind
 const ouija = ()=>{
   const body = document.querySelector("body");
   body.classList.add("ouija-body");
-  body.innerHTML = "<img class='ouija' src ='images/ouija.jpg'><img id='planchette' src='images/planchette_cursor.png'><div id='testimonial'>Hello World</div>";
-  const hum = new Audio("http://www.farragofiction.com/SettlersFromTheWest/this_could_be_useful.mp3"); //the sound of the fourth wall breaking, the sound of Observers seeing each other
-  hum.loop = true;
-  hum.play();
-  const ouijaBoard = body.querySelector(".ouija");
-  const planchette = body.querySelector("#planchette")
+  body.innerHTML = "";
+  const board = new OuijaBoard();
+  body.append(board.containerEle);
 
-  const syncPlanchette = (x,y)=>{
-    planchette.style.left = `${x}px`;
-    planchette.style.top = `${y}px`;
-  }
-  body.onclick = (event)=>{
-    hum.currentTime = 0; //responds to clicks intentionally
-    hum.play()
-    syncPlanchette(event.pageX, event.pageY);
-
-  };
-
-
-  body.onmousemove = (event)=>{
-    console.log("JR NOTE: ",event);
-    syncPlanchette(event.pageX, event.pageY);
-
-  }
 }
 
 const offerCustomerTestimonials = async() => {
