@@ -31,12 +31,13 @@ body {
 }
 
 .ouija{
-  height: 90vh;
-  max-width: 100vw;
+  width: 413px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   object-fit: contain;
+  cursor: url(images/planchette_cursor.png) 31 31, pointer;
+
 }
 
 #but-to-what {
