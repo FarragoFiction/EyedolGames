@@ -56,8 +56,8 @@ class OuijaBoard {
   initBoardObjects = () => {
     //label, left, top, width, height
     this.boardObjects = {
-      "YES": new BoardObject("YES", 85, 63, 20, 20),
-      "D": new BoardObject("D", 126, 121, 20, 20) //d was the first letter cuz the first place i rendered yes happened to be on the d, so i automaticaly had a valid letter position to save
+      "YES": new BoardObject("YES", 83, 63, 20, 20),
+      "D": new BoardObject("D", 126, 118, 20, 20) //d was the first letter cuz the first place i rendered yes happened to be on the d, so i automaticaly had a valid letter position to save
 
     }
   }
@@ -110,7 +110,7 @@ class OuijaBoard {
   applyAnimations = (keyframes)=>{
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
     let duration = 3;
-    this.planchetteEle.style.animation = keyframes.map((item,index)=>`${item} ${duration}s ease-in ${index*duration}s 1`);
+    this.planchetteEle.style.animation = keyframes.map((item,index)=>`${item} ${duration}s ease ${index*duration}s 1`);
     this.planchetteEle.style.animationFillMode ='forwards';
   }
 
