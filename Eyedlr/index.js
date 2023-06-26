@@ -663,7 +663,7 @@ const showProfile = (character) => {
   createPopup(container);
 }
 
-const rageMode = () => {
+let rageMode = () => {
   window.alert(`I am afraid I must inform you that your account has been 'killed', as it were. Thems the breaks. Perhaps next time you won't draw attention to yourself, Observer. Your role is to watch. Not to interact.`);
 
   let body = document.querySelector("body");
@@ -694,6 +694,7 @@ const rageMode = () => {
   This Is Not a Blogging Platform and you are Not Looking at the blorbos you apparently so desperately crave.
   
   Good job breaking it, hero.`)
+  rageMode=()=>{}
 }
 
 const truthLog = (title, text) => {

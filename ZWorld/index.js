@@ -15,6 +15,7 @@ let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
 let speakWithCustomersMode = urlParams.get("ouija");
 
+//https://www.tumblr.com/jadedresearcher/721197316569284608/thoughts-on-liminal-horror?source=share
 
 const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
 
