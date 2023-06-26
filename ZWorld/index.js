@@ -153,7 +153,7 @@ const handleTruth = async (rideDetails) => {
     await sleep(1000);
 
     await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
-    await textVoiceSim.speak("Or are you here to just waste my time.".split(","), null, false);
+    await textVoiceSim.speak("Or are you here to just waste my Time.".split(","), null, false);
 
     await sleep(1000*60*5); //wait five minutes on the clock
     offerCustomerTestimonials();
