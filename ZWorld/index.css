@@ -3,6 +3,16 @@
   src: url("Fonts/BloodScratchPersonalUse.ttf");
 }
 
+@font-face {
+  font-family: paincircus;
+  src: url("Fonts/pain_circus/Pain\ Circus.ttf");
+}
+
+@font-face {
+  font-family: ouija;
+  src: url("Fonts/ifc_los_banditos/IFC\ LOS\ BANDITOS.ttf");
+}
+
 body {
   background-color: #abc9de;
   color: black;
@@ -15,34 +25,56 @@ body {
 
 }
 
-.ouija-container{
+.ouija-container {
   position: relative;
   width: 413px;
-  margin-left:auto;
-  margin-right: auto;
-}
-
-.ouija-body{
-  color: red;
-  background-color:black;
-  font-family: bloodscratch;
-}
-
-.accessibility{
   margin-left: auto;
   margin-right: auto;
+}
+
+.ouija-body {
+  color: red;
+  background-color: black;
+  font-family: paincircus;
+}
+
+.accessibility {
   font-size: 42px;
   text-align: center;
   margin-top: 0px;
+  margin-left: 30px;
+  margin-right: 32px;
+  background: #b79556;
+  color: black;
+  border-left: 3px solid #180813;
+  box-shadow: 0px 0px 0px 10px #b79556;
+  border-right: 3px solid #180813;
+  transform: perspective(100px) rotateX(-11deg);
+  margin-bottom: 20px;
 }
 
-.planchette{
+.planchette {
   position: absolute;
   bottom: 0px;
   left: 0px;
+  z-index: 10;
 }
 
-.test-object{
+.ouija-input {
+  width: 100%;
+  background: black;
+  overflow: hidden;
+  margin-bottom: 50px;
+  padding: 12px;
+  font-family: 'paincircus';
+  font-size: 18px;
+  height: 38px;
+  line-height: 15px;
+  color: red;
+
+}
+
+.test-object {
   opacity: .4;
   background-color: red;
   width: 100px;
@@ -50,7 +82,7 @@ body {
   position: absolute;
 }
 
-.ouija{
+.ouija {
   display: block;
   margin-left: auto;
   padding-top: 50px;

@@ -19,6 +19,10 @@ let speakWithCustomersMode = urlParams.get("ouija");
 
 const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
 
+//the watcher found this again https://jadedresearcher.tumblr.com/post/688182806608838656/hi-so-i-found-your-lounge-both-of-them-up
+//so the Theorist can be remembered
+
+//guide reminded me of this: http://www.farragofiction.com/ZampanioSimEastEast/src/Secrets/Content/62.js
 window.onload = async () => {
   if(speakWithCustomersMode){
     ouija();

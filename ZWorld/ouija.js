@@ -8,6 +8,7 @@ class OuijaBoard {
   containerEle;
   boardEle;
   planchetteEle;
+  textAreaEle;
   accessibilityEle; //write in text to make it easier for ppl to engage with
   offSet = 50;
 
@@ -34,6 +35,11 @@ class OuijaBoard {
     this.accessibilityEle = createElementWithClassAndParent("div", this.containerEle, "accessibility");
     this.accessibilityEle.innerText = "Hello World";
 
+    this.textAreaEle = createElementWithClassAndParent("textarea", this.containerEle, "ouija-input");
+    this.textAreaEle.value = "Ouija board loads with last BB entry.   additionally spells out any new BB entry. Users Input Via Text Area. If Input Matches key, ouija spells out something special. Otherwise spells out something random. (passwords from other rabbitholes?) ";
+
+    
+    
     const hum = new Audio("http://www.farragofiction.com/SettlersFromTheWest/this_could_be_useful.mp3"); //the sound of the fourth wall breaking, the sound of Observers seeing each other
     hum.loop = true;
     hum.play();
@@ -57,6 +63,7 @@ class OuijaBoard {
     //label, left, top, width, height
     this.boardObjects = {
       "YES": new BoardObject("YES", 83, 63, 20, 20),
+      "A": new BoardObject("A", 59, 155, 20, 20),
       "D": new BoardObject("D", 126, 118, 20, 20) //d was the first letter cuz the first place i rendered yes happened to be on the d, so i automaticaly had a valid letter position to save
 
     }
@@ -96,7 +103,7 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const inputs = [this.boardObjects["YES"],this.boardObjects["D"],this.boardObjects["YES"],this.boardObjects["D"]];
+    const inputs = [this.boardObjects["A"],this.boardObjects["YES"],this.boardObjects["A"]];
     const outputs = [];
 
     for(let input of inputs){
