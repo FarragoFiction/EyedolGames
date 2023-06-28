@@ -62,6 +62,8 @@ class OuijaBoard {
   initBoardObjects = () => {
     //label, left, top, width, height
     this.boardObjects = {
+      "_": new BoardObject("_", 191, 196, 20, 20),
+
       "YES": new BoardObject("YES", 83, 63, 20, 20),
       "NO": new BoardObject("NO", 302, 63, 20, 20),
       "A": new BoardObject("A", 59, 155, 20, 20),
@@ -69,20 +71,20 @@ class OuijaBoard {
       "C": new BoardObject("C", 101, 128, 20, 20),
       "D": new BoardObject("D", 126, 118, 20, 20), //d was the first letter cuz the first place i rendered yes happened to be on the d, so i automaticaly had a valid letter position to save
       "E": new BoardObject("E", 147, 114, 20, 20)
-      ,"F": new BoardObject("F", 171, 110, 20, 20)
-      ,"G": new BoardObject("G", 194, 110, 20, 20)
-      ,"H": new BoardObject("H", 224, 110, 20, 20)
-      ,"I": new BoardObject("I", 245, 113, 20, 20)
-      ,"J": new BoardObject("J", 263, 119, 20, 20)
-      ,"K": new BoardObject("K", 284, 127, 20, 20)
-      ,"L": new BoardObject("L", 306, 138, 20, 20)
-      ,"M": new BoardObject("M", 330, 153, 20, 20)
-      ,"N": new BoardObject("N", 61, 218, 20, 20)
+      , "F": new BoardObject("F", 171, 110, 20, 20)
+      , "G": new BoardObject("G", 194, 110, 20, 20)
+      , "H": new BoardObject("H", 224, 110, 20, 20)
+      , "I": new BoardObject("I", 245, 113, 20, 20)
+      , "J": new BoardObject("J", 263, 119, 20, 20)
+      , "K": new BoardObject("K", 284, 127, 20, 20)
+      , "L": new BoardObject("L", 306, 138, 20, 20)
+      , "M": new BoardObject("M", 330, 153, 20, 20)
+      , "N": new BoardObject("N", 61, 218, 20, 20)
 
     }
   }
 
-  addLetterToText = (letter)=>{
+  addLetterToText = (letter) => {
     this.accessibilityEle.innerText += letter;
     this.keepTextTrimmed();
   }
@@ -97,7 +99,6 @@ class OuijaBoard {
     const offsetToCenterOnHoleX = bobj.width;
     const offsetToCenterOnHoleY = bobj.height;
 
-    console.log("JR NOTE: moving to", bobj.label, "TODO need to translate this from 'relative to board' to 'relative to screen's")
     const animation_name = bobj.label;
     const inadvisable_hacked_css_keyframe = `
         @keyframes ${animation_name} {
@@ -115,24 +116,28 @@ class OuijaBoard {
 
 
   test = async () => {
-    for (let obj of Object.values(this.boardObjects)) {
-      const tmp = createElementWithClassAndParent("div", this.containerEle, "test-object");
-      tmp.style.left = obj.left + "px";
-      tmp.style.top = obj.top + "px";
-      tmp.style.width = obj.width + "px";
-      tmp.style.height = obj.height + "px";
-      tmp.id = obj.label;
+
+    const debug_position = false;
+    if (debug_position) {
+      for (let obj of Object.values(this.boardObjects)) {
+        const tmp = createElementWithClassAndParent("div", this.containerEle, "test-object");
+        tmp.style.left = obj.left + "px";
+        tmp.style.top = obj.top + "px";
+        tmp.style.width = obj.width + "px";
+        tmp.style.height = obj.height + "px";
+        tmp.id = obj.label;
+      }
     }
     this.ghostMode = true;
 
 
-    const inputs = [this.boardObjects["H"], this.boardObjects["N"]];
+    const inputs = [this.boardObjects["H"], this.boardObjects["E"], this.boardObjects["L"], this.boardObjects["L"], this.boardObjects["_"],this.boardObjects["YES"]];
     const outputs = [];
 
     for (let input of inputs) {
-      if (outputs.indexOf(input.label) >0) {
+      if (outputs.indexOf(input.label) > 0) {
         //its already made, just refer to it.
-        outputs.push(inputs.label);
+        outputs.push(input.label);
       } else {
         outputs.push(this.createPlanchetteToBoardObjectAnimation(input));
       }
@@ -145,12 +150,17 @@ class OuijaBoard {
   applyAnimations = (keyframes) => {
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
     let duration = 3;
+    //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
+    //this was a good suggestion from clown friend for a mad science break
+    this.planchetteEle.addEventListener("animationend", (e) => { this.addLetterToText(e.animationName) }, false);
+    //the ouija board tried to say no doubles, but sadly, i had to override it
+    this.planchetteEle.addEventListener("animationcancel", (e) => { console.log("cancel") }, false);
+    this.planchetteEle.addEventListener("animationstart", (e) => { console.log("start") }, false);
+
     this.planchetteEle.style.animation = keyframes.map((item, index) => `${item} ${duration}s ease ${index * duration}s 1`);
     this.planchetteEle.style.animationFillMode = 'forwards';
 
-    //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
-    //this was a good suggestion from clown friend for a mad science break
-    this.planchetteEle.addEventListener("animationend", (e) => { this.addLetterToText(e.animationName)}, false);
+
   }
 
   //this will only work, quite obviously, if the ouija board is on screen
