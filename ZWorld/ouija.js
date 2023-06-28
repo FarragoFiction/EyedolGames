@@ -72,6 +72,10 @@ class OuijaBoard {
       ,"F": new BoardObject("F", 171, 110, 20, 20)
       ,"G": new BoardObject("G", 194, 110, 20, 20)
       ,"H": new BoardObject("H", 224, 110, 20, 20)
+      ,"I": new BoardObject("I", 245, 113, 20, 20)
+      ,"J": new BoardObject("J", 263, 119, 20, 20)
+      ,"K": new BoardObject("K", 284, 127, 20, 20)
+      ,"L": new BoardObject("L", 306, 138, 20, 20)
 
     }
   }
@@ -120,7 +124,7 @@ class OuijaBoard {
     this.ghostMode = true;
 
 
-    const inputs = [this.boardObjects["H"], this.boardObjects["NO"], this.boardObjects["H"]];
+    const inputs = [this.boardObjects["H"], this.boardObjects["L"]];
     const outputs = [];
 
     for (let input of inputs) {
