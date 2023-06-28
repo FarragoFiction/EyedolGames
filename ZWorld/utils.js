@@ -77,6 +77,11 @@ function onlyUnique(value, index, self) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//HELLO WORLD trimmed to four would give you ORLD (useful for running text that can't get bigger than a certai size)
+const trimToLengthReverse = (string, length)=>{
+  return string.split("").reverse().join('').slice(0,length).split("").reverse().join("")
+}
+
 
 //if you give it new values for existing params it layers them on
 const updateURLParams = (params) => {
