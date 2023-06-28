@@ -63,11 +63,14 @@ class OuijaBoard {
     //label, left, top, width, height
     this.boardObjects = {
       "YES": new BoardObject("YES", 83, 63, 20, 20),
+      "NO": new BoardObject("NO", 302, 63, 20, 20),
       "A": new BoardObject("A", 59, 155, 20, 20),
       "B": new BoardObject("B", 79, 141, 20, 20),
       "C": new BoardObject("C", 101, 128, 20, 20),
       "D": new BoardObject("D", 126, 118, 20, 20), //d was the first letter cuz the first place i rendered yes happened to be on the d, so i automaticaly had a valid letter position to save
       "E": new BoardObject("E", 147, 114, 20, 20)
+      ,"F": new BoardObject("F", 171, 110, 20, 20)
+      ,"G": new BoardObject("G", 196, 110, 20, 20)
 
     }
   }
@@ -115,7 +118,8 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const inputs = [this.boardObjects["E"], this.boardObjects["YES"], this.boardObjects["E"]];
+
+    const inputs = [this.boardObjects["G"], this.boardObjects["NO"], this.boardObjects["G"]];
     const outputs = [];
 
     for (let input of inputs) {
