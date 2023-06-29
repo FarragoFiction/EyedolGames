@@ -48,6 +48,7 @@ class OuijaBoard {
     body.onclick = (event) => {
       hum.currentTime = 0; //responds to clicks intentionally
       hum.play()
+      var rect = this.boardEle.getBoundingClientRect();
       this.syncPlanchette(event.pageX - rect.left, event.pageY - rect.top);
 
     };
@@ -80,6 +81,8 @@ class OuijaBoard {
       , "L": new BoardObject("L", 306, 138, 20, 20)
       , "M": new BoardObject("M", 330, 153, 20, 20)
       , "N": new BoardObject("N", 61, 218, 20, 20)
+      , "O": new BoardObject("O", 80, 200, 20, 20)
+      , "P": new BoardObject("P", 100, 183, 20, 20)
 
     }
   }
@@ -117,7 +120,7 @@ class OuijaBoard {
 
   test = async () => {
 
-    const debug_position = false;
+    const debug_position = true;
     if (debug_position) {
       for (let obj of Object.values(this.boardObjects)) {
         const tmp = createElementWithClassAndParent("div", this.containerEle, "test-object");
@@ -130,32 +133,19 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-
-    const inputs = [this.boardObjects["H"], this.boardObjects["E"], this.boardObjects["L"], this.boardObjects["L"], this.boardObjects["_"],this.boardObjects["YES"]];
-    const outputs = [];
-
-    for (let input of inputs) {
-      if (outputs.indexOf(input.label) > 0) {
-        //its already made, just refer to it.
-        outputs.push(input.label);
-      } else {
-        outputs.push(this.createPlanchetteToBoardObjectAnimation(input));
-      }
-    }
+    const outputs = this.spellWords("P")
 
     this.applyAnimations(outputs)
     //this.ghostMode = false;
   }
 
   applyAnimations = (keyframes) => {
+    console.log("JR NOTE: keyframes",keyframes)
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
     let duration = 3;
     //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
     //this was a good suggestion from clown friend for a mad science break
     this.planchetteEle.addEventListener("animationend", (e) => { this.addLetterToText(e.animationName) }, false);
-    //the ouija board tried to say no doubles, but sadly, i had to override it
-    this.planchetteEle.addEventListener("animationcancel", (e) => { console.log("cancel") }, false);
-    this.planchetteEle.addEventListener("animationstart", (e) => { console.log("start") }, false);
 
     this.planchetteEle.style.animation = keyframes.map((item, index) => `${item} ${duration}s ease ${index * duration}s 1`);
     this.planchetteEle.style.animationFillMode = 'forwards';
@@ -164,9 +154,36 @@ class OuijaBoard {
   }
 
   //this will only work, quite obviously, if the ouija board is on screen
-  spellWords = async (words) => {
-    var rect = this.boardEle.getBoundingClientRect();
-    console.log(rect);
+  spellWords =  (words) => {
+    let inputs = [];
+    let outputs = [];
+    const space = this.boardObjects["_"];
+
+    for(let word of words.split(" ")){
+      //first check if any of the words are known
+      if(this.boardObjects[word]){
+        inputs.push(this.boardObjects[word])
+      }else{
+        for(let letter of word.split("")){
+          if(this.boardObjects[letter]){
+            inputs.push(this.boardObjects[letter]);
+          }
+        }
+      }
+      inputs.push(space);
+
+      //make sure space after each
+    }
+    for (let input of inputs) {
+      console.log("JR NOTE: input is",input)
+      if (outputs.indexOf(input.label) > 0) {
+        //its already made, just refer to it.
+        outputs.push(input.label);
+      } else {
+        outputs.push(this.createPlanchetteToBoardObjectAnimation(input));
+      }
+    }
+    return outputs;
   }
 
   syncPlanchette = (x, y) => {
