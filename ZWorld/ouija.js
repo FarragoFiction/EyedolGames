@@ -83,6 +83,8 @@ class OuijaBoard {
       , "N": new BoardObject("N", 61, 218, 20, 20)
       , "O": new BoardObject("O", 80, 200, 20, 20)
       , "P": new BoardObject("P", 100, 183, 20, 20)
+      , "Q": new BoardObject("Q", 121, 174, 20, 20)
+      , "R": new BoardObject("R", 144, 165, 20, 20)
 
     }
   }
@@ -133,7 +135,7 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const outputs = this.spellWords("P")
+    const outputs = this.spellWords("r")
 
     this.applyAnimations(outputs)
     //this.ghostMode = false;
@@ -158,8 +160,9 @@ class OuijaBoard {
     let inputs = [];
     let outputs = [];
     const space = this.boardObjects["_"];
+    const parts = words.toUpperCase().split(" ");
 
-    for(let word of words.split(" ")){
+    for(let word of parts){
       //first check if any of the words are known
       if(this.boardObjects[word]){
         inputs.push(this.boardObjects[word])
@@ -170,12 +173,12 @@ class OuijaBoard {
           }
         }
       }
-      inputs.push(space);
+      //don't add trailing space
+      word !== parts[parts.length-1] ?inputs.push(space):null;
 
       //make sure space after each
     }
     for (let input of inputs) {
-      console.log("JR NOTE: input is",input)
       if (outputs.indexOf(input.label) > 0) {
         //its already made, just refer to it.
         outputs.push(input.label);
