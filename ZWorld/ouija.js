@@ -93,10 +93,37 @@ class OuijaBoard {
       , "X": new BoardObject("X", 288, 185, 20, 20)
       , "Y": new BoardObject("Y", 311, 198, 20, 20) //113 inverted is the x position of Y, that's interesting
       , "Z": new BoardObject("Z", 326, 216, 20, 20)
+      , "1": new BoardObject("ONE", 93, 232, 20, 20)
+      , "2": new BoardObject("TWO", 112, 232, 20, 20)
+      , "3": new BoardObject("THREE", 134, 232, 20, 20)
+      , "4": new BoardObject("FOUR", 156, 232, 20, 20)
+      , "5": new BoardObject("FIVE", 180, 232, 20, 20)
+      , "6": new BoardObject("SIX", 201, 232, 20, 20)
+      , "7": new BoardObject("SEVEN", 221, 232, 20, 20)
+      , "8": new BoardObject("EIGHT", 242, 232, 20, 20)
+      , "9": new BoardObject("NINE", 266, 232, 20, 20)
+      , "0": new BoardObject("ZERO", 288, 232, 20, 20)
+
     }
   }
 
   addLetterToText = (letter) => {
+    //to save space
+    const conversion = {
+      "ONE":"1"
+      ,"TWO":"2"
+      ,"THREE":"3"
+      ,"FOUR":"4"
+      ,"FIVE":"5"
+      ,"SIX":"6"
+      ,"SEVEN":"7"
+      ,"EIGHT":"8"
+      ,"NINE":"9"
+      ,"ZERO":"0"
+    }
+
+    conversion[letter]? letter = conversion[letter]:null;
+
     this.accessibilityEle.innerText += letter;
     this.keepTextTrimmed();
   }
@@ -111,7 +138,7 @@ class OuijaBoard {
     const offsetToCenterOnHoleX = bobj.width;
     const offsetToCenterOnHoleY = bobj.height;
 
-    const animation_name = bobj.label;
+    const animation_name = bobj.label; //key can be 1 but label will be ONE so i don't have invalid css names
     const inadvisable_hacked_css_keyframe = `
         @keyframes ${animation_name} {
         100% {left: ${bobj.left - offsetToCenterOnHoleX}; top: ${bobj.top - offsetToCenterOnHoleY} }
@@ -142,14 +169,13 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const outputs = this.spellWords("z")
+    const outputs = this.spellWords("1234567890 I AM DONE!!!")
 
     this.applyAnimations(outputs)
     //this.ghostMode = false;
   }
 
   applyAnimations = (keyframes) => {
-    console.log("JR NOTE: keyframes",keyframes)
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
     let duration = 3;
     //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
