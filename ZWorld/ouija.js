@@ -21,14 +21,21 @@ class OuijaBoard {
     this.createElement();
   }
 
+  bbPost = (query, response)=>{
+    console.log(`%c${query}\nBB: %c${response}`,"", "font-weight: bold;","font-family: 'sans-serif';color: rgb(255,133,133); font-size:13px;");
+
+  }
+
   fetchCurrentBBPhrase = async ()=>{
     const rawText =  await httpGetAsync("http://knucklessux.com/JR/AudioLogs/json/hello_butler_bot.json")
     console.log("JR NOTE: rawtext is", rawText);
     const json = JSON.parse(rawText);
     console.log("JR NOTE: json is", json);
     const summary = json.summary;
+    this.bbPost(summary, json.transcript);
     console.log("JR NOTE: summary  is", summary);
-    const split = summary.split(":")
+    const split = summary.split(":");
+
     return split.splice(1,split.length).join("")
 
   }
@@ -163,6 +170,13 @@ class OuijaBoard {
 
     return animation_name;
 
+  }
+
+  listenForNewGhosts = async ()=>{
+    const response = await httpGetAsync("http://farragofiction.com:8500/ResponseStatus");
+    setTimeout(this.listenForNewGhosts, 1000);
+    this.ghostMovementFromBB();
+    return true;
   }
 
   ghostMovementFromBB = async ()=>{
