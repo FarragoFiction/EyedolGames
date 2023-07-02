@@ -88,7 +88,11 @@ class OuijaBoard {
       , "S": new BoardObject("S", 166, 158, 20, 20)
       , "T": new BoardObject("T", 190, 156, 20, 20)
       , "U": new BoardObject("U", 214, 158, 20, 20)
-
+      , "V": new BoardObject("V", 240, 162, 20, 20)
+      , "W": new BoardObject("W", 265, 171, 20, 20)
+      , "X": new BoardObject("X", 288, 185, 20, 20)
+      , "Y": new BoardObject("Y", 311, 198, 20, 20) //113 inverted is the x position of Y, that's interesting
+      , "Z": new BoardObject("Z", 326, 216, 20, 20)
     }
   }
 
@@ -138,7 +142,7 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const outputs = this.spellWords("u")
+    const outputs = this.spellWords("z")
 
     this.applyAnimations(outputs)
     //this.ghostMode = false;
