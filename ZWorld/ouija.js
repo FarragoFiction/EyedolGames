@@ -21,6 +21,18 @@ class OuijaBoard {
     this.createElement();
   }
 
+  fetchCurrentBBPhrase = async ()=>{
+    const rawText =  await httpGetAsync("http://knucklessux.com/JR/AudioLogs/json/hello_butler_bot.json")
+    console.log("JR NOTE: rawtext is", rawText);
+    const json = JSON.parse(rawText);
+    console.log("JR NOTE: json is", json);
+    const summary = json.summary;
+    console.log("JR NOTE: summary  is", summary);
+    const split = summary.split(":")
+    return split.splice(1,split.length).join("")
+
+  }
+
   createElement = () => {
     //body.innerHTML = "<img class='ouija' src ='images/ouija.jpg'>
     //<img id='planchette' src='images/planchette_cursor.png'>
@@ -153,10 +165,15 @@ class OuijaBoard {
 
   }
 
+  ghostMovementFromBB = async ()=>{
+    const phrase = await this.fetchCurrentBBPhrase();
+    this.ghostMovement(phrase);
+  }
 
-  test = async () => {
 
-    const debug_position = true;
+  ghostMovement = async (phrase) => {
+
+    const debug_position = false;
     if (debug_position) {
       for (let obj of Object.values(this.boardObjects)) {
         const tmp = createElementWithClassAndParent("div", this.containerEle, "test-object");
@@ -169,7 +186,7 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const outputs = this.spellWords("1234567890 I AM DONE!!!")
+    const outputs = this.spellWords(phrase)
 
     this.applyAnimations(outputs)
     //this.ghostMode = false;

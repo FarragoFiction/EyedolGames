@@ -77,7 +77,8 @@ const ouija = async()=>{
   const board = new OuijaBoard();
   body.append(board.containerEle);
   await sleep(1000);
-  board.test();
+  //we start out by fetching the current phrase from BB and printing it out
+  board.ghostMovementFromBB();
 
 }
 
