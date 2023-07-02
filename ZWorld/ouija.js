@@ -85,6 +85,9 @@ class OuijaBoard {
       , "P": new BoardObject("P", 100, 183, 20, 20)
       , "Q": new BoardObject("Q", 121, 174, 20, 20)
       , "R": new BoardObject("R", 144, 165, 20, 20)
+      , "S": new BoardObject("S", 166, 158, 20, 20)
+      , "T": new BoardObject("T", 190, 156, 20, 20)
+      , "U": new BoardObject("U", 214, 158, 20, 20)
 
     }
   }
@@ -135,7 +138,7 @@ class OuijaBoard {
     }
     this.ghostMode = true;
 
-    const outputs = this.spellWords("r")
+    const outputs = this.spellWords("u")
 
     this.applyAnimations(outputs)
     //this.ghostMode = false;
