@@ -163,6 +163,7 @@ class OuijaBoard {
 
   //this does not AP
   createPlanchetteToBoardObjectAnimation = (bobj) => {
+    console.log("JR NOTE: creating animation for", bobj)
     const offsetToCenterOnHoleX = bobj.width;
     const offsetToCenterOnHoleY = bobj.height;
 
@@ -176,6 +177,7 @@ class OuijaBoard {
 
     /*this.planchetteEle.style.animation = `${animation_name} ${3}s ease-in 1`;
     this.planchetteEle.style.animationFillMode ='forwards';*/
+    console.log("JR NOTE: created", animation_name)
 
     return animation_name;
 
@@ -214,8 +216,9 @@ class OuijaBoard {
     const outputs = this.spellWords(phrase)
     this.alreadyMoving = true;
     this.applyAnimations(outputs);
-    //make sure we don't return before the animations are done
-    await sleep(1000* this.animationDuration * outputs.length);
+    //make sure we don't return before the animations are done (wait a second after ending for cleanup)
+    await sleep(1000+ 1000* this.animationDuration * outputs.length);
+    this.planchetteEle.style.animation = "";
     this.ghostMode = false;
     this.alreadyMoving = false;
 
@@ -230,20 +233,29 @@ class OuijaBoard {
     //need to clean this up if i want to do another animation ever (say, bb gets input)
     let animationIndex = 0;
     const animationEnd = (e)=>{
-      console.log("JR NOTE: animationIndex", animationIndex)
+      console.log("JR NOTE: end animationIndex", animationIndex, e.animationName, keyframes.length)
       //calling this here removes all pending events, don't do it
       //this.planchetteEle.removeEventListener("animationend",animationEnd);
       animationIndex++;
       if(animationIndex === keyframes.length){
-        window.alert("cleaning up!")
+        console.log("JR NOTE: cleaning up")
         this.planchetteEle.removeEventListener("animationend",animationEnd);
       }
       return this.addLetterToText(e.animationName);
     }
+    
+    const animationStart = (e)=>{
+      console.log("JR NOTE: start animationIndex", animationIndex, e.animationName, keyframes.length)
+
+    }
 
     this.planchetteEle.addEventListener("animationend",animationEnd , false);
 
+    this.planchetteEle.addEventListener("animationstart",animationStart , false);
+
+
     this.planchetteEle.style.animation = keyframes.map((item, index) => `${item} ${this.animationDuration}s ease ${index * this.animationDuration}s 1`);
+    console.log("JR NOTE: animation is", this.planchetteEle.style.animation)
     this.planchetteEle.style.animationFillMode = 'forwards';
 
 
