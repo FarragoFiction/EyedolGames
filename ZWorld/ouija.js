@@ -32,12 +32,9 @@ class OuijaBoard {
 
   fetchCurrentBBPhrase = async ()=>{
     const rawText =  await httpGetAsync("http://knucklessux.com/JR/AudioLogs/json/hello_butler_bot.json")
-    console.log("JR NOTE: rawtext is", rawText);
     const json = JSON.parse(rawText);
-    console.log("JR NOTE: json is", json);
     const summary = json.summary;
     this.bbPost(summary, json.transcript);
-    console.log("JR NOTE: summary  is", summary);
     const split = summary.split(":");
 
     return split.splice(1,split.length).join("")
@@ -56,10 +53,20 @@ class OuijaBoard {
     this.planchetteEle.src = "images/planchette_cursor.png";
 
     this.accessibilityEle = createElementWithClassAndParent("div", this.containerEle, "accessibility");
-    this.accessibilityEle.innerText = "Hello World";
+    this.accessibilityEle.innerText ="_";
+
+
+    this.inputLabel = createElementWithClassAndParent("label", this.containerEle, "ouija-label");
+    this.inputLabel.innerText = "Ask a Question:";
+
 
     this.textAreaEle = createElementWithClassAndParent("textarea", this.containerEle, "ouija-input");
-    this.textAreaEle.value = "Ouija board loads with last BB entry.   additionally spells out any new BB entry. Users Input Via Text Area. If Input Matches key, ouija spells out something special. Otherwise spells out something random. (passwords from other rabbitholes?) ";
+    this.textAreaEle.value = "Is Zampanio a Very Good Game?";
+    this.textAreaEle.placeholder = "Type Question Here"
+    this.textAreaEle.focus();
+
+    this.submitButton = createElementWithClassAndParent("button", this.containerEle, "ouija-submit");
+    this.submitButton.innerText = "Ask";
 
 
 
@@ -163,7 +170,6 @@ class OuijaBoard {
 
   //this does not AP
   createPlanchetteToBoardObjectAnimation = (bobj) => {
-    console.log("JR NOTE: creating animation for", bobj)
     const offsetToCenterOnHoleX = bobj.width;
     const offsetToCenterOnHoleY = bobj.height;
 
@@ -177,7 +183,6 @@ class OuijaBoard {
 
     /*this.planchetteEle.style.animation = `${animation_name} ${3}s ease-in 1`;
     this.planchetteEle.style.animationFillMode ='forwards';*/
-    console.log("JR NOTE: created", animation_name)
 
     return animation_name;
 
@@ -225,7 +230,6 @@ class OuijaBoard {
   }
 
   applyAnimations = (keyframes) => {
-    console.log("JR NOTE: applying animations", keyframes)
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
     //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
     //this was a good suggestion from clown friend for a mad science break
@@ -233,29 +237,26 @@ class OuijaBoard {
     //need to clean this up if i want to do another animation ever (say, bb gets input)
     let animationIndex = 0;
     const animationEnd = (e)=>{
-      console.log("JR NOTE: end animationIndex", animationIndex, e.animationName, keyframes.length)
       //calling this here removes all pending events, don't do it
       //this.planchetteEle.removeEventListener("animationend",animationEnd);
       animationIndex++;
+      this.addLetterToText(e.animationName);
       if(animationIndex === keyframes.length){
-        console.log("JR NOTE: cleaning up")
         this.planchetteEle.removeEventListener("animationend",animationEnd);
       }
-      return this.addLetterToText(e.animationName);
+      return;
     }
     
     const animationStart = (e)=>{
       console.log("JR NOTE: start animationIndex", animationIndex, e.animationName, keyframes.length)
-
     }
 
     this.planchetteEle.addEventListener("animationend",animationEnd , false);
 
-    this.planchetteEle.addEventListener("animationstart",animationStart , false);
+    //this.planchetteEle.addEventListener("animationstart",animationStart , false);
 
 
     this.planchetteEle.style.animation = keyframes.map((item, index) => `${item} ${this.animationDuration}s ease ${index * this.animationDuration}s 1`);
-    console.log("JR NOTE: animation is", this.planchetteEle.style.animation)
     this.planchetteEle.style.animationFillMode = 'forwards';
 
 
