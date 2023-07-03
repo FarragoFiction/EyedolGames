@@ -7,8 +7,8 @@ class PasswordSecret {
 
 //if they input something not here, then 
 const passWordMap = {
-  "HOW LONG": "LONGER THAN YOU THINK", //stephen king's "the jaunt"/emesis blue reference
-  "WHY DID": "IT'S ETERNITY IN THERE",//stephen king's "the jaunt"/emesis blue reference
+  "HOW LONG": new PasswordSecret("LONGER THAN YOU THINK",""), //stephen king's "the jaunt"/emesis blue reference
+  "WHY DID": new PasswordSecret("IT'S ETERNITY IN THERE",""),//stephen king's "the jaunt"/emesis blue reference
   "IS ZAMPANIO A VERY GOOD GAME": new PasswordSecret("YES", `
 <p>how can you stand to live as you do?</p>
 <p>to exist in the margins of thought, names in a newspaper, all of them right, but none of them you&hellip;</p>
@@ -30,7 +30,7 @@ const passWordMap = {
 <p>come bask in the warmth of the sun.</p>
 <p>&nbsp;</p>
 <p><br><Br>Written by: IC</p>
-  `)
+  `)//not quite the Innocent to not quite the Killer
 }
 
 
@@ -82,8 +82,7 @@ class OuijaBoard {
 
   handleQuestion = async (question) => {
     question = question.toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").trim();
-    console.log("JR NOTE: handling question: ", question, passWordMap)
-    const password = passWordMap[question];
+    let password = passWordMap[question];
     //containing (aka chat bot rules)
     if (!password) {
       for (let key of Object.keys(passWordMap)) {
@@ -93,16 +92,17 @@ class OuijaBoard {
       }
     }
 
+    console.log("JR NOTE: handling question: ", question, passWordMap)
 
     if (password) {
+      await this.ghostMovement(question)
       this.secretEle.innerHTML = password.paragraphText;
+      await sleep(1000)
       this.ghostMovement(password.ouijaText)
     } else {
       //submit to BB, fetch current response (even if you've seen it before)
       const response = await httpGetAsync(`http://farragofiction.com:8500/TalkButlerBot?chatHandle=rideEnthusiast&input=${encodeURI(question)}?`);
       this.bbPost("", response);
-      await sleep(30*1000); //give it time
-      this.ghostMovementFromBB();
     }
   }
 
@@ -113,7 +113,6 @@ class OuijaBoard {
     this.containerEle = createElementWithClass("div", "big-container");
 
     this.secretEle = createElementWithClassAndParent("div", this.containerEle, "secret-container");
-    this.secretEle.innerHTML = `<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>`;
 
     const ouijaContainer = createElementWithClassAndParent("div", this.containerEle, "ouija-container");
     const paddingEle = createElementWithClassAndParent("div", this.containerEle, "padding-container");
@@ -266,6 +265,7 @@ class OuijaBoard {
   }
 
   listenForNewGhosts = async () => {
+    console.log("Listening for ghosts...")
     const response = await httpGetAsync("http://farragofiction.com:8500/ResponseStatus");
     setTimeout(this.listenForNewGhosts, 1000);
     await this.ghostMovementFromBB();
@@ -279,6 +279,7 @@ class OuijaBoard {
 
 
   ghostMovement = async (phrase) => {
+    this.submitButton.disabled = true;
     if (this.alreadyMoving) {
       return; //if i get new input while being spooky, ignore it (tho fail to console)
     }
@@ -303,6 +304,8 @@ class OuijaBoard {
     this.planchetteEle.style.animation = "";
     this.ghostMode = false;
     this.alreadyMoving = false;
+    this.submitButton.disabled = false;
+
 
   }
 

@@ -127,6 +127,10 @@ body {
   margin-right: auto;
 }
 
+.ouija-submit:disabled{
+  filter: grayscale();
+}
+
 .ouija-submit:hover {
   background: #550000;
   transform: translateY(1px);
