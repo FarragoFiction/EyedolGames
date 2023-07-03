@@ -7,8 +7,8 @@ class PasswordSecret {
 
 //if they input something not here, then 
 const passWordMap = {
-  "HOW LONG": new PasswordSecret("LONGER THAN YOU THINK",""), //stephen king's "the jaunt"/emesis blue reference
-  "WHY DID": new PasswordSecret("IT'S ETERNITY IN THERE",""),//stephen king's "the jaunt"/emesis blue reference
+  "HOW LONG": new PasswordSecret("LONGER THAN YOU THINK", ""), //stephen king's "the jaunt"/emesis blue reference
+  "WHY DID": new PasswordSecret("IT'S ETERNITY IN THERE", ""),//stephen king's "the jaunt"/emesis blue reference
   "IS ZAMPANIO A VERY GOOD GAME": new PasswordSecret("YES", `
 <p>how can you stand to live as you do?</p>
 <p>to exist in the margins of thought, names in a newspaper, all of them right, but none of them you&hellip;</p>
@@ -53,6 +53,7 @@ class OuijaBoard {
   alreadyMoving = false; //don't apply new animations if you're already moving, just let them fail to console
   accessibilityEle; //write in text to make it easier for ppl to engage with
   offSet = 50;
+  redHerrings = [];
 
   ghostMode = false; //controls if respects mouse moves
 
@@ -74,10 +75,10 @@ class OuijaBoard {
     const json = JSON.parse(rawText);
     const summary = json.summary;
     this.bbPost(summary, json.transcript);
+
     const split = summary.split(":");
-
-    return split.splice(1, split.length).join("")
-
+    const ret = split.splice(1, split.length).join("");
+    return ret;
   }
 
   handleQuestion = async (question) => {
@@ -92,7 +93,6 @@ class OuijaBoard {
       }
     }
 
-    console.log("JR NOTE: handling question: ", question, passWordMap)
 
     if (password) {
       await this.ghostMovement(question)
@@ -281,6 +281,10 @@ class OuijaBoard {
   ghostMovement = async (phrase) => {
     this.submitButton.disabled = true;
     if (this.alreadyMoving) {
+      setTimeout(()=>{
+        this.redHerrings.push(phrase);
+        this.ghostMovement(pickFrom(this.redHerrings));
+      },60*1000*3)//if nothing happens after a while, try this
       return; //if i get new input while being spooky, ignore it (tho fail to console)
     }
     const debug_position = false;
@@ -344,6 +348,9 @@ class OuijaBoard {
 
   //this will only work, quite obviously, if the ouija board is on screen
   spellWords = (words) => {
+    if (words.trim() == '') {
+      return
+    }
     let inputs = [];
     let outputs = [];
     const space = this.boardObjects["_"];

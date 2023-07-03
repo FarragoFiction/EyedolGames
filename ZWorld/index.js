@@ -76,13 +76,13 @@ const ouija = async()=>{
   body.innerHTML = "";
   const board = new OuijaBoard();
   body.append(board.containerEle);
-  await sleep(10000);
   //we start out by fetching the current phrase from BB and printing it out
   //await board.ghostMovement("Hello");
-  //await sleep(10000);
 
-  //board.ghostMovementFromBB(); //only do this on input, if no password
   board.listenForNewGhosts();
+  await sleep(10000);
+
+  board.ghostMovementFromBB(); //only do this on input, if no password
 
 }
 
