@@ -25,11 +25,52 @@ body {
 
 }
 
+.big-container {
+  display: flex;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.secret-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.secret-container::-webkit-scrollbar-thumb {
+  background: #ee0000;
+}
+
+.secret-container {
+  height: 303px;
+  width: 413px;
+  margin-top: 50px;
+  color: red;
+  background-color: black;
+  font-family: paincircus;
+  padding: 20px;
+  text-align: right;
+  overflow: auto;
+}
+
+.padding-container {
+  height: 303px;
+  width: 413px;
+  margin-top: 50px;
+  color: red;
+  background-color: black;
+  font-family: paincircus;
+  padding: 20px;
+  text-align: right;
+}
+
 .ouija-container {
   position: relative;
   width: 413px;
-  margin-left: auto;
-  margin-right: auto;
+
 }
 
 .ouija-body {
@@ -61,11 +102,14 @@ body {
   pointer-events: none;
 }
 
-.ouija-label{
+.ouija-label {
   font-size: 10px;
   opacity: .7;
 }
 
+.ouija-secret {
+  width: 413px;
+}
 
 .ouija-submit {
   border: 1px solid #660000;
@@ -86,7 +130,11 @@ body {
 .ouija-submit:hover {
   background: #550000;
   transform: translateY(1px);
+}
 
+.ouija-submit:active {
+  background: #660000;
+  transform: translateY(3px);
 }
 
 .ouija-input {
