@@ -78,6 +78,9 @@ const ouija = async()=>{
   body.append(board.containerEle);
   await sleep(1000);
   //we start out by fetching the current phrase from BB and printing it out
+  await board.ghostMovement("Hello");
+  await sleep(1000);
+
   board.ghostMovementFromBB();
   board.listenForNewGhosts();
 

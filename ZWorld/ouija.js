@@ -3,12 +3,15 @@
 if you tell it to spell something out it will move the planchette to do so
 (in this mode it will not respond to mouse moves)
 */
-
+//JR NOTE: you should only have one ouija board at a time or their animations collide
+//if i REALLY need more than one, i will need their animations to be only created once. (check dom i guess?)
 class OuijaBoard {
   containerEle;
+  animationDuration = 2; //how long does it take to get to each letter. slower is creepier.
   boardEle;
   planchetteEle;
   textAreaEle;
+  alreadyMoving = false; //don't apply new animations if you're already moving, just let them fail to console
   accessibilityEle; //write in text to make it easier for ppl to engage with
   offSet = 50;
 
@@ -17,8 +20,9 @@ class OuijaBoard {
   boardObjects = {};//keyed by label
 
   constructor() {
-    this.initBoardObjects();
     this.createElement();
+    this.initBoardObjects();
+
   }
 
   bbPost = (query, response)=>{
@@ -124,6 +128,11 @@ class OuijaBoard {
       , "0": new BoardObject("ZERO", 288, 232, 20, 20)
 
     }
+
+    //JR NOTE: you should only have one ouija board at a time or their animations collide
+    for(let obj of Object.values(this.boardObjects)){
+      this.createPlanchetteToBoardObjectAnimation(obj);
+    }
   }
 
   addLetterToText = (letter) => {
@@ -175,18 +184,20 @@ class OuijaBoard {
   listenForNewGhosts = async ()=>{
     const response = await httpGetAsync("http://farragofiction.com:8500/ResponseStatus");
     setTimeout(this.listenForNewGhosts, 1000);
-    this.ghostMovementFromBB();
+    await this.ghostMovementFromBB();
     return true;
   }
 
   ghostMovementFromBB = async ()=>{
     const phrase = await this.fetchCurrentBBPhrase();
-    this.ghostMovement(phrase);
+    await this.ghostMovement(phrase);
   }
 
 
   ghostMovement = async (phrase) => {
-
+    if(this.alreadyMoving){
+      return; //if i get new input while being spooky, ignore it (tho fail to console)
+    }
     const debug_position = false;
     if (debug_position) {
       for (let obj of Object.values(this.boardObjects)) {
@@ -201,19 +212,38 @@ class OuijaBoard {
     this.ghostMode = true;
 
     const outputs = this.spellWords(phrase)
+    this.alreadyMoving = true;
+    this.applyAnimations(outputs);
+    //make sure we don't return before the animations are done
+    await sleep(1000* this.animationDuration * outputs.length);
+    this.ghostMode = false;
+    this.alreadyMoving = false;
 
-    this.applyAnimations(outputs)
-    //this.ghostMode = false;
   }
 
   applyAnimations = (keyframes) => {
+    console.log("JR NOTE: applying animations", keyframes)
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
-    let duration = 3;
     //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
     //this was a good suggestion from clown friend for a mad science break
-    this.planchetteEle.addEventListener("animationend", (e) => { this.addLetterToText(e.animationName) }, false);
 
-    this.planchetteEle.style.animation = keyframes.map((item, index) => `${item} ${duration}s ease ${index * duration}s 1`);
+    //need to clean this up if i want to do another animation ever (say, bb gets input)
+    let animationIndex = 0;
+    const animationEnd = (e)=>{
+      console.log("JR NOTE: animationIndex", animationIndex)
+      //calling this here removes all pending events, don't do it
+      //this.planchetteEle.removeEventListener("animationend",animationEnd);
+      animationIndex++;
+      if(animationIndex === keyframes.length){
+        window.alert("cleaning up!")
+        this.planchetteEle.removeEventListener("animationend",animationEnd);
+      }
+      return this.addLetterToText(e.animationName);
+    }
+
+    this.planchetteEle.addEventListener("animationend",animationEnd , false);
+
+    this.planchetteEle.style.animation = keyframes.map((item, index) => `${item} ${this.animationDuration}s ease ${index * this.animationDuration}s 1`);
     this.planchetteEle.style.animationFillMode = 'forwards';
 
 
@@ -243,12 +273,9 @@ class OuijaBoard {
       //make sure space after each
     }
     for (let input of inputs) {
-      if (outputs.indexOf(input.label) > 0) {
-        //its already made, just refer to it.
-        outputs.push(input.label);
-      } else {
-        outputs.push(this.createPlanchetteToBoardObjectAnimation(input));
-      }
+      outputs.push(input.label);
+      //originally i tried to create animations here but realized that was a problem if i had new input
+      //instead just precreate them all and refer to them by name
     }
     return outputs;
   }
