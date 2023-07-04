@@ -141,6 +141,20 @@ body {
   transform: translateY(3px);
 }
 
+.friday{
+  animation: backgroundScroll 900s linear infinite;
+}
+
+@keyframes backgroundScroll {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 4000px 0;
+  }
+}
+
 .ouija-input {
   width: 100%;
   background: black;

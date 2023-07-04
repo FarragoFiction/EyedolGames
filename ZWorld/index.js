@@ -34,6 +34,10 @@ window.onload = async () => {
     return;
   }
 
+  if(fridayMode){
+    fuckUpBG();
+  }
+
 
 
   let consentButton = document.querySelector("#but-to-what");
@@ -54,6 +58,7 @@ window.onload = async () => {
     let container = document.querySelector("#content");
     container.append(ele);
     handleTruth(ride);
+    fridayMode && fuckShitUP(page);
 
 
   } else {
@@ -78,12 +83,10 @@ window.onload = async () => {
 
 
 const fuckShitUP = (root) => {
-  console.log("JR NOTE: root is",root)
   const body = document.querySelector("body");
   const eles = root.querySelectorAll("ul,li,p,div,span,a");
   
   for (let p of eles) {
-    console.log("JR NOTE: handling ele", p)
     const css = getBullshitCSS(false);
     p.setAttribute("style", css);
     p.title = p.innerText;
@@ -92,7 +95,6 @@ const fuckShitUP = (root) => {
 
   const imgs = root.querySelectorAll("img");
   for (let p of imgs) {
-    console.log("JR NOTE: handling img", p)
     const css = getBullshitCSS(true);
     p.setAttribute("style", css);
     p.title = p.innerText;
@@ -107,6 +109,21 @@ const fuckShitUP = (root) => {
 
   root.style.display = "block";
 
+
+
+}
+
+const fuckUpBG = async ()=>{
+  console.log("JR NOTE: fucking up bg")
+    let loc = 'http://eyedolgames.com/ZWorld/images/Abandoned/'
+    let tmp = await getImages(loc);
+    console.log("JR NOTE: found images")
+    const fuckedUpBgs = tmp.map((item) => loc + item);
+    console.log("JR NOTE: imgs are", fuckedUpBgs)
+
+    const body = document.querySelector("body");
+    body.style.background = `url(${pickFrom(fuckedUpBgs)})`;
+    body.className = "friday";
 
 
 }
