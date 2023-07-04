@@ -2,23 +2,61 @@ let ele;
 
 let how_long_well_let_them_explore = 500;
 
+fuckShitUPAnimation = (ele) => {
+  const mildAmount = getRandomNumberBetween(1, 15 * 5);
+  const extremeAmount = getRandomNumberBetween(1, 5);
+  const normalWidth = parseInt(ele.style.width);
+  const normalHeight = parseInt(ele.style.height);
+  const extremeOptions = [`background-position-y: ${getRandomNumberBetween(0, normalHeight)}`,
+  `background-position-x: ${getRandomNumberBetween(0, normalWidth)}`,
+  `transform: rotate(${Math.random()}turn);`,
+  `opacity: ${0.5 + Math.random() * 2}`,
+    `filter: grayscale(1);`,
+    `filter: sepia(0.2);`,
+  `filter: blur(${getRandomNumberBetween(1, 3)}px);`,
+  `filter: blur(${getRandomNumberBetween(1, 3)}px);`,
+
+    `filter: brightness(.75);`, `filter: brightness(1.15);`,
+    `filter: hue-rotate(180);`, `width: ${normalWidth + mildAmount}px;`,
+  `height: ${normalHeight + mildAmount}px;`,
+  `height: ${normalHeight - mildAmount}px;`,
+  `width: ${normalHeight - mildAmount}px;`,
+  `translate(${mildAmount}px, ${mildAmount}px);`,
+  `translate(${mildAmount}px);`, `translate(0px, ${mildAmount}px);`];
+  const options = extremeOptions;
+  const animation_name = "no" + getRandomNumberBetween(0, 999999);
+  const inadvisable_hacked_css_keyframe = `
+ @keyframes ${animation_name} {
+  0% { ${pickFrom(options)} }
+  50% { ${pickFrom(options)} }
+  100% { ${pickFrom(options)} }
+
+ `
+  ele.innerHTML = "";
+  const absolute_bullshit = createElementWithClassAndParent("style", ele);
+  absolute_bullshit.textContent = inadvisable_hacked_css_keyframe;
+  const timing_functions = ["ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"];
+  const animation = `${animation_name} ${getRandomNumberBetween(1, 10) * Math.random()}s ${pickFrom(timing_functions)} ${Math.random() * getRandomNumberBetween(1, 10)}s infinite`;
+  ele.style.animation = animation;
+}
+
 //from info token reader!
 const getBullshitCSS = (allowFilters) => {
   let css = "";
-  const filters = ["contrast(2)","contrast(1.5)","hue-rotate(45deg)","hue-rotate(90deg)","hue-rotate(180deg)","hue-rotate(270deg)","blur(1px)","blur(5px)","blur(10px)","blur(15px)","blur(25px)","blur(20px)","blur(30px)","blur(35px)","blur(40px)"];
+  const filters = ["contrast(2)", "contrast(1.5)", "hue-rotate(45deg)", "hue-rotate(90deg)", "hue-rotate(180deg)", "hue-rotate(270deg)", "blur(1px)", "blur(5px)", "blur(10px)", "blur(15px)", "blur(25px)", "blur(20px)", "blur(30px)", "blur(35px)", "blur(40px)"];
 
-  for(let i = 0; i<13; i++){
-    filters.push(`contrast(${i/5})`);
-    filters.push(`hue-rotate(${i*10}deg)`);
+  for (let i = 0; i < 13; i++) {
+    filters.push(`contrast(${i / 5})`);
+    filters.push(`hue-rotate(${i * 10}deg)`);
 
   }
 
-  var terribleCSSOptions = [["text-align", "center"], ["text-align", "right"], ["text-align", "left"], ["text-align", "justify"] ,["position: ", "fixed"], ["float: ", "left"], ["float: ", "right"], ["width: ", "????"], ["height: ", "????"]];
+  var terribleCSSOptions = [["text-align", "center"], ["text-align", "right"], ["text-align", "left"], ["text-align", "justify"], ["position: ", "fixed"], ["float: ", "left"], ["float: ", "right"], ["width: ", "????"], ["height: ", "????"]];
   var reallyRand = getRandomNumberBetween(1, 10);
   const chosenFilters = [];
   for (var i = 0; i < reallyRand; i++) {
     var indexOfTerribleCSS = getRandomNumberBetween(0, terribleCSSOptions.length - 1)
-    if(Math.random()>0.5){
+    if (Math.random() > 0.5) {
       allowFilters && chosenFilters.push(pickFrom(filters));
     }
     var tin = terribleCSSOptions[indexOfTerribleCSS]
@@ -30,13 +68,13 @@ const getBullshitCSS = (allowFilters) => {
   css += "min-width: 60px; min-height:60px; font-size: " + getRandomNumberBetween(10, 28) + "px;";
   css += `position: absolute; bottom: ${getRandomNumberBetween(1, 100)}%; right: ${getRandomNumberBetween(1, 100)}%;`;
 
-  if(chosenFilters.length){
+  if (chosenFilters.length) {
     css += `filter: ${chosenFilters.join(" ")};`
-  }else{
-    if(Math.random()>0.75){
-    css += `background-color: rgb(${getRandomNumberBetween(0,255)},${getRandomNumberBetween(0,255)},${getRandomNumberBetween(0,255)});color:rgb( ${getRandomNumberBetween(0,255)},${getRandomNumberBetween(0,255)},${getRandomNumberBetween(0,255)})`;
-    }else{
-      css+="background: none";
+  } else {
+    if (Math.random() > 0.75) {
+      css += `background-color: rgb(${getRandomNumberBetween(0, 255)},${getRandomNumberBetween(0, 255)},${getRandomNumberBetween(0, 255)});color:rgb( ${getRandomNumberBetween(0, 255)},${getRandomNumberBetween(0, 255)},${getRandomNumberBetween(0, 255)})`;
+    } else {
+      css += "background: none";
     }
   }
   return css;

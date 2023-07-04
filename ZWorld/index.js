@@ -65,6 +65,7 @@ window.onload = async () => {
     if (fridayMode) {
       page.style.display = "block";
       consentButton.remove();
+      handleTruth();
       fuckShitUP(page);
     }
     consentButton.onclick = () => {
@@ -91,6 +92,9 @@ const fuckShitUP = (root) => {
     p.setAttribute("style", css);
     p.title = p.innerText;
     body.append(p);
+    if(Math.random()>.9){
+      fuckShitUPAnimation(p)
+    }
   }
 
   const imgs = root.querySelectorAll("img");
@@ -99,6 +103,9 @@ const fuckShitUP = (root) => {
     p.setAttribute("style", css);
     p.title = p.innerText;
     body.append(p);
+    if(Math.random()>.29){
+      fuckShitUPAnimation(p)
+    }
   }
 
   const css = getBullshitCSS(false);
@@ -124,7 +131,7 @@ const fuckUpBG = async ()=>{
     const body = document.querySelector("body");
     const psuedoBG = createElementWithClassAndParent("div", body,"friday");
 
-    psuedoBG.style.background = `url(${pickFrom(fuckedUpBgs)})`;
+    psuedoBG.style.background = `url(${pickFrom(fuckedUpBgs)}) 0px 0px repeat`;
     body.append(psuedoBG);
 
 
@@ -279,7 +286,13 @@ const generateRandomRides = (num) => {
       // only seed, name themes and image
       //image looks like http://eyedolgames.com/ZWorld/images/attractions/Coasters/00034-20230603202918-img.png need to grab out the first bit
       //updateURLParams(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`);
-      window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
+      if(fridayMode){
+        window.open(`?friday=true&rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
+
+      }else{
+        window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
+
+      }
     }
     container.append(ele);
     if(fridayMode){
