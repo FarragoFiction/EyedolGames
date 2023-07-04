@@ -10,38 +10,46 @@ let paramName = urlParams.get('name');
 let paramRideType = urlParams.get('rideType');
 
 //need to add http://eyedolgames.com/ZWorld/images/attractions to it
-let paramImage = "http://eyedolgames.com/ZWorld/images/attractions"+urlParams.get('image');
+let paramImage = "http://eyedolgames.com/ZWorld/images/attractions" + urlParams.get('image');
 let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
 let speakWithCustomersMode = urlParams.get("ouija");
+let fridayMode = urlParams.get("friday");
+
+if(fridayMode){
+  seed = Math.floor(Math.random()*10000000); //true random
+}
 
 //https://www.tumblr.com/jadedresearcher/721197316569284608/thoughts-on-liminal-horror?source=share
 
-const rand = new SeededRandom(seed ? seed : paramName? stringtoseed(paramName):13);
+const rand = new SeededRandom(seed ? seed : paramName ? stringtoseed(paramName) : 13);
 
 //the watcher found this again https://jadedresearcher.tumblr.com/post/688182806608838656/hi-so-i-found-your-lounge-both-of-them-up
 //so the Theorist can be remembered
 
 //guide reminded me of this: http://www.farragofiction.com/ZampanioSimEastEast/src/Secrets/Content/62.js
 window.onload = async () => {
-  if(speakWithCustomersMode){
+  if (speakWithCustomersMode) {
     ouija();
     return;
   }
+
+
+
   let consentButton = document.querySelector("#but-to-what");
   let page = document.querySelector("#page-content")
   if (paramRideType) {
     let header = document.querySelector("#header");
-    const tmp = createElementWithClassAndParent("div", header,"back");
+    const tmp = createElementWithClassAndParent("div", header, "back");
     tmp.innerText = "Click to See All Rides!";
     initThemes();
     page.style.display = "block";
     consentButton.remove();
     const notification = document.querySelector("#notification");
-    notification.innerHTML = paramName +"<p class='small-text-notification'>Click Anywhere to Hear the Truth</p>";
-    
+    notification.innerHTML = paramName + "<p class='small-text-notification'>Click Anywhere to Hear the Truth</p>";
+
     notification.classList.add("ride-detail-title")
-    const ride = createDetailsRideFromParams(paramRideType, paramName, paramImage, paramThemeKeys.split(",").map((key)=>all_themes[key]), findObsessionByName(paramObsession));
+    const ride = createDetailsRideFromParams(paramRideType, paramName, paramImage, paramThemeKeys.split(",").map((key) => all_themes[key]), findObsessionByName(paramObsession));
     const ele = ride.generateElement();
     let container = document.querySelector("#content");
     container.append(ele);
@@ -49,6 +57,11 @@ window.onload = async () => {
 
 
   } else {
+    if (fridayMode) {
+      page.style.display = "block";
+      consentButton.remove();
+      fuckShitUP(page);
+    }
     consentButton.onclick = () => {
       handleTruth();
       page.style.display = "block";
@@ -63,6 +76,41 @@ window.onload = async () => {
 
 }
 
+
+const fuckShitUP = (root) => {
+  console.log("JR NOTE: root is",root)
+  const body = document.querySelector("body");
+  const eles = root.querySelectorAll("ul,li,p,div,span,a");
+  
+  for (let p of eles) {
+    console.log("JR NOTE: handling ele", p)
+    const css = getBullshitCSS(false);
+    p.setAttribute("style", css);
+    p.title = p.innerText;
+    body.append(p);
+  }
+
+  const imgs = root.querySelectorAll("img");
+  for (let p of imgs) {
+    console.log("JR NOTE: handling img", p)
+    const css = getBullshitCSS(true);
+    p.setAttribute("style", css);
+    p.title = p.innerText;
+    body.append(p);
+  }
+
+  const css = getBullshitCSS(false);
+  root.setAttribute("style", css);
+  root.title = root.innerText;
+  body.append(root);
+  
+
+  root.style.display = "block";
+
+
+
+}
+
 /*
 access ouiji board via truth asking after five minutes on the clock if you would like to access customer testimonials
 
@@ -70,7 +118,7 @@ the surface joke is "haha everyone who used this is dead" but given youre ACTUAL
 
 plus BB can intern under the Closer for enrichment, poor boi has been going kinda crazy alone
 */
-const ouija = async()=>{
+const ouija = async () => {
   const body = document.querySelector("body");
   body.classList.add("ouija-body");
   body.innerHTML = "";
@@ -86,7 +134,7 @@ const ouija = async()=>{
 
 }
 
-const offerCustomerTestimonials = async() => {
+const offerCustomerTestimonials = async () => {
   await textVoiceSim.speak("It seems hearing Testimonials may help you Choose?<br><br><button onclick='ouija()'>See Customer Testimonials</button>".split(","), null, true);
   await sleep(1000);
   await textVoiceSim.speak("Though with a Mind as indecisive as yours, perhaps you are beyond help.".split(","), null, false);
@@ -165,7 +213,7 @@ const handleTruth = async (rideDetails) => {
     await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
     await textVoiceSim.speak("Or are you here to just waste my Time.".split(","), null, false);
 
-    await sleep(1000*60*5); //wait five minutes on the clock
+    await sleep(1000 * 60 * 5); //wait five minutes on the clock
     offerCustomerTestimonials();
 
   } else {
@@ -174,7 +222,7 @@ const handleTruth = async (rideDetails) => {
     let initTruth = async () => {
 
       window.removeEventListener("click", initTruth)
-      for(let quip of rideDetails.truthQuips){
+      for (let quip of rideDetails.truthQuips) {
         //TODO do i prefer this to be only on hover?
         await textVoiceSim.speak(quip.split(" "), null, true)
         await sleep(1000);
@@ -215,11 +263,18 @@ const generateRandomRides = (num) => {
       window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
     }
     container.append(ele);
+    if(fridayMode){
+
+      fuckShitUP(ele)
+    }
   }
 }
 
 
 const handleScrolling = (rand, container) => {
+  if(fridayMode){
+    return; //please, we have enough on our plate as it is
+  }
   //throw("JR NOTE: turn scrolling back on later.")
   let lastScrollTime = 0; //not to spam events
   let parent = document.querySelector("#container");
