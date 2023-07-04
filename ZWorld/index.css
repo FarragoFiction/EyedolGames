@@ -142,16 +142,21 @@ body {
 }
 
 .friday{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
   animation: backgroundScroll 900s linear infinite;
 }
 
 @keyframes backgroundScroll {
   from {
-    background-position: 0 0;
+    transform: translateX(0);
   }
-
-  to {
-    background-position: 4000px 0;
+  to { 
+    transform: translateX(-187%);
   }
 }
 

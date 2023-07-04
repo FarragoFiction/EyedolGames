@@ -122,8 +122,10 @@ const fuckUpBG = async ()=>{
     console.log("JR NOTE: imgs are", fuckedUpBgs)
 
     const body = document.querySelector("body");
-    body.style.background = `url(${pickFrom(fuckedUpBgs)})`;
-    body.className = "friday";
+    const psuedoBG = createElementWithClassAndParent("div", body,"friday");
+
+    psuedoBG.style.background = `url(${pickFrom(fuckedUpBgs)})`;
+    body.append(psuedoBG);
 
 
 }
