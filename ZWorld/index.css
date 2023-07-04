@@ -16,7 +16,15 @@
 body {
   background-color: #abc9de;
   color: black;
-  margin: 0px;
+  margin: 0px;top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
   overflow: auto;
   font-size: 20px;
   font-weight: 400;
@@ -148,7 +156,8 @@ body {
   top: 0;
   bottom: 0;
   z-index: -1;
-  width: 200%;
+  height: 200vh;
+  width: 200vw;
   animation: backgroundScroll 900s linear infinite;
 }
 

@@ -75,7 +75,7 @@ const getBullshitCSS = (allowFilters) => {
     css += tin[0] + tin[1] + ";";
   }
   css += "min-width: 60px; min-height:60px; font-size: " + getRandomNumberBetween(10, 28) + "px;";
-  css += `position: absolute; bottom: ${getRandomNumberBetween(1, 100)}%; right: ${getRandomNumberBetween(1, 100)}%;`;
+  css += `position: absolute; bottom: ${getRandomNumberBetween(1, 100)}vh; right: ${getRandomNumberBetween(1, 100)}vw;`;
 
   if (chosenFilters.length) {
     css += `filter: ${chosenFilters.join(" ")};`

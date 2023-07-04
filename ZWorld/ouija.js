@@ -124,6 +124,7 @@ if you tell it to spell something out it will move the planchette to do so
 */
 //JR NOTE: you should only have one ouija board at a time or their animations collide
 //if i REALLY need more than one, i will need their animations to be only created once. (check dom i guess?)
+//https://phasmophobia.fandom.com/wiki/Ouija_Board
 class OuijaBoard {
   containerEle;
   animationDuration = 2; //how long does it take to get to each letter. slower is creepier.
