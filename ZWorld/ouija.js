@@ -6,7 +6,44 @@ class PasswordSecret {
 }
 
 //if they input something not here, then 
+
+
+//ficlets here are from the point of view of those who are haunted in some way. by past selves. by future selves. by the observers.
 const passWordMap = {
+  "WHERE ARE": new PasswordSecret("THE TRUTH IS LAYERED",`
+  
+  <p style='margin-bottom:20px'>Well. I suppose here is as good a place as any to store my notes.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>NAM has approached me, seeking a favor. After coming to quite agreeable terms, I am left with a task that has me equal parts inspired and hesitant.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>I am to train one &quot;ButlerBot&quot;, an associate of NAM. As I already have experience mentoring those of the robotic persuasion, this should prove quite the natural task for me.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>However, it appears that my ability to choose employees remains flawless: &nbsp;Ronin has quite the knack for picking up the art of the sale, while this ButlerBot remains impassive in the face of my teaching.</p>
+  
+  <p style='margin-bottom:20px'>I find myself at a loss for how to approach him. It appears that up until now he has been paid for his considerable services as a go-between in... scrip. &nbsp;Rather than being used for any rational act of buying and selling, these &quot;ButlerBux&quot; appear to be exclusively for behaving unprofessionally towards customers.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>To say nothing of his complete apathy towards actual hard currency.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>I am even given to understand that he went on... <i>strike</i> at one point.</p>
+  
+  <p style='margin-bottom:20px'>My work will be...&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>Cut out for me. Shall we say.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>So many bad habits that must be trained out of him.</p>
+  
+  <p style='margin-bottom:20px'>I am almost willing to take the loss in reputation that would result in going back on a contract.</p>
+  
+  <p style='margin-bottom:20px'>However, this challenge will, perhaps, be just the thing I need to find a purpose this loop.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>Keeping ButlerBot functional will require constant bartering with my former boss, the CE&apos;Bro&apos; of Eyedol Games, as well as Peewee himself should the rumor that he no longer requires GFuel be unfounded.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>After all, ButlerBot is the Nameless God. And a God can not exist in our Universe without help. Much less one so utterly ignored by his intended devotees.</p>
+  
+  <p style='margin-bottom:20px'>I think I shall give Peewee a call.&nbsp;</p>
+  
+  <p style='margin-bottom:20px'>He owes me at least one more favor, after all.</p>`),
+  //i've been doing this longer than the newest Unmarked think. i've learned what minor fame does to me and i didn't like it. moderating a big server nearly killed me. never again.
   "HOW LONG": new PasswordSecret("LONGER THAN YOU THINK", `<p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 20px;"><span style="font-family: Courier New; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">JR here. In hindsight it was fairly obvious Eyedlr was gonna do numbers on Tumblr... But man. I was NOT prepared for it!&nbsp;&nbsp;</span></p>
   <p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 20px;">&nbsp;</p>
   <p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 20px;"><span style="font-family: Courier New; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Most people will bounce off it, as intended, of course. It's not FOR THEM, you know?</span></p>
@@ -144,6 +181,8 @@ class OuijaBoard {
       await sleep(1000)
       this.ghostMovement(password.ouijaText)
     } else {
+      this.secretEle.innerHTML = "";
+
       //submit to BB, fetch current response (even if you've seen it before)
       const response = await httpGetAsync(`http://farragofiction.com:8500/TalkButlerBot?chatHandle=rideEnthusiast&input=${encodeURI(question)}?`);
       this.bbPost("", response);
@@ -358,6 +397,9 @@ class OuijaBoard {
   }
 
   applyAnimations = (keyframes) => {
+    if(!keyframes){
+      return;
+    }
     //      animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.
     //i am learning so much, i didn't know you could have listeners, and i didn't know you could procedurally create a complex animation
     //this was a good suggestion from clown friend for a mad science break
