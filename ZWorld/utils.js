@@ -2,7 +2,16 @@ let ele;
 
 let how_long_well_let_them_explore = 500;
 
-fuckShitUPAnimation = (ele) => {
+const isItFriday = ()=>{
+    //midnight and fridays are wungle time
+    const date = new Date();
+    if (date.getHours() == 0 || date.getDay() === 5) {
+      return true;
+    }
+    return false;
+}
+
+const fuckShitUPAnimation = (ele) => {
   const mildAmount = getRandomNumberBetween(1, 15 * 5);
   const extremeAmount = getRandomNumberBetween(1, 5);
   const normalWidth = parseInt(ele.style.width);

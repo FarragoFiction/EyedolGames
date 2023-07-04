@@ -14,7 +14,7 @@ let paramImage = "http://eyedolgames.com/ZWorld/images/attractions" + urlParams.
 let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
 let speakWithCustomersMode = urlParams.get("ouija");
-let fridayMode = urlParams.get("friday");
+let fridayMode = urlParams.get("friday") ? urlParams.get("friday"):isItFriday();
 
 if(fridayMode){
   seed = Math.floor(Math.random()*10000000); //true random
