@@ -11,6 +11,30 @@ const isItFriday = ()=>{
     return false;
 }
 
+
+//from view-source:https://www.yyyyyyy.info/
+  function animateTitle(i) {
+    var message = [
+      '▁▂▃▄▅▆▇ `^^^^^~ ░ ui▀┳╲ ☺ .info ▓',
+      '▂▁▂▃▄▅▆` ^^^^^~ ░ ui▀┳╲ ☺ .info ▓',
+      '▃▂▁▂▃▄▅ `^^^^^~ ░ ui▀┳╲ ☻ .info ▓',
+      '▄▃▂▁▂▃▄` ^^^^^~ ░ ui▀┳╲ ☻ .info ▓',
+      '▅▄▃▂▁▂▃ `^^^^^~ ░ ui▀┳╲ ☺ .info ▓',
+      '▆▅▄▃▂▁▂` ^^^^^~ ░ ui▀┳╲ ☺ .info ▓',
+      '▇▆▅▄▃▂▁ `^^^^^~ ░ ui▀┳╲ ☻ .info ▓',
+      '▆▇▆▅▄▃▂` ^^^^^~ ░ ui▀┳╲ ☻ .info ▓',
+      '▅▆▇▆▅▄▃ `^^^^^~ ░ ui▀┳╲ ☺ .info ▓',
+      '▄▅▆▇▆▅▄` ^^^^^~ ░ ui▀┳╲ ☺ .info ▓',
+      '▃▄▅▆▇▆▅ `^^^^^~ ░ ui▀┳╲ ☻ .info ▓',
+      '▂▃▄▅▆▇▆` ^^^^^~ ░ ui▀┳╲ ☻ .info ▓'
+    ]
+    
+    i >= message.length - 1 ? (i = 0) : i++,
+      (document.title = message[i]),
+      setTimeout(()=>{animateTitle(i+1)}, 200)
+  }
+
+
 const fuckShitUPAnimation = (ele) => {
   const mildAmount = getRandomNumberBetween(1, 15 * 5);
   const extremeAmount = getRandomNumberBetween(1, 5);

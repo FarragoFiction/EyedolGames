@@ -6,7 +6,7 @@ let merryImages = [];
 let wheelImages = [];
 let zipLineImages = [];
 let waterImages = [];
-
+let totalGeneratedRides = 0;
 
 /*
 extremely important that NONE of these are tied to the theme. devona is just panic talking about random things she's afraid of that are unrelated to the ride because she can't remember MAKING the ride because she's made too many rides (classic bard of light problems)
@@ -116,6 +116,9 @@ const createDetailsRideFromParams = (rideType, name, image, themes,obsession) =>
     return new DetailsZip(name, image, themes, obsession, desc, quips)
   }else if (rideType === WATER){
     return new DetailsWater(name, image, themes, obsession, desc, quips)
+  }else{
+    return new DetailsZampanio(name, image, themes, obsession, desc, quips)
+
   }
 
 
@@ -140,6 +143,7 @@ class TeaserRide {
 
 
   constructor(name, image, themes, obsession, nearbyAttractions, teaserDescription, bigDescription) {
+    totalGeneratedRides ++;
     this.name = name;
     this.obsession = obsession;
     this.imageSrc = image;
@@ -278,6 +282,8 @@ class DetailsRide {
 
     }else if(fearLevel <=3){
       container1.innerText = `This ride has been designed personally by our lead Abhorrineer, Devona Avamund who had this to say: '${rand.pickFrom(devonaQuotes)}'! EyedolGames and ZWorld can not be held responsible for long term negative effects.`;
+    }else if(fearLevel >3){
+      container1.innerText ="You should not experience this ride.";
     }
 
     const container2 = createElementWithClassAndParent("div", ele,"section");
@@ -290,12 +296,19 @@ class DetailsRide {
     }else if(confusionLevel <=3){
       container2.innerText = "We're so glad you've decided to join our Family :)"; //you work here now
 
+    }else if(confusionLevel >3){
+      container2.innerText =":) :) :)";
     }
   }
 
   generateFlavor= (ele, fearLevel, confusionLevel)=>{
+    if(fearLevel>3 && confusionLevel >3){}
     const themes = this.themes;
     const flavor = createElementWithClassAndParent("div", ele,"section");
+    if(fearLevel>3 && confusionLevel >3){
+      flavor.innerText  = "Obsession is a dangerous thing. Leave."
+      return;
+    }
     const chosenLocDesc = rand.pickFrom(themes).pickPossibilityFor(LOC_DESC, rand)
 
     const chosenSmell = rand.pickFrom(themes).pickPossibilityFor(SMELL, rand)

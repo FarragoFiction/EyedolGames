@@ -14,7 +14,7 @@ let paramImage = "http://eyedolgames.com/ZWorld/images/attractions" + urlParams.
 let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
 let speakWithCustomersMode = urlParams.get("ouija");
-let fridayMode = urlParams.get("friday") ? urlParams.get("friday"):isItFriday();
+let fridayMode = urlParams.get("friday") ? urlParams.get("friday")=="true":isItFriday();
 
 if(fridayMode){
   seed = Math.floor(Math.random()*10000000); //true random
@@ -84,7 +84,10 @@ window.onload = async () => {
 
 
 const fuckShitUP = (root) => {
+  animateTitle();
   const body = document.querySelector("body");
+  body.classList.add("friday-body");
+
   const eles = root.querySelectorAll("ul,li,p,div,span,a");
   
   for (let p of eles) {
@@ -121,7 +124,6 @@ const fuckShitUP = (root) => {
 }
 
 const fuckUpBG = async ()=>{
-  console.log("JR NOTE: fucking up bg")
     let loc = 'http://eyedolgames.com/ZWorld/images/Abandoned/'
     let tmp = await getImages(loc);
     console.log("JR NOTE: found images")
@@ -212,6 +214,30 @@ const iCantHandleTheTruth = async () => {
 const handleTruth = async (rideDetails) => {
   let truthContainer = document.querySelector('#truth-box');
 
+  if(paramRideType === ZAMPANIORIDE){
+    const video = createElementWithClassAndParent("video",truthContainer);
+    video.src = "audio/hide_and_seek.mp4";
+    video.autoplay = true;
+    video.controls = true;
+    await sleep(1000);
+    video.play();
+
+    const checkForHaHa = ()=>{
+      if(video.currentTime >107){
+        const body = document.querySelector("body");
+        body.className = "ouija-body";
+        const content = document.querySelector("#page-content");
+        content.remove();
+        video.removeEventListener('timeupdate', checkForHaHa);
+
+      }
+    }
+
+    video.addEventListener('timeupdate', checkForHaHa);
+
+    return;
+  }
+
   let muteTruth = document.querySelector('#truth-mute');
   muteTruth.onclick = () => {
     iCantHandleTheTruth();
@@ -273,7 +299,7 @@ const generateRandomRides = (num) => {
   let container = document.querySelector("#content");
 
   for (let i = 0; i < num; i++) {
-    const chosen = rand.pickFrom(rideGenerators)
+    const chosen = totalGeneratedRides>217 ? TeaserZampanio : rand.pickFrom(rideGenerators)
     const ride = new chosen(rand);
     const ele = ride.generateElement();
     const links = ele.querySelectorAll("a");

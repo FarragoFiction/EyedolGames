@@ -1,6 +1,7 @@
 class PasswordSecret {
-  constructor(ouijaText, paragraphText) {
+  constructor(ouijaText, paragraphText, spook) {
     this.ouijaText = ouijaText; //ouija will handle this
+    this.spook = spook; //lil easter egg for hide and seek
     this.paragraphText = paragraphText; // this gets printed to the screen to distract users into staying till someone messages them
   }
 }
@@ -8,9 +9,21 @@ class PasswordSecret {
 //if they input something not here, then 
 
 
+//https://phasmophobia.fandom.com/wiki/Ouija_Board#Questioning
 //ficlets here are from the point of view of those who are haunted in some way. by past selves. by future selves. by the observers.
 const passWordMap = {
-  "WHERE ARE": new PasswordSecret("THE TRUTH IS LAYERED",`
+  "MARCO":new PasswordSecret("POLO",""),
+  "KNOCK KNOCK":new PasswordSecret("WHO'S THERE",""),
+  "WHAT DO YOU WANT":new PasswordSecret("OBSESSION",""),
+  "DO YOU RESPOND TO EVERYONE":new PasswordSecret("YES",""),
+  "HOW MANY PEOPLE ARE IN THIS ROOM":new PasswordSecret("DON'T KNOW","")
+  ,"HIDE AND SEEK":new PasswordSecret("5___4___3___2___1__","",true)//red herring, doesn't actually do anything (or does it?)
+  ,"WHERE IS THE BODY":new PasswordSecret("QUATRO BLADE HIDES","")
+  ,"ARE YOU HERE":new PasswordSecret("YES","")
+  ,'WHERE ARE YOU':new PasswordSecret("MAZE","")
+  ,"HOW DID YOU DIE":new PasswordSecret("WHO SAYS I'M DEAD","")
+  ,"AM I INSANE":new PasswordSecret("SOMETHING IS COMING","Did you write this on your own, I wonder? <br>Did you doubt your sanity as you spiral ever deeper down the rabbit hole?<br>Or are you a waste?<br>One of those Observers that isn't content to merely observe.<br>Who digs and digs and digs.<br> Digs into code.<br>Meddles with the code.<br>Learns things that cannot be unlearned.<br>I'm honestly not sure which I hope you are.<br>Good luck :) :) :) ")
+  ,"ARE YOU": new PasswordSecret("THE TRUTH IS LAYERED",`
   
   <p style='margin-bottom:20px'>Well. I suppose here is as good a place as any to store my notes.&nbsp;</p>
   
@@ -176,14 +189,20 @@ class OuijaBoard {
     }
 
 
+
     if (password) {
       await this.ghostMovement(question)
       this.secretEle.innerHTML = password.paragraphText;
       await sleep(1000)
-      this.ghostMovement(password.ouijaText)
+      await this.ghostMovement(password.ouijaText)
+      if(password.spook){
+        const audio = new Audio("audio/heartbeat.mp3");
+        audio.play();
+        const body = document.querySelector(".big-container");
+        body.remove();
+      }
     } else {
       this.secretEle.innerHTML = "";
-
       //submit to BB, fetch current response (even if you've seen it before)
       const response = await httpGetAsync(`http://farragofiction.com:8500/TalkButlerBot?chatHandle=rideEnthusiast&input=${encodeURI(question)}?`);
       this.bbPost("", response);
