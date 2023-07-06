@@ -232,6 +232,12 @@ class DetailsRide {
     const tip = createElementWithClassAndParent("div", infoBox, "quick-tips");
     tip.innerText = "Quick Tips";
 
+    if(this.rideType === ZAMPANIORIDE){
+      const ele = createElementWithClassAndParent("div", infoBox, "info-box-content");
+      ele.innerText = "It's not yet too late to leave.";
+      return;
+    }
+
     const tips = [`Please allocate ${rand.getRandomNumberBetween(2, 217)} hours to navigate the queue for this ride.`,
       "Water will be provided periodically in queue. No outside food or drink is permitted.","Guests are encouraged to remain in queue.",
       "Please let Guest Services know if any mobility aids are required."]
@@ -361,6 +367,10 @@ class DetailsRide {
 
     const endPossibilities = [`It's okay to be scared.`,`A ${chosenPerson} will guide you safely out. Trust them.`,`Once you reach the ${chosenLocation} you will be free.`]
 
+    if(this.rideType === ZAMPANIORIDE){
+      container.innerText = "We both know this is not a real ride."
+      return;
+    }
 
     container.innerText = `${rand.pickFrom(startStartPossibilities)}, ${rand.pickFrom(startPossibilities)} ${rand.pickFrom(midPossibilities1)} ${rand.pickFrom(midPossibilities2)} ${rand.pickFrom(endPossibilities)}`;
 
@@ -378,6 +388,12 @@ class DetailsRide {
     `For your safety, ${rand.pickFrom(safetyExplanationsMaze)} ZWorld prides itself on industry leading accessibility. `,`Rides and other attractions may provide a risk of death, mutilation or other damage. ZWorld takes no liability for injuries occurred outside of the Maze Queuing&#x2122; system.`]
     
     const container = createElementWithClassAndParent("ul", ele);
+
+    if(this.rideType === ZAMPANIORIDE){
+      const doop = createElementWithClassAndParent("li", container);
+      doop.innerHTML = "Management asks that all guests leave.";
+      return;
+    }
 
     for(let item of items){
       const doop = createElementWithClassAndParent("li", container);
@@ -408,6 +424,16 @@ class DetailsRide {
   generateInfoBox = (ele) => {
     const themes = this.themes;
     const infoBox = createElementWithClassAndParent("div", ele, "info-box");
+
+    if(this.rideType === ZAMPANIORIDE){
+      const locationRiddleLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
+      locationRiddleLabel.innerText = "Location Riddle:"
+      const locationRiddle = createElementWithClassAndParent("div", infoBox, "info-box-content");
+      locationRiddle.innerText = "Why are you still here?";
+      return;
+    }
+
+
     const locationRiddleLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     locationRiddleLabel.innerText = "Location Riddle:"
     const locationRiddle = createElementWithClassAndParent("div", infoBox, "info-box-content");
