@@ -47,7 +47,6 @@ class TeaserZip extends TeaserRide {
 
 
     const teaserTemplates = [`Go high! Go fast!`,
-    `Abhorrineer Devona Avamund had this to say about her newest masterpiece: '${rand.pickFrom(devonaQuotes)}'`,
     `Fly like a ${noun}, we provide the wings.`,
     `Scream for ${rand.pickFrom([, "chills and thrills", chosenName, "ice cream", "it", "this living legend", "all who are born die", "there is no justice in life"])}.`,
     `Take a ${rand.pickFrom(["Fabulous Flight", "Awesome Ascension", "Zany Zip"])} into ${rand.pickFrom(["Extreme Exhilaration", "Freaky Fun", "Panicky Pleasure"])}! (Additional Fee Required)`,

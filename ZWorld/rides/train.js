@@ -46,7 +46,6 @@ class TeaserTrain extends TeaserRide {
 
 
     const teaserTemplates = [`Before Eyedol Games' Acquisition, the top manufacturing company Idlev was making rides at break neck speed. It was no surprise they'd be a leader in innovation for new ways of manufacturing death defying experiences.<br><br>${chosenName} was their first attempt. `,
-    `Abhorrineer Devona Avamund had this to say about her newest masterpiece: ${rand.pickFrom(devonaQuotes)}`,
       "Trains Trains Trains Trains!",
       "Choo-Choo-Choose this ride!",
       "Chuga like never before.",
