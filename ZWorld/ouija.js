@@ -377,16 +377,20 @@ class OuijaBoard {
 
   ghostMovementFromBB = async () => {
     const phrase = await this.fetchCurrentBBPhrase();
-    await this.ghostMovement(phrase);
+    phrase && await this.ghostMovement(phrase);
   }
 
 
   ghostMovement = async (phrase) => {
+    console.log("JR NOTE: why is there ghost movement :( ", phrase)
+    if(!phrase.trim()){
+      return;
+    }
     this.submitButton.disabled = true;
     if (this.alreadyMoving) {
       setTimeout(()=>{
         this.redHerrings.push(phrase);
-        this.ghostMovement(pickFrom(this.redHerrings));
+        this.redHerrings.length && this.ghostMovement(pickFrom(this.redHerrings));
       },60*1000*3)//if nothing happens after a while, try this
       return; //if i get new input while being spooky, ignore it (tho fail to console)
     }
