@@ -28,7 +28,7 @@ class TextToSimulatedVoice {
 
     //words is array of words, with pauses in between
     speak = async (words, rand, truthQuotient) => {
-    
+
         if (words.length === 0) {
             //always end with your False Face firmly back in place
             if (this.truth) {
@@ -68,8 +68,8 @@ class TextToSimulatedVoice {
             await sleep(rand.getRandomNumberBetween(10, 50)) //small pause between syllables
 
         }
-        await sleep(rand.getRandomNumberBetween(20, 150)) //pause bewteen words
-        await this.speak(words.slice(1), rand, truthQuotient);
+        await sleep(rand.getRandomNumberBetween(20, 150)); //pause bewteen words
+       !this.clear && await this.speak(words.slice(1), rand, truthQuotient);
 
     }
 

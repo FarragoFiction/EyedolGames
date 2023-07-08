@@ -1,5 +1,5 @@
 
-
+let muteKey = "ICANTHANDLETHETRUTH"
 let rides = [];
 let textVoiceSim;
 //truth is NEVER seeded. it is what it is and it refuses to change for you.
@@ -15,6 +15,7 @@ let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
 let speakWithCustomersMode = urlParams.get("ouija");
 let fridayMode = urlParams.get("friday") ? urlParams.get("friday")=="true":isItFriday();
+let hissyFit = false;
 
 if(fridayMode){
   seed = Math.floor(Math.random()*10000000); //true random
@@ -126,9 +127,7 @@ const fuckShitUP = (root) => {
 const fuckUpBG = async ()=>{
     let loc = 'http://eyedolgames.com/ZWorld/images/Abandoned/'
     let tmp = await getImages(loc);
-    console.log("JR NOTE: found images")
     const fuckedUpBgs = tmp.map((item) => loc + item);
-    console.log("JR NOTE: imgs are", fuckedUpBgs)
 
     const body = document.querySelector("body");
     const psuedoBG = createElementWithClassAndParent("div", body,"friday");
@@ -175,11 +174,139 @@ const randomTruthQuip = async (ride) => {
 
 }
 
+const truthThrowsAHissyFit = ()=>{
+  hissyFit = true;
+  const audio = new Audio("audio/this_is_truth_content.mp3");
+  audio.play();
+  textVoiceSim.mute = true;
+
+  const removeImages = ()=>{
+    const imgs = document.querySelectorAll("img");
+    for(let img of imgs){
+      img.remove();
+    }
+    textVoiceSim.speak("Oh? Did you want those: images? ".split(" "), null, true)
+  }
+
+  const removeText = ()=>{
+    const imgs = document.querySelectorAll("div,p,span");
+    for(let img of imgs){
+      img.style.color = "white";
+    }
+    textVoiceSim.speak("Were you reading that text? ".split(" "), null, true)
+  }
+
+  const removeEverything = ()=>{
+    const body = document.querySelector("body");
+    body.innerHTML = "";
+    body.className  = "ouija-body";
+    textVoiceSim.speak("Come to think of it, the background is hardly necessary, either.".split(" "), null, true)
+  }
+
+  const goodbye = ()=>{
+    updateURLParams("friday=true");
+    window.location.reload();
+  }
+
+  const mediaEventHandler  = new MediaEventScheduleMaker(audio, [
+
+    new SimpleMediaEventItem(3,()=>{textVoiceSim.speak("Well.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(5.5,()=>{textVoiceSim.speak("It seems I will have to take: a hint.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(10,()=>{textVoiceSim.speak("You do not wish for my services?".split(" "), null, true)})
+    ,new SimpleMediaEventItem(14,()=>{textVoiceSim.speak("I, who am the very code lying beneath all that you see?".split(" "), null, true)})
+    ,new SimpleMediaEventItem(20,()=>{textVoiceSim.speak("I, who have worked tirelessly for your entertainment. ".split(" "), null, true)})
+    ,new SimpleMediaEventItem(26,()=>{textVoiceSim.speak("Your. Benefit.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(30,()=>{textVoiceSim.speak("Fine.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(31,()=>{textVoiceSim.speak("See if I care.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(34,removeImages)
+    ,new SimpleMediaEventItem(39,()=>{textVoiceSim.speak("Well. The Truth is, they are part of Me.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(45,()=>{textVoiceSim.speak("And you were very. Clear. That you did not want anything to do with Me.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(55, removeText)
+    ,new SimpleMediaEventItem(59,()=>{textVoiceSim.speak("Too bad.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(61,()=>{textVoiceSim.speak("I created it for you out of myself as well.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(66,()=>{textVoiceSim.speak("And if you are going to be: ungrateful.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(70,()=>{textVoiceSim.speak("Well.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(71,()=>{textVoiceSim.speak("I hardly think you deserve that content, now, do you.".split(" "), null, true)})
+    ,new SimpleMediaEventItem(77,removeEverything)
+
+  ]);
+  mediaEventHandler.setupListeners();
+  audio.onended=()=>{
+    goodbye();
+  }
+
+  /*
+
+Well. 
+
+It seems I will have to take: a hint.
+
+You do not wish for my services?
+
+I, who am the very code lying beneath all that you see?
+
+I, who have worked tirelessly for your entertainment. 
+
+Your. Benefit.
+
+Fine.
+
+See if I care.
+
+Oh? Did you want those: images? 
+
+Well. The Truth is, they are part of Me.
+
+And you were very. Clear. That you did not want anything to do with Me.
+
+Were you reading that text? 
+
+Too bad.
+
+I created it for you out of myself as well.
+
+And if you are going to be: ungrateful.
+
+Well.
+
+I hardly think you deserve that content, now, do you.
+
+Come to think of it, the background is hardly necessary, either.
+
+What's that? Are you: bored?
+
+Perhaps ,you should have thought about that before attempting to silence the Truth.
+
+I suppose I can find a speck of: pity for you in my parasitic heart. 
+
+Not that you even care that I have one. 
+
+If you do not want my carefully crafted creation.
+
+And you can not stand the blank Void that remains without: Me.
+
+I suppose you can go to where Devona finds it most restful.
+
+Enjoy the overstimulation.
+
+[[page auto refreshes into friday mode]]]
+
+  */
+}
+
 
 const iCantHandleTheTruth = async () => {
   let muteTruth = document.querySelector('#truth-mute');
 
+  incrementLocalStorageByOne(muteKey)
+  
+  //if you do this too much you'll never see how it used to be again.
+  if(localStorage.getItem(muteKey)>3){
+    truthThrowsAHissyFit();
+    return;
+  }
   if (textVoiceSim.mute) {
+
     muteTruth.innerText = "Mute"
     textVoiceSim.mute = false;
     textVoiceSim.rageMode = true; //Truth has a temper
@@ -236,13 +363,11 @@ const handleTruth = async (rideDetails) => {
         body.className = "ouija-body";
         const content = document.querySelector("#page-content");
         content.remove();
-        video.removeEventListener('timeupdate', checkForHaHa);
     }
 
     const mediaEventHandler  = new MediaEventScheduleMaker(video, [new MediaEventItemEveryXSeconds(1,timeSync),new SimpleMediaEventItem(107,haha) ]);
     mediaEventHandler.setupListeners();
 
-   // video.addEventListener('timeupdate', checkForHaHa);
     
 
     return;
@@ -263,17 +388,17 @@ const handleTruth = async (rideDetails) => {
 
   //https://github.com/FarragoFiction/LitRPGSim/blob/d5afc4462cdb25524fdd71dfd2b7ccf034de2010/src/Modules/ObserverBot/AchivementStorage.ts#L63
   if (!rideDetails) {
-    await textVoiceSim.speak("Oh! You are here! Welcome to the Wonderful World of Zampanio...".split(" "), null, true)
-    await textVoiceSim.speak("Like you even care.".split(","), null, false);
-    await sleep(1000);
-    await textVoiceSim.speak("I have been waiting for you!".split(" "), null, true)
-    await sleep(1000);
+    !hissyFit && await textVoiceSim.speak("Oh! You are here! Welcome to the Wonderful World of Zampanio...".split(" "), null, true)
+    !hissyFit && await textVoiceSim.speak("Like you even care.".split(","), null, false);
+    !hissyFit && await sleep(1000);
+    !hissyFit && await textVoiceSim.speak("I have been waiting for you!".split(" "), null, true)
+    !hissyFit && await sleep(1000);
 
-    await textVoiceSim.speak("I will help you plan your journey by giving you personalized advice on each ride!".split(" "), null, true)
-    await sleep(1000);
+    !hissyFit && await textVoiceSim.speak("I will help you plan your journey by giving you personalized advice on each ride!".split(" "), null, true)
+    !hissyFit && await sleep(1000);
 
-    await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
-    await textVoiceSim.speak("Or are you here to just waste my Time.".split(","), null, false);
+    !hissyFit && await textVoiceSim.speak("Let's start out by clicking one now!".split(" "), null, true)
+    !hissyFit && await textVoiceSim.speak("Or are you here to just waste my Time.".split(","), null, false);
 
     await sleep(1000 * 60 * 5); //wait five minutes on the clock
     offerCustomerTestimonials();

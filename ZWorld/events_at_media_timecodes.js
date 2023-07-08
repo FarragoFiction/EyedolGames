@@ -23,10 +23,8 @@ class MediaEventScheduleMaker {
     }
 
     setupListeners = () => {
-        console.log("JR NOTE: setup listener")
 
         const checkForHaHa = () => {
-            console.log("JR NOTE: timeupdate")
             for (let event of this.eventListReadOnly) {
                 //we can't guarantee the EXACT time it goes off because of browser limitations
                 if(event.timeToCall(this.media.currentTime)) {
@@ -77,4 +75,6 @@ class MediaEventItemEveryXSeconds {
         return Math.round(media_time%this.x) === 0
     }
 }
+
+
 
