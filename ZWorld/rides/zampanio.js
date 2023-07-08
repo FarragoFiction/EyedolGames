@@ -75,6 +75,10 @@ class DetailsZampanio extends DetailsRide {
 
     let time = 0;
     const doop = createElementWithClassAndParent("li", ul);
+    
+    const doop2 = createElementWithClassAndParent("li", ul);
+    doop2.innerHTML = `Time Remaining: ???`;
+    doop2.id='time-remaining';
 
     const updateTime = (time) => {
       doop.innerHTML = `Seconds Here: ${time}`;

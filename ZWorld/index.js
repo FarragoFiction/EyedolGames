@@ -215,6 +215,7 @@ const handleTruth = async (rideDetails) => {
   let truthContainer = document.querySelector('#truth-box');
 
   if(paramRideType === ZAMPANIORIDE){
+    truthContainer.style.cursor="pointer"
     const video = createElementWithClassAndParent("video",truthContainer);
     video.src = "audio/hide_and_seek.mp4";
     video.autoplay = true;
@@ -222,18 +223,27 @@ const handleTruth = async (rideDetails) => {
     await sleep(1000);
     video.play();
 
-    const checkForHaHa = ()=>{
-      if(video.currentTime >107){
+    const timeSync = ()=>{
+      const timeRemaining = document.querySelector("#time-remaining");
+      timeRemaining.innerHTML = `Time Remaining: ${Math.round(video.duration -video.currentTime)}`;
+
+    }
+
+
+    const haha = ()=>{
         const body = document.querySelector("body");
+
         body.className = "ouija-body";
         const content = document.querySelector("#page-content");
         content.remove();
         video.removeEventListener('timeupdate', checkForHaHa);
-
-      }
     }
 
-    video.addEventListener('timeupdate', checkForHaHa);
+    const mediaEventHandler  = new MediaEventScheduleMaker(video, [new MediaEventItemEveryXSeconds(1,timeSync),new SimpleMediaEventItem(107,haha) ]);
+    mediaEventHandler.setupListeners();
+
+   // video.addEventListener('timeupdate', checkForHaHa);
+    
 
     return;
   }
