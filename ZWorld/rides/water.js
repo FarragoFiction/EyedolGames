@@ -51,7 +51,6 @@ class TeaserWater extends TeaserRide {
 
 
     const teaserTemplates = [`Get wet! Go fast!`,
-    `Abhorrineer Devona Avamund had this to say about her newest masterpiece: '${rand.pickFrom(devonaQuotes)}'`,
     `Swim like a ${noun}, we provide the innertube.`,
     `No lifeguards on staff.`,
     `Scream for ${rand.pickFrom([, "chills and thrills", chosenName, "ice cream", "it", "this living legend", "all who are born die", "there is no justice in life"])}.`,

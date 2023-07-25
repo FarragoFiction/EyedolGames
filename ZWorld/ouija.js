@@ -7,7 +7,7 @@ class PasswordSecret {
 }
 
 //if they input something not here, then 
-
+//https://nuclearpoultry.yolasite.com/  my own ghosts. they want to talk to flaming-chickens. but their contact page is broken.D
 
 //https://phasmophobia.fandom.com/wiki/Ouija_Board#Questioning
 //ficlets here are from the point of view of those who are haunted in some way. by past selves. by future selves. by the observers.
