@@ -65,7 +65,7 @@ window.onload = () => {
   pornBotImage = urlParams.get('image');
   pornBotSecrets = urlParams.get('secrets');
 
-  global_wungle = urlParams.get('wungle');
+  global_wungle = urlParams.get('wungle')!=="jrsaysjustthisonce_forlavinraca"?true:false;
 
   pornBotMatchPercent = parseInt(urlParams.get('matchPercent'));
   pornBotLoc = parseInt(urlParams.get('loc'));
@@ -388,6 +388,10 @@ const isItWungleTime = async () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const hackedGiggles = urlParams.get('wungle');
+  if(hackedGiggles=="jrsaysjustthisonce_forlavinraca"){
+    global_wungle = false;
+    return;
+  }
 
   //midnight and fridays are wungle time
   const date = new Date();
@@ -803,7 +807,7 @@ const grabHouseOfLeavesLiveblogging = async () => {
 const grabHalloween = async () => {
   const loc = 'http://eyedolgames.com/Eyedlr/images/Secrets/tumblr_screenshots/Lavinraca/';
   let tmp = await getImages(loc);
-  halloweenpics = halloweenpics.concat(tmp.map((item) => `<img src='${loc}${item}'>`));
+  halloweenpics = halloweenpics.concat(tmp.map((item) => `<a target='_blank' href ='http://lavinraca.eyedolgames.com/'><img src='${loc}${item}'></a>`));
 }
 
 const grabBlorboPosts = async () => {
