@@ -65,7 +65,13 @@ window.onload = () => {
   pornBotImage = urlParams.get('image');
   pornBotSecrets = urlParams.get('secrets');
 
-  global_wungle = urlParams.get('wungle')!=="jrsaysjustthisonce_forlavinraca"?true:false;
+  global_wungle = false;
+  if(urlParams.get('wungle') && urlParams.get('wungle')!=="jrsaysjustthisonce_forlavinraca"){
+    global_wungle = false;
+  }else if (urlParams.get('wungle') ){
+    global_wungle = true;
+  }
+  console.log("JR NOTE: global_wungle", global_wungle)
 
   pornBotMatchPercent = parseInt(urlParams.get('matchPercent'));
   pornBotLoc = parseInt(urlParams.get('loc'));
@@ -395,7 +401,9 @@ const isItWungleTime = async () => {
 
   //midnight and fridays are wungle time
   const date = new Date();
-  if (hackedGiggles || date.getHours() == 0 || date.getDay() === 5) {
+  console.log("JR NOTE: isItWungleTime",{global_wungle,date})
+
+  if (date.getHours() == 0 || date.getDay() === 5) {
     let logo = document.querySelector("#logo");
     logo.src = "images/pathos/Zamblr_logo.png";
     global_wungle = true;
