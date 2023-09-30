@@ -71,7 +71,6 @@ window.onload = () => {
   }else if (urlParams.get('wungle') ){
     global_wungle = true;
   }
-  console.log("JR NOTE: global_wungle", global_wungle)
 
   pornBotMatchPercent = parseInt(urlParams.get('matchPercent'));
   pornBotLoc = parseInt(urlParams.get('loc'));
@@ -401,7 +400,6 @@ const isItWungleTime = async () => {
 
   //midnight and fridays are wungle time
   const date = new Date();
-  console.log("JR NOTE: isItWungleTime",{global_wungle,date})
 
   if (date.getHours() == 0 || date.getDay() === 5) {
     let logo = document.querySelector("#logo");
