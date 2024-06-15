@@ -21,7 +21,7 @@ const sinfulInjectedCSSFruit = `
   }
 
   .footer{
-    width: 290px;
+    width: 280px;
     margin: 0px;
     border-bottom: 8px;
     background-color: red;

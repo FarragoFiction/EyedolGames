@@ -47,6 +47,7 @@ const REALLYRandomGenders = () => {
 
   const chosenThemeKey = pickFrom(Object.keys(all_themes));
   const chosenTheme = all_themes[chosenThemeKey];
+
   const person = titleCase(chosenTheme.pickPossibilityFor(PERSON));
   const adj = titleCase(chosenTheme.pickPossibilityFor(ADJ));
   const compliment = titleCase(chosenTheme.pickPossibilityFor(COMPLIMENT));
@@ -112,6 +113,8 @@ const randomQuestion = () => {
     generators.push(randomRange);
   }
   if (question_index > 33) {
+    generators.push(randomRadioGenderAffirm);
+
     generators.push(randomSelect);
   }
   html = pickFrom(generators)();
@@ -171,6 +174,33 @@ const randomCheckbox = () => {
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
 
+}
+
+//https://www.tumblr.com/existential-squid/753210653540564992?source=share
+const randomRadioGenderAffirm = ()=>{
+  const max = 5;
+  const min = 2;
+  const amount = getRandomNumberBetween(min, max);
+
+  let ill_advised_raw_html = `
+    <div><label>${question_index}: Which of these gender affirming treatments would you like?</label>
+    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
+
+  `
+
+  for (let i = 0; i < amount; i++) {
+    const id = `radio-${question_index}-${i}`
+    const chosenThemeKey = pickFrom(Object.keys(all_themes));
+    const chosenTheme = all_themes[chosenThemeKey];
+    const miracle = titleCase(chosenTheme.pickPossibilityFor(MIRACLE));
+    const monster_desc = titleCase(chosenTheme.pickPossibilityFor(MONSTER_DESC));
+    const effects = titleCase(chosenTheme.pickPossibilityFor(EFFECTS));
+    ill_advised_raw_html += `<div class='horizontal-radio'><input id="${id}" name="radio-${question_index}" type="radio"></input><label for="${id}"  class='gender'>
+    ${pickFrom([miracle,effects,effects,effects,miracle, monster_desc, effects])}</label>
+    </div>`;
+  }
+  ill_advised_raw_html += '</div></div>'
+  return ill_advised_raw_html;
 }
 
 const randomRadio = () => {
