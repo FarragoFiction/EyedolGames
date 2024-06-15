@@ -38,6 +38,11 @@ button:hover{
   filter: invert();
 }
 
+button:active{
+  filter: grayscale()
+}
+
+
 #footer{
     text-transform: capitalize;
     padding: 5px;
