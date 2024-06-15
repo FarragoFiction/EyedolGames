@@ -100,7 +100,7 @@ const gender_source = () => {
   else if (question_index < 2113) {
     return REALLYRandomGenders().concat(genders).concat(REALLYRandomGenders());
   } else {
-    return ["Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
+    return ["Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
   }
 }
 
