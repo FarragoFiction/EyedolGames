@@ -29,6 +29,13 @@ select{
 
 button{
   height: 50px;
+  font-weight: bolder;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgba(237,144,161,1) 0%, rgba(186,113,252,1) 50%, rgba(56,217,244,1) 100%);;
+}
+
+button:hover{
+  filter: invert();
 }
 
 #footer{
