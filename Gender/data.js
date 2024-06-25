@@ -236,8 +236,15 @@ X (non-binary) (Canada Only)
 Female
 Male
 Unselect
-Come Back With a Warrant`;
-
+Come Back With a Warrant
+Masculino
+Femenino
+Marico
+Lesbiana
+Otaku
+Asexual
+Pokemon`;
+//https://www.tumblr.com/catgirltoes/754236160006553600/jadedresearcher-to-extend-the-gender-gauntlet?source=share
 
 const genders = rawGender.split("\n");
 

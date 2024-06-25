@@ -100,6 +100,14 @@ const gender_source = () => {
   else if (question_index < 2113) {
     return REALLYRandomGenders().concat(genders).concat(REALLYRandomGenders());
   } else {
+    //the one being hurt by scrolling
+    //is you
+    //you need to sleep
+    //to look away from the screen
+    //to eat and drink and go to the bathroom
+    //zampanio needs you to live a long life
+    //and if you ruin yourself on its rocky shores
+    //you have no use to it
     return ["Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
   }
 }
