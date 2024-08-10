@@ -2829,6 +2829,7 @@ class K extends Character {
   name = "K";//proud he got such an early name
   icon = 'images/icons/Khana_by_theShadow.png';
   desc = "YEAH, that's right, look over here!";
+  delete_readied_reblogs = false; //you will LOOK at K
 
   //k wants to be seen on EVERY post in the entire system
   //and also if a subsequent reblog goes viral, he does too
@@ -2852,6 +2853,7 @@ class K extends Character {
 
     this.readied_posts.push(new Post(this, `had a WONDERFUL meeting with some of the guys at the turbohio DOJ. i'm telling you that when i say good things are coming it's because good things are COMING. no need to thank me.`, null, ["k post","doj","turbohio","we WILL get damage by spontaneous hole creation down by 10 percent. start kissing at my feet for it"], [""], ["K!"], true));
     this.readied_posts.push(new Post(this, `good morning netizens. get blessed with my presence once again.`, null, ["k post","i see you in my ask box and i don't care"], [""], ["K!"], true));
+    this.readied_posts.push(new Post(this, "<img src='http://farragofiction.com/ZampanioEyes4/god_ineedtoshowthistoIC.png'>", null, ["look at this"], ["lol", "not the only sexyman in town","k is my sexyman <3","tom peyote who?"], [], true));
     this.readied_posts.push(new Post(this, `to the anons spamming the fuck out of my inbox: no you can't do anything by pestering the T-ODM about your messed up car if it HAPPENED to get hit by a werebird. bring it up with the turbohio department of insurance.`, null, ["k post","this ISN'T legal advice by the way."], [""], ["K!"], true));
     this.readied_posts.push(new Post(this, `why the fuck do bananas overripe so quickly? you'd think SOMEONE would've fixed this by now.`, null, ["k post","now i can't eat my fucking banana","thanks god. you snake bastard"], [""], ["K!"], true));
     this.readied_posts.push(new Post(this, `@${vik.name} @${yongki.name} are you two gonna show up to game night? or are you just gonna leave me with an xbox controller and a hand up my ass? #k posts, #you should be thankful i cleared my BUSY SCHEDULE for this`, null, ["k post","you should be thankful i cleared my BUSY SCHEDULE for this","i've been waiting all week to beat your asses at wandio kart"], [""], ["K!"], true));
@@ -2868,7 +2870,7 @@ class K extends Character {
 
 
 
-    //this.readied_reblogs['Ria/bugs_conspiracies'] = new Post(this, "No, see? That's just what they *want* you to think. You play by their rules!! and before you know it you're dancing to their tune stepping to their drum and nothing but a soldier marching!! in formation NO you need to set your own beat, need to twist the genre change the story!! you dont dodge you dont SWALLOW!! you DIE!! you make it a tragedy you RUIN !! HIS!! LIFE!!!!!!", null, ["!!!", "you cant out bugs bunny", "the man himself", "but you CAN", "get him arrested"], ["lol", "you okay there buddy?"], [], true);
+    this.readied_reblogs['SexyMan'] = new Post(this, "<img src='http://farragofiction.com/ZampanioEyes4/god_ineedtoshowthistoIC.png'>", null, ["look at this"], ["lol", "not the only sexyman in town","k is my sexyman <3"], [], true);
 
   }
 

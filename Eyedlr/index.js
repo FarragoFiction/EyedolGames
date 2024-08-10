@@ -267,8 +267,7 @@ const init = async () => {
   await tick();
   await tick();
   await tick();
-  await tick();
-  await tick();
+
 
   const loading = document.querySelector("#loading-posts");
   loading.style.display = "none";

@@ -247,7 +247,7 @@ Pokemon`;
 //https://www.tumblr.com/catgirltoes/754236160006553600/jadedresearcher-to-extend-the-gender-gauntlet?source=share
 
 const genders = rawGender.split("\n");
-
+//https://www.tumblr.com/existentialterror/755207000752865280?source=share
 const PERSON = "person";
  const ADJ = "adj";
  const COMPLIMENT = "compliment";
