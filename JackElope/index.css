@@ -357,15 +357,13 @@ select {
 }
 
 .profile-section-title {
-  font-size: 16px;
+  font-size: 18px;
   color: #00649f;
   font-family: "GT AmericaB", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .profile-about {
-  font-size: 12px;
-
-
+  font-size: 14px;
 }
 
 #img-wrapper {
