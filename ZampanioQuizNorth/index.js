@@ -71,6 +71,9 @@ const REALLYRandomGenders = () => {
   const moreNormal = [supermove, sound, smell, taste, feeling, person, adj, compliment, insult, object, location];
   const lessNormal = [philosophy, childbackstory, generalbackstory, effects, monster_desc, loc_desc, miracle];
   let ret = [];
+  if(question_index === 0){
+    ret = moreNormal.concat(lessNormal);
+  }
   //varies up how likely it is to be WEIRD.
   for (let i = 0; i < question_index % 13; i++) {
     if (i === 3) {
@@ -90,7 +93,7 @@ let question_index = 0;
 let number_clicks = 0;
 
 const gender_source = () => {
-  if (question_index < 2113) {
+  if (question_index < 1113) {
     return REALLYRandomGenders();
   } else {
     //the one being hurt by scrolling
@@ -101,7 +104,7 @@ const gender_source = () => {
     //zampanio needs you to live a long life
     //and if you ruin yourself on its rocky shores
     //you have no use to it
-    return ["Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
+    return ["Remember Zampanio","Leave","Do Something Else","Have You Hydrated?","Have You Rested?","Zampanio Needs You To Live A Long Life","Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
   }
 }
 
@@ -157,7 +160,7 @@ const randomCheckbox = () => {
   const amount = getRandomNumberBetween(min, max);
 
   let ill_advised_raw_html = `
-    <div><label>${question_index}: ${pickFrom(questions)}</label>
+    <div><label>${question_index}: ${generateAQuestion()}</label>
     <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
 
   `
@@ -204,7 +207,7 @@ const randomRadio = () => {
   const amount = getRandomNumberBetween(min, max);
 
   let ill_advised_raw_html = `
-    <div><label>${question_index}: ${pickFrom(questions)}</label>
+    <div><label>${question_index}: ${generateAQuestion()}</label>
     <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">
 
   `
@@ -218,36 +221,15 @@ const randomRadio = () => {
 
 }
 
-const deployGender = ()=>{
-  const specialCases = {
-    69: "nice"
-    ,13: "Dig dig dig dig dig dig dig dig dig dig dig dig"
-    ,413:"Homestuck (we're sorry)"
-    ,85:"Honestly? I don't know. You've done it. You are the one person who has never had gender."
-    ,216: "A cycle unfinished. A quest that never ends. The greek king pushing his rock up the mountain, only for it to roll him over. The ouroboros that snaps its tail in half."
-    ,113: "Dry and acid. The friction of a mouth devoid of water, fleshy taste buds upright and yearning. The essence of Hydration.  http://knucklessux.com/HydrationSim/ is for you."
+const deployGender = (debugMode)=>{
+  if(!debugMode){
+    console.error("JR NOTE: future JR did you forget to set jrSecretHax to true?")
   }
-
-  for(let key in specialCases){
-    console.log("JR NOTE: key",key, number_clicks)
-    if(number_clicks == key){
-      console.log("JR NOTE: yes.")
-      alert(`After careful consideration: Your gender is: ${specialCases[key]}`);
-
-      return;
-    }
-  }
-
-  if(number_clicks < 13){
-    alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
-    return;
-  }
-  const genders = document.querySelectorAll(".gender")
-  //your answers don't matter BUT you get the cooler answers if you engage more
-  const gender = genders[(number_clicks + Math.round(question_index/2))%genders.length].innerText;
-  alert(`After careful consideration: Your gender is: ${gender}`);
-
+  console.log("JR NOTE: don't forget to make this work without jrSecretHax once im ready to go live")
+  window.location.href = "house.html"
 }
+
+let jrSecretHax = false;
 
 window.onload = () => {
   const audio = document.querySelector("#audio");
@@ -257,9 +239,8 @@ window.onload = () => {
   ele = document.querySelector("#infinite-scroll")
   tenMore();
   const gender_button = document.querySelector("#gender-button");
-  console.log("JR NOTE: gender button", gender_button)
   gender_button.onclick = () => {
-    deployGender();
+    deployGender(jrSecretHax);
   }
 }
 

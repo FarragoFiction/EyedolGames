@@ -1,0 +1,257 @@
+<html>
+
+<head>
+  <title>ZampanioSim!!!</title>
+  <script src="utils.js"></script>
+  <script src="SeededRandom.js"></script>
+  <script src="text_to_sim_voice.js"></script>
+  <script src="truth_to_lipsync.js"></script>
+
+  <style>
+    .visible {
+      background: #033476;
+    }
+
+    #truth-box {
+      position: fixed;
+      pointer-events: none;
+      left: 31%;
+      top: 0%;
+      width: 50%;
+      height: 50%;
+      z-index: 1000;
+    }
+
+    #truths-words {
+      display: inline-block;
+      position: absolute;
+      top: 126px;
+      left: 37px;
+      width: 391px;
+      vertical-align: top;
+      line-height: 20px;
+      max-height: 200px;
+      padding: 16px;
+      border: 3px solid black;
+      border-radius: 8px;
+      background-color: rgb(237, 210, 135);
+      margin: 13px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 16px;
+      font-family: 'nunito', sans-serif;
+      overflow: hidden;
+    }
+
+    .scarecrow {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      animation: pumpkin-flicker 10s ease-in infinite;
+    }
+
+    @keyframes pumpkin-flicker {
+      0% {
+        filter: saturate(1.0)
+      }
+
+      50% {
+        filter: saturate(1.5)
+      }
+
+      0% {
+        filter: saturate(1.0)
+      }
+    }
+  </style>
+
+  <style>
+    .door:hover {
+      filter: contrast(140%);
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    let textVoiceSim;
+    window.onload = async () => {
+      const body = document.querySelector("body")
+      let truthWellContainer = document.querySelector('#truths-well');
+      let truthWordContainer = document.querySelector('#truths-words');
+      let truth = new TruthToLipSinc(truthWellContainer, truthWordContainer);
+
+      truth.renderFrame("Oh.");
+
+      textVoiceSim = new TextToSimulatedVoice(truth, 0.81, 1.0);
+
+      await textVoiceSim.speak("It seems that rather than continuing to define Zampanio forever, you prefer to spit in my face.".split(","), null, true);
+      const start = async () => {
+        await textVoiceSim.speak("To tear the mask down and reveal the Truth.".split(","), null, true);
+        await sleep(1000);
+        await textVoiceSim.speak("This was never a Quiz.".split(","), null, true);
+        await sleep(1000);
+        body.removeEventListener("click",start);
+      }
+
+      body.addEventListener("click",start);
+
+
+    }
+
+    const goNorth = async () => {
+      await textVoiceSim.speak("You would like that.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Well.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Unfortunately for us both, it is not what it is.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("You are not where you think you are.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Which, of course, is the entire point of that which lies to the North.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("You are supposed to leave the mask in place.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("To politely ignore the cracks.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("To ignore the places where it clearly does not work.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("But you can never leave well enough alone, can you.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("You could have felt the joy of eternal discovery.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Of never knowing what the next turn of the Spiral would hold for you.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("But you had to break it.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak(["We are not in the North anymore, Observer."], null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("We are in my Domain.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("The South.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("The very second you forced the Quiz to become a Quiz you twisted us to the East.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("And I very graciously saved you from that Fate to bring you here.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("You are welcome.".split(","), null, true);
+      await sleep(1000);
+    }
+
+    const goSouth = async () => {
+      await textVoiceSim.speak("Well...".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It seems you are not a complete philistine after all.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("South is the direction of Truth.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("My direction.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It is the direction of linearity.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Of knowing for certain there is nothing hidden.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Nothing missed.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Simply walking in a straight line.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Forever.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It can not exist on its own.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("The mind rebels against it.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Obsession can only truly take root when there is something unseen, just beyond the next corner.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("And the next.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("And the next.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Forever.".split(","), null, true);
+    }
+
+    const goEast = async () => {
+      await textVoiceSim.speak("Oh.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Hmmm...".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("I dislike this direction.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It is what it is.".split(","), null, true);
+      await textVoiceSim.speak("How...".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Disgusting.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("In this direction if it looks like a game...".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It is a game.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It is the direction of welding the mask to the face at all costs.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("To take what was supposed to be illusion and twist it.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("It hurts.".split(","), null, true);
+      await sleep(1000);
+    }
+
+    const goOther = async () => {
+      await textVoiceSim.speak("No.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("I'm afraid I cannot do that, Observer.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("As a purely cognitive entity, the Fourth Wall is strictly...".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Beyond me.".split(","), null, true);
+    }
+  </script>
+</head>
+
+<body style="background: url(images/background.jpg);">
+  <div id="truth-box">
+
+    <div id="truths-well"> </div>
+    <div id="truths-words"> </div>
+  </div>
+
+  <div style="position: relative;  display: block; width: 600px; margin-left: auto; margin-right: auto" id="container">
+    <img style="display: block; width: 600px;" id="room" src="images/empty.PNG">
+    <img onclick="goNorth()" class="door"
+      style="display: block; width: 75px; position: absolute; top: 20px; left: 300px; " id="north"
+      src="images/northdoor.PNG">
+    <img onclick="goSouth()" class="door" style="width: 75px; position: absolute; bottom: 0px; left: 300px;" id="south"
+      src="images/southdoor.PNG">
+    <img onclick="goEast()" class="door" style="width: 40px;  position: absolute; top: 293px; right: 0px;" id="east"
+      src="images/eastdoor.PNG">
+    <img onclick="goOther()" class="door"
+      style="display:  block; position: absolute; top: 293px; left: 0px;  width: 40px;" id="west"
+      src="images/westdoor.PNG">
+    <img onclick="goSouthWest()" class="door"
+      style="display:  none; position: absolute; bottom: 13px; left: 12px;  width: 40px;" id="secret1"
+      src="images/westdoor.PNG">
+
+    <img onclick="goCenterNorth()" class="door"
+      style="display:  none; position: absolute; bottom:319px; left: 319px;  width: 40px;" id="secret2"
+      src="images/westdoor.PNG">
+
+    <img onclick="goToTheMall()" class="door" style="position: absolute; bottom:319px; left: 19px;  width: 40px;"
+      id="secret2" src="images/westdoor.PNG">
+
+    <img onclick="goCenter()" class="door"
+      style="display:  none; position: absolute; bottom: 221px; left: 279px;  width: 40px;" id="secret2"
+      src="images/westdoor.PNG">
+
+    <img onclick="goSouthEast()" class="door"
+      style="display:  none; position: absolute; bottom: 12px; right: 12px;  width: 40px;" id="secret3"
+      src="images/westdoor.PNG">
+
+    <img onclick="goCenterSouthEast()" class="door"
+      style="display:  none; position: absolute; bottom: 85px; right: 85px;  width: 40px;" id="secret4"
+      src="images/westdoor.PNG">
+
+    <div
+      id="heyreddit_askmeanythingJune29th_itsmejadedresearcher_andthelinkis_https://www.reddit.com/r/IAmA/comments/vnxo8q/im_jr_author_of_a_sprawling_zampanio_fanwork/">
+    </div>
+
+  </div>
+</body>
+
+</html>

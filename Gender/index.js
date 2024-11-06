@@ -108,7 +108,7 @@ const gender_source = () => {
     //zampanio needs you to live a long life
     //and if you ruin yourself on its rocky shores
     //you have no use to it
-    return ["Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
+    return ["Zampanio Needs You To Live A Long Life","Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
   }
 }
 

@@ -10,6 +10,10 @@ const createElementWithClass = (eleName, className) => {
 
 }
 
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
  const titleCase = (input) => {
   const pieces = input.split(" ");
   const ret = [];
