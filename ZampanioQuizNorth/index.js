@@ -224,9 +224,12 @@ const randomRadio = () => {
 const deployGender = (debugMode)=>{
   if(!debugMode){
     console.error("JR NOTE: future JR did you forget to set jrSecretHax to true?")
+    
+  }else{
+    console.log("JR NOTE: don't forget to make this work without jrSecretHax once im ready to go live")
+    window.location.href = "house.html"
+
   }
-  console.log("JR NOTE: don't forget to make this work without jrSecretHax once im ready to go live")
-  window.location.href = "house.html"
 }
 
 let jrSecretHax = false;
