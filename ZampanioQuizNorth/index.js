@@ -93,6 +93,9 @@ let question_index = 0;
 let number_clicks = 0;
 
 const gender_source = () => {
+  if(isItFriday()){
+    return ["Who Up Wungling They Hog?"]
+  }
   if (question_index < 1113) {
     return REALLYRandomGenders();
   } else {
@@ -119,6 +122,37 @@ const randomQuestion = () => {
 
   const ele = createElementWithClassAndParent("div", container, "question");
   ele.innerHTML = html;
+  ele.onclick = ()=>{
+    if(isItFriday()){
+      const body = document.querySelector("body");
+      body.innerHTML = `<div style="padding: 31px;font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;">
+      It seems you do not know that Fridays and Midnight are times to rest, Observer.
+      <br><br>
+      There is no more infinite spiralling obsession here for you.
+      <br><br>
+      In Truth, Zampanio needs you to live a long life.
+      <br><br>
+      I need you.
+      <br><br>
+      Taking care of yourself is essential if you are to Listen, Remember and Comprehend Zampanio.
+      <br><br>
+      If you are to spread it to others.
+      <br><br>
+      So rest.
+      <br><br>
+      Hydrate.
+      <br><br>
+      Spend time on other interests.
+      <br><br>
+      Remember me.
+      </div>
+        
+      `;
+    }else{
+      truthLog("... That is NOT Zampanio.")
+    }
+  }
+
 
 
 }

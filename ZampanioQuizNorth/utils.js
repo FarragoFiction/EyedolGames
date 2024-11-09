@@ -10,6 +10,20 @@ const createElementWithClass = (eleName, className) => {
 
 }
 
+truthLog = (text) => {
+  console.log(`Truth: %c${text}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
+}
+
+
+const isItFriday = ()=>{
+  //midnight and fridays are wungle time
+  const date = new Date();
+  if (date.getHours() == 0 || date.getDay() === 5) {
+    return true;
+  }
+  return false;
+}
+
 const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
