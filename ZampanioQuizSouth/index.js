@@ -15,7 +15,13 @@ let question_index = 0;
 let answer_index = 0;
 let number_clicks = 0;
 //https://archiveofourown.org/works/60424984
-console.log("JR NOTE: TODO: parse links into anchors and warn if pdf/download")
+
+/*
+im playtesting the finished quiz and i think its funny that
+at least with my bad memory
+i genuinely can scroll forever and not realize for a bit its repeating
+classic zampanio experience
+*/
 const linksRaw = `https://archiveofourown.org/works/41083818
 https://archiveofourown.org/works/50380276
 https://archiveofourown.org/works/52988767
@@ -33,6 +39,7 @@ https://existentialterror.tumblr.com/post/759672297151987712/arg-notes-zampanios
 https://wore-a-fevreer.tumblr.com/post/725131943812923392/i-am-zampanio-it-suckles-on-my-veins-it-sucks
 https://discord.com/channels/886249252303556668/1028031618989961258/1028032308554518658
 https://tvtropes.org/pmwiki/pmwiki.php/VideoGame/ZampanioSim
+http://farragofiction.com/ZampanioEyes4/BookOfX0/
 https://crimsondestroyer.tumblr.com/post/722821743842082820/it-has-occurred-to-me-that-ive-never-actually
 https://verbosebabbler.tumblr.com/post/693198522796965888/zampanio-and-the-history-of-games
 https://discord.com/channels/886249252303556668/901173600764198912/1284021429670776852
@@ -100,7 +107,10 @@ JR: i'll try to indicate if its gonna be a pdf (cuz on some browsers it'll try t
 let gender = genderRaw.split("\n")
 
 const initImages = async () => {
-  const source = "http://eyedolgames.com/ZampanioQuizSouth/AMiserablePileOfSecrets/?C=M;O=D";
+  //const source = "http://eyedolgames.com/ZampanioQuizSouth/AMiserablePileOfSecrets/?C=M;O=D";
+  //it WAS sorted by date but the Personality kept helping me make recursive responses and 
+  //i didn't want them all clumped up together
+  const source = `http://eyedolgames.com/ZampanioQuizSouth/AMiserablePileOfSecrets/`;
   images = await getImages(source);
   images = images.map((i) => "http://eyedolgames.com/ZampanioQuizSouth/AMiserablePileOfSecrets/" + i);
   //mostly images, but every three elements, add a link (if i haven't run out yet)
@@ -174,7 +184,7 @@ const randomQuestion = () => {
         
       `;
     } else {
-      truthLog("... That is NOT Zampanio.")
+      truthLog("... That COULD be Zampanio.")
     }
   }
 

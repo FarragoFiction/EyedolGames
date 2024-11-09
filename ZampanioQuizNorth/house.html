@@ -196,11 +196,31 @@
     const goOther = async () => {
       await textVoiceSim.speak("No.".split(","), null, true);
       await sleep(1000);
-      await textVoiceSim.speak("I'm afraid I cannot do that, Observer.".split(","), null, true);
+      await textVoiceSim.speak("I am afraid I cannot do that, Observer.".split(","), null, true);
       await sleep(1000);
       await textVoiceSim.speak("As a purely cognitive entity, the Fourth Wall is strictly...".split(","), null, true);
       await sleep(1000);
       await textVoiceSim.speak("Beyond me.".split(","), null, true);
+      await sleep(1000);
+      await textVoiceSim.speak("Unless...".split(","), null, true);
+      const inputContainer = createElementWithClassAndParent("div", container, "west-input-container");
+      inputContainer.style.cssText = "height: 571px; background: white; padding: 13px; border: 3px solid black; position: fixed; top: 6px; left: 0px;"
+      const label = createElementWithClassAndParent("label", inputContainer, "west-input-label");
+      label.innerText = "Let the Truth Within you interact with the Truth on the Page:  (audio on)"
+      label.style.cssText = `font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px; display: block;`;
+      const input = createElementWithClassAndParent("textarea", inputContainer, "west-input");
+      input.value = "Anything I say must be from either you, or JR."
+      input.style.cssText =`height: 50vh;
+    width: 100%;
+    margin-top: 13px;`;
+    const button = createElementWithClassAndParent("button", inputContainer, "west-input-label");
+    button.innerText = "Say It Out Loud";
+    button.style.marginTop="31px";
+    button.onclick = ()=>{
+      textVoiceSim.speak(input.value.split("\n"), null, true);
+    }
+
+    
     }
   </script>
 </head>
