@@ -105,7 +105,7 @@ JR: images, pdfs,  links to other websites
 JR: i'll try to indicate if its gonna be a pdf (cuz on some browsers it'll try to download)`;
 
 let gender = genderRaw.split("\n")
-
+//https://archiveofourown.org/works/60440485/chapters/154284955
 const initImages = async () => {
   //const source = "http://eyedolgames.com/ZampanioQuizSouth/AMiserablePileOfSecrets/?C=M;O=D";
   //it WAS sorted by date but the Personality kept helping me make recursive responses and 

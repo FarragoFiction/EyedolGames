@@ -1,0 +1,141 @@
+body {
+  background-color: white;
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-family:   ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+label:not(.gender){
+  font-weight: bolder;
+  margin-bottom: 13px;
+  display: block;
+}
+
+#hax{
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+}
+
+.copy-button{
+  padding: 5px;
+  height: 22px;
+  display: inline-block;
+  line-height: 10px;
+  margin-left: 10px;
+}
+
+hr{
+  margin: 33px;
+}
+
+.hidden{
+  display: none !important; 
+}
+
+#result{
+  text-align: center;
+  margin-top: 100px;
+}
+
+#result-title{
+  font-weight: 600;
+}
+
+#ramble{
+  margin: 50px;
+}
+
+#result-link{
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#result-name{
+  font-weight: 800;
+  font-size: 42px;
+}
+
+select{
+  width: 100%;
+  max-width: 300px;
+}
+
+.question{
+  margin-bottom: 33px;
+}
+
+select{
+  margin-left: 13px;
+}
+
+.container{
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button{
+  height: 50px;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 5px;
+  background: linear-gradient(90deg, rgb(237, 210, 135) 0%, rgb(237, 210, 135), 50%, rgb(180, 152, 10) 100%);;
+}
+
+button:hover{
+  filter: invert();
+}
+
+button:active{
+  filter: grayscale()
+}
+
+#footer{
+  text-transform: capitalize;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  top: 0px;
+  padding: 13px;
+  border-top: 1px solid black;
+  width: 100%;
+  background: white;
+}
+
+#recieve-gender{
+  margin-top: 13px;
+}
+
+.horizontal-radio{
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+  align-items: center;
+
+}
+
+#instructions{
+  background: #f4f4f4;
+  padding: 33px;
+  width: 500px;
+  margin-bottom: 33px;
+
+}
+
+
+
+.vertical-radio{
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+}
+
