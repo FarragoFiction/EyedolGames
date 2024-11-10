@@ -35,23 +35,19 @@ const deployGender = () => {
     return ({ key: item, value: themes[item] })
   });
   let sortedResults = array_themes.sort((a, b) => b.value - a.value);
-  let antiSortedResults = array_themes.sort((a, b) => a.value - b.value);
 
-  let results = sortedResults.splice(0, 3).map((item) => item.key);
-  //your nemesis
-  let antiResults = antiSortedResults.splice(0, 3).map((item) => item.key);
-  let seed = Array.from(data.entries()).length + (Object.keys(themes).length * 100000);
-  //(`After careful consideration: Your personality is: ${results.join(",")}. Your enemies personality is ${antiResults.join(",")}`);
-  updateURLParams(`seed=${seed}&your_themes=${results.join(",")}&your_rivals_themes=${antiResults}`)
+  let result = sortedResults[0];
+  console.log("JR NOTE: result", result)
+  updateURLParams(`direction=${result.key}`)
   window.location.reload();
 }
 
-const answerMode = (seed, your_themes, your_rivals_themes) => {
+const answerMode = (direction) => {
   const body = document.querySelector("body");
   body.innerHTML = ""
   const content = createElementWithClassAndParent("div", body, "container");
-  if (your_themes && your_rivals_themes) {
-    generateResult(seed, your_themes, your_rivals_themes, content);
+  if (direction) {
+    generateResult(direction);
   } else {
     content.innerHTML = `
     <p>...</p>
@@ -71,27 +67,31 @@ const answerMode = (seed, your_themes, your_rivals_themes) => {
 
 
 
-const generateResult = (seedRaw, your_themes_raw, your_rivals_themes_raw, content) => {
-  console.log("JR NOTE:", { seedRaw })
-
-  const rand = new SeededRandom(parseInt(seedRaw));
-  const your_themes = your_themes_raw.split(",");
-  const your_rivals_themes = your_rivals_themes_raw.split(",");
-
-  const name = pickARandomThemeFromListAndGrabKey(rand, your_themes, PERSON, true);
-  const personal_adj = pickARandomThemeFromListAndGrabKey(rand, your_themes, ADJ, true);
+const generateResult = (direction) => {
+  const body = document.querySelector("body");
+  body.innerHTML = ""
+  const content = createElementWithClassAndParent("div", body, "container");
+  const resultMap = {}
+  resultMap[NORTH] = `north placeholder`;
+  resultMap[SOUTH] = `south placeholder`;
+  resultMap[EAST] = `east  placeholder`;
+  //you can HACK west to be your highest count (or anything but NSE), that gets you more angry truth rambling and super glitchy effects remixing the page you're on instead of going to results
+  if(resultMap[direction]){
   content.innerHTML = `
     <div id ="result">
      <div id="result-title">Your Result: </div>
-     <div id="result-name"> ${titleCase(`${personal_adj} ${name}`)}</div>
-      <div id ="ramble">${generateRamble(name, personal_adj, rand, your_themes, your_rivals_themes)}</div>
+     <div id="result-name"> ${titleCase(`${direction}`)}</div>
+      <div id ="ramble">${resultMap[direction]}</div>
       <div id="result-link"><label>Link To Your Result: <input id="share-link" value="${window.location.href}" type="text"></input></label>
       </div>
 
-      <button onclick="window.location.href='/PersonalityQuiz'">Take Quiz?</button>
+      <button onclick="window.location.href='/ZampanioQuizEast'">Take Quiz?</button>
 
     </div>
   `;
+  }else{
+    alert("!!!")
+  }
 
 }
 
@@ -209,13 +209,10 @@ window.onload = () => {
   initThemes();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  let your_themes = urlParams.get('your_themes');
-  let seed = urlParams.get('seed');
+  let direction = urlParams.get('direction');
 
-  let your_rivals_themes = urlParams.get('your_rivals_themes');
-  console.log("JR NOTE: your_themes", your_themes)
-  if (your_themes != null && your_rivals_themes != null) {
-    answerMode(seed, your_themes, your_rivals_themes);
+  if (direction) {
+    answerMode(direction);
   } else {
     quizMode();
 

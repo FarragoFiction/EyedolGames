@@ -83,7 +83,6 @@ const directionQuestion =()=>{
   const answers = [];
 
   for (let key of directions) {
-    console.log("JR NOTE: key is", key, directionAnswerMap,)
     answers.push({value:key, label:  titleCase(pickFrom(directionAnswerMap[key]))});
   }
   let generators = [randomRadio, randomCheckbox]
