@@ -37,8 +37,9 @@ const deployGender = () => {
   let sortedResults = array_themes.sort((a, b) => b.value - a.value);
 
   let result = sortedResults[0];
+
   console.log("JR NOTE: result", result)
-  updateURLParams(`direction=${result.key}`)
+  updateURLParams(`direction=${result && result.key}`)
   window.location.reload();
 }
 
@@ -46,7 +47,7 @@ const answerMode = (direction) => {
   const body = document.querySelector("body");
   body.innerHTML = ""
   const content = createElementWithClassAndParent("div", body, "container");
-  if (direction) {
+  if (direction && direction!="undefined") {
     generateResult(direction);
   } else {
     content.innerHTML = `
@@ -59,7 +60,7 @@ const answerMode = (direction) => {
       <p>There is nothing inside.</p>
       <p>It is all reflected light.</p>
       <p>You are just a satellite.</p>
-      <button onclick="window.location.href='/PersonalityQuiz'">Try Again.</button>
+      <button onclick="window.location.href='/ZampanioQuizEast'">Try Again.</button>
 
     `;
   }
@@ -258,7 +259,6 @@ const quizMode = () => {
   hax = document.querySelector("#hax");
   tenMore();
   const gender_button = document.querySelector("#gender-button");
-  console.log("JR NOTE: gender button", gender_button)
   gender_button.onclick = () => {
     deployGender();
   }
