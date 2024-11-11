@@ -78,6 +78,17 @@ select{
   margin-right: auto;
 }
 
+#truths-words{
+  z-index: 1000;
+  background-color: white;
+  font-family: 'Courier New', Courier, monospace;
+  color: red;
+  padding: 31px;
+  position: fixed;
+  top:25%;
+  left: 25%;
+}
+
 button{
   height: 50px;
   font-weight: bolder;

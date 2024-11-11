@@ -67,7 +67,7 @@ const answerMode = (direction) => {
 
 
 
-const generateResult = (direction) => {
+const generateResult = async (direction) => {
   const body = document.querySelector("body");
   body.innerHTML = ""
   const content = createElementWithClassAndParent("div", body, "container");
@@ -76,8 +76,8 @@ const generateResult = (direction) => {
   resultMap[SOUTH] = `south placeholder`;
   resultMap[EAST] = `east  placeholder`;
   //you can HACK west to be your highest count (or anything but NSE), that gets you more angry truth rambling and super glitchy effects remixing the page you're on instead of going to results
-  if(resultMap[direction]){
-  content.innerHTML = `
+  if (resultMap[direction]) {
+    content.innerHTML = `
     <div id ="result">
      <div id="result-title">Your Result: </div>
      <div id="result-name"> ${titleCase(`${direction}`)}</div>
@@ -89,8 +89,56 @@ const generateResult = (direction) => {
 
     </div>
   `;
-  }else{
-    alert("!!!")
+  } else {
+    let textVoiceSim;
+    const body = document.querySelector("body")
+    body.innerHTML = `    <div id="truth-box">
+
+      <div id="truths-well"> </div>
+      <div id="truths-words"> </div>
+    </div>    <form id="zampanio-personality-form">
+
+    </form>
+    <button id="hax">
+      ???
+    </button>
+        <div id="recieve-gender"><button id="gender-button">Grade Quiz</button></div>
+`
+
+    quizMode();
+
+    let truthWellContainer = document.querySelector('#truths-well');
+    let truthWordContainer = document.querySelector('#truths-words');
+    let truth = new TruthToLipSinc(truthWellContainer, truthWordContainer);
+    const form = document.querySelector("#zampanio-personality-form");
+
+    const fuckery = async () => {
+      await sleep(1000);
+      tenMore();
+      fuckShitUP(form);
+    }
+    fuckShitUP(form);
+
+    truth.renderFrame("Oh.");
+
+    textVoiceSim = new TextToSimulatedVoice(truth, 0.81, 1.0);
+
+    await textVoiceSim.speak("Wow...".split(","), null, true);
+
+
+    await textVoiceSim.speak("Rude.".split(","), null, true);
+    await fuckery();
+    await textVoiceSim.speak("Do I come into your Quizes.".split(","), null, true);
+    await fuckery();
+
+    await textVoiceSim.speak("That you slaved over to make 'real'.".split(","), null, true);
+    await fuckery();
+
+    await textVoiceSim.speak("And then spit on them?".split(","), null, true);
+    await fuckery();
+
+
+
   }
 
 }
@@ -136,12 +184,12 @@ const generateRamble = (name, personal_adj, rand, your_themes, your_rivals_theme
     `You are destined to find yourself in a  ${quick(rand, your_themes, LOCATION)}, ${quick(rand, your_rivals_themes, LOC_DESC)}, with only a  ${quick(rand, your_themes, OBJECT)} to defend yourself with. You will be surrounded by creatures, lead by a monstrous ${quick(rand, your_rivals_themes, PERSON)}, ${quick(rand, your_rivals_themes, MONSTER_DESC)}
         Do not worry. Unexpected friends will present themselves in the form of a ${rival_personal_adj} ${rival_name}. At first you will think they are too ${quick(rand, your_rivals_themes, INSULT)}, but in time you will see that they can be ${quick(rand, your_rivals_themes, COMPLIMENT)}, too.
       `
-      ,`Look. I'm not gonna tell you how to handle your business. But you should at least CONSIDER making up with the ${rival}. I know they annoy you. I know they are ${rivalQ(INSULT)}, even. But you're going to need them if you want to make it all the way to the ${youQ(LOCATION)}, that's just how it is.`
-      ,`I can not emphasize enough that you should, under no circumstances, trust the ${rival}. Look. They are literally built from all the traits you LEAST like. How could that possibly be trustworthy? It'd be like trusting a ${rivalQ(OBJECT)}. Don't do it. Take your ${youQ(OBJECT)} and go as far away as you can to protect it.  Maybe look for the ${youQ(LOCATION)}.`
-      ,`There will be a gentle rain outside the ${youQ(OBJECT)}... It will be alright, you'll think to yourself. After everything that happened with the ${rival}, maybe you can bring yourself to trust again. You'll clutch the ${rivalQ(OBJECT)} close to your chest and think of better times as the rain pours down your face. `
-      ,`Did you know that underneath the ${youQ(OBJECT)} you can find a ${rivalQ(OBJECT)}? If you destroy it, the ${rival} activates rage mode and you get a MUCH easier boss fight.`
-      ,`I'm so sorry. You're soft-locked here. You won't be able to progress without restarting. If only you had picked up the ${youQ(OBJECT)} back at the ${youQ(LOCATION)}... It's okay though. The friends you made will always remember you, even the ${rival}. You can stop playing, now.`
-      ,`There will be ${youQ(OBJECT)} hidden in the ${youQ(LOCATION)}. Don't let yourself accidentally pick up the ${rivalQ(OBJECT)}, that one's a trap. Once you've got it, you need to make your way to the ${rivalQ(LOCATION)} and do everything in your power to destroy it. Yes, the ${rival} is going to try to stop you. The ${youQ(PERSON)} should be able to help, if you did all their side-quests.`
+    , `Look. I'm not gonna tell you how to handle your business. But you should at least CONSIDER making up with the ${rival}. I know they annoy you. I know they are ${rivalQ(INSULT)}, even. But you're going to need them if you want to make it all the way to the ${youQ(LOCATION)}, that's just how it is.`
+    , `I can not emphasize enough that you should, under no circumstances, trust the ${rival}. Look. They are literally built from all the traits you LEAST like. How could that possibly be trustworthy? It'd be like trusting a ${rivalQ(OBJECT)}. Don't do it. Take your ${youQ(OBJECT)} and go as far away as you can to protect it.  Maybe look for the ${youQ(LOCATION)}.`
+    , `There will be a gentle rain outside the ${youQ(OBJECT)}... It will be alright, you'll think to yourself. After everything that happened with the ${rival}, maybe you can bring yourself to trust again. You'll clutch the ${rivalQ(OBJECT)} close to your chest and think of better times as the rain pours down your face. `
+    , `Did you know that underneath the ${youQ(OBJECT)} you can find a ${rivalQ(OBJECT)}? If you destroy it, the ${rival} activates rage mode and you get a MUCH easier boss fight.`
+    , `I'm so sorry. You're soft-locked here. You won't be able to progress without restarting. If only you had picked up the ${youQ(OBJECT)} back at the ${youQ(LOCATION)}... It's okay though. The friends you made will always remember you, even the ${rival}. You can stop playing, now.`
+    , `There will be ${youQ(OBJECT)} hidden in the ${youQ(LOCATION)}. Don't let yourself accidentally pick up the ${rivalQ(OBJECT)}, that one's a trap. Once you've got it, you need to make your way to the ${rivalQ(LOCATION)} and do everything in your power to destroy it. Yes, the ${rival} is going to try to stop you. The ${youQ(PERSON)} should be able to help, if you did all their side-quests.`
     , `You will meet the ${rival}. They ${rivalQ(GENERALBACKSTORY)}. You'll hate it. Try to ignore it for now. You'll need to work with them long enough to placate the ${youQ(PERSON)}s. My suggestion is try using any ${youQ(OBJECT)} you find a way, especially if its ${youQ(ADJ)}.`
     , `You're right not to trust the ${rival}. Their shadow is dangerous, ${rivalQ(MONSTER_DESC)} Don't be fooled. That is only the start of the problems. Find a ${youQ(OBJECT)} and do what it takes to make it ${youQ(ADJ)} and you might have a chance.`
     , `As the ${you}, some might say you are less ${personal_adj} and more ${youQ(INSULT)}. You'll need to fix this. Find the ${rival}. Yes, they're annoying. Deal with it. They'll require a worthy ${rivalQ(OBJECT)} to join your party. It's worth it. They're easy to find in the ${youQ(LOCATION)}, but only after you've defeated the terrifying ${rivalQ(PERSON)}, be careful, ${rivalQ(MONSTER_DESC)} Once the ${rival}'s curse is broken, everything falls into place.`
@@ -159,12 +207,12 @@ const generateRamble = (name, personal_adj, rand, your_themes, your_rivals_theme
 }
 
 //very shitty hax
-const haxMode = ()=>{
+const haxMode = () => {
   //let form = document.querySelector("#zampanio-personality-form");
   //let data = new FormData(form);
   let inputs = document.querySelectorAll("input");
-  for(let input of inputs){
-    if(Math.random() > 0.75){
+  for (let input of inputs) {
+    if (Math.random() > 0.75) {
       input.selected = !input.selected;
       input.checked = !input.checked;
     }
@@ -181,8 +229,8 @@ const quizMode = () => {
     deployGender();
   }
 
-  if(hax){
-    hax.onclick = ()=>{
+  if (hax) {
+    hax.onclick = () => {
       haxMode();
     }
   }
