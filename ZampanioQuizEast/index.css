@@ -78,6 +78,16 @@ select{
   margin-right: auto;
 }
 
+#truths-box{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#truths-well{
+  z-index: 1;
+  position: absolute;
+}
+
 #truths-words{
   z-index: 1000;
   background-color: white;

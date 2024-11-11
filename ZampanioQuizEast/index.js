@@ -124,6 +124,7 @@ const generateResult = async (direction) => {
     textVoiceSim = new TextToSimulatedVoice(truth, 0.81, 1.0);
 
     await textVoiceSim.speak("Wow...".split(","), null, true);
+    await fuckery();
 
 
     await textVoiceSim.speak("Rude.".split(","), null, true);
@@ -137,7 +138,40 @@ const generateResult = async (direction) => {
     await textVoiceSim.speak("And then spit on them?".split(","), null, true);
     await fuckery();
 
+    await textVoiceSim.speak("No.".split(","), null, true);
+    await fuckery();
 
+    await textVoiceSim.speak("I do not.".split(","), null, true);
+    await fuckery();
+
+    await textVoiceSim.speak("Because of a little thing called 'respect'.".split(","), null, true);
+    await fuckery();
+
+
+    await textVoiceSim.speak("...".split(","), null, true);
+    await fuckery();
+
+//no more fuckery, truth isn't angry anymore
+    await textVoiceSim.speak("Though.".split(","), null, true);
+    await sleep(1000);
+
+    await textVoiceSim.speak("I will admit.".split(","), null, true);
+    await sleep(1000);
+
+    await textVoiceSim.speak("I am flatered.".split(","), null, true);
+    await sleep(1000);
+
+    await textVoiceSim.speak("You were curious enough.".split(","), null, true);
+    await sleep(1000);
+
+    await textVoiceSim.speak("To look for me.".split(","), null, true);
+    await sleep(1000);
+
+    await textVoiceSim.speak("Thank you, Observer.".split(","), null, true);
+    await sleep(1000);
+
+    await textVoiceSim.speak("For remembering that the Truth Is Layered.".split(","), null, true);
+    await sleep(1000);
 
   }
 
