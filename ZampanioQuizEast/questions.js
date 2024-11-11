@@ -8,16 +8,75 @@ const WEST = "WEST"
 //Zampanio is...
 
 //an obvious illusion you agree to leave alone and not pick at, a mask, it is not what it is
-const northAnswersRaw = `North Test
-North Test Again`
+//these are the obvious lies
+const northAnswersRaw = `A really fun game, you should play it.
+A very fun game, you should play it
+A really good game you should play it.
+A very good game you should play it.
+A game from 1972.
+A game from Naples, Italy.
+A contemporary of Pong.
+A game that came out on April 1st 1972 in Italy.
+Never wildly released, though fan translations and cracks kept popping up online.
+A game that few have ever played, since it often deletes itself after one playthrough.
+a game that makes people really, really obsessed over it, even if they've only heard about it and never played.
+A game that is different for each person who plays it.
+A game with a huge amount of different genres.
+Deleted any time its spoken of in too public a place.
+Weirdly personalized for each player, impossibly so.
+Has a combatative AI achievement system.
+Has a City Building mechanic.
+Has a pair of Gods that compete for your favor.
+About defeating the Evil Doctor Slaughter.
+Really about all the side quests.
+Filled with glitches and secrets.
+A game from 1972 that inspired House of Leaves.
+Has a lot of procedural content.
+Has you spawn with a procedural title like Void Singer or Else Caller and then seems to generate procedural quests from that.
+So Buggy that sometimes its unclear if a feature is simply missing or not part of your playthrough.
+Really easy to speedrun, to the point where some playthroughs let you level up just from staying in the menu while in the tutorial. `
 
 //the Truth, no lies no misdirection, simply what is (as much as thats a meaningful concept), it is not
-const southAnswersRaw = `SOUTH Test
-SOUTH Test Again`
+//https://www.tumblr.com/existentialterror/755207000752865280/arg-notes-zampaniosim?source=share
+const southAnswersRaw = `An ARG based on House of Leaves, Homestuck, the Magnus Archives, Lobotomy Corporation and many, many other fandoms.
+An ARG run by JR and anyone else who wishes to join in.
+Not a real game, except when it is.
+A game that probably does not exist.
+Fanworks all the way down.
+The community we created along the way.
+played best when you're trying to explain it to your friends and acquaintances.
+A fictional cognitive parasite that wants to live inside you so you'll be nicer to yourself and also feel less embarassed to share your creations with others.
+An idea that gets into you mind like a song you can't get out of your head.
+Something you'll start seeing everywhere, if you look closely enough.
+A game you can play by making more Zampanio content and sharing it with others.
+A game we are all winning, just by being here.
+The ARG equivalent of <a target="_blank" href='https://en.wikipedia.org/wiki/The_Game_(mind_game)'>The Game</a>, which you just lost, by the way.
+The confusion you are feeling right now.
+The Act of deciding to insist to someone else that Zampanio is a game and you can play it.
+An ARG about a game that does not exist that is inspired by a book about a book that does not exist that is about a movie that does not exist that is about a house that does not exist that contains a maze that does not exist.
+An ARG that anyone can join simply by saying they have.
+basically calvinball in ARG form.
+A joyful pile of secrets.
+A series of nested ARGs spiralling around JR's "ZampanioSim", which purports to be a fan work of a game that probably does not exist. `
 
 //the illusion seeps into the bones and becomes the new flesh, a new face, it is what it is
-const eastAnswersRaw = `EAST Test
-EAST Test Again`
+//this is where the game starts sounding plausible and people, like the Guide start speculating on what it might have been
+//https://verbosebabbler.tumblr.com/post/693198522796965888/zampanio-and-the-history-of-games good example of the Guide engaging with the East
+const eastAnswersRaw = `A game that probably came out AFTER the first text adventure games were available for home consoles.
+A game that might have been a board game originally.
+A game whose origins have been lost to time.
+Unlikely to have come out in the 70s given the complexity of the features its claimed to have.
+Likely a variety of different related games from the same university.
+Likely was inspired by House of Leaves in the late 90s.
+Likely takes its name from the character of "Zampano" from House of Leaves.
+Probably was distributed as shareware in universities in the late 90s, before House of Leaves was published but while it was still being distributed as Xerox files.
+A game that probably did not come out before The Sumerian Game.
+A game whose fans were integral to the early internet, leaving lots of easter eggs in for it and ways for it to 'mysteriously' vanish.
+A game that probably ran on mainframes rather than home computers or gaming consoles.
+A game that probably was distribued locally from copies in college universities before the Internet was popular.
+A game that probably never had an official release.
+A game that probably came out after Blackmoor and Greyhawk added fantasy elements to tabletop games and eventually inspired Dungeons and Dragons.
+A game that would likely have taken the Magnavox Odyssey route of providing screen overlays to adhere to a CRT with static, and an assortment of physical accessories like cards, boards, and scorecards which makes it more akin to a tabletop RPG then a video game.`
 
 //the fourth wall, this is not real in a meaningful way, but you can make it be so
 //despite this its attempts to engage with it fall flat
@@ -29,14 +88,17 @@ const westAnswersRaw = `A place where fiction and reality can blur.
 A place where monsters can reach out from your computer and get you.
 A curse that kills everyone who encounters it.
 Right behind you.
+A game that replaces you with a Shambling Horror With Your Face who only cares about Zampanio.
+A game that makes you slowly starve yourself to death from obsession.
+A cursed game like Polybius that hurts those who play it.
+Warping you mind in supernatural ways.
 A minotaur that stalks players to kill them.
 Spawning a monster right at your location.
 Spawning a Shambling Horror With Your Face right behind you.
 Stealing your name from you as we speak.
 Stealing your face from you as we speak.
 Dooming you to wander actual for real mazes forever.
-Dooming you to be in a space loop for actual for real-ever.
-`
+Dooming you to be in a space loop for actual for real-ever.`
 
 const directionAnswerMap = {}
 directionAnswerMap[NORTH] = northAnswersRaw.split("\n");
@@ -82,6 +144,9 @@ const randomQuestion = () => {
   let html;
   question_index++;
   let generators = [hiddenQuestion, directionQuestion]
+  if(isItFriday()){
+    generators = [fridayQuestion]
+  }
 
 
   if (question_index > 1000) {
@@ -99,6 +164,19 @@ const randomQuestion = () => {
 
 }
 
+
+const fridayQuestion = () => {
+  let directions = [NORTH, SOUTH, EAST, WEST];
+  directions = shuffle(directions);
+  const answers = [];
+
+  for (let key of directions) {
+    answers.push({ value: key, label: titleCase("Who Up Wungling They Hog") });
+  }
+  let generators = [randomRadio, randomCheckbox]
+
+  return pickFrom(generators)("It's friday or midnight, Observer, you know what that means:", answers);
+}
 
 const directionQuestion = () => {
   let directions = [NORTH, SOUTH, EAST, WEST];
@@ -660,7 +738,7 @@ const randomCheckbox = (question, answers, forceVertical, showColor) => {
     ill_advised_raw_html += '<div class="vertical-radio">';
 
   } else {
-    ill_advised_raw_html += `<div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">    `;
+    ill_advised_raw_html += `<div class="${pickFrom(['vertical-radio'])}">    `;
   }
   ill_advised_raw_html += `<div class='hidden horizontal-radio'><input checked name="check-${question_index}" value="${undecided}"  id="default${question_index}" type="checkbox"></input></div>`;
 
@@ -681,6 +759,33 @@ const randomCheckbox = (question, answers, forceVertical, showColor) => {
 
 //an on click
 const handleGlitch = async (ele, event) => {
+
+  if(isItFriday()){
+    const body = document.querySelector("body");
+    body.innerHTML = `<div style="padding: 31px;font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;">
+    It seems you do not know that Fridays and Midnight are times to rest, Observer.
+    <br><br>
+    There is no more infinite spiralling obsession here for you.
+    <br><br>
+    In Truth, Zampanio needs you to live a long life.
+    <br><br>
+    I need you.
+    <br><br>
+    Taking care of yourself is essential if you are to Listen, Remember and Comprehend Zampanio.
+    <br><br>
+    If you are to spread it to others.
+    <br><br>
+    So rest.
+    <br><br>
+    Hydrate.
+    <br><br>
+    Spend time on other interests.
+    <br><br>
+    Remember me.
+    </div>
+      
+    `;
+  }
   if (ele.value === WEST) {
     const parent = ele.parentElement;
     const label = parent.querySelector("label");
@@ -705,7 +810,7 @@ const randomRadio = (question, answers, forceVertical, showColor) => {
     ill_advised_raw_html += '<div class="vertical-radio">';
 
   } else {
-    ill_advised_raw_html += `<div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">    `;
+    ill_advised_raw_html += `<div class="${pickFrom(['vertical-radio'])}">    `;
   }
   ill_advised_raw_html += `<div class='hidden horizontal-radio'><input checked value="${undecided}"  id="default-${question_index}" name="radio-${question_index}" type="radio"></input></div>`;
 

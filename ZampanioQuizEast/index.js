@@ -47,7 +47,7 @@ const answerMode = (direction) => {
   const body = document.querySelector("body");
   body.innerHTML = ""
   const content = createElementWithClassAndParent("div", body, "container");
-  if (direction && direction!="undefined") {
+  if (direction && direction != "undefined") {
     generateResult(direction);
   } else {
     content.innerHTML = `
@@ -72,16 +72,45 @@ const generateResult = async (direction) => {
   const body = document.querySelector("body");
   body.innerHTML = ""
   const content = createElementWithClassAndParent("div", body, "container");
+  scrollTo(0,0)
   const resultMap = {}
-  resultMap[NORTH] = `north placeholder`;
-  resultMap[SOUTH] = `south placeholder`;
-  resultMap[EAST] = `east  placeholder`;
+  resultMap[NORTH] = `You know in your heart that Zampanio is a really good game and everyone should play it.  It came out in <span style="cursor:pointer"  title="Just before Pong did.">1972</span> in <span style="cursor:pointer"  title="Not exactly known for their thriving Atari era video game industry">Naples, Italy</span> and had a fully fleshed out <span style="cursor:pointer"  title="accounts put achievement systems at 1982">Achievement system</span>, <span style="cursor:pointer" title="Dungeons and Dragons basically pioneered the TTRPG genre and didn't come out till 1974">leveling </span> up mechanics and even <span style="cursor:pointer"  title="come on, do you really expect us to believe that?">city building</span>.<br><br>It truly was the most <span style="cursor:pointer" title="lol they aren't even trying anymore, this is just from Super Hot">innovative shooter</span> anyone had ever seen.
+  <br><br>
+  It's just a shame that for <span style="cursor:pointer" title="you mean like the information not existing in the first place, smdh">some reason</span> information about it goes missing so often. You'd really like to play it now that you've heard about it, after all.
+  <br><br>
+  You'll have to search really hard to find it.
+  `;
+  resultMap[SOUTH] = `<div style="font-family: Courier New">JR: Well.<br><br>
+  JR: I mean sure.<br><br>
+  JR: If you wanna just cut to the chase.<br><br>
+  JR: ZampanioSim is a game I made based on a lot of fandoms I was in.<br><br>
+  JR: I originally called it "LitRPGSim" if you can believe it.<br><br>
+  JR: Because I was thinking to myself that practically the POINT of that genre of books is to just...<br><br>
+  JR: Try to make sense of impossibly complex unfamiliar game mechanics.<br><br>
+  JR: So I thought it would be funny to make a game all about just exploring those mechanics.<br><br>
+  JR: But never getting to use them.<br><br>
+  JR: One thing lead to another and before you knew it I realized the Zampanio fandom was going to be my best bet to realize this idea.<br><br>
+  JR: I guess I just wasn't comfortable with the idea of creating something entirely original?<br><br>
+  JR: After all my long years as a fandom creator.<br><br>
+  JR: So when I realized the way I could connect my idea to the Zampanio fandom....<br><br>
+  JR: All without having to deal with any 'real' canon to match up to...<br><br>
+  JR: Well.<br><br>
+  JR: Here we are.<br><br>
+  JR: I hope you have fun joining the Zampanio fandom.<br><br>
+  JR: I know I did.<br><br>
+  JR: And I can't wait to see what you create.<br><br>
+  </div>`;
+  resultMap[EAST] = `You're not easy to fool!<br><br>It's obvious to anyone who digs a little bit that there's no way Zampanio came out all the way in the 70s!<br><br>Nah, its more likely to have been part of the TTRPG and early gaming golden age that was the late 90s. <br><br>Early copies of House of Leaves was being distributed via Xerox amoung friends, and it makes sense one of the early readers would have been inspired and wanted to try their hand at making a video game. <bR><br>Since sharing and copying culture was already strong in the proto House of Leaves community, of COURSE the game itself would get its source distributed and warped over the years, eventually gaining a bit of an 'urban legend' status along the way.<br><br>It's not really a meaningful sentence to say you want to 'play Zampanio' since the original copies likely have long been lost to history but you DO find yourself really excited at the idea of trying to find all the derivative versions of it.<br><br>Good work! `;
   //you can HACK west to be your highest count (or anything but NSE), that gets you more angry truth rambling and super glitchy effects remixing the page you're on instead of going to results
   if (resultMap[direction]) {
     content.innerHTML = `
     <div id ="result">
      <div id="result-title">Your Result: </div>
      <div id="result-name"> ${titleCase(`${direction}`)}</div>
+           <div style="    margin: 0px;
+    font-style: italic;
+    font-weight: lighter;" id ="ramble">100% correct!!!</div>
+
       <div id ="ramble">${resultMap[direction]}</div>
       <div id="result-link"><label>Link To Your Result: <input id="share-link" value="${window.location.href}" type="text"></input></label>
       </div>
@@ -152,7 +181,7 @@ const generateResult = async (direction) => {
     await textVoiceSim.speak("...".split(","), null, true);
     await fuckery();
 
-//no more fuckery, truth isn't angry anymore
+    //no more fuckery, truth isn't angry anymore
     await textVoiceSim.speak("Though.".split(","), null, true);
     await sleep(1000);
 

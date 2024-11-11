@@ -108,6 +108,15 @@ const getBullshitCSS = (allowFilters) => {
   return css;
 }
 
+const isItFriday = ()=>{
+  //midnight and fridays are wungle time
+  const date = new Date();
+  if (date.getHours() == 0 || date.getDay() === 5) {
+    return true;
+  }
+  return false;
+}
+
 
 
 const fuckShitUP = (root) => {
