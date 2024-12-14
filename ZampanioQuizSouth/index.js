@@ -117,7 +117,7 @@ const initImages = async () => {
   //if theres more links then just dump them at the bottom (use pop so i know which haven't gone yet)
   const comboArray = [];
   for (let i = 0; i < images.length; i++) {
-    comboArray.push(`<img src='${images[i]}'>`);
+    comboArray.push(`<a target="_blank" href='${images[i]}'><img src='${images[i]}'></a>`);
     if (i % 3 === 0 && links.length > 0) {
       const link = links.pop();
       comboArray.push(`<a target="_blank" href='${link}'>${link}</a>`); //can pop here, were not looping on links

@@ -12,7 +12,7 @@ window.onload = () => {
 
 
 const message = async (index,timesVisted)=>{
-  const messages = timesVisted %2===0 ? firstMessages: secondMessages;
+  const messages = allMessages[timesVisted % allMessages.length]
   if(index < messages.length){
   prettyPrint(messages[index]);
   await sleep(1000);

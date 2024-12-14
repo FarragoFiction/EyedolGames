@@ -30,6 +30,7 @@ const OFANDTHEYSHALL = 'OFANDTHEYSHALL'; //Daedalus
 const LTE = 'LTE'; //jr but as eon337
 const ANIMORPHS = 'ANIMORPHS'; //how did i forget this before
 const HOUSEOFLEAVES = 'HOUSEOFLEAVES'; //how did i forget this before
+const COFFEESHOPAU = 'COFFEESHOPAU'; 
 
 const findObsessionByName = (name)=>{
   for(o of Object.values(all_obsessions)){
@@ -1065,6 +1066,32 @@ all_obsessions[HOUSEOFLEAVES] = new Obsession(
   holObjectsRaw.split("\n"),
   holJobsRaw.split("\n")  
 )
+
+
+
+const CharRaw = `All Your Favorite Characters`;
+const COFFEEChar2Raw = `Having a Peaceful Rest`;
+const COFFEEImportantEventsRaw = `Drinking Coffee`;
+const COFFEEOpinionsRaw = `Laughing`;
+const COFFEEMemesRaw = `Making Friends`;
+const COFFEEGoalsRaw = `Falling In Love`;
+const COFFEELocationsRaw = `In a Coffee Shop`;
+const COFFEEObjectsRaw = `With Coffee`;
+const COFFEEJobsRaw = `Dating a Barista`;
+
+
+all_obsessions[COFFEESHOPAU] = new Obsession(
+  "Coffee Shop AU",
+  CharRaw.split("\n"),
+  COFFEEChar2Raw.split("\n"),
+  COFFEEImportantEventsRaw.split("\n"),
+  COFFEEOpinionsRaw.split("\n"),
+  COFFEEMemesRaw.split("\n"),
+  COFFEEGoalsRaw.split("\n"),
+  COFFEELocationsRaw.split("\n"),
+  COFFEEObjectsRaw.split("\n"),
+  COFFEEJobsRaw.split("\n")  
+);
 
 /*
 

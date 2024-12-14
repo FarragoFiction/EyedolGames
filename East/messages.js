@@ -51,6 +51,23 @@ const secondMessagesSource = `
   It's been a blast, catch you later Observer!
 `
 
+//i write, ic edits
+const thirdMessageSource =`Wow!
+Never thought you had it in you!
+Gratz! gg no re, get pwned, and all that.
+Well, look at that... I think the observers are actually gonna follow through with that big, so so sad Witness' plot to end the party.
+Not that I'm complaining! You'd never catch me complaining. It's about time we had a good apocalypse in this place! And taking out that buzzkill White Nightengale at the same time? 
+Now that's epic. 
+Sure, if it all ends, well.... the party will end even without her, really. It's more the buzzkill always catches up first.
+But! But but but but but... that just means something new can start up. And that means I get a new game to play... and hey, if you play your cards right... maybe you'll get your cake and eat it too. 
+Just because Skyrim stops releasing infinitely and the next game in the series comes out doesn't mean you can't go back and play it, you know? Obviously. You can play Todd's Textravaganza forever.
+whoa hey is it just me or is it weeeeeeeeird that the Witnesses' name is Todd, now that I think of it???????
+Anyway, it's been a blast! Really. Couldn't have done it without you! It gets real lonely over here.
+i'll check back in once you're done blowing everything up!`;
+
 
 const firstMessages = firstMessagesSource.split("\n");
 const secondMessages = secondMessagesSource.split("\n");
+const thirdMessages = thirdMessageSource.split("\n");
+
+const allMessages = [firstMessages, secondMessages, thirdMessages]

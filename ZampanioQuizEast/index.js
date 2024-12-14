@@ -94,6 +94,7 @@ const generateResult = async (direction) => {
   JR: After all my long years as a fandom creator.<br><br>
   JR: So when I realized the way I could connect my idea to the Zampanio fandom....<br><br>
   JR: All without having to deal with any 'real' canon to match up to...<br><br>
+  JR: AND still having the freedom to bring whatever fandoms I wanted to in (no pressure to be totally unique).<br><br>
   JR: Well.<br><br>
   JR: Here we are.<br><br>
   JR: I hope you have fun joining the Zampanio fandom.<br><br>

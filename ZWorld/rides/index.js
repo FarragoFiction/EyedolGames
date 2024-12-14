@@ -100,6 +100,12 @@ const createDetailsRideFromParams = (rideType, name, image, themes,obsession) =>
   const clarifications = [`It has so many ${noun}s.`, `It is very ${adj}.`];
   adj
   const quips = [rand.pickFrom(intros), rand.pickFrom(clarifications)];
+
+  console.log("JR NOTE: obsesssion is", obsession, all_obsessions[COFFEESHOPAU].name)
+  if(obsession.name === all_obsessions[COFFEESHOPAU].name){
+    console.log("JR NOTE: :) :) :)")
+    return new DetailsLore(name, image, themes, obsession, desc, quips);
+  }
   if(rideType ===TRAIN ){
     return new DetailsTrain(name, image, themes, obsession, desc, quips);
   }else if (rideType === COASTER){
