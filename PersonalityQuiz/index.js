@@ -71,7 +71,6 @@ const answerMode = (seed, your_themes, your_rivals_themes) => {
 
 
 const generateResult = (seedRaw, your_themes_raw, your_rivals_themes_raw, content) => {
-  console.log("JR NOTE:", { seedRaw })
 
   const rand = new SeededRandom(parseInt(seedRaw));
   const your_themes = your_themes_raw.split(",");
@@ -84,6 +83,8 @@ const generateResult = (seedRaw, your_themes_raw, your_rivals_themes_raw, conten
      <div id="result-title">Your Result: </div>
      <div id="result-name"> ${titleCase(`${personal_adj} ${name}`)}</div>
       <div id ="ramble">${generateRamble(name, personal_adj, rand, your_themes, your_rivals_themes)}</div>
+      
+      <div><a href='http://farragofiction.com/CatalystsBathroomSim/NORTH/NORTH/NORTH/NORTH/NORTH/bathroom.html${window.location.search}'>Play</a> Your Game?</div>
       <div id="result-link"><label>Link To Your Result: <input id="share-link" value="${window.location.href}" type="text"></input></label>
       </div>
 

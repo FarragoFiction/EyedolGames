@@ -79,6 +79,7 @@ const generateResult = async (direction) => {
   It's just a shame that for <span style="cursor:pointer" title="you mean like the information not existing in the first place, smdh">some reason</span> information about it goes missing so often. You'd really like to play it now that you've heard about it, after all.
   <br><br>
   You'll have to search really hard to find it.
+  <br><br>In the meantime, try playing this fan game of it: <a target ="blank" href='http://farragofiction.com/ZampanioSimNorth'>here/</a> or join others pursuing the search <a target="_blank" href='https://spiralsrest.neocities.org/versions'>here</a>.
   `;
   resultMap[SOUTH] = `<div style="font-family: Courier New">JR: Well.<br><br>
   JR: I mean sure.<br><br>
@@ -100,8 +101,12 @@ const generateResult = async (direction) => {
   JR: I hope you have fun joining the Zampanio fandom.<br><br>
   JR: I know I did.<br><br>
   JR: And I can't wait to see what you create.<br><br>
+  http://farragofiction.com/ZampanioSimSouth/
   </div>`;
-  resultMap[EAST] = `You're not easy to fool!<br><br>It's obvious to anyone who digs a little bit that there's no way Zampanio came out all the way in the 70s!<br><br>Nah, its more likely to have been part of the TTRPG and early gaming golden age that was the late 90s. <br><br>Early copies of House of Leaves was being distributed via Xerox amoung friends, and it makes sense one of the early readers would have been inspired and wanted to try their hand at making a video game. <bR><br>Since sharing and copying culture was already strong in the proto House of Leaves community, of COURSE the game itself would get its source distributed and warped over the years, eventually gaining a bit of an 'urban legend' status along the way.<br><br>It's not really a meaningful sentence to say you want to 'play Zampanio' since the original copies likely have long been lost to history but you DO find yourself really excited at the idea of trying to find all the derivative versions of it.<br><br>Good work! `;
+  resultMap[EAST] = `You're not easy to fool!<br><br>It's obvious to anyone who digs a little bit that there's no way Zampanio came out all the way in the 70s!<br><br>Nah, its more likely to have been part of the TTRPG and early gaming golden age that was the late 90s. <br><br>Early copies of House of Leaves was being distributed via Xerox amoung friends, and it makes sense one of the early readers would have been inspired and wanted to try their hand at making a video game. <bR><br>Since sharing and copying culture was already strong in the proto House of Leaves community, of COURSE the game itself would get its source distributed and warped over the years, eventually gaining a bit of an 'urban legend' status along the way.<br><br>It's not really a meaningful sentence to say you want to 'play Zampanio' since the original copies likely have long been lost to history but you DO find yourself really excited at the idea of trying to find all the derivative versions of it.<br><br>Good work!
+  
+    <br><br>You might enjoy playing this fan game of it: <a target ="blank" href='http://farragofiction.com/ZampanioSimEast'>here/</a> or join others who realize what you do: <a target="_blank" href='https://lostinzampanio.neocities.org/'>here</a>.
+`;
   //you can HACK west to be your highest count (or anything but NSE), that gets you more angry truth rambling and super glitchy effects remixing the page you're on instead of going to results
   if (resultMap[direction]) {
     content.innerHTML = `

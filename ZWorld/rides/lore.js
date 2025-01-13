@@ -45,7 +45,7 @@ class DetailsLore extends DetailsRide {
 <p>Not have it ripped from her.</p>
 <p>No.</p>
 <p>With an effort he did not know he had in him, he plucks the <a target='_blank' href='http://farragofiction.com/CatalystsBathroomSim/EAST/NORTH/EAST/EAST/EAST/EAST/NORTH/bathroom.html'>Detective</a> from the Bathroom and places him between the Devil and his desired Exit. The thin layer of Relevance the Devil trails with him is just enough that the Witness can gift just a handful of it to his friend, who has been lost in the Void for longer than any of them..</p>
-<p>He hates himself for using his friend like this, but the Detective of Lost Exits is the only one who can trap this villain in place. And there is nothing, not anything in this world, that The Witness will not sacrifice for Wanda.</p>
+<p>He hates himself for using his friend like this, but the Guiding Detective of Trapped Breath is the only one who can trap this villain in place. And there is nothing, not anything in this world, that The Witness will not sacrifice for Wanda.</p>
 <p>The Detective screams in horror at being ripped dozens of Arms away from where he was diligently attempting to escape his narrative.</p>
 <p>The Devil of Spirals screams in horror at seeing the bounding boxes snap into place.</p>
 <p>The Witness watches.</p>
