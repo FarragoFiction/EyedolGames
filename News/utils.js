@@ -91,6 +91,49 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+//key, value status
+const cachedVideos = {}
+const videoExtensions = [
+  "mp4"
+];
+const videoFilePattern = new RegExp('<a href="([^?]*?)">','g');
+
+const videoExtensionPattern = new RegExp(`\\\.(${videoExtensions.join("|")})\$`);
+
+
+//returns a promise which resolves with the content, prevents network spam
+const getVideos = async (url) => {
+  if (cachedVideos[url]) {
+    return cachedVideos[url];
+  }
+
+  let promise = new Promise(async (resolve, reject) => {
+    try {
+      const rawText = await httpGetAsync(url);
+
+      let files = [];
+      const match = rawText.matchAll(videoFilePattern);
+      const matches = Array.from(match, (res) => res);
+      for (let m of matches) {
+        const item = m[1];
+        if (item.match(videoExtensionPattern)) {
+          files.push(item);
+        }
+      }
+      cachedVideos[url] = files;
+      //console.log("JR NOTE: returned from network for", url)
+      resolve(files);
+    } catch (e) {
+      console.log("JR NOTE: error", e)
+      reject();
+      return [];
+    }
+  })
+  cachedVideos[url] = promise;
+  return promise;
+}
+
+
 const imageExtendsions = [
   "png",
   "gif",

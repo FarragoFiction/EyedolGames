@@ -167,9 +167,17 @@ const collateAllFuckedUpSinglesImages = async () => {
   return images.map((item) => `${url}${item}`);
 }
 
+
 const collateAllQuizImages = async () => {
   const url = "http://eyedolgames.com/News/images/Quizzes/"
   let images = await getImages(url);
+  return images.map((item) => `${url}${item}`);
+}
+
+const collateAllQuizVideos = async () => {
+  //been collecting these for a while, glad i finally have a use for these
+  const url = "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/"
+  let images = await getVideos(url);
   return images.map((item) => `${url}${item}`);
 }
 
@@ -291,8 +299,8 @@ const setupLeftAd = async () => {
     , `gender`
 
     , "spiral"]
-  footer.innerText = pickFrom(textOptions) + " QUIZ";
-  await sleep(60000);
+  footer.innerText = (pickFrom(textOptions) + " QUIZ").toUpperCase();
+  await sleep(10000);
   setupRightAd();
 
 }
@@ -301,14 +309,14 @@ const setupLeftAd = async () => {
 
 const setupRightAd = async () => {
   const ele = document.querySelector(".link2");
-  const img = ele.querySelector("img");
+  const video = ele.querySelector("video");
   const header = ele.querySelector(".header");
   const footer = ele.querySelector(".footer");
 
   ele.style.width = getRandomNumberBetween(10, 30) + "%";
   ele.style.height = getRandomNumberBetween(30, 70) + "%";
-  img.style.width = "100%";
-  img.style.height = "100%";
+  video.style.width = "100%";
+  video.style.height = "100%";
   ele.style.top = getRandomNumberBetween(10, 100 - parseInt(ele.style.height)) + "%"
   header.style.backgroundColor = `rgb(${getRandomNumberBetween(0, 100)},${getRandomNumberBetween(0, 100)},${getRandomNumberBetween(0, 100)})`;
   footer.style.backgroundColor = `rgb(${getRandomNumberBetween(0, 100)},${getRandomNumberBetween(0, 100)},${getRandomNumberBetween(0, 100)})`;
@@ -316,19 +324,20 @@ const setupRightAd = async () => {
 
 
   if (num_articles < max_articles) {
-    let images = collateAllQuizImages();
-    images.then((results) => {
+    let videos = collateAllQuizVideos();
+    videos.then((results) => {
       if (results.length === 0) {
         return;
       }
-      //let image = "http://eyedolgames.com/Zampanini/images/Diner/00086-img_20221231213043.png"; //placeholder
-      img.src = pickFrom(results);
-      if (Math.random() > .5) {
-        img.style.objectFit = "none";
+      video.src = pickFrom(results);
+      video.loop = true;
+      video.play();
+      if (Math.random() > .75) {
+        video.style.objectFit = "none";
       }
     })
   } else {
-    img.src = "  http://eyedolgames.com/News/images/Quizzes/jr_modified.gif"
+    video.src = "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/553580.mp4"
 
   }
 
@@ -370,7 +379,7 @@ const setupRightAd = async () => {
     , `LEARN ABOUT YOUR PERSONALITY HERE`
 
     , "ZAMPANIO IS A REALLY FUN GAME AND YOU'RE ALREADY PLAYING IT."]
-  footer.innerText = pickFrom(bottomText) + " QUIZ";
+  footer.innerText = (pickFrom(bottomText) + " QUIZ").toUpperCase();
   header.innerText = pickFrom(topText);
 
   await sleep(10000);
