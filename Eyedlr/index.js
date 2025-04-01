@@ -46,13 +46,16 @@ let rand;
 let observer, wanderer, k;
 
 
-window.onload = () => {
+window.onload = async() => {
   let date = new Date();
   isItWungleTime();
   //april fools
   if (date.getMonth() === 3 && date.getDate() === 1) {
     let body = document.querySelector("body");
     body.innerText = "sayonara you weeaboo shits" //the personality of prophetic secrets is so correct, we should do the classic tumblr staff april fools
+    await sleep(13000);
+    //so its not just sburbsim/wigglersim folk who get to participate in Waste-Mas
+    window.location.href = "http://farragofiction.com/AdventureSimWest/";
   }
 
   initThemes();
