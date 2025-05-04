@@ -11,6 +11,14 @@ body {
 
 }
 
+.simple-ad{
+  width: 300px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+}
+
 #asks {
   position: relative;
 }

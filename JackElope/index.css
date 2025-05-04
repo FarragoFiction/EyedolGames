@@ -441,7 +441,7 @@ select {
 .profile-image {
   width: 200px;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .target {
@@ -525,7 +525,8 @@ div.single {
 }
 
 .preview {
-  object-fit: cover;
+  object-fit: contain;
   width: 95%;
   border-radius: 8px;
+  aspect-ratio: 1 / 1;
 }
