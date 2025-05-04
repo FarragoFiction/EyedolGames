@@ -49,11 +49,19 @@ initSimpleAd = async () => {
     opacity: 0.6;
     font-size: 12px;`;
 
-    simpleAd.onclick = async()=>{
-      postTitle.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
-      postContent.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
-      gif.src = gif_url + pickFrom(weird_gifs);
+    if(isItFriday()){
+      postTitle.innerHTML = "You Should Rest"
+      postContent.innerHTML = "Zampanio Will Still Be Here Later. Friday's and the Midnight Hour are our reminders that Zampanio needs us to live a long, fullfilling, varied life."
+      gif.src = "http://eyedolgames.com/News/images/Quizzes/jr_modified.gif";
+    }else{
+      simpleAd.onclick = async()=>{
+        postTitle.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
+        postContent.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
+        gif.src = gif_url + pickFrom(weird_gifs);
+      }
     }
+
+
 
 }
 
