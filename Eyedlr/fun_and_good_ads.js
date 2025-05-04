@@ -20,6 +20,7 @@ initSimpleAd = async () => {
   console.warn("JR NOTE: don't forget to remove this from landing bathroom, its just there as a test")
   const body = document.querySelector("body");
   const simpleAd = createElementWithClassAndParent("div", body, 'simple-ad');
+  simpleAd.style.cursor="pointer"
 
   const container = createElementWithClassAndParent("div", simpleAd, 'post-container');
 
@@ -31,7 +32,8 @@ initSimpleAd = async () => {
   const postTitle = createElementWithClassAndParent("div", postBody,);
   postTitle.style.cssText =`font-weight: 600;
     opacity: 0.6;
-    font-size: 20px;`;
+    font-size: 20px;
+    text-transform: capitalize;`;
 
   weird_blurbs = await getWeirdTextBlurbSimpleAd(blurb_url);
   postTitle.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
@@ -46,6 +48,12 @@ initSimpleAd = async () => {
   postContent.style.cssText =`font-weight: 300;
     opacity: 0.6;
     font-size: 12px;`;
+
+    simpleAd.onclick = async()=>{
+      postTitle.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
+      postContent.innerHTML = await blurbFromNetwork(blurb_url +pickFrom(weird_blurbs))
+      gif.src = gif_url + pickFrom(weird_gifs);
+    }
 
 }
 
@@ -161,7 +169,7 @@ const getWeirdTextBlurbSimpleAd = async (url) => {
 
 
 
-if(Math.random()>0.00031){ //halloween arc number
+if(Math.random()>0.05){ //just to keep you guessing if this really exists
   console.log("JR NOTE: its time to parody tumblr ads baby")
   window.addEventListener("load", initSimpleAd)
 }
