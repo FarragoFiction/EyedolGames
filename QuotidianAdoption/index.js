@@ -21,7 +21,9 @@ let normalImageList = [];
 //they'd get adopted before i could meet them
 //and they'd get added to the site after
 //i was going insane
-let rand = new SeededRandom(new Date().getHours()+new Date().getDay());
+
+const seed = new Date().getHours()+new Date().getDay();
+let rand = new SeededRandom(seed);
 
 
 let numItems = 0;
@@ -121,13 +123,13 @@ const generatePetName = () => {
   const templates = [`${title}`,
   `${first_srs} ${last_silly}`,
   `${first_srs} ${last_srs}`,
-  `${first_srs} ${last_silly} ${suffix}`,
-  `${first_srs} ${last_srs}  ${suffix}`,
+  `${first_srs} ${last_silly}${suffix}`,
+  `${first_srs} ${last_srs} ${suffix}`,
   `${first_silly}`,
-  `${first_silly} ${last_srs}  ${suffix}`,
-  `${first_silly} ${last_silly}  ${suffix}`,
+  `${first_silly} ${last_srs} ${suffix}`,
+  `${first_silly} ${last_silly} ${suffix}`,
   `${first_silly}`,
-  `${first_silly}  ${suffix}`,
+  `${first_silly} ${suffix}`,
   `${first_silly}`,
   `${first_silly}`,
   `${first_silly}`,
@@ -138,7 +140,7 @@ const generatePetName = () => {
   `${first_silly}`,
   `${first_silly}`,
 
-  `${first_srs}  ${suffix}`,
+  `${first_srs} ${suffix}`,
   `${first_srs}`,
   `${first_srs}`,
   `${first_srs}`,
@@ -154,27 +156,27 @@ const generatePetName = () => {
   `${title} ${first_srs}`,
   `${title} ${last_silly}`,
   `${title} ${last_srs}`,
-  `${title} ${suffix}`,
+  `${title}${suffix}`,
   `${title} ${first_silly}`,
   `${title} ${first_silly}`,
   `${title} ${title} ${first_srs}`,
   `${title} ${title} ${last_silly}`,
   `${title} ${title} ${last_srs}`,
-  `${title} ${title} ${suffix}`,
+  `${title} ${title}${suffix}`,
   `${title} ${title} ${first_silly}`,
   `${first_srs}`,
   `${last_silly}`,
   `${last_srs}`,
   `${first_silly}`,
   `${last_silly}`,
-  `${last_srs} ${suffix}`, `${last_silly} ${suffix}`,
+  `${last_srs}${suffix}`, `${last_silly}${suffix}`,
   `${last_srs}`, `${last_silly}`,
   `${last_srs}`, `${last_silly}`,
   `${last_srs}`, `${last_silly}`,
   `${last_srs}`, `${last_silly}`,
   `${last_srs}`,];
 
-  return pickFrom(templates)
+  return rand.pickFrom(templates)
 
 }
 
