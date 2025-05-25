@@ -1,7 +1,27 @@
-
+/*
+adopting hallow, eve and alya was a Challenge
+there were so many scammy sites
+or sites that WEREN'T scams but were
+so
+very
+badly
+organized.
+i made this as vent art during the adoption and after
+*/
 const normalImageSource = "http://eyedolgames.com/BabyQuotidians/";
 let normalImageList = [];
-let rand = new SeededRandom(13);
+//every single day of the week has different pets
+//but they change every hour
+//but if you go back to the same day and hour you'll get the same things
+//while i was looking for kittenes
+//i kept being told they were already adopted
+//and they'd leave the site
+//but then they'd COME BACK
+//or i'd hear about pets that weren't on the site yet
+//they'd get adopted before i could meet them
+//and they'd get added to the site after
+//i was going insane
+let rand = new SeededRandom(new Date().getHours()+new Date().getDay());
 
 
 let numItems = 0;
@@ -56,9 +76,9 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
     let li = createElementWithClassAndParent("li", factsList);
     li.innerText = `${fact.label}: ${fact.value}`;
   }
-  const buttonEle = createElementWithClassAndParent("button",stack)
+  const buttonEle = createElementWithClassAndParent("button", stack)
   buttonEle.innerText = "Adopt Me"
-  buttonEle.onclick = ()=>{alert("You Already Have :) :) ;)")} //Zampanio has colonized your mind already.
+  buttonEle.onclick = () => { alert("You Already Have :) :) ;)") } //Zampanio has colonized your mind already.
 
   let stack2 = createElementWithClassAndParent("div", parent, "stack details");
 
@@ -68,11 +88,11 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
   let detailsEle = createElementWithClassAndParent("div", stack2, "details-section");
   let paragraph = createElementWithClassAndParent("p", detailsEle);
 
-  for(let i =0; i<19; i++){
+  for (let i = 0; i < 19; i++) {
     const detail = rand.pickFrom(sweetQuotidianFacts);
-    let sentence = createElementWithClassAndParent("span", paragraph,"sentence");
+    let sentence = createElementWithClassAndParent("span", paragraph, "sentence");
     sentence.innerHTML = detail;
-    if(rand.nextDouble()>0.81){
+    if (rand.nextDouble() > 0.81) {
       //new paragraph
       paragraph = createElementWithClassAndParent("p", detailsEle);
     }
@@ -90,12 +110,78 @@ const renderGrid = () => {
   handleScrolling(ele);
 }
 
+const generatePetName = () => {
+  const title = rand.pickFrom(titles);
+  const first_silly = rand.pickFrom(baby_first_names);
+  const last_silly = rand.pickFrom(baby_last_names);
+  const first_srs = rand.pickFrom(first_names);
+  const last_srs = rand.pickFrom(last_names);
+  const suffix = rand.pickFrom(baby_endings);
 
+  const templates = [`${title}`,
+  `${first_srs} ${last_silly}`,
+  `${first_srs} ${last_srs}`,
+  `${first_srs} ${last_silly} ${suffix}`,
+  `${first_srs} ${last_srs}  ${suffix}`,
+  `${first_silly}`,
+  `${first_silly} ${last_srs}  ${suffix}`,
+  `${first_silly} ${last_silly}  ${suffix}`,
+  `${first_silly}`,
+  `${first_silly}  ${suffix}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+  `${first_silly}`,
+
+  `${first_srs}  ${suffix}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+  `${first_srs}`,
+
+  `${title} ${first_silly}`,
+  `${title} ${first_srs}`,
+  `${title} ${last_silly}`,
+  `${title} ${last_srs}`,
+  `${title} ${suffix}`,
+  `${title} ${first_silly}`,
+  `${title} ${first_silly}`,
+  `${title} ${title} ${first_srs}`,
+  `${title} ${title} ${last_silly}`,
+  `${title} ${title} ${last_srs}`,
+  `${title} ${title} ${suffix}`,
+  `${title} ${title} ${first_silly}`,
+  `${first_srs}`,
+  `${last_silly}`,
+  `${last_srs}`,
+  `${first_silly}`,
+  `${last_silly}`,
+  `${last_srs} ${suffix}`, `${last_silly} ${suffix}`,
+  `${last_srs}`, `${last_silly}`,
+  `${last_srs}`, `${last_silly}`,
+  `${last_srs}`, `${last_silly}`,
+  `${last_srs}`, `${last_silly}`,
+  `${last_srs}`,];
+
+  return pickFrom(templates)
+
+}
 
 const renderOneItem = (container) => {
   console.log("JR NOTE: rendering 1 item")
   numItems++;
-  const name = "Generic Name " + numItems;
+  const name = generatePetName();
   const tinyDescription1 = "Generic Desc 1"
   const tinyDescription2 = "Generic Desc 2"
   const img_src = rand.pickFrom(normalImageList);

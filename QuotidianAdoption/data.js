@@ -112,6 +112,7 @@ const titles_raw = `Abbess
     Thief
     TV's
     Vice
+    Naughty
     Vice President
     Vice-Chancellor
     Viscount
@@ -122,6 +123,10 @@ const titles = titles_raw.split("\n")
 
 const baby_first_names_raw = `Albert
     Arnold
+    War
+    Famine
+    Pestilance
+    Death
     Autumn
     Baby
     Barney
@@ -192,6 +197,7 @@ const baby_first_names_raw = `Albert
     Tony
     Waluigi
     Wario
+    Wilbur
     Wiggler
     Wiggly
     Zoosmell
@@ -298,7 +304,7 @@ const baby_last_names_raw = `Addington
 
 
 
-const first_names = ["Alaya", "Amadeus", "Vivienne ", "Masego", "Akua", "Catherine", "Harkam", "Indrani", "Benoit", "Lloyd", "Yor", "Anya", "Tony", "Ben", "Karen", "Ennis", "Dallas", "Berga", "Eve", "Adam", "Nice", "Luck", "Lucky", "Maiza", "Miria", "Czeslaw", "Ladd", "Marcoccio", "Issac", "Firo", "Claire", "Vino", "Jacuzzi", "Chane", "Mike", "Dracula", "Sypha", "Alucard", "Trevor", "Power", "Denji", "Aki", "Kobeni", "Tom", "Amelie", "Wanda", "Wodin", "Piper", "Jasna", "Brian", "Todd", "Joshua", "Wyatt", "Joshua", "Penny", "Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
+const first_names = ["Hallow","Eve","Alya","Duncan","Tina","Donut","Ender","Alaya", "Amadeus", "Vivienne ", "Masego", "Akua", "Catherine", "Harkam", "Indrani", "Benoit", "Lloyd", "Yor", "Anya", "Tony", "Ben", "Karen", "Ennis", "Dallas", "Berga", "Eve", "Adam", "Nice", "Luck", "Lucky", "Maiza", "Miria", "Czeslaw", "Ladd", "Marcoccio", "Issac", "Firo", "Claire", "Vino", "Jacuzzi", "Chane", "Mike", "Dracula", "Sypha", "Alucard", "Trevor", "Power", "Denji", "Aki", "Kobeni", "Tom", "Amelie", "Wanda", "Wodin", "Piper", "Jasna", "Brian", "Todd", "Joshua", "Wyatt", "Joshua", "Penny", "Jake", "Rachel", "Tobias", "Marco", "Cassie", "Tom", "Erek", "Camille", "Yongki", "Parker", "Ria", "Devona", "Neville", "Witherby", "Hoon", "River", "Khana", "Vik", "Craig", "John", "Jude", "Jade", "Joey", "Rose", "Roxy", "Jeff", "Dave", "Dirk", "Jove", "Jake", "Sophie", "Jaxon", "Basira", "Daisy", "Martin", "Georgie", "Sasha", "James", "Taylor", "Victoria", "Jean-Paul", "Bob", "Alice", "Carol", "Eve", "Adam", "Rachel", "Brian", "Aisha", "Alexandra", "Alex", "Tobias", "Marco", "Cassie", "Tom", "Lisa", "Sarah", " Sylvester", "Gordon", "Helen", "Jamie", "Lillian", "Mary", "Ashton", "Peter", "Zawhei", "Eirikr", "Volour", "Okarin", "Peewee", "Hagala", "Despap", "Othala", "Gertrude", "Mike", "Michael", "Peter", "Simon", "Manuela", "Annabel"];
 
 const last_names = ["Blanc", "Forger", "Jefferson", "Genoard", "Holystone", "Gandor", "Quates", "Harvent", "Meyer", "Russo", "Dian", "Prochainezo", "Stanfield", "Splot", "Laforet", "Peyote", "Blightheart", "Gilbert", "Howard", "Davidson", "Vastheight", "Gillespie", "Mann", "Rusting", "Researcher", "Gently", "Egbert", "Claire", "Lalonde", "Strider", "Hussain", "King", "Stoker", "Sims", "Blackwood", "Barker", "James", "Blake", "Dalon", "Vasil", "Hebert", "Jensen", "Lindt", "Newell", "Laborn", "Fell", "Wilbourn", "Livsey", "Lamb", "Bacama", "Kharun", "Reynolds", "Braggi", "Seelee", "Cassan", "Folnir", "Citato", "Grigor", "Crew", "Robertson", "Fairchild", "Lukas", "Richardson", "Dominguez", "Cane", "Salesa", "Shelly"];
 
