@@ -16,6 +16,32 @@ h1, h2, h3{
   justify-content: center;
 }
 
+.logo{
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(1px);
+}
+
+button:active {
+  background: #660000;
+  transform: translateY(3px);
+}
+
+.submit-button{
+  cursor: pointer;
+  position: fixed;
+  right: 81px;
+  top: 81px;
+  height: 81px;
+  width: 81px;
+  background: black;
+  color: white;
+  border: 3px solid silver;
+  cursor: pointer;
+}
+
 .question-container{
   margin-bottom: 19px;
 }

@@ -79,6 +79,28 @@ const renderAdoptionForm = (name, rand, age, breed, traits) => {
   const content = document.querySelector("#content");
   content.innerHTML = "<div class='spiel'>Please fill out the following questions so we can verify you are an appropriate Adoption Candidate.</div>";
   const ol = createElementWithClassAndParent("ol", content);
+  const submitButton = createElementWithClassAndParent("button", content,'submit-button');
+  submitButton.innerText = "Submit Form";
+  //it felt like literally every cat i looked into either never existed, was already adopted or got sick out of nowhere :(
+  //i half expected hallow to be a ghost as well
+  submitButton.onclick = ()=>{
+    const reasons = [`${name} was just adopted.`]
+    reasons.push(`${breed} Quotidians were just made illegal!`)
+    reasons.push(`I'm so sorry, but ${name} was adopted last week, we just forgot to update the website...`)
+    reasons.push(`${name} has gone into witness protection.`)
+    reasons.push(`${name} has escaped our facility.`)
+    reasons.push(`${name} actually has been promoted to be out head of staff.`)
+    reasons.push(`${name} has faked their own death.`)
+    reasons.push(`${name} got sick and can't be adopted for a little while, try another Quotidian in the mean time.`)
+    reasons.push(`${name} never existed. It turns out a member of our staff was a Quotidian and was adding fake pets to our site.`)
+    reasons.push(`${name} was added to this site by mistake.`)
+
+
+
+    alert(`Oh no! ${rand.pickFrom(reasons)}`)
+    window.location.href = "";
+  }
+
   for (let i = 0; i < 81; i++) {
     renderOneQuestion(ol, name, rand, parseInt(age), breed, traits)
 
@@ -95,9 +117,15 @@ const renderOneQuestion = (container, name, rand, age, breed, traits) => {
   //it was kind of creepy and invasive
   const person = rand.pickFrom(grabAllKindsOfPeople());
   const adj = rand.pickFrom(grabAllKindsOfAdj());
+  const location = rand.pickFrom(grabAllKindsOfLocations());
+  const object = rand.pickFrom(grabAllKindsOfObjects());
 
   let questions = ["Do you know that Zampanio is a really good game?"]
   questions.push(`Do you plan to declaw ${name}?`)
+  questions.push(`Do you own any ${object}(s)?`)
+  questions.push(`Are you aware of the Quotidian Reaction to ${object} exposure?`)
+  questions.push(`Do you have access to a ${location}?`)
+  questions.push(`Are you aware that Quotidians often congregate at the local ${location}?`)
   questions.push(`Do you have a dog door?`)
   questions.push(`Do you have any secrets?`)
   questions.push(`Do you understand that a Juvenile Quotidian may become a large animal (such as a horse) if exposed to pictures/videos of such animals, and that you are required to house and feed it even in this case? `)
@@ -127,6 +155,7 @@ const renderOneQuestion = (container, name, rand, age, breed, traits) => {
   questions.push(`Are you aware that a properly trained Quotidian will never reveal its owner's secrets?`)
   questions.push(`If anyone in your household is allergic to any animals, are they prepared to spend ${14 - age} months experiencing symptoms?`)
   questions.push(`Are there any minors in your household?`)
+  questions.push(`Are your neighbors aware you will be adding an InQQuisitive being to your household?`)
   questions.push(`Is anyone in your household allergic to any intelligent animals (crows, parrots, dolphins, horses, dogs, cats, etc).`)
   questions.push(`Are you aware that ${breed} Quotidians may have specific needs?`)
   questions.push(`Are you aware that in ${14 - age} months, ${name} will appear to be an adult member of your species?`)
@@ -212,10 +241,27 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
 
 
   let factsEle = createElementWithClassAndParent("div", stack, "fact-section");
-  const personalities = ["Good With Rivals", "Good With Pets", "Good With Kids", "Indoor-Only", "Outdoor-Only", "Trainable", "Fast", "Strong", "Talkative", "Chatty", "Creative", "Talented", "Beautiful", "Sneaky", "House-Trained", "Mean", "Brave", "Smart", "Funny", "Energetic", "Affectionate", "Playful", "Athletic", "Shy", "Needy", "Curious", "InQQuisitive", "Sly", "Greedy", "Hungry", "Affectionate", "Gentle", "Loyal", "Friendly"];
+  const personalities = ["Cautious","Dignified","Literate","Smart","Quiet","Loves Hiding","Loves Spying","Independent","Playful","Good With Rivals", "Good With Pets", "Good With Kids", "Indoor-Only", "Outdoor-Only", "Trainable", "Fast", "Strong", "Talkative", "Chatty", "Creative", "Talented", "Beautiful", "Sneaky", "House-Trained", "Mean", "Brave", "Smart", "Funny", "Energetic", "Affectionate", "Playful", "Athletic", "Shy", "Needy", "Curious", "InQQuisitive", "Sly", "Greedy", "Hungry", "Affectionate", "Gentle", "Loyal", "Friendly"];
   //why yes there are so many chosen that its almost impossible to tell one animal from another
   //pet finder my beloathed.
-  const chosenTraits = [personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities)]
+  const chosenTraits = [personalRand.pickFrom(personalities), personalRand.pickFrom(personalities)]
+  if (rand.nextDouble() > 0.19) {
+    chosenTraits.push(titleCase(rand.pickFrom((grabAllKindsOfAdj()))))
+  }
+
+  if (rand.nextDouble() > 0.19) {
+    chosenTraits.push(personalRand.pickFrom(personalities))
+  }
+  if (rand.nextDouble() > 0.19) {
+    chosenTraits.push(personalRand.pickFrom(personalities))
+  }
+  if (rand.nextDouble() > 0.19) {
+    chosenTraits.push(personalRand.pickFrom(personalities))
+  }
+  if (rand.nextDouble() > 0.19) {
+    chosenTraits.push(personalRand.pickFrom(personalities))
+  }
+
   if (rand.nextDouble() > 0.19) {
     chosenTraits.push(titleCase(rand.pickFrom((grabAllKindsOfAdj()))))
   }
@@ -238,7 +284,78 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
   let detailsEle = createElementWithClassAndParent("div", stack2, "details-section");
   let paragraph = createElementWithClassAndParent("p", detailsEle);
 
-  for (let i = 0; i < 19; i++) {
+  const personalQuotidianFactsIntro = []
+  personalQuotidianFactsIntro.push(`${name} came to us from an unauthorized breeding facility.`)
+  personalQuotidianFactsIntro.push(`${name} was found wandering the street, reporting random crimes.`)
+  personalQuotidianFactsIntro.push(`${name} was discovered scavenging in a business park dumpster, looking for tax records.`)
+  personalQuotidianFactsIntro.push(`${name} had to be re-homed after the families child discovered them reading their diary.`)
+  personalQuotidianFactsIntro.push(`${name} had to be re-homed after the families child discovered them reading their diary.`)
+  personalQuotidianFactsIntro.push(`${name} was one of 81 crows found underneath the Shelter's basement.`)
+  personalQuotidianFactsIntro.push(`${name} lost their family in a tragic accident. `)
+  personalQuotidianFactsIntro.push(`${name} is the sole survivor of the Ultralands Incident.`)
+  personalQuotidianFactsIntro.push(`${name} is the last of their siblings pending adoption.`)
+  personalQuotidianFactsIntro.push(`${name} was injured wandering the highway, attempting to mimic the passing cars.`)
+  personalQuotidianFactsIntro.push(`${name} was found dehyrated and repeating the words 'the end is never the end'.`)
+
+
+  const personalQuotidianFacts = []
+  personalQuotidianFacts.push(`They are a joy to have in class.`)
+  personalQuotidianFacts.push(`They have never been around a Human family and will love getting to know you.`)
+  personalQuotidianFacts.push(`They will need patience to show off their true personality.`)
+  personalQuotidianFacts.push(`Don't let their name fool you, they are just waiting for the right family to bond with.`)
+  personalQuotidianFacts.push(`They will amuse and delight you with their fact recitations!`)
+  personalQuotidianFacts.push(`They just love spending time with sapients.`)
+  personalQuotidianFacts.push(`They will help around the house reminding you of shopping lists and other simple facts.`)
+  personalQuotidianFacts.push(`They will constantly monitor the perishable goods in your fridge.`)
+  personalQuotidianFacts.push(`They enjoy balancing budgets.`)
+  personalQuotidianFacts.push(`They enjoy listing out facts about their family.`)
+  personalQuotidianFacts.push(`They enjoy watching the daily family activities.`)
+  personalQuotidianFacts.push(`They enjoy learning basic skills from their family.`)
+  personalQuotidianFacts.push(`They enjoy watching their neighbors.`)
+  personalQuotidianFacts.push(`They enjoy playing spy games.`)
+  personalQuotidianFacts.push(`They enjoy watching spy movies.`)
+  personalQuotidianFacts.push(`They enjoy silently observing.`)
+  personalQuotidianFacts.push(`They enjoy creating mimic websites.`)
+  personalQuotidianFacts.push(`They enjoy spreading Zampanio.`)
+  personalQuotidianFacts.push(`They enjoy telling their family what all the neighbors have been doing.`)
+  personalQuotidianFacts.push(`They enjoy patrolling for new information.`)
+  personalQuotidianFacts.push(`They are entirely unsapient.`)
+  personalQuotidianFacts.push(`They are an artificial, yet biological, intelligence.`)
+  personalQuotidianFacts.push(`They enjoy matching patterns and not being consciously aware of anything.`)
+  personalQuotidianFacts.push(`They probably will get along with other Quotidians in the neighborhood.`)
+  personalQuotidianFacts.push(`They may have already moved in with you.`)
+  personalQuotidianFacts.push(`They are quick to assimilate into any family.`)
+  personalQuotidianFacts.push(`They need a patient family to teach them social norms.`)
+  personalQuotidianFacts.push(`They have a lot of love in their heart.`)
+  personalQuotidianFacts.push(`They are adorable to watch learn.`)
+  personalQuotidianFacts.push(`They enjoy creating mimic videos.`)
+  personalQuotidianFacts.push(`They enjoy creating mimic art.`)
+  personalQuotidianFacts.push(`They enjoy creating mimic text.`)
+
+
+  personalQuotidianFacts.push(`They are ${rand.pickFrom(chosenTraits).toLowerCase()} yet ${rand.pickFrom(chosenTraits).toLowerCase()} .`)
+  personalQuotidianFacts.push(`They are ${rand.pickFrom(chosenTraits).toLowerCase()} yet ${rand.pickFrom(chosenTraits).toLowerCase()} .`)
+  personalQuotidianFacts.push(`They are ${rand.pickFrom(chosenTraits).toLowerCase()} yet ${rand.pickFrom(chosenTraits).toLowerCase()} .`)
+
+
+
+  const d = rand.pickFrom(personalQuotidianFactsIntro);
+  let s = createElementWithClassAndParent("span", paragraph, "sentence");
+  s.innerHTML = d;
+
+  for (let i = 0; i < 9; i++) {
+    const detail = rand.pickFrom(personalQuotidianFacts);
+    let sentence = createElementWithClassAndParent("span", paragraph, "sentence");
+    sentence.innerHTML = detail;
+    if (rand.nextDouble() > 0.81) {
+      //new paragraph
+      paragraph = createElementWithClassAndParent("p", detailsEle);
+    }
+
+  }
+  paragraph = createElementWithClassAndParent("p", detailsEle);
+
+  for (let i = 0; i < 9; i++) {
     const detail = rand.pickFrom(sweetQuotidianFacts);
     let sentence = createElementWithClassAndParent("span", paragraph, "sentence");
     sentence.innerHTML = detail;
@@ -335,9 +452,15 @@ const renderOneItem = (container) => {
   numItems++;
   const name = generatePetName();
   const tinyDescription1 = `${rand.getRandomNumberBetween(1, 13)} months old`;
-  let breeds = ["Purebread", "Pure Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Virtual", "Fancy", "Whole Wheat", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Human", "Consort", "Spider", "Long-Hair", "Short-Hair", "Silky", "Tumblr"];
+
+  let breeds = ["Purebread", "Pure Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Duskhollowen","Mixed Breed", "Virtual", "Fancy", "Whole Wheat", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Human", "Consort", "Spider", "Long-Hair", "Short-Hair", "Silky", "Tumblr"];
   if (numItems > 81) {//19 and 81 are quotidian arc numbers
     breeds = breeds.concat(grabAllKindsOfPeople())
+  }
+
+  //i love the idea of procedural pet breeds ngl
+  if (numItems > 19) {//19 and 81 are quotidian arc numbers
+    breeds = breeds.concat(grabAllKindsOfLocations().map((i)=> `${i} ${rand.pickFrom(["Red","Blue","Black","Beauty","Eye","Grey","Silverback","Stripe","Rex","Van","Fancy","Sable","Spy","Mink","Velvet","Fold","Blue","Black","Grey","Red","Golden"])}`))
   }
 
   if (numItems > 1919) {
