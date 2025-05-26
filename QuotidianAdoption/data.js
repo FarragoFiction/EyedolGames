@@ -1,6 +1,15 @@
 //https://genders.wtf/gauntlet/
 
 
+const grabAllKindsOfPeople = ()=>{
+    let ret = [];
+    for(let theme of Object.values(all_themes)){
+        ret = ret.concat(theme.getPossibilitiesFor(PERSON))
+    }
+    return ret;
+}
+
+
 const sweetQuotidianFactsRaw = `A Quotidian is an artifical being, created by an Ancient Wizard or possibly by a 90s computer geek or possibly by a Lord of Space entering the session. They don't know anymore!
 A Quotidian cares very little about their own survival.
 A Quotidian cares about gathering information above their own personal safety.
@@ -282,21 +291,21 @@ const baby_last_names_raw = `Addington
     const baby_last_names = baby_last_names_raw.split("\n")
 
     const baby_endings_raw = `III
-     IV
-     IX
-     the Shippest
-     V
-     VI
-     VII
-     VIII
-     X
-    , CPA
-    , esq
-    , Junior
-    , MD
-    , Ph.D.
-    , Senior
-    , the Third
+    IV
+    IX
+    the Shippest
+    V
+    VI
+    VII
+    VIII
+    X
+    ,CPA
+    ,esq
+    ,Junior
+    ,MD
+    ,Ph.D.
+    ,Senior
+    ,the Third
     -chan
     -Mew`;
 

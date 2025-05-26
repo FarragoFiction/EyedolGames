@@ -22,21 +22,46 @@ let normalImageList = [];
 //and they'd get added to the site after
 //i was going insane
 
-const seed = new Date().getHours()+new Date().getDay();
+const seed = new Date().getHours() + new Date().getDay();
 let rand = new SeededRandom(seed);
-
+const isItFriday = () => {
+  //midnight and fridays are wungle time
+  const date = new Date();
+  if (date.getHours() == 0 || date.getDay() === 5) {
+    return true;
+  }
+  return false;
+}
 
 let numItems = 0;
 
 window.onload = async () => {
+  if (isItFriday()) {
+    const content = document.querySelector("#content");
+    content.innerHTML = `Rest.
+    <br><br>
+    Zampanio will be here tomorrow.
+    <br><br>
+    Zampanio Is A Marathon, Not A Sprint.
+    <br><br>
+    Rest.
+    <br><br>
+    Obession Is A Dangerous Thing.
+    <br><br>
+    Rest.
+    <br><br>
+    Zampanio Needs You To Live A Long Life.
+    `;
+
+  }
   await grabNormalImages();
   initThemes();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let name = urlParams.get('name');
   let img_src = urlParams.get('img_src'); //if this is absolute we'll get people able to send shock images to each other hidden in my stuff, no
-  let tinyDescription1 = urlParams.get('tinyDescription1');//domestic shorthair and tabby mix
-  let tinyDescription2 = urlParams.get('tinyDescription2'); //x miles away
+  let tinyDescription1 = urlParams.get('age');//domestic shorthair and tabby mix
+  let tinyDescription2 = urlParams.get('breed'); //x miles away
 
   if (img_src) { //anything else it can figure out but you better give it a real image (relative)
     name ||= "Generic Desc1"
@@ -49,7 +74,53 @@ window.onload = async () => {
   }
 }
 
+const renderAdoptionForm = (name, rand, age, breed) => {
+  console.log("JR NOTE: renderAdoptionForm")
+  const content = document.querySelector("#content");
+  content.innerHTML = "";
+  const ol = createElementWithClassAndParent("ol", content);
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+  renderOneQuestion(ol, name, rand, age, breed)
+
+  handleScrollingQuestions(ol, name, rand, age, breed)
+
+
+}
+
+const renderOneQuestion = (container, name, rand, age, breed) => {
+  numItems++;
+  let me = createElementWithClassAndParent("div", container, "question-container");
+  //there was at least one shelter that wanted a virutal tour of my house before they'd let me see a pet
+  //it was kind of creepy and invasive
+  const questions = ["Question: (TODO referenc name, age and breed, plus other things) (will you let us watch your home)"]
+  let ill_advised_raw_html = `
+    <div><label>${numItems}: ${pickFrom(questions)}</label>
+    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">`
+
+  const options = ["Yes", "No"]
+  for (let i = 0; i < 2; i++) {
+    const id = `radio-${numItems}-${i}`
+    ill_advised_raw_html += `<div class='horizontal-radio'><input id="${id}" name="radio-${numItems}" type="radio"></input><label for="${id}"  class='gender'>${options[i]}</label></div>`;
+  }
+  ill_advised_raw_html += '</div></div>'
+  me.innerHTML = ill_advised_raw_html;
+
+
+}
+
 const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) => {
+  const personalRand = new SeededRandom(stringtoseed(name))
   const content = document.querySelector("#content");
   const spiel = document.querySelector(".spiel");
   spiel.remove()
@@ -71,7 +142,11 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
 
 
   let factsEle = createElementWithClassAndParent("div", stack, "fact-section");
-  let facts = [{ label: "fact1", value: tinyDescription1 }, { label: "fact2", value: tinyDescription2 }, { label: "fact3", value: "Generic Fact" }]
+  const personalities = ["Good With Rivals", "Good With Pets", "Good With Kids", "Indoor-Only", "Outdoor-Only", "Trainable", "Fast", "Strong", "Talkative", "Chatty", "Creative", "Talented", "Beautiful", "Sneaky", "House-Trained", "Mean", "Brave", "Smart", "Funny", "Energetic", "Affectionate", "Playful", "Athletic", "Shy", "Needy", "Curious", "InQQuisitive", "Sly", "Greedy", "Hungry", "Affectionate", "Gentle", "Loyal", "Friendly"];
+  //why yes there are so many chosen that its almost impossible to tell one animal from another
+  //pet finder my beloathed.
+  const chosen = [personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities)]
+  let facts = [{ label: "Age", value: tinyDescription1 }, { label: "Breed", value: tinyDescription2 }, { label: "Personality", value: chosen.join(', ') }]
   let factsList = createElementWithClassAndParent("ul", factsEle);
 
   for (let fact of facts) {
@@ -80,7 +155,7 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
   }
   const buttonEle = createElementWithClassAndParent("button", stack)
   buttonEle.innerText = "Adopt Me"
-  buttonEle.onclick = () => { alert("You Already Have :) :) ;)") } //Zampanio has colonized your mind already.
+  buttonEle.onclick = () => { renderAdoptionForm(name, personalRand, tinyDescription1, tinyDescription2) } //Zampanio has colonized your mind already.
 
   let stack2 = createElementWithClassAndParent("div", parent, "stack details");
 
@@ -109,27 +184,29 @@ const renderGrid = () => {
   for (let i = 0; i < 113; i++) {
     renderOneItem(ele)
   }
-  handleScrolling(ele);
+  handleScrollingPets(ele);
 }
 
 const generatePetName = () => {
-  const title = rand.pickFrom(titles);
-  const first_silly = rand.pickFrom(baby_first_names);
-  const last_silly = rand.pickFrom(baby_last_names);
-  const first_srs = rand.pickFrom(first_names);
-  const last_srs = rand.pickFrom(last_names);
-  const suffix = rand.pickFrom(baby_endings);
+  const title = rand.pickFrom(titles).trim();
+  const title2 = rand.pickFrom(titles).trim();
+
+  const first_silly = rand.pickFrom(baby_first_names).trim();
+  const last_silly = rand.pickFrom(baby_last_names).trim();
+  const first_srs = rand.pickFrom(first_names).trim();
+  const last_srs = rand.pickFrom(last_names).trim();
+  const suffix = rand.pickFrom(baby_endings).trim();
 
   const templates = [`${title}`,
   `${first_srs} ${last_silly}`,
   `${first_srs} ${last_srs}`,
   `${first_srs} ${last_silly}${suffix}`,
-  `${first_srs} ${last_srs} ${suffix}`,
+  `${first_srs} ${last_srs}${suffix}`,
   `${first_silly}`,
-  `${first_silly} ${last_srs} ${suffix}`,
-  `${first_silly} ${last_silly} ${suffix}`,
+  `${first_silly} ${last_srs}${suffix}`,
+  `${first_silly} ${last_silly}${suffix}`,
   `${first_silly}`,
-  `${first_silly} ${suffix}`,
+  `${first_silly}${suffix}`,
   `${first_silly}`,
   `${first_silly}`,
   `${first_silly}`,
@@ -140,7 +217,7 @@ const generatePetName = () => {
   `${first_silly}`,
   `${first_silly}`,
 
-  `${first_srs} ${suffix}`,
+  `${first_srs}${suffix}`,
   `${first_srs}`,
   `${first_srs}`,
   `${first_srs}`,
@@ -159,11 +236,11 @@ const generatePetName = () => {
   `${title}${suffix}`,
   `${title} ${first_silly}`,
   `${title} ${first_silly}`,
-  `${title} ${title} ${first_srs}`,
-  `${title} ${title} ${last_silly}`,
-  `${title} ${title} ${last_srs}`,
-  `${title} ${title}${suffix}`,
-  `${title} ${title} ${first_silly}`,
+  `${title} ${title2} ${first_srs}`,
+  `${title} ${title2} ${last_silly}`,
+  `${title} ${title2} ${last_srs}`,
+  `${title} ${title2}${suffix}`,
+  `${title} ${title2} ${first_silly}`,
   `${first_srs}`,
   `${last_silly}`,
   `${last_srs}`,
@@ -174,7 +251,7 @@ const generatePetName = () => {
   `${last_srs}`, `${last_silly}`,
   `${last_srs}`, `${last_silly}`,
   `${last_srs}`, `${last_silly}`,
-  `${last_srs}`,];
+  `${last_srs}`];
 
   return rand.pickFrom(templates)
 
@@ -184,13 +261,22 @@ const renderOneItem = (container) => {
   console.log("JR NOTE: rendering 1 item")
   numItems++;
   const name = generatePetName();
-  const tinyDescription1 = "Generic Desc 1"
-  const tinyDescription2 = "Generic Desc 2"
+  const tinyDescription1 = `${rand.getRandomNumberBetween(1, 19)} months old`;
+  let breeds = ["Purebread", "Pure Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Virtual", "Fancy", "Whole Wheat", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Human", "Consort", "Spider", "Long-Hair", "Short-Hair", "Silky", "Tumblr"];
+  if (numItems > 81) {//19 and 81 are quotidian arc numbers
+    breeds = breeds.concat(grabAllKindsOfPeople())
+  }
+
+  if (numItems > 1919) {
+    breeds = ["Please Stop.", "It's Hurting Me.", "You Can't Scroll Forever.", "Take A Break.", "Zampanio Is A Marathon Not A Sprint"]
+  }
+  const tinyDescription2 = titleCase(rand.pickFrom(breeds));
   const img_src = rand.pickFrom(normalImageList);
 
   let item = createElementWithClassAndParent("a", container, "item");
+  item.title = "Adoptable" + numItems
   item.target = "_blank";
-  item.href = `?name=${name}&tinyDescription1=${tinyDescription1}&tinyDescription2=${tinyDescription2}&img_src=${img_src}`;
+  item.href = `?name=${name}&age=${tinyDescription1}&breed=${tinyDescription2}&img_src=${img_src}`;
   let imageEle = createElementWithClassAndParent("img", item, "preview", 'item-image');
   imageEle.src = normalImageSource + img_src;
 
@@ -206,7 +292,7 @@ const renderOneItem = (container) => {
 
 }
 
-const handleScrolling = (container) => {
+const handleScrollingPets = (container) => {
   let lastScrollTime = 0; //not to spam events
   window.onscroll = () => {
     const newTime = new Date().getTime();
@@ -219,6 +305,24 @@ const handleScrolling = (container) => {
       renderOneItem(container);
       renderOneItem(container);
       renderOneItem(container);
+    });
+
+  };
+}
+
+const handleScrollingQuestions = (container, name, rand, age, breed) => {
+  let lastScrollTime = 0; //not to spam events
+  window.onscroll = () => {
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 50) {
+      return;
+    }
+    lastScrollTime = newTime;
+
+    window.requestAnimationFrame(() => {
+      renderOneQuestion(container, name, rand, age, breed);
+      renderOneQuestion(container, name, rand, age, breed);
+      renderOneQuestion(container, name, rand, age, breed);
     });
 
   };
