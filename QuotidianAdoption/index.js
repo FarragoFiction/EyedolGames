@@ -77,23 +77,13 @@ window.onload = async () => {
 const renderAdoptionForm = (name, rand, age, breed) => {
   console.log("JR NOTE: renderAdoptionForm")
   const content = document.querySelector("#content");
-  content.innerHTML = "";
+  content.innerHTML = "<div class='spiel'>Please fill out the following questions so we can verify you are an appropriate Adoption Candidate.</div>";
   const ol = createElementWithClassAndParent("ol", content);
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
-  renderOneQuestion(ol, name, rand, age, breed)
+  for (let i = 0; i < 81; i++) {
+    renderOneQuestion(ol, name, rand, parseInt(age), breed)
 
-  handleScrollingQuestions(ol, name, rand, age, breed)
+  }
+  handleScrollingQuestions(ol, name, rand, parseInt(age), breed)
 
 
 }
@@ -103,10 +93,61 @@ const renderOneQuestion = (container, name, rand, age, breed) => {
   let me = createElementWithClassAndParent("div", container, "question-container");
   //there was at least one shelter that wanted a virutal tour of my house before they'd let me see a pet
   //it was kind of creepy and invasive
-  const questions = ["Question: (TODO referenc name, age and breed, plus other things) (will you let us watch your home)"]
+  const person = rand.pickFrom(grabAllKindsOfPeople());
+  const adj = rand.pickFrom(grabAllKindsOfAdj());
+
+  const questions = ["Do you know that Zampanio is a really good game?"]
+  questions.push(`Do you plan to declaw ${name}?`)
+  questions.push(`If anyone in your household is allergic to any animals, are they prepared to spend ${19-age} months experiencing symptoms?`)
+  questions.push(`Are there any minors in your household?`)
+  questions.push(`Is anyone in your household allergic to any intelligent animals (crows, parrots, dolphins, horses, dogs, cats, etc).`)
+  questions.push(`Are you aware that ${breed} Quotidians may have specific needs?`)
+  questions.push(`Are you aware that in ${19-age} months, ${name} will appear to be an adult member of your species?`)
+  questions.push(`Are you aware that there is only ${19-age} months of ${name} appearing to be a pet?`)
+  questions.push(`Are all members of your household in agreement to get a Quotidian?`)
+  questions.push(`Are all members of your household in agreement to get a ${name}?`)
+  questions.push(`If you are renting, are you prepared to pay a pet deposit until ${name} is old enough to appear to be a member of your species?`)
+  questions.push(`Are you aware that we will gather information on you and anyone in your household?`)
+  questions.push(`Are you aware that some Quotidians can only be adopted as a bonded pair?`)
+  questions.push(`Do you know that declawing animals is illegal in a lot of places?`)
+  questions.push(`Do you plan to have ${name} be an outdoor pet?`)
+  questions.push(`Do you expect ${name} to be a working animal?`)
+  questions.push(`Do you have other pets?`)
+  questions.push(`Have you ever adopted a Quotidian before?`)
+  questions.push(`Do you consent to have legal action taken against you if you declaw ${name}?`)
+  questions.push(`Do you consent for your home to be monitored indefinitely to confirm the status of ${name}?`)
+  questions.push(`Do you consent for ${name} to send back anonymized  analytical data regarding your home and hydration habits?`)
+  questions.push(`Will you allow us to post images of your home, face, and other pets for promotional purposes?`)
+  questions.push(`Do you have experience with ${breed} Quotidians?`)
+  questions.push(`Do  you understand that ${age} Quotidians have specific needs?`)
+  questions.push(`Are there circumstances in which you would return ${name}?`)
+  questions.push(`Do you understand that Quotidians have high information needs?`)
+  questions.push(`Will you provide an enriching environment for ${name} to constantly monitor?`)
+  questions.push(`Are you comfortable taking ${name} with you to work or school?`)
+  questions.push(`Do you have plans to allow ${name} to mimic specific members of your family?`)
+  questions.push(`Are all members of your family aware you are bringing home a Quotidian?`)
+  questions.push(`Will you let ${name} mimic a ${person}.`)
+  questions.push(`Have you ever seen a ${person}?`)
+  questions.push(`Are you 21 years or older?`)
+  questions.push(`Are your current pets spayed or neutered?`)
+  questions.push(`Are you aware that Quotidians breed rapidly when left intact?`)
+  questions.push(`Are you aware that even a single Quotidian can produce up to 81 offspring from a single breeding?`)
+  questions.push(`If you cannot continue caring for ${name} for any reason, do you consent to return them to us?`)
+  questions.push(`Are you allowed to have pets in your home?`)
+  questions.push(`Are you allowed to have InQQuisitive beings in your home?`)
+  questions.push(`If we have reason to believe ${name} is in danger or being abused, we will enter your home with or without your consent.`)
+  questions.push(`Are you aware that Quotidians can become more ${adj} as they mature?`)
+  questions.push(`Are you aware that Quotidians can become more ${adj} as they mature?`)
+  questions.push(`Do you consider it appropriate for a Quotidian to mimic a ${person}?`)
+  questions.push(`Do you understand that Quotidians experience Extreme Distress if they are not allowed to mimic something in their environment?`)
+  questions.push(`Are you aware that a Quotidian mimicking someone does not take on their appearance?`)
+  questions.push(`Are you aware that adult Quotidians look like whatever sapient species is most common in their area?`)
+  questions.push(`Are you aware that child Quotidians (up till 19 months of age) will mimic whatever intelligent-but-not-sapient animals are common in their area (dogs, cats, crows, horses, dolphins, etc).`)
+
+
   let ill_advised_raw_html = `
-    <div><label>${numItems}: ${pickFrom(questions)}</label>
-    <div class="${pickFrom(['horizontal-radio', 'vertical-radio'])}">`
+    <div><label class='question'>${numItems}: ${rand.pickFrom(questions)}</label>
+    <div class="horizontal-radio">`
 
   const options = ["Yes", "No"]
   for (let i = 0; i < 2; i++) {
@@ -115,8 +156,6 @@ const renderOneQuestion = (container, name, rand, age, breed) => {
   }
   ill_advised_raw_html += '</div></div>'
   me.innerHTML = ill_advised_raw_html;
-
-
 }
 
 const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) => {
@@ -261,7 +300,7 @@ const renderOneItem = (container) => {
   console.log("JR NOTE: rendering 1 item")
   numItems++;
   const name = generatePetName();
-  const tinyDescription1 = `${rand.getRandomNumberBetween(1, 19)} months old`;
+  const tinyDescription1 = `${rand.getRandomNumberBetween(1, 18)} months old`;
   let breeds = ["Purebread", "Pure Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Virtual", "Fancy", "Whole Wheat", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Human", "Consort", "Spider", "Long-Hair", "Short-Hair", "Silky", "Tumblr"];
   if (numItems > 81) {//19 and 81 are quotidian arc numbers
     breeds = breeds.concat(grabAllKindsOfPeople())

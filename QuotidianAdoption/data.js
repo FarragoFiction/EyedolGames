@@ -10,6 +10,14 @@ const grabAllKindsOfPeople = ()=>{
 }
 
 
+const grabAllKindsOfAdj = ()=>{
+    let ret = [];
+    for(let theme of Object.values(all_themes)){
+        ret = ret.concat(theme.getPossibilitiesFor(ADJ))
+    }
+    return ret;
+}
+
 const sweetQuotidianFactsRaw = `A Quotidian is an artifical being, created by an Ancient Wizard or possibly by a 90s computer geek or possibly by a Lord of Space entering the session. They don't know anymore!
 A Quotidian cares very little about their own survival.
 A Quotidian cares about gathering information above their own personal safety.

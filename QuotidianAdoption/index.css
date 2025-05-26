@@ -16,8 +16,26 @@ h1, h2, h3{
   justify-content: center;
 }
 
+.question-container{
+  margin-bottom: 19px;
+}
+
+.question{
+  font-weight: bolder;
+}
+
 .sentence{
   margin-right: 10px;
+}
+
+.horizontal-radio{
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  margin-left: 13px;
+  max-width: 500px;
+  align-items: center;
+
 }
 
 .details-parent{
