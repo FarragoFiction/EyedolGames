@@ -52,7 +52,7 @@ window.onload = async () => {
     <br><br>
     Zampanio Needs You To Live A Long Life.
     `;
-
+    return;
   }
   await grabNormalImages();
   initThemes();
@@ -74,21 +74,21 @@ window.onload = async () => {
   }
 }
 
-const renderAdoptionForm = (name, rand, age, breed) => {
+const renderAdoptionForm = (name, rand, age, breed, traits) => {
   console.log("JR NOTE: renderAdoptionForm")
   const content = document.querySelector("#content");
   content.innerHTML = "<div class='spiel'>Please fill out the following questions so we can verify you are an appropriate Adoption Candidate.</div>";
   const ol = createElementWithClassAndParent("ol", content);
   for (let i = 0; i < 81; i++) {
-    renderOneQuestion(ol, name, rand, parseInt(age), breed)
+    renderOneQuestion(ol, name, rand, parseInt(age), breed, traits)
 
   }
-  handleScrollingQuestions(ol, name, rand, parseInt(age), breed)
+  handleScrollingQuestions(ol, name, rand, parseInt(age), breed, traits)
 
 
 }
 
-const renderOneQuestion = (container, name, rand, age, breed) => {
+const renderOneQuestion = (container, name, rand, age, breed, traits) => {
   numItems++;
   let me = createElementWithClassAndParent("div", container, "question-container");
   //there was at least one shelter that wanted a virutal tour of my house before they'd let me see a pet
@@ -96,16 +96,43 @@ const renderOneQuestion = (container, name, rand, age, breed) => {
   const person = rand.pickFrom(grabAllKindsOfPeople());
   const adj = rand.pickFrom(grabAllKindsOfAdj());
 
-  const questions = ["Do you know that Zampanio is a really good game?"]
+  let questions = ["Do you know that Zampanio is a really good game?"]
   questions.push(`Do you plan to declaw ${name}?`)
-  questions.push(`If anyone in your household is allergic to any animals, are they prepared to spend ${19-age} months experiencing symptoms?`)
+  questions.push(`Do you have a dog door?`)
+  questions.push(`Do you have any secrets?`)
+  questions.push(`Do you understand that a Juvenile Quotidian may become a large animal (such as a horse) if exposed to pictures/videos of such animals, and that you are required to house and feed it even in this case? `)
+  questions.push(`Do you understand that a Quotidian will mimic the things around it?`)
+  questions.push(`Do you understand that a Quotidian has the biological traits of its current Mask, including dietary needs or illness risks?`)
+  questions.push(`Do you underestand that, without proper trainin, a Quotidian could do harm to family members?`)
+  questions.push(`Do you understand that, without proper training, a Quotidian may mimic behavior seen in videos and other media?`)
+  questions.push(`Do you understand that Quotidians are not sapient?`)
+  questions.push(`Do you understand that Quotidians are mimics of behavior?`)
+  questions.push(`Do you understand that Quotidians are not people?`)
+  questions.push(`Do you understand that Quotidians can drown in just two inches of water?`)
+  questions.push(`Do you undrestand that Quotidians require fresh water and food daily?`)
+  questions.push(`Do you understand that a Quotidian requires mutiple roles to Mimic?`)
+  questions.push(`Do you hold public office or otherwise count on your public reputation for your living.`)
+  questions.push(`Would any of your secrets ruin you if they got out?`)
+  questions.push(`Do you know what Mirror Corruption is?`)
+  questions.push(`Do you know what declawing means?`)
+  questions.push(`Are you aware that Quotidians require constant companionship or risk Mirror Corruption?`)
+  questions.push(`Are you aware that Quotidians require annual vaccines and calibration?`)
+  questions.push(`What are your existing pet's reaction when seeing a Quotidian?`)
+  questions.push(`Has your household been around Adult (over 14 month) Quotidians before?`)
+  questions.push(`Has your household been around Juvenille (under 14 month) Quotidians before?`)
+  questions.push(`Are you aware that while ${name} is ${rand.pickFrom(traits)} now, as an Adult, they might no longer be?`)
+  questions.push(`Do you intend to continue providing for ${name}, even after they mature?`)
+  questions.push(`Are you prepared what is necessary to do?`)
+  questions.push(`Are you aware that Quotidians are incapable of feeding themselves?`)
+  questions.push(`Are you aware that a properly trained Quotidian will never reveal its owner's secrets?`)
+  questions.push(`If anyone in your household is allergic to any animals, are they prepared to spend ${14 - age} months experiencing symptoms?`)
   questions.push(`Are there any minors in your household?`)
   questions.push(`Is anyone in your household allergic to any intelligent animals (crows, parrots, dolphins, horses, dogs, cats, etc).`)
   questions.push(`Are you aware that ${breed} Quotidians may have specific needs?`)
-  questions.push(`Are you aware that in ${19-age} months, ${name} will appear to be an adult member of your species?`)
-  questions.push(`Are you aware that there is only ${19-age} months of ${name} appearing to be a pet?`)
+  questions.push(`Are you aware that in ${14 - age} months, ${name} will appear to be an adult member of your species?`)
+  questions.push(`Are you aware that there will be only ${14 - age} months of ${name} appearing to be a pet?`)
   questions.push(`Are all members of your household in agreement to get a Quotidian?`)
-  questions.push(`Are all members of your household in agreement to get a ${name}?`)
+  questions.push(`Are all members of your household in agreement to get ${name}?`)
   questions.push(`If you are renting, are you prepared to pay a pet deposit until ${name} is old enough to appear to be a member of your species?`)
   questions.push(`Are you aware that we will gather information on you and anyone in your household?`)
   questions.push(`Are you aware that some Quotidians can only be adopted as a bonded pair?`)
@@ -119,7 +146,8 @@ const renderOneQuestion = (container, name, rand, age, breed) => {
   questions.push(`Do you consent for ${name} to send back anonymized  analytical data regarding your home and hydration habits?`)
   questions.push(`Will you allow us to post images of your home, face, and other pets for promotional purposes?`)
   questions.push(`Do you have experience with ${breed} Quotidians?`)
-  questions.push(`Do  you understand that ${age} Quotidians have specific needs?`)
+  questions.push(`Do  you understand that ${age} month old Quotidians have specific needs?`)
+  questions.push(`Do  you understand that ${breed} Quotidians have specific needs?`)
   questions.push(`Are there circumstances in which you would return ${name}?`)
   questions.push(`Do you understand that Quotidians have high information needs?`)
   questions.push(`Will you provide an enriching environment for ${name} to constantly monitor?`)
@@ -142,9 +170,12 @@ const renderOneQuestion = (container, name, rand, age, breed) => {
   questions.push(`Do you understand that Quotidians experience Extreme Distress if they are not allowed to mimic something in their environment?`)
   questions.push(`Are you aware that a Quotidian mimicking someone does not take on their appearance?`)
   questions.push(`Are you aware that adult Quotidians look like whatever sapient species is most common in their area?`)
-  questions.push(`Are you aware that child Quotidians (up till 19 months of age) will mimic whatever intelligent-but-not-sapient animals are common in their area (dogs, cats, crows, horses, dolphins, etc).`)
+  questions.push(`Are you aware that child Quotidians (up till 14 months of age) will mimic whatever intelligent-but-not-sapient animals are common in their area (dogs, cats, crows, horses, dolphins, etc).`)
 
 
+  if (numItems > 1119) {
+    questions = ["Are you aware you should stop scrolling?"]
+  }
   let ill_advised_raw_html = `
     <div><label class='question'>${numItems}: ${rand.pickFrom(questions)}</label>
     <div class="horizontal-radio">`
@@ -184,8 +215,11 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
   const personalities = ["Good With Rivals", "Good With Pets", "Good With Kids", "Indoor-Only", "Outdoor-Only", "Trainable", "Fast", "Strong", "Talkative", "Chatty", "Creative", "Talented", "Beautiful", "Sneaky", "House-Trained", "Mean", "Brave", "Smart", "Funny", "Energetic", "Affectionate", "Playful", "Athletic", "Shy", "Needy", "Curious", "InQQuisitive", "Sly", "Greedy", "Hungry", "Affectionate", "Gentle", "Loyal", "Friendly"];
   //why yes there are so many chosen that its almost impossible to tell one animal from another
   //pet finder my beloathed.
-  const chosen = [personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities)]
-  let facts = [{ label: "Age", value: tinyDescription1 }, { label: "Breed", value: tinyDescription2 }, { label: "Personality", value: chosen.join(', ') }]
+  const chosenTraits = [personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities), personalRand.pickFrom(personalities)]
+  if (rand.nextDouble() > 0.19) {
+    chosenTraits.push(titleCase(rand.pickFrom((grabAllKindsOfAdj()))))
+  }
+  let facts = [{ label: "Age", value: tinyDescription1 }, { label: "Breed", value: tinyDescription2 }, { label: "Personality", value: chosenTraits.join(', ') }]
   let factsList = createElementWithClassAndParent("ul", factsEle);
 
   for (let fact of facts) {
@@ -194,7 +228,7 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
   }
   const buttonEle = createElementWithClassAndParent("button", stack)
   buttonEle.innerText = "Adopt Me"
-  buttonEle.onclick = () => { renderAdoptionForm(name, personalRand, tinyDescription1, tinyDescription2) } //Zampanio has colonized your mind already.
+  buttonEle.onclick = () => { renderAdoptionForm(name, personalRand, tinyDescription1, tinyDescription2, chosenTraits) } //Zampanio has colonized your mind already.
 
   let stack2 = createElementWithClassAndParent("div", parent, "stack details");
 
@@ -300,7 +334,7 @@ const renderOneItem = (container) => {
   console.log("JR NOTE: rendering 1 item")
   numItems++;
   const name = generatePetName();
-  const tinyDescription1 = `${rand.getRandomNumberBetween(1, 18)} months old`;
+  const tinyDescription1 = `${rand.getRandomNumberBetween(1, 13)} months old`;
   let breeds = ["Purebread", "Pure Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Mixed Breed", "Virtual", "Fancy", "Whole Wheat", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Beloran", "Human", "Consort", "Spider", "Long-Hair", "Short-Hair", "Silky", "Tumblr"];
   if (numItems > 81) {//19 and 81 are quotidian arc numbers
     breeds = breeds.concat(grabAllKindsOfPeople())
@@ -344,12 +378,33 @@ const handleScrollingPets = (container) => {
       renderOneItem(container);
       renderOneItem(container);
       renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+      renderOneItem(container);
+
+      renderOneItem(container);
     });
 
   };
 }
 
-const handleScrollingQuestions = (container, name, rand, age, breed) => {
+const handleScrollingQuestions = (container, name, rand, age, breed, traits) => {
   let lastScrollTime = 0; //not to spam events
   window.onscroll = () => {
     const newTime = new Date().getTime();
@@ -359,9 +414,40 @@ const handleScrollingQuestions = (container, name, rand, age, breed) => {
     lastScrollTime = newTime;
 
     window.requestAnimationFrame(() => {
-      renderOneQuestion(container, name, rand, age, breed);
-      renderOneQuestion(container, name, rand, age, breed);
-      renderOneQuestion(container, name, rand, age, breed);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+      renderOneQuestion(container, name, rand, age, breed, traits);
+
     });
 
   };
