@@ -89,7 +89,7 @@ const renderAdoptionForm = (name, rand, age, breed, traits) => {
     reasons.push(`I'm so sorry, but ${name} was adopted last week, we just forgot to update the website...`)
     reasons.push(`${name} has gone into witness protection.`)
     reasons.push(`${name} has escaped our facility.`)
-    reasons.push(`${name} actually has been promoted to be out head of staff.`)
+    reasons.push(`${name} actually has been promoted to be our head of staff.`)
     reasons.push(`${name} has faked their own death.`)
     reasons.push(`${name} got sick and can't be adopted for a little while, try another Quotidian in the mean time.`)
     reasons.push(`${name} never existed. It turns out a member of our staff was a Quotidian and was adding fake pets to our site.`)
@@ -285,6 +285,8 @@ const renderDetailsPage = (name, img_src, tinyDescription1, tinyDescription2) =>
   let paragraph = createElementWithClassAndParent("p", detailsEle);
 
   const personalQuotidianFactsIntro = []
+  personalQuotidianFactsIntro.push(`${name} was rescued from an unending nightmare Labyrinth.`)
+  personalQuotidianFactsIntro.push(`${name} came to us from an illegal Quotidian fight ring.`)
   personalQuotidianFactsIntro.push(`${name} came to us from an unauthorized breeding facility.`)
   personalQuotidianFactsIntro.push(`${name} was found wandering the street, reporting random crimes.`)
   personalQuotidianFactsIntro.push(`${name} was discovered scavenging in a business park dumpster, looking for tax records.`)

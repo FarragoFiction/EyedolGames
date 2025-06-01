@@ -211,7 +211,7 @@ const randomRadioGenderAffirm = ()=>{
   return ill_advised_raw_html;
 }
 
-const  = () => {
+const  randomRadio = () => {
   const max = 5;
   const min = 2;
   const amount = getRandomNumberBetween(min, max);
