@@ -87,6 +87,10 @@ body{
   font-size: 31px;
 }
 
+.corruption:hover{
+  color: red;
+}
+
 
 #search-results .link-container{
   margin-top: 13px;

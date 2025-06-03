@@ -549,7 +549,7 @@ const genders = rawGender.split("\n");
 
 
 const pickARandomThemeFromListAndGrabKey = (rand, themeKeys, attributeKey, capitalize) => {
-    //console.log("JR NOTE:",rand, themeKeys, attributeKey, capitalize )
+    console.log("JR NOTE:",rand, themeKeys, attributeKey, capitalize )
     try {
         const chosenThemeKey = rand.pickFrom(themeKeys);
 
