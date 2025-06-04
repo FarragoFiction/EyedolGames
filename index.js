@@ -50,7 +50,7 @@ const loadSearchResults = async () => {
     searchInputDos.value = searchInput.value;
   }
 
-  rand = new SeededRandom(stringtoseed(searchInput.value))
+  rand = new SeededRandom(stringtoseed(searchInputDos.value))
 
 
   for (let i = 0; i < 113; i++) {
@@ -160,7 +160,7 @@ const zampaniniLink = (parent, rand) => {
     isBroken = false;
   }
   const title_addons = ["Powered by Zampanini", "Delivery", "Online", "Order Online", "Delivery", "Delivery and Carryout", "", "", "Carryout"]
-  let title = getRestaurantName(rand, [theme.key], Math.random() > 0.75) + " " + rand.pickFrom(title_addons)
+  let title = getRestaurantName(rand, [theme.key], rand.nextDouble() > 0.75) + " " + rand.pickFrom(title_addons)
   const madLibs = scrapeImportantWordsFromTheme(rand, theme);
   const descriptionTemplates = [
     `It's a perfectly normal food website!`,
@@ -206,7 +206,7 @@ const zampaniniLink = (parent, rand) => {
     description += " " + rand.pickFrom(descriptionTemplates);
   }
 
-  if (Math.random() > 0.75) {
+  if (rand.nextDouble() > 0.75) {
     description += " " + rand.pickFrom(descriptionTemplatesEnding);
   }
 
@@ -247,7 +247,7 @@ const jackElopeLink = (parent, rand) => {
   for (let i = 0; i < rand.getRandomNumberBetween(0, 5); i++) {
     description += " " + rand.pickFrom(description_templates);
   }
-  if (Math.random() > 0.75) {
+  if (rand.nextDouble() > 0.75) {
     description += " " + rand.pickFrom(description_suffix);
   }
   let url = `http://eyedolgames.com/JackElope/?seed=${rand.internal_seed}&name=${name}&image=${image}&matchPercent=${rand.getRandomNumberBetween(-113, 999)}&loc=Horrrorterror,Google`
@@ -309,7 +309,7 @@ const zWorldLink = (parent, rand) => {
   if (subsiteImageCache[ZWORLD]) {
     image = rand.pickFrom(subsiteImageCache[ZWORLD]);
   }
-  const firstParts = ["Cool", "Corrupted", "Glitched", "FAke", "Amazing", "Tantalizing", "Hypnotic", "Obsesive", "Hydrated"]
+  const firstParts = ["Cool", "Corrupted", "Glitched", "FAke", "Amazing", "Tantalizing", "Hypnotic", "Obsessive", "Hydrated"]
   const secondParts = ["Theme Park Ride", "ZWorld", "Experience", "Calibration", "Maze", "Labyrinth", "Hallway", "Horridor", "Corridor"]
 
   let title = `${rand.pickFrom(firstParts)} ${rand.pickFrom(secondParts)}`;
@@ -320,7 +320,7 @@ const zWorldLink = (parent, rand) => {
   for (let i = 0; i < rand.getRandomNumberBetween(0, 5); i++) {
     description += " " + rand.pickFrom(descriptions);
   }
-  if (Math.random() > 0.75) {
+  if (rand.nextDouble() > 0.75) {
     description += " " + rand.pickFrom(endings);
   }
 
@@ -343,7 +343,7 @@ const quotidianAdoption = (parent, rand) => {
   for (let i = 0; i < rand.getRandomNumberBetween(0, 5); i++) {
     description += " " + rand.pickFrom(descriptions);
   }
-  if (Math.random() > 0.75) {
+  if (rand.nextDouble() > 0.75) {
     description += " " + rand.pickFrom(endings);
   }
   let url = `http://eyedolgames.com/QuotidianAdoption/?name=${name}&age=${rand.getRandomNumberBetween(1, 14)}%20months%20old&breed=Horror Terror&img_src=${image}`
