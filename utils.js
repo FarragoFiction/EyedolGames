@@ -2,6 +2,16 @@ let ele;
 
 let how_long_well_let_them_explore = 500;
 
+const isItFriday = ()=>{
+  //midnight and fridays are wungle time
+  const date = new Date();
+  if (date.getHours() == 0 || date.getDay() === 5) {
+    return true;
+  }
+  return false;
+}
+
+
 const createElementWithClass = (eleName, className) => {
   const ele = document.createElement(eleName);
 

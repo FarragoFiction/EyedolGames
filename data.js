@@ -341,6 +341,77 @@ const first_names = ["Hallow","Eve","Alya","Duncan","Tina","Donut","Ender","Alay
 
 const last_names = ["Blanc", "Forger", "Jefferson", "Genoard", "Holystone", "Gandor", "Quates", "Harvent", "Meyer", "Russo", "Dian", "Prochainezo", "Stanfield", "Splot", "Laforet", "Peyote", "Blightheart", "Gilbert", "Howard", "Davidson", "Vastheight", "Gillespie", "Mann", "Rusting", "Researcher", "Gently", "Egbert", "Claire", "Lalonde", "Strider", "Hussain", "King", "Stoker", "Sims", "Blackwood", "Barker", "James", "Blake", "Dalon", "Vasil", "Hebert", "Jensen", "Lindt", "Newell", "Laborn", "Fell", "Wilbourn", "Livsey", "Lamb", "Bacama", "Kharun", "Reynolds", "Braggi", "Seelee", "Cassan", "Folnir", "Citato", "Grigor", "Crew", "Robertson", "Fairchild", "Lukas", "Richardson", "Dominguez", "Cane", "Salesa", "Shelly"];
 
+
+const generatePetName = (rand) => {
+    const title = rand.pickFrom(titles).trim();
+    const title2 = rand.pickFrom(titles).trim();
+  
+    const first_silly = rand.pickFrom(baby_first_names).trim();
+    const last_silly = rand.pickFrom(baby_last_names).trim();
+    const first_srs = rand.pickFrom(first_names).trim();
+    const last_srs = rand.pickFrom(last_names).trim();
+    const suffix = rand.pickFrom(baby_endings).trim();
+  
+    const templates = [`${title}`,
+    `${first_srs} ${last_silly}`,
+    `${first_srs} ${last_srs}`,
+    `${first_srs} ${last_silly}${suffix}`,
+    `${first_srs} ${last_srs}${suffix}`,
+    `${first_silly}`,
+    `${first_silly} ${last_srs}${suffix}`,
+    `${first_silly} ${last_silly}${suffix}`,
+    `${first_silly}`,
+    `${first_silly}${suffix}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+    `${first_silly}`,
+  
+    `${first_srs}${suffix}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+    `${first_srs}`,
+  
+    `${title} ${first_silly}`,
+    `${title} ${first_srs}`,
+    `${title} ${last_silly}`,
+    `${title} ${last_srs}`,
+    `${title}${suffix}`,
+    `${title} ${first_silly}`,
+    `${title} ${first_silly}`,
+    `${title} ${title2} ${first_srs}`,
+    `${title} ${title2} ${last_silly}`,
+    `${title} ${title2} ${last_srs}`,
+    `${title} ${title2}${suffix}`,
+    `${title} ${title2} ${first_silly}`,
+    `${first_srs}`,
+    `${last_silly}`,
+    `${last_srs}`,
+    `${first_silly}`,
+    `${last_silly}`,
+    `${last_srs}${suffix}`, `${last_silly}${suffix}`,
+    `${last_srs}`, `${last_silly}`,
+    `${last_srs}`, `${last_silly}`,
+    `${last_srs}`, `${last_silly}`,
+    `${last_srs}`, `${last_silly}`,
+    `${last_srs}`];
+  
+    return rand.pickFrom(templates)
+  
+  }
+
 const lameGenderRaw = `Male
 Female
 Other
@@ -549,7 +620,6 @@ const genders = rawGender.split("\n");
 
 
 const pickARandomThemeFromListAndGrabKey = (rand, themeKeys, attributeKey, capitalize) => {
-    console.log("JR NOTE:",rand, themeKeys, attributeKey, capitalize )
     try {
         const chosenThemeKey = rand.pickFrom(themeKeys);
 
