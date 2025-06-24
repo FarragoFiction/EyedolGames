@@ -60,6 +60,13 @@ window.onload = () => {
   const urlParams = new URLSearchParams(queryString);
   let tmp_ref = urlParams.get('referer');
 
+  if(tmp_ref === "ZSearch"){
+    theme_keys = [TWISTING, SPYING, KNOWING,WEB,TECHNOLOGY]
+    referer_details="?theend=nevertheend"
+    horrorTerrorArticle();
+    return;
+  }
+
   if(tmp_ref === "Eyedlr"){
     theme_keys = [TWISTING, LOVE, DOLLS, ANGER]
     referer_details="?theend=nevertheend"
@@ -105,6 +112,15 @@ window.onload = () => {
   setupRightAd();
   replaceFirstArticleAndHeader();
 
+}
+
+const horrorTerrorArticle= ()=>{
+  placeHolderDataAsNeeded();
+  setupLeftAd();
+  setupBottomAd();
+  setUpMiddleADInit();
+  setupRightAd();
+  new GoogleArticle().replaceFirstArticleAndHeader();
 }
 
 const tumblrArticle= ()=>{
