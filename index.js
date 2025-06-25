@@ -17,6 +17,20 @@ let rand = new SeededRandom(linkCount + stringtoseed(new Date().toString()))
 const ZAMPANINI = "zampanini"
 const ZWORLD = "zworld"
 const PET = "pet"
+const SEARCHTERM="searchTerm"
+
+window.onload=()=>{
+  const queryString = window.location.search;
+  if(!queryString){
+    empty_news = true;
+  }
+  const urlParams = new URLSearchParams(queryString);
+  let term = urlParams.get(SEARCHTERM);
+  if(term){
+    const searchInput = document.querySelector("#search-input");
+    searchInput.value = decodeURIComponent(term);
+  }
+}
 
 window.onkeydown = (e)=>{
   if(e.key ==="Enter"){
@@ -49,6 +63,7 @@ const loadSearchResults = async () => {
   if (!searchInputDos.value) {
     searchInputDos.value = searchInput.value;
   }
+  updateURLParams(SEARCHTERM+"="+encodeURIComponent(searchInputDos.value))
 
   rand = new SeededRandom(stringtoseed(searchInputDos.value.toLowerCase()))
 

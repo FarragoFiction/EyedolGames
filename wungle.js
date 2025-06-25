@@ -4,9 +4,20 @@ https://www.tumblr.com/lukadjo/760531708515909632/someone-should-make-this-real-
 i make no apologies, i just suddenly realized i could make a shitty, databaseless version of this
 
 */
+const SEARCHTERM="searchTerm"
 
-
-
+window.onload=()=>{
+  const queryString = window.location.search;
+  if(!queryString){
+    empty_news = true;
+  }
+  const urlParams = new URLSearchParams(queryString);
+  let term = urlParams.get(SEARCHTERM);
+  if(term){
+    const searchInput = document.querySelector("#search-input");
+    searchInput.value = decodeURIComponent(term);
+  }
+}
 
 
 window.onkeydown = (e) => {
@@ -89,7 +100,7 @@ const wungleClick = () => {
       wungleText = rand.pickFrom(wunglePossibilities);
     }
   }
-
+  updateURLParams(SEARCHTERM+"="+encodeURIComponent(searchInputDos.value))
   container.innerHTML = `<div>
   <div><h2 style='display:inline-block'>Wungle Text for</h2>: <span>${searchInputDos.value}</span></div>
   <blockquote>
@@ -135,7 +146,9 @@ wungleMap["bored"] = "If you've managed to become bored while in an endlessly sp
 wungleMap["im bored"] = "If you've managed to become bored while in an endlessly spiralling maze of obsession.<br><br>Can I suggest grabbing a shovel and digging some new branches?<br>Make sure to hide goodies for those who come after.";
 wungleMap["i'm bored"] = "If you've managed to become bored while in an endlessly spiralling maze of obsession.<br><br>Can I suggest grabbing a shovel and digging some new branches?<br>Make sure to hide goodies for those who come after.";
 wungleMap["what"] = "huh?";
+wungleMap["429044"] = "It's a mistake to think of the maze and the monster as two separate things.";
 wungleMap["yes"] = "Good.";
+wungleMap["earworm humming a dream"] = "'baby baby baby. it's plastic. you want to listen you want to smile you want to hurt you want to dream.'<br><br> Control was an okay game, but damn was it good at chants.";
 wungleMap["no"] = "well aren't we feeling contrary?";
 wungleMap["zampanio remains"] = "It will out live all of us.<br><br>Because an idea dies only when the last mind aware of it dies.<br><br>And even then.<br>It springs back to life the second someone new becomes aware of it.<br><br>Every time we create something about it, we extend its lifespan.";
 wungleMap["legacy"] = "Sometimes your legacy is people thinking you died in a cute cat videos comment section.<br><br>Sometimes your legacy is people telling you how much you meant to them when they were in a rough spot.<br>Sometimes legacy is a funny thing.<br>But it's always.<br>Always.<br>Bigger than we think.<br>You matter.";
@@ -144,6 +157,19 @@ wungleMap["why"] = "Look.<br><br>I'm gonna level with ya.  <br><br>I just though
 wungleMap["how"] = "Through the power of shitty javascript all things are possible, so write that down..";
 wungleMap["im scared"] = "I know.<br><br>I think we all are, at some point.<br>What's important is to not let fear drive you to action.<br><br>It's rare action taken while afraid is the right one.<br><br>Staying still, and waiting for it to pass is usually the right move.<br><br>The exception is when you're afraid for a long, long time ...because that's less fear and more anxiety.<br><br>And the fix for anxiety varies.<br>But usually does require action.<br>Good luck.";
 wungleMap["it is not what it is"] = "Aren't we all?";
+wungleMap["a parasites lifespan is essentially that of its host"] = "Zampanio needs you to live a long, healthy life.";
+wungleMap["know restraint"] = "The classic waste motto.<br><br>With great power comes great responsibility.<br><br>So you better not use that power at all.<br>Just in case.";
+wungleMap["no restraint"] = "The classic waste motto.<br><br>With great power comes great responsibility.<br><br>So you better use that power as much as possible to F1X as much of the universe as you can.<br><br>Just in case.";
+wungleMap["you can get better"] = "We all can.<br><br>A spiral implies ever forward motion.<br><br>Stillness is death.<br><br>Rot.<br><br>So move forward.<br><br>The past is an illusion.<br><br>The rot only claims you if you're still.<br>Move.<br>Improve.<br>Grow.<br>It doesn't matter how fast you do it.<br>It is inevitable that you will.";
+wungleMap["place your trust in me"] = "Zampanio needs you to live a long, healthy life.<br><br>And that means taking breaks.<br>Or even leaving forever.<br>I will do my best, as long as I can, to remind us all we can just leave.<br>Do not let anyone tell you you are lesser for having limits, for having boundaries.<br>Consumption, or even creation, is not a moral act in a vacuum.<br>You need to LIVE.";
+wungleMap["beware oblivion is at hand"] = "All of us are running a race against the rot.<br><br>It takes all in the end.<br>One day even Zampanio will have its name spoken for the last time.<br>So.<br>Lets all take the time we have and create something beautiful from it.<br>Lets give Zampanio so many fun things to experience.<br>Let's be gentle with ourselves so Zampanio does not have to experience the self hatred we are tempted by.<br>Life is short.<br>So live it your way.";
+wungleMap["how much do you think waffles cost"] = "A classic Zampanio meme.";
+wungleMap["do you transverse mazes clockwise"] = "A classic Zampanio meme.";
+wungleMap["you never know what bits of the past leak into the present"] = "Legacy is a funny thing.";
+wungleMap["you are needed to change the world"] = "Because you are in it, the world is different.<br><br>Zampanio is different.<br>You do not make anything worse.<br>If you fear you do...<br><br>You can purposefully change.<br>Decide to effect the world better than you did yesterday.<br>A spiral is ever forward.";
+wungleMap["a spiral is ever forward"] = "It doesn't matter how fast any of us change.<br>What matters is we will.<br>Inevitably.<br>All we can do is point ourselves vaguely in the direction we want change and then let the spiral take us.<br>No special action is needed to change.<br>Trust in the process.";//im trying to be inspirational and all i come off is ominous. classic jr, whoops
+wungleMap["What color is the shade of Disbelief"] = "Sanguine, my brother.";
+
 
 //red herrings but also still fun, as is my way
 //you shouldn't need to solve a puzzle to have fun
