@@ -97,6 +97,13 @@ body{
   margin-left: 13px;
 }
 
+blockquote{
+  background: #e4e4e4;
+  width: fit-content;
+  padding: 13px;
+  border: 3px dotted white;
+}
+
 #search-results .link-container .desc{
   width: 50%;
 }
