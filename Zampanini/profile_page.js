@@ -5,6 +5,18 @@ let total_menu_items = 0;
 let total_food_options = 0;
 let feeUnder = 0;
 
+const fallbackImagesSource = "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/WeirdGifs/";
+let fallBackImages = [];
+
+let fetching  = false; //do not spam
+const fetchFallbackImagesWhenever = async()=>{
+  if(!fetching){
+    fetching = true;
+    const images = await getImages(fallbackImagesSource);
+    fallBackImages = images.map((i)=>fallbackImagesSource+i);
+  }
+}
+
 let current_food = "";
 const handleRestaurantPage = (name, themes, seed, feeUnderExternal) => {
   feeUnder = feeUnderExternal;
@@ -244,6 +256,20 @@ const handleReviewScrolling = (container, rand, existing_keys) => {
   };
 }
 
+const handleImageError=(image) =>{
+  image.onerror=()=>{
+    if(fallBackImages.length === 0){
+      fetchFallbackImagesWhenever(); //no rush
+      image.src = "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/WeirdGifs/exactly_where-moshed-05-03-23-31-43-287.gif";
+    }else{
+      const source = pickFrom(fallBackImages); 
+      if(source){ //extra careful not to get an error cuz then we'd infinite loop
+        image.src = source;
+      }
+    }
+  }
+}
+
 const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const container = createElementWithClassAndParent("div", parent, "one-food-item");
 
@@ -255,6 +281,8 @@ const renderOneFoodItem = (parent, rand, required_name, theme_keys, weird) => {
   const right = createElementWithClassAndParent("div", container, "food-right");
 
   const image = createElementWithClassAndParent("img", right, "meal-image");
+  handleImageError(image);
+
   const title = createElementWithClassAndParent("h3", left, "food-title");
   const desc = createElementWithClassAndParent("div", left, "meal-title");
   desc.innerHTML = getItemDescription(required_name,rand, theme_keys,weird);
@@ -303,6 +331,8 @@ const renderOneFeaturedItem = (parent, rand, theme_keys, weird) => {
   const imageContainer = createElementWithClassAndParent("div", container, "meal-image-container");
 
   const image = createElementWithClassAndParent("img", imageContainer, "meal-image");
+  handleImageError(image);
+
   const title = createElementWithClassAndParent("h3", container, "meal-title");
   title.innerHTML = getItemName(null,rand, theme_keys, weird);
   if (total_featured_items > how_long_well_let_them_explore) {

@@ -281,9 +281,10 @@ input{
   font-weight: 400;
 }
 
-.meal-image{
+.meal-image[src]{
   height: 150px;
   border-radius: 8px;
+  aspect-ratio: 1/1;
 }
 
 #header #cart-icon{

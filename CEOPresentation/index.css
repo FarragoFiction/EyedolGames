@@ -1,0 +1,135 @@
+body {
+  margin: 0px;
+  background: #c4c4c4;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+.initial-slide {
+  background: limegreen;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 85%;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+}
+
+.slide-tagline {
+  margin-left: auto;
+  margin-right: 33px;
+  margin-top: 113px;
+  color: black;
+  width: 50%;
+  font-size: 18px;
+}
+
+.random-bullshit-image {
+  position: fixed;
+  height: 25%;
+  left: 15px;
+  bottom: 24%;
+  filter: grayscale();
+
+  img {
+    aspect-ratio: 2;
+    object-fit: cover;
+  }
+}
+
+.random-bullshit-image-right {
+  position: fixed;
+  height: 25%;
+  right: 15px;
+  bottom: 24%;
+  filter: grayscale();
+
+  img {
+    aspect-ratio: 2;
+    object-fit: cover;
+  }
+}
+
+.presentation-header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  gap: 13px;
+}
+
+h1 {
+  margin: 0px;
+}
+
+.slide-subtitle {
+  margin-left: auto;
+  margin-right: 13px;
+  width: fit-content;
+
+}
+
+.weird-line {
+  width: 45%;
+  height: 19px;
+  border-bottom: 3px solid white;
+}
+
+.weird-black-line {
+  width: 45%;
+  height: 19px;
+  border-bottom: 3px solid black;
+  position: fixed;
+  right: 0px;
+  top: 50%;
+}
+
+
+.slide {
+  background: #d4d4d4;
+  width: 85%;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  height: 85%;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+
+  h2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+  }
+
+  .two-col {
+    display: flex;
+    gap: 13px;
+    height: 90%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .left-col {
+      border-left: 3px solid black;
+      width: 45%;
+      height: 100%;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 70%;
+      }
+    }
+
+    .right-col {
+      background: limegreen;
+      width: 45%;
+      height: 100%;
+    }
+  }
+}

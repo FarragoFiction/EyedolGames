@@ -80,7 +80,7 @@ const wungleClick = () => {
     searchInputDos.value = searchInput.value;
   }
 
-  let rand = new SeededRandom(stringtoseed(searchInputDos.value));
+  let rand = new SeededRandom(stringtoseed(searchInputDos.value.toLowerCase()));
 
   let wungleText = "";
   //why yes this all means that theres no reason to put in a website
@@ -168,7 +168,7 @@ wungleMap["do you transverse mazes clockwise"] = "A classic Zampanio meme.";
 wungleMap["you never know what bits of the past leak into the present"] = "Legacy is a funny thing.";
 wungleMap["you are needed to change the world"] = "Because you are in it, the world is different.<br><br>Zampanio is different.<br>You do not make anything worse.<br>If you fear you do...<br><br>You can purposefully change.<br>Decide to effect the world better than you did yesterday.<br>A spiral is ever forward.";
 wungleMap["a spiral is ever forward"] = "It doesn't matter how fast any of us change.<br>What matters is we will.<br>Inevitably.<br>All we can do is point ourselves vaguely in the direction we want change and then let the spiral take us.<br>No special action is needed to change.<br>Trust in the process.";//im trying to be inspirational and all i come off is ominous. classic jr, whoops
-wungleMap["What color is the shade of Disbelief"] = "Sanguine, my brother.";
+wungleMap["what color is the shade of disbelief"] = "Sanguine, my brother.";
 
 
 //red herrings but also still fun, as is my way
