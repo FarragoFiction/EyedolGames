@@ -2,7 +2,7 @@ let ele;
 
 let how_long_well_let_them_explore = 500;
 
-const isItFriday = ()=>{
+const isItFriday = () => {
   //midnight and fridays are wungle time
   const date = new Date();
   if (date.getHours() == 0 || date.getDay() === 5) {
@@ -10,6 +10,11 @@ const isItFriday = ()=>{
   }
   return false;
 }
+
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 
 const createElementWithClass = (eleName, className) => {
@@ -22,24 +27,24 @@ const createElementWithClass = (eleName, className) => {
 
 }
 
- const titleCase = (input) => {
+const titleCase = (input) => {
   const pieces = input.split(" ");
   const ret = [];
   for (let piece of pieces) {
-      if (piece[0]) {
-          ret.push(replaceStringAt(piece, 0, piece[0].toUpperCase()));
-      }
+    if (piece[0]) {
+      ret.push(replaceStringAt(piece, 0, piece[0].toUpperCase()));
+    }
   }
   return ret.join(" ");
 }
 
- function replaceStringAt(str, index, character) {
+function replaceStringAt(str, index, character) {
   return str.substr(0, index) + character + str.substr(index + character.length);
 }
 
 const sentenceCase = (input) => {
   if (!input.length) {
-      return input;
+    return input;
   }
   return replaceStringAt(input, 0, input[0].toUpperCase());
 };
@@ -58,9 +63,9 @@ const createElementWithClassAndParent = (eleName, parent, className) => {
   return ele;
 }
 
-function stringtoseed(seed){
+function stringtoseed(seed) {
   var output = 0;
- for (var i = 0, len = seed.length; i < len; i++) {
+  for (var i = 0, len = seed.length; i < len; i++) {
     output += seed[i].charCodeAt(0)
   }
   return output
@@ -95,64 +100,64 @@ const imageExtendsions = [
   "jpg",
   "jpeg"
 ];
-const filePattern = new RegExp('<a href="([^?]*?)">','g');
+const filePattern = new RegExp('<a href="([^?]*?)">', 'g');
 
 const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
 
 
 
 //returns a promise which resolves with the content, prevents network spam
-const getImages = async(url)=>{
-  if(cachedImages[url]){
+const getImages = async (url) => {
+  if (cachedImages[url]) {
     return cachedImages[url];
   }
 
-  let promise = new Promise(async (resolve, reject)=>{
-    try{
+  let promise = new Promise(async (resolve, reject) => {
+    try {
       const rawText = await httpGetAsync(url);
-      
-      let files= [];
+
+      let files = [];
       const match = rawText.matchAll(filePattern);
       const matches = Array.from(match, (res) => res);
-      for(let m of matches){
+      for (let m of matches) {
         const item = m[1];
-        if(item.match(extensionPattern)){
+        if (item.match(extensionPattern)) {
           files.push(item);
         }
       }
       cachedImages[url] = files;
-      console.log("JR NOTE: returned from network for",url)
+      console.log("JR NOTE: returned from network for", url)
       resolve(files);
-      }catch(e){
-        console.log("JR NOTE: error",e)
-        reject();
-        return [];
-      }
+    } catch (e) {
+      console.log("JR NOTE: error", e)
+      reject();
+      return [];
+    }
   })
   cachedImages[url] = promise;
   return promise;
 }
 
- const getImagesOld = async(url)=>{
+const getImagesOld = async (url) => {
   console.log("JR NOTE: trying to get images: ", url);
 
-  try{
-  const rawText = await httpGetAsync(url);
-  
-  let files= [];
-  const match = rawText.matchAll(filePattern);
-  const matches = Array.from(match, (res) => res);
-  for(let m of matches){
-    const item = m[1];
-    if(item.match(extensionPattern)){
-      files.push(item);
+  try {
+    const rawText = await httpGetAsync(url);
+
+    let files = [];
+    const match = rawText.matchAll(filePattern);
+    const matches = Array.from(match, (res) => res);
+    for (let m of matches) {
+      const item = m[1];
+      if (item.match(extensionPattern)) {
+        files.push(item);
+      }
     }
-  }
-  cachedImages[url] = files;
-  console.log("JR NOTE: returned from network for",url)
-  return files;
-  }catch(e){
-    console.log("JR NOTE: error",e)
+    cachedImages[url] = files;
+    console.log("JR NOTE: returned from network for", url)
+    return files;
+  } catch (e) {
+    console.log("JR NOTE: error", e)
     return [];
   }
 }

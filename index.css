@@ -1,29 +1,29 @@
-body{
+body {
   background: white;
-
 }
 
-.logo{
-  font-family:"Comic Sans MS", "Comic Sans", cursive;
+.logo {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
   background-clip: text;
   background-image: linear-gradient(270deg, rgb(243, 188, 243), rgb(214, 160, 253), rgb(158, 158, 252), rgb(185, 245, 185), rgb(249, 249, 170), rgb(241, 195, 110), rgb(250, 182, 194));
   color: transparent;
   width: fit-content;
 }
 
-#search-input-container .logo{
-  font-size:72px;
+#search-input-container .logo {
+  font-size: 72px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   margin-top: 113px;
   font-weight: bolder;
-  text-shadow: 1px 1px 113px black;/*interesting consequence here: the text shadow is showing up on TOP of the clipped rainbow text, lets play with that*/
+  text-shadow: 1px 1px 113px black;
+  /*interesting consequence here: the text shadow is showing up on TOP of the clipped rainbow text, lets play with that*/
 }
 
-#search-input-container input{
+#search-input-container input {
   border-radius: 0px;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: auto;
   width: 50%;
   display: block;
@@ -32,8 +32,8 @@ body{
   margin-top: 13px;
 }
 
-.button-bar{
-  margin-left: auto; 
+.button-bar {
+  margin-left: auto;
   display: flex;
   justify-content: center;
   gap: 13px;
@@ -42,9 +42,9 @@ body{
   margin-top: 13px;
 }
 
-#search-input-container .secret-logo{
-  font-size:72px;
-  font-family:"Comic Sans MS", "Comic Sans", cursive;
+#search-input-container .secret-logo {
+  font-size: 72px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
   top: 0px;
   color: black;
   text-shadow: none;
@@ -52,15 +52,16 @@ body{
   position: absolute;
   font-weight: bolder;
   opacity: 0%;
-  animation: gaslight-opacity 113s linear infinite; /*are you SURE you saw it black?*/
+  animation: gaslight-opacity 113s linear infinite;
+  /*are you SURE you saw it black?*/
 
 }
 
-#search-results{
+#search-results {
   display: none;
 }
 
-#search-results .header{
+#search-results .header {
   display: flex;
   gap: 13px;
   border-bottom: 1px solid lightblue;
@@ -70,45 +71,45 @@ body{
   margin-left: 13px;
 }
 
-#search-results .header input{
+#search-results .header input {
   height: 25px;
   margin-top: auto;
   width: 33%;
   margin-bottom: auto;
 }
 
-#search-results .header button{
+#search-results .header button {
   height: 25px;
   margin-top: auto;
   margin-bottom: auto;
 }
 
-#search-results .logo{
+#search-results .logo {
   font-size: 31px;
 }
 
-.corruption:hover{
+.corruption:hover {
   color: red;
 }
 
 
-#search-results .link-container{
+#search-results .link-container {
   margin-top: 13px;
   margin-left: 13px;
 }
 
-blockquote{
+blockquote {
   background: #e4e4e4;
   width: fit-content;
   padding: 13px;
   border: 3px dotted white;
 }
 
-#search-results .link-container .desc{
+#search-results .link-container .desc {
   width: 50%;
 }
 
-#search-results .link-container .url{
+#search-results .link-container .url {
   color: green;
   text-overflow: ellipsis;
   width: 50%;
@@ -122,26 +123,26 @@ blockquote{
 /*don't do this oh god it bricks your computer,
  text shadow is too expensive to animate, instead lets do a hack*/
 @keyframes shadow-animation {
-    0%{
-      text-shadow: 1px 1px 113px black;
-    }
+  0% {
+    text-shadow: 1px 1px 113px black;
+  }
 
-    100%{
-      text-shadow: 1px 1px 0px black;
-    }
+  100% {
+    text-shadow: 1px 1px 0px black;
+  }
 }
 
 /*opacity is WAY easier to animate for the cpu or gpu or whatever. the page*/
 @keyframes gaslight-opacity {
-  0%{
+  0% {
     opacity: 0%;
   }
 
-  99%{
+  99% {
     opacity: 100%;
   }
 
-  100%{
+  100% {
     opacity: 0%;
   }
 }
