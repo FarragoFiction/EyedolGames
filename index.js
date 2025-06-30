@@ -30,6 +30,7 @@ window.onload = () => {
     const searchInput = document.querySelector("#search-input");
     searchInput.value = decodeURIComponent(term);
   }
+  filterFuckery();
 }
 
 window.onkeydown = (e) => {
@@ -74,8 +75,11 @@ const filterFuckery = async () => {
   if (!filterIds || filterIds.length == 0) {
     filterIds = fetchAllFilterIds();//no reason not to cache them
   }
-  await sleep(rand.getRandomNumberBetween(13000, 113000));
+  await sleep(rand.getRandomNumberBetween(13 * 1000, 113 * 1000));
+  const body = document.querySelector("body");
+
   body.style.filter = `url(#${rand.pickFrom(filterIds)})`;
+  filterFuckery();
 
 }
 

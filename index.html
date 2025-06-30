@@ -40,7 +40,7 @@
     <div id="results-container"></div>
   </div>
 
-  <div style="display:none" id="possible-filters"
+  <div id="possible-filters"
     data-src="https://blog.logrocket.com/complete-guide-using-css-filters-svgs/#using-css-filters-svgs">
     <svg>
       <filter id="wavy">
@@ -49,6 +49,36 @@
         </feDisplacementMap>
         <animate xlink:href="#turbulence" attributeName="baseFrequency" dur="60s" keyTimes="0;0.5;1"
           values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
+      </filter>
+    </svg>
+
+    <svg>
+      <filter id="wavy-subtle">
+        <feTurbulence id="turbulence-subtle" type="turbulence" numOctaves="1" result="NOISE"></feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="50">
+        </feDisplacementMap>
+        <animate xlink:href="#turbulence-subtle" attributeName="baseFrequency" dur="60s" keyTimes="0;0.5;1"
+          values="0.001 0.002;0.002 0.004;0.001 0.002" repeatCount="indefinite"></animate>
+      </filter>
+    </svg>
+
+    <svg>
+      <filter id="wavy-super-subtle">
+        <feTurbulence id="turbulence-super-subtle" type="turbulence" numOctaves="1" result="NOISE"></feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="50">
+        </feDisplacementMap>
+        <animate xlink:href="#turbulence-super-subtle" attributeName="baseFrequency" dur="60s" keyTimes="0;0.5;1"
+          values="0.0001 0.0002;0.0002 0.0004;0.0001 0.0002" repeatCount="indefinite"></animate>
+      </filter>
+    </svg>
+
+    <svg>
+      <filter id="wavy-subtle-octave">
+        <feTurbulence id="turbulence-subtle-octave" type="turbulence" numOctaves="13" result="NOISE"></feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="50">
+        </feDisplacementMap>
+        <animate xlink:href="#turbulence-subtle-octave" attributeName="baseFrequency" dur="60s" keyTimes="0;0.5;1"
+          values="0.001 0.002;0.002 0.004;0.001 0.002" repeatCount="indefinite"></animate>
       </filter>
     </svg>
 
@@ -179,17 +209,6 @@
     </svg>
 
     <svg>
-      <filter id="cloudy">
-        <feTurbulence width="1000px" in="SourceGraphic" id="cloudy-turbulence" type="turbulence"
-          baseFrequency="0.01 0.02" numOctaves="3" result="NOISE"></feTurbulence>
-        <feBlend in="SourceGraphic" in2="NOISE" mode="multiply" result="BLEND"></feBlend>
-
-        <animate xlink:href="#cloudy-turbulence" attributeName="baseFrequency" dur="60s" keyTimes="0;0.5;1"
-          values="0.01 0.02;0.02 0.04;0.01 0.02" repeatCount="indefinite"></animate>
-      </filter>
-    </svg>
-
-    <svg>
       <filter id="point-light">
         <feDiffuseLighting in="SourceGraphic" lighting-color="#00c2cb" diffuseConstant="2">
           <fePointLight x="580" y="100" z="40" />
@@ -200,7 +219,7 @@
 
     <svg>
       <filter id="tiles">
-        <feTile in="SourceGraphic" x="50" y="50" width="50" height="50" />
+        <feTile in="SourceGraphic" x="13" y="25" width="140" height="75" />
         <feTile />
       </filter>
     </svg>
