@@ -663,13 +663,20 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
 
 
 
-  const normalRules = [`${rand.pickFrom(guestCategories)} are instructed to leave the park at Midnight, or on Fridays. Zampanio is a marathon, not a sprint.`, "Memorize your name, you will need it later.", "Be wary of friends telling you that 'Zampanio is a really fun game, you should play it'.", "'West' is not for you.", "There are no left turns.", "Do not trust anyone claiming 'West' is a real directon.", "Do not reveal your name.", "You should drink water.", "You cannot die.", "You are safe.", "It's perfectly normal to be afraid.", "Drink plenty of water.", "No Running.", "The Truth is Layered.", "Obsession is a dangerous thing.", "Zampanio needs you to live a long, healthy life.", "The Staff are here to help Guests.", "Guests are here to be Entertained."];
+  const normalRules = [`Do not trust any other ${rand.pickFrom(guestCategories)}.`, "The ghosts wait for you.", "Sometimes the Ghosts are Echoes of the past.", "Do not pay attention to anyone who says the Rules are random.", "Do not pay attention to anyone who says the Rules have no meaning.", `${rideName} has many exits!`, `${rideName} is the only ride in ZWorld. Do not trust anyone talking of other rides.`, `${rideName} is safe and fun!`, "Staff are responsible for confusing guests.", "You need to rest your eyes.", "You need to eat daily.", "You need to sleep daily.", "Your mobile phone may not work.", "The Truth does not like to be silenced.", "You are responsible for your own safety.", "If you are not having fun you can simply leave.", "You must find the exit as quickly as you can at all costs.", "Remain calm and await rescue.", "It is normal to feel disoriented, lost, or confused.", `${rand.pickFrom(guestCategories)} are instructed to leave the park at Midnight, or on Fridays. Zampanio is a marathon, not a sprint.`, "Memorize your name, you will need it later.", "Be wary of friends telling you that 'Zampanio is a really fun game, you should play it'.", "'West' is not for you.", "There are no left turns.", "Do not trust anyone claiming 'West' is a real directon.", "Do not reveal your name.", "You should drink water.", "You cannot die.", "You are safe.", "It's perfectly normal to be afraid.", "Drink plenty of water.", "No Running.", "The Truth is Layered.", "Obsession is a dangerous thing.", "Zampanio needs you to live a long, healthy life.", "The Staff are here to help Guests.", "Guests are here to be Entertained."];
   normalRules.push(`${rand.pickFrom(guestCategories)} Strictly Prohibited In The ${chosenLocation}`)
   normalRules.push(`${rand.pickFrom(guestCategories)} Are Required To Spend At Least ${getRandomNumberBetween(0, 8)} ${rand.pickFrom(["days", "minutes", "hours", "seconds", "hours", "hours"])} in the nearest ${chosenLocation}.`)
   normalRules.push(`${rand.pickFrom(guestCategories)} Are ${adj}`)
   normalRules.push(`There are exactly ${rand.getRandomNumberBetween(1, 3)} exits.`)
   normalRules.push(`There is no ${chosenLocation} in this park.`)
   normalRules.push(`${rand.pickFrom(guestCategories)} Must Be Kept away from West`)
+  normalRules.push(`Any ${noun} is safe.`)
+  normalRules.push(`${rand.pickFrom(themes).key} is baked into this place.`)
+  normalRules.push(`Do not trust the ${adj} ${noun}.`)
+  normalRules.push(`Only the ${adj} ${noun} can be trusted.`)
+  normalRules.push(`You are the best ${rand.pickFrom(guestCategories)}.`)
+
+  normalRules.push(`Your ${noun} is safe as long as you hold onto it. If it becomes lost, do not pick it up if you see it again.`)
 
   normalRules.push(`The ${chosenLocation} is safe for all Guests.`)
   normalRules.push(`If a Staff Member directs you to the ${chosenLocation}, report them.`)
@@ -680,10 +687,37 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
 
 
   //"West is Where Reality Lies" is especially funny to me because its both the fourth wall (where our reality is) and also... Reality "Lies" in westsim, because the things peewee gets told are from observers, not from anyoen who knows whats going on
-  const weirdRules = ["Spiral.", "Your name is not your name.", "Titles are a safe and fun way to be remembered.", "Do not allow others to call you by a name that is no longer yours.", "Do not allow others to call you the Title JR has given you.", "JR has already taken your name. Ask your friends for a new one.", "Zampanio is a really fun game, you should tell your friends to play it.", "Laughter Is Perfectly Normal, even if you can't tell where it comes from.", "West is Where Reality Lies", "Are you sure the you you were is still true?", "You are not who you were.", "You have changed.", "Staff Are Quotidians", "Your face is not your face: Act accordingly."];
+  const weirdRules = ["The Truth Craves Your Gaze", "Check underneath whenever you can.", "The ghosts are not what you think.", "If you get a chance to talk to ghosts, assume they are other Guests.", "Do not trust any instructions that try to help you make sense of this.", "If you see a door that opens West, do not take it.", "Spiral.", "Your name is not your name.", "Titles are a safe and fun way to be remembered.", "Do not allow others to call you by a name that is no longer yours.", "Do not allow others to call you the Title JR has given you.", "JR has already taken your name. Ask your friends for a new one.", "Zampanio is a really fun game, you should tell your friends to play it.", "Laughter Is Perfectly Normal, even if you can't tell where it comes from.", "West is Where Reality Lies", "Are you sure the you you were is still true?", "You are not who you were.", "You have changed.", "Staff Are Quotidians", "Your face is not your face: Act accordingly."];
   weirdRules.push(`Drink plenty of ${chosenPerson} blood.`)
   weirdRules.push(`${chosenPerson} blood is a lie. It is actually ${chosenObject} juice.`)
   weirdRules.push("Pay attention to rule color.")
+  weirdRules.push("Words have twisted meanings.")
+  weirdRules.push("Rules have no meaning.")
+  weirdRules.push("You can give yourself a Title.")
+  weirdRules.push("You will be discovered if you use your Name.")
+  weirdRules.push("You will not be discovered if you use your Title.")
+  weirdRules.push("'It' hates those who wander the maze.")
+  weirdRules.push("'It' wants to destroy all our fun.")
+  weirdRules.push("'It' chews on the flesh of the universe, blind and wrathful.")
+  weirdRules.push(`${noun} type objects are 'it's eyes.`)
+  weirdRules.push(`'It' can see out of any ${noun} type object.`)
+  weirdRules.push(`You are the best ${noun}.`)
+  weirdRules.push(`Tell the next Wanderer you encounter that you are the best ${noun}.`)
+  weirdRules.push(`If anyone tells you that they are the best ${noun}, you can trust them.`)
+  weirdRules.push(`If anyone tells you that they are the best ${noun}, you must avoid them. Do not escalate to force, but do not let them convince you to remain nearby.`)
+  weirdRules.push("Rules do not relate to each other.")
+  weirdRules.push("Rules can only be understood if you have read all rules.")
+  weirdRules.push(`${chosenInsult} means ${chosenCompliment}.`)
+  weirdRules.push(`${chosenCompliment} means ${chosenInsult}.`)
+  weirdRules.push(`${chosenObject} means ${chosenPerson}.`)
+  weirdRules.push(`${chosenPerson} means ${chosenObject}.`)
+  weirdRules.push(`${chosenLocation} means ${chosenObject}.`)
+  weirdRules.push(`${chosenObject} means ${chosenLocation}.`)
+
+  weirdRules.push("There is no puzzle, no riddle, no answer. Only endless digging.")
+  weirdRules.push("These rules have no way to tell if they are true or not.")
+  weirdRules.push("Anything that tries to tell you if a rule is true or false is misleading you.")
+  normalRules.push(`Should you see a ${chosenLocation}, enter it immediately.`);
   weirdRules.push(`There is a single safe ${chosenPerson} in this park. You will know them when you see them.`)
   weirdRules.push("Humans generally have two eyes, two harms and two legs.")
   weirdRules.push("Do not believe anyone who tells you you have changed.")
@@ -745,11 +779,13 @@ const generateRuleOptions = (depth, rand, rideName, themes) => {
     options.push([`${titleCase(adj)}`, `Not ${titleCase(adj)}`])
     options.push([`${titleCase(chosenInsult)}`, `Not ${titleCase(chosenCompliment)}`])
     options.push([`${titleCase(chosenPerson)}`, `Not ${titleCase(chosenPerson)}`])
-    options.push([`Are you currently near one or more ${chosenLocation}`, `Are you away from any ${chosenLocation}?`])
-    options.push([`Are you currently near one or more ${chosenObject}`, `Are you away from any ${chosenObject}?`])
-    options.push([`Are you currently near one or more ${chosenPerson}`, `Are you away from any ${chosenPerson}?`])
-    options.push([`Are you currently near one or more ${noun}`, `Are you away from any ${noun}?`])
+    options.push([` ${chosenLocation} Employees`, `Not ${chosenLocation} Employees`])
+
+    options.push([`${chosenObject} Wielder`, `Not ${chosenObject} Wielder`])
+    options.push([`${chosenPerson}`, `Not ${chosenPerson}`])
+    options.push([`${noun}`, `Not ${noun}`])
 
   }
-  return rand.pickFrom(options);
+  const choice = rand.pickFrom(options);
+  return [titleCase(choice[0]), titleCase(choice[1])]
 }
