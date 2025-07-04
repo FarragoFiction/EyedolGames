@@ -11,7 +11,6 @@ You know how it is.
 let linkCount = 0;
 //each different type of subsite will cache under their own key
 const subsiteImageCache = {}
-let filterIds = [];
 let rand = new SeededRandom(linkCount + stringtoseed(new Date().toString()))
 
 const ZAMPANINI = "zampanini"
@@ -39,6 +38,11 @@ window.onkeydown = (e) => {
   }
 }
 
+
+
+
+let filterIds = [];
+
 const fetchAllFilterIds = () => {
   const filters = document.querySelectorAll("#possible-filters filter");
   const ids = [];
@@ -48,7 +52,6 @@ const fetchAllFilterIds = () => {
   }
   return ids;
 }
-
 /*
 cycles through all the filters this knows about so i can see them and compare
 */
@@ -75,7 +78,7 @@ const filterFuckery = async () => {
   if (!filterIds || filterIds.length == 0) {
     filterIds = fetchAllFilterIds();//no reason not to cache them
   }
-  await sleep(rand.getRandomNumberBetween(13 * 1000, 113 * 1000));
+  await sleep(rand.getRandomNumberBetween(113 * 1000, 310 * 1000));
   const body = document.querySelector("body");
 
   body.style.filter = `url(#${rand.pickFrom(filterIds)})`;

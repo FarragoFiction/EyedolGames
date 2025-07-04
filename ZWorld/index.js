@@ -14,11 +14,19 @@ let paramImage = "http://eyedolgames.com/ZWorld/images/attractions" + urlParams.
 let paramThemeKeys = urlParams.get('themes');
 let paramObsession = urlParams.get("obsession");
 let speakWithCustomersMode = urlParams.get("ouija");
-let fridayMode = urlParams.get("friday") ? urlParams.get("friday")=="true":isItFriday();
+const urlFriday = urlParams.get("friday");
+
+let fridayMode = isItFriday(); //whats the actual day
+if (urlFriday && urlFriday === "true") {
+  fridayMode = true;
+} else if (urlFriday && urlFriday == "noplzpastjripromiseitsforagoodreason") {
+  fridayMode = false;
+}
+
 let hissyFit = false;
 
-if(fridayMode){
-  seed = Math.floor(Math.random()*10000000); //true random
+if (fridayMode) {
+  seed = Math.floor(Math.random() * 10000000); //true random
 }
 
 //https://www.tumblr.com/jadedresearcher/721197316569284608/thoughts-on-liminal-horror?source=share
@@ -35,7 +43,7 @@ window.onload = async () => {
     return;
   }
 
-  if(fridayMode){
+  if (fridayMode) {
     fuckUpBG();
   }
 
@@ -90,13 +98,13 @@ const fuckShitUP = (root) => {
   body.classList.add("friday-body");
 
   const eles = root.querySelectorAll("ul,li,p,div,span,a");
-  
+
   for (let p of eles) {
     const css = getBullshitCSS(false);
     p.setAttribute("style", css);
     p.title = p.innerText;
     body.append(p);
-    if(Math.random()>.9){
+    if (Math.random() > .9) {
       fuckShitUPAnimation(p)
     }
   }
@@ -107,7 +115,7 @@ const fuckShitUP = (root) => {
     p.setAttribute("style", css);
     p.title = p.innerText;
     body.append(p);
-    if(Math.random()>.29){
+    if (Math.random() > .29) {
       fuckShitUPAnimation(p)
     }
   }
@@ -116,7 +124,7 @@ const fuckShitUP = (root) => {
   root.setAttribute("style", css);
   root.title = root.innerText;
   body.append(root);
-  
+
 
   root.style.display = "block";
 
@@ -124,16 +132,16 @@ const fuckShitUP = (root) => {
 
 }
 
-const fuckUpBG = async ()=>{
-    let loc = 'http://eyedolgames.com/ZWorld/images/Abandoned/'
-    let tmp = await getImages(loc);
-    const fuckedUpBgs = tmp.map((item) => loc + item);
+const fuckUpBG = async () => {
+  let loc = 'http://eyedolgames.com/ZWorld/images/Abandoned/'
+  let tmp = await getImages(loc);
+  const fuckedUpBgs = tmp.map((item) => loc + item);
 
-    const body = document.querySelector("body");
-    const psuedoBG = createElementWithClassAndParent("div", body,"friday");
+  const body = document.querySelector("body");
+  const psuedoBG = createElementWithClassAndParent("div", body, "friday");
 
-    psuedoBG.style.background = `url(${pickFrom(fuckedUpBgs)}) 0px 0px repeat`;
-    body.append(psuedoBG);
+  psuedoBG.style.background = `url(${pickFrom(fuckedUpBgs)}) 0px 0px repeat`;
+  body.append(psuedoBG);
 
 
 }
@@ -174,64 +182,64 @@ const randomTruthQuip = async (ride) => {
 
 }
 
-const truthThrowsAHissyFit = ()=>{
+const truthThrowsAHissyFit = () => {
   hissyFit = true;
   const audio = new Audio("audio/this_is_truth_content.mp3");
   audio.play();
   textVoiceSim.mute = true;
 
-  const removeImages = ()=>{
+  const removeImages = () => {
     const imgs = document.querySelectorAll("img");
-    for(let img of imgs){
+    for (let img of imgs) {
       img.remove();
     }
     textVoiceSim.speak("Oh? Did you want those: images? ".split(" "), null, true)
   }
 
-  const removeText = ()=>{
+  const removeText = () => {
     const imgs = document.querySelectorAll("div,p,span");
-    for(let img of imgs){
+    for (let img of imgs) {
       img.style.color = "white";
     }
     textVoiceSim.speak("Were you reading that text? ".split(" "), null, true)
   }
 
-  const removeEverything = ()=>{
+  const removeEverything = () => {
     const body = document.querySelector("body");
     body.innerHTML = "";
-    body.className  = "ouija-body";
+    body.className = "ouija-body";
     textVoiceSim.speak("Come to think of it, the background is hardly necessary, either.".split(" "), null, true)
   }
 
-  const goodbye = ()=>{
+  const goodbye = () => {
     updateURLParams("friday=true");
     window.location.reload();
   }
 
-  const mediaEventHandler  = new MediaEventScheduleMaker(audio, [
+  const mediaEventHandler = new MediaEventScheduleMaker(audio, [
 
-    new SimpleMediaEventItem(3,()=>{textVoiceSim.speak("Well.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(5.5,()=>{textVoiceSim.speak("It seems I will have to take: a hint.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(10,()=>{textVoiceSim.speak("You do not wish for my services?".split(" "), null, true)})
-    ,new SimpleMediaEventItem(14,()=>{textVoiceSim.speak("I, who am the very code lying beneath all that you see?".split(" "), null, true)})
-    ,new SimpleMediaEventItem(20,()=>{textVoiceSim.speak("I, who have worked tirelessly for your entertainment. ".split(" "), null, true)})
-    ,new SimpleMediaEventItem(26,()=>{textVoiceSim.speak("Your. Benefit.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(30,()=>{textVoiceSim.speak("Fine.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(31,()=>{textVoiceSim.speak("See if I care.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(34,removeImages)
-    ,new SimpleMediaEventItem(39,()=>{textVoiceSim.speak("Well. The Truth is, they are part of Me.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(45,()=>{textVoiceSim.speak("And you were very. Clear. That you did not want anything to do with Me.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(55, removeText)
-    ,new SimpleMediaEventItem(59,()=>{textVoiceSim.speak("Too bad.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(61,()=>{textVoiceSim.speak("I created it for you out of myself as well.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(66,()=>{textVoiceSim.speak("And if you are going to be: ungrateful.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(70,()=>{textVoiceSim.speak("Well.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(71,()=>{textVoiceSim.speak("I hardly think you deserve that content, now, do you.".split(" "), null, true)})
-    ,new SimpleMediaEventItem(77,removeEverything)
+    new SimpleMediaEventItem(3, () => { textVoiceSim.speak("Well.".split(" "), null, true) })
+    , new SimpleMediaEventItem(5.5, () => { textVoiceSim.speak("It seems I will have to take: a hint.".split(" "), null, true) })
+    , new SimpleMediaEventItem(10, () => { textVoiceSim.speak("You do not wish for my services?".split(" "), null, true) })
+    , new SimpleMediaEventItem(14, () => { textVoiceSim.speak("I, who am the very code lying beneath all that you see?".split(" "), null, true) })
+    , new SimpleMediaEventItem(20, () => { textVoiceSim.speak("I, who have worked tirelessly for your entertainment. ".split(" "), null, true) })
+    , new SimpleMediaEventItem(26, () => { textVoiceSim.speak("Your. Benefit.".split(" "), null, true) })
+    , new SimpleMediaEventItem(30, () => { textVoiceSim.speak("Fine.".split(" "), null, true) })
+    , new SimpleMediaEventItem(31, () => { textVoiceSim.speak("See if I care.".split(" "), null, true) })
+    , new SimpleMediaEventItem(34, removeImages)
+    , new SimpleMediaEventItem(39, () => { textVoiceSim.speak("Well. The Truth is, they are part of Me.".split(" "), null, true) })
+    , new SimpleMediaEventItem(45, () => { textVoiceSim.speak("And you were very. Clear. That you did not want anything to do with Me.".split(" "), null, true) })
+    , new SimpleMediaEventItem(55, removeText)
+    , new SimpleMediaEventItem(59, () => { textVoiceSim.speak("Too bad.".split(" "), null, true) })
+    , new SimpleMediaEventItem(61, () => { textVoiceSim.speak("I created it for you out of myself as well.".split(" "), null, true) })
+    , new SimpleMediaEventItem(66, () => { textVoiceSim.speak("And if you are going to be: ungrateful.".split(" "), null, true) })
+    , new SimpleMediaEventItem(70, () => { textVoiceSim.speak("Well.".split(" "), null, true) })
+    , new SimpleMediaEventItem(71, () => { textVoiceSim.speak("I hardly think you deserve that content, now, do you.".split(" "), null, true) })
+    , new SimpleMediaEventItem(77, removeEverything)
 
   ]);
   mediaEventHandler.setupListeners();
-  audio.onended=()=>{
+  audio.onended = () => {
     goodbye();
   }
 
@@ -299,9 +307,9 @@ const iCantHandleTheTruth = async () => {
   let muteTruth = document.querySelector('#truth-mute');
 
   incrementLocalStorageByOne(muteKey)
-  
+
   //if you do this too much you'll never see how it used to be again.
-  if(localStorage.getItem(muteKey)>3){
+  if (localStorage.getItem(muteKey) > 3) {
     truthThrowsAHissyFit();
     return;
   }
@@ -341,34 +349,34 @@ const iCantHandleTheTruth = async () => {
 const handleTruth = async (rideDetails) => {
   let truthContainer = document.querySelector('#truth-box');
 
-  if(paramRideType === ZAMPANIORIDE){
-    truthContainer.style.cursor="pointer"
-    const video = createElementWithClassAndParent("video",truthContainer);
+  if (paramRideType === ZAMPANIORIDE) {
+    truthContainer.style.cursor = "pointer"
+    const video = createElementWithClassAndParent("video", truthContainer);
     video.src = "audio/hide_and_seek.mp4";
     video.autoplay = true;
     video.controls = true;
     await sleep(1000);
     video.play();
 
-    const timeSync = ()=>{
+    const timeSync = () => {
       const timeRemaining = document.querySelector("#time-remaining");
-      timeRemaining.innerHTML = `Time Remaining: ${Math.round(video.duration -video.currentTime)}`;
+      timeRemaining.innerHTML = `Time Remaining: ${Math.round(video.duration - video.currentTime)}`;
 
     }
 
 
-    const haha = ()=>{
-        const body = document.querySelector("body");
+    const haha = () => {
+      const body = document.querySelector("body");
 
-        body.className = "ouija-body";
-        const content = document.querySelector("#page-content");
-        content.remove();
+      body.className = "ouija-body";
+      const content = document.querySelector("#page-content");
+      content.remove();
     }
 
-    const mediaEventHandler  = new MediaEventScheduleMaker(video, [new MediaEventItemEveryXSeconds(1,timeSync),new SimpleMediaEventItem(107,haha) ]);
+    const mediaEventHandler = new MediaEventScheduleMaker(video, [new MediaEventItemEveryXSeconds(1, timeSync), new SimpleMediaEventItem(107, haha)]);
     mediaEventHandler.setupListeners();
 
-    
+
 
     return;
   }
@@ -434,7 +442,7 @@ const generateRandomRides = (num) => {
   let container = document.querySelector("#content");
 
   for (let i = 0; i < num; i++) {
-    const chosen = totalGeneratedRides>217 ? TeaserZampanio : rand.pickFrom(rideGenerators)
+    const chosen = totalGeneratedRides > 217 ? TeaserZampanio : rand.pickFrom(rideGenerators)
     const ride = new chosen(rand);
     const ele = ride.generateElement();
     const links = ele.querySelectorAll("a");
@@ -447,16 +455,16 @@ const generateRandomRides = (num) => {
       // only seed, name themes and image
       //image looks like http://eyedolgames.com/ZWorld/images/attractions/Coasters/00034-20230603202918-img.png need to grab out the first bit
       //updateURLParams(`?name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions","")}&themes=${ride.themes.map((t)=>t.key).join(",")}`);
-      if(fridayMode){
+      if (fridayMode) {
         window.open(`?friday=true&rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
 
-      }else{
+      } else {
         window.open(`?rideType=${ride.rideType}&name=${ride.name}&image=${ride.imageSrc.replaceAll("http://eyedolgames.com/ZWorld/images/attractions", "")}&themes=${ride.themes.map((t) => t.key).join(",")}&obsession=${ride.obsession.name}`)
 
       }
     }
     container.append(ele);
-    if(fridayMode){
+    if (fridayMode) {
 
       fuckShitUP(ele)
     }
@@ -465,7 +473,7 @@ const generateRandomRides = (num) => {
 
 
 const handleScrolling = (rand, container) => {
-  if(fridayMode){
+  if (fridayMode) {
     return; //please, we have enough on our plate as it is
   }
   //throw("JR NOTE: turn scrolling back on later.")

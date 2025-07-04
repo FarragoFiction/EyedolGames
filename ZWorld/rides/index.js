@@ -38,7 +38,7 @@ let devonaQuotes = [
 
 let devonaQuirk = new Quirk(new SeededRandom(13), DEVONACAPS, PERFECTPUNC, [], 2);
 
-devonaQuotes = devonaQuotes.map((i) =>devonaQuirk.apply(i));
+devonaQuotes = devonaQuotes.map((i) => devonaQuirk.apply(i));
 
 const initRides = async () => {
   let loc = 'http://eyedolgames.com/ZWorld/images/attractions/Coasters/'
@@ -82,7 +82,7 @@ const initRides = async () => {
 }
 
 
-const createDetailsRideFromParams = (rideType, name, image, themes,obsession) => {
+const createDetailsRideFromParams = (rideType, name, image, themes, obsession) => {
   const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
   const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
   const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
@@ -102,27 +102,27 @@ const createDetailsRideFromParams = (rideType, name, image, themes,obsession) =>
   const quips = [rand.pickFrom(intros), rand.pickFrom(clarifications)];
 
   console.log("JR NOTE: obsesssion is", obsession, all_obsessions[COFFEESHOPAU].name)
-  if(obsession.name === all_obsessions[COFFEESHOPAU].name){
+  if (obsession.name === all_obsessions[COFFEESHOPAU].name) {
     console.log("JR NOTE: :) :) :)")
     return new DetailsLore(name, image, themes, obsession, desc, quips);
   }
-  if(rideType ===TRAIN ){
+  if (rideType === TRAIN) {
     return new DetailsTrain(name, image, themes, obsession, desc, quips);
-  }else if (rideType === COASTER){
+  } else if (rideType === COASTER) {
     return new DetailsCoaster(name, image, themes, obsession, desc, quips);
-  }else if (rideType === LIVESHOW){
+  } else if (rideType === LIVESHOW) {
     return new DetailsLiveshow(name, image, themes, obsession, desc, quips)
-  }else if (rideType === CHAIR){
+  } else if (rideType === CHAIR) {
     return new DetailsSwing(name, image, themes, obsession, desc, quips)
-  }else if (rideType === CAROUSEL){
+  } else if (rideType === CAROUSEL) {
     return new DetailsMerry(name, image, themes, obsession, desc, quips)
-  }else if (rideType === WHEEL){
+  } else if (rideType === WHEEL) {
     return new DetailsWheel(name, image, themes, obsession, desc, quips)
-  }else if (rideType === ZIPLINE){
+  } else if (rideType === ZIPLINE) {
     return new DetailsZip(name, image, themes, obsession, desc, quips)
-  }else if (rideType === WATER){
+  } else if (rideType === WATER) {
     return new DetailsWater(name, image, themes, obsession, desc, quips)
-  }else{
+  } else {
     return new DetailsZampanio(name, image, themes, obsession, desc, quips)
 
   }
@@ -149,7 +149,7 @@ class TeaserRide {
 
 
   constructor(name, image, themes, obsession, nearbyAttractions, teaserDescription, bigDescription) {
-    totalGeneratedRides ++;
+    totalGeneratedRides++;
     this.name = name;
     this.obsession = obsession;
     this.imageSrc = image;
@@ -204,7 +204,7 @@ class DetailsRide {
     this.element = createElementWithClass("div", "details-container");
     const imgEle = createElementWithClassAndParent("img", this.element, "huge-img");
     imgEle.src = this.imageSrc;
-    imgEle.onmouseenter = async ()=>{
+    imgEle.onmouseenter = async () => {
       await textVoiceSim.speak("What an exciting picture!".split(" "), null, true)
       await sleep(1000);
       await textVoiceSim.speak("Can you really not tell it's AI?".split(","), null, false);
@@ -213,7 +213,7 @@ class DetailsRide {
     const left = createElementWithClassAndParent("div", content, "details-left");
     const right = createElementWithClassAndParent("div", content, "details-right");
 
-    left.onmouseenter = async ()=>{
+    left.onmouseenter = async () => {
       await textVoiceSim.speak("Boy, how exciting!".split(" "), null, true)
       await sleep(1000);
       await textVoiceSim.speak("What a load of hot garbage. None of that even makes sense.".split(","), null, false);
@@ -225,10 +225,133 @@ class DetailsRide {
 
     this.generateGuestPolicies(left);
 
-
+    this.generateGuidelines(right);
     this.generateInfoBox(right);
     this.generateQuickTips(right);
+
     return this.element;
+  }
+
+  //https://www.tumblr.com/dashboard?max_post_id=788156835193602048 guess what i saw today
+  //or rather a few days ago
+  //now its july 4th 2025 and i want to upgrade zworld to have a little neat extra feature
+  //thats what i like about zampanio
+  //the end is never the end
+  //i can take anything ive made for the fandom
+  //and just
+  //quietly update it
+  //and no one finds that weird
+  /*
+    * generate 13 procedural rules
+
+
+  then at the bottom, have two choices you can make, also procedural
+  like
+  "Rules If You Have Ridden ${RIDENAME} Before" vs "Rules If This Is Your First Time"
+  */
+  //remember kids, there is no meaning, there is no center
+  //stop digging
+  //by which i mean
+  //i think its amusing to make truly meaningless versions of these spooky rule stories
+  generateGuidelines = (ele) => {
+    let depth = 0;
+    const truthBox = document.querySelector("#truth-box")
+    truthBox.style.left = "35px"; //turth is blocking my guidelines, sorry truth
+    const infoBox = createElementWithClassAndParent("div", ele, "info-box");
+    const tip = createElementWithClassAndParent("div", infoBox, "quick-tips");
+    tip.innerText = "Guest Guidelines*";
+    //its rand, not this.rand
+    const ordered_list = createElementWithClassAndParent("ol", infoBox);
+    const instructions = createElementWithClassAndParent("div", infoBox, "rule-instructions");
+    instructions.innerHTML = `* Further rules may apply. If either category applies to you, click for additional rules.`;
+
+    const buttonContainer = createElementWithClassAndParent("div", infoBox, "button-box");
+    //lets keep track of the categories they are picking
+    const guestCategories = [];
+    const generateRules = () => {
+      depth++;
+      //JR NOTE: Todo generate proecural rules, pass in my themes and ride name
+      ordered_list.innerHTML = "";
+      const amount = rand.getRandomNumberBetween(3, 13);
+      for (let i = 0; i < amount; i++) {
+        const ele = createElementWithClassAndParent("li", ordered_list, "info-box-content");
+        ele.innerText = generateSingleRule(guestCategories, depth, rand, this.name, this.themes);
+        if (ele.innerText.includes("Red Color") || ele.innerText.includes("Rule Color") || ele.innerText.includes("Green") || (ele.innerText.includes("Truth")) || rand.nextDouble() > 0.95) {
+          ele.style.color = "red"; //any rule telling you  a rule is the truth is a lie
+          //but there are no green rules because there are no truths
+        } else if (rand.nextDouble() > 0.95) {
+          ele.style.fontWeight = "bolder"; //just random emphasis cuz it amuses me
+        } else if (rand.nextDouble() > 0.95) {
+          ele.style.fontStyle = "italic"; //just random emphasis cuz it amuses me
+        } else if (rand.nextDouble() > 0.95) {
+          ele.style.textDecoration = "line-through"; //just random emphasis cuz it amuses me
+        }
+      }
+      generateOptions();
+    }
+
+    const generateOptions = () => {
+      buttonContainer.innerHTML = "";
+      //JR NOTE: Todo generate proecural pairs of options, pass in my themes and ride name
+      const leftButton = createElementWithClassAndParent("button", buttonContainer);
+      const rightButton = createElementWithClassAndParent("button", buttonContainer);
+
+      const r = rand.getRandomNumberBetween(0, 255);
+      const g = rand.getRandomNumberBetween(0, 255);
+      const b = rand.getRandomNumberBetween(0, 255);
+
+      //inverse
+      const r2 = 255 - r;
+      const g2 = 255 - g;
+      const b2 = 255 - b;
+
+      const ruleNames = generateRuleOptions(depth, rand, this.name, this.themes);
+
+      leftButton.innerText = ruleNames[0];
+      leftButton.style.background = `rgb(${r},${g},${b})`;
+      leftButton.style.color = `rgb(${r2},${g2},${b2})`;
+      //it almost doens't matter what you click :)
+      leftButton.onclick = () => {
+        if (guestCategories.includes(rightButton.innerText)) {
+          alert(`That does not make sense. You already said you were ${rightButton.innerText}. ...You would not lie to me, now would you? Pick. That.`)
+          return;
+        }
+        guestCategories.push(leftButton.innerText);
+        rand.getRandomNumberBetween(0, 1); //not used, but this increases the seed so it is slightly differnet if you click left vs right
+        generateRules();
+      }
+
+      rightButton.innerText = ruleNames[1];
+      rightButton.style.background = `rgb(${r2},${g2},${b2})`;
+      rightButton.style.color = `rgb(${r},${g},${b})`;
+      //it almost doens't matter what you click :)
+      rightButton.onclick = () => {
+        if (guestCategories.includes(leftButton.innerText)) {
+          alert(`That does not make sense. You already said you were ${leftButton.innerText}. ...You would not lie to me, now would you? Pick. That.`)
+          return;
+        }
+        guestCategories.push(rightButton.innerText);
+        generateRules();
+      }
+    }
+
+
+    generateRules();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   //not terriblyprocedural, useful for all rides
@@ -238,37 +361,37 @@ class DetailsRide {
     const tip = createElementWithClassAndParent("div", infoBox, "quick-tips");
     tip.innerText = "Quick Tips";
 
-    if(this.rideType === ZAMPANIORIDE){
+    if (this.rideType === ZAMPANIORIDE) {
       const ele = createElementWithClassAndParent("div", infoBox, "info-box-content");
       ele.innerText = "It's not yet too late to leave.";
       return;
     }
 
     const tips = [`Please allocate ${rand.getRandomNumberBetween(2, 217)} hours to navigate the queue for this ride.`,
-      "Water will be provided periodically in queue. No outside food or drink is permitted.","Guests are encouraged to remain in queue.",
+      "Water will be provided periodically in queue. No outside food or drink is permitted.", "Guests are encouraged to remain in queue.",
       "Please let Guest Services know if any mobility aids are required."]
     for (let tip of tips) {
       const ele = createElementWithClassAndParent("div", infoBox, "info-box-content");
       ele.innerText = tip;
-      if(tip.includes('mobility aids')){
-        ele.onmouseenter = async ()=>{
+      if (tip.includes('mobility aids')) {
+        ele.onmouseenter = async () => {
           await textVoiceSim.speak(`Eyedol Games prides itself on its accessibility!`.split(" "), null, true)
         }
-      }else if(tip.includes("Please allocate")){
-        ele.onmouseenter = async ()=>{
+      } else if (tip.includes("Please allocate")) {
+        ele.onmouseenter = async () => {
           await textVoiceSim.speak(`In-Queue entertainment will be provided, free of charge!`.split(" "), null, true)
           await sleep(1000);
           await textVoiceSim.speak("Assuming you find my horridors entertaining.".split(","), null, false);
         }
-      }else if(tip.includes("Water will be provided")){
-        ele.onmouseenter = async ()=>{
+      } else if (tip.includes("Water will be provided")) {
+        ele.onmouseenter = async () => {
           await textVoiceSim.speak(`Humans will die in just three days without water!`.split(" "), null, true)
           await sleep(1000);
           await textVoiceSim.speak(`You can go much, much longer without food!`.split(" "), null, true)
 
         }
-      }else if(tip.includes("Guests are encouraged")){
-        ele.onmouseenter = async ()=>{
+      } else if (tip.includes("Guests are encouraged")) {
+        ele.onmouseenter = async () => {
           await textVoiceSim.speak(`Eyedol Games accepts no liability from injuries incurred attempting to leave the queue.`.split(" "), null, true)
           await sleep(1000);
           await textVoiceSim.speak("Philistines. You will navigate my maze and you will like it.".split(","), null, false);
@@ -278,47 +401,47 @@ class DetailsRide {
 
   }
 
-  generateDescription = (ele)=>{
-    const container = createElementWithClassAndParent("div", ele,"section");
+  generateDescription = (ele) => {
+    const container = createElementWithClassAndParent("div", ele, "section");
     container.innerText = "TODO";
 
   }
 
-  generateWarnings = (ele, fearLevel, confusionLevel)=>{
-    const container1 = createElementWithClassAndParent("div", ele,"section");
+  generateWarnings = (ele, fearLevel, confusionLevel) => {
+    const container1 = createElementWithClassAndParent("div", ele, "section");
 
-    if(fearLevel <=1){
+    if (fearLevel <= 1) {
       container1.innerText = "This experience is suitable for young children or guests with difficulty with terrifying content.";
-    }else if(fearLevel <=2){
-      container1.innerText = `Experience ${rand.pickFrom(["scares","thrills","chills","horror","nightmares"])} like never before!`;
+    } else if (fearLevel <= 2) {
+      container1.innerText = `Experience ${rand.pickFrom(["scares", "thrills", "chills", "horror", "nightmares"])} like never before!`;
 
-    }else if(fearLevel <=3){
+    } else if (fearLevel <= 3) {
       container1.innerText = `This ride has been designed personally by our lead Abhorrineer, Devona Avamund who had this to say: '${rand.pickFrom(devonaQuotes)}'! EyedolGames and ZWorld can not be held responsible for long term negative effects.`;
-    }else if(fearLevel >3){
-      container1.innerText ="You should not experience this ride.";
+    } else if (fearLevel > 3) {
+      container1.innerText = "You should not experience this ride.";
     }
 
-    const container2 = createElementWithClassAndParent("div", ele,"section");
+    const container2 = createElementWithClassAndParent("div", ele, "section");
 
-    if(confusionLevel <=1){
+    if (confusionLevel <= 1) {
       container2.innerText = "This experience is suitable for all ages.";
-    }else if(confusionLevel <=2){
+    } else if (confusionLevel <= 2) {
       container2.innerText = "We are legally obliged to state the following: The Surgeon General Warns That Without Breaks This Experience May Harm Children, Adolescents And Those With Addictive Personalities. "; //you'll get obsessed
 
-    }else if(confusionLevel <=3){
+    } else if (confusionLevel <= 3) {
       container2.innerText = "We're so glad you've decided to join our Family :)"; //you work here now
 
-    }else if(confusionLevel >3){
-      container2.innerText =":) :) :)";
+    } else if (confusionLevel > 3) {
+      container2.innerText = ":) :) :)";
     }
   }
 
-  generateFlavor= (ele, fearLevel, confusionLevel)=>{
-    if(fearLevel>3 && confusionLevel >3){}
+  generateFlavor = (ele, fearLevel, confusionLevel) => {
+    if (fearLevel > 3 && confusionLevel > 3) { }
     const themes = this.themes;
-    const flavor = createElementWithClassAndParent("div", ele,"section");
-    if(fearLevel>3 && confusionLevel >3){
-      flavor.innerText  = "Obsession is a dangerous thing. Leave."
+    const flavor = createElementWithClassAndParent("div", ele, "section");
+    if (fearLevel > 3 && confusionLevel > 3) {
+      flavor.innerText = "Obsession is a dangerous thing. Leave."
       return;
     }
     const chosenLocDesc = rand.pickFrom(themes).pickPossibilityFor(LOC_DESC, rand)
@@ -331,20 +454,20 @@ class DetailsRide {
     const chosenPhilo = rand.pickFrom(themes).pickPossibilityFor(PHILOSOPHY, rand)
 
 
-    const flavorTemplates = [`There are ${chosenLocDesc} at the entrance.`,`You will realize all too soon that the walls are made of ${chosenTexture}.`,`The sound of ${chosenSound} greets guests as they enter the queue. It will not end.`,`The smell of ${chosenSmell} is thick in the air. It coats the back of your throat, reminding you almost of ${chosenFlavor}. Are you prepared to face ${this.name}?`];
-    if(fearLevel>2){
+    const flavorTemplates = [`There are ${chosenLocDesc} at the entrance.`, `You will realize all too soon that the walls are made of ${chosenTexture}.`, `The sound of ${chosenSound} greets guests as they enter the queue. It will not end.`, `The smell of ${chosenSmell} is thick in the air. It coats the back of your throat, reminding you almost of ${chosenFlavor}. Are you prepared to face ${this.name}?`];
+    if (fearLevel > 2) {
       flavorTemplates.push[`There is something watching you from within the ride. ${monsterDesc}`];
     }
 
-    if(confusionLevel>2){
+    if (confusionLevel > 2) {
       flavorTemplates.push[`Ringing in your ears is the constant litanty of '${chosenPhilo}'`];
 
     }
 
-    flavor.innerText = rand.shuffle(flavorTemplates).slice(0,3).join(" ");
+    flavor.innerText = rand.shuffle(flavorTemplates).slice(0, 3).join(" ");
   }
 
-  generatePostShow = (ele)=>{
+  generatePostShow = (ele) => {
     const label = createElementWithClassAndParent("div", ele, "info-box-label");
     label.innerText = "Post Show.";
     const themes = this.themes;
@@ -360,70 +483,70 @@ class DetailsRide {
 
     const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
 
-    const container = createElementWithClassAndParent("div", ele,"section");
+    const container = createElementWithClassAndParent("div", ele, "section");
 
     //JR NOTE: TODO add possibilities for different ride types
 
-    const startStartPossibilities = [`After exiting the ride`,`Upon completion of the experience`,`When you escape`]
+    const startStartPossibilities = [`After exiting the ride`, `Upon completion of the experience`, `When you escape`]
 
-    const startPossibilities = [`you will finally understand what it feels like to be ${this.obsession.randomBlorbo(rand)}!`,`you will be given a complementary ${noun}.`, `you will be sent through a decontamination process.`,`you will be given a nice cake.`,`you will be baked and then there will be cake.`]
-    const midPossibilities1 = [`The exit maze`,`The exit queue`,`Your exit path`]
-    const midPossibilities2 = [`will take aproximately ${rand.getRandomNumberBetween(1,13)} ${rand.pickFrom(["hours","minutes"])}.`,`will reveal how ${chosenCompliment} you truly are.`,`will be extremely ${adj}.`]
+    const startPossibilities = [`you will finally understand what it feels like to be ${this.obsession.randomBlorbo(rand)}!`, `you will be given a complementary ${noun}.`, `you will be sent through a decontamination process.`, `you will be given a nice cake.`, `you will be baked and then there will be cake.`]
+    const midPossibilities1 = [`The exit maze`, `The exit queue`, `Your exit path`]
+    const midPossibilities2 = [`will take aproximately ${rand.getRandomNumberBetween(1, 13)} ${rand.pickFrom(["hours", "minutes"])}.`, `will reveal how ${chosenCompliment} you truly are.`, `will be extremely ${adj}.`]
 
 
-    const endPossibilities = [`It's okay to be scared.`,`A ${chosenPerson} will guide you safely out. Trust them.`,`Once you reach the ${chosenLocation} you will be free.`]
+    const endPossibilities = [`It's okay to be scared.`, `A ${chosenPerson} will guide you safely out. Trust them.`, `Once you reach the ${chosenLocation} you will be free.`]
 
-    if(this.rideType === ZAMPANIORIDE){
+    if (this.rideType === ZAMPANIORIDE) {
       container.innerText = "We both know this is not a real ride."
       return;
     }
 
     container.innerText = `${rand.pickFrom(startStartPossibilities)}, ${rand.pickFrom(startPossibilities)} ${rand.pickFrom(midPossibilities1)} ${rand.pickFrom(midPossibilities2)} ${rand.pickFrom(endPossibilities)}`;
 
-   
+
   }
 
-  generateGuestPolicies = (ele)=>{
+  generateGuestPolicies = (ele) => {
     const label = createElementWithClassAndParent("div", ele, "info-box-label");
     label.innerText = "Guest Policies";
 
-    const lossPassExplanations = ["It doesn't matter where you get Lost, so long as you do&#x2122;!","Can you get to the end of the maze before your friends?","CrypticCurrency thrives on YOUR obsessions!","Virtual maze progress can be traded for physical maze progres, reducing your wait times!","Do the things YOU enjoy and in exchange you will earn TOKENS to make progress through our LossPass system to get the content you crave in a fair and timely fashion!","Earn TOKENS through Engagement with main branch Zampanio properties!"];
-    const safetyExplanationsMaze = ["mortality is disabled within the Maze Queuing System.","no one can die within the Maze Queuing System ","the Maze Queuing System will maintain absolutely your state upon entry until such a time as you leave","the Eight Divines cannot protect you within the Maze Queuing System","we here at EyedolGames have harvested the latent energy of a Forgotten God to provide you with Neverending Life so long as you walk the halls of the Maze Queuing System!","Nidhogg's Unending Life is kept confined to all Mazes, including our Maze Queuing System! Enjoy complementary immortality while in our halls!"]
+    const lossPassExplanations = ["It doesn't matter where you get Lost, so long as you do&#x2122;!", "Can you get to the end of the maze before your friends?", "CrypticCurrency thrives on YOUR obsessions!", "Virtual maze progress can be traded for physical maze progres, reducing your wait times!", "Do the things YOU enjoy and in exchange you will earn TOKENS to make progress through our LossPass system to get the content you crave in a fair and timely fashion!", "Earn TOKENS through Engagement with main branch Zampanio properties!"];
+    const safetyExplanationsMaze = ["mortality is disabled within the Maze Queuing System.", "no one can die within the Maze Queuing System ", "the Maze Queuing System will maintain absolutely your state upon entry until such a time as you leave", "the Eight Divines cannot protect you within the Maze Queuing System", "we here at EyedolGames have harvested the latent energy of a Forgotten God to provide you with Neverending Life so long as you walk the halls of the Maze Queuing System!", "Nidhogg's Unending Life is kept confined to all Mazes, including our Maze Queuing System! Enjoy complementary immortality while in our halls!"]
 
     const items = [`Eligible for ZWorld LossPass System where queue times may be reduced via Proof Of Engagement.  ${rand.pickFrom(lossPassExplanations)}`,
-    `For your safety, ${rand.pickFrom(safetyExplanationsMaze)} ZWorld prides itself on industry leading accessibility. `,`Rides and other attractions may provide a risk of death, mutilation or other damage. ZWorld takes no liability for injuries occurred outside of the Maze Queuing&#x2122; system.`]
-    
+    `For your safety, ${rand.pickFrom(safetyExplanationsMaze)} ZWorld prides itself on industry leading accessibility. `, `Rides and other attractions may provide a risk of death, mutilation or other damage. ZWorld takes no liability for injuries occurred outside of the Maze Queuing&#x2122; system.`]
+
     const container = createElementWithClassAndParent("ul", ele);
 
-    if(this.rideType === ZAMPANIORIDE){
+    if (this.rideType === ZAMPANIORIDE) {
       const doop = createElementWithClassAndParent("li", container);
       doop.innerHTML = "Management asks that all guests leave.";
       return;
     }
 
-    for(let item of items){
+    for (let item of items) {
       const doop = createElementWithClassAndParent("li", container);
       doop.innerHTML = item;
 
-      if(item.includes("LossPass")){
-        doop.onmouseenter = async ()=>{
+      if (item.includes("LossPass")) {
+        doop.onmouseenter = async () => {
           await textVoiceSim.speak(`LossPass, for when you just can't wait!`.split(" "), null, true)
           await sleep(3000);
           await textVoiceSim.speak("Do not DREAM of skipping my maze.".split(","), null, false);
         }
-      }else if (item.includes("For your safety")){
-        doop.onmouseenter = async ()=>{
+      } else if (item.includes("For your safety")) {
+        doop.onmouseenter = async () => {
           await textVoiceSim.speak(`Just try to find such service at our rival park, River Expanse!`.split(" "), null, true)
         }
-      }else if (item.includes("Rides and other attractions")){
-        doop.onmouseenter = async ()=>{
+      } else if (item.includes("Rides and other attractions")) {
+        doop.onmouseenter = async () => {
           await textVoiceSim.speak(`I would recommend remaining in the Maze Queueing System&#x2122; as long as possible!`.split(" "), null, true)
           await sleep(1000);
           await textVoiceSim.speak("You ingrate.".split(","), null, false);
 
         }
       }
-      
+
     }
   }
 
@@ -431,7 +554,7 @@ class DetailsRide {
     const themes = this.themes;
     const infoBox = createElementWithClassAndParent("div", ele, "info-box");
 
-    if(this.rideType === ZAMPANIORIDE){
+    if (this.rideType === ZAMPANIORIDE) {
       const locationRiddleLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
       locationRiddleLabel.innerText = "Location Riddle:"
       const locationRiddle = createElementWithClassAndParent("div", infoBox, "info-box-content");
@@ -444,7 +567,7 @@ class DetailsRide {
     locationRiddleLabel.innerText = "Location Riddle:"
     const locationRiddle = createElementWithClassAndParent("div", infoBox, "info-box-content");
 
-    locationRiddle.onmouseenter = async ()=>{
+    locationRiddle.onmouseenter = async () => {
       await textVoiceSim.speak("A designated Puzzle Assistant will be assigned to you once you enter the park!".split(" "), null, true)
       await sleep(1000);
       await textVoiceSim.speak("If you are too stupid to figure it out on your own.".split(","), null, false);
@@ -479,7 +602,7 @@ class DetailsRide {
       `First, you need to be carrying a ${chosenObject}. A suspicious ${chosenPerson} will approach you. Do what they say. `,
       `Believe in the heart of the cards.`];
     locationRiddle.innerText = rand.pickFrom(shittyRiddleTemplates);
-    locationRiddle.dataset.jrNote="Wastes. It's okay. Calm down. These are riddles for park goers. Are you a park goer? No. These don't mean anything. It's okay. You can stop trying to solve them.";
+    locationRiddle.dataset.jrNote = "Wastes. It's okay. Calm down. These are riddles for park goers. Are you a park goer? No. These don't mean anything. It's okay. You can stop trying to solve them.";
 
     const heightLabel = createElementWithClassAndParent("div", infoBox, "info-box-label");
     heightLabel.innerText = "Height Requirement:"
@@ -487,7 +610,7 @@ class DetailsRide {
     const height = createElementWithClassAndParent("div", infoBox, "info-box-content");
     height.innerText = `${rand.getRandomNumberBetween(3, 113)} ${rand.pickFrom(["feet", "centimeters", "meters", "inches", "millimeters"])} or ${rand.pickFrom(["taller", "bigger", "smaller", "shorter"])}`;
 
-    height.onmouseenter = async ()=>{
+    height.onmouseenter = async () => {
       await textVoiceSim.speak("Should you wish to meet height requirements, Guest Services can assist you!".split(" "), null, true)
       await sleep(1000);
       await textVoiceSim.speak("Who would be stupid enough to agree to let us change their height?".split(","), null, false);
@@ -499,7 +622,7 @@ class DetailsRide {
     const category = createElementWithClassAndParent("div", infoBox, "info-box-content");
     category.innerText = `${this.rideType}, ${this.themes.map((t) => titleCase(t.key)).join(", ")}`;
 
-    category.onmouseenter = async ()=>{
+    category.onmouseenter = async () => {
       await textVoiceSim.speak(`${titleCase(rand.pickFrom(this.themes).key)} has been especially popular this season.`.split(" "), null, true)
     }
     //wanda is EXTREMELY disability friendly
@@ -510,10 +633,123 @@ class DetailsRide {
     const wheelchair = createElementWithClassAndParent("div", infoBox, "info-box-content");
     wheelchair.innerText = `Yes.`;
 
-    wheelchair.onmouseenter = async ()=>{
+    wheelchair.onmouseenter = async () => {
       await textVoiceSim.speak(`Eyedol Games prides itself on its accessibility!`.split(" "), null, true)
     }
 
   }
 
+}
+
+//      const amount = rand.getRandomNumberBetween(3, 13)
+const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
+
+  if (guestCategories.length === 0) {
+    guestCategories = ["Guests"]
+  }
+  let finalRules = [];
+
+  const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+  const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+  const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+
+  const adj = rand.pickFrom([chosenAdj, chosenInsult, chosenCompliment])
+
+  const chosenPerson = rand.pickFrom(themes).pickPossibilityFor(PERSON, rand)
+  const chosenObject = rand.pickFrom(themes).pickPossibilityFor(OBJECT, rand)
+  const chosenLocation = rand.pickFrom(themes).pickPossibilityFor(LOCATION, rand)
+
+  const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
+
+
+
+  const normalRules = [`${rand.pickFrom(guestCategories)} are instructed to leave the park at Midnight, or on Fridays. Zampanio is a marathon, not a sprint.`, "Memorize your name, you will need it later.", "Be wary of friends telling you that 'Zampanio is a really fun game, you should play it'.", "'West' is not for you.", "There are no left turns.", "Do not trust anyone claiming 'West' is a real directon.", "Do not reveal your name.", "You should drink water.", "You cannot die.", "You are safe.", "It's perfectly normal to be afraid.", "Drink plenty of water.", "No Running.", "The Truth is Layered.", "Obsession is a dangerous thing.", "Zampanio needs you to live a long, healthy life.", "The Staff are here to help Guests.", "Guests are here to be Entertained."];
+  normalRules.push(`${rand.pickFrom(guestCategories)} Strictly Prohibited In The ${chosenLocation}`)
+  normalRules.push(`${rand.pickFrom(guestCategories)} Are Required To Spend At Least ${getRandomNumberBetween(0, 8)} ${rand.pickFrom(["days", "minutes", "hours", "seconds", "hours", "hours"])} in the nearest ${chosenLocation}.`)
+  normalRules.push(`${rand.pickFrom(guestCategories)} Are ${adj}`)
+  normalRules.push(`There are exactly ${rand.getRandomNumberBetween(1, 3)} exits.`)
+  normalRules.push(`There is no ${chosenLocation} in this park.`)
+  normalRules.push(`${rand.pickFrom(guestCategories)} Must Be Kept away from West`)
+
+  normalRules.push(`The ${chosenLocation} is safe for all Guests.`)
+  normalRules.push(`If a Staff Member directs you to the ${chosenLocation}, report them.`)
+
+  normalRules.push(`Should you see a ${chosenLocation}, inform the nearest Staff Member immediately.`)
+
+  normalRules.push(`There is no ${chosenObject} in this park. Should you think you see one, inform a Staff Member.`)
+
+
+  //"West is Where Reality Lies" is especially funny to me because its both the fourth wall (where our reality is) and also... Reality "Lies" in westsim, because the things peewee gets told are from observers, not from anyoen who knows whats going on
+  const weirdRules = ["Spiral.", "Your name is not your name.", "Titles are a safe and fun way to be remembered.", "Do not allow others to call you by a name that is no longer yours.", "Do not allow others to call you the Title JR has given you.", "JR has already taken your name. Ask your friends for a new one.", "Zampanio is a really fun game, you should tell your friends to play it.", "Laughter Is Perfectly Normal, even if you can't tell where it comes from.", "West is Where Reality Lies", "Are you sure the you you were is still true?", "You are not who you were.", "You have changed.", "Staff Are Quotidians", "Your face is not your face: Act accordingly."];
+  weirdRules.push(`Drink plenty of ${chosenPerson} blood.`)
+  weirdRules.push(`${chosenPerson} blood is a lie. It is actually ${chosenObject} juice.`)
+  weirdRules.push("Pay attention to rule color.")
+  weirdRules.push(`There is a single safe ${chosenPerson} in this park. You will know them when you see them.`)
+  weirdRules.push("Humans generally have two eyes, two harms and two legs.")
+  weirdRules.push("Do not believe anyone who tells you you have changed.")
+  weirdRules.push("Red color is for liars.")
+  weirdRules.push("Green is for the truth.");
+  weirdRules.push("There is no center.");
+  weirdRules.push("'It' knows you are here. Do not let it know that you know this.");
+  weirdRules.push("This will never make sense to you.");
+  weirdRules.push(`You should never trust a single ${chosenPerson} here.`)
+
+  if (depth < 3) {
+    finalRules = normalRules
+  } else if (depth < 13) {
+    finalRules = normalRules.concat(weirdRules)
+  } else {
+    finalRules = weirdRules;
+  }
+
+  return titleCase(rand.pickFrom(finalRules));
+
+}
+
+
+
+//pairs of opposing categories the guest 'could' belong to 
+//like, member of guest services or not
+//first time riding this or not
+//currently inside of a LOCATION or not
+const generateRuleOptions = (depth, rand, rideName, themes) => {
+
+  const options = [["First Time Vistors", "Repeat Guests"]];
+  options.push(["Staff", "Guests"])
+  options.push(["Under 18", "Over 18"])
+  options.push(["No Eyes", "Some Eyes"])
+  options.push(["Gendered", "Not Gendered"])
+  options.push(["No Legs", "Some Legs"])
+  options.push(["Feathers", "No Feathers"])
+  options.push(["Security Member", "Visitor"])
+  const height = rand.getRandomNumberBetween(13, 113)
+  options.push([`Over ${height} Inches Tall`, `Under ${height} Inches Tall`])
+
+  //wait at least a little bit before getting weird
+  if (depth > 3) {
+    const chosenAdj = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+    const chosenInsult = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+    const chosenCompliment = rand.pickFrom(themes).pickPossibilityFor(ADJ, rand)
+
+    const adj = rand.pickFrom([chosenAdj, chosenInsult, chosenCompliment])
+
+    const chosenPerson = rand.pickFrom(themes).pickPossibilityFor(PERSON, rand)
+    const chosenObject = rand.pickFrom(themes).pickPossibilityFor(OBJECT, rand)
+    const chosenLocation = rand.pickFrom(themes).pickPossibilityFor(LOCATION, rand)
+
+    const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
+
+    options.push([`${titleCase(chosenAdj)}`, `Not ${titleCase(chosenAdj)}`])
+    options.push([`${titleCase(chosenInsult)}`, `Not ${titleCase(chosenInsult)}`])
+    options.push([`${titleCase(chosenCompliment)}`, `Not ${titleCase(chosenCompliment)}`])
+    options.push([`${titleCase(adj)}`, `Not ${titleCase(adj)}`])
+    options.push([`${titleCase(chosenInsult)}`, `Not ${titleCase(chosenCompliment)}`])
+    options.push([`${titleCase(chosenPerson)}`, `Not ${titleCase(chosenPerson)}`])
+    options.push([`Are you currently near one or more ${chosenLocation}`, `Are you away from any ${chosenLocation}?`])
+    options.push([`Are you currently near one or more ${chosenObject}`, `Are you away from any ${chosenObject}?`])
+    options.push([`Are you currently near one or more ${chosenPerson}`, `Are you away from any ${chosenPerson}?`])
+    options.push([`Are you currently near one or more ${noun}`, `Are you away from any ${noun}?`])
+
+  }
+  return rand.pickFrom(options);
 }
