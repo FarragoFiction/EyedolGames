@@ -661,7 +661,7 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
 
   const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
 
-
+  //vaguely gigglesnorting about the existence of the ouija board in here, i think you get it if you sit on a single ride for 5 minutes?
 
   const normalRules = [`Do not trust any other ${rand.pickFrom(guestCategories)}.`, "The ghosts wait for you.", "Sometimes the Ghosts are Echoes of the past.", "Do not pay attention to anyone who says the Rules are random.", "Do not pay attention to anyone who says the Rules have no meaning.", `${rideName} has many exits!`, `${rideName} is the only ride in ZWorld. Do not trust anyone talking of other rides.`, `${rideName} is safe and fun!`, "Staff are responsible for confusing guests.", "You need to rest your eyes.", "You need to eat daily.", "You need to sleep daily.", "Your mobile phone may not work.", "The Truth does not like to be silenced.", "You are responsible for your own safety.", "If you are not having fun you can simply leave.", "You must find the exit as quickly as you can at all costs.", "Remain calm and await rescue.", "It is normal to feel disoriented, lost, or confused.", `${rand.pickFrom(guestCategories)} are instructed to leave the park at Midnight, or on Fridays. Zampanio is a marathon, not a sprint.`, "Memorize your name, you will need it later.", "Be wary of friends telling you that 'Zampanio is a really fun game, you should play it'.", "'West' is not for you.", "There are no left turns.", "Do not trust anyone claiming 'West' is a real directon.", "Do not reveal your name.", "You should drink water.", "You cannot die.", "You are safe.", "It's perfectly normal to be afraid.", "Drink plenty of water.", "No Running.", "The Truth is Layered.", "Obsession is a dangerous thing.", "Zampanio needs you to live a long, healthy life.", "The Staff are here to help Guests.", "Guests are here to be Entertained."];
   normalRules.push(`${rand.pickFrom(guestCategories)} Strictly Prohibited In The ${chosenLocation}`)
@@ -710,9 +710,10 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   weirdRules.push(`${chosenInsult} means ${chosenCompliment}.`)
   weirdRules.push(`${chosenCompliment} means ${chosenInsult}.`)
   weirdRules.push(`${chosenObject} means ${chosenPerson}.`)
-  weirdRules.push(`${chosenPerson} means ${chosenObject}.`)
-  weirdRules.push(`${chosenLocation} means ${chosenObject}.`)
-  weirdRules.push(`${chosenObject} means ${chosenLocation}.`)
+  weirdRules.push(`${chosenPerson} is ${chosenObject}. I don't know how. I can't say $${chosenPerson} without meaning ${chosenObject}. I don't know how long it has been happening.  `)
+  weirdRules.push(`${chosenLocation} is the same thing as ${chosenObject}.`)
+  weirdRules.push(`${chosenObject} equals ${chosenLocation}.`)
+  weirdRules.push(`${chosenObject} has been twisted to mean ${chosenLocation}.`)
 
   weirdRules.push("There is no puzzle, no riddle, no answer. Only endless digging.")
   weirdRules.push("These rules have no way to tell if they are true or not.")
@@ -777,7 +778,7 @@ const generateRuleOptions = (depth, rand, rideName, themes) => {
     options.push([`${titleCase(chosenInsult)}`, `Not ${titleCase(chosenInsult)}`])
     options.push([`${titleCase(chosenCompliment)}`, `Not ${titleCase(chosenCompliment)}`])
     options.push([`${titleCase(adj)}`, `Not ${titleCase(adj)}`])
-    options.push([`${titleCase(chosenInsult)}`, `Not ${titleCase(chosenCompliment)}`])
+    options.push([`${titleCase(chosenInsult)}`, `Not ${titleCase(chosenInsult)}`])
     options.push([`${titleCase(chosenPerson)}`, `Not ${titleCase(chosenPerson)}`])
     options.push([` ${chosenLocation} Employees`, `Not ${chosenLocation} Employees`])
 
