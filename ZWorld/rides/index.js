@@ -666,7 +666,9 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   const noun = rand.pickFrom([chosenPerson, chosenLocation, chosenObject]);
 
   //vaguely gigglesnorting about the existence of the ouija board in here, i think you get it if you sit on a single ride for 5 minutes?
-
+  //also im reminding ppl not to dox themselves and use their True Names online
+  //thats one reason why i do titles
+  //even using a consistent chat handle gives bad actors more than youd think
   const normalRules = [`Do not trust any other ${rand.pickFrom(guestCategories)}.`, "The ghosts wait for you.", "Sometimes the Ghosts are Echoes of the past.", "Do not pay attention to anyone who says the Rules are random.", "Do not pay attention to anyone who says the Rules have no meaning.", `${rideName} has many exits!`, `${rideName} is the only ride in ZWorld. Do not trust anyone talking of other rides.`, `${rideName} is safe and fun!`, "Staff are responsible for confusing guests.", "You need to rest your eyes.", "You need to eat daily.", "You need to sleep daily.", "Your mobile phone may not work.", "The Truth does not like to be silenced.", "You are responsible for your own safety.", "If you are not having fun you can simply leave.", "You must find the exit as quickly as you can at all costs.", "Remain calm and await rescue.", "It is normal to feel disoriented, lost, or confused.", `${rand.pickFrom(guestCategories)} are instructed to leave the park at Midnight, or on Fridays. Zampanio is a marathon, not a sprint.`, "Memorize your name, you will need it later.", "Be wary of friends telling you that 'Zampanio is a really fun game, you should play it'.", "'West' is not for you.", "There are no left turns.", "Do not trust anyone claiming 'West' is a real directon.", "Do not reveal your name.", "You should drink water.", "You cannot die.", "You are safe.", "It's perfectly normal to be afraid.", "Drink plenty of water.", "No Running.", "The Truth is Layered.", "Obsession is a dangerous thing.", "Zampanio needs you to live a long, healthy life.", "The Staff are here to help Guests.", "Guests are here to be Entertained."];
   normalRules.push(`${rand.pickFrom(guestCategories)} Strictly Prohibited In The ${chosenLocation}`)
   normalRules.push(`${rand.pickFrom(guestCategories)} Are Required To Spend At Least ${getRandomNumberBetween(0, 8)} ${rand.pickFrom(["days", "minutes", "hours", "seconds", "hours", "hours"])} in the nearest ${chosenLocation}.`)
@@ -680,7 +682,7 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   normalRules.push(`Only the ${adj} ${noun} can be trusted.`)
   normalRules.push(`You are the best ${rand.pickFrom(guestCategories)}.`)
 
-  normalRules.push(`Your ${noun} is safe as long as you hold onto it. If it becomes lost, do not pick it up if you see it again.`)
+  normalRules.push(`Your ${noun} figurine is safe as long as you hold onto it. If it becomes lost, do not pick it up if you see it again.`)
 
   normalRules.push(`The ${chosenLocation} is safe for all Guests.`)
   normalRules.push(`If a Staff Member directs you to the ${chosenLocation}, report them.`)
@@ -698,7 +700,10 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   weirdRules.push("Pay attention to rule color.")
   weirdRules.push(`If you are perceived, act like a regular ${chosenPerson}.`)
   weirdRules.push("Stop Digging")
-  weirdRules.push("Zampanio will mold itself to your.")
+  weirdRules.push("Remember me.")
+  weirdRules.push("Remember this.")
+  weirdRules.push("Zampanio does not care what it is so long as you like it.")
+  weirdRules.push("Zampanio will mold itself to your Interests.")
   weirdRules.push("Zampanio is whatever compels you.")
   weirdRules.push("Words have twisted meanings.")
   weirdRules.push("Rules have no meaning.")
