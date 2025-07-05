@@ -691,6 +691,8 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   weirdRules.push(`Drink plenty of ${chosenPerson} blood.`)
   weirdRules.push(`${chosenPerson} blood is a lie. It is actually ${chosenObject} juice.`)
   weirdRules.push("Pay attention to rule color.")
+  weirdRules.push(`If you are perceived, act like a regular ${chosenPerson}.`)
+  weirdRules.push("Stop Digging")
   weirdRules.push("Words have twisted meanings.")
   weirdRules.push("Rules have no meaning.")
   weirdRules.push("You can give yourself a Title.")
@@ -733,8 +735,10 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
     finalRules = normalRules
   } else if (depth < 13) {
     finalRules = normalRules.concat(weirdRules)
-  } else {
+  } else if (depth < 113) {
     finalRules = weirdRules;
+  } else {
+    finalRules = ["Obession is a Dangerous Thing"]
   }
 
   return titleCase(rand.pickFrom(finalRules));
