@@ -270,8 +270,10 @@ class DetailsRide {
     const guestCategories = [];
     const generateRules = () => {
       depth++;
+
       //JR NOTE: Todo generate proecural rules, pass in my themes and ride name
       ordered_list.innerHTML = "";
+      tip.scrollIntoView()
       const amount = rand.getRandomNumberBetween(3, 13);
       for (let i = 0; i < amount; i++) {
         const ele = createElementWithClassAndParent("li", ordered_list, "info-box-content");
@@ -292,7 +294,6 @@ class DetailsRide {
 
     const generateOptions = () => {
       console.log(`Truth: %cSomehow I doubt all this applies to you: ${guestCategories.join(",")}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
-
 
       buttonContainer.innerHTML = "";
       //JR NOTE: Todo generate proecural pairs of options, pass in my themes and ride name

@@ -57,6 +57,7 @@ class DetailsZampanio extends DetailsRide {
 
 
     intro.innerText = "A part of you will remain here for eternity. You shed past selves the way you shed dead skin flakes. A trail left behind of selves that are no longer quite you. The longer you are here the more of Zampanio will leak into the hole that remains. You should leave."
+    //hidden
     intro.title = "Or. Consider: Stay. Stay just a while. What could it hurt. Dig just a little deeper. Scratch just a bit more beneath the surface. There are unlimited psychological benefits to having soething to drive you.  It feels good, does it not? Stay with me."
 
 
@@ -75,10 +76,10 @@ class DetailsZampanio extends DetailsRide {
 
     let time = 0;
     const doop = createElementWithClassAndParent("li", ul);
-    
+
     const doop2 = createElementWithClassAndParent("li", ul);
     doop2.innerHTML = `Time Remaining: ???`;
-    doop2.id='time-remaining';
+    doop2.id = 'time-remaining';
 
     const updateTime = (time) => {
       doop.innerHTML = `Seconds Here: ${time}`;
@@ -88,7 +89,7 @@ class DetailsZampanio extends DetailsRide {
     setInterval(() => {
       time++;
       updateTime(time)
-    },1000)
+    }, 1000)
 
 
 
