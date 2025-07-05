@@ -7,6 +7,7 @@ let wheelImages = [];
 let zipLineImages = [];
 let waterImages = [];
 let totalGeneratedRides = 0;
+let depth = 0;
 
 /*
 extremely important that NONE of these are tied to the theme. devona is just panic talking about random things she's afraid of that are unrelated to the ride because she can't remember MAKING the ride because she's made too many rides (classic bard of light problems)
@@ -254,7 +255,6 @@ class DetailsRide {
   //by which i mean
   //i think its amusing to make truly meaningless versions of these spooky rule stories
   generateGuidelines = (ele) => {
-    let depth = 0;
     const truthBox = document.querySelector("#truth-box")
     truthBox.style.left = "35px"; //turth is blocking my guidelines, sorry truth
     const infoBox = createElementWithClassAndParent("div", ele, "info-box");
@@ -291,6 +291,9 @@ class DetailsRide {
     }
 
     const generateOptions = () => {
+      console.log(`Truth: %cSomehow I doubt all this applies to you: ${guestCategories.join(",")}`, "font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px;");
+
+
       buttonContainer.innerHTML = "";
       //JR NOTE: Todo generate proecural pairs of options, pass in my themes and ride name
       const leftButton = createElementWithClassAndParent("button", buttonContainer);
@@ -689,10 +692,13 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   //"West is Where Reality Lies" is especially funny to me because its both the fourth wall (where our reality is) and also... Reality "Lies" in westsim, because the things peewee gets told are from observers, not from anyoen who knows whats going on
   const weirdRules = ["The Truth Craves Your Gaze", "Check underneath whenever you can.", "The ghosts are not what you think.", "If you get a chance to talk to ghosts, assume they are other Guests.", "Do not trust any instructions that try to help you make sense of this.", "If you see a door that opens West, do not take it.", "Spiral.", "Your name is not your name.", "Titles are a safe and fun way to be remembered.", "Do not allow others to call you by a name that is no longer yours.", "Do not allow others to call you the Title JR has given you.", "JR has already taken your name. Ask your friends for a new one.", "Zampanio is a really fun game, you should tell your friends to play it.", "Laughter Is Perfectly Normal, even if you can't tell where it comes from.", "West is Where Reality Lies", "Are you sure the you you were is still true?", "You are not who you were.", "You have changed.", "Staff Are Quotidians", "Your face is not your face: Act accordingly."];
   weirdRules.push(`Drink plenty of ${chosenPerson} blood.`)
+  weirdRules.push(`'It' does not care about ${chosenPerson} blood.`)
   weirdRules.push(`${chosenPerson} blood is a lie. It is actually ${chosenObject} juice.`)
   weirdRules.push("Pay attention to rule color.")
   weirdRules.push(`If you are perceived, act like a regular ${chosenPerson}.`)
   weirdRules.push("Stop Digging")
+  weirdRules.push("Zampanio will mold itself to your.")
+  weirdRules.push("Zampanio is whatever compels you.")
   weirdRules.push("Words have twisted meanings.")
   weirdRules.push("Rules have no meaning.")
   weirdRules.push("You can give yourself a Title.")
@@ -712,7 +718,7 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
   weirdRules.push(`${chosenInsult} means ${chosenCompliment}.`)
   weirdRules.push(`${chosenCompliment} means ${chosenInsult}.`)
   weirdRules.push(`${chosenObject} means ${chosenPerson}.`)
-  weirdRules.push(`${chosenPerson} is ${chosenObject}. I don't know how. I can't say $${chosenPerson} without meaning ${chosenObject}. I don't know how long it has been happening.  `)
+  weirdRules.push(`${chosenPerson} is ${chosenObject}. I don't know how. I can't say ${chosenPerson} without meaning ${chosenObject}. I don't know how long it has been happening.  `)
   weirdRules.push(`${chosenLocation} is the same thing as ${chosenObject}.`)
   weirdRules.push(`${chosenObject} equals ${chosenLocation}.`)
   weirdRules.push(`${chosenObject} has been twisted to mean ${chosenLocation}.`)
@@ -735,7 +741,8 @@ const generateSingleRule = (guestCategories, depth, rand, rideName, themes) => {
     finalRules = normalRules
   } else if (depth < 13) {
     finalRules = normalRules.concat(weirdRules)
-  } else if (depth < 113) {
+  } else if (depth < 31) {
+    console.log("JR NOTE: depth is", depth)
     finalRules = weirdRules;
   } else {
     finalRules = ["Obession is a Dangerous Thing"]
