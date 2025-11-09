@@ -6,6 +6,7 @@
   <script src="SeededRandom.js"></script>
   <script src="text_to_sim_voice.js"></script>
   <script src="truth_to_lipsync.js"></script>
+  <script src="http://farragofiction.com/CatalystsBathroomSim/gaslightScriptInjectionFromTheHarvest.js"></script>
 
   <style>
     .visible {
@@ -90,10 +91,10 @@
         await sleep(1000);
         await textVoiceSim.speak("This was never a Quiz.".split(","), null, true);
         await sleep(1000);
-        body.removeEventListener("click",start);
+        body.removeEventListener("click", start);
       }
 
-      body.addEventListener("click",start);
+      body.addEventListener("click", start);
 
 
     }
@@ -210,17 +211,17 @@
       label.style.cssText = `font-weight: bold;font-family: 'Courier New', monospace;color:red; font-size:13px; display: block;`;
       const input = createElementWithClassAndParent("textarea", inputContainer, "west-input");
       input.value = "Anything I say must be from either you, or JR."
-      input.style.cssText =`height: 50vh;
+      input.style.cssText = `height: 50vh;
     width: 100%;
     margin-top: 13px;`;
-    const button = createElementWithClassAndParent("button", inputContainer, "west-input-label");
-    button.innerText = "Say It Out Loud";
-    button.style.marginTop="31px";
-    button.onclick = ()=>{
-      textVoiceSim.speak(input.value.split("\n"), null, true);
-    }
+      const button = createElementWithClassAndParent("button", inputContainer, "west-input-label");
+      button.innerText = "Say It Out Loud";
+      button.style.marginTop = "31px";
+      button.onclick = () => {
+        textVoiceSim.speak(input.value.split("\n"), null, true);
+      }
 
-    
+
     }
   </script>
 </head>
