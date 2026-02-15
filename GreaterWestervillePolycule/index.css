@@ -1,0 +1,533 @@
+@font-face {
+  font-family: GT America;
+  src: url("Fonts/GT-America/GT-America-Compressed-Regular-Trial.otf");
+}
+
+@font-face {
+  font-family: GT AmericaT;
+  src: url("Fonts/GT-America/GT-America-Compressed-Thin-Trial.otf");
+}
+
+@font-face {
+  font-family: GT AmericaB;
+  src: url("Fonts/GT-America/GT-America-Compressed-Bold-Trial.otf");
+}
+
+body {
+  background-color: #001972;
+  filter: grayscale(1) contrast(3);
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-family: "GT America", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+}
+
+.inner-box {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 66%;
+}
+
+.splash {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: #00649f;
+  background-color: #abc9de;
+}
+
+.homepage-content {
+  margin-top: 50px;
+}
+
+.lds-heart {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: red;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: red;
+}
+
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+
+.negative_match {
+  transform: scaleX(-1);
+}
+
+.spin {
+  animation: spin 10s linear infinite;
+}
+
+.chat-header {
+  display: flex;
+  flex-direction: row;
+  background: #111111;
+  padding: 10px;
+  border-radius: 4px;
+  height: 25px;
+  color: #c4c4c4;
+  justify-content: space-between;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.chat-body {
+  color: black;
+  height: 329px;
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+
+}
+
+.chat-bubble-right {
+  background: lightgreen;
+  text-align: right;
+  width: 66%;
+  margin-left: 27%;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom-right-radius: 1px;
+  font-size: 14px;
+
+}
+
+.chat-bubble-left {
+  background: lightblue;
+  width: 66%;
+  font-size: 14px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom-left-radius: 1px;
+
+}
+
+.message {
+  background: none;
+  font-size: 12px;
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.chat-header-close {
+  border: none;
+  background: none;
+  color: #c4c4c4;
+  margin: 0px;
+  cursor: pointer;
+
+}
+
+.chat-input {
+  width: 100%;
+  height: 25px;
+  border: 1px solid #c4c4c4;
+}
+
+.chat-input:focus {
+  width: 100%;
+  height: 25px;
+  border: 1px solid #c4c4c4;
+  outline: none;
+}
+
+div[contenteditable="true"]:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.chat-header-icon {
+  width: 25px;
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+}
+
+.chat {
+  position: fixed;
+  border-radius: 4px;
+  bottom: 3px;
+  right: 50px;
+  width: 300px;
+  height: 425px;
+  background: white;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: scaleX(1);
+  }
+
+  50% {
+    transform: scaleX(-1);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes james-webb-telescope-mirrors {
+  0% {
+    background-size: 211px 211px;
+  }
+
+  100% {}
+}
+
+@keyframes james-webb-telescope-mirrors-mirrored {
+  0% {
+    background-size: 200px 200px;
+
+  }
+
+  50% {
+    background-size: 211px 211px;
+
+  }
+
+  100% {
+    background-size: 200px 200px;
+
+  }
+}
+
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+
+  5% {
+    transform: scale(1.1);
+  }
+
+  39% {
+    transform: scale(0.85);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+
+.splash-desc {
+  font-size: 14px;
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+
+.logo-img {
+  max-width: 216px;
+  min-width: 216px;
+  width: 215px;
+  height: 72px;
+  max-height: 72px;
+  min-height: 72px;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.message-button {
+  position: absolute;
+  right: 25px;
+  color: white;
+  background-color: #111111;
+  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  cursor: pointer;
+}
+
+.profile-match-box {
+  width: 100px;
+  background: white;
+  margin-top: -24px;
+  padding: 10px;
+}
+
+.profile-name {
+  font-size: 24px;
+  color: hotpink;
+  margin-top: 33px;
+}
+
+.profile-age {
+  font-size: 14px;
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-loc {
+  font-size: 14px;
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.match {
+  color: #a10000;
+  text-align: center;
+
+}
+
+.friend {
+  color: #1939ad;
+  text-align: center;
+
+}
+
+.enemy {
+  color: black;
+  text-align: center;
+}
+
+
+.profile-header-right {
+  margin: 25px;
+}
+
+select {
+  margin-left: 15px;
+}
+
+.profile-header {
+  background-color: #efefef;
+  position: relative;
+}
+
+.profile-section-wrapper {
+  padding-bottom: 30px;
+}
+
+.profile-section-title {
+  font-size: 18px;
+  color: #00649f;
+  font-family: "GT AmericaB", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-about {
+  font-size: 14px;
+}
+
+#img-wrapper {
+  position: relative;
+}
+
+.box {
+  background-size: 200px 200px;
+}
+
+
+
+.fucked-up-image-holder {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.profile-details-label {
+  color: #6f6f6f;
+  padding-left: 10px;
+  width: 100px;
+  display: inline-block;
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-details-text {
+  padding-left: 50px;
+  display: inline-block;
+  width: 180px;
+}
+
+.profile-details-wrapper {
+  border: 1px solid #efefef;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.profile-header-content {
+  margin: 25px;
+  margin-top: 0px;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-details {
+  border: 1px solid #efefef;
+  width: 366px;
+  height: 100%;
+}
+
+.profile-details-header {
+  background-color: #abc9de;
+  padding: 7px;
+  color: #00145c;
+}
+
+.fullbox {
+  margin-left: 5vw;
+  min-height: 100%;
+  width: 76vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-content {
+  margin: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  justify-content: space-between;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.target {
+  background-color: white;
+  width: 66vw;
+  min-height: 100%;
+  margin-top: 72px;
+}
+
+.back-button {
+  position: absolute;
+  left: 5px;
+  top: 70px;
+  padding: 3px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 13px;
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+
+}
+
+.logo {
+  max-width: 216px;
+  min-width: 216px;
+  width: 215px;
+  height: 72px;
+  max-height: 72px;
+  min-height: 72px;
+  position: relative;
+
+}
+
+.quip {
+  margin-bottom: 10px;
+}
+
+
+.single {
+  gap: 100px;
+  cursor: pointer;
+  width: 175px;
+  color: black;
+  text-decoration: none;
+
+}
+
+div.single {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.results-location {
+  font-size: 12px;
+  font-family: "GT AmericaT", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.results-match {
+  border: 1px solid #1939ad;
+  color: #1939ad;
+  border-radius: 25px;
+  padding: 3px;
+  width: 33px;
+  margin-left: auto;
+  padding-left: 9px;
+  margin-right: auto;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.sexy-singles {
+  display: flex;
+  margin-top: 50px;
+  gap: 43px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.preview {
+  object-fit: contain;
+  width: 95%;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+}

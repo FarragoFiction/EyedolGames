@@ -38,6 +38,19 @@ window.onkeydown = (e) => {
   }
 }
 
+const isItValentinesDay = () => {
+  const date = new Date();
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  const love = urlParams.get('love');
+  if (love) {
+    return true;
+  }
+  return date.getDate() === 14 && date.getMonth() === 1; //2/14 but javascript does 0 indexing for months which is....insane,tbh
+
+}
+
 
 
 
@@ -329,7 +342,8 @@ const jackElopeLink = (parent, rand) => {
   if (rand.nextDouble() > 0.75) {
     description += " " + rand.pickFrom(description_suffix);
   }
-  let url = `http://eyedolgames.com/JackElope/?seed=${rand.internal_seed}&name=${name}&image=${image}&matchPercent=${rand.getRandomNumberBetween(-113, 999)}&loc=Horrrorterror,Google`
+  const version = (isItValentinesDay() || rand.nextDouble() > 0.9) ? "GreaterWestervillePolycule" : "JackElope"
+  let url = `http://eyedolgames.com/${version}/?seed=${rand.internal_seed}&name=${name}&image=${image}&matchPercent=${rand.getRandomNumberBetween(-113, 999)}&loc=Horrrorterror,Google`
   renderLink(parent, title, description, url);
 }
 
