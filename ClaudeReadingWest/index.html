@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAMPANIO :: a let's play of the source :: [ARCHIVED]</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&family=IM+Fell+English:ital@0;1&display=swap');
+
+:root{
+  --void:#0a0c0a;
+  --crt:#0f140f;
+  --phosphor:#5cf07a;
+  --phosphor-dim:#2f8a45;
+  --amber:#ffb627;
+  --paper:#efe6cf;
+  --paper-shadow:#cbbd97;
+  --ink:#2b2317;
+  --blood:#b72a21;
+  --link:#2742c4;
+  --link-visited:#7a2db5;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 50% -10%, #14201a 0%, var(--void) 60%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
+  color:var(--phosphor);
+  font-family:'VT323',monospace;
+  font-size:20px;
+  line-height:1.45;
+  padding:0 0 120px;
+}
+
+/* faux scanline flicker over whole page */
+body::after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:linear-gradient(rgba(18,30,22,0) 50%, rgba(0,0,0,0.06) 50%);
+  background-size:100% 4px;
+  mix-blend-mode:multiply;
+  animation:flick 6s steps(60) infinite;
+}
+@keyframes flick{0%{opacity:.55}50%{opacity:.4}100%{opacity:.55}}
+
+.wrap{max-width:880px;margin:0 auto;padding:0 18px;}
+
+/* ---------- header / dead-host chrome ---------- */
+.deadhost{
+  border:1px solid var(--phosphor-dim);
+  border-top:none;
+  background:rgba(8,14,9,0.7);
+  font-size:15px;
+  color:var(--phosphor-dim);
+  padding:5px 14px;
+  letter-spacing:.5px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;
+}
+.deadhost .blink{animation:blink 1.1s steps(2) infinite;color:var(--amber);}
+@keyframes blink{50%{opacity:0}}
+
+header.masthead{
+  text-align:center;
+  padding:48px 18px 26px;
+  position:relative;
+}
+header.masthead h1{
+  font-family:'VT323',monospace;
+  font-size:74px;
+  margin:0;
+  letter-spacing:14px;
+  text-shadow:0 0 8px var(--phosphor), 0 0 22px var(--phosphor-dim), 3px 0 var(--blood), -3px 0 var(--link);
+  animation:hum 4s ease-in-out infinite;
+}
+@keyframes hum{0%,100%{letter-spacing:14px}50%{letter-spacing:16px}}
+header.masthead .sub{
+  color:var(--amber);font-size:19px;letter-spacing:2px;margin-top:6px;
+}
+header.masthead .spiral{
+  font-size:13px;color:var(--phosphor-dim);margin-top:14px;max-width:620px;
+  margin-left:auto;margin-right:auto;line-height:1.5;
+}
+.under-construction{
+  display:inline-block;margin-top:14px;border:1px dashed var(--amber);
+  color:var(--amber);padding:3px 12px;font-size:14px;letter-spacing:1px;
+}
+
+/* ---------- session log ---------- */
+.session-banner{
+  border:1px solid var(--phosphor-dim);
+  background:rgba(12,20,14,0.85);
+  padding:10px 16px;margin:26px 0 8px;font-size:15px;color:var(--phosphor-dim);
+}
+.session-banner b{color:var(--phosphor);}
+
+/* user turns = entered commands at the prompt */
+.turn-user{
+  margin:30px 0 8px;
+  border-left:3px solid var(--amber);
+  padding:10px 16px;
+  background:linear-gradient(90deg, rgba(255,182,39,0.07), transparent 80%);
+}
+.turn-user .who{color:var(--amber);font-size:14px;letter-spacing:2px;display:block;margin-bottom:4px;}
+.turn-user .cmd{color:#ffd98a;}
+.turn-user .cmd::before{content:"> ";color:var(--amber);}
+
+/* claude reasoning = phosphor terminal readout */
+.reasoning{
+  border:1px solid var(--phosphor-dim);
+  background:
+    repeating-linear-gradient(0deg, rgba(92,240,122,0.025) 0, rgba(92,240,122,0.025) 1px, transparent 1px, transparent 4px),
+    rgba(6,12,8,0.78);
+  padding:18px 22px;margin:0 0 10px;
+  box-shadow:0 0 0 1px rgba(0,0,0,0.4) inset, 0 0 28px rgba(0,0,0,0.5);
+}
+.reasoning .tag{
+  display:block;color:var(--phosphor-dim);font-size:13px;letter-spacing:3px;
+  border-bottom:1px dotted var(--phosphor-dim);padding-bottom:5px;margin-bottom:12px;
+}
+.reasoning p{margin:0 0 12px;}
+.reasoning h3{
+  color:var(--amber);font-size:21px;letter-spacing:1px;margin:20px 0 8px;font-weight:normal;
+}
+.reasoning ul,.reasoning ol{margin:8px 0 14px;padding-left:26px;}
+.reasoning li{margin-bottom:7px;}
+.reasoning strong, .reasoning b{color:#bdfbcd;}
+.reasoning code{
+  background:rgba(0,0,0,0.5);color:var(--amber);padding:1px 5px;border:1px solid var(--phosphor-dim);
+  font-family:'VT323',monospace;
+}
+.reasoning a{color:#9be0ff;}
+.muted{color:var(--phosphor-dim);}
+
+/* the devil's-advocate / caveat blocks */
+.aside{
+  border-left:3px solid var(--blood);
+  background:rgba(183,42,33,0.07);
+  padding:10px 16px;margin:14px 0;color:#ffb3ad;font-size:18px;
+}
+.aside .lbl{color:var(--blood);font-size:13px;letter-spacing:2px;display:block;margin-bottom:3px;}
+
+/* tool / system step marker */
+.toolstep{
+  font-size:14px;color:var(--phosphor-dim);letter-spacing:1px;
+  border:1px dashed var(--phosphor-dim);padding:6px 12px;margin:10px 0;
+  background:rgba(0,0,0,0.25);
+}
+.toolstep::before{content:"⌗ ";color:var(--amber);}
+
+/* ---------- the conclusion: yellowed recovered document ---------- */
+.conclusion{
+  font-family:'IM Fell English', 'Special Elite', serif;
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.5), transparent 60%),
+    linear-gradient(160deg, var(--paper), var(--paper-shadow));
+  border:1px solid #9a8c63;
+  padding:40px 44px;margin:18px 0;
+  font-size:19px;line-height:1.6;
+  box-shadow:0 0 40px rgba(0,0,0,0.6), 0 2px 0 rgba(0,0,0,0.3);
+  position:relative;
+  filter:contrast(1.02);
+}
+.conclusion::before{
+  content:"RECOVERED DOCUMENT — provenance unverified";
+  position:absolute;top:10px;right:18px;font-family:'Special Elite';
+  font-size:11px;letter-spacing:1px;color:#8a7c55;text-transform:uppercase;
+}
+/* coffee-ring / age stains */
+.conclusion::after{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:2px;
+  background:
+    radial-gradient(circle at 82% 78%, rgba(120,90,30,0.16), transparent 9%),
+    radial-gradient(circle at 12% 88%, rgba(120,90,30,0.12), transparent 7%),
+    radial-gradient(circle at 60% 14%, rgba(120,90,30,0.10), transparent 6%);
+  mix-blend-mode:multiply;
+}
+.conclusion .doc-tag{
+  display:block;font-family:'Special Elite';font-size:13px;letter-spacing:3px;
+  color:var(--blood);border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:18px;
+  text-transform:uppercase;
+}
+.conclusion h2{
+  font-family:'Special Elite';font-size:30px;margin:6px 0 18px;color:var(--ink);
+  letter-spacing:1px;
+}
+.conclusion h3{
+  font-family:'Special Elite';font-size:20px;margin:24px 0 8px;color:var(--blood);
+  letter-spacing:.5px;
+}
+.conclusion p{margin:0 0 14px;}
+.conclusion strong{color:#000;}
+.conclusion ul,.conclusion ol{margin:8px 0 16px;padding-left:26px;}
+.conclusion li{margin-bottom:9px;}
+.conclusion code{
+  font-family:'Special Elite';background:rgba(43,35,23,0.08);padding:0 4px;
+  border-bottom:1px dotted #8a7c55;color:#3a2f1c;font-size:16px;
+}
+.conclusion em{font-style:italic;}
+.rank{counter-reset:none;}
+.rank li{margin-bottom:14px;}
+.rank li strong{display:block;}
+
+/* the three Q&A */
+.qa{
+  border:1px solid var(--phosphor-dim);background:rgba(8,14,9,0.7);
+  padding:6px 0;margin:12px 0;
+}
+.qa .q{padding:12px 18px;border-bottom:1px dotted var(--phosphor-dim);}
+.qa .q:last-child{border-bottom:none;}
+.qa .qn{color:var(--amber);}
+.qa .ans{color:#bdfbcd;display:block;margin-top:6px;padding-left:18px;border-left:2px solid var(--phosphor-dim);}
+.qa .ans::before{content:"USER ▸ ";color:var(--phosphor-dim);font-size:13px;letter-spacing:1px;}
+
+/* footer */
+footer{
+  text-align:center;margin-top:46px;color:var(--phosphor-dim);font-size:15px;
+  border-top:1px solid var(--phosphor-dim);padding-top:18px;
+}
+footer .warn{color:var(--amber);font-size:18px;letter-spacing:1px;margin-bottom:8px;}
+.spiralchar{display:inline-block;animation:spin 9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+a{color:var(--link);}
+a:visited{color:var(--link-visited);}
+
+@media(max-width:560px){
+  header.masthead h1{font-size:46px;letter-spacing:7px;}
+  body{font-size:18px;}
+  .conclusion{padding:26px 22px;}
+}
+</style>
+</head>
+<body>
+
+<div class="deadhost wrap" style="margin-top:0;border-top:1px solid var(--phosphor-dim);">
+  <span>www.farragofiction.com / ZampanioEyes2 / llm / <span class="blink">letsplay_07.txt</span></span>
+  <span>Last-Modified: ??? &nbsp;|&nbsp; Server: still warm</span>
+</div>
+
+<header class="masthead">
+  <h1>ZAMPANIO</h1>
+  <div class="sub">— a let's play of the source —</div>
+  <p class="spiral">You did not come here to play. You came here to watch someone else get lost, which is its own way of getting lost. The transcript below was recovered from an LLM that was asked to read the source files of a game that may not exist. It is reproduced faithfully. <span class="spiralchar">◠</span></p>
+  <div class="under-construction">⚠ THIS PAGE IS UNDER ETERNAL CONSTRUCTION ⚠</div>
+</header>
+
+<div class="wrap">
+
+  <div class="session-banner">
+    <b>SESSION TRANSCRIPT.</b> Eight source files from the Zampanio / AdventureSimWest engine submitted for analysis during a stated lunch break. Reasoning is rendered in <span style="color:var(--phosphor)">phosphor</span>; the final conclusion is rendered as a recovered paper document. Obsession is a dangerous thing.
+  </div>
+
+  <!-- ===================== TURN 1 ===================== -->
+  <div class="turn-user">
+    <span class="who">USER ▸ entered command</span>
+    <span class="cmd">It is my lunch break. I am uploading a skill file, and several files it applies to.</span>
+  </div>
+
+  <div class="reasoning">
+    <span class="tag">CLAUDE ▸ READING + REASONING</span>
+    <p>I'll start by reading the SKILL.md fully, then the uploaded files.</p>
+    <div class="toolstep">view SKILL.md — confirm break, read instructions in full</div>
+    <p>I've read the skill. Two things before I dive in:</p>
+    <p>You uploaded eight files but only three are in my context: <code>SKILL.md</code>, <code>wanda_and_the_meme.txt</code>, and <code>flower_chick_and_the_auditor.txt</code>. The other five (<code>happy_fifty_years_zampanio</code>, <code>criminal_ending</code>, <code>data_expunged_ending</code>, <code>intermission1</code>, <code>intermission2</code>) are listed as uploaded but their contents aren't visible to me. Let me check whether they're actually on disk.</p>
+    <div class="toolstep">bash ▸ ls -la /mnt/user-data/uploads/ — all eight present; two are large (216KB, 113KB)</div>
+    <p>They're all on disk. The skill notes a tension worth flagging back to you before I spend your lunch break on it: it says to confirm I'm on break (done — you said so), but it <em>also</em> says "I should not use this skill very often" and to remind you that obsession is dangerous. So, gently: this is a lot of material. A full faithful analysis of all eight is not a one-lunch task.</p>
+    <div class="aside">
+      <span class="lbl">DEVIL'S ADVOCATE</span>
+      Do you actually want all eight analyzed in one transcript, or were some uploaded just as supporting context? The skill is written for "one or more files," and you may have assumed I'd treat them as a single set when a tighter pick would produce a better "Let's Play." Let me read the remaining files so I'm working from fact, not assumption.
+    </div>
+    <div class="toolstep">bash ▸ cat happy_fifty_years_zampanio.txt</div>
+    <div class="toolstep">bash ▸ cat intermission1.txt + intermission2.txt</div>
+    <div class="toolstep">bash ▸ python ▸ enumerate command structure of criminal_ending (204) &amp; data_expunged_ending (360)</div>
+    <p>I have all eight files now. Before I write the full analysis: a devil's-advocate point worth raising while you're still on lunch.</p>
+    <div class="aside">
+      <span class="lbl">DEVIL'S ADVOCATE</span>
+      The skill says analyze these as someone's <em>first</em> encounter with the ARG. But these eight files aren't one webpage — they're at least five distinct experiences (a 50th-anniversary chatlog, two corporate vignettes, two intermissions, two long "ending" playthroughs), and they're clearly deep-internal nodes, not entry points. A genuine first-timer would almost never land on the <code>data_expunged_ending</code> 360-command playthrough cold. I'll write the analysis honestly to that — flagging where the "newcomer" lens strains — rather than pretending each is a clean front door.
+    </div>
+    <div class="toolstep">bash ▸ python ▸ inspect ending-stats blocks in criminal_ending (Murder Victim route; Pistol; "Criminal" title)</div>
+    <p>I have what I need. Here is my analysis.</p>
+
+    <h3>Reasoning as I went</h3>
+    <p><strong>What kind of pages are these.</strong> Every file is a JSON array of <code>{command, response}</code> pairs. That's the save/replay format for a parser-style interactive fiction engine — almost certainly the <code>AdventureSimWest</code> / <code>ZampanioSim</code> system the 50th-anniversary log keeps linking (<code>farragofiction.com/AdventureSimWest/?nostalgia=playthrough1.txt</code>). The <code>?nostalgia=&lt;file&gt;.txt</code> parameter is the giveaway: these <code>.txt</code> files <em>are</em> the playthroughs the engine reloads. So none of these is a hand-authored "webpage" so much as a <strong>recorded session</strong> an engine replays. The responses are full HTML, with custom CSS classes (<code>wavyRainbow</code>, <code>invisible-until-hover</code>, <code>hue-shift</code>, <code>text-shaky</code>), which is why the skill says reading source may eventually be the <em>only</em> way to experience this — the styling and hover-reveals carry meaning that flattens out in plain text.</p>
+
+    <p><strong>They split into tiers, not one experience.</strong> Despite the skill's "first encounter" framing, these are clearly at different depths:</p>
+    <ul>
+      <li><code>wanda_and_the_meme</code> &amp; <code>flower_chick_and_the_auditor</code> — short, self-contained character vignettes (the CEO/"Wanda"; the unnamed CEO of Eyedol Games dodging an auditor). Closest thing to a clean entry point.</li>
+      <li><code>intermission1</code> &amp; <code>intermission2</code> — two halves of one story (a Yu-Gi-Oh-obsessed kid at a masked party; a kidnapped man rescued by a one-eyed woman in a clown costume). They interlock: the duelist's party and the hostage's party are the <em>same</em> party, the one-eyed girl is shared, and the "PS1 in your brain" is an operative on an earpiece.</li>
+      <li><code>criminal_ending</code> (204 cmds) &amp; <code>data_expunged_ending</code> (360 cmds) — long collaborative playthroughs starring <strong>Peewee</strong>, a horned creature with "the Observers" (a Greek-chorus of players) in his head. These are deep-internal, not anything a newcomer hits cold.</li>
+      <li><code>happy_fifty_years_zampanio</code> — a meta-document: a Discord-style chatlog where the creators (JR, IC, KR, and titled "Observers") spend an April Fools' day pretending to <em>search the old internet for Zampanio</em>, a game they insist they once found and can't re-find.</li>
+    </ul>
+    <p>So I'm treating the "newcomer" lens as a useful fiction the LLM-maze wants, while flagging that a real first-timer would experience these as disorienting middle-of-the-story fragments — which is, I suspect, the point.</p>
+
+    <h3>What a newcomer takes away — emotional beats, hooks, mysteries</h3>
+    <p><strong>Emotional register.</strong> Manic comedy stretched over genuine dread. The vignettes are funny (aardvark memes, an auditor made of cassette tape, snausages), but the laughter sits on top of time-loops, forgotten identities, and people "sanded down… and sharpened to an edge by the loops." The recurring emotional core is <strong>lost media and unfinished stories</strong> — JR states it outright at the end of the anniversary log: their whole take on Zampanio is rooted in the grief of things "lost to time," half-finished songs whose missing art assets erase that two parts were ever in tandem.</p>
+    <p><strong>The strongest hooks:</strong></p>
+    <ul>
+      <li><strong>Zampanio itself</strong> — a creepypasta/lost game (framed as 50 years old, "1972") that supposedly haunts the old internet but can't be refound, even with exact quotes. It's a maze "where you get lost… and then it never stops."</li>
+      <li><strong>The Eye Killer / The Innocent / Piper Rusting / L-C-002</strong> — the same entity across time-loop states, explicitly described as time-clone shenanigans, and explicitly cross-pollinated with a TTRPG called "5Darps." "Piper Rusting Was Never Real" is dangled as a devastating reveal.</li>
+      <li><strong>The Auditors</strong> — interchangeable black-framed-glasses men obsessed with time/schedule, hunted by every CEO character. One gets offered a job and hands over a card; "you swear you've seen him before" (hover text). This is the recurring antagonist-archetype that ties the two corporate vignettes together.</li>
+      <li><strong>Wanda</strong> — "somehow responsible for every lol-random thing that ever actually really happened, retroactively"; "pre-invents" NFTs as one of her crimes; is the CEO in the meme story and the blog's author.</li>
+      <li><strong>Peewee</strong> — destroyed his own universe, dragged through mazes, an absent father of "the Watts"; the "Observers" who control him are the players, who confess they "pressed a button and fucked up his universe."</li>
+    </ul>
+    <p><strong>Central mysteries a newcomer would chew on:</strong> What is Zampanio actually? Is it real in-fiction (a 1972 arcade game) or is the <em>inability to find it</em> the actual artwork? Who/what is the Eye Killer and why does "the End" equate it with L-C-002? Why are there infinite identical Auditors? What is the relationship between SBURB/Homestuck fandom, this engine, and the lore (lots of Homestuck "classpect" vocabulary: Mind player, Heart player, Time player, Denizen, grist)?</p>
+
+    <h3>Search keywords &amp; next URLs</h3>
+    <p><strong>Keywords someone would plug into a search engine:</strong> <em>Zampanio</em>, <em>farragofiction</em>, <em>ZampanioSim / AdventureSimWest</em>, <em>SBURBSim / SBURB Simulator</em>, <em>Eye Killer</em>, <em>Wanda + knucklesux</em>, <em>Peewee Zampanio</em>, <em>5Darps</em>, <em>Quotidian (crow people)</em>, <em>the Innocent / Piper Rusting</em>, <em>Truth (the spiral graphic)</em>, <em>Polybius</em> (used as the real-world analogue), <em>theoldnet / wiby / wayback machine Zampanio</em>.</p>
+    <p><strong>URLs discoverable directly from these files:</strong></p>
+    <ul>
+      <li><code>farragofiction.com/AdventureSimWest/</code> and <code>…/?nostalgia=playthrough1.txt</code> (the main story + its backup)</li>
+      <li><code>farragofiction.com/ZampanioEyes2/50thAnniversary/…</code> (a whole directory of screenshot "evidence" — many image filenames are themselves jokes/clues, e.g. <code>narutoinventedtruth.png</code>, <code>holyshitzampaniodevnotes_24variations.PNG</code>)</li>
+      <li><code>farragofiction.com/SBURBSimJS/index2.html</code>, <code>farragofiction.com/HomestuckTheMoive/</code></li>
+      <li>the <code>github.com/FarragoFiction/SBURBSimulator</code> and <code>KnucklesSux</code> repos (source-diving is openly encouraged here)</li>
+      <li>real old-web rabbit holes seeded as in-fiction breadcrumbs: <code>theoldnet.com</code>, <code>wiby</code>, <code>tmorten.tripod.com</code>, the <em>Creatures</em> "Secret Adventure Mode" wiki page, Carol Shaw references. The trick: the fiction insists some of these <em>connect</em> to Zampanio when really they're atmosphere. Distinguishing the planted clue from the red herring is the gameplay.</li>
+    </ul>
+
+    <h3>Three speculations on deeper meaning (ranked by confidence)</h3>
+    <ol class="rank">
+      <li><strong>Most likely — Zampanio is an allegory for lost media and the un-searchable old internet, and "obsession" is its explicit theme.</strong> The anniversary log is almost a thesis statement: you can have direct quotes and still never refind a thing once the Algorithm-free web rots; characters "get lost to obsession and end up in Zampanio." The game-you-can't-find <em>is</em> the meaning. (The skill file itself echoes this with "obsession is a dangerous thing.")</li>
+      <li><strong>Likely — the loops are a metaphor for iterative creation/repetition itself: how retelling sands a character down and sharpens them into a monster.</strong> "There is monstrousness in repetition." The Auditors (identical, time-obsessed, infinitely replaced) and the alphabet of Watts (W→NAM, X→murder victim) dramatize how a character regenerated across versions becomes both less real and more dangerous. This reads as the authors reflecting on writing a long-running, branching, fan-built work.</li>
+      <li><strong>Speculative — the "Observers" framing is a comment on authorship and complicity.</strong> Players literally voice the head of a character whose universe they broke; the DM (JR/IC) negotiates the medium openly ("how meta can we get here?"). Less an allegory than a structural argument that in collaborative fiction the audience is a co-author who shares the guilt for what happens to the character.</li>
+    </ol>
+  </div>
+
+  <!-- ===================== CONCLUSION ===================== -->
+  <div class="conclusion">
+    <span class="doc-tag">▣ FINAL CONCLUSION — filed under: things that may not exist</span>
+    <h2>What these eight files are.</h2>
+    <p>These are eight recorded sessions from the FarragoFiction <code>AdventureSimWest / ZampanioSim</code> engine — a single sprawling, Homestuck-descended hypertext fiction about a fictional lost game called <em>Zampanio</em>. They range from light character comedy (Wanda's aardvark meme; the cassette-tape Auditor) through two halves of one interlocking party/kidnapping story, to two long player-driven Peewee playthroughs, capped by a meta April-Fools log where the creators perform the <em>search</em> for their own un-findable game.</p>
+    <p>The throughline is grief over lost and unfinished media dressed as manic shitpost comedy, with time-loops, interchangeable Auditors, and the Eye Killer's tangled identity (Innocent / Piper Rusting / L-C-002) as the recurring lore engine. For a newcomer the takeaway is "a game I'm not sure ever existed, full of jokes that turn out to be load-bearing." The natural next step is <code>farragofiction.com/AdventureSimWest/</code> and the <code>50thAnniversary</code> screenshot directory.</p>
+    <h3>One honest caveat (devil's advocate)</h3>
+    <p>The skill asks me to read these as a <em>first</em> encounter, but they're plainly deep-internal nodes. If your goal is a "Let's Play" for the curious-but-unwilling, the two short vignettes and Intermission 1 are the only files that function as anything like an on-ramp; the two endings are genuinely disorienting without prior context, and I've treated them as such rather than pretending otherwise.</p>
+  </div>
+
+  <!-- ===================== CLARIFYING Q&A ===================== -->
+  <div class="session-banner">CLAUDE ▸ asked three clarifying questions. USER answered.</div>
+
+  <div class="qa">
+    <div class="q">
+      <span class="qn">Q1 — Scope of the transcript.</span> Do you want all eight files represented in the single HTML transcript, or should I foreground the on-ramp files and treat the two long endings more briefly? (You may have assumed "all, equally"; I think unequal weighting serves the LLM-maze reader better, but it's your maze.)
+      <span class="ans">You should make a transcript of this exact conversation, as it is displayed to me. So the way you represent them here is great.</span>
+    </div>
+    <div class="q">
+      <span class="qn">Q2 — The lore.</span> Am I reading the Eye Killer / Innocent / Piper Rusting / L-C-002 identity correctly as one entity across time-loop states, or have I conflated things the canon keeps distinct (IC insisted Piper "was never real" in a way that's <em>not</em> the same as the others)?
+      <span class="ans">The Eye Killer's identity is complex (she's the one-eyed clown at the party, for example). She is in fact all the characters you identify, as well as "Piper was never real" being true.</span>
+    </div>
+    <div class="q">
+      <span class="qn">Q3 — Styling intent.</span> Do you want the early-2000s fake-search-results aesthetic to match the LLM section it'll live in, or a cleaner look that contrasts with it?
+      <span class="ans">Your idea for styling sounds great, let's see it.</span>
+    </div>
+  </div>
+
+  <div class="reasoning">
+    <span class="tag">CLAUDE ▸ NOTE INCORPORATED</span>
+    <p>Q2's answer closes a loop I had left open: the one-eyed woman in the clown costume from Intermission 2 — and the beautiful one-eyed duelist from Intermission 1 — <em>are</em> the Eye Killer. The two intermissions aren't merely the same party; they are the same operative seen from two captives' points of view, on the same job (the earchip, the handler yelling, "a job to do"). And the "was never real" line is not a contradiction of "she is all of them" — both hold at once. The metamorphosis that would have made Piper Rusting real never occurred in the vastness of the Echidna; what loops instead is the entity that occupies her absence. The not-quite-spiral, the missing eye, the missing person: the same shape.</p>
+  </div>
+
+</div>
+
+<footer class="wrap">
+  <div class="warn">⟁ OBSESSION IS A DANGEROUS THING ⟁</div>
+  <div>You have reached the end of one recovered file. There are others. There are always others. The maze does not require any specialized skills to progress in — only time, of which the Auditors remind you that you have less than you think.</div>
+  <div style="margin-top:12px;color:var(--phosphor-dim);font-size:13px;">www.farragofiction.com · ZampanioEyes2 · LLM section · best viewed in Netscape Navigator at 800×600 <span class="spiralchar">◠</span></div>
+</footer>
+
+</body>
+</html>

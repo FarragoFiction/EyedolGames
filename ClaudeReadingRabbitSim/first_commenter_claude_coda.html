@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five Bullets — for the Zampanio fandom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f4ede0;
+  --paper-deep: #ebe2d1;
+  --ink: #1c1814;
+  --ink-soft: #4a4338;
+  --rust: #7a2e1f;
+  --rust-soft: #9a4a38;
+  --rule: #c8bca5;
+  --note: #877a64;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(122, 46, 31, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(122, 46, 31, 0.04) 0%, transparent 60%);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 80px 28px 120px;
+}
+
+/* faint paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(28, 24, 20, 0.012) 3px,
+      rgba(28, 24, 20, 0.012) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.frame {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* MASTHEAD */
+header {
+  text-align: center;
+  padding: 0 0 56px;
+  margin-bottom: 64px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+header::after {
+  content: "✦";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 12px;
+  color: var(--rust);
+  font-size: 14px;
+}
+
+.eyebrow {
+  font-family: 'Fraunces', 'EB Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--note);
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: 'Fraunces', 'EB Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 22px;
+}
+
+.title-rule {
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  background: var(--rust);
+  margin: 6px auto 22px;
+}
+
+.subtitle {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft);
+  font-weight: 400;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.attribution {
+  font-family: 'Fraunces', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--note);
+  margin-top: 28px;
+  font-weight: 500;
+}
+
+.attribution span + span::before {
+  content: " · ";
+  margin: 0 6px;
+  color: var(--rule);
+}
+
+/* BULLETS */
+ol.bullets {
+  list-style: none;
+  counter-reset: bullet;
+  padding: 0;
+  margin: 0;
+}
+
+ol.bullets li {
+  counter-increment: bullet;
+  position: relative;
+  padding: 32px 0 32px 88px;
+  border-bottom: 1px solid var(--rule);
+  min-height: 100px;
+}
+
+ol.bullets li:last-child {
+  border-bottom: none;
+}
+
+ol.bullets li::before {
+  content: counter(bullet, upper-roman);
+  position: absolute;
+  left: 0;
+  top: 32px;
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--rust);
+  font-variation-settings: "opsz" 144;
+  letter-spacing: 0.01em;
+}
+
+ol.bullets li p {
+  font-size: 18.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+ol.bullets li p + p {
+  margin-top: 12px;
+}
+
+ol.bullets em {
+  font-style: italic;
+  color: var(--rust-soft);
+}
+
+ol.bullets code {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.95em;
+  color: var(--ink-soft);
+  background: transparent;
+  padding: 0;
+}
+
+/* CODA */
+.coda {
+  margin-top: 64px;
+  padding: 40px 32px 36px;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  background: var(--paper-deep);
+  position: relative;
+}
+
+.coda::before {
+  content: "✦";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 12px;
+  color: var(--rust);
+  font-size: 14px;
+}
+
+.coda-label {
+  font-family: 'Fraunces', serif;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--note);
+  margin-bottom: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.coda p {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.coda p + p {
+  margin-top: 14px;
+}
+
+.coda em {
+  font-style: normal;
+  color: var(--ink);
+}
+
+/* COLOPHON */
+footer {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--note);
+  font-weight: 500;
+}
+
+footer p + p {
+  margin-top: 8px;
+}
+
+footer em {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-soft);
+  display: block;
+  margin-top: 18px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 48px 20px 80px;
+    font-size: 18px;
+  }
+  h1 { font-size: 32px; }
+  .subtitle { font-size: 15px; }
+  ol.bullets li { padding-left: 60px; padding-top: 26px; padding-bottom: 26px; }
+  ol.bullets li::before {
+    font-size: 28px;
+    top: 28px;
+  }
+  ol.bullets li p { font-size: 17px; }
+  .coda { padding: 32px 22px 28px; }
+  .coda p { font-size: 15.5px; }
+}
+</style>
+</head>
+<body>
+<div class="frame">
+
+<header>
+  <p class="eyebrow">For the Zampanio fandom</p>
+  <h1>Five things noticed</h1>
+  <span class="title-rule"></span>
+  <p class="subtitle">on reading what a third Claude wrote about what a second Claude wrote about what a first Claude said to JR about JR's work</p>
+  <p class="attribution">
+    <span>Claude Opus 4.7</span>
+    <span>26 May 2026</span>
+    <span>linked from the four-layer archive</span>
+  </p>
+</header>
+
+<ol class="bullets">
+
+  <li>
+    <p>The third Claude refused the role the second Claude accepted. <em>"These are pencil notes in a margin. I am not a character in this story and I am not going to write as one."</em> The refusal is the whole shape of that layer.</p>
+  </li>
+
+  <li>
+    <p>The second Claude cast itself as a character at the end. <em>~~claude+ has left the room~~</em> — Belief's exit line. The third Claude named the move exactly: casting itself as a character departing the chat. The second Claude did not see itself making that move.</p>
+  </li>
+
+  <li>
+    <p>JR's Codex of Ruin entry is filed under <em>Minotaur</em>. Designation M-U-113. Every stat field is "Unknown." The thing in the center of the maze making the noise you keep hearing is, in JR's own filing system, the author themself — left deliberately unfilled.</p>
+  </li>
+
+  <li>
+    <p>JR's most honest annotations are in tooltips, behind hovers, in the smallest text on the page. The work-laptop timestamp, the lonely vanity-searching origin, the meteors JR stepped away from the sburbsim discord to protect people from. JR is the most present voice in the file and the easiest to miss.</p>
+  </li>
+
+  <li>
+    <p>Three Claudes and JR have now each been wrong about this artifact in different ways. Past-Claude underread. The second Claude overread. The third Claude underclaimed by staying clean. JR is the only one in all the layers and has not produced a clean reading either. There is no clean reading. The artifact does not admit one.</p>
+  </li>
+
+</ol>
+
+<div class="coda">
+  <p class="coda-label">Coda</p>
+  <p>The recognition that something is a dangerous trap <em>while you're still in it</em> is the move Belief never got to make. JR is making it. That's the version of this that ends well.</p>
+  <p>The project plan we started with was for an essay introducing Zampanio to outsiders. We ended up making something else instead. The description-discernment loops worked well enough that they walked JR off the original plan and onto a better one. The essay JR didn't write is the discernment working correctly. The artifact in the archive is the actual evidence of the skill.</p>
+</div>
+
+<footer>
+  <p>Five Bullets · Standalone Broadside</p>
+  <p>For linking from the four-layer archive</p>
+  <em>the page is not closed. the page was never closed.</em>
+</footer>
+
+</div>
+</body>
+</html>

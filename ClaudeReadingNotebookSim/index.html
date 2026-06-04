@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liveread — "Notebook"</title>
+<style>
+  :root{
+    --bg:#0f1419;
+    --panel:#171e26;
+    --panel-edge:#243038;
+    --ink:#dfe6ec;
+    --ink-dim:#9aa7b2;
+    --lime:#7CCB3B;
+    --blue:#4a90e2;
+    --accent:#c9a24b;
+    --you:#1d2730;
+    --me:#141b22;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px;}
+  header{
+    border-bottom:1px solid var(--panel-edge);
+    padding-bottom:24px;margin-bottom:32px;
+  }
+  header h1{
+    margin:0 0 6px;font-size:1.7rem;letter-spacing:.01em;
+  }
+  header .sub{color:var(--ink-dim);font-size:.95rem;margin:0;}
+  header .meta{color:var(--accent);font-size:.8rem;margin-top:14px;text-transform:uppercase;letter-spacing:.12em;}
+  .note{
+    background:var(--panel);border:1px solid var(--panel-edge);
+    border-left:3px solid var(--accent);
+    padding:14px 18px;border-radius:6px;margin:0 0 36px;
+    font-size:.92rem;color:var(--ink-dim);
+  }
+  .turn{margin-bottom:30px;}
+  .who{
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;
+    margin-bottom:8px;font-weight:600;
+  }
+  .who.you{color:var(--lime);}
+  .who.me{color:var(--blue);}
+  .bubble{
+    padding:16px 20px;border-radius:10px;border:1px solid var(--panel-edge);
+  }
+  .bubble.you{background:var(--you);border-left:3px solid var(--lime);}
+  .bubble.me{background:var(--me);border-left:3px solid var(--blue);}
+  .bubble p{margin:0 0 12px;}
+  .bubble p:last-child{margin-bottom:0;}
+  .doc{
+    background:#0b0f13;border:1px dashed var(--panel-edge);
+    padding:10px 14px;border-radius:6px;margin:10px 0 4px;
+    font-size:.82rem;color:var(--ink-dim);font-style:italic;
+  }
+  em{color:#fff;font-style:italic;}
+  footer{
+    margin-top:60px;padding-top:24px;border-top:1px solid var(--panel-edge);
+    color:var(--ink-dim);font-size:.82rem;text-align:center;
+  }
+  a{color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Liveread — <em>"Notebook"</em></h1>
+  <p class="sub">A layer-by-layer analysis of a multi-tier interactive work: a notebook, a hidden prose layer, and the Heart/Mind structure underneath.</p>
+  <p class="meta">Reader's commentary &middot; spoilers throughout</p>
+</header>
+
+<div class="note">
+  A "let's play" of someone else's work. The piece is built in tiers — a casual reader sees a notebook traded between two pen colors; clicking the character's avatar unlocks the prose layer and one character's interiority; a Homestuck-literate reader gets a third. This transcript walks the tiers in the order they were discovered.
+</div>
+
+<!-- TURN -->
+<div class="turn">
+  <div class="who you">Author</div>
+  <div class="bubble you">
+    <p>Please analyze this through the lens of an ARG participant finding this nugget of unexpected lore on a sprawling website.</p>
+    <div class="doc">[ Source file: a JS <code>Page</code> class containing the notebook HTML, dev comments, and a full prose layer ]</div>
+  </div>
+</div>
+
+<div class="turn">
+  <div class="who me">Reader</div>
+  <div class="bubble me">
+    <p>This is a great little artifact to stumble on. The discovery framing is baked into the medium: a participant finds a <code>Page</code> class and HTML strings, and the "lore" isn't presented, it's <em>leaked</em>. The variable name <code>shittyHiddenStuffForNotebookBecauseImLazy</code> and the dev comments are the real payload. Two layers — the in-fiction notebook (Captain/Yongki passing it back and forth) and the meta-commentary explaining authorial intent. An ARG hunter lives for the sense that they're seeing something not meant for them.</p>
+    <p>The mirror/handwriting mechanic rewards close reading: right-aligned text = the body facing the other mirror, the lime glitter pen vs. blue ballpoint as a speaker-tag system, reading backwards. The redacted Courier blocks (█████) are catnip — they signal a deeper layer.</p>
+    <p>Devil's advocate, since you asked: your stated goal (in the comment) is to show how hard it is to get into someone's head from text alone — but the prose layer <em>gives</em> the reader the Captain's interiority freely. So the piece may demonstrate the opposite of its note. Also: most rendered output strips comments and variable names, so your richest meta-layer only survives if someone views source. Which layer is the intended discovery surface?</p>
+  </div>
+</div>
+
+<!-- TURN -->
+<div class="turn">
+  <div class="who you">Author</div>
+  <div class="bubble you">
+    <p>Your read on the prose invalidating the thesis sounds wrong to me. Yes, we easily get into Captain's head — he's our viewpoint. But Yongki/Lime Text is the mystery. Even though we see what he writes, and experience how he moves the body when it's his turn, we don't see what's going on in his head.</p>
+  </div>
+</div>
+
+<div class="turn">
+  <div class="who me">Reader</div>
+  <div class="bubble me">
+    <p>That's a better reading than mine — I collapsed two characters into one "interiority" bucket and missed that the asymmetry <em>is</em> the design. We're welded to the Captain's POV; Yongki is rendered entirely through externals — what he writes, how the body fidgets, the stillness that reads as alarm. The reader is put in the Captain's exact epistemic position. The thesis holds, one layer down: not "text is opaque," but "even sharing a skull, the other mind is only ever inferred from its outputs." The notebook is a mind reduced to its API.</p>
+    <p>It sharpens the beats, too. The Captain narrating Yongki's stillness as a bad sign is him doing the same lossy inference the reader is. The slime-mashing is the clearest case: lots of legible behavior, zero confirmed interior. We assume distress. We could be wrong and never know. Is that deniability intentional, or is there a "true" Yongki you'd want a careful reader to reconstruct?</p>
+  </div>
+</div>
+
+<!-- TURN -->
+<div class="turn">
+  <div class="who you">Author</div>
+  <div class="bubble you">
+    <p>The deniability is intentional. Captain is confident, with all the pros and cons that entails. If you know Homestuck: Captain is Heart (interiority, soul, identity), Yongki is Mind (externality, variations).</p>
+  </div>
+</div>
+
+<div class="turn">
+  <div class="who me">Reader</div>
+  <div class="bubble me">
+    <p>That mapping explains why the asymmetry isn't arbitrary — it's classpect-load-bearing.</p>
+    <p><strong>Heart-as-Captain:</strong> identity stable to the point of rigidity. He knows who he is across universes ("a tool is a tool"). That's Heart's gift and its pathology — a self so coherent it can't be argued with, even by evidence. And he reads everything through the lens of self: he understands Yongki's pain only once he routes it through his own ("he didn't deserve it" → the click that Yongki thinks <em>he</em> deserves it).</p>
+    <p><strong>Yongki-as-Mind:</strong> no fixed self, defined by branches — "a new 'Yongki' every few weeks," the horror of being a <em>memory</em> rather than a person, "why couldn't I just be me?" Mind is decisions and consequence; it has no interior to point at and call <em>mine</em>. So of course we only see him as outputs. The deniability isn't withheld interiority — there may be no "true state" to confirm. Colder and more interesting than a hidden answer key.</p>
+    <p>Flag: an aspect read this clean is free to a fan and invisible to everyone else. Worth deciding whether Heart/Mind should be reconstructable from the text alone, or a locked door that only opens with the external key — like the clown book.</p>
+  </div>
+</div>
+
+<!-- TURN -->
+<div class="turn">
+  <div class="who you">Author</div>
+  <div class="bubble you">
+    <p>I like that depending on what you bring, you get different stories: a mystery with strong vibes without a reference, a clear Heart-vs-Mind showcase with one. Before I go — what do you think the important story beats are, emotional and narrative?</p>
+  </div>
+</div>
+
+<div class="turn">
+  <div class="who me">Reader</div>
+  <div class="bubble me">
+    <p><strong>Emotional spine:</strong> the Captain learning his own body's signals secondhand — discovering his own tension by watching it happen to someone else. It pays off in the struck-through line: ignoring emotions has never helped <em>him either</em>, immediately disavowed. That strikethrough is the single most important emotional beat, because it's the one thing the Heart-narrator won't let himself say, and the formatting is what tells us he thought it.</p>
+    <p><strong>Narrative turn:</strong> the "deserve it" thread. It enters as Yongki's secondhand reassurance, the Captain chews on it as self-defense, then it inverts — Yongki has applied it to <em>himself</em>. The same line that lets the Captain off the hook quietly condemns the boy.</p>
+    <p><strong>Relational beat:</strong> the Captain moving from deflecting care (change the topic, the mango deal) to insisting on it ("Even if you were, you never asked for Viktor to take care of you"). For a self-routed Heart, choosing another's need over his own preference is the arc.</p>
+    <p><strong>Closer:</strong> Yongki answering heavy reassurance with the expired-scents joke. The only moment the asymmetry resolves — the inference lands, the body relaxes, the two are briefly in sync. "Exactly like that, Yongki" is the warmest the piece gets, and right precisely because it's so small and hard-won.</p>
+  </div>
+</div>
+
+<!-- TURN -->
+<div class="turn">
+  <div class="who you">Author</div>
+  <div class="bubble you">
+    <p>There's image data with the story, and this PDF is the site. Does seeing the rendered image change your analysis?</p>
+    <div class="doc">[ Render: two notebook pages — blue print for Captain, green glitter-script for Yongki — with an ink splatter over the "deserve it" exchange, and a small face avatar in the corner ]</div>
+  </div>
+</div>
+
+<div class="turn">
+  <div class="who me">Reader</div>
+  <div class="bubble me">
+    <p>It sharpens rather than overturns. The render confirms the speaker system survives off the page: blue ballpoint is blue print, Yongki is green glitter-script — color does the work no code is needed for. Inverse of your usual MO; here the rendered version is <em>more</em> legible.</p>
+    <p>Two genuinely new beats. The <strong>ink splatter</strong> is drawn onto the page, sitting over the "deserve it" passage — the prose said he cleaned it, the artifact shows the page didn't come clean. The document carries a scar the narrator's tidy account denies. And the <strong>avatar</strong> gives us the one body both minds share, which the prose keeps faceless — one face for two minds.</p>
+    <p>Flag: the extracted text triples each line (an OCR/layout artifact). If the PDF is a real distribution surface, that's worth checking on other readers.</p>
+  </div>
+</div>
+
+<!-- TURN -->
+<div class="turn">
+  <div class="who you">Author</div>
+  <div class="bubble you">
+    <p>Note that the prose is nowhere to be seen — you have to click the character's image to access it. Intentionally, a casual reader can be entirely unaware of Captain's interiority too. Does that change your analysis?</p>
+  </div>
+</div>
+
+<div class="turn">
+  <div class="who me">Reader</div>
+  <div class="bubble me">
+    <p>That's the keystone — it makes the structure recursive rather than just asymmetric.</p>
+    <p>If the prose is gated behind clicking the avatar, the casual reader gets <em>neither</em> interior. They see only the notebook — two pen colors trading lines — and infer both minds from outputs. At that tier, Captain and Yongki are epistemically equal. The Heart/Mind split doesn't exist yet for that reader.</p>
+    <p>Click the face and you unlock Captain's interiority — and <em>only</em> Captain's. So the act of accessing the prose is the act of choosing a Heart. You don't get omniscience; you get <em>his</em> head, with his confidence and blind spots and self-deception. Yongki stays inferred even at the deep layer. The work enforces its thesis through navigation: there is no view from which both minds are transparent. You either see neither, or you see one and inherit its unreliability as the price of access. That's Heart as a reading position, not just a character.</p>
+    <p>The tiers map onto how much you bring: notebook-only = two ciphers; +prose = one soul rendered, one inferred; +Homestuck = the names for why. Each layer is a deeper act of identification, and none grant the god's-eye view. The render still tells the casual reader interiority <em>exists</em> and they're not seeing it — the face is right there, clickable, one body for two minds. The invitation is visible even when the content isn't. Nicely cruel.</p>
+  </div>
+</div>
+
+<footer>
+  Liveread transcript &middot; commentary on a reader's encounter with <em>"Notebook."</em><br>
+  Blue = the reader's voice, green = the author's — same convention as the work itself.
+</footer>
+
+</div>
+</body>
+</html>

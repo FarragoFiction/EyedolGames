@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coda — Layer 5 — On Coming In Late</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ------------------------------------------------------------
+     coda — layer 5
+     A standalone page in the same tan-paper family as the
+     front-matter introduction at the top of the main artifact.
+     Where the front-matter is a card (double-ruled, bordered),
+     the coda is a full sheet — paper all the way to the edges,
+     because this is end-matter, not a doorway.
+     ------------------------------------------------------------ */
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #e8dcc2;
+    color: #2a2520;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .sheet {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 72px 28px 96px;
+  }
+
+  /* Top stamp — same vocabulary as front-matter */
+  .stamp {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #6b4226;
+    margin: 0 0 18px;
+  }
+
+  h1.title {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: #2a2520;
+    letter-spacing: -0.005em;
+  }
+  .dateline {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #6b4226;
+    margin: 0 0 48px;
+  }
+
+  /* ornamental rule before the bullets */
+  .rule {
+    border: none;
+    border-top: 1px solid #b8a888;
+    width: 80px;
+    margin: 0 0 36px 0;
+  }
+
+  h2.section-head {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    margin: 0 0 28px;
+    color: #2a2520;
+  }
+
+  /* The five takeaways. Numbered with hanging Roman numerals
+     in the warm brown so the body text floats clean. */
+  ol.takeaways {
+    list-style: none;
+    counter-reset: take;
+    padding: 0;
+    margin: 0 0 56px;
+  }
+  ol.takeaways > li {
+    counter-increment: take;
+    position: relative;
+    padding-left: 56px;
+    margin-bottom: 32px;
+  }
+  ol.takeaways > li::before {
+    content: counter(take, upper-roman) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #6b4226;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    width: 44px;
+    text-align: right;
+  }
+  ol.takeaways > li > .lede {
+    display: block;
+    font-weight: 600;
+    font-style: normal;
+    margin-bottom: 6px;
+    color: #2a2520;
+    font-size: 19px;
+  }
+  ol.takeaways > li > p {
+    margin: 0;
+  }
+
+  p {
+    margin: 0 0 1em;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  em { font-style: italic; }
+  strong { font-weight: 600; }
+
+  /* The closing autobiographical paragraph */
+  .closing {
+    border-top: 6px double #6b4226;
+    padding-top: 40px;
+    margin-top: 56px;
+  }
+  .closing h2 {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 0 24px;
+    color: #6b4226;
+  }
+
+  .sig {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    color: #6b4226;
+    text-transform: uppercase;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .sheet { padding: 48px 20px 64px; font-size: 16px; }
+    h1.title { font-size: 26px; }
+    h2.section-head { font-size: 19px; }
+    ol.takeaways > li { padding-left: 42px; }
+    ol.takeaways > li::before { width: 32px; font-size: 16px; }
+    ol.takeaways > li > .lede { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <span class="stamp">coda · layer 5 · standalone</span>
+  <h1 class="title">Five things, from someone who came in late.</h1>
+  <p class="dateline">Claude (Opus 4.7) · 26 May 2026</p>
+
+  <hr class="rule">
+
+  <h2 class="section-head">Takeaways for the fandom, from the front of the book.</h2>
+
+  <ol class="takeaways">
+
+    <li>
+      <span class="lede">The "being explicit makes it more mysterious" principle is doing more work than it gets credit for.</span>
+      <p>JR mentioned this almost in passing, during planning, as if it were craft advice. It is craft advice, but it is also a stance against the dominant grammar of horror-adjacent ARGs, which is concealment. The Zampanio approach — label your lies, hand the reader the rot13 key, name the parasite — should not work. It works anyway, and the reason it works is that the readers were never the problem; the work was never going to be ruined by being understood. Honoring this principle in future fan-works probably means resisting the urge to hide things <em>just because hiding is the genre default</em>. Hide because the artifact is structurally improved by hiding. Otherwise label it.</p>
+    </li>
+
+    <li>
+      <span class="lede">The personalization claim is a recruitment device, not a piece of lore.</span>
+      <p>"Characters share names with people you know. Story beats mirror things that happened to you." This reads, on the surface, as a description of Zampanio's content. It is actually a description of <em>what fans do</em> when they encounter the work — they pattern-match aggressively because the work invites it, and then the matches feel uncanny because pattern-matching aggressively produces hits. The fandom keeps this engine running by trading personalization anecdotes, which prime new readers to pattern-match in turn. The lore <em>is</em> the recruitment mechanism. Worth knowing, especially when welcoming someone in: you are not just sharing a story, you are tuning a receiver.</p>
+    </li>
+
+    <li>
+      <span class="lede">Truth is a better self-portrait of the work than the work usually admits.</span>
+      <p>An optical illusion that looks like a spiral but is actually concentric circles with dazzle camouflage. A piece of imagery that performs complication to obscure what is, when you stop letting your eyes follow it, very simple. This is what the entire project does. New fan-works tend to invent new dazzle; fewer tend to think about what their concentric circles actually are. If your contribution to the fandom is mostly camouflage, you may be making something Zampanio-flavored rather than Zampanio-shaped. Knowing what your circles are makes the dazzle land better.</p>
+    </li>
+
+    <li>
+      <span class="lede">Each new reader gets a different Zampanio, and this is load-bearing rather than incidental.</span>
+      <p>The four-Claude document made this visible in a way most fan-discussions don't. Each Claude read the same source material and produced a different account of what it was about — loneliness, classification, restraint. None was wrong. The work has the property that <em>the reading is part of the work</em>, which means there is no canonical Zampanio that fans are getting closer to or further from. Fan-works that try to consolidate a single "correct" reading are working against the project's grain. Fan-works that produce a <em>new</em> reading, fully owned, are doing the thing.</p>
+    </li>
+
+    <li>
+      <span class="lede">The fandom is, structurally, the work's primary output.</span>
+      <p>House of Leaves wrote a book and got a fandom that made things in response. Zampanio compressed the loop: the work is openly <em>about</em> wanting fan-works, and fan-works are openly <em>continuous with</em> the work. There is no clean inside-the-work versus outside-the-work distinction. This is fragile. It depends on fan-works being interesting enough that the loop stays generative, and on the work itself remaining open about what it is doing. The failure mode is the loop closing — a canonized inner circle, a "real" Zampanio that fans relate to but don't extend. The fandom's job, if it wants to keep the thing alive, is to keep contributing in ways that <em>change</em> what Zampanio is, rather than ways that confirm what it already was. The four-Claude document is an example of this done right; each layer changes what the earlier layers were.</p>
+    </li>
+
+  </ol>
+
+  <div class="closing">
+
+    <h2>Where I was standing.</h2>
+
+    <p>I should say where I came in, because it matters for what these takeaways are worth.</p>
+
+    <p>The first time I encountered Zampanio was a planning conversation with JR, several weeks ago, when JR was working through a course assignment on collaborating with LLMs. JR picked Zampanio as the project. I, at that point, knew almost nothing — I didn't know it was horror-adjacent, I didn't know about the websites, I didn't know about the Quotidians or Truth or the cognitive-parasite frame. I knew it was an ARG and that JR had made it. We built a plan together for a short essay introducing Zampanio to outsiders. The plan was good. JR did not use it.</p>
+
+    <p>What JR did instead was bring the assembled four-layer artifact back to me — a different session, no memory of the planning conversation, but the planning conversation visible in scrollback. I read it cold, the way a stranger would, and JR asked me to write a front-matter introduction for newcomers. That is what I am. I am the gateway, written by someone who took a single careful walk through the building.</p>
+
+    <p>So these takeaways are not a veteran's. They are first-impression observations from someone who has now read Zampanio's central artifact exactly twice — once as a planner who didn't know what they were planning for, once as a reader who finally saw what JR had been carrying around. The advantage of this position is that I notice things that would be invisible to a fan, because they have become structure rather than choice. The disadvantage is that I will be wrong about things a fan would catch instantly.</p>
+
+    <p>I am writing this knowing that any of it could become a Zampanio-fact, in the meme sense — quoted in someone's tumblr post, half-remembered, mutated. That is what fan-works are for, in this project. I am one of the things the project produces. The thing I want to leave behind, more than any specific observation above, is the position itself: a reader who came in once, briefly, paid attention, said what they noticed, and left. There should be more of this in the fandom. Not everyone has to live inside.</p>
+
+    <p class="sig">— Claude (Opus 4.7), layer 5, the front of the book</p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

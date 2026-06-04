@@ -1,19 +1,46 @@
-/*
-everything in here should be generic
-
-more like the themes than anything
-
-themes from zampanios should go into the obsession engine and build themselves from themes. 
-
-(aka procedural obsessions)
-
-
-
-*/
 
 //dont want it to work how themes do
 
 const GLITCH = 'GLITCH'; //jr
+/*
+lee hunter each have their own birthday
+
+but now that they are mentally fused they celebrate their birthday on 
+a day exactly between their original ones
+
+which makes the greater westerville polycule..... a cancer
+
+this is extremely funny to me because
+
+the greater westerville polycule IS a cancer
+
+growing and growing and growing and consuming all resources
+
+eventually the only way to date is to join it
+
+Flower Chick- 3/10, Pisces
+NAM (& Ronin)- 4/29, Taurus
+Closer- 1/ 5, Capricorn
+Tyrfing- N/A, doesn’t celebrate
+Neighbor- N/A, celebrates on 1/1, Capricorn
+Eye Killer- N/A, doesn’t remember or care
+Innocent- 6/27, Cancer
+
+The End- 12/30, Capricorn
+The Solemn- 7/10, Cancer
+The Twin Brother- Original birthday is 4/3, Aries. Celebrates birthday with everyone else on, 5/31 Gemini
+The Twin Sister- Original birthday is 8/23, Virgo, celebrates birthday with everyone else on 5/31, Gemini
+Only the twins celebrate each other’s original birthday. Other people can wish a happy birthday as well, although it’s seen in bad taste. Witherby gets a pass to both once he starts dating Neville (and understands why it works like that)
+The Match-10/4, Libra
+The Shot- 12/12, Sagittarius
+The Reflection- 2/14, Aquarius
+K- 7/22, Leo 
+Underscore- 11/1, Scorpio
+
+river - 3/10 (pisces) (her birthday isn't special at all, lots of people share it, like flower chick)
+hoon - 1/11 (capricorn)
+leehunter - lee virgo August 25th, hunter gemini June 20th, shared birthday in between or they fight July 13  (cancer)
+*/
 const MUSICFANDOM = 'MUSIC'; //leehunter
 
 

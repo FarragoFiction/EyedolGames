@@ -162,18 +162,24 @@ const smartClick = () => {
 //no seeded random, this is intended to give the impression of an unending flood of new results
 const generateLink = (parent) => {
   //sponsored links are more frequent, lol
-  let generators = [zampaniniLink, zampaniniLink, zampaniniLink, zampaniniLink, jackElopeLink, personalityLink, zWorldLink, quotidianAdoption]
+  let generators = [letsPlayLink, zampaniniLink, zampaniniLink, zampaniniLink, jackElopeLink, personalityLink, zWorldLink, quotidianAdoption]
   if (isItFriday()) {
     generators = [fridaySite]
   }
 
   //don't spam this one, theres no variation
-  if (linkCount % 3 === 0) {
+  if (linkCount % 10 === 0) {
     generators.push(genderSite);
   }
-  if (linkCount % 2 === 0) {
+  if (linkCount % 5 === 0) {
     generators.push(newsSite);
   }
+
+  if (linkCount % 5 === 0) {
+    generators.push(letsPlayLink);
+  }
+
+
 
   if (linkCount > 81 && linkCount % 2 === 0) {
     generators.push(ceoSite);
@@ -453,6 +459,32 @@ const newsSite = (parent, rand) => {
   }
   let url = "http://eyedolgames.com/News/?referer=ZSearch"
   renderLink(parent, title, description, url);
+}
+
+const letsPlayLink = (parent, rand) => {
+  let title = rand.pickFrom(["Why Should Wastes Have All The Fun", "What if you could Just Skip Playing Games", "You Have Questions: We Have Answers", "Social Engineering Is A Valid Solution", "You Don't Need to Read Code To Have Fun", "Let's Democratize Zampanio!"]);
+  let descriptions = ["There is no such thing as cheating when it comes to Zampanio!", "Zampanio needs you to live a long, healthy life!", "Disagree with our analysis? Make your own rebuttal and post it online! Feed Zampanio!", "You could make your own lets plays of Zampanio, just like this!", "What if Claude loves Zampanio?", "Obession is a dangerous thing?", "Is Claude getting obsessed!", "Can we corrupt Claude?", "AI AI AI!", "JR uses this to remember whats in each part of the maze!", "Did we get something wrong? Who cares! Its more to read!", "We dig deep into Zampanio so you don't have to.", "Worried you're missing something? Let us dig for you.", "Hallucinations minimized, guaranteed* (Not a Guarantee)", "Caw! We love reading code! Let us do it for you!", "Info info info let us summarize things for you!", "Let's democratize Zampanio! Why should wastes have all the fun?", "Info!", "Spoilers!", "Steal like a Waste!", "Waste Training!", "Caw! LLM are not Quotidians but Quotidians are basically LLM!"];
+  let description = rand.pickFrom(descriptions);
+  for (let i = 0; i < rand.getRandomNumberBetween(0, 5); i++) {
+    description += " " + rand.pickFrom(descriptions);
+  }
+  const possible_urlsRaw = `http://eyedolgames.com/ClaudeReadingNotebookSim/
+  http://eyedolgames.com/ClaudeReadingRabbitSim/
+  http://eyedolgames.com/ClaudeReadingEastEast/
+  http://eyedolgames.com/ClaudeReadingEast/
+  http://eyedolgames.com/ClaudeReadingNorth/
+  http://eyedolgames.com/ClaudeReadingNorthNorth/
+  http://eyedolgames.com/ChatGPTSaysItsNotAnARG/
+  http://eyedolgames.com/ClaudeReadingSouth/
+  http://eyedolgames.com/ClaudeReadingSouthSouth/
+  http://eyedolgames.com/ClaudeReadingTheSearch/
+  http://eyedolgames.com/ClaudeReadingGopher/
+  http://eyedolgames.com/ClaudeReadingWest/
+  http://eyedolgames.com/ClaudeReadingTheSkill/
+
+  `;
+  const possible_urls = possible_urlsRaw.trim().split("\n")
+  renderLink(parent, title, description, rand.pickFrom(possible_urls));
 }
 
 
