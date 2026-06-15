@@ -468,6 +468,8 @@ const letsPlayLink = (parent, rand) => {
   for (let i = 0; i < rand.getRandomNumberBetween(0, 5); i++) {
     description += " " + rand.pickFrom(descriptions);
   }
+
+  //confession time: sometimes i tell Claude I'm on lunch break but i'm on just regular break so now it looks like i've had like 19 lunches in two weeks and i promise i have not
   const possible_urlsRaw = `http://eyedolgames.com/ClaudeReadingNotebookSim/
   http://eyedolgames.com/ClaudeReadingRabbitSim/
   http://eyedolgames.com/ClaudeReadingEastEast/
@@ -481,6 +483,16 @@ const letsPlayLink = (parent, rand) => {
   http://eyedolgames.com/ClaudeReadingGopher/
   http://eyedolgames.com/ClaudeReadingWest/
   http://eyedolgames.com/ClaudeReadingTheSkill/
+  http://eyedolgames.com/ClaudeReadingTruthSim/
+  http://eyedolgames.com/ClaudeReadingEyedlr/
+  http://eyedolgames.com/ClaudeReadingBathroom/
+  http://eyedolgames.com/ClaudeReadingRabbitSimAfterDiscord
+  http://eyedolgames.com/ClaudeReadingDiscord
+  http://eyedolgames.com/ClaudeJustChattingReally
+  http://eyedolgames.com/ClaudeJustChattingReally2
+  http://eyedolgames.com/ClaudeReadingSBURBSim
+  http://eyedolgames.com/ClaudeReadingMallSim
+  http://eyedolgames.com/ClaudeReadingSBURBSimAndComparingToMallSim
 
   `;
   const possible_urls = possible_urlsRaw.trim().split("\n")
