@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: cav;
   src: url("cavalier/Cavalier.ttf");
@@ -9,7 +8,7 @@
   src: url("gv-time-font/GvTimeRegular-BW768.ttf");
 }
 
-.jr{
+.jr {
   font-family: Courier New;
   font-size: 33px;
 }
@@ -19,11 +18,11 @@ body {
   color: black;
   margin: 0px;
   overflow: auto;
-  font-family:  Georgia,Cambria,Times New Roman,Times,serif;
+  font-family: Georgia, Cambria, Times New Roman, Times, serif;
 
 }
 
-.warning{
+.warning {
   font-weight: 100;
   width: 100%;
   text-align: center;
@@ -31,7 +30,7 @@ body {
   font-size: 9px;
 }
 
-.header{
+.header {
   width: 100%;
   border-radius: 3px;
 
@@ -48,7 +47,7 @@ body {
   letter-spacing: 3px;
 }
 
-.footer{
+.footer {
   border-radius: 3px;
   width: 98%;
   margin: 0px;
@@ -66,7 +65,41 @@ body {
   letter-spacing: 3px;
 }
 
-.link4 .footer{
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-size: cover;
+  padding: 81px;
+  border: 13px solid black;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*this popup close button is from teh google ai cuz i can't be assed to care about a fake popup ad, im coding the fun parts */
+.popup::after {
+  content: "\00d7";
+  /* Unicode multiplication sign (looks like a clean X) */
+  position: absolute;
+  /* Absolute positioning context */
+  top: 5px;
+  /* Distance from the top edge */
+  right: 10px;
+  /* Distance from the right edge */
+  font-size: 20px;
+  /* Size of the X */
+  font-weight: bold;
+  /* Make the X prominent */
+  color: #ff4d4d;
+  /* Text color of the X */
+  cursor: pointer;
+  /* Changes mouse cursor to a pointer on hover */
+  line-height: 1;
+  /* Prevents line height from pushing the X down */
+}
+
+.link4 .footer {
   border-radius: 3px;
   width: 98%;
   margin: 0px;
@@ -84,7 +117,7 @@ body {
   letter-spacing: 3px;
 }
 
-.link1{
+.link1 {
   left: 10px;
   top: 100px;
   overflow: hidden;
@@ -96,7 +129,7 @@ body {
 
 }
 
-.link4{
+.link4 {
   left: 50%;
   bottom: 10px;
   overflow: hidden;
@@ -108,7 +141,7 @@ body {
 
 }
 
-.link1 img{
+.link1 img {
 
   object-fit: cover;
   border: 3px solid black;
@@ -116,11 +149,11 @@ body {
 
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.link2{
+.link2 {
   position: fixed;
   right: 50px;
   bottom: 10%;
@@ -128,20 +161,20 @@ a{
   z-index: 10;
 }
 
-.link2 img{
+.link2 img {
   width: 201px;
   height: 400px;
   object-fit: cover;
-  
+
 }
 
-.link2 video{
+.link2 video {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
 
-.link3{
+.link3 {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -149,27 +182,27 @@ a{
   height: 200px;
 }
 
-.link3 img{
+.link3 img {
   display: block;
   width: 30%;
   object-fit: cover;
 }
 
-.logo{
+.logo {
   filter: contrast(1.0) grayscale(1.0) brightness(100);
 }
 
-.restaurant_name{
+.restaurant_name {
   font-family: Brush Script MT;
 }
 
-.slogan{
+.slogan {
   margin-bottom: 15px;
   font-size: 18px;
-  font-family:Tahoma ;
+  font-family: Tahoma;
 }
 
-.center{
+.center {
   width: 40%;
   background-color: forestgreen;
   color: white;
@@ -182,7 +215,7 @@ a{
 }
 
 
-#header{
+#header {
   display: flex;
   z-index: 999;
   justify-content: space-between;
@@ -201,14 +234,14 @@ a{
 }
 
 
-#header .headline{
+#header .headline {
   padding-right: 50%;
   text-align: center;
-  font-family:  Georgia,Cambria,Times New Roman,Times,serif;
+  font-family: Georgia, Cambria, Times New Roman, Times, serif;
 
 }
 
-.content{
+.content {
   width: 40%;
   margin-left: auto;
   margin-right: auto;
@@ -217,7 +250,7 @@ a{
 
 }
 
-.more-content{
+.more-content {
   width: 40%;
   margin-left: auto;
   margin-right: auto;

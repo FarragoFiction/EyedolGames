@@ -45,43 +45,45 @@ let reviewer; //first name and last initial
 
 let tumblrphrase;
 
+let dioramaImages = [];
+
 window.onload = () => {
 
   initThemes();
   let theme1 = rand.pickFrom(Object.values(all_themes));
   let theme2 = rand.pickFrom(Object.values(all_themes));
-  let username = `${theme1.pickPossibilityFor(ADJ,rand)}-${theme2.pickPossibilityFor(PERSON,rand)}`.toLowerCase();
+  let username = `${theme1.pickPossibilityFor(ADJ, rand)}-${theme2.pickPossibilityFor(PERSON, rand)}`.toLowerCase();
 
-  tumblrphrase = `Tumblr user ${username} goes into detail on their popular <a target='_blank' href ='http://eyedolgames.com/Eyedlr/?seed=${rand.internal_seed}&name=${username}&image=Creepy/00008-img.png&matchPercent=${rand.getRandomNumberBetween(-13,100)}'>web log</a>.`;
+  tumblrphrase = `Tumblr user ${username} goes into detail on their popular <a target='_blank' href ='http://eyedolgames.com/Eyedlr/?seed=${rand.internal_seed}&name=${username}&image=Creepy/00008-img.png&matchPercent=${rand.getRandomNumberBetween(-13, 100)}'>web log</a>.`;
   const queryString = window.location.search;
-  if(!queryString){
+  if (!queryString) {
     empty_news = true;
   }
   const urlParams = new URLSearchParams(queryString);
   let tmp_ref = urlParams.get('referer');
 
-  if(tmp_ref === "ZSearch"){
-    theme_keys = [TWISTING, SPYING, KNOWING,WEB,TECHNOLOGY]
-    referer_details="?theend=nevertheend"
+  if (tmp_ref === "ZSearch") {
+    theme_keys = [TWISTING, SPYING, KNOWING, WEB, TECHNOLOGY]
+    referer_details = "?theend=nevertheend"
     horrorTerrorArticle();
     return;
   }
 
-  if(tmp_ref === "Eyedlr"){
+  if (tmp_ref === "Eyedlr") {
     theme_keys = [TWISTING, LOVE, DOLLS, ANGER]
-    referer_details="?theend=nevertheend"
+    referer_details = "?theend=nevertheend"
     tumblrArticle();
     return;
   }
-  if(tmp_ref==="JackElope"){
+  if (tmp_ref === "JackElope") {
     theme_keys = [LOVE, DOLLS]
-    referer_details="?theend=nevertheend"
+    referer_details = "?theend=nevertheend"
     datingsiteArticle();
     return;
   }
   let tmp_d = urlParams.get('details');
   let tmp_tip = urlParams.get('tip');
-  if(tmp_tip){
+  if (tmp_tip) {
     tip = parseFloat(tmp_tip).toFixed(2);
   }
 
@@ -94,14 +96,14 @@ window.onload = () => {
     referer_details = tmp_ref_details;
     let tmp = new URLSearchParams(referer_details)
     theme_keys = tmp.get("themes")?.split(',');
- 
+
     reviewer = tmp.get("victim") //could be undefined
   }
 
   if (tmp_d) {
     details = JSON.parse(decodeURIComponent(tmp_d));
   }
-  if(!theme_keys){
+  if (!theme_keys) {
     theme_keys = [];
   }
   placeHolderDataAsNeeded();
@@ -109,12 +111,13 @@ window.onload = () => {
   setupLeftAd();
   setupBottomAd();
   setUpMiddleADInit();
+  setupPopupAd();
   setupRightAd();
   replaceFirstArticleAndHeader();
 
 }
 
-const horrorTerrorArticle= ()=>{
+const horrorTerrorArticle = () => {
   placeHolderDataAsNeeded();
   setupLeftAd();
   setupBottomAd();
@@ -123,7 +126,7 @@ const horrorTerrorArticle= ()=>{
   new GoogleArticle().replaceFirstArticleAndHeader();
 }
 
-const tumblrArticle= ()=>{
+const tumblrArticle = () => {
   placeHolderDataAsNeeded();
   setupLeftAd();
   setupBottomAd();
@@ -132,7 +135,7 @@ const tumblrArticle= ()=>{
   new TumblrArticle().replaceFirstArticleAndHeader();
 }
 
-const datingsiteArticle= ()=>{
+const datingsiteArticle = () => {
   placeHolderDataAsNeeded();
   setupLeftAd();
   setupBottomAd();
@@ -176,6 +179,15 @@ const collateAllSexySinglesImages = async () => {
   let images = await getImages(url);
   return images.map((item) => `${url}${item}`);
 }
+//http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/WeirdGifs/GoodDioramaPics/
+
+
+const collateAllDioramaImages = async () => {
+  const url = "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/WeirdGifs/GoodDioramaPics/"
+  let images = await getImages(url);
+  return images.map((item) => `${url}${item}`);
+}
+
 
 const collateAllFuckedUpSinglesImages = async () => {
   const url = "http://eyedolgames.com/JackElope/images/SexySingles/BigWeirdPile/"
@@ -212,7 +224,7 @@ const collateAllThemeImages = async (base_keys) => {
 }
 
 
-const setupBottomAd = async()=>{
+const setupBottomAd = async () => {
   const ele = document.querySelector(".link4");
   const img = ele.querySelector("img");
   const footer = ele.querySelector(".footer");
@@ -258,7 +270,7 @@ const setupBottomAd = async()=>{
     , `LOCAL SEXY SINGLES`
     , "quiz"
     , `${quick(COMPLIMENT)} SINGLES`
-]
+  ]
   footer.innerText = pickFrom(textOptions);
   await sleep(60000);
   setupBottomAd();
@@ -318,6 +330,64 @@ const setupLeftAd = async () => {
   footer.innerText = (pickFrom(textOptions) + " QUIZ").toUpperCase();
   await sleep(10000);
   setupRightAd();
+
+}
+
+//when you close it you have a rnadom amount of seconds before the next one opens up
+//random array of possible targets
+const setupPopupAd = async () => {
+  if (dioramaImages.length === 0) {
+    dioramaImages = await collateAllDioramaImages();
+  }
+  await sleep(1000 * getRandomNumberBetween(13, 113))
+  const body = document.querySelector("body");
+  const popup = createElementWithClassAndParent("div", body, "popup");
+  const links = [];
+
+  links.push({ tag: "Have you been to the Mall Lately?", link: "http://farragofiction.com/MallSim/" })
+  links.push({ tag: "The Hunger Grows!", link: "http://farragofiction.com/MallSim/" })
+  links.push({ tag: "Feed it your bodies!", link: "http://farragofiction.com/MallSim/" })
+  links.push({ tag: "Don't leave it alone!", link: "http://farragofiction.com/MallSim/" })
+  links.push({ tag: "Hey What Was That Just Now?", link: "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/" })
+  links.push({ tag: "Never Be Bored Again!", link: "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/bathroom" })
+  links.push({ tag: "The Hell Is This?!", link: "http://farragofiction.com/ZampanioSimEastEast/?seed=1972000401&themes=endings%2Cweb%2Ctechnology" })
+  links.push({ tag: "Please I Didn't Mean It!", link: "http://farragofiction.com/ZampanioSimSouthSouthSouth/" })
+  links.push({ tag: "Where It All Began!", link: "http://farragofiction.com/ZampanioSim/" })
+  links.push({ tag: "Free Spoilers!!!", link: "http://eyedolgames.com/ClaudeReadingMallSim/" })
+  links.push({ tag: "When is a door not a door?", link: "http://farragofiction.com/MallSim/rabbithole.html?importantWords=the+door+is+a+jar" })
+  links.push({ tag: "Deep Discount Shopping!", link: "http://farragofiction.com/MallSim/" })
+
+  links.push({ tag: "Deep Discount Shopping!", link: "http://farragofiction.com/MallSim/" })
+  links.push({ tag: "Can't find what you're looking for? We can help!", link: "http://eyedolgames.com/" })
+  const textOptions = [`DIG`
+    , `SELF CARE`
+    , `run`
+    , `RUN`
+    , "SHOPPING"
+    , "$$$"
+    , `${quick(COMPLIMENT)}`
+    , `${quick(OBJECT)}`
+    , `${quick(LOCATION)}`
+    , `${quick(PERSON)}`
+    , `${quick(INSULT)}`
+    , `${quick(ICON)}`
+    , `${quick(ADJ)}`
+    , `${quick(SUPERMOVE)}`
+    , `FOR YOU`
+
+    , "spiral"];
+  const link = pickFrom(links);
+  popup.style.fontSize = `${getRandomNumberBetween(13, 31)}px`;
+  popup.style.backgroundImage = `url("${pickFrom(dioramaImages)}")`;
+  popup.innerHTML = `<h2 style="background-color: white; padding: 13px;">${pickFrom(textOptions)}! ${pickFrom(textOptions)}! ${pickFrom(textOptions)}!</h2>
+    <a target='_blank' href='${link.link}'><button >${link.tag}</button></a>
+    
+    `;
+  popup.onclick = () => {
+    popup.remove();
+    setupPopupAd();//you can't stop them :) :) :)
+  }
+
 
 }
 
