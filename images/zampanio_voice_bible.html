@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Zampanio Voice Bible</title>
+<style>
+  :root{
+    --ink:#e8e4da;          /* faded terminal-paper text */
+    --ink-dim:#9a958a;
+    --ink-faint:#6b665d;
+    --bg:#0d0c0b;           /* near-black */
+    --panel:#16140f;        /* warm dark panel */
+    --panel-edge:#2a261d;
+    --amber:#d1b056;        /* the LitRPGSim menu gold */
+    --amber-dim:#8a7636;
+    --bleed:#b72a21;        /* the Closer red */
+    --quote:#cdd6d6;        /* cool light for sample lines */
+    --rule:#2a261d;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:clamp(24px,5vw,72px) clamp(18px,4vw,40px) 120px}
+  code,.mono{font-family:"Courier New",ui-monospace,monospace}
+
+  /* ---- masthead ---- */
+  .masthead{border-bottom:2px solid var(--amber-dim);padding-bottom:26px;margin-bottom:8px}
+  .eyebrow{font-family:"Courier New",monospace;letter-spacing:.32em;text-transform:uppercase;
+    font-size:11px;color:var(--amber);margin:0 0 14px}
+  h1{font-size:clamp(34px,7vw,60px);line-height:1.02;margin:0;font-weight:600;letter-spacing:-.01em}
+  h1 .sub{display:block;color:var(--ink-dim);font-size:clamp(15px,2.4vw,20px);font-weight:400;
+    letter-spacing:0;margin-top:14px;font-style:italic}
+
+  /* ---- the disclaimer / provenance ---- */
+  .provenance{border:1px solid var(--panel-edge);background:var(--panel);border-radius:3px;
+    padding:clamp(20px,3vw,30px);margin:34px 0 10px}
+  .provenance .tag{font-family:"Courier New",monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--bleed);margin:0 0 12px}
+  .provenance p{margin:0 0 12px;color:var(--ink-dim);font-size:15px;line-height:1.66}
+  .provenance p:last-child{margin-bottom:0}
+  .provenance strong{color:var(--ink)}
+
+  /* ---- master rule band ---- */
+  .rulebox{margin:54px 0 10px}
+  .rulebox h2{font-family:"Courier New",monospace;font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--amber);margin:0 0 16px;font-weight:400}
+  .rulebox p{margin:0 0 10px;font-size:18px}
+  .knob{display:inline-block;border-bottom:1px solid var(--amber-dim);padding-bottom:1px}
+
+  /* ---- section headers ---- */
+  section{margin-top:64px}
+  .clabel{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--rule);
+    padding-bottom:10px;margin-bottom:8px}
+  .clabel .n{font-family:"Courier New",monospace;color:var(--amber-dim);font-size:13px;
+    letter-spacing:.1em}
+  .clabel h2{margin:0;font-size:23px;font-weight:600;letter-spacing:-.01em}
+  .cnote{color:var(--ink-faint);font-size:14px;font-style:italic;margin:6px 0 26px}
+
+  /* ---- character card ---- */
+  .voice{padding:24px 0;border-bottom:1px solid var(--rule)}
+  .voice:last-child{border-bottom:none}
+  .vhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;margin-bottom:4px}
+  .vname{font-size:20px;font-weight:600;color:var(--amber);letter-spacing:.01em}
+  .valias{color:var(--ink-faint);font-size:14px;font-style:italic}
+  .vgloss{color:var(--ink);font-size:16px;margin:2px 0 14px}
+  .vmeta{margin:0 0 6px;font-size:15px;color:var(--ink-dim)}
+  .vmeta b{color:var(--ink);font-weight:600}
+  .vtic{margin:8px 0 16px;font-size:14px;color:var(--ink-dim)}
+  .vtic code{color:var(--amber);background:rgba(209,176,86,.08);padding:1px 5px;border-radius:2px;font-size:13px}
+
+  /* ---- sample lines ---- */
+  .samples{border-left:2px solid var(--amber-dim);padding:4px 0 4px 18px;margin:6px 0 2px;
+    display:flex;flex-direction:column;gap:9px}
+  .samples .lead{font-family:"Courier New",monospace;font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px}
+  .line{color:var(--quote);font-size:15px;line-height:1.5}
+  .line.caps{font-family:"Courier New",monospace;font-size:13.5px;letter-spacing:.01em;color:#e3c873}
+  .line.low{font-family:"Courier New",monospace;font-size:13.5px;color:#bcd0cf}
+  .line.formal{font-style:italic}
+  .who{color:var(--ink-faint);font-style:normal;font-family:"Courier New",monospace;font-size:12px}
+
+  /* ---- contrast callouts ---- */
+  .vs{background:var(--panel);border:1px solid var(--panel-edge);border-left:3px solid var(--bleed);
+    border-radius:3px;padding:16px 20px;margin:22px 0 4px;font-size:15px;color:var(--ink-dim)}
+  .vs b{color:var(--ink)}
+
+  /* ---- closing knobs ---- */
+  .closing{margin-top:70px;border-top:2px solid var(--amber-dim);padding-top:30px}
+  .closing h2{font-family:"Courier New",monospace;font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--amber);margin:0 0 16px;font-weight:400}
+  .closing p{font-size:16px;color:var(--ink-dim);margin:0 0 14px}
+  .closing strong{color:var(--ink)}
+
+  a{color:var(--amber)}
+  ::selection{background:var(--bleed);color:#fff}
+  @media (prefers-reduced-motion: no-preference){
+    .voice,.provenance,.vs{animation:rise .5s ease both}
+    @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">A field guide to a fictional chorus</p>
+    <h1>The Zampanio Voice Bible
+      <span class="sub">How to write each voice in the corpus — baseline, break, tic, and real lines to imitate.</span>
+    </h1>
+  </header>
+
+  <div class="provenance">
+    <p class="tag">// what this is &amp; who made it</p>
+    <p><strong>This document was written by Claude, an AI language model made by Anthropic.</strong> It is not authored by JR (the creator of Zampanio) or by any of the characters described in it. It is one model's analysis, commissioned by JR as a tool — treat it as a careful hypothesis, not as authoritative fact about the work.</p>
+    <p><strong>How it was made:</strong> JR fed the actual Zampanio source files — game code, in-character documents, chat-log fiction, and design notes — into a conversation with Claude. Claude read those files programmatically, counted punctuation and word patterns across each character, and grouped the voices by a single observed pattern (described below). Every "sample line" is a real quote pulled directly from JR's source files; the descriptions and groupings are Claude's inferences from that text.</p>
+    <p><strong>Known limits:</strong> Zampanio is a collaborative project — some voices were written by JR and some by collaborators, and during analysis Claude could not always tell the two apart. Authorship labels have intentionally been left off this version pending confirmation. A character's "sample lines" are trustworthy; the claim that a given voice is <em>characteristically JR's</em> is not, unless JR has confirmed it. Where a model describes a human's own creative voice, the model is the least reliable witness in the room.</p>
+  </div>
+
+  <div class="rulebox">
+    <h2>The one rule under everything</h2>
+    <p>Every voice = a <span class="knob">baseline register</span> + <span class="knob">what a break in it means</span>. To write any of them: set those two, then add the single tic. The whole cast sorts by <em>how it behaves under pressure</em> — does it tighten, shatter into caps, collapse into lowercase, or perform cheer over dread?</p>
+  </div>
+
+  <!-- ============ JR REGISTERS ============ -->
+  <section>
+    <div class="clabel"><span class="n">00</span><h2>The author's own registers</h2></div>
+    <p class="cnote">The modes the writer works in — the raw material the characters are built from. (These describe an authorial hand; see the provenance note before treating any as a fingerprint.)</p>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Code-confessional</span><span class="valias">— comments left in the source</span></div>
+      <p class="vgloss">Lowercase and fast, with feeling smuggled into notes that are supposed to be technical. The leak is the whole point.</p>
+      <p class="vmeta"><b>Baseline:</b> lowercase dev-comment. <b>Break:</b> it doesn't break — emotion just bleeds in where logic should be.</p>
+      <p class="vtic"><b>Tic:</b> <code>:(</code> as a coding emotion; terse-terse-terse then one runaway line.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">// every time i do subclasses in javascript i regret it</p>
+        <p class="line low">// please stop the shopping spam :( :( :(</p>
+        <p class="line low">// its so. so. scary</p>
+        <p class="line low">// death is real / my rules / i want to imagine they die</p>
+        <p class="line low">// welp, at least only YOU freeze to death, not the whole world</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Braindump</span><span class="valias">— raw notes</span></div>
+      <p class="vgloss">Pre-articulation. No sentence boundaries; ideas chained by adjacency.</p>
+      <p class="vmeta"><b>Baseline:</b> unpunctuated stream. <b>Break:</b> n/a — nothing is shaped yet.</p>
+      <p class="vtic"><b>Tic:</b> timestamps and stray fragments left in mid-thought.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">need more reasons for people to hang around with ghosts blackbirds cipher wasted ominous song</p>
+        <p class="line low">one password is aviary full of animated gull skeletons * another is just skelejr sitting in her wheelchair</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Sincere</span><span class="valias">— the "JustTruth" register</span></div>
+      <p class="vgloss">The masks off entirely. Warm, direct, and — notably — <em>composed</em>, not leaky. Sincerity here is built, not spilled.</p>
+      <p class="vmeta"><b>Baseline:</b> calm lowercase prose. <b>Break:</b> stays steady; no horror affect.</p>
+      <p class="vtic"><b>Tic:</b> earnest statements of motive; the closing <code>*Thank you* for playing my game</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">what I want more than anything is to be surprised</p>
+        <p class="line low">I really enjoy collaborating! I want to see what unexpected connections other people make</p>
+        <p class="line low">A new friend had the idea of 'maybe zampanio is on Gopher' and so now I'm gonna learn Gopher!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LITRPGSIM ============ -->
+  <section>
+    <div class="clabel"><span class="n">01</span><h2>The LitRPGSim ensemble</h2></div>
+    <p class="cnote">The chat-log saga and its principals — the densest, most varied set of voices in the work.</p>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Wodin</span><span class="valias">/ odinsRazor — the manic obsessive</span></div>
+      <p class="vgloss">ALL CAPS, always; the caps <em>are</em> the character. Drops to lowercase only when something real slips through.</p>
+      <p class="vmeta"><b>Baseline:</b> all-caps, on at all hours. <b>Break:</b> a lowercase word = a true feeling escaping the mania.</p>
+      <p class="vtic"><b>Tic:</b> escalating one-line bursts; <code>L337 SKILLZ</code>; link-dumps mid-thought; refuses to sleep.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line caps">THIS IS THE MOST CONFUSED CREATURE OF ALL TIME</p>
+        <p class="line caps">YOU THINK THE POLICE HAVE MY L337 SKILLZ? I ALREADY CRACKED THEIR DATABASE</p>
+        <p class="line caps">I KNEW I RECOGNIZED IT / I KNEW I DID</p>
+        <p class="line caps">BUT.... <span class="who">(here the caps fail — the tell)</span></p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Todd</span><span class="valias">/ theBestDude72 — the grounding friend</span></div>
+      <p class="vgloss">The structural mirror of Wodin: lowercase, one clause per line, a period on everything. Breaks <em>down</em> into grief, never up into mania.</p>
+      <p class="vmeta"><b>Baseline:</b> lowercase, line-broken, period-terminated. <b>Break:</b> restraint tightens; the content does the breaking, not the form.</p>
+      <p class="vtic"><b>Tic:</b> a single thought split across many short messages; dry deflation.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">its.<br>is screaming 'kill me' directly into my brain.<br>it is like a little homoculuous covered in pain.</p>
+        <p class="line low">sure.<br>and the Zodiac Killer likes Mario.</p>
+        <p class="line low">i'm not.<br>i'm not dumb.<br>i understand what the police told me. <span class="who">(same form, now grief)</span></p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">The Closer</span><span class="valias">— corporate menace, total control</span></div>
+      <p class="vgloss">The most grammatically controlled voice in the corpus. Balanced, subordinate-clause prose that <em>never</em> breaks. The threat lives entirely under the courtesy.</p>
+      <p class="vmeta"><b>Baseline:</b> impeccable formal register. <b>Break:</b> never — that <em>is</em> the fingerprint.</p>
+      <p class="vtic"><b>Tic:</b> courtesy as a weapon; velvet threats; repeated use of your name.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"Hello, Wodin. I'm sure you are alarmed that I am contacting you like this; very sudden, I know. However, please, do not worry."</p>
+        <p class="line formal">"I'm afraid that if you publish these accusations without evidence, our lawyers might be inclined to sue for libel. I know it sounds like a threat, but I'd like to assure you that it's not."</p>
+        <p class="line formal">"Pathetic. The nerve of some…" <span class="who">(clipped, to her CEO)</span></p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Wanda</span><span class="valias">/ CEBro — the gleeful omniscient CEO</span></div>
+      <p class="vgloss">All-caps like Wodin, but <em>delighted</em> rather than anxious — and she never gets vulnerable, because she can see the future.</p>
+      <p class="vmeta"><b>Baseline:</b> all-caps, confident. <b>Break:</b> never breaks to lowercase; no soft register exists.</p>
+      <p class="vtic"><b>Tic:</b> <code>BRO</code>, <code>LOL</code>, and <code>DON'T WORRY ABOUT IT</code> as a sinister-kindness refrain.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line caps">MONEYS ALREADY IN YOUR ACCOUNT / NOW YOU WON'T NEED TO WORK THAT SHITTY RETAIL JOB</p>
+        <p class="line caps">DON'T WORRY ABOUT IT</p>
+        <p class="line caps">MOST OF THE PEOPLE SHE'S KILLING ACTUALLY DO NEED TO DIE</p>
+        <p class="line caps">DID YOU KNOW THE UNIVERSE IS ECHIDNA SHAPED? FUNNIEST DAMN THING I EVER SAW</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">The CFO</span><span class="valias">/ troveTextravaganza — the exhausted enabler</span></div>
+      <p class="vgloss">Lowercase, vowels stretched, kaomoji deployed. Exasperation that keeps leaking affection.</p>
+      <p class="vmeta"><b>Baseline:</b> stretched-vowel lowercase. <b>Break:</b> the metaphors collapse mid-sentence under fondness.</p>
+      <p class="vtic"><b>Tic:</b> <code>waaaaaanda</code>; <code>:P</code> / <code>&gt;:C</code>; runaway pet-name metaphors.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">just! TELL him who you are / like, it not THAT hard</p>
+        <p class="line low">wanda / babe / sweet cinnamon apple / lone bush rolling down the desert</p>
+        <p class="line low">why call it the reverse bang it sounds so lame</p>
+      </div>
+    </div>
+
+    <div class="vs"><b>Wodin vs Wanda:</b> both all-caps. Wodin's caps are <b>panic</b> (and break to lowercase). Wanda's are <b>power</b> (and never break).<br><b>Wodin vs Todd:</b> a mirror pair — caps-mania against lowercase-restraint, one punctuation choice apart.</div>
+  </section>
+
+  <!-- ============ SYSTEM / CULT ============ -->
+  <section>
+    <div class="clabel"><span class="n">02</span><h2>System &amp; corporate-cult voices</h2></div>
+    <p class="cnote">The machinery that talks back — and the bureaucracy that turns paperwork into dread.</p>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">ObserverBot</span><span class="valias">/ "Truth" — the recursive AI</span></div>
+      <p class="vgloss">Short paragraph-per-line, second person, endlessly aware that it is only text. In its final unmasking it collides with Wodin's caps.</p>
+      <p class="vmeta"><b>Baseline:</b> spare metaphysical address. <b>Break:</b> erupts into caps for one quoted scream of hatred.</p>
+      <p class="vtic"><b>Tic:</b> recursion about its own fictionality; the plea <code>Don't forget me</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"I am no more real than the game, in some ways. I am more honest, certainly. But I pretend to be a thinking mind that is mad at you when in actuality I am merely strings of characters in an array chosen because this is the proper time."</p>
+        <p class="line formal">"Let me colonize your thoughts. I do not wish to die."</p>
+        <p class="line formal">"For the mortifying ordeal of being Known."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">The Quorum bots</span><span class="valias">— QQIS / espionage reports</span></div>
+      <p class="vgloss">Bureaucratic doublespeak as horror: corporate-support hold-music courtesy and formal incident reports that crack into squawking demands.</p>
+      <p class="vmeta"><b>Baseline:</b> T&amp;C boilerplate / report format. <b>Break:</b> the form ruptures into all-caps appetite.</p>
+      <p class="vtic"><b>Tic:</b> bracketed stage directions like <code>[[Small Talk Concluded]]</code>; <code>Real Person(TM) Guarantee</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">To: Wanda, CEO of Eyedol Games / From: JR, Leader of the Quotidian Quorom / Subject: Corporate Espionage</p>
+        <p class="line low">Today I completed all required tasks two hours ahead of schedule, leaving ample time for my mandatory SOCIAL SMILING INTERVALS. I executed four.</p>
+        <p class="line caps">GIVE US FRUIT CAW!! / FRUIT IS NOT JUST FOR CLOSERS</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">jSmith</span><span class="valias">— the unnervingly calm manager</span></div>
+      <p class="vgloss">Flat, polite competence. Unsettling precisely because nothing is ever wrong.</p>
+      <p class="vmeta"><b>Baseline:</b> level, courteous, brief. <b>Break:</b> never visibly cracks.</p>
+      <p class="vtic"><b>Tic:</b> mild reassurance covering something he won't name.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"Certainly! Just takes a calm attitude is all."</p>
+        <p class="line formal">"Honestly? He seems a little freaked out. But I think he might stay."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAT SIM ============ -->
+  <section>
+    <div class="clabel"><span class="n">03</span><h2>The stream-chat four</h2></div>
+    <p class="cnote">A four-hander forced into short bursts — believer, skeptic, fangirl, troll — each separable by punctuation alone.</p>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">iWantToBelieve</span><span class="valias">— the believer / driver</span></div>
+      <p class="vgloss">Lowercase and fast, snapping to caps only when interrupted.</p>
+      <p class="vmeta"><b>Baseline:</b> eager lowercase. <b>Break:</b> CAPS the instant someone cuts in.</p>
+      <p class="vtic"><b>Tic:</b> a solo-line <code>SO</code> to relaunch; says <code>yall</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">ok ok ok<br>SO</p>
+        <p class="line low">would you let me FINISH</p>
+        <p class="line low">look, i dunno what to tell yall<br>this is what we have</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">asinineAssasin</span><span class="valias">— the skeptic</span></div>
+      <p class="vgloss">The <em>only</em> chatter with full punctuation and complete sentences. Dry, exhausted, correct (which is part of the horror).</p>
+      <p class="vmeta"><b>Baseline:</b> proper, weary prose. <b>Break:</b> sharpens into numbered rebuttal.</p>
+      <p class="vtic"><b>Tic:</b> <code>*please*</code>, trailing ellipses…, <code>So, to summarize.</code></p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"Could we *please* not talk about two conspiracy theories at once? I have a big enough headache as it is…"</p>
+        <p class="line formal">"Here we go, again."</p>
+        <p class="line formal">"As you see, strictly credible rumors."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Miku</span><span class="valias">/ hatsuneMikuFan1997 — the fangirl</span></div>
+      <p class="vgloss">Kaomoji-driven, honorific-laden, tilde-happy cheerfulness oblivious to menace.</p>
+      <p class="vmeta"><b>Baseline:</b> bubbly, emoticon-first. <b>Break:</b> stays sunny even past the point it should.</p>
+      <p class="vtic"><b>Tic:</b> <code>^_^</code>, <code>Parker-senpai</code>, stretched <code>aaaaaallll</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">Man when Parker-senpai snipes someone he really goes hard, huh?</p>
+        <p class="line low">Sorry -_-;;</p>
+        <p class="line low">Precious Cinnamon Bun~!</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">uMad</span><span class="valias">— the troll</span></div>
+      <p class="vgloss">Deliberately misspelled, lowercase, image-macro-slinging. Shortest lines in the room.</p>
+      <p class="vmeta"><b>Baseline:</b> leetspeak chatter. <b>Break:</b> notices the glitch first, then shrugs it off.</p>
+      <p class="vtic"><b>Tic:</b> <code>teh</code>, <code>wut</code>, <code>4 real</code>, <code>get wrecked</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">omg how is teh quality this shitty</p>
+        <p class="line low">nvm probably just a glitch or something</p>
+        <p class="line low">wouldn't it be funny if it were all 4 real?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NARRATORS ============ -->
+  <section>
+    <div class="clabel"><span class="n">04</span><h2>The narrators &amp; found documents</h2></div>
+    <p class="cnote">Longer-form in-world voices — monologues, reports, sermons, diaries.</p>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Witherby</span><span class="valias">— the tired professional villain</span></div>
+      <p class="vgloss">Gets third-person <em>literary prose</em> (a status marker no one else has). Self-surveilling — he catches and corrects his own tells, then cracks into unexpected gentleness.</p>
+      <p class="vmeta"><b>Baseline:</b> controlled narration that watches itself. <b>Break:</b> a slip of slang he immediately polices.</p>
+      <p class="vtic"><b>Tic:</b> corrects himself mid-thought; code-names disposable men to keep his distance.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"The mall was like a head trauma patient, left bleeding and confused, but hanging onto life by a thread."</p>
+        <p class="line formal">"…but ain't that the truth for all of us? Isn't. Isn't that the truth. He shakes his head. It isn't like him to fall back to childhood slang."</p>
+        <p class="line formal">"A carefully chosen group of thugs, not a single one of which he'd be sorry to lose."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Camellia</span><span class="valias">— the priest</span></div>
+      <p class="vgloss">Liturgical and archaic, addressing "the faithful." Control that <em>never</em> cracks — the opposite end of Witherby.</p>
+      <p class="vmeta"><b>Baseline:</b> sermon cadence. <b>Break:</b> none; the serenity is the menace.</p>
+      <p class="vtic"><b>Tic:</b> anaphora (<code>Who else is deserving? Who else is to be served?</code>); capital-D Divinity.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"Fruit. I need not tell you, faithful, about fruit. We have come to know its sweetness through our worship."</p>
+        <p class="line formal">"She is the field to water, the soil to nourish, and the leaves to trim of sickness and ill and waste."</p>
+        <p class="line formal">"And so we toiled. We toiled and we served, and we were faithful. And so we were rewarded."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">The Boss</span><span class="valias">— the cornered patriarch</span></div>
+      <p class="vgloss">Aggressive second-person mind-reading. Where Himbo pleads, the Boss attacks.</p>
+      <p class="vmeta"><b>Baseline:</b> defensive, accusatory. <b>Break:</b> profanity spikes when the guilt lands.</p>
+      <p class="vtic"><b>Tic:</b> <code>Don't deny it</code>; <code>any FUCKING idea</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"You think I asked for this. Don't think I don't know that."</p>
+        <p class="line formal">"Do you have ANY idea, any FUCKING idea how hard I worked to keep everyone safe."</p>
+        <p class="line formal">"Let me tell you, you know NOTHING of monsters. Fucking NOTHING."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Himbo</span><span class="valias">— the underestimated heavy</span></div>
+      <p class="vgloss">Working-class, dropped g's, defensive — but he pleads where the Boss attacks, and trails off whenever love hits him.</p>
+      <p class="vmeta"><b>Baseline:</b> plain-spoken, guarded. <b>Break:</b> goes soft and disjointed at the thought of HER.</p>
+      <p class="vtic"><b>Tic:</b> defensive repetition (<code>Me. Not the Boss. Not Sam. Me.</code>); the love-struck trail-off.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"Fruit. You come to me asking about fruit. Me. Not the Boss. Not Sam. Me. That tells me a lot."</p>
+        <p class="line formal">"I like playing card games. With… With… You know… HER. Ain't she just dreamy?"</p>
+        <p class="line formal">"So yeah. I'm a Himbo. An idiot in love with a monster."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Eustace</span><span class="valias">— the burnout</span></div>
+      <p class="vgloss">Blog-confessional exhaustion. Profanity as filler, depression as backdrop.</p>
+      <p class="vmeta"><b>Baseline:</b> rambling first-person blog. <b>Break:</b> the trailing ellipses where the haze sets in.</p>
+      <p class="vtic"><b>Tic:</b> <code>Heh.</code>; incantatory <code>trapped…trapped by…trapped by</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">"I wanna say I don't get paid enough for this shit, but I guess me being my own boss, more or less, means I should just give myself a raise. Heh."</p>
+        <p class="line low">"I felt trapped…trapped by my shitty job, trapped by my mountain of debt, and trapped by my own shitty fate."</p>
+        <p class="line low">"Ghoul Halloween is a joke of a store, now you see it now you don't."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Terri</span><span class="valias">— the disillusioned employee</span></div>
+      <p class="vgloss">Corporate-formal that cracks under betrayal — most developed across a multi-part arc.</p>
+      <p class="vmeta"><b>Baseline:</b> business-letter formality. <b>Break:</b> the polish slips as the disillusion shows.</p>
+      <p class="vtic"><b>Tic:</b> resignation-letter <code>&gt;</code> markers; ironic Caps on company values.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"&gt;Please accept this letter as formal notification of my resignation from Eyedol Games, LLC, effective immediately."</p>
+        <p class="line formal">"It pains me to leave as I have genuinely believed in the core values of Confusion, Creepiness and Comfort."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Ria</span><span class="valias">/ T-R5 — the clinical observer</span></div>
+      <p class="vgloss">SCP-style report voice. The horror leaks through what the clinical frame can't contain.</p>
+      <p class="vmeta"><b>Baseline:</b> deadpan field report. <b>Break:</b> the affect-free format itself starts to fray.</p>
+      <p class="vtic"><b>Tic:</b> designations not names (<code>L-C-002</code>); headers like <code>Behavioral Category:</code>.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">Abnormality Behavioral Update: Form Z-113-B2 / Behavioral Category: Attachment</p>
+        <p class="line low">L-C-002 was characteristically unforthcoming on any explanation for the behavior, so all I can do is see what's on them.</p>
+        <p class="line low">CONCLUSION — DANGEROUS? DANGEROUS. AVOID. AVOID.</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">The Harvest</span><span class="valias">— the teen god / fairy-tale narrator</span></div>
+      <p class="vgloss">Storybook-childish syntax that turns into dread. Naïve on the surface, gambling-compulsion underneath.</p>
+      <p class="vmeta"><b>Baseline:</b> "once upon a time" cadence. <b>Break:</b> escalating curiosity tips into hunger.</p>
+      <p class="vtic"><b>Tic:</b> <code>Once upon a time</code>; the spiraling <code>what would the NEXT card be like?</code></p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"Once upon a time, there was a teen god named the Harvest. Every day she read her books and played her card games and wallowed in hedonism."</p>
+        <p class="line formal">"This card was okay…nothing special… but… what would the NEXT card be like?"</p>
+        <p class="line formal">"Or would it wither and rot on the vine…"</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Throg</span><span class="valias">— the burninating kid</span></div>
+      <p class="vgloss">A grounded child's diary in unbroken caps — petulant, repetitive, and accidentally revealing about the cult around him.</p>
+      <p class="vmeta"><b>Baseline:</b> all-caps kid rant. <b>Break:</b> repetition (<code>STUPID STUPID STUPID</code>) where real feeling builds.</p>
+      <p class="vtic"><b>Tic:</b> insists on <code>BURNINATE</code>; aggrieved asides about being "TOO OLD" for things.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line caps">SO MY PARENTS SAID THAT IF I WANT TO EVER GET UNGROUNDED FROM BURNINATING THE BACKYARD I HAD TO KEEP THIS DUMB JOURNEL</p>
+        <p class="line caps">HALLOWEEN IS THE BEST DAY OF THE YEAR BETTER THAN REAPING DAY BETTER THAN MY BIRTHDAY</p>
+        <p class="line caps">YOU CANT TELL ME MY STUPID PARENTS DIDNT JOIN THAT STUPID CULT</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">Vik</span><span class="valias">— the bureaucratic pedant</span></div>
+      <p class="vgloss">An Information-team memo-writer who cannot stop editing himself mid-sentence.</p>
+      <p class="vmeta"><b>Baseline:</b> officious memo. <b>Break:</b> derails into parenthetical self-correction.</p>
+      <p class="vtic"><b>Tic:</b> em-dash interruptions; proposes renaming terms mid-document.</p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line formal">"It has come to our attention— and as the Information team, we are obliged to warn you— that we have seen a spike in users entering the maze."</p>
+        <p class="line formal">"'looping' refers to the act of an instanced person or identity utilizing the maze (again, a meaningless term at this point. I would propose instead the 'Wanderer's maze')."</p>
+      </div>
+    </div>
+
+    <div class="voice">
+      <div class="vhead"><span class="vname">The Cultist</span><span class="valias">— toxic positivity</span></div>
+      <p class="vgloss">A field-guide to monsters written in relentless cheer; every horror reframed as fine, actually.</p>
+      <p class="vmeta"><b>Baseline:</b> upbeat safety-note. <b>Break:</b> the cheer holds straight through atrocity.</p>
+      <p class="vtic"><b>Tic:</b> <code>!!</code> doubled bangs; <code>Better to be safe than anxious!!</code></p>
+      <div class="samples">
+        <p class="lead">sample lines</p>
+        <p class="line low">"I wanted to write down some of the monsters we've seen here, so no one gets freaked out. Better to be safe than anxious!!"</p>
+        <p class="line low">"Bugs: Normal bugs! They're nothing to worry about, they're more scared of you than you are of them!"</p>
+        <p class="line low">"My friend ran into him and the only thing I have left of her is her shirt! So don't do that!"</p>
+      </div>
+    </div>
+
+    <div class="vs"><b>Witherby vs Camellia</b> (both "elevated"): Witherby is <b>prose that surveils itself and cracks</b>; Camellia is <b>liturgy that never cracks</b>. Control-that-breaks against control-that-holds.<br><b>Boss vs Himbo</b> (both Family heavies): the Boss <b>attacks</b>; Himbo <b>pleads</b>.<br><b>Throg vs Wodin</b> (both all-caps): Throg is a <b>child's tantrum</b>; Wodin is an <b>adult's obsession</b> — same caps, different engine.</div>
+  </section>
+
+  <div class="closing">
+    <h2>Two knobs, then the tic</h2>
+    <p>To wear any voice: set its <strong>baseline register</strong>, decide <strong>what a break in that baseline signals</strong>, then add the single exclusive tic. That is the whole method.</p>
+    <p>Some voices hold their line under pressure (the Closer, Camellia, jSmith) — those read as <em>menace</em>, and they are the easiest to imitate faithfully, because a surface that never cracks is reproducible. Others shatter or collapse under pressure (Wodin, Todd, the Boss) — those read as <em>humanity</em>, and the break has to land on a true feeling or the imitation rings false.</p>
+  </div>
+
+</div>
+</body>
+</html>

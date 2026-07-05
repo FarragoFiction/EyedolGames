@@ -1,0 +1,2283 @@
+{
+  "domains": [
+    "8r8kspider.com",
+    "angelfire.com",
+    "archiveofourown.org",
+    "calljoker.com",
+    "catalystsbathroomlibrary.neocities.org",
+    "demo.vhost.pandorabots.com",
+    "discord.gg",
+    "drive.google.com",
+    "ellienamored.neocities.org",
+    "eyedolgames.com",
+    "farragnarok.com",
+    "farragofiction.com",
+    "farragofiction.fandom.com",
+    "genders.wtf",
+    "gigglesnort.info",
+    "github.com",
+    "hydrozoa-games.itch.io",
+    "jadedresearcher.tumblr.com",
+    "kittyhorrorshow.itch.io",
+    "knucklessux.com",
+    "laughing.observer",
+    "lavinraca.eyedolgames.com",
+    "lobotomycorp.fandom.com",
+    "lostinzampanio.neocities.org",
+    "meowloudly15.neocities.org",
+    "mircuskasarok.neocities.org",
+    "purplefrog.com",
+    "reddit.com",
+    "royalroad.com",
+    "scratch.mit.edu",
+    "spiralsrest.neocities.org",
+    "ttftcuts.github.io",
+    "tumblr.com",
+    "twitch.tv",
+    "youtube.com",
+    "zampanio.com",
+    "zampanio.net",
+    "zampaniosim.fandom.com",
+    "zampaniosim.miraheze.org"
+  ],
+  "nodes": [
+    {
+      "url": "http://demo.vhost.pandorabots.com/pandora/talk",
+      "domain": "demo.vhost.pandorabots.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/BabyQuotidians",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/CEOPresentation",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ChatGPTSaysItsNotAnARG",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeJustChattingReally",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeJustChattingReally2",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingBathroom",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingDiscord",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingEast",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingEastEast",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingEyedlr",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingGopher",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingMallSim",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingNorth",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingNorthNorth",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingNotebookSim",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingRabbitSim",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingRabbitSimAfterDiscord",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingSBURBSim",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingSBURBSimAndComparingToMallSim",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingSouth",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingSouthSouth",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingTheSearch",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingTheSkill",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingTruthSim",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ClaudeReadingWest",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/Eyedlr",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/Gender",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/GenericMimicSite",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/GreaterWestervillePolycule",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/JackElope",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/JackElope/images/SexySingles/BigNormalPile",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/JackElope/images/SexySingles/BigWeirdPile",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/News",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/News/images/Quizzes",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/PersonalityQuiz",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/QuotidianAdoption",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/ZWorld",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/ZWorld/images/attractions/General",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/Zampanini",
+      "domain": "eyedolgames.com",
+      "scanned": true
+    },
+    {
+      "url": "http://eyedolgames.com/ZampanioQuizEast",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ZampanioQuizNorth",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/ZampanioQuizSouth",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://eyedolgames.com/images",
+      "domain": "eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragnarok.com/AnyNonExistingPage",
+      "domain": "farragnarok.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/",
+      "domain": "farragofiction.com",
+      "scanned": true
+    },
+    {
+      "url": "http://farragofiction.com/99RoomsSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ACensoredTranscript",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/APersonalTranscript",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ASecondPersonalTranscript",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ASecondTranscript",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ATranscript",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AdventureSimWest",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AlchemySim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AnUnSentLetter",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AntSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AnxietySim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AprilARGs",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AtticSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AudioLogs",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AudioLogs/collection.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AudioLogs/images",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/AudioLogs/loras2.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/BulletproofTheory",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CCTVSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/EAST/NORTH/EAST/EAST/EAST/EAST/NORTH/bathroom.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/EAST/NORTH/SOUTH/SOUTH/NORTH/NORTH/SOUTH/SOUTH/SOUTH/EAST/EAST/SOUTH/NORTH/bathroom.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/audio/fx",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/audio/fx/HoonVoiceWorkByWisp",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/bathroom",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/NORTH/EAST/EAST/NORTH/bathroom.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/NORTH/NORTH/NORTH/NORTH/NORTH/NORTH/bathroom.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/NORTH/NORTH/NORTH/NORTH/NORTH/bathroom.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/bathroom",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CatalystsBathroomSim/bathroom.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CloudSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ClownDiarySim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/CodexOfRuin/viewer.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ColonistsEyes5",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/D.Log",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/DearDiary",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/DehydrationSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/DocSlaughterFileServer",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/DollSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ExperimentalMusic",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/FridgeSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/FruitSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/GhoulishThing",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/Gopher/NORTH/NORTH/NORTH/SOUTH/SOUTH/EAST/SOUTH/ILLUSION2/SOUTH/SOUTH/waypoint.txt",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/LOGAC",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/LOHAE/landing.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/LOMAT",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/LifeSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/LightAndVoid",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MagicalGirlSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MagicalGirlSim/nicesim.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MagnusArchivesSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MallSim",
+      "domain": "farragofiction.com",
+      "scanned": true
+    },
+    {
+      "url": "http://farragofiction.com/MallSim/images/Diorama/CamillesDeathInAnOrangeJulius",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MallSim/rabbithole.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/Midnight",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MindGardenSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MiniSims/CardSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MiniSims/StrifeSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/MurderOnTheScorpiusExpressSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/NagaGirlfriend",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/NagaGirlfriend/audio",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/NoteBookSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/NotebookSimulator",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/PaldemicSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/PaldemicSim/bio.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/PaleSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ParkerLotLost",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/PerfectHeist",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/RabbitSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/RabbitSimPuppeteerOfTheLost",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/RadioTranscript",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/SBAHJGirlfriend",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/SBURBSim/landing.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/SBURBSim113",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/SBURBSimJS/landing.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/SecurityLog/cctv.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/SettlersFromTheWest",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/Staging",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/TheHarvestDreamsOfZampanio",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/TheTruthAboutAlt",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ThisHumanDiseaseCalledFriendship",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/TurtleSim",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/TwoGayJokes",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/TwoGayJokes/Stories",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/UnifiedTheory",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/WigglerSim/landing.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioGoshShouldYouTrustThis",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioHotlink",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSim",
+      "domain": "farragofiction.com",
+      "scanned": true
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimEast",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimEastEast",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimEastEastEast",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimEastEastEastEast",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimLegal",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimNorth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimNorthNorth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimNorthNorthNorth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimNorthNorthNorthNorth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimNorthNorthNorthNorthNorth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimSouth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimSouthSouth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimSouthSouthSouth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/ZampanioSimSouthSouthSouthSouth",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/credits_and_warnings.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://farragofiction.com/past.html",
+      "domain": "farragofiction.com",
+      "scanned": false
+    },
+    {
+      "url": "http://gigglesnort.info/",
+      "domain": "gigglesnort.info",
+      "scanned": false
+    },
+    {
+      "url": "http://gigglesnort.info/magicant",
+      "domain": "gigglesnort.info",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/ABulletproofTranscript",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/ADepressingTranscript",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/Blog",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/HydrationSim",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/InfoTokenReader",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/JR/AudioLogs/json",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/PuzzleBox/Secrets",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/PuzzleBox/Secrets/QuotidianQuorom/Guides",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/PuzzleBox/Secrets/QuotidianQuorom/Letters/FRIEND",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/PuzzleBox/Secrets/Watcher",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/PuzzleBox/Secrets/WatcherOfThreads/dreams.pdf",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://knucklessux.com/PuzzleBox/Secrets/misc",
+      "domain": "knucklessux.com",
+      "scanned": false
+    },
+    {
+      "url": "http://lavinraca.eyedolgames.com/",
+      "domain": "lavinraca.eyedolgames.com",
+      "scanned": false
+    },
+    {
+      "url": "http://purplefrog.com/~thoth/ruby",
+      "domain": "purplefrog.com",
+      "scanned": false
+    },
+    {
+      "url": "http://zampanio.com/",
+      "domain": "zampanio.com",
+      "scanned": false
+    },
+    {
+      "url": "http://zampanio.net/webring.htm",
+      "domain": "zampanio.net",
+      "scanned": false
+    },
+    {
+      "url": "https://8r8kspider.com/",
+      "domain": "8r8kspider.com",
+      "scanned": false
+    },
+    {
+      "url": "https://angelfire.com/falcon/flamingchickens/mazequiz.html",
+      "domain": "angelfire.com",
+      "scanned": false
+    },
+    {
+      "url": "https://archiveofourown.org/works/41083818",
+      "domain": "archiveofourown.org",
+      "scanned": false
+    },
+    {
+      "url": "https://archiveofourown.org/works/46657027/chapters/117503854",
+      "domain": "archiveofourown.org",
+      "scanned": false
+    },
+    {
+      "url": "https://calljoker.com/zampanio",
+      "domain": "calljoker.com",
+      "scanned": false
+    },
+    {
+      "url": "https://catalystsbathroomlibrary.neocities.org/",
+      "domain": "catalystsbathroomlibrary.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://discord.gg/N5WEdC8",
+      "domain": "discord.gg",
+      "scanned": false
+    },
+    {
+      "url": "https://discord.gg/tZmtKwnbac",
+      "domain": "discord.gg",
+      "scanned": false
+    },
+    {
+      "url": "https://drive.google.com/drive/folders/1LCxnK5HMkSXscfXtzzv46ysaPRpa4p4u",
+      "domain": "drive.google.com",
+      "scanned": false
+    },
+    {
+      "url": "https://ellienamored.neocities.org/",
+      "domain": "ellienamored.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://ellienamored.neocities.org/expeditionzampanio",
+      "domain": "ellienamored.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://farragofiction.fandom.com/wiki/Antsim",
+      "domain": "farragofiction.fandom.com",
+      "scanned": false
+    },
+    {
+      "url": "https://farragofiction.fandom.com/wiki/FarragoFiction_Wiki",
+      "domain": "farragofiction.fandom.com",
+      "scanned": false
+    },
+    {
+      "url": "https://genders.wtf/gauntlet",
+      "domain": "genders.wtf",
+      "scanned": false
+    },
+    {
+      "url": "https://github.com/FarragoFiction",
+      "domain": "github.com",
+      "scanned": false
+    },
+    {
+      "url": "https://hydrozoa-games.itch.io/zam2anio",
+      "domain": "hydrozoa-games.itch.io",
+      "scanned": false
+    },
+    {
+      "url": "https://jadedresearcher.tumblr.com/post/175107968749/i-have-driven-back-the-forces-of-the-deacon-of",
+      "domain": "jadedresearcher.tumblr.com",
+      "scanned": false
+    },
+    {
+      "url": "https://kittyhorrorshow.itch.io/anatomy",
+      "domain": "kittyhorrorshow.itch.io",
+      "scanned": false
+    },
+    {
+      "url": "https://laughing.observer/",
+      "domain": "laughing.observer",
+      "scanned": true
+    },
+    {
+      "url": "https://laughing.observer/AudioTutorial",
+      "domain": "laughing.observer",
+      "scanned": false
+    },
+    {
+      "url": "https://laughing.observer/GifTutorial",
+      "domain": "laughing.observer",
+      "scanned": false
+    },
+    {
+      "url": "https://laughing.observer/LTESim",
+      "domain": "laughing.observer",
+      "scanned": true
+    },
+    {
+      "url": "https://laughing.observer/LTESim/webring",
+      "domain": "laughing.observer",
+      "scanned": false
+    },
+    {
+      "url": "https://laughing.observer/VideoTutorial",
+      "domain": "laughing.observer",
+      "scanned": false
+    },
+    {
+      "url": "https://laughing.observer/WeirdSounds/ambient_long_sounds",
+      "domain": "laughing.observer",
+      "scanned": false
+    },
+    {
+      "url": "https://laughing.observer/zampanio_is.html",
+      "domain": "laughing.observer",
+      "scanned": false
+    },
+    {
+      "url": "https://lobotomycorp.fandom.com/wiki/1.76_MHz",
+      "domain": "lobotomycorp.fandom.com",
+      "scanned": false
+    },
+    {
+      "url": "https://lostinzampanio.neocities.org/fanfictions/were_you_just_a_satellite",
+      "domain": "lostinzampanio.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://lostinzampanio.neocities.org/watchers_room",
+      "domain": "lostinzampanio.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://meowloudly15.neocities.org/404",
+      "domain": "meowloudly15.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://mircuskasarok.neocities.org/",
+      "domain": "mircuskasarok.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://reddit.com/r/IAmA/comments/vnxo8q/im_jr_author_of_a_sprawling_zampanio_fanwork",
+      "domain": "reddit.com",
+      "scanned": false
+    },
+    {
+      "url": "https://royalroad.com/fiction/42202/the-way-ahead",
+      "domain": "royalroad.com",
+      "scanned": false
+    },
+    {
+      "url": "https://royalroad.com/fiction/56715/the-encyclopedia-arcane",
+      "domain": "royalroad.com",
+      "scanned": false
+    },
+    {
+      "url": "https://scratch.mit.edu/projects/666438974",
+      "domain": "scratch.mit.edu",
+      "scanned": false
+    },
+    {
+      "url": "https://spiralsrest.neocities.org/",
+      "domain": "spiralsrest.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://spiralsrest.neocities.org/versions",
+      "domain": "spiralsrest.neocities.org",
+      "scanned": false
+    },
+    {
+      "url": "https://ttftcuts.github.io/Parchment-Map",
+      "domain": "ttftcuts.github.io",
+      "scanned": false
+    },
+    {
+      "url": "https://tumblr.com/derinthescarletpescatarian/766927606238085120/that-just-gives-you-anxiety-which-to-be-fair-is",
+      "domain": "tumblr.com",
+      "scanned": false
+    },
+    {
+      "url": "https://tumblr.com/epic-semicolon-ftw/721052082903416832/now-for-the-general-public-zombpanio-hwe",
+      "domain": "tumblr.com",
+      "scanned": false
+    },
+    {
+      "url": "https://tumblr.com/existential-squid/753210653540564992",
+      "domain": "tumblr.com",
+      "scanned": false
+    },
+    {
+      "url": "https://tumblr.com/verbosebabbler/803351874204024832/homestuck-classpect-pixel-redesigns-ive-always",
+      "domain": "tumblr.com",
+      "scanned": false
+    },
+    {
+      "url": "https://tumblr.com/verbosebabbler/803353348789141504/zampaniosim-classpect-pixel-redesign-if-you",
+      "domain": "tumblr.com",
+      "scanned": false
+    },
+    {
+      "url": "https://twitch.tv/directory/category/zampaniosimulator/videos/all",
+      "domain": "twitch.tv",
+      "scanned": false
+    },
+    {
+      "url": "https://youtube.com/playlist",
+      "domain": "youtube.com",
+      "scanned": false
+    },
+    {
+      "url": "https://zampaniosim.fandom.com/wiki/Zampanio",
+      "domain": "zampaniosim.fandom.com",
+      "scanned": false
+    },
+    {
+      "url": "https://zampaniosim.fandom.com/wiki/ZampanioSim_Wiki",
+      "domain": "zampaniosim.fandom.com",
+      "scanned": false
+    },
+    {
+      "url": "https://zampaniosim.miraheze.org/wiki/Main_Page",
+      "domain": "zampaniosim.miraheze.org",
+      "scanned": false
+    }
+  ],
+  "edges": [
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/BabyQuotidians"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/CEOPresentation"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ChatGPTSaysItsNotAnARG"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeJustChattingReally"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeJustChattingReally2"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingBathroom"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingDiscord"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingEast"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingEastEast"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingEyedlr"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingGopher"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingMallSim"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingNorth"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingNorthNorth"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingNotebookSim"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingRabbitSim"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingRabbitSimAfterDiscord"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingSBURBSim"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingSBURBSimAndComparingToMallSim"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingSouth"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingSouthSouth"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingTheSearch"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingTheSkill"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingTruthSim"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ClaudeReadingWest"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/Eyedlr"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/Gender"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/GenericMimicSite"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/GreaterWestervillePolycule"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/JackElope"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/JackElope/images/SexySingles/BigWeirdPile"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/News"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/PersonalityQuiz"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/QuotidianAdoption"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ZWorld"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/ZWorld/images/attractions/General"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://eyedolgames.com/images"
+    },
+    {
+      "from": "http://eyedolgames.com/",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://eyedolgames.com/"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://eyedolgames.com/News"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://eyedolgames.com/QuotidianAdoption"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://eyedolgames.com/ZWorld"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/AnxietySim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/FruitSim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/MallSim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/MurderOnTheScorpiusExpressSim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/NoteBookSim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/NotebookSimulator"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/RabbitSim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/SecurityLog/cctv.html"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/TheTruthAboutAlt"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/ZampanioSim"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/ZampanioSimEast"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://farragofiction.com/ZampanioSimLegal"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://gigglesnort.info/magicant"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets/Watcher"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://archiveofourown.org/works/41083818"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://discord.gg/tZmtKwnbac"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://drive.google.com/drive/folders/1LCxnK5HMkSXscfXtzzv46ysaPRpa4p4u"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://hydrozoa-games.itch.io/zam2anio"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://jadedresearcher.tumblr.com/post/175107968749/i-have-driven-back-the-forces-of-the-deacon-of"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://scratch.mit.edu/projects/666438974"
+    },
+    {
+      "from": "http://eyedolgames.com/Eyedlr",
+      "to": "https://tumblr.com/epic-semicolon-ftw/721052082903416832/now-for-the-general-public-zombpanio-hwe"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "http://eyedolgames.com/"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "http://eyedolgames.com/Eyedlr"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/bathroom.html"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "http://farragofiction.com/MallSim/rabbithole.html"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "https://genders.wtf/gauntlet"
+    },
+    {
+      "from": "http://eyedolgames.com/Gender",
+      "to": "https://tumblr.com/existential-squid/753210653540564992"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://eyedolgames.com/"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://eyedolgames.com/News"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://eyedolgames.com/QuotidianAdoption"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://farragofiction.com/"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://farragofiction.com/MallSim"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://farragofiction.com/SecurityLog/cctv.html"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://farragofiction.com/TheTruthAboutAlt"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://farragofiction.com/ZampanioSim"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets/Watcher"
+    },
+    {
+      "from": "http://eyedolgames.com/JackElope",
+      "to": "https://discord.gg/tZmtKwnbac"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/ClaudeReadingMallSim"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/Gender"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/JackElope"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/JackElope/images/SexySingles/BigNormalPile"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/News/images/Quizzes"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://eyedolgames.com/PersonalityQuiz"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/bathroom"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/MallSim"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/MallSim/rabbithole.html"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/ZampanioSim"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/ZampanioSimEastEast"
+    },
+    {
+      "from": "http://eyedolgames.com/News",
+      "to": "http://farragofiction.com/ZampanioSimSouthSouthSouth"
+    },
+    {
+      "from": "http://eyedolgames.com/PersonalityQuiz",
+      "to": "http://eyedolgames.com/Gender"
+    },
+    {
+      "from": "http://eyedolgames.com/PersonalityQuiz",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/NORTH/NORTH/NORTH/NORTH/NORTH/bathroom.html"
+    },
+    {
+      "from": "http://eyedolgames.com/QuotidianAdoption",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets/QuotidianQuorom/Guides"
+    },
+    {
+      "from": "http://eyedolgames.com/QuotidianAdoption",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets/QuotidianQuorom/Letters/FRIEND"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://demo.vhost.pandorabots.com/pandora/talk"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/EAST/NORTH/EAST/EAST/EAST/EAST/NORTH/bathroom.html"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://farragofiction.com/DehydrationSim"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://farragofiction.com/MagnusArchivesSim"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://farragofiction.com/RabbitSim"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://farragofiction.com/SettlersFromTheWest"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "http://knucklessux.com/JR/AudioLogs/json"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "https://angelfire.com/falcon/flamingchickens/mazequiz.html"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "https://archiveofourown.org/works/46657027/chapters/117503854"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "https://royalroad.com/fiction/42202/the-way-ahead"
+    },
+    {
+      "from": "http://eyedolgames.com/ZWorld",
+      "to": "https://royalroad.com/fiction/56715/the-encyclopedia-arcane"
+    },
+    {
+      "from": "http://eyedolgames.com/Zampanini",
+      "to": "http://eyedolgames.com/News"
+    },
+    {
+      "from": "http://eyedolgames.com/Zampanini",
+      "to": "http://farragofiction.com/99RoomsSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/Eyedlr"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/Gender"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/JackElope"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/PersonalityQuiz"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/ZWorld"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragnarok.com/AnyNonExistingPage"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/99RoomsSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AlchemySim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AntSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AprilARGs"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AtticSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AudioLogs"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AudioLogs/collection.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AudioLogs/images"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/AudioLogs/loras2.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/CCTVSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/bathroom"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/CloudSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/DollSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/FridgeSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/FruitSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/LOGAC"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/LOHAE/landing.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/LOMAT"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/LifeSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MagicalGirlSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MagicalGirlSim/nicesim.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MallSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MallSim/rabbithole.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/Midnight"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MindGardenSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MiniSims/CardSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/MiniSims/StrifeSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/PaldemicSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/PaldemicSim/bio.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/PaleSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/RabbitSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/SBURBSim/landing.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/SBURBSim113"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/SBURBSimJS/landing.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/Staging"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/TurtleSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/WigglerSim/landing.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/ZampanioSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/credits_and_warnings.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://farragofiction.com/past.html"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://gigglesnort.info/"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://knucklessux.com/HydrationSim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "http://knucklessux.com/InfoTokenReader"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "https://discord.gg/N5WEdC8"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "https://farragofiction.fandom.com/wiki/Antsim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "https://farragofiction.fandom.com/wiki/FarragoFiction_Wiki"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "https://github.com/FarragoFiction"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "https://laughing.observer/LTESim"
+    },
+    {
+      "from": "http://farragofiction.com/",
+      "to": "https://zampaniosim.fandom.com/wiki/ZampanioSim_Wiki"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://eyedolgames.com/ZampanioQuizEast"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ASecondPersonalTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ASecondTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/AdventureSimWest"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/BulletproofTheory"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/CCTVSim"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/audio/fx"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/EAST/SOUTH/EAST/NORTH/NORTH/NORTH/audio/fx/HoonVoiceWorkByWisp"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/NORTH/EAST/EAST/NORTH/bathroom.html"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/CodexOfRuin/viewer.html"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ColonistsEyes5"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/DocSlaughterFileServer"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ExperimentalMusic"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/GhoulishThing"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/Gopher/NORTH/NORTH/NORTH/SOUTH/SOUTH/EAST/SOUTH/ILLUSION2/SOUTH/SOUTH/waypoint.txt"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/MallSim/images/Diorama/CamillesDeathInAnOrangeJulius"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/NagaGirlfriend/audio"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ParkerLotLost"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/PerfectHeist"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/RabbitSimPuppeteerOfTheLost"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/RadioTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/TwoGayJokes/Stories"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/UnifiedTheory"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ZampanioHotlink"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ZampanioSimEastEastEastEast"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://farragofiction.com/ZampanioSimNorth"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://knucklessux.com/ABulletproofTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://knucklessux.com/ADepressingTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets/misc"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://purplefrog.com/~thoth/ruby"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "http://zampanio.com/"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://8r8kspider.com/"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://calljoker.com/zampanio"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://catalystsbathroomlibrary.neocities.org/"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://ellienamored.neocities.org/expeditionzampanio"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://kittyhorrorshow.itch.io/anatomy"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://lobotomycorp.fandom.com/wiki/1.76_MHz"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://lostinzampanio.neocities.org/fanfictions/were_you_just_a_satellite"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://mircuskasarok.neocities.org/"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://spiralsrest.neocities.org/versions"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://ttftcuts.github.io/Parchment-Map"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://tumblr.com/verbosebabbler/803351874204024832/homestuck-classpect-pixel-redesigns-ive-always"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://tumblr.com/verbosebabbler/803353348789141504/zampaniosim-classpect-pixel-redesign-if-you"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://twitch.tv/directory/category/zampaniosimulator/videos/all"
+    },
+    {
+      "from": "http://farragofiction.com/MallSim",
+      "to": "https://youtube.com/playlist"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://eyedolgames.com/GenericMimicSite"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://eyedolgames.com/Zampanini"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://eyedolgames.com/ZampanioQuizEast"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://eyedolgames.com/ZampanioQuizNorth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://eyedolgames.com/ZampanioQuizSouth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ACensoredTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/APersonalTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ASecondTranscript"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ATranscript"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/AdventureSimWest"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/AnUnSentLetter"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/AnxietySim"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/BulletproofTheory"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/EAST/NORTH/SOUTH/SOUTH/NORTH/NORTH/SOUTH/SOUTH/SOUTH/EAST/EAST/SOUTH/NORTH/bathroom.html"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/CatalystsBathroomSim/NORTH/NORTH/NORTH/NORTH/NORTH/NORTH/bathroom.html"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ClownDiarySim"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ColonistsEyes5"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/D.Log"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/DearDiary"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/FruitSim"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/GhoulishThing"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/LightAndVoid"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/MallSim/rabbithole.html"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/MurderOnTheScorpiusExpressSim"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/NagaGirlfriend"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/SBAHJGirlfriend"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/SecurityLog/cctv.html"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/SettlersFromTheWest"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/TheHarvestDreamsOfZampanio"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/TheTruthAboutAlt"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ThisHumanDiseaseCalledFriendship"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/TwoGayJokes"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/UnifiedTheory"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioGoshShouldYouTrustThis"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimEast"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimEastEast"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimEastEastEast"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimEastEastEastEast"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimNorth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimNorthNorth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimNorthNorthNorth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimNorthNorthNorthNorth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimNorthNorthNorthNorthNorth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimSouth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimSouthSouth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimSouthSouthSouth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://farragofiction.com/ZampanioSimSouthSouthSouthSouth"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://knucklessux.com/PuzzleBox/Secrets/WatcherOfThreads/dreams.pdf"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "http://lavinraca.eyedolgames.com/"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "https://reddit.com/r/IAmA/comments/vnxo8q/im_jr_author_of_a_sprawling_zampanio_fanwork"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "https://tumblr.com/derinthescarletpescatarian/766927606238085120/that-just-gives-you-anxiety-which-to-be-fair-is"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "https://zampaniosim.fandom.com/wiki/Zampanio"
+    },
+    {
+      "from": "http://farragofiction.com/ZampanioSim",
+      "to": "https://zampaniosim.miraheze.org/wiki/Main_Page"
+    },
+    {
+      "from": "https://laughing.observer/",
+      "to": "https://laughing.observer/AudioTutorial"
+    },
+    {
+      "from": "https://laughing.observer/",
+      "to": "https://laughing.observer/GifTutorial"
+    },
+    {
+      "from": "https://laughing.observer/",
+      "to": "https://laughing.observer/LTESim/webring"
+    },
+    {
+      "from": "https://laughing.observer/",
+      "to": "https://laughing.observer/VideoTutorial"
+    },
+    {
+      "from": "https://laughing.observer/",
+      "to": "https://laughing.observer/WeirdSounds/ambient_long_sounds"
+    },
+    {
+      "from": "https://laughing.observer/",
+      "to": "https://laughing.observer/zampanio_is.html"
+    },
+    {
+      "from": "https://laughing.observer/LTESim",
+      "to": "http://knucklessux.com/Blog"
+    },
+    {
+      "from": "https://laughing.observer/LTESim",
+      "to": "http://zampanio.net/webring.htm"
+    },
+    {
+      "from": "https://laughing.observer/LTESim",
+      "to": "https://ellienamored.neocities.org/"
+    },
+    {
+      "from": "https://laughing.observer/LTESim",
+      "to": "https://lostinzampanio.neocities.org/watchers_room"
+    },
+    {
+      "from": "https://laughing.observer/LTESim",
+      "to": "https://meowloudly15.neocities.org/404"
+    },
+    {
+      "from": "https://laughing.observer/LTESim",
+      "to": "https://spiralsrest.neocities.org/"
+    }
+  ]
+}

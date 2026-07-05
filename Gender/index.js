@@ -108,7 +108,7 @@ const gender_source = () => {
     //zampanio needs you to live a long life
     //and if you ruin yourself on its rocky shores
     //you have no use to it
-    return ["Zampanio Needs You To Live A Long Life","Obsession Is A Dangerous Thing","It Hurts","Stop Scrolling","Go Away","Please Stop","Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
+    return ["Zampanio Needs You To Live A Long Life", "Obsession Is A Dangerous Thing", "It Hurts", "Stop Scrolling", "Go Away", "Please Stop", "Zampanio", "Zampanio", "Zampanio", "Zampanio", "Zampano", "Goncharov", "Pamzino", "Zampanio", "Zampanini", "Zampiano"]
   }
 }
 
@@ -185,7 +185,7 @@ const randomCheckbox = () => {
 }
 
 //https://www.tumblr.com/existential-squid/753210653540564992?source=share
-const randomRadioGenderAffirm = ()=>{
+const randomRadioGenderAffirm = () => {
   const max = 5;
   const min = 2;
   const amount = getRandomNumberBetween(min, max);
@@ -204,14 +204,14 @@ const randomRadioGenderAffirm = ()=>{
     const monster_desc = titleCase(chosenTheme.pickPossibilityFor(MONSTER_DESC));
     const effects = titleCase(chosenTheme.pickPossibilityFor(EFFECTS));
     ill_advised_raw_html += `<div class='horizontal-radio'><input id="${id}" name="radio-${question_index}" type="radio"></input><label for="${id}"  class='gender'>
-    ${pickFrom([miracle,effects,effects,effects,miracle, monster_desc, effects])}</label>
+    ${pickFrom([miracle, effects, effects, effects, miracle, monster_desc, effects])}</label>
     </div>`;
   }
   ill_advised_raw_html += '</div></div>'
   return ill_advised_raw_html;
 }
 
-const  randomRadio = () => {
+const randomRadio = () => {
   const max = 5;
   const min = 2;
   const amount = getRandomNumberBetween(min, max);
@@ -231,19 +231,19 @@ const  randomRadio = () => {
 
 }
 
-const deployGender = ()=>{
+const deployGender = () => {
   const specialCases = {
     69: "nice"
-    ,13: "Dig dig dig dig dig dig dig dig dig dig dig dig"
-    ,413:"Homestuck (we're sorry)"
-    ,85:"Honestly? I don't know. You've done it. You are the one person who has never had gender."
-    ,216: "A cycle unfinished. A quest that never ends. The greek king pushing his rock up the mountain, only for it to roll him over. The ouroboros that snaps its tail in half."
-    ,113: "Dry and acid. The friction of a mouth devoid of water, fleshy taste buds upright and yearning. The essence of Hydration.  http://knucklessux.com/HydrationSim/ is for you."
+    , 13: "Dig dig dig dig dig dig dig dig dig dig dig dig"
+    , 413: "Homestuck (we're sorry)"
+    , 85: "Honestly? I don't know. You've done it. You are the one person who has never had gender."
+    , 216: "A cycle unfinished. A quest that never ends. The greek king pushing his rock up the mountain, only for it to roll him over. The ouroboros that snaps its tail in half."
+    , 113: "Dry and acid. The friction of a mouth devoid of water, fleshy taste buds upright and yearning. The essence of Hydration.  http://knucklessux.com/HydrationSim/ is for you."
   }
 
-  for(let key in specialCases){
-    console.log("JR NOTE: key",key, number_clicks)
-    if(number_clicks == key){
+  for (let key in specialCases) {
+    console.log("JR NOTE: key", key, number_clicks)
+    if (number_clicks == key) {
       console.log("JR NOTE: yes.")
       alert(`After careful consideration: Your gender is: ${specialCases[key]}`);
 
@@ -251,20 +251,42 @@ const deployGender = ()=>{
     }
   }
 
-  if(number_clicks < 13){
+  if (number_clicks < 13) {
     alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
     return;
   }
   const genders = document.querySelectorAll(".gender")
   //your answers don't matter BUT you get the cooler answers if you engage more
-  const gender = genders[(number_clicks + Math.round(question_index/2))%genders.length].innerText;
+  const gender = genders[(number_clicks + Math.round(question_index / 2)) % genders.length].innerText;
   alert(`After careful consideration: Your gender is: ${gender}`);
 
 }
 
-window.onload = () => {
-  const audio = document.querySelector("#audio");
+let audio;
+
+
+const playAudio = () => {
   audio.volume = .2;
+  if (!audio.playing) {
+    audio.play().then(() => {
+      removeEventListener("click", playAudio);
+      injectMuteButton(() => {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      });
+
+    });
+  }
+
+}
+
+document.addEventListener('click', playAudio, { once: true });
+
+window.onload = () => {
+  audio = document.querySelector("#audio");
   container = document.querySelector("#container");
   initThemes();
   ele = document.querySelector("#infinite-scroll")
@@ -274,15 +296,13 @@ window.onload = () => {
   gender_button.onclick = () => {
     deployGender();
   }
+  playAudio();
+
+
+
 }
 
-window.onclick = () => {
-  const audio = document.querySelector("#audio");
-  if(!audio.playing){
-    audio.play();
-  }
-  number_clicks++;
-}
+
 
 
 
