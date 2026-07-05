@@ -296,7 +296,6 @@ window.onload = () => {
   gender_button.onclick = () => {
     deployGender();
   }
-  playAudio();
 
 
 
