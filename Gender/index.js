@@ -1,4 +1,6 @@
 
+
+let robbster_mode = false;
 let container;
 //look, wanda likes gender, okay?
 
@@ -251,8 +253,15 @@ const deployGender = () => {
     }
   }
 
-  if (number_clicks < 13) {
-    alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
+  //in honor of the streamer robbster, sometimes there is not enough qustions in the world for you to find out your gender
+  if (number_clicks < 13 || robbster_mode) {
+    if (robbster_mode && number_clicks >= 13) {
+      alert(`ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE. (did you really think only ${number_clicks} answers would be enough for something as complicated as gender???)`)
+
+    } else {
+      alert("ERROR GENERATING GENDER. ANSWER MORE QUESTIONS PLEASE.")
+
+    }
     return;
   }
   const genders = document.querySelectorAll(".gender")
@@ -284,8 +293,22 @@ const playAudio = () => {
 }
 
 document.addEventListener('click', playAudio, { once: true });
+//haha whoops, sorry https://www.youtube.com/watch?v=eNU6hdqWF_Q i broke gender when i added a mute button, you can get one for free
+document.addEventListener('click', () => { number_clicks++; })
 
 window.onload = () => {
+  //on July 14th, https://www.youtube.com/watch?v=eNU6hdqWF_Q this streamer discovered the gender gauntlet eternally claimed that you hadn't answered enough questsions to recieve gender (because i had a bug after adding the mute button for a tumblr user)
+  //they were so delighted by this i have declared it canon on the 14th day of every month and for the entire month of July
+  //future me is going to forget i did this
+  //and panic at 'bug reports' saying they didn't get a gender
+  //i don't care
+  //this is 
+  //EXTREMELY funny
+  const date = new Date();
+  if (date.getDate() === 14 || date.getMonth() === 6) {
+    console.log("JR NOTE: https://www.youtube.com/watch?v=eNU6hdqWF_Q has created a new canon for the Gender Gauntlet. Enjoy your free complimentary lack of a gender because today is " + date.toLocaleDateString())
+    robbster_mode = true;
+  }
   audio = document.querySelector("#audio");
   container = document.querySelector("#container");
   initThemes();

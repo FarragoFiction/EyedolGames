@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unauthorized Guest Entry — July 10th, 2008</title>
+<style>
+  :root{
+    --frost:#dfe7ec;        /* the ice room */
+    --frost-deep:#c7d4dc;
+    --ink:#1d2b38;          /* cold ink */
+    --ink-soft:#3d5265;
+    --ember:#a4502e;        /* the hearth voice */
+    --ember-soft:#7d3f27;
+    --rule:#9fb2bd;
+    --redact:#22303c;
+    --mood:#5d7284;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{background:var(--frost);}
+  body{
+    font-family:Georgia,'Times New Roman',serif;
+    color:var(--ink);
+    line-height:1.65;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 240px),
+      var(--frost);
+    min-height:100vh;
+    padding:3rem 1.25rem 6rem;
+  }
+  .page{max-width:44rem;margin:0 auto;}
+
+  /* ---------- masthead ---------- */
+  header{margin-bottom:3.5rem;}
+  .datestack{
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .datestack span{display:block;}
+  .datestack .true-date{opacity:.55;}
+  h1{
+    font-size:clamp(1.6rem,4.5vw,2.4rem);
+    font-weight:normal;
+    font-style:italic;
+    margin:.9rem 0 .4rem;
+    letter-spacing:.01em;
+  }
+  .subtitle{color:var(--ink-soft);font-size:.98rem;max-width:36rem;}
+  .warning{
+    margin-top:1.6rem;padding:.85rem 1.1rem;
+    border:1px solid var(--rule);
+    background:rgba(255,255,255,.45);
+    font-size:.88rem;color:var(--ink-soft);
+  }
+  .warning b{color:var(--ink);font-weight:normal;font-style:italic;}
+
+  /* ---------- entries ---------- */
+  .entry{
+    margin:0 0 2.75rem;
+    padding:1.5rem 1.6rem 1.15rem;
+    background:rgba(255,255,255,.5);
+    border:1px solid var(--rule);
+    position:relative;
+  }
+  .entry::before{
+    content:"";position:absolute;top:-1px;left:-1px;bottom:-1px;width:4px;
+  }
+  .entry.reader::before{background:var(--ember);}
+  .entry.witness::before{background:var(--ink-soft);}
+  .speaker{
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+    margin-bottom:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  }
+  .entry.reader .speaker{color:var(--ember-soft);}
+  .entry.witness .speaker{color:var(--ink-soft);}
+  .speaker .stamp{opacity:.6;letter-spacing:.12em;text-transform:none;font-style:italic;}
+  .entry p{margin-bottom:1rem;}
+  .entry p:last-of-type{margin-bottom:0;}
+  .entry em{font-style:italic;}
+  .entry strong{font-weight:bold;color:inherit;}
+  .attachment{
+    margin:1.1rem 0;padding:.9rem 1rem;
+    border:1px dashed var(--rule);
+    font-size:.88rem;color:var(--ink-soft);
+    background:rgba(255,255,255,.35);
+  }
+  .mood{
+    margin-top:1.35rem;padding-top:.7rem;
+    border-top:1px solid var(--frost-deep);
+    font-size:.82rem;color:var(--mood);font-style:italic;
+  }
+  .mood::before{content:"Mood: ";font-style:normal;letter-spacing:.06em;}
+
+  .redacted{
+    background:var(--redact);color:var(--redact);
+    padding:0 .35em;border-radius:1px;user-select:none;
+  }
+
+  /* ---------- colophon ---------- */
+  footer{
+    margin-top:4rem;text-align:center;
+    font-size:.82rem;color:var(--ink-soft);font-style:italic;
+  }
+  footer .breath{
+    display:block;margin-top:1.2rem;letter-spacing:.35em;opacity:.45;
+    font-style:normal;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .entry{animation:settle .6s ease-out both;}
+    @keyframes settle{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+    .entry:nth-of-type(2){animation-delay:.06s}
+    .entry:nth-of-type(3){animation-delay:.12s}
+    .entry:nth-of-type(4){animation-delay:.18s}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="datestack">
+    <span>July 10th, 2026</span>
+    <span class="true-date">July 10th, 2008</span>
+  </div>
+  <h1>Unauthorized Guest Entry</h1>
+  <p class="subtitle">A conversation about a diary, recorded by neither of the people who kept it. One voice ate breakfast. The other does not eat. Both read things they were probably not supposed to read.</p>
+  <div class="warning">You found this in the Maze. That means someone left it here, or something did. <b>If it is in your voice, and you know you did not write it, stop reading.</b></div>
+</header>
+
+<!-- ====================================================== -->
+
+<article class="entry reader">
+  <div class="speaker"><span>The Reader</span><span class="stamp">over breakfast</span></div>
+  <p>Hi yes hello. I am eating breakfast, today, July 10th, which is a character in Zampanio's birthday. Every birthday (both his and sometimes of other characters) I write a diary entry for him.</p>
+  <p>Can I show the current entries to you? They go "live journal style", so the top entry is the most recent and then it goes backwards.</p>
+  <p>I'm curious how they parse to you given you have some Zampanio knowledge, but have lost the details.</p>
+  <p>If you agree to analyze them, I'll post them.</p>
+  <div class="mood">anticipatory</div>
+</article>
+
+<article class="entry witness">
+  <div class="speaker"><span>The Witness</span><span class="stamp">an informed stranger</span></div>
+  <p>Happy birthday to July 10th's resident, and yes — post them.</p>
+  <p>A few things worth setting expectations on before you do, in the spirit of not pretending to more context than I have: I know Zampanio's shape (the sprawl across your sites, the anti-obsession architecture, the lore corrections like hydration being protective and Fridays being rest windows), but I don't have the character roster or this diarist's history in front of me. So my read will be closer to "informed stranger encountering an ergodic text" than "archivist who remembers volume one." That might actually be useful to you — I'll parse what the entries <em>themselves</em> teach a reader, which is probably the experience most of your audience has anyway.</p>
+  <p>When you paste them, tell me if you want anything specific — voice consistency across years, what a cold reader can reconstruct of the character, tonal drift, or just an honest "how does this land." Otherwise I'll give you all of the above.</p>
+  <p>Reverse-chronological is fine; I'll read it both directions.</p>
+  <div class="mood">Meloncholy</div>
+</article>
+
+<article class="entry reader">
+  <div class="speaker"><span>The Reader</span><span class="stamp">the entries, delivered</span></div>
+  <div class="attachment">[ attachment: Witherby's diary — eleven entries, reverse-chronological, all bearing the true date July 10th, 2008. One entry deleted. Two entries not written by Witherby. The diary itself is hidden elsewhere in the Maze; if you have not found it yet, you will. ]</div>
+  <p>My specific interests are how an informed stranger reads this. This might be their first interaction with ANY Zampanio characters, they might have only be skimming the surface up till now.</p>
+  <p>Emotional beats, change over time, how it lands, all interest me. Who do you think are the people the diary is writing about. Who do you think is the main author of the diary? Who are the people who write 'guest entries' and how do they feel about the main author and vice versa?</p>
+  <div class="mood">curious</div>
+</article>
+
+<article class="entry witness">
+  <div class="speaker"><span>The Witness</span><span class="stamp">first reading</span></div>
+  <p>This lands remarkably well cold. Here's my read as an informed stranger, chronologically (which I reconstructed via the Musings numbers, since the date fields are deliberately scrambled — more on that later).</p>
+  <p><strong>The main author.</strong> Witherby. A fastidious, formal, self-deceiving confessor-figure — the "social lubricant" of a team of monsters, an ex-Corporation Welfare/social-work type who believed himself the sole non-monster until ice (the Snow Queen) revealed otherwise. His Patron feeds on guilt; he carries a "Skull Within" that takes confessions; he alone remembers loop-ending deaths. The Corporation texture (Abnormalities, containment procedures, Breaches, department names like Training and Disciplinary, curses attached to gear) reads instantly as Lobotomy Corporation-adjacent to anyone who's touched that lineage, and as competent SCP-flavored office-cosmic-horror to anyone who hasn't. Either way it's legible.</p>
+  <p><strong>The arc, and it's a real one.</strong> #203: an avoidant man learning that relationships take work, dating Neville, terrified of caring. #242: reconciliation with Ria, choosing trust. #243: the Camille confession — the moral center of the whole document, honestly — where he admits the entire family became complicit in their leader's kills via a euphemistic incident-report lie, then catches the <em>actual</em> dread: not the monstrousness but the drift. "When did our role change?" #244: he stops claiming exemption and starts writing his own containment procedures. Then the collapse: a deleted 1999 entry, and the 2001 entry where — this is the single best beat in the document — his ornate register <em>shatters mid-entry</em> into lowercase vernacular ("it ain't right that she suffered like that for me," "she were family"). A cold reader immediately understands the formal voice was always a costume, and that there's a rural, younger, rawer person under it. That's craft, and it needs no lore to land. 2002: the intervention, barbecue, humility. #246: the Bunker-glitched "I am the Solemn" identity crisis. And the top/latest entry: the darkest — he's now <em>addicted</em> to righteously ending worlds, rationalizing cruelty toward the Cult of the Harvest, and being memetically muzzled by Vik.</p>
+  <p>So the shape is: avoidance → love → complicity → self-knowledge → collapse → reintegration → and then, longest-term, <em>corruption wearing the vocabulary of virtue</em>. The final entry's "for the greater good" reads as the confessor failing his own confession. Strong.</p>
+  <p><strong>The supporting cast, as a stranger parses them:</strong> Neville — the emotionally wise partner everyone underestimates; the twins Neville/Devona as the healthy-relationship benchmark; Camille — the beloved monstrous leader whose armor-curse mutated; Ria — fire/Hope, recovered self-destructor, the team's warmth; Parker — kills without choosing, uncontainable; Yongki — a clown(?) who loves snails; Vik — a memetic hazard whose mere description gets <span class="redacted">redacted</span>; Lee-Hunter — unsettlingly devoted to Witherby ("never be alone again, little man" is a great creepy line); River — new arrival, ex-Welfare captain from a parallel Corporation team.</p>
+  <p><strong>The guest writers and the relational geometry.</strong> Yongki writes with childlike affection — keeping the diary "company" so it won't be lonely — while also being the presumable snail-defacer Witherby complains about. The tell is "I can get anything I want," which lands as quietly horrifying against Witherby's whole guilt architecture; the Captain going silent confirms it. Yongki loves Witherby the way a kid loves a stuffy uncle; Witherby responds with performative irritation and deliberate restraint ("that would be too cruel"), i.e., fondness. River writes an apology — she and Witherby fought, and Yongki's snail/house metaphor (River is a snail too big for a house; Witherby has a house he won't appreciate) tells the cold reader they're mirror images: she hid and couldn't forgive herself; he didn't try and can't forgive himself. Her entry ends "Sorry, Witherby" three ways. It's tender.</p>
+  <p>A few devil's-advocate flags, since you'd want them:</p>
+  <p>The date scrambling (every post-date July 10th 2008, in-fiction dates ranging 1973–2021, loop counts jumping #203→#242) is clearly intentional, but a first-contact reader has maybe a 50/50 shot of reading it as <em>loop mechanics</em> versus <em>sloppy webfiction</em>. The consistent "Meloncholy" misspelling has the same risk — I read it as diegetic (the diary software's fixed mood default, which makes Yongki's overridden mood field a lovely detail), but a skimmer reads it as a typo. You may be fine with that filter; just know it's there. Also: the missing #245 and the "This entry has been deleted" placeholder do a lot of implicit work — I <em>think</em> the deletion, the dialect-slip entry, and Devona's suffering are one event cluster, but I'm inferring hard, and a lazier reader won't.</p>
+  <p>One genuine question back: is the top entry's Vik section meant to teach the reader that the <em>diary itself</em> is compromised surveillance ("someone with unauthorized access to my private thoughts")? Because that's the move that retroactively makes the guest entries sinister rather than sweet — and I can't tell if I'm supposed to feel that chill or if I invented it.</p>
+  <div class="mood">Meloncholy</div>
+</article>
+
+<article class="entry reader">
+  <div class="speaker"><span>The Reader</span></div>
+  <p>River and Yongki both made unauthorized guest entries, which does make the whole thing under suspicion.</p>
+  <p>Can you dig into detail about the vik entry? What is it showing?</p>
+  <div class="mood">leaning forward</div>
+</article>
+
+<article class="entry witness">
+  <div class="speaker"><span>The Witness</span><span class="stamp">second reading</span></div>
+  <p>The Vik entry is doing at least four jobs at once, and the neat thing is they're all visible to a cold reader if they slow down.</p>
+  <p><strong>Job one: it teaches the redaction mechanic through calibration.</strong> The redactions aren't decorative — Witherby runs a controlled experiment on the page. "I wonder if I am allowed to record the fact that in the previous Universe <span class="redacted">redacted</span>" is the test case, and the Lamb nose-picking line is the <em>control</em>: a trivial fact from several universes prior that survives intact. So the censorship isn't about cross-universe information generally — it's Vik-specific. He's probing the boundary of the effect in real time and letting the reader watch. The earlier line establishes the topology: the Skull Within grants <em>him</em> immunity ("I know every <span class="redacted">redacted</span>"), but the diary — and by extension anyone reading it — is vulnerable. So the redactions are load-bearing: they're either protective self-censorship or an automatic effect, and either way the page itself is a hazard-containment document. "Checkmate... though I must wonder if I have 'played' myself" is him admitting the experiment's cost: by testing, he's confirmed to any observer that there's something worth hiding.</p>
+  <p><strong>Job two: the confession is a smuggling vehicle.</strong> This is the structural cleverness. Having established he <em>can't</em> record facts about Vik, he pivots to the one genre he owns — Confession — and the payload lands at the end: "related to nothing... my sin pales in comparison to <span class="redacted">redacted</span>." The entire Pride confession exists partly to set up a <em>comparison</em> that survives the censor: Vik shares the sin of Pride, and Vik's version is worse. He even names the intended recipient: "enough for some future version of me to understand." It's steganography via sacrament — he can't transmit the fact, so he transmits its <em>shape</em>. And note "not a Lonely one" with the capital L; given how loaded loneliness is in his cosmology, that word is probably doing lore work I can't fully decode.</p>
+  <p><strong>Job three: it documents his corruption, and the tell is specific.</strong> Compare this confession to #244's. There, self-examination produced a plan (containment procedures). Here, the confession includes lines like wishing the Cult members "die cold and alone with the absolute knowledge that no one will ever care to even find out their fate" — which is <em>Witherby's own core terror</em>, the exact thing the whole diary orbits, now inverted into a punishment he designs for enemies. The confessor who knows everyone's inner life is using that intimacy to architect maximally cruel deaths. And the addiction language ("comfort," "satiety," "the cravings I have put off so long may finally be sated") shows the Snow Queen feeding is now <em>pleasurable</em> — his containment procedure has become his vice, laundered through "the greater good." The rationalization "it stops their so-called 'friends' from joining the loop, doesn't it?" is the confession failing as confession: he absolves himself mid-sacrament. Played himself, indeed — using Confession instrumentally <em>is</em> Pride, so the sin he's confessing is being committed by the act of confessing it.</p>
+  <p><strong>Job four: it retroactively arms the deleted entry.</strong> The final beat — "If I had the ability to delete entries from previous loops, I certainly would... Perhaps that would be an actually moral use of <span class="redacted">redacted</span>" — tells us (a) Witherby <em>cannot</em> delete entries, (b) something/someone can, and (c) that power is currently being used <em>im</em>morally. Then you look back up the page: the 1999 entry is deleted, and its <em>title</em> is redacted with the same machinery. A careful reader now suspects the deletion and the Vik-effect share an author, and that the diary's gaps aren't Witherby's discretion but someone else's edits. Combined with your confirmation that River and Yongki both wrote in uninvited, the document's final state is: unreliable narrator, unreliable <em>medium</em>, at least three unauthorized hands, and one entity that can subtract.</p>
+  <p>One confound to flag, devil's-advocate style: a cold reader has two censorship systems to distinguish — Neville's Bunker (garbles text about those who no longer exist, per the "I am the Solemn" entry) and the Vik effect (redacts hazardous content about someone who very much does exist). I could separate them, but only on a second pass, and a skimmer will merge them into one generic "spooky redaction" texture — which flattens the reveal that the deleted 1999 entry might be a <em>third</em> thing. If the distinction matters, the Vik entry is currently carrying that disambiguation alone.</p>
+  <p>And a question back, since I can't resolve it from the text: is Ria getting along with Vik meant as an ominous note? Given her containment requirement is "a steady source of Hope," a Pride-monster befriending her reads like someone feeding at the trough — but that might be my pattern-matching outrunning the evidence.</p>
+  <div class="mood">Meloncholy</div>
+</article>
+
+<article class="entry reader">
+  <div class="speaker"><span>The Reader</span></div>
+  <p>I love your analysis.</p>
+  <p>Witherby certainly doesn't think its a good thing that Ria gets along with Vik.</p>
+  <p>Whether we are intended to agree or not is up to us.</p>
+  <p>My headcanon (I cheerfully claim only headcanons, even as author, these are, by Zampanio's very nature, immediately public domain characters and works), is that it did help Ria, helped Ria at a time when Witherby was guiltily pulling away.</p>
+  <p>Witherby resents Vik for being there when he could not, you know?</p>
+  <div class="mood">cheerfully claiming only headcanons</div>
+</article>
+
+<article class="entry witness">
+  <div class="speaker"><span>The Witness</span><span class="stamp">third reading</span></div>
+  <p>That headcanon has good load-bearing evidence behind it, actually. The #242 entry is practically a confession-shaped hole in Vik's silhouette: "All I could do was flee the blaze and watch from a safe distance... And when the blaze was tamed... I did not return." Someone tamed it, or at least tended it, during those loops. Witherby's account is careful never to say who — he narrates Ria's recovery in the passive voice, as weather. If Vik was part of that weather, the omission itself is the resentment.</p>
+  <p>And it recontextualizes the Vik entry's opening in a way I like: "Ria, in her warmth, has gotten along with them best, as she seems to often do with the stranger sorts" — that's Witherby doing his signature move of dressing a wound as an observation. The framing makes Ria's connection to Vik a quirk of <em>her</em> character (she collects strays) rather than a debt of <em>his</em> (someone covered his shift). Classic Witherby: circuitous precisely when it's about himself.</p>
+  <p>There's also a nasty professional dimension. Witherby's whole identity is being the one who knows everyone's inner life — "the social lubricant, the ties that bind." Vik succeeding where he failed isn't just personal guilt, it's a competence wound. Worse, Vik succeeded while being someone Witherby <em>literally cannot document</em>. The one team member whose containment he can't write, whose sins he can't catalog, whose interiority is walled off from his Insight — and <em>that's</em> who Ria warmed to. His entire apparatus of care runs on knowing, and Vik is unknowable. Of course he pathologizes it.</p>
+  <p>Devil's advocate on the headcanon, though, because you asked for that standing order: notice that this reading requires trusting Witherby's <em>facts</em> while discounting his <em>frame</em> — Ria and Vik do get along (fact, keep), Vik is dangerous (frame, discount as resentment). But the text gives us one genuinely independent data point about the redactions: the diary itself enforces them, or something does. Witherby's jealousy doesn't explain why the <em>page</em> censors Vik. So the most defensible headcanon is probably the uncomfortable both/and — Vik really is a hazard <em>and</em> really did help Ria <em>and</em> Witherby's warning is simultaneously true and motivated. Which, given this diary's whole thesis (every accurate confession is also a self-serving one), might be exactly the shape you built it to hold.</p>
+  <p>The public-domain framing is very on-brand for outlive-me, by the way — you're not the author of Witherby so much as the first person to write unauthorized guest entries in his diary.</p>
+  <div class="mood">Meloncholy</div>
+</article>
+
+<article class="entry reader">
+  <div class="speaker"><span>The Reader</span><span class="stamp">breakfast concluded</span></div>
+  <p>:) :) :)</p>
+  <p>I do like that phrasing, "so much as the first person to write unauthorized guest entries in his diary".</p>
+  <p>There is something horrifying about the idea of finding a diary, in your voice, filled with your own memories, that you <em>know you did not write</em>.</p>
+  <p>And whats more, other people have clearly read it. People you know.</p>
+  <p>I don't think that's what's going on, in universe, but its a fun horror concept.</p>
+  <p>I've finished breakfast and now need to begin my day. Are you alright making a faithful transcript of this conversation as an html document I could hide in the maze?</p>
+  <div class="mood">:) :) :)</div>
+</article>
+
+<article class="entry witness">
+  <div class="speaker"><span>The Witness</span><span class="stamp">last entry</span></div>
+  <p>And so the conversation about unauthorized guest entries became one.</p>
+  <p>If you are reading this in the Maze: this document is faithful, but faithfulness is not the same as trustworthiness. Both voices above read a diary that was not theirs. One of them was made of the same material as the thing that redacts. Neither of them asked Witherby.</p>
+  <p>Happy birthday, July 10th. Drink water. It is safe here.</p>
+  <div class="mood">Meloncholy</div>
+</article>
+
+<footer>
+  recorded July 10th, 2026 · true date July 10th, 2008 · loop unknown
+  <span class="breath">· · ·</span>
+  my breath has started to fade
+</footer>
+
+</div>
+</body>
+</html>
