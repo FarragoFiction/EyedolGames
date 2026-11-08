@@ -296,7 +296,19 @@ document.addEventListener('click', playAudio, { once: true });
 //haha whoops, sorry https://www.youtube.com/watch?v=eNU6hdqWF_Q i broke gender when i added a mute button, you can get one for free
 document.addEventListener('click', () => { number_clicks++; })
 
+const handleInfection = () => {
+  //only during october
+  if (new Date().getMonth() === 9) {
+    console.log("JR NOTE: Happy Halloween :) :) ;)")
+    const a = document.createElement("a");
+    a.href = "http://lavinraca.eyedolgames.com/";
+    a.innerText ="Happy Lavinraca Season!!!"
+    footer.append(a)
+  }
+}
+
 window.onload = () => {
+  handleInfection();
   //on July 14th, https://www.youtube.com/watch?v=eNU6hdqWF_Q this streamer discovered the gender gauntlet eternally claimed that you hadn't answered enough questsions to recieve gender (because i had a bug after adding the mute button for a tumblr user)
   //they were so delighted by this i have declared it canon on the 14th day of every month and for the entire month of July
   //future me is going to forget i did this

@@ -495,7 +495,7 @@ const letsPlayLink = (parent, rand) => {
   http://eyedolgames.com/ClaudeReadingMallSim
   http://eyedolgames.com/ClaudeReadingSBURBSimAndComparingToMallSim
   http://eyedolgames.com/images/
-  `;
+  http://eyedolgames.com/ClaudeReadingGithub`;
   const possible_urls = possible_urlsRaw.trim().split("\n")
   renderLink(parent, title, description, rand.pickFrom(possible_urls));
 }
