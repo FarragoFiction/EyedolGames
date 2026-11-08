@@ -8,27 +8,27 @@ body {
   color: black;
   margin: 0px;
   overflow: auto;
-  font-family:   ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
 
-.cart-tip-currency{
+.cart-tip-currency {
   position: absolute;
   font-size: 13px;
   margin-left: 5px;
   vertical-align: middle;
 }
 
-.cart-tip-object{
+.cart-tip-object {
   position: relative;
 }
 
-input{
+input {
   text-align: right;
   width: 65px;
 }
 
-.cart-tip-holder{
+.cart-tip-holder {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -36,14 +36,14 @@ input{
   margin-left: 20px;
 }
 
-#categories{
+#categories {
   background-color: #f4f4f4;
   width: 100%;
   height: 100px;
   margin-top: 50px;
 }
 
-.chosen-container{
+.chosen-container {
   display: flex;
   margin-top: 50px;
   gap: 50px;
@@ -54,7 +54,7 @@ input{
   justify-content: space-between;
 }
 
-#chosen{
+#chosen {
   display: flex;
   margin-top: 50px;
   gap: 50px;
@@ -64,26 +64,24 @@ input{
   margin-right: auto;
 }
 
-.facts{
+.facts {
   display: flex;
   justify-content: space-between;
   line-height: 25px;
 }
-.logo{
+
+.logo {
   cursor: pointer;
 }
 
-.rest-name{
+.rest-name {
   font-weight: 700;
   text-align: center;
   margin-bottom: 10px;
 }
 
-#header{
-  display: flex;
+#header {
   z-index: 999;
-  justify-content: space-between;
-  margin: 0px;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -94,7 +92,22 @@ input{
   background: #ffffff;
 }
 
-#header h1{
+
+
+#row-1 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  vertical-align: middle;
+  border-bottom: 1px solid #e4e4e4;
+  background: #ffffff;
+}
+
+#header h1 {
   margin: 0px;
   left: 0px;
   margin-left: 50px;
@@ -104,29 +117,29 @@ input{
   margin-top: 5px;
 }
 
-#profile{
+#profile {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.rating{
+.rating {
   margin-bottom: 10px;
 }
 
-.rating{
+.rating {
   filter: grayscale();
 }
 
-.rating .good{
+.rating .good {
   filter: grayscale() brightness(0.5);
 }
 
-.rating .bad{
+.rating .bad {
   filter: grayscale() contrast(100);
 }
 
-.one-review{
+.one-review {
   border: 1px solid #d4d4d4;
   height: 150px;
   min-width: 300px;
@@ -137,7 +150,7 @@ input{
 
 }
 
-.featured-reviews{
+.featured-reviews {
   display: flex;
   flex-wrap: nowrap;
   gap: 50px;
@@ -149,7 +162,7 @@ input{
 }
 
 
-.featured-meals{
+.featured-meals {
   display: flex;
   flex-wrap: nowrap;
   gap: 50px;
@@ -160,7 +173,7 @@ input{
   margin-bottom: 50px;
 }
 
-.menu{
+.menu {
   display: flex;
   flex-wrap: nowrap;
   gap: 50px;
@@ -171,7 +184,7 @@ input{
   margin-bottom: 50px;
 }
 
-.one-menu-item{
+.one-menu-item {
   height: 50px;
   cursor: pointer;
   text-transform: uppercase;
@@ -180,12 +193,12 @@ input{
 
 }
 
-.food-price{
+.food-price {
   font-weight: 600;
   margin-top: 5px;
 }
 
-.one-food-item{
+.one-food-item {
   border-radius: 8px;
   border: 1px solid #e4e4e4;
   display: flex;
@@ -196,7 +209,7 @@ input{
   justify-content: space-between;
 }
 
-.food-left{
+.food-left {
   display: inline-block;
   padding: 20px;
   padding-top: 0px;
@@ -204,7 +217,7 @@ input{
 
 }
 
-.food-right{
+.food-right {
   height: 150px;
   display: inline-block;
   position: relative;
@@ -212,24 +225,25 @@ input{
 
 
 
-.menu-title{
+.menu-title {
   padding-bottom: 10px;
 
 }
-.selected-menu-title{
+
+.selected-menu-title {
   border-bottom: 2px solid black;
   border-radius: 3px;
 }
 
-.one-featured-meal{
+.one-featured-meal {
   width: 150;
   height: 200px;
   cursor: pointer;
 }
 
-.add{
+.add {
   position: absolute;
-  bottom: 5px; 
+  bottom: 5px;
   right: 5px;
   pointer-events: none;
   border-radius: 33px;
@@ -243,17 +257,17 @@ input{
 
 
 
-.food-title{
+.food-title {
   margin-bottom: 5px;
 }
 
-.meal-image-container{
+.meal-image-container {
   width: 150px;
   height: 150px;
   position: relative;
 }
 
-.one-cart-item{
+.one-cart-item {
   padding: 10px;
   height: 43px;
   display: flex;
@@ -265,29 +279,29 @@ input{
 
 }
 
-.cart-item-restaurant{
+.cart-item-restaurant {
   font-size: 12px;
   font-weight: 300;
 }
 
-.cart-item-title{
+.cart-item-title {
   font-size: 18px;
   margin-top: 0px;
   vertical-align: top;
 }
 
-.cart-item-price{
+.cart-item-price {
   font-size: 14px;
   font-weight: 400;
 }
 
-.meal-image[src]{
+.meal-image[src] {
   height: 150px;
   border-radius: 8px;
   aspect-ratio: 1/1;
 }
 
-#header #cart-icon{
+#header #cart-icon {
   margin: 0px;
   cursor: pointer;
   background: #d4d4d4;
@@ -311,19 +325,19 @@ input{
 ::-webkit-scrollbar-track {
   background: white;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:  #ee0000;
-  ; 
+  background: #ee0000;
+  ;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e4e4e4; 
+  background: #e4e4e4;
 }
 
-#header #cart-container{
+#header #cart-container {
   position: fixed;
   top: 50px;
   display: none;
@@ -334,7 +348,7 @@ input{
   background-color: white;
 }
 
-#cart{
+#cart {
   height: 80vh;
   overflow-y: scroll;
   padding-left: 10px;
@@ -344,7 +358,23 @@ input{
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  border-bottom: 1px dotted black;
+  /* If you want dots under the hoverable text */
+}
+
+a {
+  color: #ee0000;
+  background: white;
+  border-radius: 13px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+a:visited {
+  color: #ee0000;
 }
 
 /* Tooltip text */
@@ -358,7 +388,7 @@ input{
   padding: 10px;
   color: #ee0000;
   border-radius: 8px;
- 
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
@@ -369,11 +399,11 @@ input{
   visibility: visible;
 }
 
-.cart-restaurant-container{
+.cart-restaurant-container {
   margin-bottom: 50px;
 }
 
-#warning{
+#warning {
   font-size: 12px;
   margin-left: 13px;
   text-align: center;
@@ -383,7 +413,7 @@ input{
   font-weight: bold;
 }
 
-#cart-total{
+#cart-total {
   text-align: right;
   margin-right: 10px;
   color: white;
@@ -404,12 +434,12 @@ input{
 
 }
 
-#cart-total:hover{
+#cart-total:hover {
   background: #dd0000;
   letter-spacing: 3px;
 }
 
-.profile_image{
+.profile_image {
   object-fit: cover;
   width: 100%;
   height: 172px;
@@ -417,19 +447,19 @@ input{
 }
 
 
-.preview{
+.preview {
   object-fit: cover;
   width: 375px;
   height: 172px;
   border-radius: 8px;
 }
 
-.price{
+.price {
   font-size: 10px;
   vertical-align: top;
 }
 
-.genre{
+.genre {
   max-width: 150px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -437,7 +467,7 @@ input{
   display: inline-block;
 }
 
-.back-button{
+.back-button {
   text-decoration: none;
   color: black;
   position: absolute;
@@ -448,7 +478,7 @@ input{
 
 }
 
-#resteraunts{
+#resteraunts {
   display: flex;
   margin-top: 50px;
   gap: 50px;
@@ -458,12 +488,12 @@ input{
   margin-right: auto;
 }
 
-.single-rest{
+.single-rest {
   gap: 100px;
   cursor: pointer;
 }
 
-.category{
+.category {
   margin-top: 12px;
   margin-bottom: 12px;
   display: inline;
@@ -473,12 +503,12 @@ input{
   cursor: pointer;
 }
 
-.category:hover{
+.category:hover {
   background-color: #e4e4e4 !important;
 }
 
 
-.container{
+.container {
   width: 85%;
   margin-left: auto;
   margin-right: auto;
@@ -488,23 +518,23 @@ input{
 
 }
 
-.category .icon{
+.category .icon {
   width: 60px;
   height: 60px;
   display: block;
   font-size: 32px;
 
-  text-align:center;
+  text-align: center;
 
 }
 
-.category .label{
+.category .label {
   display: block;
   font-weight: 600;
   font-size: 12px;
   width: 60px;
   line-height: 16px;
-  text-align:center;
+  text-align: center;
   height: 16px;
   overflow: hidden;
 }
@@ -512,20 +542,20 @@ input{
 
 
 
-label:not(.gender){
+label:not(.gender) {
   font-weight: bolder;
   margin-bottom: 13px;
   display: block;
 }
 
-#hax{
+#hax {
   position: fixed;
   right: 10px;
   top: 10px;
   width: 50px;
 }
 
-.copy-button{
+.copy-button {
   padding: 5px;
   height: 22px;
   display: inline-block;
@@ -533,75 +563,75 @@ label:not(.gender){
   margin-left: 10px;
 }
 
-hr{
+hr {
   margin: 33px;
 }
 
-.hidden{
-  display: none !important; 
+.hidden {
+  display: none !important;
 }
 
-#result{
+#result {
   text-align: center;
   margin-top: 100px;
 }
 
 
 
-.title{
+.title {
   font-weight: 600;
   font-size: 48px;
 }
 
-#ramble{
+#ramble {
   margin: 50px;
 }
 
-#result-link{
+#result-link {
   margin-top: 10px;
   margin-bottom: 30px;
 }
 
-#result-name{
+#result-name {
   font-weight: 800;
   font-size: 42px;
 }
 
-select{
+select {
   width: 100%;
   max-width: 300px;
 }
 
-.question{
+.question {
   margin-bottom: 33px;
 }
 
-select{
+select {
   margin-left: 13px;
 }
 
 
-button{
+button {
   height: 50px;
 }
 
-#footer{
-    text-transform: capitalize;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    position: fixed;
-    bottom: 0px;
-    border-top: 1px solid black;
-    width: 100%;
-    background: white;
+#footer {
+  text-transform: capitalize;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  bottom: 0px;
+  border-top: 1px solid black;
+  width: 100%;
+  background: white;
 }
 
-#recieve-gender{
+#recieve-gender {
   margin-top: 13px;
 }
 
-.horizontal-radio{
+.horizontal-radio {
   display: flex;
   flex-direction: row;
   gap: 13px;
@@ -611,7 +641,7 @@ button{
 
 }
 
-#instructions{
+#instructions {
   background: #f4f4f4;
   padding: 33px;
   width: 500px;
@@ -621,11 +651,10 @@ button{
 
 
 
-.vertical-radio{
+.vertical-radio {
   display: flex;
   flex-direction: column;
   gap: 13px;
   margin-left: 13px;
   max-width: 500px;
 }
-

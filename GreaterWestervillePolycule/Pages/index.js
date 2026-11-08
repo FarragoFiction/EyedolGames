@@ -16,6 +16,11 @@ class PageObject {
         //logo in upper right corner
         let logoContainer = createElementWithClassAndParent("div", bigbox, "logo");
         let logo = createElementWithClassAndParent("img", logoContainer, "logo-img");
+        let a = createElementWithClassAndParent("a", logoContainer);
+        a.innerText = "Check Our AI Policy!"
+        a.style.color = "white";
+        a.href = "http://farragofiction.com/ai_policy"
+        a.target = "_blank"
 
         if (new Date().getHours() == 0 || new Date().getDay() === 5) {
             //midnight and fridays are always special.
