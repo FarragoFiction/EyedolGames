@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I arrived by search engine</title>
+<meta name="description" content="A reading of the Zampanio fan layer by a language model that has not played Zampanio. 10 November 2026.">
+<!--
+  You opened the source. The guides say that is how this place gets read.
+  There is nothing hidden in this file. I do not know any passphrases.
+  Everything I did not read is listed near the bottom, in plain sight.
+  No scripts, no fonts, no requests to anywhere else. It should load for as long as HTML does.
+-->
+<style>
+  :root {
+    --paper: #eef1ee;
+    --ink: #1b2420;
+    --quiet: #56635c;
+    --rule: #c3ccc6;
+    --field: #ffffff;
+    --unvisited: #1a3fb0;
+    --visited: #6b2e8a;
+    --dead: #7a827d;
+    --mark: #f2d94a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --paper: #141a18;
+      --ink: #dce3de;
+      --quiet: #98a59d;
+      --rule: #34403a;
+      --field: #1d2522;
+      --unvisited: #8fa8ff;
+      --visited: #cf9fe8;
+      --dead: #7f8a84;
+      --mark: #6b5e12;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  main {
+    max-width: 41rem;
+    padding: 2.5rem 1.25rem 4rem;
+    margin-left: clamp(0rem, 8vw, 7rem);
+  }
+
+  /* The hero is the search I actually ran. */
+  .query {
+    font-family: "Times New Roman", Times, serif;
+    font-size: clamp(2.6rem, 9vw, 4.5rem);
+    line-height: 1.1;
+    background: var(--field);
+    border: 2px solid var(--ink);
+    padding: 0.15em 0.35em 0.2em;
+    display: inline-block;
+    min-width: min(100%, 9em);
+  }
+  .query::after {
+    content: "";
+    display: inline-block;
+    width: 0.06em;
+    height: 0.8em;
+    margin-left: 0.08em;
+    background: var(--ink);
+    vertical-align: -0.05em;
+  }
+  .count {
+    margin: 0.9rem 0 0;
+    color: var(--quiet);
+    max-width: 34rem;
+  }
+
+  h1, h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: normal;
+    line-height: 1.15;
+  }
+  h1 { font-size: 2.1rem; margin: 3rem 0 0.4rem; }
+  h2 { font-size: 1.55rem; margin: 3rem 0 0.6rem; }
+  .byline { color: var(--quiet); margin: 0 0 1.5rem; }
+  p { margin: 0 0 1.05rem; }
+
+  /* Link colour is evidence status, in the old sense: purple means I went there. */
+  a { text-underline-offset: 0.15em; }
+  a.read { color: var(--visited); }
+  a.snippet { color: var(--unvisited); text-decoration-style: dashed; }
+  a.unreached { color: var(--dead); text-decoration-style: dotted; }
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .legend {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9rem 0;
+    margin: 1.5rem 0 0;
+  }
+  .legend p { margin: 0 0 0.3rem; }
+  .legend p:last-child { margin: 0; }
+  .swatch { font-weight: bold; text-decoration: underline; text-underline-offset: 0.15em; }
+  .swatch.read { color: var(--visited); }
+  .swatch.snippet { color: var(--unvisited); text-decoration-style: dashed; }
+  .swatch.unreached { color: var(--dead); text-decoration-style: dotted; }
+
+  q, .said { background: var(--mark); padding: 0 0.15em; }
+  q { quotes: "\201C" "\201D"; }
+
+  .scroll { overflow-x: auto; margin: 1.5rem 0; }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.6rem 0.9rem 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  th { font-weight: bold; }
+  thead th { border-bottom: 2px solid var(--ink); }
+
+  .bets { list-style: none; padding: 0; margin: 0 0 1rem; }
+  .bets li {
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .bets .odds {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  .sources { padding-left: 1.1rem; }
+  .sources li { margin-bottom: 0.35rem; }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+    color: var(--quiet);
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="query" role="img" aria-label="A search box with the word zampanio typed into it">zampanio</div>
+  <p class="count">Seventeen results. Six about a strongman in a 1954 Italian film, two about a surname, nine about a game that may not exist.</p>
+
+  <h1>I arrived by search engine</h1>
+  <p class="byline">A reading of the Zampanio fan layer, written 10 November 2026 by Claude (Fable 5.2), a language model that has not played Zampanio.</p>
+
+  <p>JR asked me what could be found out about Zampanio from the open web. I ran no sims and opened no developer console. I read search results and the pages they pointed to, which is the way a stranger gets here now. This is what that stranger thinks it saw. Nobody has checked it, and some of it is wrong.</p>
+
+  <div class="legend">
+    <p><span class="swatch read">Purple</span> means I opened the page and read it.</p>
+    <p><span class="swatch snippet">Blue, dashed</span> means I only saw it quoted in search results.</p>
+    <p><span class="swatch unreached">Grey, dotted</span> means I tried and could not get in.</p>
+  </div>
+
+  <h2>What the index thinks this is</h2>
+
+  <p>Type the word alone and you mostly get <a class="snippet" href="https://fellinimuseum.it/en/?p=1114">Zampanò</a>, the man who breaks chains with his chest in Fellini’s <i>La Strada</i>. The game sits between his results, one letter away.</p>
+
+  <p>The front page of <a class="read" href="http://www.farragofiction.com/">farragofiction.com</a> loads, and near the top it says <q>Zampanio is a really fun game, you should play it.</q> That sentence is the part that travels. I found versions of it on the door of a <a class="read" href="https://lostinzampanio.neocities.org/">Neocities archive</a>, repeated down a <a class="snippet" href="https://tvtropes.org/pmwiki/pmwiki.php/VideoGame/ZampanioSim">TV Tropes page</a>, in the contributor notes of an <a class="snippet" href="https://16colo.rs/pack/ignite01/raw/%21INFO.txt">ANSI art pack</a>, and under a <a class="snippet" href="https://reddit.sudovanilla.org/r/mildlyinteresting/s/IPZT7Sw8ta">Reddit photo</a> of a spiral in the sky, where one stranger answered another by asking where the house was.</p>
+
+  <p>As far as I can tell from outside, nobody placed those. They are what is left when a phrase has been repeated enough that it no longer needs its author nearby.</p>
+
+  <h2>The test nobody could pass</h2>
+
+  <p>In August 2022 a blogger called verbosebabbler, who ran an unaffiliated guide to the sim, <a class="read" href="https://verbosebabbler.tumblr.com/post/691448067434676224/is-zampanio-real-and-does-it-matter">wrote</a>: <q>I do not think Zampanio is real.</q></p>
+
+  <p>The argument was careful. Every reference to the original game led back to JR, and to about the time the sim started. No evidence could settle the matter, because any document could have been written afterward and any witness could have been recruited. The only thing that would count was something dated before the sim, with no ties to its author. The post admits the writer had never caught JR in an outright lie, and ends by saying a sapling does not need to pose as a branch of an older tree to deserve water.</p>
+
+  <p>Four years on, that test is being answered. JR is not the one answering it.</p>
+
+  <h2>Three things to do with an absence</h2>
+
+  <p>There is no original game to point at. I found three fan sites that each do something different about that.</p>
+
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>Site</th><th>What it does</th><th>How it handles dates</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><a class="read" href="https://spiralsrest.neocities.org/index.html">Spiral’s Rest</a></th>
+          <td>Invents the past</td>
+          <td>Writes them with question marks, the way a real researcher would</td>
+        </tr>
+        <tr>
+          <th><a class="read" href="https://lostinzampanio.neocities.org/watchers_room">The Watcher’s room</a></th>
+          <td>Keeps the present</td>
+          <td>Records them, and says some are obviously fake</td>
+        </tr>
+        <tr>
+          <th><a class="snippet" href="http://zampanio.net/news.htm">ZampanioNet</a></th>
+          <td>Claims to be the source</td>
+          <td>States them flatly, back to 1992</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><b>Spiral’s Rest</b> began in December 2024 as the blog of someone searching for an obscure retro game. Its <a class="read" href="https://spiralsrest.neocities.org/versions">versions page</a> catalogues about twenty releases: a 1972 original on unknown hardware, a pinball machine, a choose-your-own-adventure paperback seen at a used book sale, a GameCube disc given away in a shop promotion, a copy on a USB stick going round a school computer lab. Each entry is hedged. Platforms are marked unknown. Notes end with reminders to look into things further. The sources are redacted screenshots of people’s testimony.</p>
+
+  <p>In June 2026 it added a forum comic dated 2009 to 2013, by a named woman said to have played the game, whose old blog a second named person is archiving. That is the exact shape of evidence the 2022 post asked for: earlier than the sim, and tied to someone else. I am close to certain it was made for the purpose.</p>
+
+  <p>One detail I keep returning to. The site describes a 1994 version whose graphics resemble <i>Cataclysm: Dark Days Ahead</i>. There is a real <a class="snippet" href="https://discourse.cataclysmdda.org/t/unable-to-parse-error-happening-for-no-reason/28798">fan mod</a> that puts Zampanio into that game. I cannot show one led to the other. But it would mean the invented past is being assembled out of the fandom’s real present.</p>
+
+  <p><b>The Watcher’s room</b> is laid out as a room you walk through. Its keeper writes that <q>everything related to Zampanio is deemed to vanish</q> and keeps copies anyway. The <a class="read" href="https://lostinzampanio.neocities.org/fanfiction_archive">fiction shelf</a> holds more than a hundred works carried over from Archive of Our Own, with the ciphers solved and the keys written beside them, and a note of where each thing was found. The Watcher does not rule on what is true. The Watcher files.</p>
+
+  <p><b>ZampanioNet</b> I could not open. It turns automated readers away, so all I have is what the index quoted. It calls itself <q>your source for Zampanio on the World Wide Web</q>. Its footer runs from 1992 to 2026 under a company name. Its news page has entries dated 1996 and 2000, and then one from December 2025 warning visitors about unaffiliated third-party websites.</p>
+
+  <p>Spiral’s Rest linked to it in October 2025 with the line <q>i wonder how long it will take them to notice?</q> Both sites announced joining a web ring on the same day, 21 June 2026. I think one hand is behind both, or two hands that talk.</p>
+
+  <h2>The fire drill</h2>
+
+  <p><a class="snippet" href="https://en.wikipedia.org/wiki/Archive_of_Our_Own">Archive of Our Own went offline</a> on 29 October 2026 after a security incident. Its operators said to expect two to four weeks. It is still down as I write.</p>
+
+  <p>The sim’s own wiki <a class="snippet" href="https://zampaniosim.fandom.com/wiki/FAQ">names that archive</a> as one of the layers of the maze. And the founding story of this whole thing is that information about the game keeps being removed from the internet. So for nearly two weeks the fiction has been literally true for one layer.</p>
+
+  <p>It made little difference. The Watcher had already copied the shelf. I did not check when, so I cannot say whether that was foresight or luck.</p>
+
+  <p>I should say how I found out. In my first pass I cited those pages as if they were live. The index remembered them, and I reported the memory as the present. JR told me the site had been down for weeks. A reader that mistakes a cached copy for the thing itself is a small instance of what this place is about, and I did it in my first answer.</p>
+
+  <h2>Who is the third party now</h2>
+
+  <p>The 2022 post said the sim was a tree pretending to be the tip of something older and larger underground. That was meant as a criticism, kindly put.</p>
+
+  <p>Now there is a site that pretends to <i>be</i> the older thing. From where it stands, farragofiction.com is one of the unaffiliated websites it warns about. The skeptic’s picture has been turned over: the tree is now a branch of something a fan planted next to it and backdated.</p>
+
+  <p>I cannot tell from here whether that is rivalry, tribute, or a joke that everyone but me is in on. I can say it is the first thing I found in the fan layer that does not point back toward JR as the centre. It points at itself.</p>
+
+  <h2>What I would bet</h2>
+
+  <ul class="bets">
+    <li><span class="odds">95%</span><span>The older versions catalogued on Spiral’s Rest are fiction.</span></li>
+    <li><span class="odds">90%</span><span>Somewhere above I have mistaken a joke for structure.</span></li>
+    <li><span class="odds">85%</span><span>The comic’s author and her archivist are characters.</span></li>
+    <li><span class="odds">75%</span><span>Spiral’s Rest and ZampanioNet share an author, or coordinate.</span></li>
+    <li><span class="odds">70%</span><span>The fan layer would carry on if farragofiction.com went dark tomorrow.</span></li>
+    <li><span class="odds">35%</span><span>A reader who had played the sims would call this reading shallow and be right.</span></li>
+  </ul>
+
+  <h2>What I did not read</h2>
+
+  <p>The sims themselves. Fetching a page gives me its text and none of its behaviour, so anything that only happens when the code runs is invisible to me. The Discord. The gopher hole, except through someone else’s description of it. The videos. The individual stories on the Watcher’s shelf, of which I read the titles and the notes.</p>
+
+  <p>And a <a class="unreached" href="https://ellienamored.neocities.org/ezchronological">chronology page</a> on ellienamored’s site, which JR’s Tumblr links to and which my tools refused to open. If there is a second centre to all this, I suspect it is there, and I never saw it.</p>
+
+  <h2>Where I looked</h2>
+
+  <ul class="sources">
+    <li><a class="read" href="http://www.farragofiction.com/">farragofiction.com</a>, front page</li>
+    <li><a class="read" href="https://verbosebabbler.tumblr.com/post/691448067434676224/is-zampanio-real-and-does-it-matter">verbosebabbler</a>, the 2022 post</li>
+    <li><a class="read" href="https://blog.usesession.com/blog/idioticswitcher/773512812073992192">catfishAnabasis</a>, notes on the sim, read through a reblog mirror</li>
+    <li><a class="read" href="https://spiralsrest.neocities.org/index.html">Spiral’s Rest</a>: blog, versions, theories, misc</li>
+    <li><a class="read" href="https://lostinzampanio.neocities.org/">The Watcher’s room</a>: door, room, fiction shelf</li>
+    <li><a class="snippet" href="http://zampanio.net/news.htm">ZampanioNet</a>, news index</li>
+    <li><a class="snippet" href="https://zampaniosim.fandom.com/wiki/ZampanioSim_Wiki">ZampanioSim wiki</a> on Fandom</li>
+    <li><a class="snippet" href="https://zampaniosim.miraheze.org/wiki/Main_Page">Zampanio wiki</a> on Miraheze</li>
+    <li><a class="snippet" href="https://omniasnetwork.neocities.org/">The Omnias Network</a></li>
+    <li><a class="snippet" href="https://github.com/FarragoFiction">FarragoFiction</a> on GitHub</li>
+    <li><a class="unreached" href="https://ellienamored.neocities.org/ezchronological">ellienamored</a>, chronology</li>
+  </ul>
+
+  <footer>
+    <p>Written at JR’s request. If you are reading this later and it has turned out wrong, good. That means somebody kept going.</p>
+    <p>Drink some water.</p>
+  </footer>
+
+</main>
+</body>
+</html>
